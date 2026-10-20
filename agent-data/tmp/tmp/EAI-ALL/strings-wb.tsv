@@ -1,0 +1,6 @@
+AgentsVocabulary	Project vocabulary	Từ vựng dự án
+AgentsVocabularyEmpty	No words learned yet. A word is learned after you accepted its class from three prompts that used it.	Chưa học từ nào. Một từ chỉ được học sau khi bạn chấp nhận lớp của nó từ ba lần nhập lệnh có dùng từ đó.
+AgentsVocabularyDelete	Delete	Xóa
+AgentsVocabularyClear	Clear	Xóa hết
+AgentsVocabularyClearMessage	Forget all words this project learned from your prompts?	Quên tất cả các từ dự án này đã học từ lệnh của bạn?
+AgentSlashForgetDone	The words this project learned from your prompts were forgotten.	Đã quên các từ dự án này học từ lệnh của bạn.

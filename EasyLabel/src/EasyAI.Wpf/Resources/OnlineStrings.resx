@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="WindowTitle" xml:space="preserve"><value>Online status</value></data>
+  <data name="StatusRunning" xml:space="preserve"><value>Running</value></data>
+  <data name="StatusStopped" xml:space="preserve"><value>Stopped</value></data>
+  <data name="StatusUnavailable" xml:space="preserve"><value>Status unavailable</value></data>
+  <data name="Recipe" xml:space="preserve"><value>Recipe</value></data>
+  <data name="Accepted" xml:space="preserve"><value>Accepted</value></data>
+  <data name="Completed" xml:space="preserve"><value>Completed</value></data>
+  <data name="Dropped" xml:space="preserve"><value>Dropped</value></data>
+  <data name="Failed" xml:space="preserve"><value>Failed</value></data>
+  <data name="Unavailable" xml:space="preserve"><value>Unavailable</value></data>
+  <data name="P95BudgetFormat" xml:space="preserve"><value>Total p95: {0} ms / budget: {1:0.###} ms</value></data>
+  <data name="Thresholds" xml:space="preserve"><value>Thresholds</value></data>
+  <data name="Score" xml:space="preserve"><value>Score</value></data>
+  <data name="Nms" xml:space="preserve"><value>NMS</value></data>
+  <data name="Apply" xml:space="preserve"><value>Apply</value></data>
+  <data name="Stop" xml:space="preserve"><value>Stop</value></data>
+  <data name="InvalidThreshold" xml:space="preserve"><value>Enter Score and NMS from 0 to 1 using a decimal point.</value></data>
+  <data name="ThresholdApplied" xml:space="preserve"><value>Thresholds applied to all classes.</value></data>
+  <data name="NotRunning" xml:space="preserve"><value>Online mode is not running.</value></data>
+  <data name="UnknownClass" xml:space="preserve"><value>No matching class was found.</value></data>
+  <data name="ThresholdFailed" xml:space="preserve"><value>Thresholds could not be applied.</value></data>
+</root>

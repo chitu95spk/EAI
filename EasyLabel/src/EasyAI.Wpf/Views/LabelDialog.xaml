@@ -1,0 +1,87 @@
+<ui:FluentWindow x:Class="EasyAI.Desktop.Views.LabelDialog"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+                 Width="440"
+                 MinWidth="360"
+                 MaxHeight="640"
+                 SizeToContent="Height"
+                 ResizeMode="NoResize"
+                 ExtendsContentIntoTitleBar="True"
+                 ShowInTaskbar="False"
+                 WindowBackdropType="Mica"
+                 WindowStartupLocation="CenterOwner"
+                 AutomationProperties.AutomationId="LabelDialog"
+                 PreviewKeyDown="OnPreviewKeyDown"
+                 Loaded="OnLoaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar x:Name="DialogTitleBar"
+                     Grid.Row="0"
+                     ShowMaximize="False"
+                     ShowMinimize="False" />
+
+        <StackPanel Grid.Row="1" Margin="16,8,16,8">
+            <Grid x:Name="LabelRow">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ui:TextBox x:Name="LabelBox"
+                            Grid.Column="0"
+                            Margin="0,0,8,0"
+                            PlaceholderText="{x:Static res:Strings.LblDlgLabel}"
+                            TextChanged="OnLabelTextChanged"
+                            AutomationProperties.AutomationId="LabelDialogText"
+                            AutomationProperties.Name="{x:Static res:Strings.LblDlgLabel}" />
+                <ui:TextBox x:Name="GroupBox"
+                            Grid.Column="1"
+                            Width="110"
+                            PlaceholderText="{x:Static res:Strings.LblDlgGroupId}"
+                            AutomationProperties.AutomationId="LabelDialogGroup"
+                            AutomationProperties.Name="{x:Static res:Strings.LblDlgGroupId}" />
+            </Grid>
+
+            <ui:ListView x:Name="LabelList"
+                         Margin="0,8,0,0"
+                         MaxHeight="190"
+                         SelectionMode="Single"
+                         SelectionChanged="OnListSelectionChanged"
+                         MouseDoubleClick="OnListDoubleClick"
+                         AutomationProperties.AutomationId="LabelDialogList"
+                         AutomationProperties.Name="{x:Static res:Strings.LblDlgList}" />
+
+            <ui:TextBox x:Name="DescriptionBox"
+                        Margin="0,8,0,0"
+                        MinHeight="64"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        VerticalScrollBarVisibility="Auto"
+                        PlaceholderText="{x:Static res:Strings.LblDlgDescription}"
+                        AutomationProperties.AutomationId="LabelDialogDescription"
+                        AutomationProperties.Name="{x:Static res:Strings.LblDlgDescription}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2"
+                    Margin="16,4,16,16"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <ui:Button Margin="0,0,8,0"
+                       Appearance="Primary"
+                       IsDefault="True"
+                       Content="{x:Static res:Strings.LblDlgOk}"
+                       Click="OnOk"
+                       AutomationProperties.AutomationId="LabelDialogOk" />
+            <ui:Button Appearance="Secondary"
+                       IsCancel="True"
+                       Content="{x:Static res:Strings.Cancel}"
+                       AutomationProperties.AutomationId="LabelDialogCancel" />
+        </StackPanel>
+    </Grid>
+</ui:FluentWindow>

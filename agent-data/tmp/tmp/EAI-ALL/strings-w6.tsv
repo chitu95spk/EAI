@@ -1,0 +1,15 @@
+UiModeSimple	Simple	Đơn giản
+UiModeAdvanced	Advanced	Nâng cao
+UiModeToggleName	Interface mode	Chế độ giao diện
+EasyStripName	Guided steps	Các bước hướng dẫn
+EasyStepOpen	1 Open folder	1 Mở thư mục
+EasyStepOpenDoneFormat	1 {0} images	1 {0} ảnh
+EasyStepLabelFormat	2 Label {0} more	2 Gán nhãn thêm {0} ảnh
+EasyStepLabelDoneFormat	2 {0} labelled	2 Đã gán nhãn {0} ảnh
+EasyStepTrain	3 Train	3 Huấn luyện
+EasyStepTrainRunningFormat	3 Training · {0}	3 Đang huấn luyện · {0}
+EasyStepTrainDone	3 Model ready	3 Mô hình sẵn sàng
+EasyStepCheck	4 Check OK/NG	4 Kiểm tra OK/NG
+EasyStepCheckDoneFormat	4 OK {0} · NG {1}	4 OK {0} · NG {1}
+EasyStepSend	5 Send to EasyVision	5 Gửi sang EasyVision
+EasyStepSendDone	5 Sent	5 Đã gửi

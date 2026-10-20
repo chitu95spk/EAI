@@ -1,0 +1,15 @@
+{
+  "ReviewStatus": "reviewed",
+  "Shapes": [
+    {
+      "Source": "manual",
+      "Confidence": null,
+      "Model": null
+    },
+    {
+      "Source": "model",
+      "Confidence": 0.91,
+      "Model": "best.onnx"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "version": "5.5.0",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "OK",
+      "points": [
+        [
+          282.9700012207031,
+          149.86000061035156
+        ],
+        [
+          555.77001953125,
+          123.55999755859375
+        ],
+        [
+          581.8800048828125,
+          394.510009765625
+        ],
+        [
+          309.0899963378906,
+          420.79998779296875
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": -0.09611059934681672
+    },
+    {
+      "label": "OK",
+      "points": [
+        [
+          483.0,
+          307.0
+        ],
+        [
+          752.0,
+          307.0
+        ],
+        [
+          752.0,
+          572.0
+        ],
+        [
+          483.0,
+          572.0
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": 0.0
+    },
+    {
+      "label": "OK",
+      "points": [
+        [
+          214.0,
+          417.0
+        ],
+        [
+          494.0,
+          417.0
+        ],
+        [
+          494.0,
+          672.0
+        ],
+        [
+          214.0,
+          672.0
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": 0.0
+    },
+    {
+      "label": "OK",
+      "points": [
+        [
+          282.0,
+          644.8599853515625
+        ],
+        [
+          557.0,
+          650.0
+        ],
+        [
+          551.0,
+          971.1400146484375
+        ],
+        [
+          276.0,
+          966.0
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": 0.01868878623858799
+    },
+    {
+      "label": "OK",
+      "points": [
+        [
+          1882.469970703125,
+          1598.43994140625
+        ],
+        [
+          2155.7900390625,
+          1573.3399658203125
+        ],
+        [
+          2180.110107421875,
+          1838.219970703125
+        ],
+        [
+          1906.800048828125,
+          1863.3199462890625
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": -0.09157677706158587
+    }
+  ],
+  "imagePath": "MODEL_FAN_XOAN_PO_1_134845_711_NG.png",
+  "imageData": null,
+  "imageHeight": 2048,
+  "imageWidth": 2448
+}

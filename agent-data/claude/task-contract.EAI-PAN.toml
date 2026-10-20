@@ -1,0 +1,98 @@
+schema_version = 2
+agent_tree = true
+notes = "EAI-PAN: EasyAI canvas Hand/Pan tool (key H) and Keep-previous-zoom view position fix. User request 2026-10-17 (vi): 'Canvas chua co Pan de move anh' and 'khi chon Giu muc thu phong, zoom vao, chuyen hinh tiep theo thi nhay vi tri scroll'. User chose: Hand tool + key H (not Space-drag, not scrollbars). Existing: middle-button drag already pans (AnnotationCanvas.BeginPan)."
+
+[task]
+id = "EAI-PAN"
+title = "EasyAI canvas: Hand (Pan) tool with H key, and keep the view position when Keep previous zoom is on"
+goal = "(1) A Hand tool in the canvas tool strip (existing custom tool buttons, existing icon style) bound to the key H: while it is active, dragging with the left mouse button moves the image; middle-button drag keeps working; leaving the tool restores the previous tool. Wheel zoom and fit keep working. (2) With 'Keep previous zoom' on, after the user zooms in and moves to the next image the view must stay where it was (same zoom, same view position), not jump."
+current_behavior = "Pan exists only on the middle mouse button (AnnotationCanvas.OnMouseDown -> BeginPan), not discoverable. AnnotationCanvas.OnImageReplaced with KeepPreviousZoom keeps the scale but re-centres the new image in the view (offset = (viewSize - imageSize*scale)/2), so a zoomed-in view jumps to the image centre on every image change."
+expected_behavior = "Hand tool button + H (H must not clash with an existing shortcut; ShortcutTable and the shortcut settings list include it with vi/en labels). Pan with the Hand tool is left-drag, shows a hand/grab cursor, does not create or edit annotations and does not start AI box drag or suggestion clicks. Keep previous zoom: the image-space point at the view centre is kept as a fraction of the image size (for equal-size images the offsets stay identical), so the next image appears at the same view position; if the new image has a different size the same fractional centre is used and the result is clamped so the image is not lost outside the view; when Keep previous zoom is off, behaviour is unchanged (fit). The first image (no previous view) still fits."
+in_scope = [
+  "EasyLabel/src/EasyAI.Wpf/Canvas/AnnotationCanvas.cs, ToolStripView.xaml(.cs), CanvasView.xaml(.cs)",
+  "EasyLabel/src/EasyAI.Wpf/Infrastructure/ShortcutTable.cs and the files that declare ShortcutId, tool enums and the canvas tool state (ViewModels/CanvasViewModel.cs and the tool/edit-session types it uses)",
+  "EasyLabel/src/EasyAI.Wpf/Resources/Strings*.resx, Strings.Designer.cs (new keys only, vi and en identical)",
+  "A small pure helper for the keep-view math (for example in the ViewTransform file) so it can be unit tested",
+  "EasyLabel/tests/EasyLabel.SegAI.Tests (new tests, csproj Compile links), tmp/EAI-PAN, artifacts/EAI-PAN",
+]
+out_of_scope = [
+  "EasyVision runtime (BeeCore, BeeInterface, tools) and any hardware path",
+  "Space/Fit shortcut behaviour, annotation editing logic, AI suggestion logic",
+  "Scrollbars, new settings pages, licence, installer",
+  "BeeLicense.dll (never rebuild into Release)",
+]
+dependencies = ["Pre-existing uncommitted edits by other sessions in ShortcutTable.cs, CanvasView.xaml.cs, MainWindow*, Strings*.resx must be preserved"]
+risk = "low"
+
+[dispatch]
+category = "ui-behavior"
+route = "standard"
+normalized_request = "Add a Hand/Pan tool (key H) to the EasyAI canvas and keep the view position when Keep previous zoom is on and the next image is shown."
+selected_model = "sonnet"
+executor = "codex"
+codex_model = "gpt-6.1-sol"
+architect_required = false
+build_recommended = true
+build_reason = "Managed WPF logic and XAML change; a focused build of EasyAI.Wpf and the SegAI tests project plus the new unit tests is the minimum evidence."
+
+[approval]
+requested_by = "user"
+activated_by = "user"
+plan_approved = true
+plan_approved_by = "user"
+approved_plan_revision = "Hand tool + H chosen by the user in the session on 2026-10-17"
+approved_at_utc = "2026-10-17"
+
+[authorization]
+granted_by = "user"
+current_task_reference = "user asked for Pan and keep-zoom position fix; chose Hand tool + H; standing authorization to commit completed task work on main (CLAUDE.md 12.1)"
+granted_at_utc = "2026-10-17"
+edit_code = true
+update_tracking = false
+build = true
+run_tests = true
+benchmark = false
+deploy = false
+hardware_test = false
+commit = true
+push = false
+
+[budget]
+usage_five_hour_percent_at_start = -1
+estimated_tokens = 0
+agent_ceiling_multiplier = 2
+deferred_file = ""
+actual_units_millions = -1
+actual_requests = -1
+actual_agents = -1
+actual_session = ""
+
+[acceptance]
+behavior = [
+  "Pressing H or clicking the Hand button activates Pan; left-drag moves the image by the drag delta; no annotation is created or changed; the previous tool returns when another tool is picked.",
+  "Keep previous zoom on, zoomed in: next image keeps the zoom and the same view position (equal-size images: identical offsets). Different-size image: same fractional centre, clamped. Off: fit as before.",
+  "H appears in the shortcut settings with vi/en text and no duplicate key.",
+]
+regression = [
+  "Middle-button pan, wheel zoom, Fit, Space behaviour and existing shortcut tests still pass; resx vi/en key sets identical.",
+]
+performance = []
+evidence_required = [
+  "Build and test summary under artifacts/EAI-PAN/<run>/ (SegAI.Tests full suite).",
+  "Unit tests for the keep-view math (equal size, different size, clamp, first image).",
+  "UI smoke of Hand tool and keep-zoom image change is owed unless the user authorizes a UI run; report unverified otherwise.",
+]
+
+[benchmark]
+fixtures = []
+warmup_iterations = 0
+measured_iterations = 0
+metrics = []
+thresholds = []
+
+[stop_conditions]
+items = [
+  "The required change exceeds in_scope.",
+  "H is already bound or reserved and no clean alternative exists - ask the user.",
+  "Verification fails and the fix requires unrelated files.",
+]

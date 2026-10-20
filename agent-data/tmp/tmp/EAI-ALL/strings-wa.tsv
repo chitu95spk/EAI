@@ -1,0 +1,26 @@
+TrainBlockNeedTwoImages	Label at least 2 images to train	Hãy gán nhãn ít nhất 2 ảnh để huấn luyện
+TrainAutoAssignVal	Auto-assign Val	Tự chia ảnh Val
+TrainAutoValDoneFormat	{0} image(s) set to Val	Đã đặt {0} ảnh làm Val
+UltraBlockTooFewImages	YOLO needs at least 5 labelled images	YOLO cần ít nhất 5 ảnh đã gán nhãn
+UltraErrorTooFewImages	YOLO needs at least {0} labelled images (found {1})	YOLO cần ít nhất {0} ảnh đã gán nhãn (hiện có {1})
+UltraErrorClassNotInTrain	Class "{0}" has no Train image. Set an image of this class to Train.	Lớp "{0}" chưa có ảnh Train. Hãy đặt một ảnh của lớp này làm Train.
+SetSectionEasyVision	EasyVision	EasyVision
+SetEasyVisionFolder	EasyVision model folder	Thư mục model EasyVision
+SetEasyVisionFolderBrowse	Browse for the EasyVision model folder	Chọn thư mục model EasyVision
+SetEasyVisionFolderBrowseButton	Browse...	Chọn...
+SetEasyVisionFolderPickTitle	Choose the EasyVision model folder	Chọn thư mục model EasyVision
+ExpSendHeader	Send to EasyVision	Gửi sang EasyVision
+ExpSendButton	Send to EasyVision	Gửi sang EasyVision
+ExpSendOkFormat	Sent to EasyVision as {0} (version {1}).	Đã gửi sang EasyVision thành {0} (phiên bản {1}).
+ExpSendFolderNotSet	The EasyVision model folder is not set. Choose it in Settings > Files.	Chưa chọn thư mục model EasyVision. Hãy chọn trong Cài đặt > Tệp.
+ExpSendFolderMissingFormat	The EasyVision model folder does not exist. {0}	Thư mục model EasyVision không tồn tại. {0}
+ExpSendFolderNotWritableFormat	The EasyVision model folder cannot be written. {0}	Không ghi được vào thư mục model EasyVision. {0}
+ExpSendModelMissingFormat	The model file is missing. {0}	Không tìm thấy file model. {0}
+ExpSendUnsupportedFormat	EasyVision cannot read this model file format. {0}	EasyVision không đọc được định dạng file model này. {0}
+ExpSendModelInvalidFormat	The model file is damaged or not a SegAI model. {0}	File model bị hỏng hoặc không phải model SegAI. {0}
+ExpSendFailedFormat	Sending the model failed. {0}	Gửi model thất bại. {0}
+SetAgentMaxUsdPerDay	Daily cost cap (USD, 0 = off)	Giới hạn chi phí mỗi ngày (USD, 0 = tắt)
+AgentBatchStopDayCap	Stopped: the daily cost cap is reached.	Đã dừng: đã đạt giới hạn chi phí trong ngày.
+AgentBatchLeftFormat	Not processed ({0}): {1}	Chưa xử lý ({0}): {1}
+AgentDayCapReachedFormat	The daily agent cost cap is reached (${0} of ${1} today). Raise it in Settings, Agent runs, or try again tomorrow.	Đã đạt giới hạn chi phí agent trong ngày (${0} / ${1} hôm nay). Hãy tăng giới hạn trong Cài đặt, mục Agent runs, hoặc thử lại vào ngày mai.
+AgentChatEstimateFormat	about ${0} for {1} images (estimate)	khoảng ${0} cho {1} ảnh (ước tính)

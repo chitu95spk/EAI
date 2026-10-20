@@ -1,0 +1,1758 @@
+{
+  "images": 143,
+  "json_files": 36,
+  "class_counts": {
+    "NG": 54
+  },
+  "shape_types": {
+    "oriented_rectangle": 54
+  },
+  "annotations": [
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NHAN_PHONG_CHONG (17).json",
+      "bytes": 43108428,
+      "sha256": "2b72b8ea6e018ba7c14c732d70187efe639a65059f3f77197265f9326679ea2f",
+      "imagePath": "..\\images\\NHAN_PHONG_CHONG (17).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              4050.2092050209208,
+              3169.1882845188284
+            ],
+            [
+              4456.412102335271,
+              3181.6230670896757
+            ],
+            [
+              4460.251046025105,
+              3056.2175732217574
+            ],
+            [
+              4054.048148710755,
+              3043.78279065091
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NHAN_PHONG_CHONG (18).json",
+      "bytes": 42507965,
+      "sha256": "17db569622baca34ed5c40adac54d30aa4eb053aa14e08b87e2c43ea6b6f521d",
+      "imagePath": "..\\images\\NHAN_PHONG_CHONG (18).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              2401.6736401673643,
+              2503.9163179916322
+            ],
+            [
+              3694.8215903212044,
+              1829.4172210675356
+            ],
+            [
+              3627.6150627615066,
+              1700.569037656904
+            ],
+            [
+              2334.467112607666,
+              2375.0681345810003
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              2075.313807531381,
+              2319.81589958159
+            ],
+            [
+              4665.937273442878,
+              742.3774457753834
+            ],
+            [
+              4790.794979079498,
+              947.4309623430963
+            ],
+            [
+              2200.171513168001,
+              2524.869416149303
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              1460.2510460251046,
+              1110.6108786610878
+            ],
+            [
+              1314.305983725252,
+              1588.5809576931047
+            ],
+            [
+              1393.305439330544,
+              1612.7029288702931
+            ],
+            [
+              1539.250501630397,
+              1134.7328498382763
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NHAN_PHONG_CHONG (19).json",
+      "bytes": 37715443,
+      "sha256": "552bd16f9fe8908c711d06cebbe88cf8acfb312bc424926caee0fea7ffb5346e",
+      "imagePath": "..\\images\\NHAN_PHONG_CHONG (19).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              2585.774058577406,
+              955.7991631799164
+            ],
+            [
+              3270.949546981541,
+              882.54140655809
+            ],
+            [
+              3251.0460251046024,
+              696.3849372384936
+            ],
+            [
+              2565.8705367004677,
+              769.64269386032
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NHAN_PHONG_CHONG (20).json",
+      "bytes": 43209006,
+      "sha256": "dd308594387e9b575ea74b193f1b84524c9f6bf79507cf099af4223ee7fe20f8",
+      "imagePath": "..\\images\\NHAN_PHONG_CHONG (20).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3790.7949790794983,
+              3001.8242677824264
+            ],
+            [
+              4669.275756117405,
+              2924.6893702864186
+            ],
+            [
+              4690.376569037657,
+              3165.0041841004186
+            ],
+            [
+              3811.895791999751,
+              3242.1390815964264
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NHAN_PHONG_CHONG (21).json",
+      "bytes": 42693924,
+      "sha256": "bfbd4a21e863636ed778d6fcb9b019fd933e5bf22a0c3473f86a6945bafa4d55",
+      "imagePath": "..\\images\\NHAN_PHONG_CHONG (21).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3426.7782426778244,
+              2884.6694560669457
+            ],
+            [
+              3863.4539005585866,
+              2546.2458212093525
+            ],
+            [
+              3794.979079497908,
+              2457.8912133891217
+            ],
+            [
+              3358.3034216171454,
+              2796.314848246715
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              2836.8200836820083,
+              2466.2594142259413
+            ],
+            [
+              4610.456036892867,
+              2470.5229621903886
+            ],
+            [
+              4610.878661087866,
+              2294.7112970711296
+            ],
+            [
+              2837.2427078770065,
+              2290.4477491066823
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3251.0460251046024,
+              2704.7531380753135
+            ],
+            [
+              3682.4570694881177,
+              2544.64182263401
+            ],
+            [
+              3715.4811715481173,
+              2633.6234309623433
+            ],
+            [
+              3284.070127164602,
+              2793.7347464036466
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NhanL1 (10).json",
+      "bytes": 35825870,
+      "sha256": "1d78f11aab2dc6a21979be373c7b0bada2c65c3c72b86fe978742f0c024e7655",
+      "imagePath": "..\\images\\NhanL1 (10).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3117.154811715481,
+              2842.828451882845
+            ],
+            [
+              2905.6010015856477,
+              1038.1449287344649
+            ],
+            [
+              2644.3514644351467,
+              1068.7698744769875
+            ],
+            [
+              2855.90527456498,
+              2873.453397625368
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NhanL1 (11).json",
+      "bytes": 42458103,
+      "sha256": "c5251da1b43fea70b16c00bb80a343dc0c64c3c395ad3dcbc8f10273c9180d6c",
+      "imagePath": "..\\images\\NhanL1 (11).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              456.06694560669456,
+              679.6485355648535
+            ],
+            [
+              769.1437031126131,
+              659.7706461993978
+            ],
+            [
+              786.6108786610879,
+              934.878661087866
+            ],
+            [
+              473.5341211551692,
+              954.7565504533218
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NhanL1 (12).json",
+      "bytes": 34258766,
+      "sha256": "b2ff1259b689ea5c6af01e8dc946ffbb4f03f26537479b61730ab168f9f7b984",
+      "imagePath": "..\\images\\NhanL1 (12).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              4129.707112970711,
+              2939.062761506276
+            ],
+            [
+              4663.328523347358,
+              2596.3303109391622
+            ],
+            [
+              4569.037656903766,
+              2449.523012552301
+            ],
+            [
+              4035.416246527118,
+              2792.255463119415
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              1648.5355648535565,
+              2206.8451882845193
+            ],
+            [
+              1676.854836031438,
+              867.748222587577
+            ],
+            [
+              1092.050209205021,
+              855.3807531380753
+            ],
+            [
+              1063.7309380271395,
+              2194.4777188350176
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NhanL1 (13).json",
+      "bytes": 40717216,
+      "sha256": "f304a2ecfcd18fd4c51b0fd8f65941e65c8e78e432cdc922e982424559e4f8f8",
+      "imagePath": "..\\images\\NhanL1 (13).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              4146.443514644352,
+              2847.0125523012557
+            ],
+            [
+              4671.249124532722,
+              2407.4317850443404
+            ],
+            [
+              4552.301255230126,
+              2265.422594142259
+            ],
+            [
+              4027.4956453417567,
+              2705.0033613991745
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              945.6066945606694,
+              1972.5355648535567
+            ],
+            [
+              1949.4606614543923,
+              2043.6748223499633
+            ],
+            [
+              2058.577405857741,
+              503.9163179916318
+            ],
+            [
+              1054.723438964018,
+              432.777060495225
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NhanL1 (2).json",
+      "bytes": 42303585,
+      "sha256": "a9d16ca5404dcd5d237d91f8987360e0ff71a1d7416408bb70f57bbd5fbe6c82",
+      "imagePath": "..\\images\\NhanL1 (2).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3079.4979079497907,
+              2784.251046025105
+            ],
+            [
+              2920.1278815236365,
+              896.9744172943037
+            ],
+            [
+              2669.456066945607,
+              918.1422594142259
+            ],
+            [
+              2828.826093371761,
+              2805.4188881450273
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NhanL1 (3).json",
+      "bytes": 42525966,
+      "sha256": "298d5f8bd3d0b88e0bd3dee4ffcfafdcfcbf8805f4159011215cf7559c779ea0",
+      "imagePath": "..\\images\\NhanL1 (3).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3075.313807531381,
+              2771.698744769875
+            ],
+            [
+              2904.6230880032927,
+              894.100829960903
+            ],
+            [
+              2686.192468619247,
+              913.9581589958159
+            ],
+            [
+              2856.883188147335,
+              2791.556073804788
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NhanL1 (4).json",
+      "bytes": 34583262,
+      "sha256": "e658a1f5ddb1359ecd79b8a9124262bd3199b450b7fd41be2062f3c4f1c5c88b",
+      "imagePath": "..\\images\\NhanL1 (4).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              4150.627615062762,
+              2788.435146443515
+            ],
+            [
+              4609.041606725544,
+              2439.7270673154267
+            ],
+            [
+              4514.644351464435,
+              2315.6317991631804
+            ],
+            [
+              4056.2303598016542,
+              2664.3398782912686
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              1000.0,
+              1964.1673640167367
+            ],
+            [
+              1528.4084173738954,
+              826.0569265960389
+            ],
+            [
+              1979.0794979079499,
+              1035.297071129707
+            ],
+            [
+              1450.6710805340547,
+              2173.407508550405
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NhanL1 (5).json",
+      "bytes": 40868284,
+      "sha256": "47bab8661543c12fa32eedc822a1fe1b1cb7256bb62fc19372ddbdf81f1f0ef8",
+      "imagePath": "..\\images\\NhanL1 (5).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              506.2761506276151,
+              817.7238493723848
+            ],
+            [
+              626.3255238012612,
+              778.9982451228215
+            ],
+            [
+              598.3263598326361,
+              692.2008368200836
+            ],
+            [
+              478.2769866589899,
+              730.926441069647
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              635.9832635983264,
+              968.3514644351465
+            ],
+            [
+              778.2426778242677,
+              968.3514644351465
+            ],
+            [
+              778.2426778242678,
+              842.8284518828452
+            ],
+            [
+              635.9832635983264,
+              842.8284518828452
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NhanL1 (6).json",
+      "bytes": 40325798,
+      "sha256": "e84f0efb31cf0e13416ab2cfc8efcacdc27a6bad315f44e13a01ae427cb7e2e5",
+      "imagePath": "..\\images\\NhanL1 (6).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              2895.397489539749,
+              943.2468619246863
+            ],
+            [
+              3068.7433820086003,
+              2779.8878654637565
+            ],
+            [
+              2845.1882845188284,
+              2800.987447698745
+            ],
+            [
+              2671.8423920499777,
+              964.3464441596753
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NhanL1 (7).json",
+      "bytes": 35035380,
+      "sha256": "913c0c79aa50b939cfe9d4836f14e5f68c0dcf856a72de8b6c4a6c7b18fbabe3",
+      "imagePath": "..\\images\\NhanL1 (7).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              493.72384937238496,
+              1001.8242677824269
+            ],
+            [
+              770.6259813576087,
+              1007.5930621987854
+            ],
+            [
+              765.6903765690377,
+              1244.5020920502093
+            ],
+            [
+              488.78824458381376,
+              1238.7332976338507
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NhanL1 (8).json",
+      "bytes": 34360379,
+      "sha256": "2e5e911c8c731fd3cd4c8033da82e338798c6df55bdaebf87f62fbdb84e85af6",
+      "imagePath": "..\\images\\NhanL1 (8).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              4196.652719665272,
+              2357.47280334728
+            ],
+            [
+              4722.778051122183,
+              1965.108149379409
+            ],
+            [
+              4594.142259414226,
+              1792.619246861925
+            ],
+            [
+              4068.016927957316,
+              2184.983900829796
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              916.3179916317991,
+              1533.205020920502
+            ],
+            [
+              1577.1059245213232,
+              260.41215689836577
+            ],
+            [
+              2376.5690376569037,
+              675.4644351464435
+            ],
+            [
+              1715.7811047673795,
+              1948.25729916858
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NhanL1 (9).json",
+      "bytes": 39606043,
+      "sha256": "50c8cbb3d19e8f8b6b4202aa8fb5bd1e6b61a05b9ddc5675304e252042842f0a",
+      "imagePath": "..\\images\\NhanL1 (9).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3121.3389121338914,
+              2800.987447698745
+            ],
+            [
+              2907.10040751275,
+              855.3520485883896
+            ],
+            [
+              2564.853556485356,
+              893.0376569037658
+            ],
+            [
+              2779.092061106497,
+              2838.6730560141214
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\json\\NhanL2 (1).json",
+      "bytes": 35297252,
+      "sha256": "48a1b696d0c1f8c84fe54b8af42d62188e960c359ef4dda7b43f5ffa531414ef",
+      "imagePath": "..\\images\\NhanL2 (1).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3615.0627615062763,
+              2269.60669456067
+            ],
+            [
+              3148.160947830292,
+              769.8614748741802
+            ],
+            [
+              2698.7447698744772,
+              909.7740585774059
+            ],
+            [
+              3165.646583550461,
+              2409.5192782638956
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NHAN_PHONG_CHONG (17).json",
+      "bytes": 43108442,
+      "sha256": "e52bef7374d5f6111bc5c9d161124f0166a06313f3532901968e8bc8bacae282",
+      "imagePath": "NHAN_PHONG_CHONG (17).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              4050.2092050209208,
+              3169.1882845188284
+            ],
+            [
+              4456.412102335271,
+              3181.6230670896757
+            ],
+            [
+              4460.251046025105,
+              3056.2175732217574
+            ],
+            [
+              4054.048148710755,
+              3043.78279065091
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NHAN_PHONG_CHONG (18).json",
+      "bytes": 42508031,
+      "sha256": "11f1d186db23ba006b9a4cc2f53e62a07dc04a7eca9e4c08e9f46aa0533865f3",
+      "imagePath": "NHAN_PHONG_CHONG (18).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              2401.6736401673643,
+              2503.9163179916322
+            ],
+            [
+              3694.8215903212044,
+              1829.4172210675356
+            ],
+            [
+              3627.6150627615066,
+              1700.569037656904
+            ],
+            [
+              2334.467112607666,
+              2375.0681345810003
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              2075.313807531381,
+              2319.81589958159
+            ],
+            [
+              4665.937273442878,
+              742.3774457753834
+            ],
+            [
+              4790.794979079498,
+              947.4309623430963
+            ],
+            [
+              2200.171513168001,
+              2524.869416149303
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              1460.2510460251046,
+              1110.6108786610878
+            ],
+            [
+              1314.305983725252,
+              1588.5809576931047
+            ],
+            [
+              1393.305439330544,
+              1612.7029288702931
+            ],
+            [
+              1539.250501630397,
+              1134.7328498382763
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NHAN_PHONG_CHONG (19).json",
+      "bytes": 37715457,
+      "sha256": "4e999a325562b4cb87ceb7c8300b9aed00f19625fc14861732217937a669e801",
+      "imagePath": "NHAN_PHONG_CHONG (19).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              2585.774058577406,
+              955.7991631799164
+            ],
+            [
+              3270.949546981541,
+              882.54140655809
+            ],
+            [
+              3251.0460251046024,
+              696.3849372384936
+            ],
+            [
+              2565.8705367004677,
+              769.64269386032
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NHAN_PHONG_CHONG (20).json",
+      "bytes": 43209020,
+      "sha256": "bc1b31b3aef936d602dc8da1aa706af5a1e6e4802356bb0a541282573c84011f",
+      "imagePath": "NHAN_PHONG_CHONG (20).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3790.7949790794983,
+              3001.8242677824264
+            ],
+            [
+              4669.275756117405,
+              2924.6893702864186
+            ],
+            [
+              4690.376569037657,
+              3165.0041841004186
+            ],
+            [
+              3811.895791999751,
+              3242.1390815964264
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NHAN_PHONG_CHONG (21).json",
+      "bytes": 42693990,
+      "sha256": "38881c896dfd25bc7bda8b2d27e70b496f7162b5414f40c9de246cf881613d7f",
+      "imagePath": "NHAN_PHONG_CHONG (21).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3426.7782426778244,
+              2884.6694560669457
+            ],
+            [
+              3863.4539005585866,
+              2546.2458212093525
+            ],
+            [
+              3794.979079497908,
+              2457.8912133891217
+            ],
+            [
+              3358.3034216171454,
+              2796.314848246715
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              2836.8200836820083,
+              2466.2594142259413
+            ],
+            [
+              4610.456036892867,
+              2470.5229621903886
+            ],
+            [
+              4610.878661087866,
+              2294.7112970711296
+            ],
+            [
+              2837.2427078770065,
+              2290.4477491066823
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3251.0460251046024,
+              2704.7531380753135
+            ],
+            [
+              3682.4570694881177,
+              2544.64182263401
+            ],
+            [
+              3715.4811715481173,
+              2633.6234309623433
+            ],
+            [
+              3284.070127164602,
+              2793.7347464036466
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (10).json",
+      "bytes": 35825884,
+      "sha256": "f67cfd900355796da4492401c616457ce46b2cf16ad70a3780135546e3d293c6",
+      "imagePath": "NhanL1 (10).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3117.154811715481,
+              2842.828451882845
+            ],
+            [
+              2905.6010015856477,
+              1038.1449287344649
+            ],
+            [
+              2644.3514644351467,
+              1068.7698744769875
+            ],
+            [
+              2855.90527456498,
+              2873.453397625368
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (11).json",
+      "bytes": 42458117,
+      "sha256": "f738cb1fc3fa093f1cc5e94552b8cd6c61af7feef91d7bc8d04faaf418631102",
+      "imagePath": "NhanL1 (11).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              456.06694560669456,
+              679.6485355648535
+            ],
+            [
+              769.1437031126131,
+              659.7706461993978
+            ],
+            [
+              786.6108786610879,
+              934.878661087866
+            ],
+            [
+              473.5341211551692,
+              954.7565504533218
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (12).json",
+      "bytes": 34258806,
+      "sha256": "293d6dc520f550a8e167b615baafd2e681420091a9b1e176100c0d65a6260442",
+      "imagePath": "NhanL1 (12).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              4129.707112970711,
+              2939.062761506276
+            ],
+            [
+              4663.328523347358,
+              2596.3303109391622
+            ],
+            [
+              4569.037656903766,
+              2449.523012552301
+            ],
+            [
+              4035.416246527118,
+              2792.255463119415
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              1648.5355648535565,
+              2206.8451882845193
+            ],
+            [
+              1676.854836031438,
+              867.748222587577
+            ],
+            [
+              1092.050209205021,
+              855.3807531380753
+            ],
+            [
+              1063.7309380271395,
+              2194.4777188350176
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (13).json",
+      "bytes": 40717256,
+      "sha256": "ce5b1fb9e66f80ccedc9ee85f29ce79c4169f1b66ba08376027a2ec78c004217",
+      "imagePath": "NhanL1 (13).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              4146.443514644352,
+              2847.0125523012557
+            ],
+            [
+              4671.249124532722,
+              2407.4317850443404
+            ],
+            [
+              4552.301255230126,
+              2265.422594142259
+            ],
+            [
+              4027.4956453417567,
+              2705.0033613991745
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              945.6066945606694,
+              1972.5355648535567
+            ],
+            [
+              1949.4606614543923,
+              2043.6748223499633
+            ],
+            [
+              2058.577405857741,
+              503.9163179916318
+            ],
+            [
+              1054.723438964018,
+              432.777060495225
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (2).json",
+      "bytes": 42303599,
+      "sha256": "7c3dcc8051e96dd8d2f1e7cf7c348a67507767e945d7393a633bc88b4f0657b1",
+      "imagePath": "NhanL1 (2).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3079.4979079497907,
+              2784.251046025105
+            ],
+            [
+              2920.1278815236365,
+              896.9744172943037
+            ],
+            [
+              2669.456066945607,
+              918.1422594142259
+            ],
+            [
+              2828.826093371761,
+              2805.4188881450273
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (3).json",
+      "bytes": 42525980,
+      "sha256": "16300cbd99c560a0e532ee42c80c1d8babc2461ee52c9df05483a17d8500beae",
+      "imagePath": "NhanL1 (3).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3075.313807531381,
+              2771.698744769875
+            ],
+            [
+              2904.6230880032927,
+              894.100829960903
+            ],
+            [
+              2686.192468619247,
+              913.9581589958159
+            ],
+            [
+              2856.883188147335,
+              2791.556073804788
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (4).json",
+      "bytes": 34583302,
+      "sha256": "b5d08f3b35d711383d44aad354b0e4854717067a19e06bce9d55f66c4523d351",
+      "imagePath": "NhanL1 (4).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              4150.627615062762,
+              2788.435146443515
+            ],
+            [
+              4609.041606725544,
+              2439.7270673154267
+            ],
+            [
+              4514.644351464435,
+              2315.6317991631804
+            ],
+            [
+              4056.2303598016542,
+              2664.3398782912686
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              1000.0,
+              1964.1673640167367
+            ],
+            [
+              1528.4084173738954,
+              826.0569265960389
+            ],
+            [
+              1979.0794979079499,
+              1035.297071129707
+            ],
+            [
+              1450.6710805340547,
+              2173.407508550405
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (5).json",
+      "bytes": 40868324,
+      "sha256": "686aa8088a698d9a890a18d1cae86eba9c3d5e86bc75943c2ce6af472c94390a",
+      "imagePath": "NhanL1 (5).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              506.2761506276151,
+              817.7238493723848
+            ],
+            [
+              626.3255238012612,
+              778.9982451228215
+            ],
+            [
+              598.3263598326361,
+              692.2008368200836
+            ],
+            [
+              478.2769866589899,
+              730.926441069647
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              635.9832635983264,
+              968.3514644351465
+            ],
+            [
+              778.2426778242677,
+              968.3514644351465
+            ],
+            [
+              778.2426778242678,
+              842.8284518828452
+            ],
+            [
+              635.9832635983264,
+              842.8284518828452
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (6).json",
+      "bytes": 40325812,
+      "sha256": "021489cbe5bb1e33294160a6fdbf7ae4b232b23a0cc77e9cfee6f35562b4520b",
+      "imagePath": "NhanL1 (6).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              2895.397489539749,
+              943.2468619246863
+            ],
+            [
+              3068.7433820086003,
+              2779.8878654637565
+            ],
+            [
+              2845.1882845188284,
+              2800.987447698745
+            ],
+            [
+              2671.8423920499777,
+              964.3464441596753
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (7).json",
+      "bytes": 35035394,
+      "sha256": "f2ed274f4949cd17031593f38a3fbca91523ae8117bc2c0ab493b9a776ac28eb",
+      "imagePath": "NhanL1 (7).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              493.72384937238496,
+              1001.8242677824269
+            ],
+            [
+              770.6259813576087,
+              1007.5930621987854
+            ],
+            [
+              765.6903765690377,
+              1244.5020920502093
+            ],
+            [
+              488.78824458381376,
+              1238.7332976338507
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (8).json",
+      "bytes": 1266,
+      "sha256": "bdc10afd3cf7409bf0d123352725a9ce48eedd9dfb2ab4b6c6510581ab2aa66d",
+      "imagePath": "NhanL1 (8).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              4196.652719665272,
+              2357.47280334728
+            ],
+            [
+              4722.778051122183,
+              1965.108149379409
+            ],
+            [
+              4594.142259414226,
+              1792.619246861925
+            ],
+            [
+              4068.016927957316,
+              2184.983900829796
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        },
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              949.7737426757812,
+              1583.84326171875
+            ],
+            [
+              1516.169677734375,
+              267.649658203125
+            ],
+            [
+              2485.2919921875,
+              684.6907958984375
+            ],
+            [
+              1918.89599609375,
+              2000.8843994140625
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (9).json",
+      "bytes": 39606057,
+      "sha256": "a31f5e2dba6361bfc52907bac57d88edceae845248e4d9bea3758631ea62b073",
+      "imagePath": "NhanL1 (9).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3121.3389121338914,
+              2800.987447698745
+            ],
+            [
+              2907.10040751275,
+              855.3520485883896
+            ],
+            [
+              2564.853556485356,
+              893.0376569037658
+            ],
+            [
+              2779.092061106497,
+              2838.6730560141214
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    },
+    {
+      "file": "E:\\Training\\TrainLOGONEW\\images\\NhanL2 (1).json",
+      "bytes": 35297266,
+      "sha256": "04233b27e497033a9b10204e47a3a07e5bde5a0a25e71d781b044a2e344884dc",
+      "imagePath": "NhanL2 (1).png",
+      "width": 5472,
+      "height": 3648,
+      "shapes": [
+        {
+          "label": "NG",
+          "shape_type": "oriented_rectangle",
+          "points": [
+            [
+              3615.0627615062763,
+              2269.60669456067
+            ],
+            [
+              3148.160947830292,
+              769.8614748741802
+            ],
+            [
+              2698.7447698744772,
+              909.7740585774059
+            ],
+            [
+              3165.646583550461,
+              2409.5192782638956
+            ]
+          ],
+          "direction": null,
+          "flags": {},
+          "group_id": null
+        }
+      ],
+      "flags": {}
+    }
+  ]
+}

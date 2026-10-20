@@ -1,0 +1,116 @@
+{
+  "version": "5.5.0",
+  "flags": {
+    "train": true
+  },
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          3753.85693359375,
+          1689.6614990234375
+        ],
+        [
+          3272.230224609375,
+          1823.692138671875
+        ],
+        [
+          3250.797607421875,
+          1746.6761474609375
+        ],
+        [
+          3732.42431640625,
+          1612.6455078125
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          970.4053344726562,
+          1365.3443603515625
+        ],
+        [
+          1165.9599609375,
+          1293.197998046875
+        ],
+        [
+          1202.79931640625,
+          1393.052001953125
+        ],
+        [
+          1007.2446899414062,
+          1465.1983642578125
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH",
+      "points": [
+        [
+          2436.54443359375,
+          2451.3154296875
+        ],
+        [
+          3133.502197265625,
+          2679.861083984375
+        ],
+        [
+          3056.45166015625,
+          2914.830322265625
+        ],
+        [
+          2359.493896484375,
+          2686.28466796875
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH_BOT",
+      "points": [
+        [
+          4601.353347429404,
+          2196.1935015788945
+        ],
+        [
+          4632.730148664346,
+          1694.902323616418
+        ],
+        [
+          4736.417648664346,
+          1701.393046272668
+        ],
+        [
+          4705.040847429404,
+          2202.6842242351445
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    }
+  ],
+  "imagePath": "Phong_L1 (7).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

@@ -1,0 +1,267 @@
+{
+  "purpose": "diagnostic latency only; no quality or specificity claim; no heldout-group tuning",
+  "images": [
+    {
+      "rel": "MopL2 (1).png",
+      "sha256": "2b575e599f38101af315cfc975518d3bc33c2cf5176c1cda5484b7cfe720e170",
+      "bytes": 26955770,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "MopL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "MopL2 (3).png",
+      "sha256": "9437f380445a6d4a341b4a97f8e400b77f07a148b50c5581acbc3f8eff6c8e7b",
+      "bytes": 29364008,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "MopL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "MopL2 (6).png",
+      "sha256": "c0b0eca3942205eb28ad559f6fe82f2060f55855115af11d39d7cec5d1da35c8",
+      "bytes": 30185788,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "MopL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (1).png",
+      "sha256": "d7f7552deac004b3a7fd77cd59d674876b73a1cb344d6f7a398410fde0788d4a",
+      "bytes": 32428607,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (16).png",
+      "sha256": "ce480d74a29dea78f030636f467dafbbe05bb1a0524337a26d2a4cb75cee7ffa",
+      "bytes": 31630076,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (32).png",
+      "sha256": "f817752b9fc7783a943f182b352a8a152673930eb3441084002cbaf087194da1",
+      "bytes": 32056956,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (64).png",
+      "sha256": "e1e8e3cef60d162c062f3e9af069abfa095dccf2df7e12ba3814c406923899a0",
+      "bytes": 30097780,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "Phong_L1 (1).png",
+      "sha256": "9707db95a5cf8bffbe12b0617cf362f7cb5dcd0cfa520d8e360cbceeef577435",
+      "bytes": 32419669,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "Phong_L1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "Phong_L1 (6).png",
+      "sha256": "cca1c3263a07d5303ccb45f17e98d5194a1584a0bdfcfd29d77119e536d3e6fc",
+      "bytes": 30957078,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "Phong_L1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "Phong_L1 (11).png",
+      "sha256": "b4341c490908688e3f1cc3e37e95691b673ea34c1c81cbfdf924e67b9aeae33c",
+      "bytes": 31898261,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "Phong_L1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAY (1).png",
+      "sha256": "3bb48ab704972397892ee5fa7b3f662ae42c40100564ba7aa39e5e9bab4fd153",
+      "bytes": 30516504,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAY",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAY (5).png",
+      "sha256": "1e92f52d5379642c38bb27e88664ba5ad7dd0d2a2b2ccf0f5fc870f7c8cde8ab",
+      "bytes": 30958095,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAY",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAY (10).png",
+      "sha256": "b57f3f18d8fc4b2b5ec243b6cea1076309be8d58857f801173d8ee9afbfdbe4d",
+      "bytes": 32382506,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAY",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAYL2 (1).png",
+      "sha256": "722b3bccc99607a332d299759013831fe2741a452c58825f6731d5e6dda889bd",
+      "bytes": 28193029,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAYL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAYL2 (5).png",
+      "sha256": "7ea4a3b72fdfb121016a8ff7d1e965bd8bc449a742ecab97b5a5158877f097ae",
+      "bytes": 29909138,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAYL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAYL2 (9).png",
+      "sha256": "b6f0dd5974bb6d710aff16ca3cd3ef1284bf6905c5fed1f38247b0573c931b98",
+      "bytes": 29621685,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAYL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NhanL1 (1).png",
+      "sha256": "2df1ac0cc187928816f5449d9c672420b8abec5e09da3dba0078f22db76f1331",
+      "bytes": 25871764,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NhanL1 (6).png",
+      "sha256": "454c92cb0bf8b79fdafc21f7b9f2ccf2c91756e25d39b6cf7101e8bb336c47b4",
+      "bytes": 30243817,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 1,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (6).json",
+      "annotation_sha256": "021489cbe5bb1e33294160a6fdbf7ae4b232b23a0cc77e9cfee6f35562b4520b",
+      "split": "train_examples"
+    },
+    {
+      "rel": "NhanL2 (4).png",
+      "sha256": "5dced886dc95959482241fbee80d72b6901f9098c5a18012c02549a6c6c861f1",
+      "bytes": 30010778,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NhanL2 (8).png",
+      "sha256": "4a758e222daba6c8768beca9ad11eb31291df11daf24832dde6716c6b865ab29",
+      "bytes": 28595378,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    }
+  ]
+}

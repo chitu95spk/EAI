@@ -1,0 +1,9 @@
+EasyLabel/Lib/
+bin/
+obj/
+.vs/
+*.user
+*.pdb
+x64/
+[Aa]rtifacts/
+*.log

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "source": "mobilenetv2-12.onnx",
+  "sourceSha256": "c0c3f76d93fa3fd6580652a45618618a220fced18babf65774ed169de0432ad5",
+  "output": "mobilenetv2-12-cls.onnx",
+  "outputSha256": "cce809206025057aa19d241c08bb89500a2f325f004fa3cb0f1fe799bd944b33",
+  "input": "input",
+  "outputs": [
+    "400",
+    "463"
+  ],
+  "outputChannels": [
+    64,
+    1280
+  ],
+  "feature": "mean-max-stride16-stride32-v1",
+  "longSideMultiple": 32
+}

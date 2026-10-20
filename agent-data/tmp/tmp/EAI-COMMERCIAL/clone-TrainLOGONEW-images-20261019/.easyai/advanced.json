@@ -1,0 +1,24 @@
+{
+  "segClasses": [
+    {
+      "name": "NG",
+      "kind": "defect",
+      "enabled": true
+    },
+    {
+      "name": "OK",
+      "kind": "good",
+      "enabled": true
+    },
+    {
+      "name": "LECH",
+      "kind": "defect",
+      "enabled": true
+    },
+    {
+      "name": "LECH_BOT",
+      "kind": "defect",
+      "enabled": true
+    }
+  ]
+}

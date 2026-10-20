@@ -1,0 +1,214 @@
+<UserControl x:Class="EasyAI.Desktop.Views.ImageListPane"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:res="clr-namespace:EasyAI.Desktop.Resources">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </UserControl.Resources>
+
+    <!-- DataContext: FilesPanelViewModel (search text, filtered items, selection). -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="8,8,8,6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <ui:TextBox Grid.Column="0"
+                        ClearButtonEnabled="True"
+                        PlaceholderText="{x:Static res:Strings.PnlSearchFiles}"
+                        Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                        AutomationProperties.AutomationId="FileSearch"
+                        AutomationProperties.Name="{x:Static res:Strings.PnlSearchFiles}" />
+            <ui:TextBlock Grid.Column="1"
+                          Margin="8,0,0,0"
+                          VerticalAlignment="Center"
+                          Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                          Text="{Binding CountText}"
+                          AutomationProperties.AutomationId="FileCount" />
+        </Grid>
+
+        <!-- Order of the rows: unlabelled first, Train first, Val first (each group by name). -->
+        <WrapPanel Grid.Row="1" Margin="8,0,8,6">
+            <CheckBox Margin="0,0,12,0"
+                      MinWidth="0"
+                      Content="{Binding UnlabelledFirstText}"
+                      IsChecked="{Binding UnlabelledFirst, Mode=TwoWay}"
+                      AutomationProperties.AutomationId="FileUnlabelledFirst"
+                      AutomationProperties.Name="{Binding UnlabelledFirstText}" />
+            <CheckBox Margin="0,0,12,0"
+                      MinWidth="0"
+                      Content="{Binding TrainFirstText}"
+                      IsChecked="{Binding TrainFirst, Mode=TwoWay}"
+                      AutomationProperties.AutomationId="FileTrainFirst"
+                      AutomationProperties.Name="{Binding TrainFirstText}" />
+            <CheckBox MinWidth="0"
+                      Content="{Binding ValFirstText}"
+                      IsChecked="{Binding ValFirst, Mode=TwoWay}"
+                      AutomationProperties.AutomationId="FileValFirst"
+                      AutomationProperties.Name="{Binding ValFirstText}" />
+        </WrapPanel>
+
+        <ui:ListView x:Name="ImageList"
+                     Grid.Row="2"
+                     Margin="4,0,4,4"
+                     ItemsSource="{Binding Items}"
+                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                     SelectionMode="Extended"
+                     SelectionChanged="OnSelectionChanged"
+                     PreviewMouseRightButtonDown="OnRowRightClick"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     VirtualizingPanel.IsVirtualizing="True"
+                     VirtualizingPanel.VirtualizationMode="Recycling"
+                     AutomationProperties.AutomationId="ImageList"
+                     AutomationProperties.Name="{x:Static res:Strings.Images}">
+            <ui:ListView.ContextMenu>
+                <ContextMenu>
+                    <ui:MenuItem Icon="{ui:SymbolIcon Delete24}"
+                                 Header="{x:Static res:Strings.DlgDelete}"
+                                 Click="OnMenuDelete"
+                                 AutomationProperties.AutomationId="FileMenuDelete" />
+                    <Separator />
+                    <ui:MenuItem Header="{x:Static res:Strings.ModeTrain}"
+                                 Click="OnMenuTrain"
+                                 AutomationProperties.AutomationId="FileMenuTrain" />
+                    <ui:MenuItem Header="{x:Static res:Strings.ModeVal}"
+                                 Click="OnMenuVal"
+                                 AutomationProperties.AutomationId="FileMenuVal" />
+                    <Separator />
+                    <ui:MenuItem Icon="{ui:SymbolIcon TagDismiss24}"
+                                 Header="{Binding PlacementTarget.DataContext.RemoveLabelsText, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                                 Click="OnMenuRemoveLabels"
+                                 AutomationProperties.AutomationId="FileMenuRemoveLabels" />
+                </ContextMenu>
+            </ui:ListView.ContextMenu>
+            <ui:ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Labelme's file checkbox: the image has a saved annotation file (read only). -->
+                        <CheckBox Grid.Column="0"
+                                  Margin="0,0,6,0"
+                                  MinWidth="0"
+                                  VerticalAlignment="Center"
+                                  IsChecked="{Binding HasAnnotations, Mode=OneWay}"
+                                  IsHitTestVisible="False"
+                                  Focusable="False"
+                                  IsTabStop="False" />
+
+                        <ui:TextBlock Grid.Column="1"
+                                      VerticalAlignment="Center"
+                                      Text="{Binding ListName}"
+                                      TextTrimming="CharacterEllipsis"
+                                      ToolTip="{Binding FullPath}" />
+
+                        <!-- OK/NG class of the image (G/B keys); empty when unmarked. -->
+                        <ui:TextBlock Grid.Column="2"
+                                      Margin="6,0,0,0"
+                                      VerticalAlignment="Center"
+                                      FontWeight="SemiBold"
+                                      Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                      Text="{Binding ClassBadge}"
+                                      Visibility="{Binding HasClass, Converter={StaticResource BoolToVisibility}}"
+                                      AutomationProperties.AutomationId="FileClassBadge" />
+
+                        <StackPanel Grid.Column="3"
+                                    Margin="6,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal"
+                                    Visibility="{Binding HasInfo, Converter={StaticResource BoolToVisibility}}">
+                            <TextBlock Margin="0,0,6,0"
+                                       Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                       Text="{Binding RegionCount}"
+                                       ToolTip="{x:Static res:Strings.Regions}"
+                                       Visibility="{Binding HasRegions, Converter={StaticResource BoolToVisibility}}" />
+                            <TextBlock Margin="0,0,6,0"
+                                       Foreground="{DynamicResource SystemFillColorCriticalBrush}"
+                                       Text="{x:Static res:Strings.Stale}"
+                                       ToolTip="{x:Static res:Strings.SummaryStaleTip}"
+                                       Visibility="{Binding IsStale, Converter={StaticResource BoolToVisibility}}" />
+                            <!-- An image without regions is ignored by Segment AI: the text stays, both buttons are disabled. -->
+                            <TextBlock Margin="0,0,6,0"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                                       Text="{Binding ModeText}"
+                                       Visibility="{Binding IsIgnored, Converter={StaticResource BoolToVisibility}}" />
+                            <!-- Segmented Train | Val of THAT file (the current set is highlighted). -->
+                            <ui:Button Width="42"
+                                       MinWidth="0"
+                                       Height="22"
+                                       MinHeight="0"
+                                       Padding="0"
+                                       FontSize="11"
+                                       CornerRadius="4,0,0,4"
+                                       Content="{x:Static res:Strings.ModeTrain}"
+                                       Command="{Binding DataContext.SetTrainCommand, RelativeSource={RelativeSource AncestorType=ui:ListView}}"
+                                       CommandParameter="{Binding}"
+                                       ToolTip="{x:Static res:Strings.SplitTip}"
+                                       ToolTipService.ShowOnDisabled="True"
+                                       AutomationProperties.AutomationId="FileTrainButton"
+                                       AutomationProperties.Name="{x:Static res:Strings.ModeTrain}">
+                                <ui:Button.Style>
+                                    <Style TargetType="ui:Button" BasedOn="{StaticResource {x:Type ui:Button}}">
+                                        <Setter Property="Appearance" Value="Secondary" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsTrainMode}" Value="True">
+                                                <Setter Property="Appearance" Value="Primary" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ui:Button.Style>
+                            </ui:Button>
+                            <ui:Button Width="42"
+                                       MinWidth="0"
+                                       Height="22"
+                                       MinHeight="0"
+                                       Margin="1,0,0,0"
+                                       Padding="0"
+                                       FontSize="11"
+                                       CornerRadius="0,4,4,0"
+                                       Content="{x:Static res:Strings.ModeVal}"
+                                       Command="{Binding DataContext.SetValCommand, RelativeSource={RelativeSource AncestorType=ui:ListView}}"
+                                       CommandParameter="{Binding}"
+                                       ToolTip="{x:Static res:Strings.SplitTip}"
+                                       ToolTipService.ShowOnDisabled="True"
+                                       AutomationProperties.AutomationId="FileValButton"
+                                       AutomationProperties.Name="{x:Static res:Strings.ModeVal}">
+                                <ui:Button.Style>
+                                    <Style TargetType="ui:Button" BasedOn="{StaticResource {x:Type ui:Button}}">
+                                        <Setter Property="Appearance" Value="Secondary" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsValMode}" Value="True">
+                                                <Setter Property="Appearance" Value="Primary" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ui:Button.Style>
+                            </ui:Button>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ui:ListView.ItemTemplate>
+        </ui:ListView>
+
+        <!-- OK/NG marks of the project: the counts of the Label step (the same numbers the Train step uses). -->
+        <ui:TextBlock Grid.Row="3"
+                      Margin="8,4,8,8"
+                      TextWrapping="Wrap"
+                      Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                      Text="{Binding ClassCountsText}"
+                      AutomationProperties.AutomationId="FileClassCounts" />
+    </Grid>
+</UserControl>

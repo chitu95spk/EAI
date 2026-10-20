@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion />
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Using Include="Xunit" />
+    <ProjectReference Include="..\..\src\EasyLabel.Commands\EasyLabel.Commands.csproj" />
+    <!-- Exercise the production wrappers on net9.0 without a WPF application or window. -->
+    <Compile Include="..\..\src\EasyAI.Wpf\Commands\ViewModelCommandEndpoint.cs" Link="WpfCommands\ViewModelCommandEndpoint.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Commands\ViewModelCommandHandlers.cs" Link="WpfCommands\ViewModelCommandHandlers.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Commands\RunModeHandlers.cs" Link="WpfCommands\RunModeHandlers.cs" />
+    <None Update="Catalog\commands.catalog.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

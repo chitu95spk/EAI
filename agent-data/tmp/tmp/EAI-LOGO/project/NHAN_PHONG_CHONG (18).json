@@ -1,0 +1,91 @@
+{
+  "version": "7.8.1",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          2401.6736401673643,
+          2503.9163179916322
+        ],
+        [
+          3694.8215903212044,
+          1829.4172210675356
+        ],
+        [
+          3627.6150627615066,
+          1700.569037656904
+        ],
+        [
+          2334.467112607666,
+          2375.0681345810003
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          2075.313807531381,
+          2319.81589958159
+        ],
+        [
+          4665.937273442878,
+          742.3774457753834
+        ],
+        [
+          4790.794979079498,
+          947.4309623430963
+        ],
+        [
+          2200.171513168001,
+          2524.869416149303
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          1460.2510460251046,
+          1110.6108786610878
+        ],
+        [
+          1314.305983725252,
+          1588.5809576931047
+        ],
+        [
+          1393.305439330544,
+          1612.7029288702931
+        ],
+        [
+          1539.250501630397,
+          1134.7328498382763
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "",
+      "direction": null,
+      "mask": null
+    }
+  ],
+  "imagePath": "NHAN_PHONG_CHONG (18).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

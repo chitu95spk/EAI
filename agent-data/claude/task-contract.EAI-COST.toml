@@ -1,0 +1,112 @@
+schema_version = 2
+agent_tree = true
+notes = "EAI-COST: EasyAI agent spend control, image-upload consent and offline-only switch. Source findings: tmp/EAI-COMMERCIAL/backend-review.md BE-01..BE-04, customer-operator.md CU-01/CU-02, customer-buyer.md CB-07/CB-08. Plan not yet approved; no authorization granted."
+
+[task]
+id = "EAI-COST"
+title = "EasyAI agent cost enforcement, upload consent and offline-only mode"
+goal = "Make the agent labelling path commercially safe: (1) the USD caps (default 1 USD per batch, 5 USD per day) are enforced DURING a run, not only after it; (2) every agent call (label runs, suggest-prompt, prompt sub-agent, Codex, cancelled and timed-out runs) is recorded with a cost in one tamper-resistant ledger that the caps read; (3) before any image leaves the PC the user gives explicit per-project consent; (4) an Offline-only switch disables every network/LLM feature and the app still works for local labelling, training and testing."
+current_behavior = "Per review (static reading, not yet verified by run): claude -p is started without --max-budget-usd and caps are checked only after a run ends, so one run can overshoot and N parallel workers overshoot by N runs (BE-01). Cancelled and timed-out runs log cost 0 (BE-02). Suggest-prompt and the prompt sub-agent are not logged, so the daily cap never sees them; the daily cap reads a plain log.csv that can be deleted; Codex runs carry no cost (BE-03, BE-04). No consent step exists before crops/images are sent to Claude/Codex and there is no offline-only switch (CU-01, CU-02, CB-07)."
+expected_behavior = "1) Before starting a run the app computes a per-run budget = min(remaining batch cap, remaining day cap) and passes it to the CLI where supported (claude --max-budget-usd) and enforces it with a local watchdog that kills the run when the running cost estimate reaches it. 2) Parallel workers share one budget reservation, so total spend cannot exceed the batch cap. 3) Cancel, timeout, crash and failed runs record the cost actually incurred or a documented conservative estimate, never 0. 4) Suggest-prompt, prompt sub-agent and Codex runs are written to the same ledger with cost or an estimate flagged as estimated. 5) The ledger is append-only with a per-record integrity check; deleting or editing it is detected and the app falls back to the conservative assumption that the day cap is exhausted until the user acknowledges. 6) First agent use in a project shows a plain-language consent dialog (what is sent, to whom, approximate cost) in Vietnamese and English; consent is stored per project and revocable. 7) Settings has an Offline-only switch; when on, agent, MCP-remote, model download and update-check commands are disabled with a plain explanation, and no network call is made. 8) All user-visible text for these features exists in vi and en resources, with no raw exception text."
+in_scope = [
+  "EasyLabel/src/EasyLabel.Ai/**, EasyLabel/src/EasyLabel.Ai.Mcp/** (run launching, budget flags, ledger, cost parsing)",
+  "EasyLabel/src/EasyAI.Wpf/Services/Agent/**, ViewModels/AgentsSettingsViewModel.cs, ViewModels/SettingsViewModel.cs, LabelStepViewModel.AgentChat.cs (budget wiring, consent, offline gating)",
+  "EasyLabel/src/EasyAI.Wpf/Resources/Strings*.resx and the consent/settings XAML needed for the new dialog and switch",
+  "EasyLabel/src/EasyLabel.Core/** only for project-file keys needed by consent (unknown keys must survive)",
+  "EasyLabel/src/EasyAI.Wpf/Services/AgentRunner.cs, ViewModels/LabelStepViewModel.cs, Infrastructure/AppSettings.cs, SettingsAccessor.cs, SettingsModel.cs (scope revision approved by user 2026-10-17)",
+  "EasyLabel/tests/**, tmp/EAI-COST, artifacts/EAI-COST",
+]
+out_of_scope = [
+  "EasyVision runtime (BeeCore, BeeInterface, tools) and any hardware path",
+  "Command-code registry restructure (separate contract, phases CC-0..CC-11)",
+  "Online realtime mode (separate contract EAI-ONL)",
+  "Training pipeline changes (checkpoint, seed, priority) - separate contract",
+  "Licence/activation, installer, updater",
+  "BeeLicense.dll (never rebuild into Release)",
+]
+dependencies = ["EAI-LABEL agent chat (already committed)", "tmp/EAI-COMMERCIAL/backend-review.md BE-01..BE-04, BE-15 (verify _killed flag first)"]
+risk = "medium"
+
+[dispatch]
+category = "feature"
+route = "deep"
+normalized_request = "Enforce agent spend caps during runs, log every agent call including cancelled/timeout/suggest/Codex in a tamper-evident ledger, add per-project upload consent, and add an Offline-only switch to EasyAI."
+selected_model = "sonnet"
+executor = "claude"
+codex_model = ""
+architect_required = true
+build_recommended = true
+build_reason = "Managed C# change across Ai, Mcp and Wpf projects; a focused isolated build of the touched projects and the Ai/Mcp/Core test projects is the minimum evidence. Needs explicit user authorization for the current task."
+
+[approval]
+requested_by = "claude_dispatcher"
+activated_by = ""
+plan_approved = true
+plan_approved_by = "user"
+approved_plan_revision = ""
+approved_at_utc = "2026-10-17"
+
+[authorization]
+granted_by = "user"
+current_task_reference = "user said approve after eresume EAI-COMMERCIAL"
+granted_at_utc = "2026-10-17"
+edit_code = true
+update_tracking = true
+build = true
+run_tests = true
+benchmark = false
+deploy = false
+hardware_test = false
+commit = true
+push = false
+
+[budget]
+usage_five_hour_percent_at_start = -1
+estimated_tokens = 0
+agent_ceiling_multiplier = 2
+deferred_file = ""
+actual_units_millions = -1
+actual_requests = -1
+actual_agents = -1
+actual_session = ""
+
+[acceptance]
+behavior = [
+  "A run whose estimated cost reaches the remaining batch cap is stopped by the watchdog; total recorded spend for the batch never exceeds the cap by more than one documented granularity unit.",
+  "With N parallel workers the combined spend stays within the batch cap (shared reservation).",
+  "Cancelled, timed-out and crashed runs appear in the ledger with a non-zero cost or an explicit estimated flag.",
+  "Suggest-prompt, prompt sub-agent and Codex runs appear in the ledger and count toward the day cap.",
+  "Deleting or editing the ledger file is detected; the day cap is treated as exhausted until acknowledged.",
+  "First agent use in a project shows the consent dialog (vi and en); declining sends nothing; consent is stored per project and can be revoked.",
+  "With Offline-only on, no outbound network call is made by any EasyAI feature (verified by a test seam that fails on any HttpClient/process-launch of an agent CLI) and local label/train/test still work.",
+  "No raw exception text or internal terms (ONNX, .venv, CUDA, exit code) reach the user in the new dialogs or notices.",
+]
+regression = [
+  "Existing EasyLabel.Ai, Ai.Mcp, Core and SegAI test projects pass.",
+  "Old project files without consent keys open; unknown keys survive a save.",
+  "vi/en resource key sets stay identical.",
+]
+performance = [
+  "Watchdog and ledger writes add no measurable delay to the UI thread (no synchronous disk I/O on the UI thread).",
+]
+evidence_required = [
+  "Build log summary (error count, warning count versus baseline) and test logs saved under artifacts/EAI-COST/<run>/.",
+  "A run log from a fake/stub agent process showing budget kill, cancel cost, parallel reservation and ledger tamper detection.",
+  "UI smoke of the consent dialog and Offline switch at 100% and 150% DPI in vi and en - owed unless the user authorizes a UI run; report as unverified otherwise.",
+]
+
+[benchmark]
+fixtures = []
+warmup_iterations = 0
+measured_iterations = 0
+metrics = []
+thresholds = []
+
+[stop_conditions]
+items = [
+  "The required change exceeds in_scope.",
+  "The Claude/Codex CLI offers no way to bound spend and the local watchdog cannot be made reliable - stop and ask for a scope revision.",
+  "A paid real-agent run is needed for evidence - ask the user first (cost).",
+  "A repository stop-and-ask condition is reached (new NuGet/native dependency).",
+  "Verification fails and the fix requires unrelated files.",
+]

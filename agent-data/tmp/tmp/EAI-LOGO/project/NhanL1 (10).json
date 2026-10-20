@@ -1,0 +1,37 @@
+{
+  "version": "7.8.1",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          3117.154811715481,
+          2842.828451882845
+        ],
+        [
+          2905.6010015856477,
+          1038.1449287344649
+        ],
+        [
+          2644.3514644351467,
+          1068.7698744769875
+        ],
+        [
+          2855.90527456498,
+          2873.453397625368
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "",
+      "direction": null,
+      "mask": null
+    }
+  ],
+  "imagePath": "NhanL1 (10).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

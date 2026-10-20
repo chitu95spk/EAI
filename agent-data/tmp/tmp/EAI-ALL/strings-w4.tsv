@@ -1,0 +1,17 @@
+AgentLiveLookImage	Looking at the image	Đang xem ảnh
+AgentLiveListShapes	Checking the existing shapes	Đang kiểm tra các hình hiện có
+AgentLiveCropRegion	Cropping region {0},{1},{2},{3}	Đang cắt vùng {0},{1},{2},{3}
+AgentLiveGridCrop	Inspecting a region with a grid	Đang xem kỹ một vùng bằng lưới
+AgentLiveOverlay	Checking the drawn result	Đang kiểm tra kết quả đã vẽ
+AgentLiveMeasure	Measuring	Đang đo
+AgentLiveSam2	Outlining the object	Đang khoanh vùng đối tượng
+AgentLiveProposing	Proposing shapes	Đang đề xuất các hình
+AgentLiveMemoryAdd	Saving a note to the project memory	Đang lưu ghi chú vào bộ nhớ dự án
+AgentLiveMemoryRead	Reading the project memory	Đang đọc bộ nhớ dự án
+AgentLiveUsingTool	Using {0}	Đang dùng {0}
+AgentLiveError	Error: {0}	Lỗi: {0}
+AgentLiveImageHeader	Image {0}/{1}: {2}	Ảnh {0}/{1}: {2}
+AgentLiveWorking	Working...	Đang làm việc...
+AgentLiveStatusStep	step {0}	bước {0}
+AgentLiveStatusImage	image {0}/{1}	ảnh {0}/{1}
+AgentLiveStatusCostCap	{0} of {1}	{0} / {1}

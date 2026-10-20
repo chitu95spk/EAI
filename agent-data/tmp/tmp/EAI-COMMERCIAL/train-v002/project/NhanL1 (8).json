@@ -1,0 +1,118 @@
+{
+  "version": "7.8.1",
+  "flags": {
+    "val": true
+  },
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          4196.652719665272,
+          2357.47280334728
+        ],
+        [
+          4722.778051122183,
+          1965.108149379409
+        ],
+        [
+          4594.142259414226,
+          1792.619246861925
+        ],
+        [
+          4068.016927957316,
+          2184.983900829796
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          1224.38134765625,
+          1583.6266479492188
+        ],
+        [
+          1495.4029541015625,
+          255.03790283203125
+        ],
+        [
+          1724.1375732421875,
+          301.69793701171875
+        ],
+        [
+          1453.115966796875,
+          1630.2866821289062
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "LECH",
+      "points": [
+        [
+          2483.236328125,
+          1724.7928466796875
+        ],
+        [
+          2943.4697265625,
+          1849.0914306640625
+        ],
+        [
+          2880.886474609375,
+          2080.815185546875
+        ],
+        [
+          2420.653076171875,
+          1956.5166015625
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH_BOT",
+      "points": [
+        [
+          4624.69086976858,
+          1687.9411945750535
+        ],
+        [
+          4676.51518491892,
+          1186.235441167134
+        ],
+        [
+          4766.51323179392,
+          1195.544034917134
+        ],
+        [
+          4714.68891664358,
+          1697.2497883250535
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    }
+  ],
+  "imagePath": "NhanL1 (8).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

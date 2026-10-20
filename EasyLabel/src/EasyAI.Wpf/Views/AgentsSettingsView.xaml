@@ -1,0 +1,443 @@
+<UserControl x:Class="EasyAI.Desktop.Views.AgentsSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:vm="clr-namespace:EasyAI.Desktop.ViewModels"
+             xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+             AutomationProperties.AutomationId="AgentsSettings">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+
+        <!-- Agent and price status lines hide while offline: the offline sentence already shows once under the switch. -->
+        <Style x:Key="HideStatusWhenOffline" TargetType="ui:TextBlock" BasedOn="{StaticResource {x:Type ui:TextBlock}}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding DataContext.AgentOfflineOnly, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- One run skill: on / off switch (not for a read-only one), name and source over description, Edit and Delete (your own skills only). -->
+        <DataTemplate DataType="{x:Type vm:RunSkillItemViewModel}">
+            <Grid Margin="0,0,0,6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="48" />
+                    <ColumnDefinition Width="*" MinWidth="120" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ui:ToggleSwitch Grid.Column="0"
+                                 Margin="0,0,12,0"
+                                 VerticalAlignment="Center"
+                                 IsChecked="{Binding IsOn, Mode=TwoWay}"
+                                 Visibility="{Binding CanToggle, Converter={StaticResource BoolToVisibility}}"
+                                 AutomationProperties.AutomationId="{Binding Name, StringFormat=SkillEnable_{0}}"
+                                 AutomationProperties.Name="{Binding Name}" />
+                <StackPanel Grid.Column="1"
+                            Margin="0,0,12,0"
+                            VerticalAlignment="Center">
+                    <ui:TextBlock FontTypography="BodyStrong"
+                                  Text="{Binding Name}"
+                                  TextTrimming="CharacterEllipsis"
+                                  ToolTip="{Binding Info.File}" />
+                    <ui:TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                  Text="{Binding SourceText}"
+                                  TextWrapping="Wrap"
+                                  AutomationProperties.AutomationId="{Binding Name, StringFormat=SkillSource_{0}}" />
+                    <ui:TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                  Text="{Binding Description}"
+                                  TextWrapping="Wrap"
+                                  MaxHeight="40"
+                                  Visibility="{Binding HasDescription, Converter={StaticResource BoolToVisibility}}" />
+                </StackPanel>
+                <ui:Button Grid.Column="2"
+                           Margin="0,0,6,0"
+                           VerticalAlignment="Center"
+                           Content="{x:Static res:Strings.AgentsEdit}"
+                           Icon="{ui:SymbolIcon Edit24}"
+                           Visibility="{Binding IsUser, Converter={StaticResource BoolToVisibility}}"
+                           Command="{Binding DataContext.EditSkillCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=1}}"
+                           CommandParameter="{Binding}"
+                           AutomationProperties.AutomationId="{Binding Name, StringFormat=SkillEdit_{0}}"
+                           AutomationProperties.Name="{x:Static res:Strings.AgentsEdit}" />
+                <ui:Button Grid.Column="3"
+                           VerticalAlignment="Center"
+                           Content="{x:Static res:Strings.AgentsDelete}"
+                           Icon="{ui:SymbolIcon Delete24}"
+                           Visibility="{Binding IsUser, Converter={StaticResource BoolToVisibility}}"
+                           Command="{Binding DataContext.DeleteSkillCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=1}}"
+                           CommandParameter="{Binding}"
+                           AutomationProperties.AutomationId="{Binding Name, StringFormat=SkillDelete_{0}}"
+                           AutomationProperties.Name="{x:Static res:Strings.AgentsDelete}" />
+            </Grid>
+        </DataTemplate>
+
+        <!-- One learned word of the project vocabulary: "word" -> class, and Delete. -->
+        <DataTemplate DataType="{x:Type vm:VocabularyItemViewModel}">
+            <Grid Margin="0,0,0,6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="120" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ui:TextBlock Grid.Column="0"
+                              Margin="0,0,12,0"
+                              VerticalAlignment="Center"
+                              FontTypography="BodyStrong"
+                              Text="{Binding DisplayText}"
+                              TextTrimming="CharacterEllipsis"
+                              AutomationProperties.AutomationId="{Binding Index, StringFormat=VocabularyTerm_{0}}" />
+                <ui:Button Grid.Column="1"
+                           VerticalAlignment="Center"
+                           Content="{Binding DataContext.DeleteText, RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=1}}"
+                           Icon="{ui:SymbolIcon Delete24}"
+                           Command="{Binding DataContext.DeleteTermCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=1}}"
+                           CommandParameter="{Binding}"
+                           AutomationProperties.AutomationId="{Binding Index, StringFormat=VocabularyDelete_{0}}" />
+            </Grid>
+        </DataTemplate>
+
+        <!-- One external MCP server: name and version over the approval state, then Approve (while not approved), Edit and Remove. -->
+        <DataTemplate DataType="{x:Type vm:McpServerItemViewModel}">
+            <Grid Margin="0,0,0,6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="120" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                            Margin="0,0,12,0"
+                            VerticalAlignment="Center">
+                    <ui:TextBlock FontTypography="BodyStrong"
+                                  Text="{Binding Name}"
+                                  TextTrimming="CharacterEllipsis" />
+                    <ui:TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                  Text="{Binding VersionText}"
+                                  TextWrapping="Wrap" />
+                    <ui:TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                  Text="{Binding StateText}"
+                                  TextWrapping="Wrap"
+                                  AutomationProperties.AutomationId="{Binding Name, StringFormat=McpServerState_{0}}" />
+                </StackPanel>
+                <ui:Button Grid.Column="1"
+                           Margin="0,0,6,0"
+                           VerticalAlignment="Center"
+                           Appearance="Primary"
+                           Content="{x:Static res:Strings.McpApprove}"
+                           Visibility="{Binding CanApprove, Converter={StaticResource BoolToVisibility}}"
+                           Command="{Binding DataContext.ApproveServerCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=1}}"
+                           CommandParameter="{Binding}"
+                           AutomationProperties.AutomationId="{Binding Name, StringFormat=McpServerApprove_{0}}"
+                           AutomationProperties.Name="{x:Static res:Strings.McpApprove}" />
+                <ui:Button Grid.Column="2"
+                           Margin="0,0,6,0"
+                           VerticalAlignment="Center"
+                           Content="{x:Static res:Strings.AgentsEdit}"
+                           Icon="{ui:SymbolIcon Edit24}"
+                           Command="{Binding DataContext.EditServerCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=1}}"
+                           CommandParameter="{Binding}"
+                           AutomationProperties.AutomationId="{Binding Name, StringFormat=McpServerEdit_{0}}"
+                           AutomationProperties.Name="{x:Static res:Strings.AgentsEdit}" />
+                <ui:Button Grid.Column="3"
+                           VerticalAlignment="Center"
+                           Content="{x:Static res:Strings.McpRemove}"
+                           Icon="{ui:SymbolIcon Delete24}"
+                           Command="{Binding DataContext.RemoveServerCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=1}}"
+                           CommandParameter="{Binding}"
+                           AutomationProperties.AutomationId="{Binding Name, StringFormat=McpServerRemove_{0}}"
+                           AutomationProperties.Name="{x:Static res:Strings.McpRemove}" />
+            </Grid>
+        </DataTemplate>
+
+        <!-- One agent: title and account status, Sign in / Sign out / Refresh, then its skills and Add. -->
+        <DataTemplate DataType="{x:Type vm:AgentSectionViewModel}">
+            <StackPanel Margin="0,0,0,24"
+                        AutomationProperties.AutomationId="{Binding Id, StringFormat=AgentSection_{0}}">
+                <Grid Margin="0,12,0,6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Column="0"
+                                  VerticalAlignment="Center"
+                                  FontTypography="Subtitle"
+                                  Text="{Binding Title}" />
+                    <RadioButton Grid.Column="1"
+                                 Padding="12,4"
+                                 MinWidth="120"
+                                 HorizontalContentAlignment="Center"
+                                 GroupName="AgentInUse"
+                                 Style="{DynamicResource {x:Type ToggleButton}}"
+                                 IsChecked="{Binding IsInUse, Mode=TwoWay}"
+                                 Content="{Binding UseButtonText}"
+                                 ToolTip="{x:Static res:Strings.AgentsUseTip}"
+                                 AutomationProperties.AutomationId="{Binding Id, StringFormat=AgentUse_{0}}"
+                                 AutomationProperties.Name="{x:Static res:Strings.AgentsUseThis}" />
+                </Grid>
+                <Grid Margin="0,0,0,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" MinWidth="120" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Column="0"
+                                  Margin="0,0,12,0"
+                                  VerticalAlignment="Center"
+                                  Style="{StaticResource HideStatusWhenOffline}"
+                                  Text="{Binding StatusText}"
+                                  TextWrapping="Wrap"
+                                  AutomationProperties.AutomationId="{Binding Id, StringFormat=AgentStatus_{0}}" />
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal">
+                        <ui:Button Margin="0,0,6,0"
+                                   Content="{x:Static res:Strings.AgentsLogin}"
+                                   Icon="{ui:SymbolIcon SignOut24}"
+                                   Appearance="Primary"
+                                   Command="{Binding LoginCommand}"
+                                   Visibility="{Binding CanSignIn, Converter={StaticResource BoolToVisibility}}"
+                                   AutomationProperties.AutomationId="{Binding Id, StringFormat=AgentLogin_{0}}" />
+                        <ui:Button Margin="0,0,6,0"
+                                   Content="{x:Static res:Strings.AgentsCancel}"
+                                   Command="{Binding CancelLoginCommand}"
+                                   Visibility="{Binding IsWaitingLogin, Converter={StaticResource BoolToVisibility}}"
+                                   AutomationProperties.AutomationId="{Binding Id, StringFormat=AgentCancelLogin_{0}}" />
+                        <ui:Button Margin="0,0,6,0"
+                                   Content="{x:Static res:Strings.AgentsLogout}"
+                                   Command="{Binding LogoutCommand}"
+                                   Visibility="{Binding CanSignOut, Converter={StaticResource BoolToVisibility}}"
+                                   AutomationProperties.AutomationId="{Binding Id, StringFormat=AgentLogout_{0}}" />
+                        <ui:Button Content="{x:Static res:Strings.AgentsRefresh}"
+                                   Icon="{ui:SymbolIcon ArrowClockwise24}"
+                                   Command="{Binding RefreshCommand}"
+                                   AutomationProperties.AutomationId="{Binding Id, StringFormat=AgentRefresh_{0}}" />
+                    </StackPanel>
+                </Grid>
+
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <StackPanel>
+        <StackPanel Margin="0,12,0,16">
+            <ui:ToggleSwitch IsChecked="{Binding AgentOfflineOnly, Mode=TwoWay}"
+                             HorizontalAlignment="Left"
+                             AutomationProperties.AutomationId="AgentOfflineOnly"
+                             AutomationProperties.Name="{Binding OfflineCaption}" />
+            <ui:TextBlock Margin="0,6,0,0"
+                          Text="{Binding OfflineCaption}"
+                          TextWrapping="Wrap" />
+            <ui:TextBlock Margin="0,6,0,0"
+                          Text="{Binding OfflineExplanation}"
+                          TextWrapping="Wrap"
+                          Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+        </StackPanel>
+        <ItemsControl ItemsSource="{Binding Sections}"
+                      Focusable="False" />
+
+        <!-- Prompt sub-agent: rewrites the typed request as a clear English command and explains it back before the main agent runs. -->
+        <StackPanel Margin="0,0,0,24"
+                    DataContext="{Binding PromptSubAgent}"
+                    AutomationProperties.AutomationId="AgentPromptSubAgent">
+            <ui:TextBlock Margin="0,12,0,6"
+                          FontTypography="Subtitle"
+                          Text="{Binding TitleText}" />
+            <ui:TextBlock Margin="0,0,0,8"
+                          Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                          Text="{Binding HintText}"
+                          TextWrapping="Wrap" />
+            <ui:ToggleSwitch Margin="0,0,0,8"
+                             IsChecked="{Binding Enabled, Mode=TwoWay}"
+                             Content="{Binding EnableText}"
+                             AutomationProperties.AutomationId="AgentPromptSubAgentEnable"
+                             AutomationProperties.Name="{Binding EnableText}" />
+            <ui:TextBox MinHeight="56"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        VerticalScrollBarVisibility="Auto"
+                        PlaceholderText="{Binding InstructionCaption}"
+                        Text="{Binding Instruction, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                        AutomationProperties.AutomationId="AgentPromptSubAgentInstruction"
+                        AutomationProperties.Name="{Binding InstructionCaption}" />
+        </StackPanel>
+
+        <!-- Model prices read from the vendors' pricing pages (no price API exists); the agent estimates the cost of a batch with them. -->
+        <StackPanel Margin="0,0,0,24"
+                    DataContext="{Binding Prices}"
+                    AutomationProperties.AutomationId="AgentPrices">
+            <ui:TextBlock Margin="0,12,0,6"
+                          FontTypography="Subtitle"
+                          Text="{Binding TitleText}" />
+            <ui:TextBlock Margin="0,0,0,8"
+                          Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                          Text="{Binding HintText}"
+                          TextWrapping="Wrap" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="120" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ui:TextBlock Grid.Column="0"
+                              Margin="0,0,12,0"
+                              VerticalAlignment="Center"
+                              Style="{StaticResource HideStatusWhenOffline}"
+                              Text="{Binding StatusText}"
+                              TextWrapping="Wrap"
+                              AutomationProperties.AutomationId="AgentPricesStatus" />
+                <ui:Button Grid.Column="1"
+                           VerticalAlignment="Center"
+                           MinWidth="120"
+                           Content="{Binding RefreshText}"
+                           Icon="{ui:SymbolIcon ArrowSync24}"
+                           Command="{Binding RefreshCommand}"
+                           AutomationProperties.AutomationId="AgentPricesRefresh"
+                           AutomationProperties.Name="{Binding RefreshText}" />
+            </Grid>
+        </StackPanel>
+
+        <!-- EasyAI run skills: built-in and your own with an Enable switch, then the agent programs' own skill folders read-only. -->
+        <StackPanel Margin="0,0,0,24"
+                    DataContext="{Binding RunSkills}"
+                    AutomationProperties.AutomationId="RunSkills">
+            <Grid Margin="0,12,0,6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ui:TextBlock Grid.Column="0"
+                              VerticalAlignment="Center"
+                              FontTypography="Subtitle"
+                              Text="{x:Static res:Strings.AgentsRunSkills}"
+                              ToolTip="{Binding UserFolder}" />
+                <ui:Button Grid.Column="1"
+                           Content="{x:Static res:Strings.AgentsAdd}"
+                           Icon="{ui:SymbolIcon Add24}"
+                           Command="{Binding AddSkillCommand}"
+                           AutomationProperties.AutomationId="RunSkillAdd" />
+            </Grid>
+            <ui:TextBlock Margin="0,0,0,6"
+                          Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                          Text="{x:Static res:Strings.AgentsNoSkills}"
+                          Visibility="{Binding HasNoSkills, Converter={StaticResource BoolToVisibility}}" />
+            <ItemsControl ItemsSource="{Binding Items}"
+                          Focusable="False"
+                          AutomationProperties.AutomationId="RunSkillList" />
+        </StackPanel>
+
+        <!-- Project vocabulary: the words the user's prompts use for classes, learned from accepted agent shapes; Delete per word and Clear. -->
+        <StackPanel Margin="0,0,0,24"
+                    DataContext="{Binding Vocabulary}"
+                    AutomationProperties.AutomationId="Vocabulary">
+            <Grid Margin="0,12,0,6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ui:TextBlock Grid.Column="0"
+                              VerticalAlignment="Center"
+                              FontTypography="Subtitle"
+                              Text="{Binding TitleText}" />
+                <ui:Button Grid.Column="1"
+                           Content="{Binding ClearText}"
+                           Icon="{ui:SymbolIcon Delete24}"
+                           Command="{Binding ClearCommand}"
+                           AutomationProperties.AutomationId="VocabularyClear" />
+            </Grid>
+            <ui:TextBlock Margin="0,0,0,6"
+                          Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                          Text="{Binding EmptyText}"
+                          TextWrapping="Wrap"
+                          Visibility="{Binding HasNoItems, Converter={StaticResource BoolToVisibility}}" />
+            <ItemsControl ItemsSource="{Binding Items}"
+                          Focusable="False"
+                          AutomationProperties.AutomationId="VocabularyList" />
+        </StackPanel>
+
+        <!-- External MCP servers: the list the user keeps by hand; a server is used by a run only after its Approve dialog. -->
+        <StackPanel Margin="0,0,0,24"
+                    DataContext="{Binding McpServers}"
+                    AutomationProperties.AutomationId="McpServers">
+            <Grid Margin="0,12,0,6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ui:TextBlock Grid.Column="0"
+                              VerticalAlignment="Center"
+                              FontTypography="Subtitle"
+                              Text="{x:Static res:Strings.McpServers}" />
+                <ui:Button Grid.Column="1"
+                           Content="{x:Static res:Strings.McpAdd}"
+                           Icon="{ui:SymbolIcon Add24}"
+                           Command="{Binding AddServerCommand}"
+                           AutomationProperties.AutomationId="McpServerAdd" />
+            </Grid>
+            <ui:TextBlock Margin="0,0,0,6"
+                          Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                          Text="{x:Static res:Strings.McpNoServers}"
+                          Visibility="{Binding HasNoServers, Converter={StaticResource BoolToVisibility}}" />
+            <ItemsControl ItemsSource="{Binding Items}"
+                          Focusable="False"
+                          AutomationProperties.AutomationId="McpServerList" />
+        </StackPanel>
+
+        <!-- Permission to send the open project's images and prompts to the agent provider; it can be withdrawn here (S9). -->
+        <StackPanel Margin="0,0,0,24"
+                    AutomationProperties.AutomationId="AgentConsent">
+            <ui:TextBlock Margin="0,12,0,6"
+                          FontTypography="Subtitle"
+                          Text="{x:Static res:Strings.AgentConsentTitle}" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="120" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ui:TextBlock Grid.Column="0"
+                              Margin="0,0,12,0"
+                              VerticalAlignment="Center"
+                              Text="{Binding Consent.StatusText}"
+                              TextWrapping="Wrap"
+                              AutomationProperties.AutomationId="AgentConsentStatus" />
+                <ui:Button Grid.Column="1"
+                           Content="{x:Static res:Strings.AgentConsentRevoke}"
+                           Icon="{ui:SymbolIcon Dismiss24}"
+                           Command="{Binding Consent.RevokeCommand}"
+                           AutomationProperties.AutomationId="AgentConsentRevoke" />
+            </Grid>
+        </StackPanel>
+
+        <!-- Agent memory of the open project: a summary with Edit and Clear. -->
+        <StackPanel Margin="0,0,0,24"
+                    AutomationProperties.AutomationId="AgentMemory">
+            <ui:TextBlock Margin="0,12,0,6"
+                          FontTypography="Subtitle"
+                          Text="{x:Static res:Strings.AgentsMemory}" />
+            <ui:TextBlock Margin="0,0,0,8"
+                          Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                          Text="{x:Static res:Strings.AgentsMemoryHint}"
+                          TextWrapping="Wrap" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="120" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ui:TextBlock Grid.Column="0"
+                              Margin="0,0,12,0"
+                              VerticalAlignment="Center"
+                              Text="{Binding Memory.SummaryText}"
+                              TextWrapping="Wrap"
+                              AutomationProperties.AutomationId="AgentMemorySummary" />
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal">
+                    <ui:Button Margin="0,0,6,0"
+                               Content="{x:Static res:Strings.AgentsMemoryEdit}"
+                               Icon="{ui:SymbolIcon Edit24}"
+                               Command="{Binding Memory.EditCommand}"
+                               AutomationProperties.AutomationId="AgentMemoryEdit" />
+                    <ui:Button Content="{x:Static res:Strings.AgentsMemoryClear}"
+                               Icon="{ui:SymbolIcon Delete24}"
+                               Command="{Binding Memory.ClearCommand}"
+                               AutomationProperties.AutomationId="AgentMemoryClear" />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,56 @@
+{
+  "shapes": [
+    {
+      "label": "NG",
+      "shape_type": "oriented_rectangle",
+      "points": [
+        [
+          1,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "flags": {},
+      "custom": "preserved"
+    },
+    {
+      "label": "OK",
+      "shape_type": "oriented_rectangle",
+      "points": [
+        [
+          1,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "flags": {},
+      "custom": "preserved"
+    }
+  ],
+  "imagePath": "146.png",
+  "imageWidth": 8,
+  "imageHeight": 8,
+  "flags": {}
+}

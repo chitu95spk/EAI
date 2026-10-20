@@ -1,0 +1,5 @@
+ClassifyBackboneMismatch	The OK/NG base model changed since this model was trained. Install the model pack or retrain.	Mô hình nền OK/NG đã thay đổi sau khi huấn luyện mô hình này. Hãy cài gói mô hình hoặc huấn luyện lại.
+SetInstallModelPackCaption	OK/NG base model pack	Gói mô hình nền OK/NG
+ModelPackConfirmFormat	Install {0} files into the models folder?	Cài {0} tệp vào thư mục mô hình?
+ModelPackInstallConfirm	Install	Cài đặt
+ModelPackFailed	Model pack install failed: {0}	Cài gói mô hình thất bại: {0}

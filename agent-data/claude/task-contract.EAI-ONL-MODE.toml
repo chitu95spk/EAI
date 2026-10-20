@@ -1,0 +1,71 @@
+schema_version = 2
+agent_tree = true
+notes = "Plan: tmp/EAI-ONL-MODE/plan.md phase C. Budget 100 ms per 20 MP frame (user 2026-10-18). Depends on EAI-CC and EAI-ONL-MODEL; re-test only after the model is fixed."
+
+[task]
+id = "EAI-ONL-MODE"
+title = "EasyAI Online run mode: gating, recipe, local runner, LAN endpoint, status UI (CC-12..16)"
+goal = "Add the Online run mode: UI.RUNMODE.SET with per-mode gating, EasyLabel.Online project (recipe freeze/load, local runner, metrics, overload policy, optional LAN endpoint), status view, pilot ONL.* support. Agent is never in the frame path."
+current_behavior = "No Online mode code. Only the OnlineBench harness and the Live camera tab (no inference)."
+expected_behavior = "Online mode runs a frozen recipe plus model on camera or folder frames within 100 ms per 20 MP frame at p95 on the chosen hardware, with per-stage metrics and a deterministic verdict."
+in_scope = [
+  "EasyLabel/src/EasyLabel.Online/**, EasyLabel/tests/EasyLabel.Online.Tests/**",
+  "EasyLabel/src/EasyAI.Wpf/** status view and command handlers for ONL.* and UI.RUNMODE.SET",
+  "EasyLabel/tests/EasyLabel.OnlineBench/** (20 MP frames, final measurement)"
+]
+out_of_scope = [
+  "LLM references in the hot path (guarded by project references)",
+  "Training/model changes (EAI-ONL-MODEL)",
+  "Reject output / PLC / hardware; EasyVision runtime",
+  "Deploying to the 2-core production PC without authorization"
+]
+dependencies = ["EAI-CC phases CC-1..CC-5", "EAI-ONL-MODEL fixed model", "User: 20 MP mono first, latency vs throughput metric confirmation"]
+risk = "high"
+
+[dispatch]
+category = "feature"
+route = "deep"
+normalized_request = "Add the Online run mode: UI.RUNMODE.SET with per-mode gating, EasyLabel.Online project (recipe freeze/load, local runner, metrics, overload policy, optional LAN endpoint), status view, pilot ONL.* support. Agent is never in the frame path."
+selected_model = "sonnet"
+executor = "claude"
+codex_model = ""
+architect_required = true
+build_recommended = true
+build_reason = "Compiled code and tests are the only evidence for this task; needs explicit current-task user authorization."
+
+[approval]
+requested_by = "claude_dispatcher"
+activated_by = "user"
+plan_approved = true
+plan_approved_by = "user"
+approved_plan_revision = "EAI-ONL-MODE-r1-plan-v1"
+approved_at_utc = "2026-10-18"
+
+[authorization]
+granted_by = "user"
+current_task_reference = "user 2026-10-18: approved plan v1 and all three contracts; build, run_tests, commit allowed; benchmark on dev PC; no push/hardware/2-core"
+granted_at_utc = "2026-10-18"
+edit_code = true
+update_tracking = true
+build = true
+run_tests = true
+benchmark = true
+deploy = false
+hardware_test = false
+commit = true
+push = false
+
+[acceptance]
+behavior = [
+  "CC-12: modes field + UI.RUNMODE.SET + gating tests, no Online code.",
+  "CC-13: recipe schema, freeze/load with golden-image determinism tests, hash mismatch refused.",
+  "CC-14: local runner with bounded queue and stage timers; 20 MP mono full-chain p95 under 100 ms on this dev PC.",
+  "CC-15: LAN endpoint with allow-list/auth, overload policy tests, status UI checked at 100/150 percent DPI.",
+  "CC-16: pilot may call only ONL.STOP/STATUS/THRESHOLD.SET while running.",
+  "Recall measured on TrainLOGONEW Val split with the fixed model."
+]
+regression = ["Existing EasyLabel tests and offline modes unchanged."]
+evidence_required = ["Build and test logs under artifacts/EAI-ONL-MODE/<run>/; unrun checks reported unverified."]
+
+[stop_conditions]
+items = ["Required change exceeds in_scope.", "New NuGet/native dependency or ABI change is needed.", "Hardware or the 2-core production PC is needed without authorization."]

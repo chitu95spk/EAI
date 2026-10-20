@@ -1,0 +1,262 @@
+{
+  "examples": [
+    {
+      "reference": "NhanL1 (4)-box1-full-damage-scope.jpg",
+      "original_image_size": [
+        5472,
+        3648
+      ],
+      "crop_bounds_original_pixels": [
+        3816,
+        2075,
+        4849,
+        3028
+      ],
+      "reference_display_size": [
+        1033,
+        953
+      ],
+      "human_box_original_pixels": [
+        [
+          4150.627615062762,
+          2788.435146443515
+        ],
+        [
+          4609.041606725544,
+          2439.7270673154267
+        ],
+        [
+          4514.644351464435,
+          2315.6317991631804
+        ],
+        [
+          4056.2303598016542,
+          2664.3398782912686
+        ]
+      ],
+      "human_edge_lengths_pixels": [
+        575.9693674158428,
+        155.91817526705725,
+        575.969367415842,
+        155.9181752670567
+      ],
+      "human_box_area_pixels": 89804.09277719911,
+      "meaning": "The green OBB is the supplied human definition of the full defect, including the faint or displaced surrounding band. These coordinates describe this reference ONLY, never the image being labelled."
+    },
+    {
+      "reference": "NhanL1 (4)-box2-full-damage-scope.jpg",
+      "original_image_size": [
+        5472,
+        3648
+      ],
+      "crop_bounds_original_pixels": [
+        760,
+        586,
+        2219,
+        2413
+      ],
+      "reference_display_size": [
+        1118,
+        1400
+      ],
+      "human_box_original_pixels": [
+        [
+          1000.0,
+          1964.1673640167367
+        ],
+        [
+          1528.4084173738954,
+          826.0569265960389
+        ],
+        [
+          1979.0794979079499,
+          1035.297071129707
+        ],
+        [
+          1450.6710805340547,
+          2173.407508550405
+        ]
+      ],
+      "human_edge_lengths_pixels": [
+        1254.795132010607,
+        496.8761021765915,
+        1254.7951320106072,
+        496.87610217659176
+      ],
+      "human_box_area_pixels": 623477.7142235921,
+      "meaning": "The green OBB is the supplied human definition of the full defect, including the faint or displaced surrounding band. These coordinates describe this reference ONLY, never the image being labelled."
+    },
+    {
+      "reference": "NhanL1 (6)-box1-full-damage-scope.jpg",
+      "original_image_size": [
+        5472,
+        3648
+      ],
+      "crop_bounds_original_pixels": [
+        2431,
+        703,
+        3308,
+        3040
+      ],
+      "reference_display_size": [
+        525,
+        1400
+      ],
+      "human_box_original_pixels": [
+        [
+          2895.397489539749,
+          943.2468619246863
+        ],
+        [
+          3068.7433820086003,
+          2779.8878654637565
+        ],
+        [
+          2845.1882845188284,
+          2800.987447698745
+        ],
+        [
+          2671.8423920499777,
+          964.3464441596753
+        ]
+      ],
+      "human_edge_lengths_pixels": [
+        1844.8032345799986,
+        224.54860049475366,
+        1844.8032345799984,
+        224.54860049475323
+      ],
+      "human_box_area_pixels": 414247.98451313283,
+      "meaning": "The green OBB is the supplied human definition of the full defect, including the faint or displaced surrounding band. These coordinates describe this reference ONLY, never the image being labelled."
+    },
+    {
+      "reference": "NhanL1 (8)-box1-full-damage-scope.jpg",
+      "original_image_size": [
+        5472,
+        3648
+      ],
+      "crop_bounds_original_pixels": [
+        3828,
+        1552,
+        4962,
+        2597
+      ],
+      "reference_display_size": [
+        1134,
+        1045
+      ],
+      "human_box_original_pixels": [
+        [
+          4196.652719665272,
+          2357.47280334728
+        ],
+        [
+          4722.778051122183,
+          1965.108149379409
+        ],
+        [
+          4594.142259414226,
+          1792.619246861925
+        ],
+        [
+          4068.016927957316,
+          2184.983900829796
+        ]
+      ],
+      "human_edge_lengths_pixels": [
+        656.3214807424567,
+        215.17339147770798,
+        656.3214807424563,
+        215.1733914777079
+      ],
+      "human_box_area_pixels": 141222.91891102726,
+      "meaning": "The green OBB is the supplied human definition of the full defect, including the faint or displaced surrounding band. These coordinates describe this reference ONLY, never the image being labelled."
+    },
+    {
+      "reference": "NhanL1 (8)-box2-full-damage-scope.jpg",
+      "original_image_size": [
+        5472,
+        3648
+      ],
+      "crop_bounds_original_pixels": [
+        709,
+        27,
+        2725,
+        2240
+      ],
+      "reference_display_size": [
+        1275,
+        1400
+      ],
+      "human_box_original_pixels": [
+        [
+          949.7737426757812,
+          1583.84326171875
+        ],
+        [
+          1516.169677734375,
+          267.649658203125
+        ],
+        [
+          2485.2919921875,
+          684.6907958984375
+        ],
+        [
+          1918.89599609375,
+          2000.8843994140625
+        ]
+      ],
+      "human_edge_lengths_pixels": [
+        1432.8886757827158,
+        1055.045672424271,
+        1432.888699908851,
+        1055.0456163598435
+      ],
+      "human_box_area_pixels": 1511762.969010342,
+      "meaning": "The green OBB is the supplied human definition of the full defect, including the faint or displaced surrounding band. These coordinates describe this reference ONLY, never the image being labelled."
+    },
+    {
+      "reference": "NhanL1 (11)-box1-full-damage-scope.jpg",
+      "original_image_size": [
+        5472,
+        3648
+      ],
+      "crop_bounds_original_pixels": [
+        216,
+        419,
+        1026,
+        1194
+      ],
+      "reference_display_size": [
+        810,
+        775
+      ],
+      "human_box_original_pixels": [
+        [
+          456.06694560669456,
+          679.6485355648535
+        ],
+        [
+          769.1437031126131,
+          659.7706461993978
+        ],
+        [
+          786.6108786610879,
+          934.878661087866
+        ],
+        [
+          473.5341211551692,
+          954.7565504533218
+        ]
+      ],
+      "human_edge_lengths_pixels": [
+        313.7071669185214,
+        275.66197067697766,
+        313.7071669185215,
+        275.66197067697766
+      ],
+      "human_box_area_pixels": 86477.1358482512,
+      "meaning": "The green OBB is the supplied human definition of the full defect, including the faint or displaced surrounding band. These coordinates describe this reference ONLY, never the image being labelled."
+    }
+  ]
+}

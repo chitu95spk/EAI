@@ -1,0 +1,12 @@
+{
+ "imagePath": "E:\\Code\\EasyVision_Unisen - NoService\\tmp\\EAI\\EAI-3\\fixture-src\\0.png",
+ "imageWidth": 2520,
+ "imageHeight": 2600,
+ "classNames": [
+  "NG",
+  "OK"
+ ],
+ "existingShapes": [],
+ "prompt": "Find the top-left-most metal clip component in the image (a small bracket on the board) and propose its outline as a polygon labelled OK.",
+ "modelsFolder": "C:\\Users\\chitu\\AppData\\Local\\EasyAI\\models"
+}

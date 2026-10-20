@@ -1,0 +1,3 @@
+SetUltraAllowCpu	Allow YOLO training on CPU (Advanced, slow)	Cho phép huấn luyện YOLO bằng CPU (Nâng cao, chậm)
+UltraCpuNoEta	No NVIDIA GPU: training on CPU; the time is shown after the first epoch	Không có GPU NVIDIA: huấn luyện bằng CPU; thời gian hiện sau epoch đầu tiên
+UltraCpuMinutes	{0} min	{0} phút

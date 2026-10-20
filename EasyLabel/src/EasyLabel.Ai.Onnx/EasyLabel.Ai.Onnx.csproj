@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>EasyLabel.Ai.Onnx</RootNamespace>
+    <AssemblyName>EasyLabel.Ai.Onnx</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="EasyLabel.Ai.Onnx.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Only the DirectML package: it ships its own onnxruntime.dll, so never add Microsoft.ML.OnnxRuntime next to it. -->
+    <PackageReference Include="Microsoft.ML.OnnxRuntime.DirectML" />
+    <PackageReference Include="OpenCvSharp4" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EasyLabel.Core\EasyLabel.Core.csproj" />
+  </ItemGroup>
+
+</Project>

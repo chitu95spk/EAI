@@ -1,0 +1,91 @@
+{
+  "version": "7.8.1",
+  "flags": {
+    "val": true
+  },
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          3554.306640625,
+          2164.9091796875
+        ],
+        [
+          3282.540771484375,
+          2248.7568359375
+        ],
+        [
+          2900.890625,
+          1011.7645263671875
+        ],
+        [
+          3172.65625,
+          927.9168701171875
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "claude-draft4 crease",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "LECH",
+      "points": [
+        [
+          2307.259521484375,
+          2485.410400390625
+        ],
+        [
+          2782.79541015625,
+          2348.307373046875
+        ],
+        [
+          2849.219970703125,
+          2578.697265625
+        ],
+        [
+          2373.68408203125,
+          2715.80029296875
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH_BOT",
+      "points": [
+        [
+          918.7064819335938,
+          2118.2982177734375
+        ],
+        [
+          934.1544799804688,
+          1608.2308349609375
+        ],
+        [
+          961.1773071289062,
+          1609.0501708984375
+        ],
+        [
+          945.7293090820312,
+          2119.1175537109375
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    }
+  ],
+  "imagePath": "NhanL2 (6).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

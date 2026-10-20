@@ -1,0 +1,64 @@
+{
+  "version": "7.8.1",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          4196.652719665272,
+          2357.47280334728
+        ],
+        [
+          4722.778051122183,
+          1965.108149379409
+        ],
+        [
+          4594.142259414226,
+          1792.619246861925
+        ],
+        [
+          4068.016927957316,
+          2184.983900829796
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          949.7737426757812,
+          1583.84326171875
+        ],
+        [
+          1516.169677734375,
+          267.649658203125
+        ],
+        [
+          2485.2919921875,
+          684.6907958984375
+        ],
+        [
+          1918.89599609375,
+          2000.8843994140625
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "",
+      "direction": null,
+      "mask": null
+    }
+  ],
+  "imagePath": "NhanL1 (8).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

@@ -1,0 +1,47 @@
+- [Runtime target: 2-core i7-7600U + Word mode](runtime-target-2core-word.md) — production hardware/mode driving perf tuning
+- [Don't rebuild BeeLicense.dll into Release](no-rebuild-beelicense-release.md) — wipes the activation DLL; ask first
+- [EasyScreen OCR uses RapidOCR ONNX models (not in repo)](easyscreen-ocr-rapidocr-models.md) — download via tools/DownloadRapidOcrModels.ps1
+- [E-804 = DS5 EtherCAT WorkCounterLoss from camera CPU starvation](e804-workcounterloss-camera-starvation.md) — fix via core isolation, not disabling the abort; multi-camera PC is 4P+6E hybrid
+- [EtherCatDevice.syncRoot is one global lock](ecat-syncroot-global-lock.md) — realtime DS5/ladder path blocks behind Connect/SDO/commissioning calls
+- [EasyLabel — planned standalone annotation/train tool](easylabel-annotation-tool.md) — LabelMe-style C# app feeding EasyVision YOLO; locked decisions + roadmap
+- [Vision pipeline "cuốn chiếu" (grab-decoupled + FIFO)](vision-pipeline-cuonchieu.md) — Phase 1 done (PipelineCaptureQueue + Config flags); Phase 2 wiring TODO, needs hardware
+- [Persistence tests hijack bin/Release and orphan LocalDB](persistence-tests-hijack-bin-release.md) — makes EasyVision hang at "Preparing Report Database"
+- [EasyVision has two launch folders](easyvision-two-launch-folders.md) — build BeeMain.csproj x64 or bin/x64/Release goes stale
+- [ECAT dropout = TX stall in ecx_send_processdata, not a cable](ecat-send-stall-not-cable.md) - offPinned=0 cannot rule out starvation; the cyclic thread busy-spins at cycle <=1ms
+- [ToolWidth NG on text-heavy Area Check = RANSAC iteration dilution](toolwidth-ransac-iteration-dilution.md) — fixed 120-iter budget, not Edge Selection Priority order; verified offline against E:\DEBUG_LOGO
+- [Delegate EasyVision work to easyvision-* agents](feedback_delegate_to_agents.md) — root session dispatches; verifier needs /p:EasyVisionIsolatedVerification=true, legacy csc = C# 5
+- [O096 Auto CPU/ECAT button (first mis-numbered O094) — r1-r3 committed](o096-cpu-auto-button-plan.md) — D1 = ECAT on E-core on every hybrid CPU (only 2P+8E measured); hardware H1-H8 + UI smoke owed; check ID/contract path is free before writing
+- [Segment AI V2 trainer facts (native head trainer, not YOLO)](segai-v2-trainer-facts.md) — why 3 h, what V149/V150 changed, what is still unmeasured
+- [Segment AI Train/Val + label-tab decisions and open items (V148-V154)](segai-trainval-labeling-decisions.md) — unlabelled=ignored, Space toggle, global hotkeys, commits, owed UI smoke
+- [Line-level git staging broke commits; verify HEAD in a clean worktree](feedback-git-line-level-staging-verify-head.md) — build HEAD blobs explicitly, verifiers need a contract authorization block
+- [Segment AI V2: boxes 1.6x too big from class-prior shift](segai-v2-prior-shift-box-overextension.md) — mAP50 .89 vs mAP50-95 .23; Gather() 2.2:1 vs natural 33:1; Foreground≈0.95 fixes it offline; fix options listed
+- [SEG-LIFECYCLE r6-plan-v4 results](seg-lifecycle-r6-results.md) — candidate fails Val69 gates but A/B confounded by effective_foreground 0.9375 vs 0.5; PS5 runner pitfalls
+- [Streak AI = PatchCore-lite prototype](streak-ai-patchcore-lite-prototype.md) — classic vision can't split streaks from blur; unsupervised MobileNetV2 kNN prototype AUROC .93-.98 on sharp frames, blur still open
+- [Model tiers: simple work to Haiku](feedback_model_tiers_simple_to_haiku.md) — Sonnet plans/dispatches/reviews; Haiku does simple code; complex native/safety code stays Sonnet
+- [Log V2 / V178 status](logv2-v178-status.md) — L3/L4+toggle done, off by default; V1 duplicate finding; line jitter evidence owed
+- [OCR tuning model (V186 candidate)](ocr-tuning-model-decisions.md) — learned char splitter on CRAFT heatmap; shared model; plan not yet approved
+- [Headroom pilot removed: no gain over grep](headroom-measured-no-gain.md) — measured then deleted 2026-10-04; do not reinstall without new evidence
+- [MVS trigger read NODATA = CPU affinity config](mvs-nodata-trigger-read-cpu-affinity.md) — 0 ms 0x80000007 on trigger vanished after Auto CPU change; check CPU plan before blaming camera
+- [Barcode quality map V188 (Faded/Heavy baseline)](barcode-quality-map-v188-faded-baseline.md) — p65 per-tile taught ref; re-teach needed for old projects; test image 5.bmp + box; owed UI smoke
+- [UI: no tips, mimic existing tools](feedback-ui-no-tips-mimic-existing-tools.md) — Tuning/Advanced corrections: no help text, Segment AI menu+hotkeys, EditRot handles, shared dataset, NG colour per box/kind
+- [EasyAI project plan + EAI-0 status](easyai-project-plan.md) — WPF-UI app inside EasyLabel.sln, net9, locked decisions; EAI-0 committed b0504bc31; EAI-1 next
+- [UI smoke: PrintWindow + quoted args](feedback-ui-smoke-screenshot-and-args.md) — CopyFromScreen leaked a private window; unquoted path opened the read-only sibling workspace
+- [V189 Detect OCR status](v189-detect-ocr-status.md) — CraftOCR text read (Rapid/Paddle/Easy, Matching/Contain): S1-S3 verified offline, uncommitted, smoke + latency + commit owed
+- [Embossed text CRAFT baseline](emboss-text-craft-baseline.md) — CHU_NOI 18 samples: auto scale fails, fixed scale helps, boxes ~1.7x tall; next = test with tune head
+- [V190 Emboss profile status](v190-emboss-profile-status.md) — plan v2 approved, contract written, awaiting /usage before dispatch
+- [EAI-3/EAI-4 status + gotchas](easyai-eai3-status.md) — Steps 2-3 committed; v2-both model gives 0 regions, build Wpf csproj directly, UIA smoke harness, next EAI-5
+- [Production PC = 8 GB; GC symptoms = frame churn](production-pc-8gb-memory-churn.md) — captures are from the 8 GB PC; MEM-8GB working-tree fix is uncommitted and unmeasured
+- [No usage gate](feedback-no-usage-gate.md) — never check/ask usage or slice work by 5h limit; deferred.md only on /epause
+- [Width Oriented Line status (WIDTH-OL)](width-oriented-line-status.md) — halves detect, boxes only learn, BGRA frame root cause, owed live-app confirmation
+- [EasyAI product target + team workflow](easyai-product-target.md) — cheap local AI labelling/training for factory operators; Leader/Planner/Coding/Testing/Review team; E:\EAI_TEST test images
+- [Never git stash in this worktree](feedback-never-git-stash-shared-worktree.md) — stash/pop nearly lost other sessions' files; python via bash heredoc corrupts escapes, use Write
+- [MISSING-TOOTH status](missing-tooth-status.md) — chip check + Pattern method/resize/multi-sample; paused, 50 ms on 2-core unproven, another session overlaps
+- [GEAR Missing profile check](gear-missing-profile-check.md) — Pattern false NGs on E:\GEAR; new row-signature Profile check, 0 FP, uncommitted/shared hunks
+- [EAI-POS status (P1-P6 committed, P7 real data)](eai-pos-status.md) — real recall ~1.0 but centre 4.5 px/angle 3 deg miss targets; label noise suspected; UI smoke owed
+- [EasyAI.Wpf: Any CPU build only](feedback-easyai-wpf-anycpu-only.md) — bin\Release is the only output; bin\x64 is stale, never point the user there
+- [GEAR2/GEAR3 status](gear2-gear3-status.md) — production-data analysis, patch stage, crest zone+offset; handoff tmp/GEAR3-CREST/deferred.md
+- [GEAR3-CREST status](gear3-crest-status.md) — crest band semantics (Offset = band thickness, full Area width), auto teach, no box UI; missing-crest veto question open
+- [Fewer Claude subagents, Codex does labour](feedback-fewer-claude-subagents-codex-labour.md) — max 1 Claude subagent; Codex for coding/testing; Claude keeps hard work
+- [EAI-ONL status](eai-onl-status.md) — 512+iGPU accepted; full-chain re-measure pending; real NG data = E:\Training\TrainLOGONEW\images
+- [EAI Online budget 100 ms / 20 MP](eai-online-budget-100ms-20mp.md) — user raised budget 2026-10-18; full chain at 20 MP unmeasured; model recall ~0 is the blocker
+- [LIVE_CAM online test status](live-cam-online-test-status.md) — camera 0.15 s grab, YOLO-World 0 boxes on screws, codex token revoked; agent latency unmeasured

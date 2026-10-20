@@ -1,0 +1,177 @@
+<ui:FluentWindow x:Class="EasyAI.Desktop.Views.ConvertYoloWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+                 Title="{x:Static res:Strings.CvTitle}"
+                 Width="680"
+                 Height="780"
+                 MinWidth="480"
+                 MinHeight="480"
+                 ExtendsContentIntoTitleBar="True"
+                 ShowInTaskbar="False"
+                 WindowBackdropType="Mica"
+                 WindowStartupLocation="CenterOwner"
+                 AutomationProperties.AutomationId="ConvertYoloDialog">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar Grid.Row="0"
+                     Title="{x:Static res:Strings.CvTitle}"
+                     ShowMaximize="False"
+                     ShowMinimize="False" />
+
+        <!-- Options and the result summary scroll together, so nothing is clipped at a small window size or a large font scale. -->
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Margin="16,8,16,8">
+                <StackPanel IsEnabled="{Binding IsIdle}">
+                    <ui:TextBlock Text="{x:Static res:Strings.CvInput}" />
+                    <Grid Margin="0,4,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ui:TextBox Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    Text="{Binding InputDirectory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    AutomationProperties.AutomationId="ConvertInput"
+                                    AutomationProperties.Name="{x:Static res:Strings.CvInput}" />
+                        <ui:Button Grid.Column="1"
+                                   Appearance="Secondary"
+                                   Content="{x:Static res:Strings.ExpBrowse}"
+                                   Command="{Binding BrowseInputCommand}"
+                                   AutomationProperties.AutomationId="ConvertBrowseInput" />
+                    </Grid>
+
+                    <ui:TextBlock Text="{x:Static res:Strings.CvOutput}" />
+                    <Grid Margin="0,4,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ui:TextBox Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    Text="{Binding OutputDirectory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    AutomationProperties.AutomationId="ConvertOutput"
+                                    AutomationProperties.Name="{x:Static res:Strings.CvOutput}" />
+                        <ui:Button Grid.Column="1"
+                                   Appearance="Secondary"
+                                   Content="{x:Static res:Strings.ExpBrowse}"
+                                   Command="{Binding BrowseOutputCommand}"
+                                   AutomationProperties.AutomationId="ConvertBrowseOutput" />
+                    </Grid>
+
+                    <ui:TextBlock Text="{x:Static res:Strings.CvFormat}" />
+                    <WrapPanel Margin="0,4,0,12"
+                               AutomationProperties.AutomationId="ConvertFormat"
+                               AutomationProperties.Name="{x:Static res:Strings.CvFormat}">
+                        <RadioButton Margin="0,0,16,0"
+                                     GroupName="ConvertFormatGroup"
+                                     Content="{x:Static res:Strings.CvFmtDetect}"
+                                     IsChecked="{Binding IsDetect, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="ConvertFormatDetect" />
+                        <RadioButton GroupName="ConvertFormatGroup"
+                                     Content="{x:Static res:Strings.CvFmtObb}"
+                                     IsChecked="{Binding IsObb, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="ConvertFormatObb" />
+                    </WrapPanel>
+
+                    <ui:TextBlock Text="{x:Static res:Strings.CvClasses}" />
+                    <ui:TextBox Margin="0,4,0,12"
+                                MinHeight="90"
+                                MaxHeight="200"
+                                AcceptsReturn="True"
+                                TextWrapping="NoWrap"
+                                VerticalScrollBarVisibility="Auto"
+                                HorizontalScrollBarVisibility="Auto"
+                                Text="{Binding ClassesText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                AutomationProperties.AutomationId="ConvertClasses"
+                                AutomationProperties.Name="{x:Static res:Strings.CvClasses}" />
+
+                    <ui:TextBlock Text="{x:Static res:Strings.CvExpected}"
+                                  TextWrapping="Wrap" />
+                    <DataGrid Margin="0,4,0,12"
+                              MaxHeight="160"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"
+                              HeadersVisibility="Column"
+                              ItemsSource="{Binding ExpectedRows}"
+                              AutomationProperties.AutomationId="ConvertExpected"
+                              AutomationProperties.Name="{x:Static res:Strings.CvExpected}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{x:Static res:Strings.CvColClass}"
+                                                Binding="{Binding ClassName, Mode=OneWay}"
+                                                IsReadOnly="True"
+                                                Width="2*" />
+                            <DataGridTextColumn Header="{x:Static res:Strings.CvColExpected}"
+                                                Binding="{Binding CountText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <CheckBox Margin="0,0,0,4"
+                              Content="{x:Static res:Strings.CvWriteClasses}"
+                              IsChecked="{Binding WriteClasses, Mode=TwoWay}"
+                              AutomationProperties.AutomationId="ConvertWriteClasses" />
+                    <CheckBox Margin="0,0,0,12"
+                              Content="{x:Static res:Strings.CvOverwrite}"
+                              IsChecked="{Binding Overwrite, Mode=TwoWay}"
+                              AutomationProperties.AutomationId="ConvertOverwrite" />
+                </StackPanel>
+
+                <ui:TextBlock Text="{x:Static res:Strings.ExpResult}" />
+                <ui:TextBox Margin="0,4,0,0"
+                            MinHeight="160"
+                            MaxHeight="360"
+                            AcceptsReturn="True"
+                            IsReadOnly="True"
+                            TextWrapping="Wrap"
+                            VerticalScrollBarVisibility="Auto"
+                            Text="{Binding ResultText, Mode=OneWay}"
+                            AutomationProperties.AutomationId="ConvertResult"
+                            AutomationProperties.Name="{x:Static res:Strings.ExpResult}" />
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2"
+                    Margin="16,0,16,16">
+            <ProgressBar Height="6"
+                         Margin="0,0,0,2"
+                         Minimum="0"
+                         Maximum="{Binding ProgressMaximum}"
+                         Value="{Binding ProgressValue, Mode=OneWay}"
+                         AutomationProperties.AutomationId="ConvertProgress" />
+            <ui:TextBlock Margin="0,0,0,8"
+                          MinHeight="16"
+                          FontSize="11"
+                          Text="{Binding ProgressText}"
+                          TextTrimming="CharacterEllipsis"
+                          AutomationProperties.AutomationId="ConvertProgressText" />
+            <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <ui:Button Margin="0,0,8,0"
+                           Appearance="Primary"
+                           Content="{x:Static res:Strings.CvRun}"
+                           Command="{Binding RunCommand}"
+                           IsDefault="True"
+                           AutomationProperties.AutomationId="ConvertRun" />
+                <ui:Button Margin="0,0,8,0"
+                           Appearance="Secondary"
+                           Content="{x:Static res:Strings.Cancel}"
+                           Command="{Binding CancelCommand}"
+                           AutomationProperties.AutomationId="ConvertCancel" />
+                <ui:Button Appearance="Secondary"
+                           IsCancel="True"
+                           Content="{x:Static res:Strings.Close}"
+                           AutomationProperties.AutomationId="ConvertClose" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</ui:FluentWindow>

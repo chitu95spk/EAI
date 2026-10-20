@@ -1,0 +1,7 @@
+AgentDuplicatesDroppedTitle	Duplicates skipped	Đã bỏ qua kết quả trùng
+AgentDuplicatesDroppedFormat	{0} suggestion(s) were skipped because that part is already labelled or already suggested.	Đã bỏ qua {0} đề xuất vì vị trí đó đã được gán nhãn hoặc đã có đề xuất.
+AgentEffortLabel_low	Low	Thấp
+AgentEffortLabel_medium	Medium	Trung bình
+AgentEffortLabel_high	High	Cao
+AgentEffortLabel_xhigh	Extra high	Rất cao
+AgentEffortLabel_max	Max	Tối đa

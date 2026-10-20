@@ -1,0 +1,11 @@
+{
+ "mcpServers": {
+  "easyai": {
+   "command": "E:\\Code\\EasyVision_Unisen - NoService\\EasyLabel\\src\\EasyLabel.Ai.Mcp\\bin\\x64\\Release\\net9.0\\EasyLabel.Ai.Mcp.exe",
+   "args": [
+    "--run",
+    "E:\\Code\\EasyVision_Unisen - NoService\\tmp\\EAI\\EAI-AI\\s3-run1"
+   ]
+  }
+ }
+}

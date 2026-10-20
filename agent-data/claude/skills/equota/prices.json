@@ -1,0 +1,179 @@
+{
+  "as_of": "2026-10-04",
+  "source": "https://platform.claude.com/docs/en/about-claude/pricing.md (fetched automatically by cost-ledger.py); first-party API list prices, USD per million tokens",
+  "cache_write_5m_multiplier": 1.25,
+  "cache_write_1h_multiplier": 2.0,
+  "cache_read_multiplier_default": 0.1,
+  "models": [
+    {
+      "key": "fable-5-1",
+      "in": 10.0,
+      "w5": 12.5,
+      "w1": 20.0,
+      "read": 0.25,
+      "out": 50.0
+    },
+    {
+      "key": "mythos-5-1",
+      "in": 10.0,
+      "w5": 12.5,
+      "w1": 20.0,
+      "read": 0.25,
+      "out": 50.0
+    },
+    {
+      "key": "fable-5",
+      "in": 10.0,
+      "w5": 12.5,
+      "w1": 20.0,
+      "read": 1.0,
+      "out": 50.0
+    },
+    {
+      "key": "mythos-5",
+      "in": 10.0,
+      "w5": 12.5,
+      "w1": 20.0,
+      "read": 1.0,
+      "out": 50.0
+    },
+    {
+      "key": "opus-5-5",
+      "in": 4.0,
+      "w5": 5.0,
+      "w1": 8.0,
+      "read": 0.2,
+      "out": 20.0
+    },
+    {
+      "key": "opus-5",
+      "in": 5.0,
+      "w5": 6.25,
+      "w1": 10.0,
+      "read": 0.5,
+      "out": 25.0
+    },
+    {
+      "key": "opus-4-8",
+      "in": 5.0,
+      "w5": 6.25,
+      "w1": 10.0,
+      "read": 0.5,
+      "out": 25.0
+    },
+    {
+      "key": "opus-4-7",
+      "in": 5.0,
+      "w5": 6.25,
+      "w1": 10.0,
+      "read": 0.5,
+      "out": 25.0
+    },
+    {
+      "key": "opus-4-6",
+      "in": 5.0,
+      "w5": 6.25,
+      "w1": 10.0,
+      "read": 0.5,
+      "out": 25.0
+    },
+    {
+      "key": "opus-4-5",
+      "in": 5.0,
+      "w5": 6.25,
+      "w1": 10.0,
+      "read": 0.5,
+      "out": 25.0
+    },
+    {
+      "key": "opus-4-1",
+      "in": 15.0,
+      "w5": 18.75,
+      "w1": 30.0,
+      "read": 1.5,
+      "out": 75.0
+    },
+    {
+      "key": "opus-4",
+      "in": 15.0,
+      "w5": 18.75,
+      "w1": 30.0,
+      "read": 1.5,
+      "out": 75.0
+    },
+    {
+      "key": "sonnet-5-5",
+      "in": 2.0,
+      "w5": 2.5,
+      "w1": 4.0,
+      "read": 0.2,
+      "out": 10.0
+    },
+    {
+      "key": "sonnet-5",
+      "in": 2.0,
+      "w5": 2.5,
+      "w1": 4.0,
+      "read": 0.2,
+      "out": 10.0
+    },
+    {
+      "key": "sonnet-4-6",
+      "in": 3.0,
+      "w5": 3.75,
+      "w1": 6.0,
+      "read": 0.3,
+      "out": 15.0
+    },
+    {
+      "key": "sonnet-4-5",
+      "in": 3.0,
+      "w5": 3.75,
+      "w1": 6.0,
+      "read": 0.3,
+      "out": 15.0
+    },
+    {
+      "key": "sonnet-4",
+      "in": 3.0,
+      "w5": 3.75,
+      "w1": 6.0,
+      "read": 0.3,
+      "out": 15.0
+    },
+    {
+      "key": "haiku-4-5",
+      "in": 1.0,
+      "w5": 1.25,
+      "w1": 2.0,
+      "read": 0.1,
+      "out": 5.0
+    },
+    {
+      "key": "haiku-3-5",
+      "in": 0.8,
+      "w5": 1.0,
+      "w1": 1.6,
+      "read": 0.08,
+      "out": 4.0
+    },
+    {
+      "key": "fable",
+      "in": 10.0,
+      "out": 50.0,
+      "read": 0.25
+    },
+    {
+      "key": "mythos",
+      "in": 10.0,
+      "out": 50.0,
+      "read": 0.25
+    },
+    {
+      "key": "haiku",
+      "in": 1.0,
+      "out": 5.0
+    }
+  ],
+  "note": "Order matters: first substring match of the transcript model id wins. 'read' is an explicit cache-read price; otherwise cache_read_multiplier_default x input."
+}

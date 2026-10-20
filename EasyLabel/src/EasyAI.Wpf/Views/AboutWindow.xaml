@@ -1,0 +1,101 @@
+<ui:FluentWindow x:Class="EasyAI.Desktop.Views.AboutWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+                 Title="{x:Static res:Strings.About}"
+                 Width="460"
+                 MinWidth="360"
+                 MaxHeight="640"
+                 SizeToContent="Height"
+                 ResizeMode="NoResize"
+                 ExtendsContentIntoTitleBar="True"
+                 ShowInTaskbar="False"
+                 WindowBackdropType="Mica"
+                 WindowStartupLocation="CenterOwner"
+                 AutomationProperties.AutomationId="AboutWindow">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar Grid.Row="0"
+                     Title="{x:Static res:Strings.About}"
+                     ShowMaximize="False"
+                     ShowMinimize="False">
+            <ui:TitleBar.Icon>
+                <ui:ImageIcon Source="{StaticResource EasyAiLogo}" />
+            </ui:TitleBar.Icon>
+        </ui:TitleBar>
+
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Margin="16,8,16,8">
+                <Image Width="64"
+                       Height="64"
+                       Margin="0,0,0,8"
+                       HorizontalAlignment="Left"
+                       Source="{StaticResource EasyAiLogo}"
+                       AutomationProperties.AutomationId="AboutLogo"
+                       AutomationProperties.Name="{x:Static res:Strings.AppName}" />
+                <ui:TextBlock FontTypography="Subtitle"
+                              Text="{x:Static res:Strings.AppName}" />
+                <ui:TextBlock x:Name="VersionText"
+                              Margin="0,2,0,12"
+                              Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                              AutomationProperties.AutomationId="AboutVersion" />
+
+                <ui:Card Padding="12">
+                    <StackPanel>
+                        <ui:TextBlock Margin="0,0,0,8"
+                                      FontTypography="BodyStrong"
+                                      Text="{x:Static res:Strings.Engines}" />
+                        <ItemsControl ItemsSource="{Binding EngineList}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="0,0,0,8"
+                                                ToolTip="{Binding ToolTipText}">
+                                        <ui:TextBlock Text="{Binding StatusText}" />
+                                        <ui:TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                                      Text="{Binding Path}"
+                                                      TextTrimming="CharacterEllipsis" />
+                                        <ui:TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                                      Text="{Binding Message}"
+                                                      TextWrapping="Wrap"
+                                                      MaxHeight="64"
+                                                      TextTrimming="CharacterEllipsis"
+                                                      Visibility="{Binding ShowMessage, Converter={StaticResource BoolToVisibility}}" />
+                                        <ui:Button Margin="0,6,0,0"
+                                                   Appearance="Secondary"
+                                                   Content="{x:Static res:Strings.ChooseFolder}"
+                                                   Icon="{ui:SymbolIcon Folder24}"
+                                                   Visibility="{Binding CanChooseFolder, Converter={StaticResource BoolToVisibility}}"
+                                                   Command="{Binding DataContext.ChooseNativeFolderCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                   ToolTip="{x:Static res:Strings.ChooseFolderTip}"
+                                                   AutomationProperties.AutomationId="ChooseNativeFolderButton" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ui:Card>
+            </StackPanel>
+        </ScrollViewer>
+
+        <ui:Button Grid.Row="2"
+                   Margin="16,4,16,16"
+                   HorizontalAlignment="Right"
+                   Appearance="Primary"
+                   Content="{x:Static res:Strings.Close}"
+                   IsCancel="True"
+                   IsDefault="True"
+                   AutomationProperties.AutomationId="AboutCloseButton" />
+    </Grid>
+</ui:FluentWindow>

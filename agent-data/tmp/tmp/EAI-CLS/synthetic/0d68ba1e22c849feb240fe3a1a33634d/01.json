@@ -1,0 +1,32 @@
+{
+  "shapes": [
+    {
+      "label": "LECH",
+      "shape_type": "oriented_rectangle",
+      "points": [
+        [
+          1,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "flags": {},
+      "custom": "preserved"
+    }
+  ],
+  "imagePath": "01.png",
+  "imageWidth": 8,
+  "imageHeight": 8,
+  "flags": {}
+}

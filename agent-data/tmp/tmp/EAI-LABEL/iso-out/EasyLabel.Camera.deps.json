@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "EasyLabel.Camera/1.0.0": {
+        "runtime": {
+          "EasyLabel.Camera.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EasyLabel.Camera/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

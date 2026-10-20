@@ -1,0 +1,257 @@
+<ui:FluentWindow x:Class="EasyAI.Desktop.Views.SettingsWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:vm="clr-namespace:EasyAI.Desktop.ViewModels"
+                 xmlns:views="clr-namespace:EasyAI.Desktop.Views"
+                 xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+                 Title="{x:Static res:Strings.SetTitle}"
+                 Width="900"
+                 Height="620"
+                 MinWidth="640"
+                 MinHeight="420"
+                 ExtendsContentIntoTitleBar="True"
+                 ShowInTaskbar="False"
+                 WindowBackdropType="Mica"
+                 WindowStartupLocation="CenterOwner"
+                 AutomationProperties.AutomationId="SettingsWindow"
+                 Closed="OnClosed">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+
+        <DataTemplate DataType="{x:Type vm:SettingRowViewModel}">
+            <StackPanel Margin="0,0,0,10"
+                        Visibility="{Binding IsRowVisible, Converter={StaticResource BoolToVisibility}}"
+                        ToolTip="{Binding ToolTipText}"
+                        ToolTipService.ShowOnDisabled="True">
+                <!-- Page title above the first row of each page (all pages share one scrolling list, like Labelme). -->
+                <ui:TextBlock Margin="0,18,0,2"
+                              FontTypography="Subtitle"
+                              Text="{Binding PageHeaderText}"
+                              Visibility="{Binding ShowPageHeader, Converter={StaticResource BoolToVisibility}}" />
+                <ui:TextBlock Margin="0,12,0,6"
+                              FontTypography="BodyStrong"
+                              Text="{Binding HeaderText}"
+                              Visibility="{Binding ShowHeader, Converter={StaticResource BoolToVisibility}}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" MinWidth="160" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0"
+                                Margin="0,0,16,0"
+                                VerticalAlignment="Center">
+                        <ui:TextBlock Text="{Binding Caption}"
+                                      TextWrapping="Wrap" />
+                        <ui:TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                      Text="{Binding Description}"
+                                      TextWrapping="Wrap">
+                            <ui:TextBlock.Style>
+                                <Style TargetType="ui:TextBlock">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Description}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ui:TextBlock.Style>
+                        </ui:TextBlock>
+                    </StackPanel>
+
+                    <ui:ToggleSwitch Grid.Column="1"
+                                     VerticalAlignment="Center"
+                                     IsEnabled="{Binding IsEnabled}"
+                                     IsChecked="{Binding BoolValue, Mode=TwoWay}"
+                                     Visibility="{Binding IsToggleRow, Converter={StaticResource BoolToVisibility}}"
+                                     AutomationProperties.AutomationId="{Binding Id, StringFormat=Setting_{0}}"
+                                     AutomationProperties.Name="{Binding Caption}" />
+                    <ComboBox Grid.Column="1"
+                              MinWidth="200"
+                              VerticalAlignment="Center"
+                              ItemsSource="{Binding Options}"
+                              DisplayMemberPath="Caption"
+                              SelectedItem="{Binding SelectedOption, Mode=TwoWay}"
+                              Visibility="{Binding IsChoiceRow, Converter={StaticResource BoolToVisibility}}"
+                              AutomationProperties.AutomationId="{Binding RowAutomationId}"
+                              AutomationProperties.Name="{Binding Caption}" />
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                Visibility="{Binding IsPathRow, Converter={StaticResource BoolToVisibility}}">
+                        <ui:TextBlock MaxWidth="220"
+                                      Margin="0,0,8,0"
+                                      VerticalAlignment="Center"
+                                      Text="{Binding PathText}"
+                                      TextTrimming="CharacterEllipsis"
+                                      ToolTip="{Binding PathText}"
+                                      AutomationProperties.AutomationId="Setting_outputDirectory" />
+                        <ui:Button Margin="0,0,4,0"
+                                   Content="{x:Static res:Strings.SetChoose}"
+                                   Command="{Binding DataContext.ChooseOutputDirectoryCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                   AutomationProperties.AutomationId="SettingChooseOutputDirectory" />
+                        <ui:Button Content="{x:Static res:Strings.SetClear}"
+                                   Command="{Binding DataContext.ClearOutputDirectoryCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                   AutomationProperties.AutomationId="SettingClearOutputDirectory" />
+                    </StackPanel>
+                    <!-- Colour row: swatch, hex text (#RRGGBB) and a button that opens the Windows colour dialog; changes apply live. -->
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                Visibility="{Binding IsColorRow, Converter={StaticResource BoolToVisibility}}">
+                        <Border Width="28"
+                                Height="28"
+                                Margin="0,0,8,0"
+                                BorderThickness="1"
+                                CornerRadius="4"
+                                BorderBrush="{DynamicResource TextFillColorSecondaryBrush}"
+                                Background="{Binding SwatchBrush}"
+                                AutomationProperties.AutomationId="{Binding Id, StringFormat=Setting_{0}_Swatch}" />
+                        <ui:TextBox Width="110"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding TextValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                    AutomationProperties.AutomationId="{Binding Id, StringFormat=Setting_{0}}"
+                                    AutomationProperties.Name="{Binding Caption}" />
+                        <ui:Button MinWidth="72"
+                                   Content="{x:Static res:Strings.SetChoose}"
+                                   Command="{Binding ChooseColorCommand}"
+                                   AutomationProperties.AutomationId="{Binding Id, StringFormat=Setting_{0}_Choose}" />
+                    </StackPanel>
+                    <ui:Button Grid.Column="1"
+                               VerticalAlignment="Center"
+                               Content="{Binding ResetButtonText}"
+                               Command="{Binding ResetPaletteCommand}"
+                               Visibility="{Binding IsButtonRow, Converter={StaticResource BoolToVisibility}}"
+                               AutomationProperties.AutomationId="{Binding Id, StringFormat=Setting_{0}}" />
+                    <ui:Button Grid.Column="1"
+                               VerticalAlignment="Center"
+                               MinWidth="120"
+                               Content="{Binding CameraButtonText}"
+                               Command="{Binding CameraActionCommand}"
+                               Visibility="{Binding IsCameraButtonRow, Converter={StaticResource BoolToVisibility}}"
+                               AutomationProperties.AutomationId="{Binding RowAutomationId}"
+                               AutomationProperties.Name="{Binding Caption}" />
+                    <ui:Button Grid.Column="1"
+                               VerticalAlignment="Center"
+                               Content="{Binding CacheClearButtonText}"
+                               Command="{Binding DataContext.ClearCacheCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                               Visibility="{Binding IsCacheClearRow, Converter={StaticResource BoolToVisibility}}"
+                               AutomationProperties.AutomationId="{Binding RowAutomationId}"
+                               AutomationProperties.Name="{Binding Caption}" />
+                    <ui:Button Grid.Column="1"
+                               VerticalAlignment="Center"
+                               MinWidth="120"
+                               Content="{Binding InstallModelPackButtonText}"
+                               Command="{Binding DataContext.InstallModelPackCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                               Visibility="{Binding IsInstallModelPackRow, Converter={StaticResource BoolToVisibility}}"
+                               AutomationProperties.AutomationId="{Binding RowAutomationId}"
+                               AutomationProperties.Name="{Binding Caption}" />
+                    <ui:TextBox Grid.Column="1"
+                                MinWidth="200"
+                                MaxWidth="320"
+                                VerticalAlignment="Center"
+                                Text="{Binding TextValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                Visibility="{Binding IsEditableTextRow, Converter={StaticResource BoolToVisibility}}"
+                                AutomationProperties.AutomationId="{Binding RowAutomationId}"
+                                AutomationProperties.Name="{Binding Caption}" />
+                    <ui:TextBox Grid.Column="1"
+                                MinWidth="200"
+                                VerticalAlignment="Center"
+                                IsEnabled="False"
+                                IsReadOnly="True"
+                                Text="{Binding ValueText, Mode=OneWay}"
+                                Visibility="{Binding IsTextRow, Converter={StaticResource BoolToVisibility}}"
+                                AutomationProperties.AutomationId="{Binding Id, StringFormat=Setting_{0}}"
+                                AutomationProperties.Name="{Binding Caption}" />
+                    <ui:TextBlock Grid.Column="1"
+                                  MaxWidth="360"
+                                  VerticalAlignment="Center"
+                                  Text="{Binding ValueText}"
+                                  TextWrapping="Wrap"
+                                  Visibility="{Binding IsInfoRow, Converter={StaticResource BoolToVisibility}}"
+                                  AutomationProperties.AutomationId="{Binding RowAutomationId}" />
+                </Grid>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar Grid.Row="0"
+                     Title="{x:Static res:Strings.SetTitle}"
+                     ShowMaximize="True"
+                     ShowMinimize="False">
+            <ui:TitleBar.Icon>
+                <ui:SymbolIcon Symbol="Settings24" />
+            </ui:TitleBar.Icon>
+        </ui:TitleBar>
+
+        <Grid Grid.Row="1" Margin="16,8,16,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="240" />
+                <ColumnDefinition Width="16" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ui:TextBox Grid.Row="0"
+                            Margin="0,0,0,8"
+                            ClearButtonEnabled="True"
+                            PlaceholderText="{x:Static res:Strings.SetSearchPlaceholder}"
+                            Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                            AutomationProperties.AutomationId="SettingsSearch"
+                            AutomationProperties.Name="{x:Static res:Strings.SetSearchPlaceholder}" />
+                <ui:ListView Grid.Row="1"
+                             ItemsSource="{Binding Pages}"
+                             SelectedItem="{Binding SelectedPage, Mode=TwoWay}"
+                             DisplayMemberPath="Title"
+                             AutomationProperties.AutomationId="SettingsPages" />
+            </Grid>
+
+            <ScrollViewer x:Name="AgentsScroll"
+                          Grid.Column="2"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled"
+                          Visibility="{Binding IsAgentsPage, Converter={StaticResource BoolToVisibility}}"
+                          AutomationProperties.AutomationId="SettingsAgentsScroll">
+                <views:AgentsSettingsView Margin="0,0,12,0"
+                                          DataContext="{Binding Agents}" />
+            </ScrollViewer>
+
+            <ScrollViewer x:Name="RowsScroll"
+                          Grid.Column="2"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled"
+                          Visibility="{Binding IsRowsPage, Converter={StaticResource BoolToVisibility}}"
+                          AutomationProperties.AutomationId="SettingsRowsScroll">
+                <ItemsControl x:Name="RowsList"
+                              ItemsSource="{Binding VisibleRows}"
+                              Margin="0,0,12,0"
+                              AutomationProperties.AutomationId="SettingsRows" />
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="16,4,16,16">
+            <ui:Button HorizontalAlignment="Left"
+                       Content="{x:Static res:Strings.SetOpenConfig}"
+                       Command="{Binding OpenConfigCommand}"
+                       AutomationProperties.AutomationId="SettingsOpenConfig" />
+            <ui:Button HorizontalAlignment="Right"
+                       Appearance="Primary"
+                       Content="{x:Static res:Strings.Close}"
+                       IsCancel="True"
+                       IsDefault="True"
+                       AutomationProperties.AutomationId="SettingsCloseButton" />
+        </Grid>
+    </Grid>
+</ui:FluentWindow>

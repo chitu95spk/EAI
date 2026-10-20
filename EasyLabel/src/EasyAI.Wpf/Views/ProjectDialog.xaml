@@ -1,0 +1,186 @@
+<ui:FluentWindow x:Class="EasyAI.Desktop.Views.ProjectDialog"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+                 Width="640"
+                 Height="520"
+                 MinWidth="460"
+                 MinHeight="360"
+                 ExtendsContentIntoTitleBar="True"
+                 ShowInTaskbar="False"
+                 WindowBackdropType="Mica"
+                 WindowStartupLocation="CenterOwner"
+                 PreviewKeyDown="OnPreviewKeyDown"
+                 AutomationProperties.AutomationId="ProjectDialog">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <!-- Caption of a segmented project-kind button: accent text colour while its button is checked (same as the Train tab's trainer switch). -->
+        <Style x:Key="KindCaptionStyle" TargetType="ui:TextBlock">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}}" Value="True">
+                    <Setter Property="Foreground" Value="{DynamicResource EasyAiAccentTextBrush}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar x:Name="DialogTitleBar"
+                     Grid.Row="0"
+                     ShowMaximize="False"
+                     ShowMinimize="False" />
+
+        <!-- Everything scrolls together, so nothing is clipped at a small window size, 150% DPI or a long localized text. -->
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Margin="16,8,16,8"
+                        IsEnabled="{Binding IsIdle}">
+                <ui:TextBlock Text="{x:Static res:Strings.ProjName}" />
+                <ui:TextBox Margin="0,4,0,12"
+                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            AutomationProperties.AutomationId="ProjectDialogName"
+                            AutomationProperties.Name="{x:Static res:Strings.ProjName}" />
+
+                <ui:TextBlock Text="{x:Static res:Strings.ProjLocation}" />
+                <Grid Margin="0,4,0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBox Grid.Column="0"
+                                Margin="0,0,8,0"
+                                Text="{Binding Location, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                AutomationProperties.AutomationId="ProjectDialogLocation"
+                                AutomationProperties.Name="{x:Static res:Strings.ProjLocation}" />
+                    <ui:Button Grid.Column="1"
+                               Appearance="Secondary"
+                               Content="{x:Static res:Strings.ExpBrowse}"
+                               Command="{Binding BrowseLocationCommand}"
+                               AutomationProperties.AutomationId="ProjectDialogBrowseLocation" />
+                </Grid>
+
+                <!-- New Project only: what the project labels; locked after creation. Same segmented toggle pattern as the train step. -->
+                <StackPanel Visibility="{Binding IsNewMode, Converter={StaticResource BoolToVisibility}}">
+                    <ui:TextBlock Text="{x:Static res:Strings.ProjKind}" />
+                    <Grid Margin="0,4,0,12"
+                          AutomationProperties.Name="{x:Static res:Strings.ProjKind}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Grid.Column="0"
+                                     Margin="0,0,4,0"
+                                     Padding="4,4"
+                                     HorizontalAlignment="Stretch"
+                                     HorizontalContentAlignment="Center"
+                                     GroupName="ProjectKind"
+                                     Style="{DynamicResource {x:Type ToggleButton}}"
+                                     IsChecked="{Binding IsDetectKind, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="ProjectDialogKindDetect">
+                            <ui:TextBlock TextWrapping="Wrap" TextAlignment="Center" Style="{StaticResource KindCaptionStyle}" Text="{x:Static res:Strings.ProjKindDetect}" />
+                        </RadioButton>
+                        <RadioButton Grid.Column="1"
+                                     Padding="4,4"
+                                     HorizontalAlignment="Stretch"
+                                     HorizontalContentAlignment="Center"
+                                     GroupName="ProjectKind"
+                                     Style="{DynamicResource {x:Type ToggleButton}}"
+                                     IsChecked="{Binding IsPositionKind, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="ProjectDialogKindPosition">
+                            <ui:TextBlock TextWrapping="Wrap" TextAlignment="Center" Style="{StaticResource KindCaptionStyle}" Text="{x:Static res:Strings.ProjKindPosition}" />
+                        </RadioButton>
+                    </Grid>
+                </StackPanel>
+
+                <!-- New Project only: an existing image folder (blank = the project creates its own images folder). -->
+                <StackPanel Visibility="{Binding IsNewMode, Converter={StaticResource BoolToVisibility}}">
+                    <ui:TextBlock Text="{x:Static res:Strings.ProjImageFolder}" />
+                    <Grid Margin="0,4,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ui:TextBox Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    Text="{Binding ImageFolder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    AutomationProperties.AutomationId="ProjectDialogImageFolder"
+                                    AutomationProperties.Name="{x:Static res:Strings.ProjImageFolder}" />
+                        <ui:Button Grid.Column="1"
+                                   Margin="0,0,8,0"
+                                   Appearance="Secondary"
+                                   Content="{x:Static res:Strings.ExpBrowse}"
+                                   Command="{Binding BrowseImageFolderCommand}"
+                                   AutomationProperties.AutomationId="ProjectDialogBrowseImages" />
+                        <ui:Button Grid.Column="2"
+                                   Appearance="Secondary"
+                                   Content="{x:Static res:Strings.ProjClear}"
+                                   Command="{Binding ClearImageFolderCommand}"
+                                   AutomationProperties.AutomationId="ProjectDialogClearImages" />
+                    </Grid>
+                </StackPanel>
+
+                <!-- Save Project As only: copy the images and their labels, or only reference them. -->
+                <ui:ToggleSwitch Margin="0,0,0,12"
+                                 Visibility="{Binding IsSaveAsMode, Converter={StaticResource BoolToVisibility}}"
+                                 Content="{x:Static res:Strings.ProjCopyImagesToggle}"
+                                 IsChecked="{Binding CopyImages, Mode=TwoWay}"
+                                 AutomationProperties.AutomationId="ProjectDialogCopyImages"
+                                 AutomationProperties.Name="{x:Static res:Strings.ProjCopyImagesToggle}" />
+
+                <ui:TextBlock Margin="0,0,0,4"
+                              Text="{x:Static res:Strings.ProjFileLabel}" />
+                <ui:TextBlock Margin="0,0,0,12"
+                              FontSize="12"
+                              TextWrapping="Wrap"
+                              Text="{Binding PreviewText}"
+                              AutomationProperties.AutomationId="ProjectDialogPreview" />
+
+                <ui:InfoBar Severity="Error"
+                            IsClosable="False"
+                            IsOpen="{Binding HasError}"
+                            Message="{Binding ErrorText}"
+                            AutomationProperties.AutomationId="ProjectDialogError" />
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2"
+                    Margin="16,0,16,16">
+            <StackPanel Visibility="{Binding IsRunning, Converter={StaticResource BoolToVisibility}}">
+                <ProgressBar Height="6"
+                             Margin="0,0,0,2"
+                             Minimum="0"
+                             Maximum="1"
+                             IsIndeterminate="{Binding IsProgressIndeterminate}"
+                             Value="{Binding ProgressValue, Mode=OneWay}"
+                             AutomationProperties.AutomationId="ProjectDialogProgress" />
+                <ui:TextBlock Margin="0,0,0,8"
+                              MinHeight="16"
+                              FontSize="11"
+                              Text="{Binding ProgressText}"
+                              TextTrimming="CharacterEllipsis"
+                              AutomationProperties.AutomationId="ProjectDialogProgressText" />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <ui:Button Margin="0,0,8,0"
+                           Appearance="Primary"
+                           IsDefault="True"
+                           Content="{x:Static res:Strings.LblDlgOk}"
+                           Command="{Binding OkCommand}"
+                           AutomationProperties.AutomationId="ProjectDialogOk" />
+                <ui:Button Appearance="Secondary"
+                           Content="{x:Static res:Strings.Cancel}"
+                           Click="OnCancel"
+                           AutomationProperties.AutomationId="ProjectDialogCancel" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</ui:FluentWindow>

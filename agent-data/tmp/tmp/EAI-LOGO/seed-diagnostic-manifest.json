@@ -1,0 +1,1930 @@
+{
+  "source": "E:\\Training\\TrainLOGONEW",
+  "copy": "E:\\Code\\EasyVision_Unisen - NoService\\tmp\\EAI-LOGO\\project",
+  "originals_read_only": true,
+  "class_policy": "all requested defects are NG; no confirmed OK images supplied",
+  "annotation_authority": "images/*.json, matching current sidecar cache where conflicting with json/*.json",
+  "readiness": "READY_WITH_EXCLUSIONS_FOR_DIAGNOSTIC_EXECUTION_ONLY",
+  "images": [
+    {
+      "rel": "MopL2 (1).png",
+      "sha256": "2b575e599f38101af315cfc975518d3bc33c2cf5176c1cda5484b7cfe720e170",
+      "bytes": 26955770,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "MopL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "MopL2 (2).png",
+      "sha256": "043c70709f40c5cdc2a7364e85ec3482b2e448d9b2a97b164c8579573dc5bcf8",
+      "bytes": 30105730,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "MopL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "MopL2 (3).png",
+      "sha256": "9437f380445a6d4a341b4a97f8e400b77f07a148b50c5581acbc3f8eff6c8e7b",
+      "bytes": 29364008,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "MopL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "MopL2 (4).png",
+      "sha256": "f51a474e3359b39acedc99882ae16458bfb6cc110f861cb90e084deef6513ebc",
+      "bytes": 29608922,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "MopL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "MopL2 (5).png",
+      "sha256": "29b07f5a70941e9f15ee599798bb8d0390a6e66953a21f5fc09c0357d562f856",
+      "bytes": 27174499,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "MopL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "MopL2 (6).png",
+      "sha256": "c0b0eca3942205eb28ad559f6fe82f2060f55855115af11d39d7cec5d1da35c8",
+      "bytes": 30185788,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "MopL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "MopL2 (7).png",
+      "sha256": "cf8a1123e8c7fbd2ee09c7279600a514b7a5122dda49f26ced83cdca0b1b7349",
+      "bytes": 29826023,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "MopL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (1).png",
+      "sha256": "d7f7552deac004b3a7fd77cd59d674876b73a1cb344d6f7a398410fde0788d4a",
+      "bytes": 32428607,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (10).png",
+      "sha256": "8bbac5f068316c4dc36a200993a9865930146aa4fdc2a2a75e58c1587fda1271",
+      "bytes": 27472159,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (11).png",
+      "sha256": "6c6dfbbb422df0dc5674100af168503aa7ac3ad13d19369bca6c953c90313f49",
+      "bytes": 27425956,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (12).png",
+      "sha256": "75c25adeb34ab1af0db4f6deb1ef21f598861171b5eac4e987fecdee61e002ff",
+      "bytes": 27162550,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (13).png",
+      "sha256": "aeb8313375ca5a1edcee3de4bd104220ad0d1f7fd32393ae3eca54ae566bec53",
+      "bytes": 29433267,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (14).png",
+      "sha256": "33b9113f8c8c3540986ccb1104aeb6309d9270061e05e75033659e25a57d842f",
+      "bytes": 29421711,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (15).png",
+      "sha256": "215a841231d6a815ece967c1eb6cbd560514cbd9d1a228a9cc0be533f96ae2a5",
+      "bytes": 32066229,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (16).png",
+      "sha256": "ce480d74a29dea78f030636f467dafbbe05bb1a0524337a26d2a4cb75cee7ffa",
+      "bytes": 31630076,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (17).png",
+      "sha256": "fd5bc8ec92d1b72e30f63e49ad03f4bdf92bbb9967fbe534e1028527292ac47d",
+      "bytes": 32231370,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (18).png",
+      "sha256": "1f9393417d50d243715c3fbcf318ef90ff0671ca2fb2c6ef2d9538a823887b28",
+      "bytes": 28493036,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (19).png",
+      "sha256": "d039de3a3ed8cba2384519bb75d720ac008339d961b1c5cd1e4ebe7867809444",
+      "bytes": 32153310,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (2).png",
+      "sha256": "3270c421fb6784a5d6d93b1b52dc4afad298b17b60890a4a75f3df272f643f00",
+      "bytes": 26755918,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (20).png",
+      "sha256": "ead25c258f4107ed9bed3cac2d203edf2563e71fc25e64978707df0d740bb4c7",
+      "bytes": 31532279,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (21).png",
+      "sha256": "cfc29b2c4c7bc8fd82b8fc9b5653a9704f4985e7a79f5265ae97a7687f016136",
+      "bytes": 31654552,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (22).png",
+      "sha256": "8dc8ec52c158ffa980153a2eaa957aa0c1bec2fa07f77d7e7b512eb233591ac6",
+      "bytes": 32115424,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (23).png",
+      "sha256": "d765912059db6f200f8a2c57f4b72cb4122738b85c83be77571ed020380d1c49",
+      "bytes": 30480163,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (24).png",
+      "sha256": "3c46745ccc9c72b7514a1ae0bad6dcc9c5fdfcc10e644d9d70ec338b23e03ee1",
+      "bytes": 26869071,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (25).png",
+      "sha256": "d202cb5043bdc23ee9f86df543b13f24d3bb1bd70d1172849bc589b09a4260b2",
+      "bytes": 29271630,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (26).png",
+      "sha256": "646778296ae2c74877de09dba60943b6884e9fc3f75e411dfd2e16235e36b199",
+      "bytes": 32422553,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (27).png",
+      "sha256": "55662cc8d8395241c4bd95df428f0880b108b450e57a52a51dca885072ea75a8",
+      "bytes": 28080814,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (28).png",
+      "sha256": "80b3d70bf686cd2dc5b222b3f9b0306320894b99981a7e67c671f4e05fca50a5",
+      "bytes": 32056229,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (29).png",
+      "sha256": "7bff34008323079c6dc5711ee5c5e4f2eb7fff8bfb98d010770c4a98b435b8a0",
+      "bytes": 32527850,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (3).png",
+      "sha256": "29c8bcc7f986f7fc642dbe5182eca648eb621004e9d674284c8a046f1d3769b6",
+      "bytes": 29092484,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (30).png",
+      "sha256": "ac510c1fac51faef9bf3b26e224997c991a2c0ba64a2a52fa765dcc4f92b1143",
+      "bytes": 32265392,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (31).png",
+      "sha256": "8fec54aebd970d2db6b24ed1f7f011f4f8c6905f08377fe31ebb8db192d49e05",
+      "bytes": 32092086,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (32).png",
+      "sha256": "f817752b9fc7783a943f182b352a8a152673930eb3441084002cbaf087194da1",
+      "bytes": 32056956,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (33).png",
+      "sha256": "a6a5673d70487651e2064e0b8ab46496ad2042b25cbc7663eb0f5bf5525a8241",
+      "bytes": 32244807,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (34).png",
+      "sha256": "17c304932757dca76b1705b881d154acbd862e5e52c50b865f47cda29bdd28b2",
+      "bytes": 27185927,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (35).png",
+      "sha256": "c353a0f3d38122c066b2d8835616927bb0a14147bbde007592bbc62339380cec",
+      "bytes": 32133087,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (36).png",
+      "sha256": "e1f1cd5d2c50262a650e1553d9486ea1fd21c8dfe1d61412380870d56ee20604",
+      "bytes": 32282999,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (37).png",
+      "sha256": "91608a92ae26256d070438e576fc86d7c95819ad887746584787603143e0e3ba",
+      "bytes": 26645191,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (38).png",
+      "sha256": "5285661a55b2c0cfcf95c4f7e0a3c8d0e1fa87683c0c52e2fab52fd9bb17be7a",
+      "bytes": 32261569,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (39).png",
+      "sha256": "77ae3ec9385b944fd95c16de771bcc28a13d03ed6ca9177e1fa5c2943463d457",
+      "bytes": 27552259,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (4).png",
+      "sha256": "06852dcc1ad769a23705a2c4d36cd7c21e188a5368d7fd77a18cbb9a0723e7fe",
+      "bytes": 30394365,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (40).png",
+      "sha256": "163a08ac188bf5ca43e291687becd4965e212be73423e7cb3a305f89209ce90f",
+      "bytes": 32345789,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (41).png",
+      "sha256": "8a4702c03fbc1fa1609dfc21ffaf786b5009652e0f926030ccb871e60e29e9c4",
+      "bytes": 32149092,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (42).png",
+      "sha256": "ee60a49769e33f64ee5da97183f5d3e1d1993938285b37c6a47e158e6182983f",
+      "bytes": 30294187,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (43).png",
+      "sha256": "95d984e5f6f41a864c1d9e4a3a4d1682096c170b22978840eb8ef201fcfab717",
+      "bytes": 32583091,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (44).png",
+      "sha256": "650e812046dff2f79768af22c7d103ee37c7182d50bf368ed5739307b2955d14",
+      "bytes": 32060220,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (45).png",
+      "sha256": "6730f94b22fcc017f6e0fee55f69597dfc062e9c72e57fcb59ef6e0b1b769123",
+      "bytes": 29830970,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (46).png",
+      "sha256": "18fcb4c830bc498b05748d44163f8e1ba89592a37f84d984272dbadf4d65fc08",
+      "bytes": 28832295,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (47).png",
+      "sha256": "16a0363b6b6057f2139d57a4dd0286f567aab59d93547936c92015d811039197",
+      "bytes": 30457325,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (48).png",
+      "sha256": "dc931816492f8e2c8b255eacba90ce0c310ac27ba2c0e84ac485cbf4f04e68c3",
+      "bytes": 29738002,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (49).png",
+      "sha256": "b3bf8226df172d58dc95fec9f6544dcdc69020d66950ca50632e812a5f93023a",
+      "bytes": 30410355,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (5).png",
+      "sha256": "86615776a5feb0869f98fc9ff68f7c3d6c05f1a7162c82cdb52bf78c2076908b",
+      "bytes": 31623696,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (50).png",
+      "sha256": "978e360f18eb03122e71d25efa64883d68b25b7d9daec685bf16f4f5a6d77660",
+      "bytes": 29991876,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (51).png",
+      "sha256": "db50660dc7a87ef79c73c0091e9f0b2b8724b15174b0616abf83e2b0d7653eee",
+      "bytes": 25658874,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (52).png",
+      "sha256": "364247e353eac8b88d71a3d06babb4ba0453f9d18dcd73df46d4818a95c9dde9",
+      "bytes": 25816347,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (53).png",
+      "sha256": "b79a87ae2b70397776ffbea8891ad9d3916d3034d4b1a007090e94df0b24a296",
+      "bytes": 30449646,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (54).png",
+      "sha256": "c74963ce6179ecfb5ca31f51d2f8c3c39dda71142b1563c333c7fd7826b576c7",
+      "bytes": 30515543,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (55).png",
+      "sha256": "c47454810e7dfacbefb9f966cea47cade30a066a7cc1de4054062d6cd0c58ae0",
+      "bytes": 28914192,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (56).png",
+      "sha256": "7077873173656bc9317a2cfd3ecb8ced121dcf33b9cb82e6b97e2ce843366719",
+      "bytes": 30185823,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (57).png",
+      "sha256": "6d50a4534242c3a662756ce9b5d22bc4abe2f5220c889d7a89a2259faf454fad",
+      "bytes": 29391499,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (58).png",
+      "sha256": "c4e282e63934b45f779cf38065ba9a2579c8fc5d41deb647b118bdc06092a342",
+      "bytes": 30386819,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (59).png",
+      "sha256": "4d94dbae8db9efa54646dede6d75d8f9775686bc8ae07ad7c1a39e29180e9c80",
+      "bytes": 28848067,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (6).png",
+      "sha256": "bc767f2cc16e71e55758b56fa111c4947ed5acf92def2c11d7304d2c8e51b3e5",
+      "bytes": 29862867,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (60).png",
+      "sha256": "9a596cce5feb0ac0bc727554102a91ab80b39c62d56d6b26002cd05e04332bde",
+      "bytes": 29527928,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (61).png",
+      "sha256": "f7ae53fdb865018d9919d336180a5b8df25fe80dc97e0bec6e5008dc913fe841",
+      "bytes": 30232505,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (62).png",
+      "sha256": "5f269e2ccf9d6d11d57f67fa68e0189f8bda73bbee7c81c7e4e66e1876aa1314",
+      "bytes": 29981059,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (63).png",
+      "sha256": "b66435cb768f1b19a741be5613b8699eab38802533d689218974e8ba849e2426",
+      "bytes": 30153141,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (64).png",
+      "sha256": "e1e8e3cef60d162c062f3e9af069abfa095dccf2df7e12ba3814c406923899a0",
+      "bytes": 30097780,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (7).png",
+      "sha256": "34d504e854403fe00608dc1eb2ce3322024b665894833d0e3a5f45215fa720ea",
+      "bytes": 32263666,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (8).png",
+      "sha256": "7847c14863e0e6e0dc4cc93833aaad58843b6d88db0b29a51fe3d1bc11302c6f",
+      "bytes": 32008085,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG (9).png",
+      "sha256": "47143e37c357c2739f19cdaf568dc1ea23f1c0e8b1da5346428d09ae35c89107",
+      "bytes": 28007129,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (1).png",
+      "sha256": "f5292b551225059a4b1ddd24c65d07469da8ed349c9b90721d218b33d690b941",
+      "bytes": 31626959,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (10).png",
+      "sha256": "d2af266647ea74dc99f6a2e2830ddb65a94d26b003b1fd30334cdcd56d629b25",
+      "bytes": 29299079,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (11).png",
+      "sha256": "b1c895da01e8ff016d8a96589177c348a630cd09802a64b35982d23e0a5e034c",
+      "bytes": 29398714,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (12).png",
+      "sha256": "dfd9c98adfa2a76fa21262b0729f2177dc88157375758c00699afe7e71f176af",
+      "bytes": 32105565,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (13).png",
+      "sha256": "362911a5fe294ced705b3b8808d3c8586545d83a5439783097c0dd08ba55bc04",
+      "bytes": 32538459,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (14).png",
+      "sha256": "6207abafd199ede0dc312fc4185318622c94927e451f647d3c92fd07e2c3c78e",
+      "bytes": 26142277,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (15).png",
+      "sha256": "b1573cfa99eb574d5d1c5e90986c235b4a4fae74a9646129daa9c3e4ab3d3877",
+      "bytes": 32090753,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (16).png",
+      "sha256": "1892a0657f255afa44042396855223cc93109d39002948bb34bbe6a84dd3562b",
+      "bytes": 32356732,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (17).png",
+      "sha256": "8fe4f62f9bfb5c18d7cfbe91c682062c036e2663a64b0b4ab5054658f0168b16",
+      "bytes": 32330784,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 1,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NHAN_PHONG_CHONG (17).json",
+      "annotation_sha256": "e52bef7374d5f6111bc5c9d161124f0166a06313f3532901968e8bc8bacae282",
+      "split": "test_examples"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (18).png",
+      "sha256": "c8f9c3df6fad6b996a054f10f9a13373198616d7616fd5db894c7b1536ca2988",
+      "bytes": 31879639,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 3,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NHAN_PHONG_CHONG (18).json",
+      "annotation_sha256": "11f1d186db23ba006b9a4cc2f53e62a07dc04a7eca9e4c08e9f46aa0533865f3",
+      "split": "test_examples"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (19).png",
+      "sha256": "ac91cb2db4070c2338ee657f86b30fe92a0aefc640d21db4e31f505a0259d505",
+      "bytes": 28286048,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 1,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NHAN_PHONG_CHONG (19).json",
+      "annotation_sha256": "4e999a325562b4cb87ceb7c8300b9aed00f19625fc14861732217937a669e801",
+      "split": "test_examples"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (2).png",
+      "sha256": "60802b1f0f918073dd7d48e8cc12a5ed13b0e11ddfb3edc9ed012573ac621784",
+      "bytes": 31019216,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (20).png",
+      "sha256": "1f6fa4bf8c81f531f6403171d9f7c224a395dc6e8ec188c90f950517b47875c4",
+      "bytes": 32406216,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 1,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NHAN_PHONG_CHONG (20).json",
+      "annotation_sha256": "bc1b31b3aef936d602dc8da1aa706af5a1e6e4802356bb0a541282573c84011f",
+      "split": "test_examples"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (21).png",
+      "sha256": "4f494c387057eb50125951858171da1b47ec880745ad68c6bae28df28168dea1",
+      "bytes": 32019105,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 3,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NHAN_PHONG_CHONG (21).json",
+      "annotation_sha256": "38881c896dfd25bc7bda8b2d27e70b496f7162b5414f40c9de246cf881613d7f",
+      "split": "test_examples"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (3).png",
+      "sha256": "a114c4e2a47f69cb7661394b06c274bd8ed2e951b14ccf7c6ffe446ae95a1dcb",
+      "bytes": 27125715,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (4).png",
+      "sha256": "7d9a69e65295f1169d1f9cfc1851a75ffb795808c0dc26f9746099e48b8ec240",
+      "bytes": 31338674,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (5).png",
+      "sha256": "85dc5d31ba6ab84fe761fe839837fe5d135366bd5551599b7b82893ee4e2397f",
+      "bytes": 32583989,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (6).png",
+      "sha256": "a0e81381e3491a89263f6a347076eb2a13b8de2150456d3f7b0717a40d1665e5",
+      "bytes": 32020419,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (7).png",
+      "sha256": "42b51a380d77499a65cf3acaaa08c8fa27e1985e6d4c3e6b4b0c63399cd981d5",
+      "bytes": 32046071,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (8).png",
+      "sha256": "d67f36780c46720166d3b1c6ea49d1bababb71eb1da775e5a1128e9d3bdc8de9",
+      "bytes": 29784833,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NHAN_PHONG_CHONG (9).png",
+      "sha256": "6f5dbc85baf58fa70a5e4e86f9d9abfe426f04064f0a6859dbaf5e8598b2f9a3",
+      "bytes": 32405545,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NHAN_PHONG_CHONG",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NhanL1 (1).png",
+      "sha256": "2df1ac0cc187928816f5449d9c672420b8abec5e09da3dba0078f22db76f1331",
+      "bytes": 25871764,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NhanL1 (10).png",
+      "sha256": "b754e32d17310d5df72ca55273846352ab9b205ad5322dbb87560fa955b2708e",
+      "bytes": 26868873,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 1,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (10).json",
+      "annotation_sha256": "f67cfd900355796da4492401c616457ce46b2cf16ad70a3780135546e3d293c6",
+      "split": "train_examples"
+    },
+    {
+      "rel": "NhanL1 (11).png",
+      "sha256": "fa06e6e0bd6552bd3c4c6dd6e3b530febcddb8e2ba3b9e25f63cd8b5a54ed441",
+      "bytes": 31843050,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 1,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (11).json",
+      "annotation_sha256": "f738cb1fc3fa093f1cc5e94552b8cd6c61af7feef91d7bc8d04faaf418631102",
+      "split": "train_examples"
+    },
+    {
+      "rel": "NhanL1 (12).png",
+      "sha256": "2e00818cfaf729e48d02c978114a58c75562148c7834cb448efe20daa5b57335",
+      "bytes": 25693147,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 2,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (12).json",
+      "annotation_sha256": "293d6dc520f550a8e167b615baafd2e681420091a9b1e176100c0d65a6260442",
+      "split": "train_examples"
+    },
+    {
+      "rel": "NhanL1 (13).png",
+      "sha256": "ea2a04c620835018dfb1d69e3555879a7e31de4b84e873b549369d24cc61434e",
+      "bytes": 30536983,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 2,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (13).json",
+      "annotation_sha256": "ce5b1fb9e66f80ccedc9ee85f29ce79c4169f1b66ba08376027a2ec78c004217",
+      "split": "excluded_frame_convention",
+      "exclusion_reason": "FRAME_CONVENTION_CONFLICT; entire image excluded to avoid unlabelled defect background"
+    },
+    {
+      "rel": "NhanL1 (2).png",
+      "sha256": "9641b2cd77023ceb4f2e577c97bee978073c6d22a5074fb72563ab8118542a41",
+      "bytes": 31727158,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 1,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (2).json",
+      "annotation_sha256": "7c3dcc8051e96dd8d2f1e7cf7c348a67507767e945d7393a633bc88b4f0657b1",
+      "split": "train_examples"
+    },
+    {
+      "rel": "NhanL1 (3).png",
+      "sha256": "bcbf6293379670aee1bb1a4aba087a85c48fd16c233174961f2ab0f84a73ac97",
+      "bytes": 31893947,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 1,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (3).json",
+      "annotation_sha256": "16300cbd99c560a0e532ee42c80c1d8babc2461ee52c9df05483a17d8500beae",
+      "split": "train_examples"
+    },
+    {
+      "rel": "NhanL1 (4).png",
+      "sha256": "666638043d101d650b98cd45e8847b8051e62712397634f2ca97dd8f712b9da7",
+      "bytes": 25936525,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 2,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (4).json",
+      "annotation_sha256": "b5d08f3b35d711383d44aad354b0e4854717067a19e06bce9d55f66c4523d351",
+      "split": "train_examples"
+    },
+    {
+      "rel": "NhanL1 (5).png",
+      "sha256": "7cec31494b66ab2b273e2aba0b12657cdfaa9d49d2ed537f17fa65f598c885ae",
+      "bytes": 30650290,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 2,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (5).json",
+      "annotation_sha256": "686aa8088a698d9a890a18d1cae86eba9c3d5e86bc75943c2ce6af472c94390a",
+      "split": "train_examples"
+    },
+    {
+      "rel": "NhanL1 (6).png",
+      "sha256": "454c92cb0bf8b79fdafc21f7b9f2ccf2c91756e25d39b6cf7101e8bb336c47b4",
+      "bytes": 30243817,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 1,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (6).json",
+      "annotation_sha256": "021489cbe5bb1e33294160a6fdbf7ae4b232b23a0cc77e9cfee6f35562b4520b",
+      "split": "train_examples"
+    },
+    {
+      "rel": "NhanL1 (7).png",
+      "sha256": "eebe7bd0057d3d3f7b247143704acc6f982220ef0293d020c780c76bd05882f1",
+      "bytes": 26276004,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 1,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (7).json",
+      "annotation_sha256": "f2ed274f4949cd17031593f38a3fbca91523ae8117bc2c0ab493b9a776ac28eb",
+      "split": "train_examples"
+    },
+    {
+      "rel": "NhanL1 (8).png",
+      "sha256": "5611730e368ccbdeceba3065db1b25dea24a4255a68a82dcd74e1ab3b3d19703",
+      "bytes": 25769361,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 2,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (8).json",
+      "annotation_sha256": "bdc10afd3cf7409bf0d123352725a9ce48eedd9dfb2ab4b6c6510581ab2aa66d",
+      "split": "train_examples"
+    },
+    {
+      "rel": "NhanL1 (9).png",
+      "sha256": "d82356d260d6f432d9f8be2db37265624f2cb5d74f25cd0a8b120d08e70537ae",
+      "bytes": 29704004,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL1",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 1,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (9).json",
+      "annotation_sha256": "a31f5e2dba6361bfc52907bac57d88edceae845248e4d9bea3758631ea62b073",
+      "split": "train_examples"
+    },
+    {
+      "rel": "NhanL2 (1).png",
+      "sha256": "8045a9e309926bfe87029ff61eb11295e9df2c5f294693cc2733ccd40ee1d428",
+      "bytes": 26472411,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL2",
+      "provenance": "human_localization_example_not_exhaustive",
+      "annotation_count": 1,
+      "annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL2 (1).json",
+      "annotation_sha256": "04233b27e497033a9b10204e47a3a07e5bde5a0a25e71d781b044a2e344884dc",
+      "split": "calibration_example"
+    },
+    {
+      "rel": "NhanL2 (2).png",
+      "sha256": "08dc944eee1ca2487863c9a4359c4202d90eedbb8c10b8dcb022b014372d7fb3",
+      "bytes": 29929681,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NhanL2 (3).png",
+      "sha256": "34d713d36ae7b7a2bbfd387930e8e3eea23d314a76a2831b3161ef5a103cde90",
+      "bytes": 26265496,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NhanL2 (4).png",
+      "sha256": "5dced886dc95959482241fbee80d72b6901f9098c5a18012c02549a6c6c861f1",
+      "bytes": 30010778,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NhanL2 (5).png",
+      "sha256": "894400cad76c704239f21d29a0d8a7d83a9d944db3df6710bf4347b7185da4bc",
+      "bytes": 30348068,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NhanL2 (6).png",
+      "sha256": "f0fe3846dbe194ae830d35334645f8943d1d03387ee230d02877b08e306f8616",
+      "bytes": 26378350,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NhanL2 (7).png",
+      "sha256": "7c85dac3f56468b429e697d4a7873e8c8ee3bf89e65ddf023331e6ea43c5db56",
+      "bytes": 30372214,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "NhanL2 (8).png",
+      "sha256": "4a758e222daba6c8768beca9ad11eb31291df11daf24832dde6716c6b865ab29",
+      "bytes": 28595378,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "NhanL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "Phong_L1 (1).png",
+      "sha256": "9707db95a5cf8bffbe12b0617cf362f7cb5dcd0cfa520d8e360cbceeef577435",
+      "bytes": 32419669,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "Phong_L1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "Phong_L1 (10).png",
+      "sha256": "fd830efdced3598fdd007fbd2d571415508de9bccc51ac0151d6d79ad86a03d4",
+      "bytes": 31910587,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "Phong_L1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "Phong_L1 (11).png",
+      "sha256": "b4341c490908688e3f1cc3e37e95691b673ea34c1c81cbfdf924e67b9aeae33c",
+      "bytes": 31898261,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "Phong_L1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "Phong_L1 (2).png",
+      "sha256": "6ffce312f4a9e066684ee31576f270466eac83b20f14a4ce7cca540984d85c87",
+      "bytes": 30997178,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "Phong_L1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "Phong_L1 (3).png",
+      "sha256": "1dcf7dec3f325b1406f21eacf3b4c4fb36f306500277567b3ddccc2789aebf1a",
+      "bytes": 30408414,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "Phong_L1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "Phong_L1 (4).png",
+      "sha256": "1d8d2628361e7ee9a422850f22ee64aef7409cf68a5e2d70864ff9ac680bd169",
+      "bytes": 32289848,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "Phong_L1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "Phong_L1 (5).png",
+      "sha256": "7f4ffbbcffc213fbc8777a014a442934df666346729de9b11a792482ea5fa1f3",
+      "bytes": 31703372,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "Phong_L1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "Phong_L1 (6).png",
+      "sha256": "cca1c3263a07d5303ccb45f17e98d5194a1584a0bdfcfd29d77119e536d3e6fc",
+      "bytes": 30957078,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "Phong_L1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "Phong_L1 (7).png",
+      "sha256": "acbbe278146a50abb3f3df8be34b90c6ae10bbbdaa071d937daca539ea4bea03",
+      "bytes": 32397216,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "Phong_L1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "Phong_L1 (8).png",
+      "sha256": "b6fd7ccb0310687dad65c6d3342a610b511ac74de341f0dc7d17a3338b156e90",
+      "bytes": 27513084,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "Phong_L1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "Phong_L1 (9).png",
+      "sha256": "ee626267fe301759415a3dea3e62c10b6abfab41c3a2a3911886269ba18130ac",
+      "bytes": 32331705,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "Phong_L1",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAY (1).png",
+      "sha256": "3bb48ab704972397892ee5fa7b3f662ae42c40100564ba7aa39e5e9bab4fd153",
+      "bytes": 30516504,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAY",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAY (10).png",
+      "sha256": "b57f3f18d8fc4b2b5ec243b6cea1076309be8d58857f801173d8ee9afbfdbe4d",
+      "bytes": 32382506,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAY",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAY (2).png",
+      "sha256": "5440a784e84b26046915536fde2bd99707b3b1fd9ff889e722029b35fb00be7d",
+      "bytes": 26752884,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAY",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAY (3).png",
+      "sha256": "6e294a8ca93bbf534ae592835d9c04c09b3d4c733fcec88f159c6e381aadbb29",
+      "bytes": 32330733,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAY",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAY (4).png",
+      "sha256": "225bb76fc70a657780bf0b2c5d8b89752de3155bcf02bef27e1d06619404ce49",
+      "bytes": 28958851,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAY",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAY (5).png",
+      "sha256": "1e92f52d5379642c38bb27e88664ba5ad7dd0d2a2b2ccf0f5fc870f7c8cde8ab",
+      "bytes": 30958095,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAY",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAY (6).png",
+      "sha256": "d99d31146a44cbd9c343f969e786d883ac8d602f8deab190995537e3af34e4a9",
+      "bytes": 30584195,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAY",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAY (7).png",
+      "sha256": "9c4174dbe0d12f7c7bca65ce737b214a60447429573a27672c0c0530814659e8",
+      "bytes": 32457738,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAY",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAY (8).png",
+      "sha256": "ccc4d473b10b47a92918a068f1e99f468e644c30585d77863dea91dfecfdc892",
+      "bytes": 26229577,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAY",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAY (9).png",
+      "sha256": "6b3a18e3a89af466c968627323fa58db842bedd94a4b9cfdfe4f2c70f3e88d95",
+      "bytes": 32069019,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAY",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAYL2 (1).png",
+      "sha256": "722b3bccc99607a332d299759013831fe2741a452c58825f6731d5e6dda889bd",
+      "bytes": 28193029,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAYL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAYL2 (2).png",
+      "sha256": "17b6b8698d1b124ea5724a176ba3b196a1b48ab4600c5e9626b19a95916b3caf",
+      "bytes": 29932291,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAYL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAYL2 (3).png",
+      "sha256": "073133b6e38d3129b9dc958d74af38d53c4c856d1df248abf881595471174ef5",
+      "bytes": 29526873,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAYL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAYL2 (4).png",
+      "sha256": "8523825de84d90f3a7dea94a7d89c6a77084b7b66b3442cbf8eae939e3b3406e",
+      "bytes": 29246329,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAYL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAYL2 (5).png",
+      "sha256": "7ea4a3b72fdfb121016a8ff7d1e965bd8bc449a742ecab97b5a5158877f097ae",
+      "bytes": 29909138,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAYL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAYL2 (6).png",
+      "sha256": "1d738e7ad2c69ce5b224c1709e48e64eb7ed5b797ebc42eef8b18d95ba8f3acb",
+      "bytes": 26862466,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAYL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAYL2 (7).png",
+      "sha256": "a81d4fe5ee534d4ded21945b7ca726afbbc45ed1500134dc0b9dce1072e38a34",
+      "bytes": 30243799,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAYL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAYL2 (8).png",
+      "sha256": "e628425f956a11262411af1ba4576b37ec2698f6179f2036f3009dfdaacacb84",
+      "bytes": 29932774,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAYL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    },
+    {
+      "rel": "TRAYL2 (9).png",
+      "sha256": "b6f0dd5974bb6d710aff16ca3cd3ef1284bf6905c5fed1f38247b0573c931b98",
+      "bytes": 29621685,
+      "size": [
+        5472,
+        3648
+      ],
+      "capture_group_proxy": "TRAYL2",
+      "provenance": "unreviewed",
+      "annotation_count": 0,
+      "split": "unlabelled_pool"
+    }
+  ],
+  "approved_plan_revision": "EAI-LOGO-r4-human-seed-diagnostic",
+  "source_manifest_sha256": "c77cd4364910d9f00b65445ca00cfb0b87dd993a14e3026fd3a51e94bf422dfe",
+  "annotation_completeness": "unknown",
+  "production_readiness": "BLOCKED",
+  "agent_labels_allowed": false,
+  "angle_symmetry": 2,
+  "candidate_limit": 1,
+  "accuracy_claims_allowed": false,
+  "exact_train_allowlist": [
+    "NhanL1 (10).png",
+    "NhanL1 (11).png",
+    "NhanL1 (12).png",
+    "NhanL1 (2).png",
+    "NhanL1 (3).png",
+    "NhanL1 (4).png",
+    "NhanL1 (5).png",
+    "NhanL1 (6).png",
+    "NhanL1 (7).png",
+    "NhanL1 (8).png",
+    "NhanL1 (9).png"
+  ],
+  "exact_val_allowlist": [
+    "NhanL2 (1).png"
+  ]
+}

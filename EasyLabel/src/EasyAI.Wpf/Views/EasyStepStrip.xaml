@@ -1,0 +1,130 @@
+<UserControl x:Class="EasyAI.Desktop.Views.EasyStepStrip"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:res="clr-namespace:EasyAI.Desktop.Resources">
+    <UserControl.Resources>
+        <!-- One Easy-mode step: five equal columns, captions wrap to two lines (vi is long). The current step is Primary, a Done step shows a check, a Locked step is disabled (IsEnabled). -->
+        <Style x:Key="EasyStepButtonStyle"
+               TargetType="ui:Button"
+               BasedOn="{StaticResource {x:Type ui:Button}}">
+            <Setter Property="Appearance" Value="Secondary" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="MinHeight" Value="48" />
+            <Setter Property="Padding" Value="6,4" />
+            <Setter Property="Margin" Value="2,0" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsCurrent}" Value="True">
+                    <Setter Property="Appearance" Value="Primary" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <!-- The check of a Done step; a style per element (not a shared icon instance), so several Done steps can show it at once. -->
+        <Style x:Key="EasyStepCheckStyle" TargetType="ui:SymbolIcon">
+            <Setter Property="Symbol" Value="CheckmarkCircle24" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="0,0,4,0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Visibility" Value="Collapsed" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Status}" Value="Done">
+                    <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid AutomationProperties.Name="{x:Static res:Strings.EasyStripName}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Each button takes its item of MainViewModel.EasyModeSteps as DataContext (the strip itself inherits the window's). -->
+        <ui:Button Grid.Column="0"
+                   DataContext="{Binding EasyModeSteps[0]}"
+                   Style="{StaticResource EasyStepButtonStyle}"
+                   Command="{Binding Command}"
+                   IsEnabled="{Binding IsEnabled}"
+                   AutomationProperties.AutomationId="EasyStep1"
+                   AutomationProperties.Name="{Binding Text}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ui:SymbolIcon Grid.Column="0" Style="{StaticResource EasyStepCheckStyle}" />
+                <ui:TextBlock Grid.Column="1" Text="{Binding Text}" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+        </ui:Button>
+        <ui:Button Grid.Column="1"
+                   DataContext="{Binding EasyModeSteps[1]}"
+                   Style="{StaticResource EasyStepButtonStyle}"
+                   Command="{Binding Command}"
+                   IsEnabled="{Binding IsEnabled}"
+                   AutomationProperties.AutomationId="EasyStep2"
+                   AutomationProperties.Name="{Binding Text}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ui:SymbolIcon Grid.Column="0" Style="{StaticResource EasyStepCheckStyle}" />
+                <ui:TextBlock Grid.Column="1" Text="{Binding Text}" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+        </ui:Button>
+        <ui:Button Grid.Column="2"
+                   DataContext="{Binding EasyModeSteps[2]}"
+                   Style="{StaticResource EasyStepButtonStyle}"
+                   Command="{Binding Command}"
+                   IsEnabled="{Binding IsEnabled}"
+                   AutomationProperties.AutomationId="EasyStep3"
+                   AutomationProperties.Name="{Binding Text}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ui:SymbolIcon Grid.Column="0" Style="{StaticResource EasyStepCheckStyle}" />
+                <ui:TextBlock Grid.Column="1" Text="{Binding Text}" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+        </ui:Button>
+        <ui:Button Grid.Column="3"
+                   DataContext="{Binding EasyModeSteps[3]}"
+                   Style="{StaticResource EasyStepButtonStyle}"
+                   Command="{Binding Command}"
+                   IsEnabled="{Binding IsEnabled}"
+                   AutomationProperties.AutomationId="EasyStep4"
+                   AutomationProperties.Name="{Binding Text}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ui:SymbolIcon Grid.Column="0" Style="{StaticResource EasyStepCheckStyle}" />
+                <ui:TextBlock Grid.Column="1" Text="{Binding Text}" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+        </ui:Button>
+        <ui:Button Grid.Column="4"
+                   DataContext="{Binding EasyModeSteps[4]}"
+                   Style="{StaticResource EasyStepButtonStyle}"
+                   Command="{Binding Command}"
+                   IsEnabled="{Binding IsEnabled}"
+                   AutomationProperties.AutomationId="EasyStep5"
+                   AutomationProperties.Name="{Binding Text}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ui:SymbolIcon Grid.Column="0" Style="{StaticResource EasyStepCheckStyle}" />
+                <ui:TextBlock Grid.Column="1" Text="{Binding Text}" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+        </ui:Button>
+    </Grid>
+</UserControl>

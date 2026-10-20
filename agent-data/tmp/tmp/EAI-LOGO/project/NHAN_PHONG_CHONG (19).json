@@ -1,0 +1,37 @@
+{
+  "version": "7.8.1",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          2585.774058577406,
+          955.7991631799164
+        ],
+        [
+          3270.949546981541,
+          882.54140655809
+        ],
+        [
+          3251.0460251046024,
+          696.3849372384936
+        ],
+        [
+          2565.8705367004677,
+          769.64269386032
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "",
+      "direction": null,
+      "mask": null
+    }
+  ],
+  "imagePath": "NHAN_PHONG_CHONG (19).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

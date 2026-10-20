@@ -1,0 +1,143 @@
+{
+  "version": "7.8.1",
+  "flags": {
+    "val": true
+  },
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          3419.62198690382,
+          2326.8284937613503
+        ],
+        [
+          3436.1602282528397,
+          2384.50419551765
+        ],
+        [
+          2955.52938028368,
+          2522.3228734261497
+        ],
+        [
+          2938.9911389346603,
+          2464.64717166985
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "claude-draft3 faint scratch",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          2867.441162109375,
+          198.17294311523438
+        ],
+        [
+          3134.3681640625,
+          153.68515014648438
+        ],
+        [
+          3186.288818359375,
+          465.2091369628906
+        ],
+        [
+          2919.36181640625,
+          509.6969299316406
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          2200.124267578125,
+          566.2084350585938
+        ],
+        [
+          1787.600830078125,
+          788.6474609375
+        ],
+        [
+          1745.478271484375,
+          710.5294799804688
+        ],
+        [
+          2158.001708984375,
+          488.0904235839844
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH",
+      "points": [
+        [
+          2357.7041015625,
+          2406.74560546875
+        ],
+        [
+          3049.115234375,
+          2640.969970703125
+        ],
+        [
+          2966.095947265625,
+          2886.036865234375
+        ],
+        [
+          2274.684814453125,
+          2651.8125
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH_BOT",
+      "points": [
+        [
+          4659.435378679404,
+          2256.851338492957
+        ],
+        [
+          4690.812179914346,
+          1755.5601605304805
+        ],
+        [
+          4794.499679914346,
+          1762.0508831867305
+        ],
+        [
+          4763.122878679404,
+          2263.342061149207
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    }
+  ],
+  "imagePath": "TRAY (5).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

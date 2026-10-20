@@ -1,0 +1,80 @@
+<UserControl x:Class="EasyAI.Desktop.Views.LiveCameraTabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+             AutomationProperties.AutomationId="LiveCameraView">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </UserControl.Resources>
+
+    <!-- DataContext: LiveCameraViewModel. Centre of the Live camera tab: connection banner, preview, Start / Stop / Snapshot. -->
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    Visibility="{Binding ShowBanner, Converter={StaticResource BoolToVisibility}}">
+            <ui:InfoBar Margin="0,0,0,6"
+                        IsOpen="True"
+                        IsClosable="False"
+                        Severity="{Binding BannerSeverity}"
+                        Title="{Binding BannerTitle}"
+                        Message="{Binding BannerText}"
+                        AutomationProperties.AutomationId="LiveCameraBanner" />
+            <ui:Button Margin="0,0,0,6"
+                       HorizontalAlignment="Left"
+                       Appearance="Secondary"
+                       Icon="{ui:SymbolIcon Settings24}"
+                       Content="{x:Static res:Strings.LiveOpenCameraSettings}"
+                       Command="{Binding OpenCameraSettingsCommand}"
+                       AutomationProperties.AutomationId="LiveCameraOpenSettings" />
+        </StackPanel>
+
+        <!-- Fit-to-window preview. Linear scaling: the frame is redrawn up to 30 times a second on small PCs. -->
+        <Image Grid.Row="1"
+               Source="{Binding Preview}"
+               Stretch="Uniform"
+               RenderOptions.BitmapScalingMode="Linear"
+               AutomationProperties.AutomationId="LiveCameraPreview"
+               AutomationProperties.Name="{x:Static res:Strings.LivePreviewName}" />
+
+        <StackPanel Grid.Row="2" Margin="0,6,0,0">
+            <WrapPanel Orientation="Horizontal">
+                <ui:Button Margin="0,0,6,6"
+                           Appearance="Primary"
+                           Icon="{ui:SymbolIcon Play24}"
+                           Content="{x:Static res:Strings.LiveStart}"
+                           Command="{Binding StartLiveCommand}"
+                           AutomationProperties.AutomationId="LiveCameraStart" />
+                <ui:Button Margin="0,0,6,6"
+                           Appearance="Secondary"
+                           Icon="{ui:SymbolIcon Stop24}"
+                           Content="{x:Static res:Strings.LiveStop}"
+                           Command="{Binding StopLiveCommand}"
+                           AutomationProperties.AutomationId="LiveCameraStop" />
+                <ui:Button Margin="0,0,6,6"
+                           Appearance="Secondary"
+                           Icon="{ui:SymbolIcon Camera24}"
+                           Content="{x:Static res:Strings.LiveSnapshot}"
+                           Command="{Binding SnapshotCommand}"
+                           AutomationProperties.AutomationId="LiveCameraSnapshot" />
+                <ui:Button Margin="0,0,6,6"
+                           Appearance="Secondary"
+                           Icon="{ui:SymbolIcon ArrowClockwise24}"
+                           Content="{x:Static res:Strings.LiveResume}"
+                           Command="{Binding ResumeCommand}"
+                           Visibility="{Binding IsFrozen, Converter={StaticResource BoolToVisibility}}"
+                           AutomationProperties.AutomationId="LiveCameraResume" />
+            </WrapPanel>
+            <ui:TextBlock TextWrapping="Wrap"
+                          Foreground="{DynamicResource SystemFillColorCriticalBrush}"
+                          Text="{Binding ActionText}"
+                          Visibility="{Binding HasActionText, Converter={StaticResource BoolToVisibility}}"
+                          AutomationProperties.AutomationId="LiveCameraError" />
+        </StackPanel>
+    </Grid>
+</UserControl>

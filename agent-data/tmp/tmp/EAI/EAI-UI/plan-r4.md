@@ -1,0 +1,33 @@
+# EAI-UI plan r4 (draft, awaiting approval) - addendum to r3 after the user's 2026-10-08 evening request
+
+User request (with the screenshot of the Create-shape menu and two Python scripts JSON2YOLO.py / JsonToYoloObb.py):
+1. A different keyboard shortcut for creating each shape (the menu in the screenshot shows none).
+2. AI agent support is still missing (AI-Box via model / MCP agents).
+3. Import and Export of LabelMe JSON.
+4. Convert a FOLDER of LabelMe JSON to YOLO txt and YOLO OBB txt, following the user's Python scripts.
+Plan r3 commit G (Labelme shortcuts, logo gradient + Settings colours, icon) is already approved; this addendum folds item 1 into G and adds commits H (import/convert tools) and the separate milestone EAI-AI.
+
+## 1. Shortcuts per shape (inside commit G)
+Labelme only binds Ctrl+N (polygon) and Ctrl+R (rectangle); the user wants one per shape. Proposed (no clash with Labelme or Windows editing keys; shown in the Edit menu, context menu and tool-strip tooltips; all bindable in one table covered by a UI-free test):
+Polygon Ctrl+N | Rectangle Ctrl+R | Rotated rectangle Ctrl+Shift+R | Circle Ctrl+Shift+C | Point Ctrl+Shift+P | Line Ctrl+L | Linestrip Ctrl+Shift+L | AI-Points Ctrl+Shift+A | AI-Box Ctrl+B (disabled until AI exists). Edit-shape Ctrl+J, edit label Ctrl+E, duplicate Ctrl+D unchanged. Shortcuts do not fire in text boxes/combos/sliders. The user can change them later only through a future Settings page (not in this milestone).
+
+## 2. Import / Export LabelMe JSON (commit H)
+- **Export** already exists (File > Export > LabelMe JSON copy). Add a direct menu entry `File > Export LabelMe JSON...` that opens the Export dialog preset to that format.
+- **Import `File > Import LabelMe JSON...`:** choose a folder (or files) of LabelMe JSON (+ images beside them or in a chosen images folder). Real behaviour through the existing `LabelMeImportAdapter` and project layout: copies/links images into the project (copy by default, option "reference in place" is NOT offered), writes/merges JSON beside the images without losing unknown keys, maps labels to classes (classes.txt extended with new labels, shown in a preview table before commit), preview of counts (images, shapes by kind, labels, missing images, conflicts: same image name already present -> skip/replace/rename choice with default skip), result summary. Never overwrites without choice; one undo-less, atomic-per-file operation with a report; refused while training. Shape kinds kept as they are (circle, point, line, linestrip, rectangle, polygon, rotation from `oriented_rectangle`/`rotation`).
+
+## 3. Convert tool: JSON folder -> YOLO txt / YOLO OBB txt (commit H)
+New menu `Tools > Convert LabelMe folder to YOLO...` (not tied to the open project): dialog with input folder (recursive like the script's rglob), output folder (mirrors relative paths like the script), target = **YOLO detect (bbox)** or **YOLO OBB**, class names list (multi-line text box, one per line, pre-filled from the project's classes.txt or a `classes.txt` found in the input folder; order = class id, exactly the script's `class_names`), checkbox "write classes.txt" (default on), summary with the script's counters (files converted, objects skipped, objects per class) and a list of skipped items with reasons (unknown label, unsupported shape type, too few points, missing imageWidth/imageHeight). Rules reproduced from the scripts: rectangle with 2 points -> box; for OBB `polygon`/`oriented_rectangle` use the minimum-area rectangle (OpenCV `minAreaRect` -> `boxPoints`), normalised by imageWidth/imageHeight and clamped to [0,1], six decimals; rectangle in OBB mode becomes its 4 corners; in bbox mode the clamping/zero-size check of JSON2YOLO.py applies; labels not in the class list are skipped and counted; other shape types are skipped and counted. The project-specific "expected fan structure" warnings of the OBB script are NOT built in (they are specific to that dataset); instead an optional "expected objects per class" grid (class -> count, empty by default) reproduces the same warning generically.
+Implementation reuses `StandaloneConvertService`/`YoloAnnotationConverter` (YoloObb already exists in Core) where behaviour matches the scripts and adds only what is missing (minAreaRect OBB, clamping, class-list input, per-class counters, skip reasons); verified by golden-file tests built from the two scripts' logic on a small fixture (expected txt text written by hand from the scripts' rules).
+
+## 4. AI agent support = separate milestone EAI-AI (needs the user's answers; defaults proposed)
+Defaults taken (recommended): (a) "Detect from Model" = the active Segment AI model first (boxes from regions), ONNX detector when the user supplies a model; (b) agent integration = EasyAI as an **MCP server** (local stdio/HTTP on loopback) exposing tools: list_images, get_image, get_shapes, add_shape, update_shape, delete_shape, list_labels, set_mode, run_auto_label; the user drives it from Claude Code / Codex with a prompt, key and data stay under the user's control; (c) optional direct API/CLI agent calls are NOT built now (images would leave the machine); (d) AI results enter the dashed suggestion layer (Accept/Reject), never written straight to labels; (e) boxes first, polygon refinement only through the Segment AI model; non-NG/OK labels allowed but ignored by Segment AI with the existing marker. The AI-Box tool button and toolbar AI group become enabled only when a real backend is available. Plan, contract and approval for EAI-AI come after commit H.
+
+## 5. Commits and order
+G (shortcuts incl. per-shape table, gradient/Settings colours, icon) -> H (Import LabelMe, Convert folder tool, File > Export LabelMe entry) -> EAI-5 Inspect -> EAI-AI. Each: build 0 errors, tests (new golden tests for the converter), UIA smoke en+vi, review.
+
+## 6. Risks
+minAreaRect needs OpenCV in Core (EasyLabel.Vision already references OpenCvSharp; Core must not gain a native dependency: put the OBB maths in Core as a pure C# rotating-calipers implementation with tests against OpenCV results in the SegAI/Vision test project). Import can duplicate or clobber annotations: conflict choices default to skip, atomic writes, preview first. Shortcut table may clash with the user's Windows tools (Ctrl+Shift+A in some apps): configurable later.
+Estimate: G 0.6M, H 0.9M tokens; EAI-AI planned separately.
+
+## 7. Questions (defaults taken if unanswered)
+Q1 Per-shape shortcuts as listed. Q2 Import copies images into the project, conflicts default to skip. Q3 Convert tool is standalone under Tools, not project-bound. Q4 EAI-AI as MCP server first (no cloud calls).

@@ -1,0 +1,115 @@
+{
+  "seed_manifest_sha256": "b2275b9d0c6c29434296b7d441c11b93a8d6b7c98baf8a68df60ed05e1e66095",
+  "canonical_source_project": "E:\\Code\\EasyVision_Unisen - NoService\\tmp\\EAI-LOGO\\project",
+  "annotation_completeness": "unknown",
+  "images": [
+    {
+      "rel": "NhanL1 (10).png",
+      "image_sha256": "b754e32d17310d5df72ca55273846352ab9b205ad5322dbb87560fa955b2708e",
+      "canonical_annotation_sha256": "88701fc78295b8e2e3548ae88866fba764c2e82d7eae53b4b09f1fb0ed818ac1",
+      "original_annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (10).json",
+      "original_annotation_sha256": "f67cfd900355796da4492401c616457ce46b2cf16ad70a3780135546e3d293c6",
+      "annotation_count": 1,
+      "provenance": "human_original_canonical_copy"
+    },
+    {
+      "rel": "NhanL1 (11).png",
+      "image_sha256": "fa06e6e0bd6552bd3c4c6dd6e3b530febcddb8e2ba3b9e25f63cd8b5a54ed441",
+      "canonical_annotation_sha256": "67a5bf55588466bb2535619328c400ea7481bb4fd7f5dcbd6de06e3a1a4a40d0",
+      "original_annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (11).json",
+      "original_annotation_sha256": "f738cb1fc3fa093f1cc5e94552b8cd6c61af7feef91d7bc8d04faaf418631102",
+      "annotation_count": 1,
+      "provenance": "human_original_canonical_copy"
+    },
+    {
+      "rel": "NhanL1 (12).png",
+      "image_sha256": "2e00818cfaf729e48d02c978114a58c75562148c7834cb448efe20daa5b57335",
+      "canonical_annotation_sha256": "63ae6d65c35c9fe13a8ab75a48777199e028a0055f423eb603e7be7cf3c91092",
+      "original_annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (12).json",
+      "original_annotation_sha256": "293d6dc520f550a8e167b615baafd2e681420091a9b1e176100c0d65a6260442",
+      "annotation_count": 2,
+      "provenance": "human_original_canonical_copy"
+    },
+    {
+      "rel": "NhanL1 (2).png",
+      "image_sha256": "9641b2cd77023ceb4f2e577c97bee978073c6d22a5074fb72563ab8118542a41",
+      "canonical_annotation_sha256": "8d04d1d7dde449b7119c24f248babc3ca634aef6c40ca41c044f2be9796cd050",
+      "original_annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (2).json",
+      "original_annotation_sha256": "7c3dcc8051e96dd8d2f1e7cf7c348a67507767e945d7393a633bc88b4f0657b1",
+      "annotation_count": 1,
+      "provenance": "human_original_canonical_copy"
+    },
+    {
+      "rel": "NhanL1 (3).png",
+      "image_sha256": "bcbf6293379670aee1bb1a4aba087a85c48fd16c233174961f2ab0f84a73ac97",
+      "canonical_annotation_sha256": "47cd0277bc623f25efbf180ea86cbafa233c2a5326a6eacbb322e97bd4c6dabe",
+      "original_annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (3).json",
+      "original_annotation_sha256": "16300cbd99c560a0e532ee42c80c1d8babc2461ee52c9df05483a17d8500beae",
+      "annotation_count": 1,
+      "provenance": "human_original_canonical_copy"
+    },
+    {
+      "rel": "NhanL1 (4).png",
+      "image_sha256": "666638043d101d650b98cd45e8847b8051e62712397634f2ca97dd8f712b9da7",
+      "canonical_annotation_sha256": "fa2f87518ee05f22beda35a63ce1a6ca3c0898977cb499dc0ea5567a45dfbf98",
+      "original_annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (4).json",
+      "original_annotation_sha256": "b5d08f3b35d711383d44aad354b0e4854717067a19e06bce9d55f66c4523d351",
+      "annotation_count": 2,
+      "provenance": "human_original_canonical_copy"
+    },
+    {
+      "rel": "NhanL1 (5).png",
+      "image_sha256": "7cec31494b66ab2b273e2aba0b12657cdfaa9d49d2ed537f17fa65f598c885ae",
+      "canonical_annotation_sha256": "cd3a7e4ea4ae61185eb37b83a2c9cb85b0d69f2de7c0caf9906f305ff934d665",
+      "original_annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (5).json",
+      "original_annotation_sha256": "686aa8088a698d9a890a18d1cae86eba9c3d5e86bc75943c2ce6af472c94390a",
+      "annotation_count": 2,
+      "provenance": "human_original_canonical_copy"
+    },
+    {
+      "rel": "NhanL1 (6).png",
+      "image_sha256": "454c92cb0bf8b79fdafc21f7b9f2ccf2c91756e25d39b6cf7101e8bb336c47b4",
+      "canonical_annotation_sha256": "727e30bfbd5e18165aa7118b833c5f4e59eafe81dbc3291571cafde0c495c37f",
+      "original_annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (6).json",
+      "original_annotation_sha256": "021489cbe5bb1e33294160a6fdbf7ae4b232b23a0cc77e9cfee6f35562b4520b",
+      "annotation_count": 1,
+      "provenance": "human_original_canonical_copy"
+    },
+    {
+      "rel": "NhanL1 (7).png",
+      "image_sha256": "eebe7bd0057d3d3f7b247143704acc6f982220ef0293d020c780c76bd05882f1",
+      "canonical_annotation_sha256": "277bee69f3a0448e31be8f4e8c343d4a608573d1082d3edb05da8bdd17cccf3d",
+      "original_annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (7).json",
+      "original_annotation_sha256": "f2ed274f4949cd17031593f38a3fbca91523ae8117bc2c0ab493b9a776ac28eb",
+      "annotation_count": 1,
+      "provenance": "human_original_canonical_copy"
+    },
+    {
+      "rel": "NhanL1 (8).png",
+      "image_sha256": "5611730e368ccbdeceba3065db1b25dea24a4255a68a82dcd74e1ab3b3d19703",
+      "canonical_annotation_sha256": "bdc10afd3cf7409bf0d123352725a9ce48eedd9dfb2ab4b6c6510581ab2aa66d",
+      "original_annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (8).json",
+      "original_annotation_sha256": "bdc10afd3cf7409bf0d123352725a9ce48eedd9dfb2ab4b6c6510581ab2aa66d",
+      "annotation_count": 2,
+      "provenance": "human_original_canonical_copy"
+    },
+    {
+      "rel": "NhanL1 (9).png",
+      "image_sha256": "d82356d260d6f432d9f8be2db37265624f2cb5d74f25cd0a8b120d08e70537ae",
+      "canonical_annotation_sha256": "bb4cdcb8f60c25accb348d0ca1c114b136de300d24230a8cc37885f43dfcf2e6",
+      "original_annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL1 (9).json",
+      "original_annotation_sha256": "a31f5e2dba6361bfc52907bac57d88edceae845248e4d9bea3758631ea62b073",
+      "annotation_count": 1,
+      "provenance": "human_original_canonical_copy"
+    },
+    {
+      "rel": "NhanL2 (1).png",
+      "image_sha256": "8045a9e309926bfe87029ff61eb11295e9df2c5f294693cc2733ccd40ee1d428",
+      "canonical_annotation_sha256": "271334190f2da573007355264a473c2927d9b7be3207f131c05319d358e25c43",
+      "original_annotation_source": "E:\\Training\\TrainLOGONEW\\images\\NhanL2 (1).json",
+      "original_annotation_sha256": "04233b27e497033a9b10204e47a3a07e5bde5a0a25e71d781b044a2e344884dc",
+      "annotation_count": 1,
+      "provenance": "human_original_canonical_copy"
+    }
+  ]
+}

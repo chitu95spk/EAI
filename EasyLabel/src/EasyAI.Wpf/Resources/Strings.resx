@@ -1,0 +1,1433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="AppName" xml:space="preserve"><value>EasyAI</value></data>
+  <data name="OpenFolder" xml:space="preserve"><value>Open folder</value></data>
+  <data name="OpenFolderTip" xml:space="preserve"><value>Open an image folder as the project</value></data>
+  <data name="OpenFolderDialogTitle" xml:space="preserve"><value>Open folder</value></data>
+  <data name="ResetLayout" xml:space="preserve"><value>Reset layout</value></data>
+  <data name="ResetLayoutTip" xml:space="preserve"><value>Reset panel widths and window size to defaults</value></data>
+  <data name="ChooseFolder" xml:space="preserve"><value>Choose folder</value></data>
+  <data name="ChooseFolderTip" xml:space="preserve"><value>Choose the folder that contains the native SegAI library</value></data>
+  <data name="ChooseFolderDialogTitle" xml:space="preserve"><value>Choose folder</value></data>
+  <data name="Images" xml:space="preserve"><value>Images</value></data>
+  <data name="Step" xml:space="preserve"><value>Step</value></data>
+  <data name="StepData" xml:space="preserve"><value>Data</value></data>
+  <data name="Engines" xml:space="preserve"><value>Engines</value></data>
+  <data name="SegAi" xml:space="preserve"><value>SegAI</value></data>
+  <data name="Mvs" xml:space="preserve"><value>MVS</value></data>
+  <data name="StatusLoading" xml:space="preserve"><value>Loading</value></data>
+  <data name="StatusLoaded" xml:space="preserve"><value>Loaded</value></data>
+  <data name="StatusUnavailable" xml:space="preserve"><value>Unavailable</value></data>
+  <data name="StatusRestart" xml:space="preserve"><value>Restart to apply</value></data>
+  <data name="Version" xml:space="preserve"><value>Version</value></data>
+  <data name="Location" xml:space="preserve"><value>Path</value></data>
+  <data name="Message" xml:space="preserve"><value>Message</value></data>
+  <data name="Project" xml:space="preserve"><value>Project</value></data>
+  <data name="ImageCount" xml:space="preserve"><value>Images</value></data>
+  <data name="ClassCount" xml:space="preserve"><value>Classes</value></data>
+  <data name="ImagePositionFormat" xml:space="preserve"><value>Image {0}/{1}</value></data>
+  <data name="ImageSizeFormat" xml:space="preserve"><value>{0} x {1}</value></data>
+  <data name="PreviewImage" xml:space="preserve"><value>Preview</value></data>
+  <data name="ProjectErrorTitle" xml:space="preserve"><value>Cannot open project</value></data>
+  <data name="MigrationOneWay" xml:space="preserve"><value>Backup: .easyai/backup. Older EasyAI builds cannot open this project any more.</value></data>
+  <data name="MigrationTitle" xml:space="preserve"><value>Project data updated</value></data>
+  <data name="PreviewErrorTitle" xml:space="preserve"><value>Cannot load image</value></data>
+  <data name="RestartTitle" xml:space="preserve"><value>Restart to apply</value></data>
+  <data name="UnhandledErrorTitle" xml:space="preserve"><value>Unexpected error</value></data>
+  <data name="EngineAbiFormat" xml:space="preserve"><value>ABI {0}</value></data>
+  <data name="StartupWarningTitle" xml:space="preserve"><value>Startup option ignored</value></data>
+  <data name="StartupSettingsDirIgnoredFormat" xml:space="preserve"><value>--settings-dir '{0}' is not an absolute path; the default settings folder is used.</value></data>
+  <data name="StartupProjectIgnoredFormat" xml:space="preserve"><value>--project '{0}' is not an existing folder or .easyai project file and was ignored.</value></data>
+  <data name="StartupSettingsUnavailable" xml:space="preserve"><value>The settings folder cannot be used; settings are not saved in this session.</value></data>
+  <data name="ToolSelect" xml:space="preserve"><value>Select</value></data>
+  <data name="ToolRect" xml:space="preserve"><value>Rect</value></data>
+  <data name="ToolRot" xml:space="preserve"><value>Rotated</value></data>
+  <data name="ToolPolygon" xml:space="preserve"><value>Polygon</value></data>
+  <data name="ToolSelectTip" xml:space="preserve"><value>Edit shapes</value></data>
+  <data name="ToolRectTip" xml:space="preserve"><value>Rectangle</value></data>
+  <data name="ToolRotTip" xml:space="preserve"><value>Rotated box</value></data>
+  <data name="ToolPolygonTip" xml:space="preserve"><value>Polygon</value></data>
+  <data name="ToolsGroup" xml:space="preserve"><value>Tool</value></data>
+  <data name="ClassGroup" xml:space="preserve"><value>Class</value></data>
+  <data name="ClassEditMenu" xml:space="preserve"><value>Edit classes...</value></data>
+  <data name="ClassEditTitle" xml:space="preserve"><value>Class table</value></data>
+  <data name="ClassEditColName" xml:space="preserve"><value>Name</value></data>
+  <data name="ClassEditColKind" xml:space="preserve"><value>Kind</value></data>
+  <data name="ClassEditColEnabled" xml:space="preserve"><value>Enabled</value></data>
+  <data name="ClassEditKindDefect" xml:space="preserve"><value>Defect</value></data>
+  <data name="ClassEditKindGood" xml:space="preserve"><value>Good</value></data>
+  <data name="ClassEditAdd" xml:space="preserve"><value>Add class</value></data>
+  <data name="ClassEditSaveFailed" xml:space="preserve"><value>The class table could not be saved: </value></data>
+  <data name="UndoTip" xml:space="preserve"><value>Undo</value></data>
+  <data name="RedoTip" xml:space="preserve"><value>Redo</value></data>
+  <data name="FitTip" xml:space="preserve"><value>Fit to window</value></data>
+  <data name="ActualSizeTip" xml:space="preserve"><value>Actual size 100%</value></data>
+  <data name="CanvasName" xml:space="preserve"><value>Annotation canvas</value></data>
+  <data name="SaveErrorTitle" xml:space="preserve"><value>Could not save annotations</value></data>
+  <data name="CanvasLoadErrorTitle" xml:space="preserve"><value>Could not load annotations</value></data>
+  <data name="ModeTrain" xml:space="preserve"><value>Train</value></data>
+  <data name="ModeVal" xml:space="preserve"><value>Val</value></data>
+  <data name="ModeIgnored" xml:space="preserve"><value>Ignored</value></data>
+  <data name="Stale" xml:space="preserve"><value>Stale</value></data>
+  <data name="MissingJson" xml:space="preserve"><value>Missing JSON</value></data>
+  <data name="Regions" xml:space="preserve"><value>Regions</value></data>
+  <data name="Close" xml:space="preserve"><value>Close</value></data>
+  <data name="DataSummary" xml:space="preserve"><value>Dataset</value></data>
+  <data name="SummaryTrainTip" xml:space="preserve"><value>Images used for training</value></data>
+  <data name="SummaryValTip" xml:space="preserve"><value>Images used for validation</value></data>
+  <data name="SummaryIgnoredTip" xml:space="preserve"><value>Images without regions</value></data>
+  <data name="SummaryStaleTip" xml:space="preserve"><value>Regions no longer match the stored label data</value></data>
+  <data name="SummaryMissingJsonTip" xml:space="preserve"><value>Images without a LabelMe JSON file</value></data>
+  <data name="ImportDataset" xml:space="preserve"><value>Import dataset</value></data>
+  <data name="ImportDatasetTip" xml:space="preserve"><value>Import an EasyVision dataset folder or zip</value></data>
+  <data name="ImportDatasetDialogTitle" xml:space="preserve"><value>Import dataset</value></data>
+  <data name="ImportDatasetFilter" xml:space="preserve"><value>EasyVision dataset (*.zip;dataset.json)|*.zip;dataset.json</value></data>
+  <data name="ImportResultTitle" xml:space="preserve"><value>Import result</value></data>
+  <data name="ImportResultFormat" xml:space="preserve"><value>Imported {0}, skipped {1}</value></data>
+  <data name="ImportMoreFormat" xml:space="preserve"><value>... and {0} more</value></data>
+  <data name="AddImages" xml:space="preserve"><value>Add images</value></data>
+  <data name="AddImagesTip" xml:space="preserve"><value>Copy images into the project</value></data>
+  <data name="AddImagesDialogTitle" xml:space="preserve"><value>Add images</value></data>
+  <data name="AddImagesFilter" xml:space="preserve"><value>Images (*.png;*.jpg;*.jpeg;*.bmp)|*.png;*.jpg;*.jpeg;*.bmp</value></data>
+  <data name="AddImagesErrorTitle" xml:space="preserve"><value>Some images were not added</value></data>
+  <data name="DataErrorTitle" xml:space="preserve"><value>Data operation failed</value></data>
+  <data name="StepLabel" xml:space="preserve"><value>Label</value></data>
+  <data name="ClassesHeader" xml:space="preserve"><value>Classes</value></data>
+  <data name="ClassListTip" xml:space="preserve"><value>Active class</value></data>
+  <data name="ModelHeader" xml:space="preserve"><value>Model</value></data>
+  <data name="ModelNone" xml:space="preserve"><value>No active model</value></data>
+  <data name="ChooseModelTip" xml:space="preserve"><value>Active model</value></data>
+  <data name="ImportModel" xml:space="preserve"><value>Import model...</value></data>
+  <data name="ImportModelTip" xml:space="preserve"><value>Import model</value></data>
+  <data name="ImportModelDialogTitle" xml:space="preserve"><value>Import model</value></data>
+  <data name="ImportModelFilter" xml:space="preserve"><value>Segment AI model (*.segai)|*.segai</value></data>
+  <data name="ImportModelDoneFormat" xml:space="preserve"><value>Imported as {0}</value></data>
+  <data name="ImportModelRejectedTitle" xml:space="preserve"><value>Model rejected</value></data>
+  <data name="ModelErrorTitle" xml:space="preserve"><value>Model operation failed</value></data>
+  <data name="AutoLabelHeader" xml:space="preserve"><value>Auto-label</value></data>
+  <data name="AutoLabelCurrent" xml:space="preserve"><value>Current image</value></data>
+  <data name="AutoLabelCurrentTip" xml:space="preserve"><value>Auto-label the current image</value></data>
+  <data name="AutoLabelAll" xml:space="preserve"><value>All unlabelled</value></data>
+  <data name="AutoLabelAllTip" xml:space="preserve"><value>Auto-label all unlabelled images</value></data>
+  <data name="SourceTip" xml:space="preserve"><value>Where the suggestions come from (also used by the AI-Box and AI-Points tools)</value></data>
+  <data name="SourceAiModel" xml:space="preserve"><value>AI Model</value></data>
+  <data name="SourceSegmentModel" xml:space="preserve"><value>Segment Model</value></data>
+  <data name="SourceAgentPrompt" xml:space="preserve"><value>Agent Prompt</value></data>
+  <data name="AiPickTip" xml:space="preserve"><value>AI model used by the AI Model source</value></data>
+  <data name="AiPickSam2" xml:space="preserve"><value>SAM2</value></data>
+  <data name="AiPickYoloWorld" xml:space="preserve"><value>YOLO-World</value></data>
+  <data name="AiPickCustomDetect" xml:space="preserve"><value>Custom YOLO</value></data>
+  <data name="AgentPromptTip" xml:space="preserve"><value>What the agent should label</value></data>
+  <data name="AgentPromptPlaceholder" xml:space="preserve"><value>Describe what to label, for example: mark every scratch</value></data>
+  <data name="ReasonNeedSam2" xml:space="preserve"><value>Unavailable: select a SAM2 model in Auto-label</value></data>
+  <data name="ReasonNeedAiOrAgent" xml:space="preserve"><value>Unavailable: select an AI model or an Agent prompt in Auto-label</value></data>
+  <data name="ReasonNoBackend" xml:space="preserve"><value>Unavailable: AI model inference is not integrated yet</value></data>
+  <data name="ReasonAgentNotConnected" xml:space="preserve"><value>Unavailable: {0} agent not connected</value></data>
+  <data name="ReasonNeedPrompt" xml:space="preserve"><value>Unavailable: SAM2 needs a prompt - draw a box with AI-Box or click points with AI-Points</value></data>
+  <data name="ReasonClaudeNotFound" xml:space="preserve"><value>Unavailable: Claude Code not found (install it and sign in, or set EASYAI_CLAUDE)</value></data>
+  <data name="ReasonNeedAgentPrompt" xml:space="preserve"><value>Unavailable: enter a prompt</value></data>
+  <data name="ReasonAgentToolsMissing" xml:space="preserve"><value>Unavailable: agent tools missing (reinstall)</value></data>
+  <data name="ReasonAgentUsesPrompt" xml:space="preserve"><value>Unavailable: the Agent source works from its prompt, not from a drawn box</value></data>
+  <data name="AgentRunning" xml:space="preserve"><value>{0} agent is working...</value></data>
+  <data name="AgentRunDoneFormat" xml:space="preserve"><value>Agent: {0} suggestion(s), {1}, {2} turn(s), {3} s</value></data>
+  <data name="AgentRunCachedFormat" xml:space="preserve"><value>Agent: {0} suggestion(s) (cached)</value></data>
+  <data name="AgentRunNothingFormat" xml:space="preserve"><value>Agent: no suggestions, {0}, {1} turn(s), {2} s</value></data>
+  <data name="AgentSaidFormat" xml:space="preserve"><value>Agent said: {0}</value></data>
+  <data name="AgentNotSignedIn" xml:space="preserve"><value>Claude Code is not signed in: open a terminal, run claude and sign in with /login</value></data>
+  <data name="AgentFailedFormat" xml:space="preserve"><value>The {0} agent run failed: {1}</value></data>
+  <data name="AgentTimedOut" xml:space="preserve"><value>The {0} agent did not finish within 5 minutes and was stopped.</value></data>
+  <data name="AgentBudgetStopped" xml:space="preserve"><value>The agent stopped because its spending limit was reached.</value></data>
+  <data name="AgentLedgerTampered" xml:space="preserve"><value>The record of today's agent spending needs your review before another agent run can start.</value></data>
+  <data name="AgentCostEstimated" xml:space="preserve"><value>Cost is estimated.</value></data>
+  <data name="AgentConsentTitle" xml:space="preserve"><value>Send to an AI service?</value></data>
+  <data name="AgentConsentBody" xml:space="preserve"><value>To label this image with {0}, the image and the text you write are sent over the internet to the servers of {0}. Their use of the data follows their own terms. This is optional: you can keep labelling by hand, and you can withdraw this permission at any time in Settings, Agents.</value></data>
+  <data name="AgentConsentAccept" xml:space="preserve"><value>Allow for this project</value></data>
+  <data name="AgentConsentDeclined" xml:space="preserve"><value>Nothing was sent. The AI assistant did not run.</value></data>
+  <data name="AgentConsentRevoke" xml:space="preserve"><value>Withdraw permission</value></data>
+  <data name="AgentConsentRevoked" xml:space="preserve"><value>Permission withdrawn. The AI assistant will ask again before it runs on this project.</value></data>
+  <data name="AgentConsentGrantedFormat" xml:space="preserve"><value>Allowed for this project since {0}.</value></data>
+  <data name="AgentConsentNone" xml:space="preserve"><value>Not allowed yet. The AI assistant asks before its first use on this project.</value></data>
+  <data name="AgentProviderClaude" xml:space="preserve"><value>Claude (Anthropic)</value></data>
+  <data name="AgentProviderCodex" xml:space="preserve"><value>Codex (OpenAI)</value></data>
+  <data name="AgentPromptTooLongFormat" xml:space="preserve"><value>The prompt is too long: at most {0} characters.</value></data>
+  <data name="AgentExitNoOutputFormat" xml:space="preserve"><value>exit code {0}, no output</value></data>
+  <data name="AgentRunErrorTitle" xml:space="preserve"><value>Agent</value></data>
+  <data name="SuggestPrompt" xml:space="preserve"><value>Suggest prompt</value></data>
+  <data name="SuggestRunning" xml:space="preserve"><value>{0} is looking at the image to suggest prompts...</value></data>
+  <data name="SuggestFailedFormat" xml:space="preserve"><value>Could not suggest prompts: {0}</value></data>
+  <data name="SuggestNoImage" xml:space="preserve"><value>Open an image first to get prompt suggestions.</value></data>
+  <data name="SuggestBadAnswer" xml:space="preserve"><value>the answer had no usable prompt list</value></data>
+  <data name="SuggestTimedOut" xml:space="preserve"><value>{0} did not answer within 90 seconds and was stopped.</value></data>
+  <data name="AiRunningFormat" xml:space="preserve"><value>Running {0}...</value></data>
+  <data name="AiLoadingFormat" xml:space="preserve"><value>Loading {0}...</value></data>
+  <data name="AiProviderFallbackFormat" xml:space="preserve"><value>GPU unavailable, using CPU: {0}</value></data>
+  <data name="AiRunDoneFormat" xml:space="preserve"><value>{0} on {1}: {2} suggestion(s) in {3} ms</value></data>
+  <data name="AiCustomDetectNote" xml:space="preserve"><value>Custom YOLO detects every class of the trained model; the prompt text is not used.</value></data>
+  <data name="AiRunNothingFormat" xml:space="preserve"><value>{0} on {1}: nothing found ({2} ms)</value></data>
+  <data name="AiRunErrorTitle" xml:space="preserve"><value>AI model</value></data>
+  <data name="AiModelErrorFormat" xml:space="preserve"><value>The AI model cannot be used: {0}</value></data>
+  <data name="AiRunFailedFormat" xml:space="preserve"><value>The AI model run failed: {0}</value></data>
+  <data name="Cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="ProgressFormat" xml:space="preserve"><value>{0} / {1}</value></data>
+  <data name="AutoLabelErrorTitle" xml:space="preserve"><value>Auto-label failed</value></data>
+  <data name="AutoLabelNoneFound" xml:space="preserve"><value>No regions found</value></data>
+  <data name="AutoLabelSkippedFormat" xml:space="preserve"><value>{0} image(s) could not be processed: {1}</value></data>
+  <data name="ScoreThreshold" xml:space="preserve"><value>Score threshold</value></data>
+  <data name="SuggestionsHeader" xml:space="preserve"><value>Suggestions</value></data>
+  <data name="AcceptAll" xml:space="preserve"><value>Accept all</value></data>
+  <data name="AcceptAllTip" xml:space="preserve"><value>Accept all suggestions</value></data>
+  <data name="AcceptSelected" xml:space="preserve"><value>Accept selected</value></data>
+  <data name="AcceptSelectedTip" xml:space="preserve"><value>Accept selected (Enter)</value></data>
+  <data name="RejectAll" xml:space="preserve"><value>Reject all</value></data>
+  <data name="RejectAllTip" xml:space="preserve"><value>Reject all suggestions</value></data>
+  <data name="AcceptSuggestionIcon" xml:space="preserve"><value>Accept</value></data>
+  <data name="RejectSuggestionIcon" xml:space="preserve"><value>Reject</value></data>
+  <data name="ReviewSkippedTitle" xml:space="preserve"><value>Review not fully applied</value></data>
+  <data name="ReviewSkippedFormat" xml:space="preserve"><value>{0} suggestion(s) skipped: the shape they refer to changed or is gone. The other suggestions were applied.</value></data>
+  <data name="SplitHeader" xml:space="preserve"><value>Set</value></data>
+  <data name="SplitTip" xml:space="preserve"><value>Train / Val</value></data>
+  <data name="StepTrain" xml:space="preserve"><value>Train</value></data>
+  <data name="TrainOptionsHeader" xml:space="preserve"><value>Options</value></data>
+  <data name="TrainEpochs" xml:space="preserve"><value>Epochs</value></data>
+  <data name="AutoLabelNeedInstanceHead" xml:space="preserve"><value>This Position model has no instance head. Retrain the Position model to get oriented boxes and circles.</value></data>
+  <data name="TrainInstanceQuality" xml:space="preserve"><value>Accuracy</value></data>
+  <data name="InstanceQualityPerformance" xml:space="preserve"><value>Performance</value></data>
+  <data name="InstanceQualityQuality" xml:space="preserve"><value>Quality</value></data>
+  <data name="TrainBlockNoInstanceLabels" xml:space="preserve"><value>No oriented box or circle label yet. Draw boxes or circles in Label, then train.</value></data>
+  <data name="TrainInputSize" xml:space="preserve"><value>Input size</value></data>
+  <data name="TrainStart" xml:space="preserve"><value>Start training</value></data>
+  <data name="TrainStop" xml:space="preserve"><value>Stop</value></data>
+  <data name="TrainBlockNoTrainImages" xml:space="preserve"><value>No Train image has regions yet. Label an image and set it to Train.</value></data>
+  <data name="TrainBlockNoValImages" xml:space="preserve"><value>No image is set to Val. Set one image to Val, or use Auto-assign Val.</value></data>
+  <data name="TrainBlockNativeMissing" xml:space="preserve"><value>The Segment AI library is not loaded. Set its folder in Settings and try again.</value></data>
+  <data name="TrainBlockBackboneMissing" xml:space="preserve"><value>The backbone model file (mobilenetv2-12.onnx) is missing. Open the model folder, copy the file there and try again.</value></data>
+  <data name="TrainBlockBusy" xml:space="preserve"><value>Another operation is running. Wait until it finishes, then start training.</value></data>
+  <data name="TrainBlockNoSession" xml:space="preserve"><value>No project is open. Open or create a project first.</value></data>
+  <data name="TrainProgressFormat" xml:space="preserve"><value>Epoch {0} / {1} · {2} · ETA {3}</value></data>
+  <data name="TrainNoticeTitle" xml:space="preserve"><value>Training</value></data>
+  <data name="TrainFailedTitle" xml:space="preserve"><value>Training failed</value></data>
+  <data name="TrainDoneFormat" xml:space="preserve"><value>Trained {0} in {1}</value></data>
+  <data name="TrainCancelled" xml:space="preserve"><value>Training was cancelled; no model was created</value></data>
+  <data name="TrainCloseTitle" xml:space="preserve"><value>Training is running</value></data>
+  <data name="TrainClosePrompt" xml:space="preserve"><value>Stop the training and close the app?</value></data>
+  <data name="TrainCloseStop" xml:space="preserve"><value>Stop and close</value></data>
+  <data name="TrainStopTimeout" xml:space="preserve"><value>Training did not stop within 30 seconds, so the app stays open. Wait a little longer, then close it again.</value></data>
+  <data name="ChartHeader" xml:space="preserve"><value>Training curves</value></data>
+  <data name="ChartEpoch" xml:space="preserve"><value>Epoch</value></data>
+  <data name="ChartLoss" xml:space="preserve"><value>Loss</value></data>
+  <data name="ChartIou" xml:space="preserve"><value>IoU</value></data>
+  <data name="ChartTrainLoss" xml:space="preserve"><value>Train loss</value></data>
+  <data name="ChartValidationLoss" xml:space="preserve"><value>Validation loss</value></data>
+  <data name="ChartValidationIou" xml:space="preserve"><value>Validation IoU</value></data>
+  <data name="CandidatesHeader" xml:space="preserve"><value>Models</value></data>
+  <data name="TrainKindSegment" xml:space="preserve"><value>Segment AI</value></data>
+  <data name="TrainKindUltra" xml:space="preserve"><value>YOLO / RT-DETR</value></data>
+  <data name="TrainKindTip" xml:space="preserve"><value>Choose the trainer: the built-in Segment AI or a YOLO / RT-DETR model trained with the Ultralytics trainer</value></data>
+  <data name="UltraFamily" xml:space="preserve"><value>Model family</value></data>
+  <data name="UltraBatch" xml:space="preserve"><value>Batch size</value></data>
+  <data name="UltraBatchTip" xml:space="preserve"><value>Empty or 0 = the family default</value></data>
+  <data name="UltraSuffixExperimental" xml:space="preserve"><value>(experimental)</value></data>
+  <data name="UltraSuffixNeedsVram" xml:space="preserve"><value>(needs more VRAM)</value></data>
+  <data name="UltraBlockChecking" xml:space="preserve"><value>Checking the YOLO / RT-DETR trainer...</value></data>
+  <data name="UltraBlockNoTrainerFolder" xml:space="preserve"><value>The YOLO trainer folder tools\easyai-train was not found. Use Segment AI, which works on this PC.</value></data>
+  <data name="UltraBlockNoVenv" xml:space="preserve"><value>The YOLO trainer Python environment (.venv) is missing in tools\easyai-train. Run its setup, or use Segment AI.</value></data>
+  <data name="UltraBlockNoCuda" xml:space="preserve"><value>No CUDA GPU is available for YOLO training. Use Segment AI, which works on this PC.</value></data>
+  <data name="UltraBlockFailed" xml:space="preserve"><value>The YOLO trainer check failed. Use Segment AI, or fix the trainer and open this tab again.</value></data>
+  <data name="UltraBlockNoFamily" xml:space="preserve"><value>No YOLO model family is available. Use Segment AI, or check the trainer setup.</value></data>
+  <data name="UltraBlockNoSamples" xml:space="preserve"><value>No Train image has regions yet. Label an image and set it to Train.</value></data>
+  <data name="UltraStatusReadyFormat" xml:space="preserve"><value>Ready: {0}</value></data>
+  <data name="UltraStatusFailedFormat" xml:space="preserve"><value>Trainer check failed: {0}</value></data>
+  <data name="UltraProgressFormat" xml:space="preserve"><value>Epoch {0} / {1} · box {2} · cls {3} · mAP50 {4} · {5} · ETA {6}</value></data>
+  <data name="UltraDoneFormat" xml:space="preserve"><value>Trained {0}: mAP50 {1}, mAP50-95 {2} in {3}</value></data>
+  <data name="UltraRunsHeader" xml:space="preserve"><value>YOLO / RT-DETR runs</value></data>
+  <data name="UltraRunDetailFormat" xml:space="preserve"><value>{0} · mAP50 {1} · {2}</value></data>
+  <data name="UltraOpenFolder" xml:space="preserve"><value>Open folder</value></data>
+  <data name="UltraOpenFolderFailed" xml:space="preserve"><value>Could not open the folder</value></data>
+  <data name="UltraUseTip" xml:space="preserve"><value>Install this detect model as the Custom YOLO model of the AI Model auto-label source</value></data>
+  <data name="UltraUseOnlyDetectTip" xml:space="preserve"><value>Only detect runs can be used for auto-labelling (this run is segment or oriented boxes)</value></data>
+  <data name="UltraUseNotFinishedTip" xml:space="preserve"><value>Only a run that finished successfully can be used for auto-labelling</value></data>
+  <data name="UltraUseNoOnnxTip" xml:space="preserve"><value>This run has no ONNX file to use for auto-labelling</value></data>
+  <data name="UltraReplaceTitle" xml:space="preserve"><value>Replace the Custom YOLO model?</value></data>
+  <data name="UltraReplaceFormat" xml:space="preserve"><value>Custom YOLO holds the model of run {0}. Replace it with the model of run {1}?</value></data>
+  <data name="UltraReplaceUnknownFormat" xml:space="preserve"><value>A Custom YOLO model is already installed. Replace it with the model of run {0}?</value></data>
+  <data name="UltraUseDoneFormat" xml:space="preserve"><value>Run {0} is now the Custom YOLO model. It is selected in the AI Model source of the Label step.</value></data>
+  <data name="UltraUseFailedFormat" xml:space="preserve"><value>Could not install the model: {0}</value></data>
+  <data name="UltraRunSuccess" xml:space="preserve"><value>Done</value></data>
+  <data name="UltraRunCancelled" xml:space="preserve"><value>Cancelled</value></data>
+  <data name="UltraRunFailed" xml:space="preserve"><value>Failed</value></data>
+  <data name="UseModel" xml:space="preserve"><value>Use this model</value></data>
+  <data name="UseModelDoneFormat" xml:space="preserve"><value>{0} is now the active model</value></data>
+  <data name="CompareHeader" xml:space="preserve"><value>Compare with active model</value></data>
+  <data name="CompareMetric" xml:space="preserve"><value>Metric</value></data>
+  <data name="CompareCandidate" xml:space="preserve"><value>Selected</value></data>
+  <data name="CompareActive" xml:space="preserve"><value>Active</value></data>
+  <data name="CompareDelta" xml:space="preserve"><value>Change</value></data>
+  <data name="MetricMap50" xml:space="preserve"><value>mAP50</value></data>
+  <data name="MetricMap5095" xml:space="preserve"><value>mAP50-95</value></data>
+  <data name="MetricPixelIou" xml:space="preserve"><value>Pixel IoU</value></data>
+  <data name="MetricPixelPrecision" xml:space="preserve"><value>Pixel precision</value></data>
+  <data name="MetricPixelRecall" xml:space="preserve"><value>Pixel recall</value></data>
+  <data name="MetricClassAp50Format" xml:space="preserve"><value>AP50 {0}</value></data>
+  <data name="MetricBoxRatio" xml:space="preserve"><value>Box area ratio</value></data>
+  <data name="MetricImagesOk" xml:space="preserve"><value>Images OK</value></data>
+  <data name="MetricImagesFalseAlarm" xml:space="preserve"><value>False alarms</value></data>
+  <data name="MetricImagesPartial" xml:space="preserve"><value>Partial</value></data>
+  <data name="MetricImagesMissed" xml:space="preserve"><value>Missed</value></data>
+  <data name="MetricValidationImages" xml:space="preserve"><value>Validation images</value></data>
+  <data name="VerdictBetter" xml:space="preserve"><value>Better</value></data>
+  <data name="VerdictWorse" xml:space="preserve"><value>Worse</value></data>
+  <data name="VerdictEqual" xml:space="preserve"><value>Same</value></data>
+  <data name="VerdictNotComparable" xml:space="preserve"><value>Not comparable</value></data>
+  <data name="FlagDifferentValTitle" xml:space="preserve"><value>Different validation set</value></data>
+  <data name="FlagDifferentValMessage" xml:space="preserve"><value>The two models were measured on different validation images.</value></data>
+  <data name="FlagOverextTitle" xml:space="preserve"><value>Boxes may be too large</value></data>
+  <data name="FlagOverextMessage" xml:space="preserve"><value>mAP50 is high while mAP50-95 is low, or the box area ratio is above 1.3.</value></data>
+  <data name="FlagNoActiveTitle" xml:space="preserve"><value>No active model</value></data>
+  <data name="FlagNoActiveMessage" xml:space="preserve"><value>There is no active model to compare with.</value></data>
+  <data name="MenuFile" xml:space="preserve"><value>File</value></data>
+  <data name="MenuEdit" xml:space="preserve"><value>Edit</value></data>
+  <data name="MenuView" xml:space="preserve"><value>View</value></data>
+  <data name="MenuHelp" xml:space="preserve"><value>Help</value></data>
+  <data name="Exit" xml:space="preserve"><value>Exit</value></data>
+  <data name="OpenImages" xml:space="preserve"><value>Open images</value></data>
+  <data name="OpenImagesTip" xml:space="preserve"><value>Open images</value></data>
+  <data name="OpenFolderShortcutTip" xml:space="preserve"><value>Open folder</value></data>
+  <data name="PreviousImage" xml:space="preserve"><value>Previous image</value></data>
+  <data name="PreviousImageTip" xml:space="preserve"><value>Previous image</value></data>
+  <data name="NextImage" xml:space="preserve"><value>Next image</value></data>
+  <data name="NextImageTip" xml:space="preserve"><value>Next image</value></data>
+  <data name="Undo" xml:space="preserve"><value>Undo</value></data>
+  <data name="Redo" xml:space="preserve"><value>Redo</value></data>
+  <data name="Copy" xml:space="preserve"><value>Copy</value></data>
+  <data name="Paste" xml:space="preserve"><value>Paste</value></data>
+  <data name="Duplicate" xml:space="preserve"><value>Duplicate</value></data>
+  <data name="DuplicateTip" xml:space="preserve"><value>Duplicate</value></data>
+  <data name="DeleteShape" xml:space="preserve"><value>Delete shape</value></data>
+  <data name="DeleteShapeTip" xml:space="preserve"><value>Delete shape</value></data>
+  <data name="SelectAll" xml:space="preserve"><value>Select all</value></data>
+  <data name="FitWindow" xml:space="preserve"><value>Fit window</value></data>
+  <data name="ActualSize" xml:space="preserve"><value>Actual size</value></data>
+  <data name="StepPanel" xml:space="preserve"><value>Step panel</value></data>
+  <data name="ImageListPanel" xml:space="preserve"><value>Image list</value></data>
+  <data name="About" xml:space="preserve"><value>About EasyAI</value></data>
+  <data name="AboutVersionFormat" xml:space="preserve"><value>Version {0}</value></data>
+  <data name="StepBar" xml:space="preserve"><value>Workflow</value></data>
+  <data name="Toolbar" xml:space="preserve"><value>Toolbar</value></data>
+  <data name="MnFile" xml:space="preserve"><value>_File</value></data>
+  <data name="MnEdit" xml:space="preserve"><value>_Edit</value></data>
+  <data name="MnView" xml:space="preserve"><value>_View</value></data>
+  <data name="MnEasyAi" xml:space="preserve"><value>Easy_AI</value></data>
+  <data name="MnHelp" xml:space="preserve"><value>_Help</value></data>
+  <data name="MiOpen" xml:space="preserve"><value>_Open</value></data>
+  <data name="MiNextImage" xml:space="preserve"><value>_Next Image</value></data>
+  <data name="MiPrevImage" xml:space="preserve"><value>_Prev Image</value></data>
+  <data name="MiOpenDir" xml:space="preserve"><value>Open _Dir</value></data>
+  <data name="MiSave" xml:space="preserve"><value>_Save</value></data>
+  <data name="MiSaveAs" xml:space="preserve"><value>Save _Label As...</value></data>
+  <data name="MiAutoSave" xml:space="preserve"><value>Save _Automatically</value></data>
+  <data name="MiChangeOutputDir" xml:space="preserve"><value>_Change Output Dir</value></data>
+  <data name="MiEmbedImage" xml:space="preserve"><value>Save With Image Data</value></data>
+  <data name="MiClose" xml:space="preserve"><value>_Close</value></data>
+  <data name="MiDeleteFile" xml:space="preserve"><value>_Delete File</value></data>
+  <data name="MiSettings" xml:space="preserve"><value>Settings...</value></data>
+  <data name="MiExit" xml:space="preserve"><value>_Quit</value></data>
+  <data name="MiPolygon" xml:space="preserve"><value>Create Polygons</value></data>
+  <data name="MiRectangle" xml:space="preserve"><value>Create Rectangle</value></data>
+  <data name="MiRotated" xml:space="preserve"><value>Create Rotated Rectangle</value></data>
+  <data name="MiCircle" xml:space="preserve"><value>Create Circle</value></data>
+  <data name="MiPoint" xml:space="preserve"><value>Create Point</value></data>
+  <data name="MiLine" xml:space="preserve"><value>Create Line</value></data>
+  <data name="MiLinestrip" xml:space="preserve"><value>Create LineStrip</value></data>
+  <data name="MiAiPoints" xml:space="preserve"><value>Create AI-Points</value></data>
+  <data name="MiAiBox" xml:space="preserve"><value>Create AI-Box</value></data>
+  <data name="MiEditMode" xml:space="preserve"><value>Edit Polygons</value></data>
+  <data name="MiUndo" xml:space="preserve"><value>Undo</value></data>
+  <data name="MiUndoLastPoint" xml:space="preserve"><value>Undo last point</value></data>
+  <data name="MiCopyClip" xml:space="preserve"><value>Copy to Clipboard</value></data>
+  <data name="MiPasteClip" xml:space="preserve"><value>Paste from Clipboard</value></data>
+  <data name="MiDuplicateShape" xml:space="preserve"><value>Duplicate Polygons</value></data>
+  <data name="MiEditLabel" xml:space="preserve"><value>Edit _Label</value></data>
+  <data name="MiDeleteShape" xml:space="preserve"><value>Delete Polygons</value></data>
+  <data name="MiMerge" xml:space="preserve"><value>Merge Shapes</value></data>
+  <data name="MiConvertShape" xml:space="preserve"><value>Convert Shape</value></data>
+  <data name="ConvertTargetPolygon" xml:space="preserve"><value>Polygon</value></data>
+  <data name="ConvertTargetRectangle" xml:space="preserve"><value>Rectangle</value></data>
+  <data name="ConvertTargetRotated" xml:space="preserve"><value>Rotated rectangle</value></data>
+  <data name="ConvertTargetCircle" xml:space="preserve"><value>Circle</value></data>
+  <data name="ConvertTargetPoint" xml:space="preserve"><value>Point</value></data>
+  <data name="ConvertShapeTitle" xml:space="preserve"><value>Convert shape</value></data>
+  <data name="ConvertShapeConfirm" xml:space="preserve"><value>Convert</value></data>
+  <data name="ConvertShapeSkippedFormat" xml:space="preserve"><value>Skipped {0} shape(s) that cannot be converted.</value></data>
+  <data name="ShapeConvertLossyHoles" xml:space="preserve"><value>The holes of the shape will be lost.</value></data>
+  <data name="ShapeConvertLossyLine" xml:space="preserve"><value>A line or line strip will become a closed shape built from its points.</value></data>
+  <data name="ShapeConvertLossyPoint" xml:space="preserve"><value>Converting to a point keeps only the centre of the shape.</value></data>
+  <data name="ShapeConvertLossyCircle" xml:space="preserve"><value>Converting to or from a circle only approximates the original shape.</value></data>
+  <data name="ShapeConvertLossyVertices" xml:space="preserve"><value>The polygon vertices will be lost when converting to this shape.</value></data>
+  <data name="MiDeleteVertex" xml:space="preserve"><value>Remove Selected Point</value></data>
+  <data name="MiSelectUp" xml:space="preserve"><value>Select shape above</value></data>
+  <data name="MiSelectDown" xml:space="preserve"><value>Select shape below</value></data>
+  <data name="MiSelectLeft" xml:space="preserve"><value>Select shape to the left</value></data>
+  <data name="MiSelectRight" xml:space="preserve"><value>Select shape to the right</value></data>
+  <data name="MiKeepPrev" xml:space="preserve"><value>Keep Previous Annotation</value></data>
+  <data name="MiShowFlags" xml:space="preserve"><value>Flags</value></data>
+  <data name="MiShowLabels" xml:space="preserve"><value>Label List</value></data>
+  <data name="MiShowShapes" xml:space="preserve"><value>Polygon Labels</value></data>
+  <data name="MiShowFiles" xml:space="preserve"><value>File List</value></data>
+  <data name="MiFillDrawing" xml:space="preserve"><value>Fill Drawing Polygon</value></data>
+  <data name="MiHideShapes" xml:space="preserve"><value>_Hide Polygons</value></data>
+  <data name="MiShowAllShapes" xml:space="preserve"><value>_Show Polygons</value></data>
+  <data name="MiToggleShapes" xml:space="preserve"><value>Toggle Polygons</value></data>
+  <data name="MiZoomIn" xml:space="preserve"><value>Zoom In</value></data>
+  <data name="MiZoomOut" xml:space="preserve"><value>Zoom Out</value></data>
+  <data name="MiOriginalSize" xml:space="preserve"><value>Original size</value></data>
+  <data name="MiKeepZoom" xml:space="preserve"><value>Keep Previous Zoom</value></data>
+  <data name="MiFitWindow" xml:space="preserve"><value>Fit Window</value></data>
+  <data name="MiFitWidth" xml:space="preserve"><value>Fit Width</value></data>
+  <data name="MiBrightness" xml:space="preserve"><value>_Brightness Contrast</value></data>
+  <data name="MiKeepBrightness" xml:space="preserve"><value>Keep Previous Brightness/Contrast</value></data>
+  <data name="MiGuide" xml:space="preserve"><value>_Tutorial</value></data>
+  <data name="MiAddImages" xml:space="preserve"><value>Add images</value></data>
+  <data name="MiAutoLabelCurrent" xml:space="preserve"><value>Auto-label current image</value></data>
+  <data name="MiAutoLabelAll" xml:space="preserve"><value>Auto-label all unlabeled images</value></data>
+  <data name="MiAcceptAll" xml:space="preserve"><value>Accept all</value></data>
+  <data name="MiRejectAll" xml:space="preserve"><value>Reject all</value></data>
+  <data name="MiStartTrain" xml:space="preserve"><value>Start training</value></data>
+  <data name="MiStopTrain" xml:space="preserve"><value>Stop training</value></data>
+  <data name="MiUseModel" xml:space="preserve"><value>Use this model</value></data>
+  <data name="TbOpen" xml:space="preserve"><value>Open</value></data>
+  <data name="TbImportJson" xml:space="preserve"><value>Import Json</value></data>
+  <data name="ImportJsonTip" xml:space="preserve"><value>Import LabelMe JSON files (works without an open project: you pick the project folder first)</value></data>
+  <data name="ImportTargetFolderDialogTitle" xml:space="preserve"><value>Choose the project folder to import into</value></data>
+  <data name="TbOpenDir" xml:space="preserve"><value>Open Dir</value></data>
+  <data name="TbPrev" xml:space="preserve"><value>Prev Image</value></data>
+  <data name="TbNext" xml:space="preserve"><value>Next Image</value></data>
+  <data name="TbSave" xml:space="preserve"><value>Save</value></data>
+  <data name="TbDelete" xml:space="preserve"><value>Delete File</value></data>
+  <data name="TbEditPolygons" xml:space="preserve"><value>Edit Polygons</value></data>
+  <data name="TbDuplicate" xml:space="preserve"><value>Duplicate Polygons</value></data>
+  <data name="TbDeleteShape" xml:space="preserve"><value>Delete Polygons</value></data>
+  <data name="TbUndo" xml:space="preserve"><value>Undo</value></data>
+  <data name="TbBrightness" xml:space="preserve"><value>Brightness Contrast</value></data>
+  <data name="TbFitWindow" xml:space="preserve"><value>Fit Window</value></data>
+  <data name="TbZoom" xml:space="preserve"><value>Zoom</value></data>
+  <data name="TbAiAnnotate" xml:space="preserve"><value>Annotate data with AI assistance</value></data>
+  <data name="TbAiText" xml:space="preserve"><value>AI Text-to-Annotation</value></data>
+  <data name="TbRun" xml:space="preserve"><value>Run</value></data>
+  <data name="TbScore" xml:space="preserve"><value>Score</value></data>
+  <data name="TbIou" xml:space="preserve"><value>IoU</value></data>
+  <data name="TbTextPlaceholder" xml:space="preserve"><value>Enter text...</value></data>
+  <data name="TbShapePolygon" xml:space="preserve"><value>Polygon</value></data>
+  <data name="AiUnavailableFormat" xml:space="preserve"><value>Unavailable: {0}</value></data>
+  <data name="AiDetectedFormat" xml:space="preserve"><value>Model files found: {0}</value></data>
+  <data name="AiCustomUnavailableFormat" xml:space="preserve"><value>Not installed: {0}. Train one in the Train step and press Use this model.</value></data>
+  <data name="SbSavedFormat" xml:space="preserve"><value>Saved {0}</value></data>
+  <data name="SbSavedAsFormat" xml:space="preserve"><value>Saved as {0}</value></data>
+  <data name="SbDeletedFormat" xml:space="preserve"><value>Deleted {0} annotation file(s) of {1}</value></data>
+  <data name="DlgDeleteImageTitle" xml:space="preserve"><value>Delete image</value></data>
+  <data name="DlgDeleteImageMessageFormat" xml:space="preserve"><value>Delete the image {0} and its label files? They are moved to the Recycle Bin.</value></data>
+  <data name="SbDeletedImageFormat" xml:space="preserve"><value>Deleted the image {0} and {1} label file(s)</value></data>
+  <data name="DlgYes" xml:space="preserve"><value>Yes</value></data>
+  <data name="DlgNo" xml:space="preserve"><value>No</value></data>
+  <data name="DlgDeleteImageQuestionFormat" xml:space="preserve"><value>Delete {0}?</value></data>
+  <data name="FileSortTrainFirst" xml:space="preserve"><value>Train first</value></data>
+  <data name="FileSortValFirst" xml:space="preserve"><value>Val first</value></data>
+  <data name="FileRemoveLabels" xml:space="preserve"><value>Remove label</value></data>
+  <data name="DlgDeleteImagesQuestionFormat" xml:space="preserve"><value>Delete {0} images?</value></data>
+  <data name="DlgRemoveLabelsQuestionFormat" xml:space="preserve"><value>Remove the labels of {0}?</value></data>
+  <data name="SbRemovedLabelsFormat" xml:space="preserve"><value>Removed the labels of {0} image(s)</value></data>
+  <data name="SbDeletedImagesFormat" xml:space="preserve"><value>Deleted {0} image(s) and their label files</value></data>
+  <data name="SbNoAnnotationFiles" xml:space="preserve"><value>This image has no annotation files</value></data>
+  <data name="SbOutputDirFormat" xml:space="preserve"><value>Output folder: {0}</value></data>
+  <data name="SbOutputDirCleared" xml:space="preserve"><value>Output folder cleared</value></data>
+  <data name="DlgUnsavedTitle" xml:space="preserve"><value>Unsaved changes</value></data>
+  <data name="DlgUnsavedMessageFormat" xml:space="preserve"><value>Save the changes to {0} before continuing?</value></data>
+  <data name="DlgSave" xml:space="preserve"><value>Save</value></data>
+  <data name="DlgDiscard" xml:space="preserve"><value>Don't save</value></data>
+  <data name="DlgDeleteTitle" xml:space="preserve"><value>Delete annotation files</value></data>
+  <data name="DlgDeleteMessageFormat" xml:space="preserve"><value>Delete the annotation files of {0}? The image itself is kept.</value></data>
+  <data name="DlgDelete" xml:space="preserve"><value>Delete</value></data>
+  <data name="DlgSaveAsTitle" xml:space="preserve"><value>Save as</value></data>
+  <data name="DlgSaveAsFilter" xml:space="preserve"><value>LabelMe label file (*.json)|*.json</value></data>
+  <data name="DlgOutputDirTitle" xml:space="preserve"><value>Choose output folder</value></data>
+  <data name="GuideTitle" xml:space="preserve"><value>Guide</value></data>
+  <data name="GuideMissingFormat" xml:space="preserve"><value>Guide not found: {0} ({1})</value></data>
+  <data name="SetTitle" xml:space="preserve"><value>Settings</value></data>
+  <data name="SetSearchPlaceholder" xml:space="preserve"><value>Search</value></data>
+  <data name="SetOpenConfig" xml:space="preserve"><value>Open config file as text...</value></data>
+  <data name="SetNotYet" xml:space="preserve"><value>Not available in this version</value></data>
+  <data name="SetPageAppearance" xml:space="preserve"><value>Appearance and language</value></data>
+  <data name="SetPageFiles" xml:space="preserve"><value>Files and saving</value></data>
+  <data name="SetPageCanvas" xml:space="preserve"><value>Drawing and canvas</value></data>
+  <data name="SetPageContinue" xml:space="preserve"><value>Carry over between images</value></data>
+  <data name="SetPageLabelSources" xml:space="preserve"><value>Label sources</value></data>
+  <data name="SetPageLabelBehavior" xml:space="preserve"><value>Label behavior</value></data>
+  <data name="SetPageAi" xml:space="preserve"><value>AI support</value></data>
+  <data name="SetPageAiModels" xml:space="preserve"><value>AI models</value></data>
+  <data name="SetSectionTheme" xml:space="preserve"><value>Appearance</value></data>
+  <data name="SetSectionLanguage" xml:space="preserve"><value>Language</value></data>
+  <data name="SetSectionSave" xml:space="preserve"><value>Saving</value></data>
+  <data name="SetSectionDrawing" xml:space="preserve"><value>Drawing</value></data>
+  <data name="SetSectionContinue" xml:space="preserve"><value>Keep when switching images</value></data>
+  <data name="SetSectionSources" xml:space="preserve"><value>Sources</value></data>
+  <data name="SetSectionBehavior" xml:space="preserve"><value>Behavior</value></data>
+  <data name="SetSectionAi" xml:space="preserve"><value>AI support</value></data>
+  <data name="SetSectionAiModels" xml:space="preserve"><value>Models</value></data>
+  <data name="SetTheme" xml:space="preserve"><value>Color theme</value></data>
+  <data name="SetThemeSystem" xml:space="preserve"><value>System</value></data>
+  <data name="SetThemeLight" xml:space="preserve"><value>Light</value></data>
+  <data name="SetThemeDark" xml:space="preserve"><value>Dark</value></data>
+  <data name="SetLanguage" xml:space="preserve"><value>Language</value></data>
+  <data name="SetLanguageRestart" xml:space="preserve"><value>Applies after restart</value></data>
+  <data name="SetLanguageVi" xml:space="preserve"><value>Vietnamese</value></data>
+  <data name="SetLanguageEn" xml:space="preserve"><value>English</value></data>
+  <data name="SetSectionPalette" xml:space="preserve"><value>Colour theme</value></data>
+  <data name="SetThemeAccent" xml:space="preserve"><value>Accent colour</value></data>
+  <data name="SetThemeGradientStart" xml:space="preserve"><value>Gradient start colour</value></data>
+  <data name="SetThemeGradientEnd" xml:space="preserve"><value>Gradient end colour</value></data>
+  <data name="SetThemeBackground" xml:space="preserve"><value>Background colour</value></data>
+  <data name="SetThemeResetCaption" xml:space="preserve"><value>Logo colours (navy accent and blue gradient)</value></data>
+  <data name="SetThemeReset" xml:space="preserve"><value>Reset to logo</value></data>
+  <data name="SetAutoSave" xml:space="preserve"><value>Auto-save</value></data>
+  <data name="SetEmbedImage" xml:space="preserve"><value>Embed image data in label file</value></data>
+  <data name="SetOutputDirectory" xml:space="preserve"><value>Output directory</value></data>
+  <data name="SetChoose" xml:space="preserve"><value>Choose...</value></data>
+  <data name="SetClear" xml:space="preserve"><value>Clear</value></data>
+  <data name="SetNoOutputDirectory" xml:space="preserve"><value>(project folder)</value></data>
+  <data name="SetShowLabelDialog" xml:space="preserve"><value>Show label dialog when creating a new shape</value></data>
+  <data name="SetShapeColorMode" xml:space="preserve"><value>Shape color mode</value></data>
+  <data name="SetColorModeAuto" xml:space="preserve"><value>Auto</value></data>
+  <data name="SetShiftAutoColor" xml:space="preserve"><value>Shift auto color palette</value></data>
+  <data name="SetUniformColor" xml:space="preserve"><value>Uniform color</value></data>
+  <data name="SetFallbackColor" xml:space="preserve"><value>Fallback color (By label)</value></data>
+  <data name="SetFillWhileDrawing" xml:space="preserve"><value>Fill polygon while drawing</value></data>
+  <data name="SetAllowOutOfBounds" xml:space="preserve"><value>Allow points and boxes outside the image</value></data>
+  <data name="SetShowLabelOnCanvas" xml:space="preserve"><value>Show shape labels on canvas (BETA)</value></data>
+  <data name="ToolAiPointsShort" xml:space="preserve"><value>AI-Points</value></data>
+  <data name="ToolAiBoxShort" xml:space="preserve"><value>AI-Box</value></data>
+  <data name="SetOn" xml:space="preserve"><value>On</value></data>
+  <data name="SetOff" xml:space="preserve"><value>Off</value></data>
+  <data name="SetKeepAnnotation" xml:space="preserve"><value>Keep previous annotation</value></data>
+  <data name="SetKeepZoom" xml:space="preserve"><value>Keep previous zoom</value></data>
+  <data name="SetKeepBrightness" xml:space="preserve"><value>Keep previous brightness/contrast</value></data>
+  <data name="SetPredefinedLabels" xml:space="preserve"><value>Predefined labels</value></data>
+  <data name="SetPredefinedImageFlags" xml:space="preserve"><value>Predefined image flags</value></data>
+  <data name="SetPredefinedShapeFlags" xml:space="preserve"><value>Predefined shape flags</value></data>
+  <data name="SetValidateLabels" xml:space="preserve"><value>Validate labels</value></data>
+  <data name="SetSortLabels" xml:space="preserve"><value>Sort labels</value></data>
+  <data name="SetShowLabelTextField" xml:space="preserve"><value>Show label text field</value></data>
+  <data name="SetAutoComplete" xml:space="preserve"><value>Label auto-complete</value></data>
+  <data name="SetStartsWith" xml:space="preserve"><value>Starts with</value></data>
+  <data name="SetAiDefaultModel" xml:space="preserve"><value>Default model</value></data>
+  <data name="SetAiTextModel" xml:space="preserve"><value>AI Text-to-Annotation model</value></data>
+  <data name="SetAiPolygonDetail" xml:space="preserve"><value>Polygon detail</value></data>
+  <data name="SetAiBlockDuplicates" xml:space="preserve"><value>Block results overlapping existing shapes</value></data>
+  <data name="SetAiUnavailable" xml:space="preserve"><value>Unavailable: AI model files are required</value></data>
+  <data name="SetUnavailable" xml:space="preserve"><value>Unavailable</value></data>
+  <data name="ToolCircle" xml:space="preserve"><value>Circle</value></data>
+  <data name="ToolPoint" xml:space="preserve"><value>Point</value></data>
+  <data name="ToolLine" xml:space="preserve"><value>Line</value></data>
+  <data name="ToolLineStrip" xml:space="preserve"><value>Line strip</value></data>
+  <data name="ToolCircleTip" xml:space="preserve"><value>Circle (click the centre, then a point on the edge)</value></data>
+  <data name="ToolPointTip" xml:space="preserve"><value>Point (click)</value></data>
+  <data name="ToolLineTip" xml:space="preserve"><value>Line (click both end points)</value></data>
+  <data name="ToolLineStripTip" xml:space="preserve"><value>Line strip (click the vertices, Enter or double-click to finish)</value></data>
+  <data name="MiAddEdgePoint" xml:space="preserve"><value>Add Point to Edge</value></data>
+  <data name="LblDlgTitle" xml:space="preserve"><value>Shape label</value></data>
+  <data name="LblDlgLabel" xml:space="preserve"><value>Enter the shape label</value></data>
+  <data name="LblDlgGroupId" xml:space="preserve"><value>Group ID</value></data>
+  <data name="LblDlgDescription" xml:space="preserve"><value>Description</value></data>
+  <data name="LblDlgList" xml:space="preserve"><value>Labels</value></data>
+  <data name="LblDlgOk" xml:space="preserve"><value>OK</value></data>
+  <data name="BrightnessTitle" xml:space="preserve"><value>Brightness / Contrast</value></data>
+  <data name="BrightnessLabel" xml:space="preserve"><value>Brightness</value></data>
+  <data name="ContrastLabel" xml:space="preserve"><value>Contrast</value></data>
+  <data name="BrightnessReset" xml:space="preserve"><value>Reset</value></data>
+  <data name="SetColorModeUniform" xml:space="preserve"><value>Uniform</value></data>
+  <data name="SetColorModeLabel" xml:space="preserve"><value>By label</value></data>
+  <data name="SetContains" xml:space="preserve"><value>Contains</value></data>
+  <data name="PnlEasyAi" xml:space="preserve"><value>EasyAI</value></data>
+  <data name="PnlSearchFiles" xml:space="preserve"><value>Search Filename</value></data>
+  <data name="PnlIgnoredBySegAi" xml:space="preserve"><value>ignored by Segment AI</value></data>
+  <data name="PnlAiToolTip" xml:space="preserve"><value>Not available: no AI model is installed</value></data>
+  <data name="SetShapeFlagsLater" xml:space="preserve"><value>Shape flags cannot be edited yet (no editor in the Label dialog or the Shapes list)</value></data>
+  <data name="MiShowLabelsShapes" xml:space="preserve"><value>Label / Shape List</value></data>
+  <data name="MiImportDatasetDots" xml:space="preserve"><value>Import dataset...</value></data>
+  <data name="MiAutoLabelDots" xml:space="preserve"><value>Auto-label...</value></data>
+  <data name="MiTrainDots" xml:space="preserve"><value>Train...</value></data>
+  <data name="PnlNoLabel" xml:space="preserve"><value>(no label)</value></data>
+  <data name="PnlGroupVisibleTip" xml:space="preserve"><value>Show or hide all shapes of this label</value></data>
+  <data name="MiExport" xml:space="preserve"><value>Export...</value></data>
+  <data name="ExpTitle" xml:space="preserve"><value>Export</value></data>
+  <data name="ExpNoProject" xml:space="preserve"><value>Open a project folder first</value></data>
+  <data name="ExpBusy" xml:space="preserve"><value>Not available while training or another operation is running</value></data>
+  <data name="ExpFormat" xml:space="preserve"><value>Format</value></data>
+  <data name="ExpFmtLabelMe" xml:space="preserve"><value>LabelMe JSON (copy)</value></data>
+  <data name="ExpFmtYoloDetect" xml:space="preserve"><value>YOLO detect (boxes)</value></data>
+  <data name="ExpFmtYoloSegment" xml:space="preserve"><value>YOLO segment (polygons)</value></data>
+  <data name="ExpFmtCoco" xml:space="preserve"><value>COCO instances</value></data>
+  <data name="ExpFmtVoc" xml:space="preserve"><value>Pascal VOC</value></data>
+  <data name="ExpFmtMask" xml:space="preserve"><value>Mask PNG (class index)</value></data>
+  <data name="ExpFmtEasyVision" xml:space="preserve"><value>EasyVision dataset</value></data>
+  <data name="ExpFmtCsv" xml:space="preserve"><value>CSV (summary)</value></data>
+  <data name="ExpSet" xml:space="preserve"><value>Images</value></data>
+  <data name="ExpSetAll" xml:space="preserve"><value>All</value></data>
+  <data name="ExpSetTrain" xml:space="preserve"><value>Train</value></data>
+  <data name="ExpSetVal" xml:space="preserve"><value>Val</value></data>
+  <data name="ExpOutput" xml:space="preserve"><value>Output folder</value></data>
+  <data name="ExpBrowse" xml:space="preserve"><value>Browse...</value></data>
+  <data name="ExpBrowseTitle" xml:space="preserve"><value>Choose the export folder</value></data>
+  <data name="ExpCopyImages" xml:space="preserve"><value>Copy images</value></data>
+  <data name="ExpWriteZip" xml:space="preserve"><value>Write ZIP</value></data>
+  <data name="ExpOnlyAnnotated" xml:space="preserve"><value>Only annotated images</value></data>
+  <data name="ExpRun" xml:space="preserve"><value>Export</value></data>
+  <data name="ExpResult" xml:space="preserve"><value>Result</value></data>
+  <data name="ExpProgressFormat" xml:space="preserve"><value>{0} / {1}  {2}</value></data>
+  <data name="ExpSummaryFormat" xml:space="preserve"><value>Exported {0} images ({1} left out), {2} shapes written, {3} shapes skipped, {4} files.</value></data>
+  <data name="ExpWarningPrefix" xml:space="preserve"><value>(warning) </value></data>
+  <data name="ExpMoreFormat" xml:space="preserve"><value>... and {0} more</value></data>
+  <data name="ExpCancelled" xml:space="preserve"><value>Cancelled. Nothing was kept.</value></data>
+  <data name="ExpRefusedFormat" xml:space="preserve"><value>Not exported: {0}</value></data>
+  <data name="ExpFailedFormat" xml:space="preserve"><value>Export failed: {0}</value></data>
+  <data name="StepInspect" xml:space="preserve"><value>Inspect</value></data>
+  <data name="MiInspectDots" xml:space="preserve"><value>Inspect...</value></data>
+  <data name="InspectListHeader" xml:space="preserve"><value>Inspect images</value></data>
+  <data name="InspectSearch" xml:space="preserve"><value>Search inspect images</value></data>
+  <data name="InspectColFile" xml:space="preserve"><value>File</value></data>
+  <data name="InspectColVerdict" xml:space="preserve"><value>Result</value></data>
+  <data name="InspectColScore" xml:space="preserve"><value>Score</value></data>
+  <data name="InspectColMs" xml:space="preserve"><value>ms</value></data>
+  <data name="InspectAddFolder" xml:space="preserve"><value>Add folder</value></data>
+  <data name="InspectAddFolderTip" xml:space="preserve"><value>Add every image of a folder (sub folders included) to the inspect list</value></data>
+  <data name="InspectAddFolderDialogTitle" xml:space="preserve"><value>Choose the folder with the images to inspect</value></data>
+  <data name="InspectAddImages" xml:space="preserve"><value>Add images</value></data>
+  <data name="InspectAddImagesTip" xml:space="preserve"><value>Add images to the inspect list (they are not copied into the project)</value></data>
+  <data name="InspectAddedFormat" xml:space="preserve"><value>Added {0} images to the inspect list</value></data>
+  <data name="InspectRemove" xml:space="preserve"><value>Remove</value></data>
+  <data name="InspectRemoveTip" xml:space="preserve"><value>Remove the selected images from the inspect list (Delete). The files are not deleted</value></data>
+  <data name="InspectFilterAll" xml:space="preserve"><value>All</value></data>
+  <data name="InspectFilterOk" xml:space="preserve"><value>OK</value></data>
+  <data name="InspectFilterNg" xml:space="preserve"><value>NG</value></data>
+  <data name="InspectFilterNotRun" xml:space="preserve"><value>Not run</value></data>
+  <data name="InspectFilterTip" xml:space="preserve"><value>Show only images with this result</value></data>
+  <data name="InspectVerdictError" xml:space="preserve"><value>Error</value></data>
+  <data name="InspectModelTip" xml:space="preserve"><value>Model used to inspect. Choosing one loads it; the active model does not change</value></data>
+  <data name="InspectActiveSuffix" xml:space="preserve"><value>active</value></data>
+  <data name="InspectLoadedNone" xml:space="preserve"><value>No model loaded yet</value></data>
+  <data name="InspectLoadedActiveFormat" xml:space="preserve"><value>Loaded: {0} (active model)</value></data>
+  <data name="InspectLoadedOtherFormat" xml:space="preserve"><value>Loaded: {0} (not the active model; Auto-label uses {1})</value></data>
+  <data name="InspectLoadedNoActiveFormat" xml:space="preserve"><value>Loaded: {0} (no active model is set)</value></data>
+  <data name="InspectNewModelFormat" xml:space="preserve"><value>Inspect with the new model ({0})</value></data>
+  <data name="InspectNewModelTip" xml:space="preserve"><value>Select the model that was just trained. The active model does not change; use "Use this model" on the Train tab for that</value></data>
+  <data name="InspectRunCurrent" xml:space="preserve"><value>Run current</value></data>
+  <data name="InspectRunCurrentTip" xml:space="preserve"><value>Inspect the selected image</value></data>
+  <data name="InspectRunAll" xml:space="preserve"><value>Run all</value></data>
+  <data name="InspectRunAllTip" xml:space="preserve"><value>Inspect every image of the list, one after another</value></data>
+  <data name="InspectExportCsv" xml:space="preserve"><value>Export CSV</value></data>
+  <data name="InspectExportCsvTip" xml:space="preserve"><value>Write the results (file, result, regions, score, ms, model, time) to a CSV file</value></data>
+  <data name="InspectSummaryFormat" xml:space="preserve"><value>{0} · run {1} · OK {2} · NG {3} · errors {4} · {5} ms</value></data>
+  <data name="InspectSettingsFormat" xml:space="preserve"><value>Threshold {0} · minimum area {1} px (model settings)</value></data>
+  <data name="InspectBlockTraining" xml:space="preserve"><value>Training is running</value></data>
+  <data name="InspectBlockNoModel" xml:space="preserve"><value>Choose a model first</value></data>
+  <data name="InspectBlockNoImage" xml:space="preserve"><value>The inspect list is empty</value></data>
+  <data name="InspectErrorTitle" xml:space="preserve"><value>Inspect failed</value></data>
+  <data name="InspectFailedFormat" xml:space="preserve"><value>{0} images could not be inspected: {1}</value></data>
+  <data name="InspectCsvDialogTitle" xml:space="preserve"><value>Export inspect results</value></data>
+  <data name="InspectCsvFilter" xml:space="preserve"><value>CSV (*.csv)|*.csv</value></data>
+  <data name="InspectCsvDoneFormat" xml:space="preserve"><value>Exported {0} results to {1}</value></data>
+  <data name="MiImportLabelMe" xml:space="preserve"><value>Import LabelMe JSON...</value></data>
+  <data name="MiExportLabelMe" xml:space="preserve"><value>Export LabelMe JSON...</value></data>
+  <data name="MnTools" xml:space="preserve"><value>_Tools</value></data>
+  <data name="MiConvertYolo" xml:space="preserve"><value>Convert LabelMe folder to YOLO...</value></data>
+  <data name="ImpTitle" xml:space="preserve"><value>Import LabelMe JSON</value></data>
+  <data name="ImpFolder" xml:space="preserve"><value>LabelMe folder (searched recursively)</value></data>
+  <data name="ImpBrowseTitle" xml:space="preserve"><value>Select the folder with the LabelMe JSON files</value></data>
+  <data name="ImpScan" xml:space="preserve"><value>Scan</value></data>
+  <data name="ImpPreview" xml:space="preserve"><value>Preview (nothing is written until Import)</value></data>
+  <data name="ImpColJson" xml:space="preserve"><value>JSON</value></data>
+  <data name="ImpColImage" xml:space="preserve"><value>Image in project</value></data>
+  <data name="ImpColShapes" xml:space="preserve"><value>Shapes</value></data>
+  <data name="ImpColStatus" xml:space="preserve"><value>Status</value></data>
+  <data name="ImpStatusNew" xml:space="preserve"><value>New</value></data>
+  <data name="ImpStatusConflict" xml:space="preserve"><value>Already in the project</value></data>
+  <data name="ImpStatusMissing" xml:space="preserve"><value>Image not found</value></data>
+  <data name="ImpStatusInvalid" xml:space="preserve"><value>Invalid JSON</value></data>
+  <data name="ImpSummaryFormat" xml:space="preserve"><value>JSON files: {0}. Images found: {1}. Missing images: {2}. Invalid JSON: {3}. Conflicts with the project: {4}. Shapes: {5}.</value></data>
+  <data name="ImpKindsFormat" xml:space="preserve"><value>Shapes by kind: {0}</value></data>
+  <data name="ImpLabelsFormat" xml:space="preserve"><value>New labels (added to classes.txt on import): {0}. Known labels: {1}.</value></data>
+  <data name="ImpReplaceTitle" xml:space="preserve"><value>Replace existing images?</value></data>
+  <data name="ImpReplacePrompt" xml:space="preserve"><value>{0} image(s) already in the project will be overwritten together with their annotations. This cannot be undone.</value></data>
+  <data name="ImpReplaceConfirm" xml:space="preserve"><value>Replace</value></data>
+  <data name="ImpConflict" xml:space="preserve"><value>If the image already exists in the project</value></data>
+  <data name="ImpSkip" xml:space="preserve"><value>Skip (keep the project file)</value></data>
+  <data name="ImpReplace" xml:space="preserve"><value>Replace image and JSON</value></data>
+  <data name="ImpRename" xml:space="preserve"><value>Rename (import as name_1)</value></data>
+  <data name="ImpRun" xml:space="preserve"><value>Import</value></data>
+  <data name="ImpResultFormat" xml:space="preserve"><value>Imported {0}, replaced {1}, renamed {2}, skipped {3}, failed {4}.</value></data>
+  <data name="ImpClassesAddedFormat" xml:space="preserve"><value>Added to classes.txt: {0}</value></data>
+  <data name="ImpNothing" xml:space="preserve"><value>Nothing to import.</value></data>
+  <data name="ImpFailedFormat" xml:space="preserve"><value>Import failed: {0}</value></data>
+  <data name="CvTitle" xml:space="preserve"><value>Convert LabelMe folder to YOLO</value></data>
+  <data name="CvInput" xml:space="preserve"><value>Input folder (LabelMe JSON, searched recursively)</value></data>
+  <data name="CvOutput" xml:space="preserve"><value>Output folder</value></data>
+  <data name="CvInputTitle" xml:space="preserve"><value>Select the input folder</value></data>
+  <data name="CvOutputTitle" xml:space="preserve"><value>Select the output folder</value></data>
+  <data name="CvFormat" xml:space="preserve"><value>Target format</value></data>
+  <data name="CvFmtDetect" xml:space="preserve"><value>YOLO detect (class x y w h)</value></data>
+  <data name="CvFmtObb" xml:space="preserve"><value>YOLO OBB (class x1 y1 x2 y2 x3 y3 x4 y4)</value></data>
+  <data name="CvClasses" xml:space="preserve"><value>Class names (one per line; the line order is the class id)</value></data>
+  <data name="CvWriteClasses" xml:space="preserve"><value>Write classes.txt</value></data>
+  <data name="CvOverwrite" xml:space="preserve"><value>Overwrite existing files in the output folder</value></data>
+  <data name="CvExpected" xml:space="preserve"><value>Expected objects per class in each file (optional; blank = ignore)</value></data>
+  <data name="CvColClass" xml:space="preserve"><value>Class</value></data>
+  <data name="CvColExpected" xml:space="preserve"><value>Expected</value></data>
+  <data name="CvRun" xml:space="preserve"><value>Convert</value></data>
+  <data name="CvNeedFolders" xml:space="preserve"><value>Choose an input folder and an output folder.</value></data>
+  <data name="CvNeedClasses" xml:space="preserve"><value>Enter at least one class name.</value></data>
+  <data name="CvRefusedFormat" xml:space="preserve"><value>Not converted: {0}</value></data>
+  <data name="CvFailedFormat" xml:space="preserve"><value>Conversion failed: {0}</value></data>
+  <data name="CvSummaryFormat" xml:space="preserve"><value>Files found: {0}. Converted: {1}. Failed: {2}. Objects converted: {3}. Objects skipped: {4}.</value></data>
+  <data name="CvClassesWritten" xml:space="preserve"><value>classes.txt written.</value></data>
+  <data name="CvPerClassHeader" xml:space="preserve"><value>Objects per class:</value></data>
+  <data name="CvSkippedHeader" xml:space="preserve"><value>Skipped objects:</value></data>
+  <data name="CvWarningsHeader" xml:space="preserve"><value>Warnings:</value></data>
+  <data name="CvErrorsHeader" xml:space="preserve"><value>Files not converted:</value></data>
+  <data name="CvBadExpectedFormat" xml:space="preserve"><value>The expected count of "{0}" must be a whole number or blank.</value></data>
+  <data name="ImpCancelled" xml:space="preserve"><value>Cancelled; the files already imported were kept.</value></data>
+  <data name="MiNewProject" xml:space="preserve"><value>_New Project...</value></data>
+  <data name="MiOpenProject" xml:space="preserve"><value>Open _Project...</value></data>
+  <data name="MiOpenRecent" xml:space="preserve"><value>Open _Recent</value></data>
+  <data name="MiSaveProject" xml:space="preserve"><value>_Save Project</value></data>
+  <data name="MiSaveProjectAs" xml:space="preserve"><value>Save Project _As...</value></data>
+  <data name="MiRecentRemove" xml:space="preserve"><value>Remove from list</value></data>
+  <data name="MiRecentClear" xml:space="preserve"><value>_Clear list</value></data>
+  <data name="RecentHeader" xml:space="preserve"><value>Recent projects</value></data>
+  <data name="RecentMissingTitle" xml:space="preserve"><value>Project not found</value></data>
+  <data name="RecentMissingFormat" xml:space="preserve"><value>{0} no longer exists. Remove it from the recent list?</value></data>
+  <data name="RecentRemove" xml:space="preserve"><value>Remove</value></data>
+  <data name="ProjNewTitle" xml:space="preserve"><value>New project</value></data>
+  <data name="ProjSaveAsTitle" xml:space="preserve"><value>Save project as</value></data>
+  <data name="ProjName" xml:space="preserve"><value>Project name</value></data>
+  <data name="ProjKind" xml:space="preserve"><value>Project type</value></data>
+  <data name="ProjKindDetect" xml:space="preserve"><value>Detect</value></data>
+  <data name="ProjKindPosition" xml:space="preserve"><value>Position</value></data>
+  <data name="PositionRefusedTitle" xml:space="preserve">
+    <value>Position project</value>
+  </data>
+  <data name="PositionRefusedFormat" xml:space="preserve">
+    <value>{0} suggestion(s) refused: a Position project takes oriented boxes and circles only (polygons and masks are not added).</value>
+  </data>
+  <data name="ProjLocation" xml:space="preserve"><value>Location</value></data>
+  <data name="ProjImageFolder" xml:space="preserve"><value>Image folder (optional)</value></data>
+  <data name="ProjClear" xml:space="preserve"><value>Clear</value></data>
+  <data name="ProjCopyImagesToggle" xml:space="preserve"><value>Copy images and labels</value></data>
+  <data name="ProjFileLabel" xml:space="preserve"><value>Project file</value></data>
+  <data name="ProjPickLocationTitle" xml:space="preserve"><value>Choose the project location</value></data>
+  <data name="ProjPickImagesTitle" xml:space="preserve"><value>Choose the image folder</value></data>
+  <data name="ProjOpenDialogTitle" xml:space="preserve"><value>Open project</value></data>
+  <data name="ProjOpenFilter" xml:space="preserve"><value>EasyAI project (*.easyai)|*.easyai</value></data>
+  <data name="ProjDefaultName" xml:space="preserve"><value>Project</value></data>
+  <data name="ProjCopyScanning" xml:space="preserve"><value>Scanning files...</value></data>
+  <data name="ProjCopyData" xml:space="preserve"><value>Copying project data</value></data>
+  <data name="ProjCopyImages" xml:space="preserve"><value>Copying images</value></data>
+  <data name="ProjCopyFinishing" xml:space="preserve"><value>Finishing...</value></data>
+  <data name="ProjCopyDone" xml:space="preserve"><value>Done</value></data>
+  <data name="ProjNoticeTitle" xml:space="preserve"><value>Project opened with a notice</value></data>
+  <data name="ProjDataRecreatedFormat" xml:space="preserve"><value>The data folder of this project was missing and has been created empty: {0}. Its caches, models and runs are gone.</value></data>
+  <data name="ProjSaveErrorTitle" xml:space="preserve"><value>Cannot update the project file</value></data>
+  <data name="SbProjectSavedFormat" xml:space="preserve"><value>Saved project {0}</value></data>
+  <data name="ProjErrNameEmpty" xml:space="preserve"><value>Enter a project name.</value></data>
+  <data name="ProjErrNameTooLong" xml:space="preserve"><value>The name is longer than {0} characters.</value></data>
+  <data name="ProjErrNameChars" xml:space="preserve"><value>The name contains a character that is not allowed in a file name.</value></data>
+  <data name="ProjErrNameDot" xml:space="preserve"><value>The name cannot end with a dot.</value></data>
+  <data name="ProjErrNameReserved" xml:space="preserve"><value>This name is reserved by Windows. Choose another one.</value></data>
+  <data name="ProjErrNameSuffix" xml:space="preserve"><value>The name cannot end with .easyai or .easyai.data.</value></data>
+  <data name="ProjErrLocationEmpty" xml:space="preserve"><value>Choose a location.</value></data>
+  <data name="ProjErrLocationInvalid" xml:space="preserve"><value>The location cannot be used: {0}</value></data>
+  <data name="ProjErrImageMissing" xml:space="preserve"><value>The image folder was not found: {0}</value></data>
+  <data name="ProjErrTargetExists" xml:space="preserve"><value>Already exists, nothing was changed: {0}</value></data>
+  <data name="ProjErrManifestMissing" xml:space="preserve"><value>The project file was not found: {0}</value></data>
+  <data name="ProjErrManifestInvalid" xml:space="preserve"><value>The project file is not valid: {0}</value></data>
+  <data name="ProjErrLayout" xml:space="preserve"><value>The image folder and the data folder of the project overlap.</value></data>
+  <data name="ProjErrNotNamed" xml:space="preserve"><value>This project has no project file yet. Use Save Project As.</value></data>
+  <data name="ProjErrGeneric" xml:space="preserve"><value>{0}</value></data>
+  <data name="PromptLangTip" xml:space="preserve"><value>Language of the suggested prompts</value></data>
+  <data name="PromptShapesTip" xml:space="preserve"><value>Shape types added to the prompt (none selected = any shape)</value></data>
+  <data name="PromptLabelsTip" xml:space="preserve"><value>Labels added to the prompt (none selected = any label). Right-click for a new label.</value></data>
+  <data name="MiNewLabel" xml:space="preserve"><value>New label...</value></data>
+  <data name="NewLabelTitle" xml:space="preserve"><value>New label</value></data>
+  <data name="NewLabelPlaceholder" xml:space="preserve"><value>Label name</value></data>
+  <data name="NewLabelNeedSession" xml:space="preserve"><value>Open a Segment AI project to add labels.</value></data>
+  <data name="NewLabelFailedFormat" xml:space="preserve"><value>Could not add the label: {0}</value></data>
+  <data name="SetPageAgents" xml:space="preserve"><value>Claude Code &amp; Codex</value></data>
+  <data name="SetPageCache" xml:space="preserve"><value>Cache</value></data>
+  <data name="SetSectionCache" xml:space="preserve"><value>Project cache</value></data>
+  <data name="SetCacheSize" xml:space="preserve"><value>Current cache size</value></data>
+  <data name="SetCacheMax" xml:space="preserve"><value>Max cache size (MB)</value></data>
+  <data name="SetCacheClear" xml:space="preserve"><value>Clear cache</value></data>
+  <data name="SetCacheClearButton" xml:space="preserve"><value>Clear</value></data>
+  <data name="SetPageAgentRun" xml:space="preserve"><value>Agent runs</value></data>
+  <data name="SetSectionAgentRun" xml:space="preserve"><value>Batch limits</value></data>
+  <data name="SetAgentMaxImages" xml:space="preserve"><value>Max images per batch</value></data>
+  <data name="SetAgentBatchWorkers" xml:space="preserve"><value>Images labelled at the same time (follows the Speed slider in Agent chat, 1-32)</value></data>
+  <data name="SetAgentMaxCost" xml:space="preserve"><value>Max cost per batch (USD, 0 = no limit)</value></data>
+  <data name="SetPageCamera" xml:space="preserve"><value>Camera</value></data>
+  <data name="SetSectionCameraSource" xml:space="preserve"><value>Image source</value></data>
+  <data name="SetCameraSource" xml:space="preserve"><value>New images come from</value></data>
+  <data name="SetCameraSourceFiles" xml:space="preserve"><value>Files</value></data>
+  <data name="SetCameraSourceMvs" xml:space="preserve"><value>Camera MVS</value></data>
+  <data name="SetSectionCamera" xml:space="preserve"><value>Camera connection</value></data>
+  <data name="SetCameraDevice" xml:space="preserve"><value>Device</value></data>
+  <data name="SetCameraRefresh" xml:space="preserve"><value>Camera list</value></data>
+  <data name="SetCameraRefreshButton" xml:space="preserve"><value>Refresh</value></data>
+  <data name="SetCameraConnect" xml:space="preserve"><value>Open the selected camera</value></data>
+  <data name="SetCameraConnectButton" xml:space="preserve"><value>Connect</value></data>
+  <data name="SetCameraDisconnect" xml:space="preserve"><value>Close the camera</value></data>
+  <data name="SetCameraDisconnectButton" xml:space="preserve"><value>Disconnect</value></data>
+  <data name="SetCameraStatus" xml:space="preserve"><value>Status</value></data>
+  <data name="SetCameraError" xml:space="preserve"><value>Error</value></data>
+  <data name="SetCameraNoDevices" xml:space="preserve"><value>No camera found</value></data>
+  <data name="CameraStatusDisconnected" xml:space="preserve"><value>Not connected</value></data>
+  <data name="CameraStatusConnecting" xml:space="preserve"><value>Connecting to {0}...</value></data>
+  <data name="CameraStatusConnected" xml:space="preserve"><value>Connected: {0}</value></data>
+  <data name="CameraStatusFaulted" xml:space="preserve"><value>Connection failed: {0}</value></data>
+  <data name="CameraStatusReconnecting" xml:space="preserve"><value>Reconnecting to {0} ({1}/{2})...</value></data>
+  <data name="AgentBatchProgressFormat" xml:space="preserve"><value>Agent {0}/{1} - ${2}</value></data>
+  <data name="AgentBatchSummaryFormat" xml:space="preserve"><value>{0}: {1} images, {2} shapes proposed, {3} failed, ${4}</value></data>
+  <data name="AgentBatchStopDone" xml:space="preserve"><value>Agent batch finished</value></data>
+  <data name="AgentBatchStopImageCap" xml:space="preserve"><value>Agent batch stopped at the image limit</value></data>
+  <data name="AgentBatchStopCostCap" xml:space="preserve"><value>Agent batch stopped at the cost limit</value></data>
+  <data name="AgentBatchStopCancelled" xml:space="preserve"><value>Agent batch cancelled</value></data>
+  <data name="AgentBatchStopError" xml:space="preserve"><value>Agent batch stopped on an error</value></data>
+  <data name="AgentBatchFirstErrorFormat" xml:space="preserve"><value>First error ({0}): {1}</value></data>
+  <data name="AgentBatchNothing" xml:space="preserve"><value>No image to run the agent on in this mode.</value></data>
+  <data name="AgentBatchReviewCaption" xml:space="preserve"><value>Images</value></data>
+  <data name="AgentBatchReviewSelectAll" xml:space="preserve"><value>Select all / none</value></data>
+  <data name="AgentBatchReviewAccept" xml:space="preserve"><value>Accept selected images</value></data>
+  <data name="AgentBatchReviewDiscard" xml:space="preserve"><value>Discard selected images</value></data>
+  <data name="AgentBatchReviewProposedFormat" xml:space="preserve"><value>{0} proposed</value></data>
+  <data name="AgentBatchReviewAccepted" xml:space="preserve"><value>Accepted</value></data>
+  <data name="AgentBatchReviewDiscarded" xml:space="preserve"><value>Discarded</value></data>
+  <data name="AgentBatchReviewOpenFailedFormat" xml:space="preserve"><value>Could not open {0}; its suggestions were kept.</value></data>
+  <data name="ChatModeAll" xml:space="preserve"><value>All images</value></data>
+  <data name="ChatModeCurrent" xml:space="preserve"><value>Current image</value></data>
+  <data name="ChatModeRemaining" xml:space="preserve"><value>Remaining images</value></data>
+  <data name="ChatEffortEconomy" xml:space="preserve"><value>Low</value></data>
+  <data name="ChatEffortNormal" xml:space="preserve"><value>Normal</value></data>
+  <data name="ChatEffortBest" xml:space="preserve"><value>High</value></data>
+  <data name="ChatRoleUser" xml:space="preserve"><value>You</value></data>
+  <data name="ChatRoleAgent" xml:space="preserve"><value>Agent</value></data>
+  <data name="ChatRoleSystem" xml:space="preserve"><value>Review</value></data>
+  <data name="ChatSummaryFormat" xml:space="preserve"><value>{0} proposed · {1} accepted · {2} rejected</value></data>
+  <data name="ChatOutcomeOk" xml:space="preserve"><value>Done</value></data>
+  <data name="ChatOutcomeCancelled" xml:space="preserve"><value>Cancelled</value></data>
+  <data name="ChatOutcomeCached" xml:space="preserve"><value>From cache</value></data>
+  <data name="ChatOutcomeError" xml:space="preserve"><value>Error</value></data>
+  <data name="ChatOutcomeErrorFormat" xml:space="preserve"><value>Error: {0}</value></data>
+  <data name="CacheClearTitle" xml:space="preserve"><value>Clear cache</value></data>
+  <data name="CacheClearMessage" xml:space="preserve"><value>Delete the cached image sizes and the saved Auto-label and Inspect results of this project? They are rebuilt when needed. Your labels and images are not touched.</value></data>
+  <data name="AgentsClaude" xml:space="preserve"><value>Claude Code</value></data>
+  <data name="AgentsCodex" xml:space="preserve"><value>Codex</value></data>
+  <data name="AgentsChecking" xml:space="preserve"><value>Checking...</value></data>
+  <data name="AgentsNotInstalled" xml:space="preserve"><value>Not installed</value></data>
+  <data name="AgentsSignedOut" xml:space="preserve"><value>Not signed in</value></data>
+  <data name="AgentsSignedIn" xml:space="preserve"><value>Signed in</value></data>
+  <data name="AgentsSignedInFormat" xml:space="preserve"><value>Signed in: {0}</value></data>
+  <data name="AgentsLoginWaiting" xml:space="preserve"><value>Finish the sign-in in your browser...</value></data>
+  <data name="AgentsLogin" xml:space="preserve"><value>Sign in</value></data>
+  <data name="AgentsLogout" xml:space="preserve"><value>Sign out</value></data>
+  <data name="AgentsCancel" xml:space="preserve"><value>Stop waiting</value></data>
+  <data name="AgentsRefresh" xml:space="preserve"><value>Refresh</value></data>
+  <data name="AgentsSkills" xml:space="preserve"><value>Skills</value></data>
+  <data name="AgentsRunSkills" xml:space="preserve"><value>Run skills</value></data>
+  <data name="AgentsSkillBuiltIn" xml:space="preserve"><value>Built-in</value></data>
+  <data name="AgentsSkillUser" xml:space="preserve"><value>Your skill</value></data>
+  <data name="AgentsSkillReadOnly" xml:space="preserve"><value>Agent folder (read-only)</value></data>
+  <data name="AgentsNoSkills" xml:space="preserve"><value>No skills</value></data>
+  <data name="AgentsEnableTip" xml:space="preserve"><value>On: the agent can use this skill. Off: the skill folder is parked in the .disabled folder.</value></data>
+  <data name="AgentsEdit" xml:space="preserve"><value>Edit</value></data>
+  <data name="AgentsDelete" xml:space="preserve"><value>Delete</value></data>
+  <data name="AgentsAdd" xml:space="preserve"><value>Add skill</value></data>
+  <data name="AgentsSave" xml:space="preserve"><value>Save</value></data>
+  <data name="AgentsSkillAddTitleFormat" xml:space="preserve"><value>Add skill - {0}</value></data>
+  <data name="AgentsSkillEditTitleFormat" xml:space="preserve"><value>Edit skill - {0}</value></data>
+  <data name="AgentsSkillNamePlaceholder" xml:space="preserve"><value>Skill name (a-z, 0-9, - and _)</value></data>
+  <data name="AgentsSkillNameInvalid" xml:space="preserve"><value>Use only a-z, 0-9, - and _ in the skill name (up to 64 characters).</value></data>
+  <data name="AgentsDeleteMessageFormat" xml:space="preserve"><value>Delete the skill "{0}"? Its folder is removed from disk.</value></data>
+  <data name="AgentsFailedFormat" xml:space="preserve"><value>Failed: {0}</value></data>
+  <data name="McpServers" xml:space="preserve"><value>MCP servers</value></data>
+  <data name="McpAdd" xml:space="preserve"><value>Add server</value></data>
+  <data name="McpApprove" xml:space="preserve"><value>Approve</value></data>
+  <data name="McpRemove" xml:space="preserve"><value>Remove</value></data>
+  <data name="McpStateApproved" xml:space="preserve"><value>Approved</value></data>
+  <data name="McpStateNotApproved" xml:space="preserve"><value>Not approved</value></data>
+  <data name="McpNoServers" xml:space="preserve"><value>No servers</value></data>
+  <data name="McpVersionFormat" xml:space="preserve"><value>Version {0}</value></data>
+  <data name="McpFieldName" xml:space="preserve"><value>Name (letters, digits, - and _)</value></data>
+  <data name="McpFieldSource" xml:space="preserve"><value>Source URL</value></data>
+  <data name="McpFieldVersion" xml:space="preserve"><value>Version</value></data>
+  <data name="McpFieldCommand" xml:space="preserve"><value>Command</value></data>
+  <data name="McpFieldArgs" xml:space="preserve"><value>Arguments (one per line, {run} = run folder)</value></data>
+  <data name="McpFieldWorkingFolder" xml:space="preserve"><value>Working folder</value></data>
+  <data name="McpWorkingFolderValue" xml:space="preserve"><value>{run} (the run folder of each run)</value></data>
+  <data name="McpFieldAccess" xml:space="preserve"><value>What it can access</value></data>
+  <data name="McpFieldTools" xml:space="preserve"><value>Tools (one per line)</value></data>
+  <data name="McpAddTitle" xml:space="preserve"><value>Add MCP server</value></data>
+  <data name="McpEditTitleFormat" xml:space="preserve"><value>Edit MCP server - {0}</value></data>
+  <data name="McpApprovalTitleFormat" xml:space="preserve"><value>Approve MCP server - {0}</value></data>
+  <data name="McpApprovalStatement" xml:space="preserve"><value>EasyAI does not install or verify this server. You must have installed it yourself. After you approve it, the agent program starts it with exactly this command and these arguments.</value></data>
+  <data name="McpNameInvalid" xml:space="preserve"><value>Use only letters, digits, - and _ in the name (up to 64 characters); the name must not contain "easyai".</value></data>
+  <data name="McpEntryInvalid" xml:space="preserve"><value>A command, a version and at least one tool name (letters, digits, - and _) are required; tool names must differ.</value></data>
+  <data name="McpRemoveMessageFormat" xml:space="preserve"><value>Remove the server "{0}" from the list?</value></data>
+  <data name="ReasonCodexNotFound" xml:space="preserve"><value>Unavailable: Codex not found (install the Codex extension, or set EASYAI_CODEX)</value></data>
+  <data name="AgentCodexNotSignedIn" xml:space="preserve"><value>Codex is not signed in: sign in under Settings > Claude Code &amp; Codex</value></data>
+  <data name="AgentsUseThis" xml:space="preserve"><value>Use this agent</value></data>
+  <data name="AgentsInUse" xml:space="preserve"><value>In use</value></data>
+  <data name="AgentsUseTip" xml:space="preserve"><value>Run and Suggest prompt use only this agent.</value></data>
+  <data name="AgentsMemory" xml:space="preserve"><value>Agent memory</value></data>
+  <data name="AgentsMemoryHint" xml:space="preserve"><value>Notes the agent keeps for this project. It reads them at the start of each run.</value></data>
+  <data name="AgentsPrices" xml:space="preserve"><value>Model prices</value></data>
+  <data name="AgentsPricesHint" xml:space="preserve"><value>Claude Code and Codex have no price API. Refresh reads the price tables of platform.claude.com and developers.openai.com so the agent can estimate the cost of a batch.</value></data>
+  <data name="AgentsPricesRefresh" xml:space="preserve"><value>Refresh price</value></data>
+  <data name="AgentsPricesBusy" xml:space="preserve"><value>Reading the pricing pages...</value></data>
+  <data name="AgentsPricesFailed" xml:space="preserve"><value>Refresh failed: {0}</value></data>
+  <data name="AgentsPricesNone" xml:space="preserve"><value>No prices stored yet.</value></data>
+  <data name="AgentsPricesStored" xml:space="preserve"><value>{0} Claude and {1} OpenAI models, read {2:g}.</value></data>
+  <data name="AgentsRefine" xml:space="preserve"><value>Prompt sub-agent</value></data>
+  <data name="AgentsRefineHint" xml:space="preserve"><value>Before the main agent starts, a short sub-agent run checks what you typed, turns it into a clear command the agent understands, translates it to English when needed and explains it back to you in the language of the app.</value></data>
+  <data name="AgentsRefineEnable" xml:space="preserve"><value>Auto-edit my prompt before sending</value></data>
+  <data name="AgentsRefineInstruction" xml:space="preserve"><value>Extra instruction for the sub-agent (optional)</value></data>
+  <data name="AgentRefineTip" xml:space="preserve"><value>Auto-edit prompt: a sub-agent rewrites your request as a clear English command and explains it before the agent runs</value></data>
+  <data name="AgentRefineRunning" xml:space="preserve"><value>Prompt sub-agent is editing your prompt...</value></data>
+  <data name="AgentRefineFailed" xml:space="preserve"><value>The prompt sub-agent gave no usable answer, so your original prompt is sent.</value></data>
+  <data name="AgentRefineNotice" xml:space="preserve"><value>Prompt sub-agent: {0}
+Sent to the agent: {1}</value></data>
+  <data name="AgentsMemoryEmpty" xml:space="preserve"><value>Memory is empty</value></data>
+  <data name="AgentsMemoryNoProject" xml:space="preserve"><value>Open a project to see its memory</value></data>
+  <data name="AgentsMemorySizeFormat" xml:space="preserve"><value>{0} notes, {1} characters</value></data>
+  <data name="AgentsMemoryEdit" xml:space="preserve"><value>Edit</value></data>
+  <data name="AgentsMemoryClear" xml:space="preserve"><value>Clear</value></data>
+  <data name="AgentsMemoryEditTitle" xml:space="preserve"><value>Agent memory</value></data>
+  <data name="AgentsMemoryClearMessage" xml:space="preserve"><value>Clear the memory of this project? The agent forgets every note.</value></data>
+  <data name="PromptPrecision" xml:space="preserve"><value>Box accuracy</value></data>
+  <data name="PrecisionEasy" xml:space="preserve"><value>Easy</value></data>
+  <data name="PrecisionNormal" xml:space="preserve"><value>Normal</value></data>
+  <data name="PrecisionHard" xml:space="preserve"><value>Hard</value></data>
+  <data name="PrecisionTip" xml:space="preserve"><value>Easy: loose boxes, fast. Hard: the agent zooms in and tightens every box.</value></data>
+  <data name="PromptEffort" xml:space="preserve"><value>Agent effort</value></data>
+  <data name="EffortEconomy" xml:space="preserve"><value>Economy</value></data>
+  <data name="EffortNormal" xml:space="preserve"><value>Normal</value></data>
+  <data name="EffortBest" xml:space="preserve"><value>Best effort</value></data>
+  <data name="EffortTip" xml:space="preserve"><value>Economy: fewest turns and tokens. Best effort: most thorough, costs more.</value></data>
+  <data name="PromptModel" xml:space="preserve"><value>Model</value></data>
+  <data name="PromptLanguageCaption" xml:space="preserve"><value>Language</value></data>
+  <data name="AgentModelDefault" xml:space="preserve"><value>Default (account)</value></data>
+  <data name="ModelTip" xml:space="preserve"><value>The models the agent in use reports. Changing the agent in Settings changes the list.</value></data>
+  <data name="AgentAttachTitle" xml:space="preserve"><value>Attach hint files</value></data>
+  <data name="AgentAttachFilter" xml:space="preserve"><value>Pictures and notes|*.png;*.jpg;*.jpeg;*.bmp;*.tif;*.tiff;*.txt;*.md;*.json;*.csv</value></data>
+  <data name="AgentAttach" xml:space="preserve"><value>Attach picture or file</value></data>
+  <data name="AgentRemoveAttachment" xml:space="preserve"><value>Remove</value></data>
+  <data name="AgentWorkersCaption" xml:space="preserve"><value>Parallel runs</value></data>
+  <data name="AgentSpeedCaption" xml:space="preserve"><value>Speed</value></data>
+  <data name="AgentTuningTip" xml:space="preserve"><value>Speed and effort</value></data>
+  <data name="AgentEffortCaption" xml:space="preserve"><value>Effort</value></data>
+  <data name="AgentReviewCaption" xml:space="preserve"><value>Suggestions</value></data>
+  <data name="AgentStartImageCaption" xml:space="preserve"><value>Start at</value></data>
+  <data name="AgentOptions" xml:space="preserve"><value>Options</value></data>
+  <data name="AgentOptionsTip" xml:space="preserve"><value>Agent options: language of the suggestions, box accuracy, effort, model, shapes and labels.</value></data>
+  <data name="AgentChatTitle" xml:space="preserve"><value>Agent chat</value></data>
+  <data name="AgentChatCheck" xml:space="preserve"><value>Check</value></data>
+  <data name="AgentChatModeCaption" xml:space="preserve"><value>Images</value></data>
+  <data name="AgentChatCapsFormat" xml:space="preserve"><value>{0} images · ${1} max</value></data>
+  <data name="AgentChatCapsNoCostFormat" xml:space="preserve"><value>{0} images · no cost cap</value></data>
+  <data name="StepLive" xml:space="preserve"><value>Live camera</value></data>
+  <data name="LiveParamsTitle" xml:space="preserve"><value>Set parameter</value></data>
+  <data name="LiveStart" xml:space="preserve"><value>Start live</value></data>
+  <data name="LiveStop" xml:space="preserve"><value>Stop</value></data>
+  <data name="LiveSnapshot" xml:space="preserve"><value>Snapshot</value></data>
+  <data name="LiveResume" xml:space="preserve"><value>Resume live</value></data>
+  <data name="LiveRefresh" xml:space="preserve"><value>Refresh</value></data>
+  <data name="LiveAuto" xml:space="preserve"><value>Auto</value></data>
+  <data name="LiveBannerTitle" xml:space="preserve"><value>Camera not connected</value></data>
+  <data name="LiveOpenCameraSettings" xml:space="preserve"><value>Camera settings</value></data>
+  <data name="LiveSnapshotFailedFormat" xml:space="preserve"><value>Snapshot failed: {0}</value></data>
+  <data name="TbCaptureNew" xml:space="preserve"><value>Capture new</value></data>
+  <data name="TbCaptureCurrent" xml:space="preserve"><value>Capture to current</value></data>
+  <data name="InspectCapture" xml:space="preserve"><value>Capture</value></data>
+  <data name="CaptureNewTip" xml:space="preserve"><value>Capture one frame and add it to the project as a new image</value></data>
+  <data name="CaptureCurrentTip" xml:space="preserve"><value>Capture one frame and overwrite the current image</value></data>
+  <data name="CaptureInspectTip" xml:space="preserve"><value>Capture one frame and add it to the project and the inspect list</value></data>
+  <data name="CaptureOverwriteTitle" xml:space="preserve"><value>Overwrite the current image?</value></data>
+  <data name="CaptureOverwriteMessage" xml:space="preserve"><value>The original image file will be overwritten with the captured frame and cannot be restored. The labels are kept.</value></data>
+  <data name="CaptureOverwriteConfirm" xml:space="preserve"><value>Overwrite</value></data>
+  <data name="CaptureErrorTitle" xml:space="preserve"><value>Capture failed</value></data>
+  <data name="CaptureReplacedTitle" xml:space="preserve"><value>Image replaced</value></data>
+  <data name="CaptureBlockNotConnected" xml:space="preserve"><value>The camera is not connected.</value></data>
+  <data name="CaptureBlockNoProject" xml:space="preserve"><value>Open a project first.</value></data>
+  <data name="CaptureBlockNoImage" xml:space="preserve"><value>Select an image first.</value></data>
+  <data name="CaptureBlockTraining" xml:space="preserve"><value>Training is running.</value></data>
+  <data name="CaptureErrTimeoutFormat" xml:space="preserve"><value>No frame arrived from the camera in time. {0}</value></data>
+  <data name="CaptureErrGrabFormat" xml:space="preserve"><value>Could not grab a frame: {0}</value></data>
+  <data name="CaptureReplacedSizeFormat" xml:space="preserve"><value>The new frame is {1}, the old image was {0}. The labels were kept.</value></data>
+  <data name="CaptureReplacedOutOfFrameFormat" xml:space="preserve"><value>{2} label(s) now reach outside the image. They were kept.</value></data>
+  <data name="CaptureReplacedBothFormat" xml:space="preserve"><value>The new frame is {1}, the old image was {0}. {2} label(s) now reach outside the image. They were kept.</value></data>
+  <data name="LivePreviewName" xml:space="preserve"><value>Live camera image</value></data>
+  <data name="LiveParamExposureTime" xml:space="preserve"><value>Exposure (us)</value></data>
+  <data name="LiveParamGain" xml:space="preserve"><value>Gain (dB)</value></data>
+  <data name="LiveParamGamma" xml:space="preserve"><value>Gamma</value></data>
+  <data name="LiveParamTriggerMode" xml:space="preserve"><value>Trigger mode</value></data>
+  <data name="LiveParamTriggerSource" xml:space="preserve"><value>Trigger source</value></data>
+  <data name="LiveParamPixelFormat" xml:space="preserve"><value>Pixel format</value></data>
+  <data name="LiveParamFrameRate" xml:space="preserve"><value>Frame rate (fps)</value></data>
+  <data name="LiveParamWidth" xml:space="preserve"><value>ROI width (px)</value></data>
+  <data name="LiveParamHeight" xml:space="preserve"><value>ROI height (px)</value></data>
+  <data name="LiveParamOffsetX" xml:space="preserve"><value>ROI offset X (px)</value></data>
+  <data name="LiveParamOffsetY" xml:space="preserve"><value>ROI offset Y (px)</value></data>
+  <data name="LiveParamWhiteBalanceAuto" xml:space="preserve"><value>White balance</value></data>
+  <data name="LiveParamWhiteBalanceRed" xml:space="preserve"><value>White balance red</value></data>
+  <data name="LiveParamWhiteBalanceGreen" xml:space="preserve"><value>White balance green</value></data>
+  <data name="LiveParamWhiteBalanceBlue" xml:space="preserve"><value>White balance blue</value></data>
+  <data name="AgentDuplicatesDroppedTitle" xml:space="preserve">
+    <value>Duplicates skipped</value>
+  </data>
+  <data name="AgentDuplicatesDroppedFormat" xml:space="preserve">
+    <value>{0} suggestion(s) were skipped because that part is already labelled or already suggested.</value>
+  </data>
+  <data name="AgentEffortLabel_low" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="AgentEffortLabel_medium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="AgentEffortLabel_high" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="AgentEffortLabel_xhigh" xml:space="preserve">
+    <value>Extra high</value>
+  </data>
+  <data name="AgentEffortLabel_max" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="SourceSwitchCancelTitle" xml:space="preserve">
+    <value>Switch auto-label source</value>
+  </data>
+  <data name="SourceSwitchCancelMessage" xml:space="preserve">
+    <value>A task is still running. Switching the source will cancel it, and its results that you have not accepted will be lost. Switch anyway?</value>
+  </data>
+  <data name="SourceSwitchCancelConfirm" xml:space="preserve">
+    <value>Cancel task and switch</value>
+  </data>
+  <data name="SourceSwitchDropTitle" xml:space="preserve">
+    <value>Switch auto-label source</value>
+  </data>
+  <data name="SourceSwitchDropMessage" xml:space="preserve">
+    <value>There are suggestions you have not accepted. Switching the source will discard them. Switch anyway?</value>
+  </data>
+  <data name="SourceSwitchDropConfirm" xml:space="preserve">
+    <value>Discard and switch</value>
+  </data>
+  <data name="AgentChatRoleNotice" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="AgentSlashHelp" xml:space="preserve">
+    <value>/clear  /check  /suggest  /model &lt;name&gt;  /mode &lt;current|all|remaining&gt;  /cancel  /forget  /help</value>
+  </data>
+  <data name="AgentSlashUnknownFormat" xml:space="preserve">
+    <value>Unknown command: /{0}. Type /help.</value>
+  </data>
+  <data name="AgentSlashClearBusy" xml:space="preserve">
+    <value>Cannot clear while a run is active. Use /cancel first.</value>
+  </data>
+  <data name="AgentSlashUnavailable" xml:space="preserve">
+    <value>That command is not available now.</value>
+  </data>
+  <data name="AgentSlashModelFormat" xml:space="preserve">
+    <value>Model: {0}</value>
+  </data>
+  <data name="AgentSlashModelUnknownFormat" xml:space="preserve">
+    <value>Unknown model: {0}</value>
+  </data>
+  <data name="AgentSlashModeFormat" xml:space="preserve">
+    <value>Mode: {0}</value>
+  </data>
+  <data name="AgentSlashModeUnknownFormat" xml:space="preserve">
+    <value>Unknown mode: {0}. Use current, all or remaining.</value>
+  </data>
+  <data name="AgentLiveLookImage" xml:space="preserve">
+    <value>Looking at the image</value>
+  </data>
+  <data name="AgentLiveListShapes" xml:space="preserve">
+    <value>Checking the existing shapes</value>
+  </data>
+  <data name="AgentLiveCropRegion" xml:space="preserve">
+    <value>Cropping region {0},{1},{2},{3}</value>
+  </data>
+  <data name="AgentLiveGridCrop" xml:space="preserve">
+    <value>Inspecting a region with a grid</value>
+  </data>
+  <data name="AgentLiveOverlay" xml:space="preserve">
+    <value>Checking the drawn result</value>
+  </data>
+  <data name="AgentLiveMeasure" xml:space="preserve">
+    <value>Measuring</value>
+  </data>
+  <data name="AgentLiveSam2" xml:space="preserve">
+    <value>Outlining the object</value>
+  </data>
+  <data name="AgentLiveProposing" xml:space="preserve">
+    <value>Proposing shapes</value>
+  </data>
+  <data name="AgentLiveMemoryAdd" xml:space="preserve">
+    <value>Saving a note to the project memory</value>
+  </data>
+  <data name="AgentLiveMemoryRead" xml:space="preserve">
+    <value>Reading the project memory</value>
+  </data>
+  <data name="AgentLiveUsingTool" xml:space="preserve">
+    <value>Using {0}</value>
+  </data>
+  <data name="AgentLiveError" xml:space="preserve">
+    <value>Error: {0}</value>
+  </data>
+  <data name="AgentLiveImageHeader" xml:space="preserve">
+    <value>Image {0}/{1}: {2}</value>
+  </data>
+  <data name="AgentLiveWorking" xml:space="preserve">
+    <value>Working...</value>
+  </data>
+  <data name="AgentLiveStatusStep" xml:space="preserve">
+    <value>step {0}</value>
+  </data>
+  <data name="AgentLiveStatusImage" xml:space="preserve">
+    <value>image {0}/{1}</value>
+  </data>
+  <data name="AgentLiveStatusCostCap" xml:space="preserve">
+    <value>{0} of {1}</value>
+  </data>
+  <data name="TrainBlockNeedTwoImages" xml:space="preserve">
+    <value>Label at least 2 images to train. Go to Label and draw regions on more images.</value>
+  </data>
+  <data name="TrainAutoAssignVal" xml:space="preserve">
+    <value>Auto-assign Val</value>
+  </data>
+  <data name="TrainAutoValDoneFormat" xml:space="preserve">
+    <value>{0} image(s) set to Val</value>
+  </data>
+  <data name="UltraBlockTooFewImages" xml:space="preserve">
+    <value>YOLO needs at least 5 labelled images. Go to Label and label more images.</value>
+  </data>
+  <data name="UltraErrorTooFewImages" xml:space="preserve">
+    <value>YOLO needs at least {0} labelled images (found {1}). Label more images and try again.</value>
+  </data>
+  <data name="TrainFixOpenModelFolder" xml:space="preserve">
+    <value>Open model folder</value>
+  </data>
+  <data name="TrainFixUseSegmentAi" xml:space="preserve">
+    <value>Use Segment AI (works on this PC)</value>
+  </data>
+  <data name="TrainFixGoToLabel" xml:space="preserve">
+    <value>Go to Label</value>
+  </data>
+  <data name="TrainOpenModelFolderFailed" xml:space="preserve">
+    <value>Could not open the model folder. Open it in Explorer yourself and copy the missing file there.</value>
+  </data>
+  <data name="UltraErrorClassNotInTrain" xml:space="preserve">
+    <value>Class "{0}" has no Train image. Set an image of this class to Train.</value>
+  </data>
+  <data name="SetSectionEasyVision" xml:space="preserve">
+    <value>EasyVision</value>
+  </data>
+  <data name="SetEasyVisionFolder" xml:space="preserve">
+    <value>EasyVision model folder</value>
+  </data>
+  <data name="SetEasyVisionFolderBrowse" xml:space="preserve">
+    <value>Browse for the EasyVision model folder</value>
+  </data>
+  <data name="SetEasyVisionFolderBrowseButton" xml:space="preserve">
+    <value>Browse...</value>
+  </data>
+  <data name="SetEasyVisionFolderPickTitle" xml:space="preserve">
+    <value>Choose the EasyVision model folder</value>
+  </data>
+  <data name="ExpSendHeader" xml:space="preserve">
+    <value>Send to EasyVision</value>
+  </data>
+  <data name="ExpSendButton" xml:space="preserve">
+    <value>Send to EasyVision</value>
+  </data>
+  <data name="ExpSendOkFormat" xml:space="preserve">
+    <value>Sent to EasyVision as {0} (version {1}).</value>
+  </data>
+  <data name="ExpSendFolderNotSet" xml:space="preserve">
+    <value>The EasyVision model folder is not set. Choose it in Settings &gt; Files.</value>
+  </data>
+  <data name="ExpSendFolderMissingFormat" xml:space="preserve">
+    <value>The EasyVision model folder does not exist. Create it or choose another folder in Settings &gt; Files. {0}</value>
+  </data>
+  <data name="ExpSendFolderNotWritableFormat" xml:space="preserve">
+    <value>The EasyVision model folder cannot be written. Check that it is not read-only, or choose another folder in Settings &gt; Files. {0}</value>
+  </data>
+  <data name="ExpSendModelMissingFormat" xml:space="preserve">
+    <value>The model file is missing. Choose another model or train it again. {0}</value>
+  </data>
+  <data name="ExpSendUnsupportedFormat" xml:space="preserve">
+    <value>EasyVision cannot read this model file format. Update EasyVision or train the model again. {0}</value>
+  </data>
+  <data name="ExpSendModelInvalidFormat" xml:space="preserve">
+    <value>The model file is damaged or not a SegAI model. Choose another model or train it again. {0}</value>
+  </data>
+  <data name="ExpSendFailedFormat" xml:space="preserve">
+    <value>Sending the model failed. Try again, and check the EasyVision folder in Settings &gt; Files if it repeats. {0}</value>
+  </data>
+  <data name="SetAgentMaxUsdPerDay" xml:space="preserve">
+    <value>Daily cost cap (USD, 0 = off)</value>
+  </data>
+  <data name="AgentBatchStopDayCap" xml:space="preserve">
+    <value>Stopped: the daily cost cap is reached.</value>
+  </data>
+  <data name="AgentBatchLeftFormat" xml:space="preserve">
+    <value>Not processed ({0}): {1}</value>
+  </data>
+  <data name="AgentDayCapReachedFormat" xml:space="preserve">
+    <value>The daily agent cost cap is reached (${0} of ${1} today). Raise it in Settings, Agent runs, or try again tomorrow.</value>
+  </data>
+  <data name="AgentChatEstimateFormat" xml:space="preserve">
+    <value>about ${0} for {1} images (estimate)</value>
+  </data>
+  <data name="AgentsVocabulary" xml:space="preserve">
+    <value>Project vocabulary</value>
+  </data>
+  <data name="AgentsVocabularyEmpty" xml:space="preserve">
+    <value>No words learned yet. A word is learned after you accepted its class from three prompts that used it.</value>
+  </data>
+  <data name="AgentsVocabularyDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="AgentsVocabularyClear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="AgentsVocabularyClearMessage" xml:space="preserve">
+    <value>Forget all words this project learned from your prompts?</value>
+  </data>
+  <data name="AgentSlashForgetDone" xml:space="preserve">
+    <value>The words this project learned from your prompts were forgotten.</value>
+  </data>
+  <data name="TrainUseRecommended" xml:space="preserve">
+    <value>Use recommended settings</value>
+  </data>
+  <data name="Hardware.RecommendedFormat" xml:space="preserve">
+    <value>Recommended for this PC: {0} - {1}</value>
+  </data>
+  <data name="Hardware.Mode.Safe" xml:space="preserve">
+    <value>Safe mode</value>
+  </data>
+  <data name="Hardware.Mode.Standard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Hardware.Mode.Fast" xml:space="preserve">
+    <value>Fast</value>
+  </data>
+  <data name="Hardware.SafeSlower" xml:space="preserve">
+    <value>training is slower and uses fewer resources</value>
+  </data>
+  <data name="TrainEtaFormat" xml:space="preserve">
+    <value>About {0} min left</value>
+  </data>
+  <data name="Hardware.Note.Unknown" xml:space="preserve">
+    <value>this PC could not be read</value>
+  </data>
+  <data name="Hardware.Note.SafeFewCores" xml:space="preserve">
+    <value>few CPU cores</value>
+  </data>
+  <data name="Hardware.Note.SafeLowRam" xml:space="preserve">
+    <value>limited memory</value>
+  </data>
+  <data name="Hardware.Note.SafeSegmentAiOnly" xml:space="preserve">
+    <value>Segment AI only</value>
+  </data>
+  <data name="Hardware.Note.SafeBelowNormal" xml:space="preserve">
+    <value>background priority</value>
+  </data>
+  <data name="Hardware.Note.FastCpuRam" xml:space="preserve">
+    <value>many CPU cores and plenty of memory</value>
+  </data>
+  <data name="Hardware.Note.FastCudaGpu" xml:space="preserve">
+    <value>a CUDA graphics card</value>
+  </data>
+  <data name="Hardware.Note.GpuAvailable" xml:space="preserve">
+    <value>a graphics card is available</value>
+  </data>
+  <data name="Hardware.Note.Standard" xml:space="preserve">
+    <value>balanced settings</value>
+  </data>
+  <data name="UiModeSimple" xml:space="preserve">
+    <value>Simple</value>
+  </data>
+  <data name="UiModeAdvanced" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="UiModeToggleName" xml:space="preserve">
+    <value>Interface mode</value>
+  </data>
+  <data name="EasyStripName" xml:space="preserve">
+    <value>Guided steps</value>
+  </data>
+  <data name="EasyStepOpen" xml:space="preserve">
+    <value>1 Open folder</value>
+  </data>
+  <data name="EasyStepOpenDoneFormat" xml:space="preserve">
+    <value>1 {0} images</value>
+  </data>
+  <data name="EasyStepLabelFormat" xml:space="preserve">
+    <value>2 Label {0} more</value>
+  </data>
+  <data name="EasyStepLabelDoneFormat" xml:space="preserve">
+    <value>2 {0} labelled</value>
+  </data>
+  <data name="EasyStepTrain" xml:space="preserve">
+    <value>3 Train</value>
+  </data>
+  <data name="EasyStepTrainRunningFormat" xml:space="preserve">
+    <value>3 Training · {0}</value>
+  </data>
+  <data name="EasyStepTrainDone" xml:space="preserve">
+    <value>3 Model ready</value>
+  </data>
+  <data name="EasyStepCheck" xml:space="preserve">
+    <value>4 Check OK/NG</value>
+  </data>
+  <data name="EasyStepCheckDoneFormat" xml:space="preserve">
+    <value>4 OK {0} · NG {1}</value>
+  </data>
+  <data name="EasyStepSend" xml:space="preserve">
+    <value>5 Send to EasyVision</value>
+  </data>
+  <data name="EasyStepSendDone" xml:space="preserve">
+    <value>5 Sent</value>
+  </data>
+  <data name="FileSortMostDoubtful" xml:space="preserve">
+    <value>Most doubtful first</value>
+  </data>
+  <data name="FileSortUnlabelledFirst" xml:space="preserve">
+    <value>Unlabelled first</value>
+  </data>
+  <data name="InspectFilterDoubtful" xml:space="preserve">
+    <value>Review doubtful</value>
+  </data>
+  <data name="SetAgentRouteLocalFirst" xml:space="preserve">
+    <value>Local results first in Remaining mode</value>
+  </data>
+  <data name="SetAgentBatchSam2Refine" xml:space="preserve">
+    <value>Tighten boxes with local SAM2 after each agent run</value>
+  </data>
+  <data name="SetAgentBatchRetryNormal" xml:space="preserve">
+    <value>Retry failed images at Normal effort (Economy only)</value>
+  </data>
+  <data name="KindClassify" xml:space="preserve">
+    <value>OK/NG</value>
+  </data>
+  <data name="TagOk" xml:space="preserve">
+    <value>Mark OK</value>
+  </data>
+  <data name="TagNg" xml:space="preserve">
+    <value>Mark NG</value>
+  </data>
+  <data name="TagClear" xml:space="preserve">
+    <value>Clear OK/NG</value>
+  </data>
+  <data name="ClassifyCounts" xml:space="preserve">
+    <value>OK {0} · NG {1} · Not marked {2}</value>
+  </data>
+  <data name="ClassifyBlockTooFew" xml:space="preserve">
+    <value>Mark at least {0} OK and {0} NG images</value>
+  </data>
+  <data name="ClassifyBlockOneClass" xml:space="preserve">
+    <value>Only one kind is marked; mark both OK and NG</value>
+  </data>
+  <data name="ClassifyBlockBackboneMissing" xml:space="preserve">
+    <value>The OK/NG base model is not installed</value>
+  </data>
+  <data name="FixInstallModelPack" xml:space="preserve">
+    <value>Install model pack...</value>
+  </data>
+  <data name="ClassifyReading" xml:space="preserve">
+    <value>Reading images {0}/{1}</value>
+  </data>
+  <data name="ClassifyDone" xml:space="preserve">
+    <value>OK/NG model ready · {0} correct on {1} check images</value>
+  </data>
+  <data name="InspectColConfidence" xml:space="preserve">
+    <value>Confidence</value>
+  </data>
+  <data name="ExportOkNgModel" xml:space="preserve">
+    <value>OK/NG model</value>
+  </data>
+  <data name="SendOkNgUnsupported" xml:space="preserve">
+    <value>EasyVision cannot read OK/NG models yet</value>
+  </data>
+  <data name="ModelPackBadHash" xml:space="preserve">
+    <value>File {0} is damaged (checksum differs)</value>
+  </data>
+  <data name="ModelPackInstalled" xml:space="preserve">
+    <value>Installed {0} models</value>
+  </data>
+  <data name="ModelPackLicence" xml:space="preserve">
+    <value>Licence: {0}</value>
+  </data>
+  <data name="UltraCpuSlow" xml:space="preserve">
+    <value>No NVIDIA GPU: training on CPU, about {0}</value>
+  </data>
+  <data name="TraceOperator" xml:space="preserve">
+    <value>Operator</value>
+  </data>
+  <data name="TraceNote" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="TraceSaved" xml:space="preserve">
+    <value>Record saved: {0}</value>
+  </data>
+  <data name="ClassifyReady" xml:space="preserve">
+    <value>OK/NG model ready</value>
+  </data>
+  <data name="ClassifyBackboneMismatch" xml:space="preserve">
+    <value>The OK/NG base model changed since this model was trained. Install the model pack or retrain.</value>
+  </data>
+  <data name="SetInstallModelPackCaption" xml:space="preserve">
+    <value>OK/NG base model pack</value>
+  </data>
+  <data name="ModelPackTargetsFormat" xml:space="preserve">
+    <value>Folders: {0}</value>
+  </data>
+  <data name="ModelPackConfirmFormat" xml:space="preserve">
+    <value>Install {0} files into the models folder?</value>
+  </data>
+  <data name="ModelPackInstallConfirm" xml:space="preserve">
+    <value>Install</value>
+  </data>
+  <data name="ModelPackFailed" xml:space="preserve">
+    <value>Model pack install failed: {0}</value>
+  </data>
+  <data name="SetUltraAllowCpu" xml:space="preserve">
+    <value>Allow YOLO training on CPU (Advanced, slow)</value>
+  </data>
+  <data name="UltraCpuNoEta" xml:space="preserve">
+    <value>No NVIDIA GPU: training on CPU; the time is shown after the first epoch</value>
+  </data>
+  <data name="UltraCpuMinutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="AgentOfflineOnly" xml:space="preserve">
+    <value>Offline only</value>
+  </data>
+  <data name="AgentOfflineExplanation" xml:space="preserve">
+    <value>Offline-only mode blocks agent actions, sign-in checks and price refreshes; local labeling, training and testing stay available.</value>
+  </data>
+  <data name="ToolHand" xml:space="preserve"><value>Hand (pan)</value></data>
+  <data name="ToolHandTip" xml:space="preserve"><value>Drag to pan the image</value></data>
+  <data name="ClassTableSyncAddedFormat" xml:space="preserve">
+    <value>Added new labels to the class table: {0}. The existing model needs retraining.</value>
+  </data>
+</root>

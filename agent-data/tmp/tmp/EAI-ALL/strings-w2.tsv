@@ -1,0 +1,15 @@
+SourceSwitchCancelTitle	Switch auto-label source	Chuyển nguồn tự động gán nhãn
+SourceSwitchCancelMessage	A task is still running. Switching the source will cancel it, and its results that you have not accepted will be lost. Switch anyway?	Một tác vụ vẫn đang chạy. Chuyển nguồn sẽ hủy tác vụ này và các kết quả chưa được chấp nhận sẽ bị mất. Vẫn chuyển?
+SourceSwitchCancelConfirm	Cancel task and switch	Hủy tác vụ và chuyển
+SourceSwitchDropTitle	Switch auto-label source	Chuyển nguồn tự động gán nhãn
+SourceSwitchDropMessage	There are suggestions you have not accepted. Switching the source will discard them. Switch anyway?	Còn các đề xuất chưa được chấp nhận. Chuyển nguồn sẽ loại bỏ chúng. Vẫn chuyển?
+SourceSwitchDropConfirm	Discard and switch	Loại bỏ và chuyển
+AgentChatRoleNotice	System	Hệ thống
+AgentSlashHelp	/clear  /check  /suggest  /model <name>  /mode <current|all|remaining>  /cancel  /help	/clear  /check  /suggest  /model <tên>  /mode <current|all|remaining>  /cancel  /help
+AgentSlashUnknownFormat	Unknown command: /{0}. Type /help.	Lệnh không tồn tại: /{0}. Gõ /help.
+AgentSlashClearBusy	Cannot clear while a run is active. Use /cancel first.	Không thể xóa khi đang chạy. Hãy dùng /cancel trước.
+AgentSlashUnavailable	That command is not available now.	Lệnh này hiện không dùng được.
+AgentSlashModelFormat	Model: {0}	Mô hình: {0}
+AgentSlashModelUnknownFormat	Unknown model: {0}	Mô hình không tồn tại: {0}
+AgentSlashModeFormat	Mode: {0}	Chế độ: {0}
+AgentSlashModeUnknownFormat	Unknown mode: {0}. Use current, all or remaining.	Chế độ không hợp lệ: {0}. Dùng current, all hoặc remaining.

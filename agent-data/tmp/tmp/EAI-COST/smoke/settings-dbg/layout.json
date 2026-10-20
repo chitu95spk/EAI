@@ -1,0 +1,12 @@
+{
+  "SchemaVersion": 3,
+  "LeftWidth": 240,
+  "RightWidth": 300,
+  "WindowLeft": 480,
+  "WindowTop": 276,
+  "WindowWidth": 1280,
+  "WindowHeight": 800,
+  "IsMaximized": false,
+  "ImageListVisible": true,
+  "DockLayout": "\u003C?xml version=\u00221.0\u0022 encoding=\u0022utf-8\u0022?\u003E\r\n\u003CLayoutRoot\u003E\r\n  \u003CRootPanel Orientation=\u0022Horizontal\u0022\u003E\r\n    \u003CLayoutDocumentPane ShowHeader=\u0022false\u0022\u003E\r\n      \u003CLayoutDocument Title=\u0022Annotation canvas\u0022 ContentId=\u0022canvas\u0022 IsSelected=\u0022true\u0022 IsLastFocusedDocument=\u0022true\u0022 CanClose=\u0022false\u0022 CanFloat=\u0022false\u0022 LastActivationTimeStamp=\u002210/17/2026 16:06:08\u0022 /\u003E\r\n    \u003C/LayoutDocumentPane\u003E\r\n    \u003CLayoutAnchorablePaneGroup DockWidth=\u0022300\u0022 Orientation=\u0022Vertical\u0022\u003E\r\n      \u003CLayoutAnchorablePane DockWidth=\u0022300\u0022 DockHeight=\u00222.6*\u0022 DockMinHeight=\u0022160\u0022\u003E\r\n        \u003CLayoutAnchorable Title=\u0022Label / Shape List\u0022 ContentId=\u0022labels\u0022 IsSelected=\u0022true\u0022 CanClose=\u0022true\u0022 /\u003E\r\n      \u003C/LayoutAnchorablePane\u003E\r\n      \u003CLayoutAnchorablePane DockHeight=\u00222.2*\u0022 DockMinHeight=\u002296\u0022\u003E\r\n        \u003CLayoutAnchorable Title=\u0022File List\u0022 ContentId=\u0022files\u0022 IsSelected=\u0022true\u0022 CanClose=\u0022true\u0022 /\u003E\r\n      \u003C/LayoutAnchorablePane\u003E\r\n    \u003C/LayoutAnchorablePaneGroup\u003E\r\n  \u003C/RootPanel\u003E\r\n  \u003CTopSide /\u003E\r\n  \u003CRightSide /\u003E\r\n  \u003CLeftSide /\u003E\r\n  \u003CBottomSide /\u003E\r\n  \u003CFloatingWindows /\u003E\r\n  \u003CHidden /\u003E\r\n\u003C/LayoutRoot\u003E"
+}

@@ -1,0 +1,660 @@
+<ui:FluentWindow x:Class="EasyAI.Desktop.Views.AgentChatWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+                 Title="{x:Static res:Strings.AgentChatTitle}"
+                 Width="440"
+                 Height="520"
+                 ExtendsContentIntoTitleBar="True"
+                 ShowInTaskbar="False"
+                 WindowBackdropType="Mica"
+                 WindowStartupLocation="Manual"
+                 AutomationProperties.AutomationId="AgentChatWindow">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <!-- Small caption in front of a group of controls (same look as the Auto-label bar). -->
+        <Style x:Key="BarCaptionStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,0,6,0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+        </Style>
+        <!-- Caption column of the Options panel. -->
+        <Style x:Key="OptionCaptionStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,6,8,0" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+        </Style>
+        <!-- Header line of a history row. -->
+        <Style x:Key="EntryCaptionStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+        </Style>
+        <!-- Run is replaced by Cancel while a run or a batch is active. -->
+        <Style x:Key="ShowWhenIdleStyle" TargetType="Grid">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsRunning}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsBatchRunning}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ShowWhenRunningStyle" TargetType="Grid">
+            <Setter Property="Visibility" Value="Collapsed" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsRunning}" Value="True">
+                    <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsBatchRunning}" Value="True">
+                    <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" MinHeight="80" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar Grid.Row="0"
+                     Title="{x:Static res:Strings.AgentChatTitle}"
+                     ShowMaximize="False"
+                     ShowMinimize="False" />
+
+        <!-- History of the project: newest at the bottom; a click on one of your rows puts its prompt back into the prompt box. -->
+        <ScrollViewer x:Name="ChatScroll" Grid.Row="1"
+                      Margin="12,4,12,4"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <ItemsControl ItemsSource="{Binding AgentChatEntries}"
+                          AutomationProperties.AutomationId="AgentChatList"
+                          AutomationProperties.Name="{x:Static res:Strings.AgentChatTitle}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,0,0,8">
+                            <ui:Button HorizontalAlignment="Right" HorizontalContentAlignment="Left" MaxWidth="420"
+                                       Appearance="Secondary"
+                                       Visibility="{Binding IsUser, Converter={StaticResource BoolToVisibility}}"
+                                       Command="{Binding DataContext.UseSuggestedPromptCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                       CommandParameter="{Binding Prompt}"
+                                       AutomationProperties.AutomationId="AgentChatUserEntry">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource EntryCaptionStyle}">
+                                        <Run Text="{Binding RoleText, Mode=OneWay}" /><Run Text=" · " /><Run Text="{Binding TimeText, Mode=OneWay}" />
+                                    </TextBlock>
+                                    <TextBlock Style="{StaticResource EntryCaptionStyle}" Text="{Binding HeaderText}" />
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Prompt}" />
+                                </StackPanel>
+                            </ui:Button>
+                            <Border HorizontalAlignment="Left" MaxWidth="460" Padding="10,6" CornerRadius="4"
+                                    BorderThickness="1"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    AutomationProperties.AutomationId="AgentChatAgentEntry">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsUser}" Value="True">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource EntryCaptionStyle}">
+                                        <Run Text="{Binding RoleText, Mode=OneWay}" /><Run Text=" · " /><Run Text="{Binding TimeText, Mode=OneWay}" />
+                                    </TextBlock>
+                                    <TextBlock Style="{StaticResource EntryCaptionStyle}" Text="{Binding HeaderText}"
+                                               Visibility="{Binding HasSummary, Converter={StaticResource BoolToVisibility}}" />
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Prompt}"
+                                               Visibility="{Binding IsNotice, Converter={StaticResource BoolToVisibility}}"
+                                               AutomationProperties.AutomationId="AgentChatNotice" />
+                                    <TextBlock TextWrapping="Wrap" FontSize="12" Text="{Binding LiveText}"
+                                               Visibility="{Binding IsLive, Converter={StaticResource BoolToVisibility}}"
+                                               AutomationProperties.AutomationId="AgentChatLive" />
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding AgentText}"
+                                               Visibility="{Binding HasAgentText, Converter={StaticResource BoolToVisibility}}"
+                                               AutomationProperties.AutomationId="AgentChatAgentText" />
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding SummaryText}"
+                                               Visibility="{Binding HasSummary, Converter={StaticResource BoolToVisibility}}" />
+                                    <TextBlock TextWrapping="Wrap"
+                                               Visibility="{Binding HasSummary, Converter={StaticResource BoolToVisibility}}">
+                                        <Run Text="{Binding OutcomeText, Mode=OneWay}" /><Run Text=" " /><Run Text="{Binding CostText, Mode=OneWay}" />
+                                    </TextBlock>
+                                    <!-- Each image path of the run opens that image on the canvas, so the proposals of one image can be approved from the chat. -->
+                                    <ItemsControl ItemsSource="{Binding ImageLinks}"
+                                                  Visibility="{Binding HasSummary, Converter={StaticResource BoolToVisibility}}"
+                                                  AutomationProperties.AutomationId="AgentChatImageLinks">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <ui:Button Margin="0,0,4,4" Padding="6,2" MaxWidth="300"
+                                                           Appearance="Transparent"
+                                                           Command="{Binding DataContext.OpenChatImageCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=2}}"
+                                                           CommandParameter="{Binding}"
+                                                           ToolTip="{Binding}"
+                                                           AutomationProperties.AutomationId="AgentChatImageLink">
+                                                    <TextBlock TextTrimming="CharacterEllipsis" TextDecorations="Underline" FontSize="12" Text="{Binding}" />
+                                                </ui:Button>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!-- Everything below the history scrolls when the window is short (its height is capped in the code-behind). -->
+        <ScrollViewer x:Name="BottomScroll" Grid.Row="2"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Margin="12,0,12,10">
+                <!-- Why Run is unavailable and the result line of the last run. -->
+                <TextBlock Margin="0,0,0,2" FontSize="12" TextWrapping="Wrap"
+                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                           Text="{Binding SourceReasonText}"
+                           Visibility="{Binding HasSourceReason, Converter={StaticResource BoolToVisibility}}"
+                           AutomationProperties.AutomationId="AgentChatReason" />
+                <TextBlock Margin="0,0,0,2" FontSize="12" TextWrapping="Wrap"
+                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                           Text="{Binding AiStatusText}"
+                           Visibility="{Binding HasAiStatus, Converter={StaticResource BoolToVisibility}}"
+                           AutomationProperties.AutomationId="AgentChatStatus" />
+
+                <!-- Compact status of a running agent run or batch ("Working... $0.012 - step 3"); the live lines are in the history (Cancel replaces Run in the action row). -->
+                <TextBlock Margin="0,0,0,4" FontSize="12" TextWrapping="Wrap"
+                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                           Text="{Binding AgentLiveStatusText}"
+                           Visibility="{Binding HasAgentLiveStatus, Converter={StaticResource BoolToVisibility}}"
+                           AutomationProperties.AutomationId="AgentChatLiveStatus" />
+
+                <!-- Prompts suggested by the agent for the current image; a click fills the prompt box (it does not run). Collapsed when empty. -->
+                <ItemsControl Margin="0,0,0,2"
+                              ItemsSource="{Binding SuggestedPrompts}"
+                              Visibility="{Binding HasSuggestedPrompts, Converter={StaticResource BoolToVisibility}}"
+                              AutomationProperties.AutomationId="SuggestedPromptList">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ui:Button Margin="0,0,6,4" MaxWidth="360"
+                                       HorizontalContentAlignment="Left"
+                                       Appearance="Secondary"
+                                       Command="{Binding DataContext.UseSuggestedPromptCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                       CommandParameter="{Binding}"
+                                       AutomationProperties.AutomationId="SuggestedPromptItem">
+                                <TextBlock TextTrimming="CharacterEllipsis" Text="{Binding}" />
+                            </ui:Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <!-- Review row: the suggestions of the open image (Reject all / Accept all are the same commands as the Label bar). Collapsed when there are none. -->
+                <Grid Margin="0,0,0,6" AutomationProperties.AutomationId="AgentChatReview">
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding SuggestionCount}" Value="0">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock Style="{StaticResource BarCaptionStyle}" Text="{x:Static res:Strings.AgentReviewCaption}" />
+                        <TextBlock VerticalAlignment="Center" FontWeight="SemiBold" Text="{Binding SuggestionCount}"
+                                   AutomationProperties.AutomationId="AgentChatSuggestionCount" />
+                    </StackPanel>
+                    <ui:Button Grid.Column="1" Margin="0,0,6,0" Appearance="Secondary"
+                               Content="{x:Static res:Strings.RejectAll}"
+                               Icon="{ui:SymbolIcon Dismiss24}"
+                               Command="{Binding RejectAllCommand}"
+                               ToolTip="{x:Static res:Strings.RejectAllTip}"
+                               AutomationProperties.AutomationId="AgentChatRejectAll" />
+                    <ui:Button Grid.Column="2" Appearance="Primary"
+                               Content="{x:Static res:Strings.AcceptAll}"
+                               Icon="{ui:SymbolIcon CheckmarkCircle24}"
+                               Command="{Binding AcceptAllCommand}"
+                               ToolTip="{x:Static res:Strings.AcceptAllTip}"
+                               AutomationProperties.AutomationId="AgentChatAcceptAll" />
+                </Grid>
+
+                <!-- Per-image list of the last batch run: the check picks an image, a click on its name shows it on the canvas. Accept / discard
+                     apply to the checked images (each image once). The list scrolls inside its own height. Collapsed without a batch. -->
+                <Border Margin="0,0,0,6" Padding="8,6,8,6" CornerRadius="8" BorderThickness="1"
+                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                        Visibility="{Binding HasBatchReview, Converter={StaticResource BoolToVisibility}}"
+                        AutomationProperties.AutomationId="AgentChatBatchReview">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Style="{StaticResource BarCaptionStyle}" VerticalAlignment="Center"
+                                       Text="{x:Static res:Strings.AgentBatchReviewCaption}" />
+                            <ui:Button Grid.Column="1" Appearance="Transparent"
+                                       Content="{x:Static res:Strings.AgentBatchReviewSelectAll}"
+                                       Command="{Binding ToggleSelectAllImagesCommand}"
+                                       AutomationProperties.AutomationId="AgentChatBatchSelectAll" />
+                        </Grid>
+
+                        <ScrollViewer MaxHeight="180" Margin="0,4,0,4"
+                                      VerticalScrollBarVisibility="Auto"
+                                      HorizontalScrollBarVisibility="Disabled">
+                            <ItemsControl ItemsSource="{Binding BatchReviewRows}"
+                                          AutomationProperties.AutomationId="AgentChatBatchList">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="0,0,0,2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <CheckBox Grid.Column="0" Margin="0,0,6,0" MinWidth="0" VerticalAlignment="Center"
+                                                      IsChecked="{Binding Selected, Mode=TwoWay}"
+                                                      IsEnabled="{Binding Selectable}"
+                                                      AutomationProperties.Name="{Binding Rel}" />
+                                            <ui:Button Grid.Column="1" Padding="4,2" HorizontalAlignment="Stretch"
+                                                       HorizontalContentAlignment="Left" Appearance="Transparent"
+                                                       Command="{Binding DataContext.OpenBatchImageCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                       CommandParameter="{Binding}"
+                                                       AutomationProperties.AutomationId="AgentChatBatchImage">
+                                                <TextBlock TextTrimming="CharacterEllipsis" Text="{Binding Rel}" />
+                                            </ui:Button>
+                                            <TextBlock Grid.Column="2" Margin="6,0,0,0" VerticalAlignment="Center" FontSize="12"
+                                                       Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                                       Text="{Binding StatusText}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+
+                        <!-- Wraps to a second line when the window is narrow. -->
+                        <WrapPanel HorizontalAlignment="Right">
+                            <ui:Button Margin="0,0,6,0" Appearance="Secondary"
+                                       Content="{x:Static res:Strings.AgentBatchReviewDiscard}"
+                                       Icon="{ui:SymbolIcon Dismiss24}"
+                                       Command="{Binding DiscardSelectedImagesCommand}"
+                                       AutomationProperties.AutomationId="AgentChatBatchDiscard" />
+                            <ui:Button Appearance="Primary"
+                                       Content="{x:Static res:Strings.AgentBatchReviewAccept}"
+                                       Icon="{ui:SymbolIcon CheckmarkCircle24}"
+                                       Command="{Binding AcceptSelectedImagesCommand}"
+                                       AutomationProperties.AutomationId="AgentChatBatchAccept" />
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Composer: one rounded card with the attached files, the prompt (Enter runs, Shift+Enter is a new line) and one tool row. -->
+                <Border x:Name="Composer" Margin="0,0,0,8" Padding="10,8,10,6" CornerRadius="12" BorderThickness="1"
+                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                        Background="{DynamicResource ControlFillColorDefaultBrush}"
+                        AllowDrop="True" DragOver="OnComposerDragOver" Drop="OnComposerDrop"
+                        AutomationProperties.AutomationId="AgentChatComposer">
+                    <StackPanel>
+                        <!-- Attached hint files (pictures of the defect, notes): the agent reads them with get_reference. Collapsed when empty. -->
+                        <ItemsControl Margin="0,0,0,6"
+                                      ItemsSource="{Binding Attachments}"
+                                      Visibility="{Binding HasAttachments, Converter={StaticResource BoolToVisibility}}"
+                                      AutomationProperties.AutomationId="AgentChatAttachments">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Margin="0,0,6,4" Padding="8,2,2,2" CornerRadius="10"
+                                            Background="{DynamicResource ControlFillColorSecondaryBrush}"
+                                            AutomationProperties.AutomationId="AgentChatAttachment">
+                                        <StackPanel Orientation="Horizontal">
+                                            <ui:SymbolIcon Margin="0,0,6,0" VerticalAlignment="Center" FontSize="14">
+                                                <ui:SymbolIcon.Style>
+                                                    <Style TargetType="ui:SymbolIcon">
+                                                        <Setter Property="Symbol" Value="Document24" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsImage}" Value="True">
+                                                                <Setter Property="Symbol" Value="Image24" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ui:SymbolIcon.Style>
+                                            </ui:SymbolIcon>
+                                            <TextBlock MaxWidth="150" VerticalAlignment="Center" FontSize="12" TextTrimming="CharacterEllipsis"
+                                                       Text="{Binding Name}" ToolTip="{Binding Path}" />
+                                            <ui:Button Width="22" Height="22" Margin="4,0,0,0" Padding="0" Appearance="Transparent"
+                                                       Icon="{ui:SymbolIcon Dismiss12}"
+                                                       Command="{Binding DataContext.RemoveAttachmentCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                       CommandParameter="{Binding}"
+                                                       AutomationProperties.AutomationId="AgentChatAttachmentRemove"
+                                                       AutomationProperties.Name="{x:Static res:Strings.AgentRemoveAttachment}" />
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <ui:TextBox x:Name="PromptBox" Margin="0,0,0,6" Padding="2"
+                                    BorderThickness="0" Background="Transparent"
+                                    MinLines="2" MaxLines="5" AcceptsReturn="True" TextWrapping="Wrap"
+                                    VerticalScrollBarVisibility="Auto"
+                                    PlaceholderText="{x:Static res:Strings.AgentPromptPlaceholder}"
+                                    Text="{Binding AgentPrompt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    AutomationProperties.AutomationId="AgentChatPrompt"
+                                    AutomationProperties.Name="{x:Static res:Strings.AgentPromptPlaceholder}" />
+
+                        <!-- One tool row: attach, suggest prompt, model + effort pill (one menu), options, then Run (Cancel while running) on the right. -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <ui:Button Grid.Column="0" Width="32" Height="32" Margin="0,0,4,0" Padding="0"
+                                       Appearance="Transparent"
+                                       Icon="{ui:SymbolIcon Add24}"
+                                       Command="{Binding AttachFilesCommand}"
+                                       ToolTip="{x:Static res:Strings.AgentAttach}"
+                                       AutomationProperties.AutomationId="AgentChatAttach"
+                                       AutomationProperties.Name="{x:Static res:Strings.AgentAttach}" />
+                            <ui:Button Grid.Column="1" Width="32" Height="32" Margin="0,0,6,0" Padding="0"
+                                       Appearance="Transparent"
+                                       Icon="{ui:SymbolIcon Lightbulb24}"
+                                       Command="{Binding SuggestPromptCommand}"
+                                       ToolTipService.ShowOnDisabled="True"
+                                       AutomationProperties.AutomationId="AgentSuggestPromptButton"
+                                       AutomationProperties.Name="{x:Static res:Strings.SuggestPrompt}" />
+                            <!-- Model button, Speed slider and Effort slider share this cell; they wrap onto a second line when the window is narrow. -->
+                            <WrapPanel Grid.Column="2" VerticalAlignment="Center">
+                                <ui:Button x:Name="ModelPill" Height="28" MinWidth="110" MaxWidth="260" Margin="0,2,8,2"
+                                           HorizontalAlignment="Left" VerticalAlignment="Center"
+                                           Padding="10,0,6,0"
+                                           Appearance="Secondary"
+                                           CornerRadius="14"
+                                           Click="OnModelPillClick"
+                                           AutomationProperties.AutomationId="PromptModel"
+                                           AutomationProperties.Name="{x:Static res:Strings.PromptModel}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock VerticalAlignment="Center" FontSize="12" TextTrimming="CharacterEllipsis"
+                                                   Text="{Binding AgentModelText, Mode=OneWay}" />
+                                        <ui:SymbolIcon Margin="6,0,0,0" VerticalAlignment="Center" FontSize="12" Symbol="ChevronDown24" />
+                                    </StackPanel>
+                                </ui:Button>
+                                <ui:Button x:Name="TuningPill" Width="32" Height="32" Margin="0,2,8,2" Padding="0"
+                                           VerticalAlignment="Center" Appearance="Transparent"
+                                           Icon="{ui:SymbolIcon TopSpeed24}"
+                                           Click="OnTuningClick"
+                                           ToolTip="{x:Static res:Strings.AgentTuningTip}"
+                                           AutomationProperties.AutomationId="AgentChatTuning"
+                                           AutomationProperties.Name="{x:Static res:Strings.AgentTuningTip}" />
+                                <Popup x:Name="TuningPopup" PlacementTarget="{Binding ElementName=TuningPill}" Placement="Top" StaysOpen="False" AllowsTransparency="True">
+                                    <Border Margin="8" Padding="12" CornerRadius="8" BorderThickness="1"
+                                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                            Background="{DynamicResource ApplicationBackgroundBrush}">
+                                        <StackPanel>
+                                    <!-- Speed: agent runs at the same time; only the stops this PC can do (x1, x2, x4 ... x32). Accent colour. -->
+                                    <StackPanel Margin="0,0,0,10" VerticalAlignment="Center" MinWidth="180"
+                                                Visibility="{Binding ShowSpeedSlider, Converter={StaticResource BoolToVisibility}}"
+                                                AutomationProperties.AutomationId="AgentChatSpeed">
+                                        <TextBlock FontSize="11" TextTrimming="CharacterEllipsis"
+                                                   Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}"
+                                                   Text="{Binding SpeedText, Mode=OneWay}" />
+                                        <Slider Width="180" Minimum="0" Maximum="{Binding SpeedSliderMax, Mode=OneWay}"
+                                                TickFrequency="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True"
+                                                SmallChange="1" LargeChange="1" IsMoveToPointEnabled="True"
+                                                Foreground="{DynamicResource AccentFillColorDefaultBrush}"
+                                                Value="{Binding SpeedSliderValue, Mode=TwoWay}"
+                                                AutomationProperties.AutomationId="AgentChatSpeedSlider"
+                                                AutomationProperties.Name="{x:Static res:Strings.AgentSpeedCaption}" />
+                                    </StackPanel>
+                                    <!-- Effort: one stop per effort level the model offers (Low, Medium, High, Extra high, Max). Second theme colour. -->
+                                    <StackPanel VerticalAlignment="Center" MinWidth="180"
+                                                AutomationProperties.AutomationId="AgentChatEffort">
+                                        <TextBlock FontSize="11" TextTrimming="CharacterEllipsis"
+                                                   Foreground="{DynamicResource SystemFillColorCautionBrush}"
+                                                   Text="{Binding EffortText, Mode=OneWay}" />
+                                        <Slider Width="180" Minimum="0" Maximum="{Binding EffortSliderMax, Mode=OneWay}"
+                                                TickFrequency="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True"
+                                                SmallChange="1" LargeChange="1" IsMoveToPointEnabled="True"
+                                                Foreground="{DynamicResource SystemFillColorCautionBrush}"
+                                                Value="{Binding EffortSliderValue, Mode=TwoWay}"
+                                                AutomationProperties.AutomationId="AgentChatEffortSlider"
+                                                AutomationProperties.Name="{x:Static res:Strings.AgentEffortCaption}" />
+                                    </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </Popup>
+                            </WrapPanel>
+                            <ToggleButton x:Name="OptionsToggle" Grid.Column="3" Width="32" Height="32" Margin="0,0,6,0" Padding="0"
+                                          Style="{DynamicResource {x:Type ToggleButton}}"
+                                          AutomationProperties.AutomationId="AgentChatOptions"
+                                          AutomationProperties.Name="{x:Static res:Strings.AgentOptions}">
+                                <ui:SymbolIcon Symbol="Settings24" />
+                            </ToggleButton>
+                            <!-- Auto-edit prompt: the prompt sub-agent rewrites the request (English command + explanation) before the main agent runs. -->
+                            <ToggleButton Grid.Column="4" Width="32" Height="32" Margin="0,0,6,0" Padding="0"
+                                          Style="{DynamicResource {x:Type ToggleButton}}"
+                                          IsChecked="{Binding AutoRefinePrompt, Mode=TwoWay}"
+                                          ToolTip="{Binding AutoRefinePromptTip}"
+                                          AutomationProperties.AutomationId="AgentChatAutoRefine"
+                                          AutomationProperties.Name="{Binding AutoRefinePromptTip}">
+                                <ui:SymbolIcon Symbol="Wand24" />
+                            </ToggleButton>
+                            <Grid Grid.Column="5">
+                                <Grid Style="{StaticResource ShowWhenIdleStyle}">
+                                    <ui:Button Width="32" Height="32" Padding="0" CornerRadius="16" Appearance="Primary"
+                                               Icon="{ui:SymbolIcon ArrowUp24}"
+                                               Command="{Binding RunChatCommand}"
+                                               ToolTip="{x:Static res:Strings.TbRun}"
+                                               AutomationProperties.AutomationId="AgentChatRun"
+                                               AutomationProperties.Name="{x:Static res:Strings.TbRun}" />
+                                </Grid>
+                                <Grid Style="{StaticResource ShowWhenRunningStyle}">
+                                    <ui:Button Width="32" Height="32" Padding="0" CornerRadius="16" Appearance="Secondary"
+                                               Icon="{ui:SymbolIcon Stop24}"
+                                               Command="{Binding CancelRunCommand}"
+                                               ToolTip="{x:Static res:Strings.Cancel}"
+                                               AutomationProperties.AutomationId="AgentChatCancel"
+                                               AutomationProperties.Name="{x:Static res:Strings.Cancel}" />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Which images a run covers. -->
+                <StackPanel Orientation="Horizontal" AutomationProperties.AutomationId="AgentChatMode">
+                    <TextBlock Style="{StaticResource BarCaptionStyle}" Text="{x:Static res:Strings.AgentChatModeCaption}" />
+                    <RadioButton Margin="0,0,3,0" Padding="8,2" MinWidth="56" HorizontalContentAlignment="Center" GroupName="AgentChatMode"
+                                 Style="{DynamicResource {x:Type ToggleButton}}"
+                                 IsChecked="{Binding IsChatModeCurrent, Mode=TwoWay}"
+                                 AutomationProperties.AutomationId="AgentChatMode_Current"
+                                 Content="{x:Static res:Strings.ChatModeCurrent}" />
+                    <RadioButton Margin="0,0,3,0" Padding="8,2" MinWidth="56" HorizontalContentAlignment="Center" GroupName="AgentChatMode"
+                                 Style="{DynamicResource {x:Type ToggleButton}}"
+                                 IsChecked="{Binding IsChatModeAll, Mode=TwoWay}"
+                                 AutomationProperties.AutomationId="AgentChatMode_All"
+                                 Content="{x:Static res:Strings.ChatModeAll}" />
+                    <RadioButton Margin="0,0,0,0" Padding="8,2" MinWidth="56" HorizontalContentAlignment="Center" GroupName="AgentChatMode"
+                                 Style="{DynamicResource {x:Type ToggleButton}}"
+                                 IsEnabled="{Binding IsChatModeRemainingEnabled}"
+                                 IsChecked="{Binding IsChatModeRemaining, Mode=TwoWay}"
+                                 AutomationProperties.AutomationId="AgentChatMode_Remaining"
+                                 Content="{x:Static res:Strings.ChatModeRemaining}" />
+                </StackPanel>
+
+                <!-- First image of a batch: pick any image of the project; Images "All" / "Remaining" start from it (it becomes the open image). -->
+                <StackPanel Margin="0,6,0,0" Orientation="Horizontal" AutomationProperties.AutomationId="AgentChatStartImage">
+                    <TextBlock Style="{StaticResource BarCaptionStyle}" Text="{x:Static res:Strings.AgentStartImageCaption}" />
+                    <ui:Button x:Name="StartImagePill" Height="28" MaxWidth="280" Padding="10,0,6,0" CornerRadius="14"
+                               Appearance="Secondary"
+                               Click="OnStartImageClick"
+                               AutomationProperties.AutomationId="AgentChatStartImagePill"
+                               AutomationProperties.Name="{x:Static res:Strings.AgentStartImageCaption}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="StartImageText" MaxWidth="230" VerticalAlignment="Center" FontSize="12" TextTrimming="CharacterEllipsis" />
+                            <ui:SymbolIcon Margin="6,0,0,0" VerticalAlignment="Center" FontSize="12" Symbol="ChevronDown24" />
+                        </StackPanel>
+                    </ui:Button>
+                    <Popup x:Name="StartImagePopup" PlacementTarget="{Binding ElementName=StartImagePill}" Placement="Top" StaysOpen="False" AllowsTransparency="True">
+                        <Border Margin="8" Padding="4" CornerRadius="8" BorderThickness="1"
+                                BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                Background="{DynamicResource ApplicationBackgroundBrush}">
+                            <ListBox x:Name="StartImageList" Width="320" MaxHeight="300"
+                                     DisplayMemberPath="DisplayName"
+                                     SelectionChanged="OnStartImageSelected"
+                                     AutomationProperties.AutomationId="AgentChatStartImageList" />
+                        </Border>
+                    </Popup>
+                </StackPanel>
+
+                <!-- Options (collapsed until the gear is toggled): caption column + control column, one option per row. -->
+                <Grid x:Name="OptionsRow" Margin="0,8,0,0">
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsChecked, ElementName=OptionsToggle}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="112" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Language: two cells of the same three-cell grid, so the cells line up with Precision. -->
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,3,8,0" Style="{StaticResource OptionCaptionStyle}" Text="{x:Static res:Strings.PromptLanguageCaption}" />
+                    <UniformGrid Grid.Row="0" Grid.Column="1" Rows="1" Columns="3" AutomationProperties.AutomationId="PromptLanguage">
+                        <RadioButton Margin="0,0,3,0" Padding="4,3" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" GroupName="AgentChatLanguage"
+                                     Style="{DynamicResource {x:Type ToggleButton}}"
+                                     IsChecked="{Binding IsPromptEnglish, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="PromptLangEng"
+                                     Content="ENG" />
+                        <RadioButton Margin="0,0,3,0" Padding="4,3" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" GroupName="AgentChatLanguage"
+                                     Style="{DynamicResource {x:Type ToggleButton}}"
+                                     IsChecked="{Binding IsPromptVietnamese, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="PromptLangVie"
+                                     Content="VIE" />
+                    </UniformGrid>
+
+                    <!-- Precision -->
+                    <TextBlock x:Name="PrecisionCaption" Grid.Row="1" Grid.Column="0" Margin="0,9,8,0" Style="{StaticResource OptionCaptionStyle}" Text="{x:Static res:Strings.PromptPrecision}" />
+                    <UniformGrid x:Name="PromptPrecisionRow" Grid.Row="1" Grid.Column="1" Margin="0,6,0,0" Rows="1" Columns="3" AutomationProperties.AutomationId="PromptPrecision">
+                        <RadioButton Margin="0,0,3,0" Padding="4,3" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" GroupName="AgentChatPrecision"
+                                     Style="{DynamicResource {x:Type ToggleButton}}"
+                                     IsChecked="{Binding IsPrecisionEasy, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="PrecisionEasy"
+                                     Content="{x:Static res:Strings.PrecisionEasy}" />
+                        <RadioButton Margin="0,0,3,0" Padding="4,3" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" GroupName="AgentChatPrecision"
+                                     Style="{DynamicResource {x:Type ToggleButton}}"
+                                     IsChecked="{Binding IsPrecisionNormal, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="PrecisionNormal"
+                                     Content="{x:Static res:Strings.PrecisionNormal}" />
+                        <RadioButton Margin="0,0,0,0" Padding="4,3" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" GroupName="AgentChatPrecision"
+                                     Style="{DynamicResource {x:Type ToggleButton}}"
+                                     IsChecked="{Binding IsPrecisionHard, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="PrecisionHard"
+                                     Content="{x:Static res:Strings.PrecisionHard}" />
+                    </UniformGrid>
+
+                    <!-- Shapes -->
+                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,9,8,0" Style="{StaticResource OptionCaptionStyle}" Text="{x:Static res:Strings.ImpColShapes}" />
+                    <ItemsControl Grid.Row="2" Grid.Column="1" Margin="0,6,0,0" ItemsSource="{Binding PromptShapes}" AutomationProperties.AutomationId="PromptShapeList">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <ToggleButton Margin="0,0,3,3" Padding="8,3"
+                                              Style="{DynamicResource {x:Type ToggleButton}}"
+                                              IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                              Content="{Binding Display}"
+                                              AutomationProperties.AutomationId="PromptShapeItem"
+                                              AutomationProperties.Name="{Binding Display}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <!-- Labels follow the class table; right-click anywhere on this strip adds a label even when no box is drawn. -->
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,9,8,0" Style="{StaticResource OptionCaptionStyle}" Text="{x:Static res:Strings.LblDlgList}" />
+                    <Border Grid.Row="3" Grid.Column="1" Margin="0,6,0,0" MinHeight="26" HorizontalAlignment="Stretch" Background="Transparent"
+                            AutomationProperties.AutomationId="PromptLabelStrip">
+                        <Border.ContextMenu>
+                            <ContextMenu>
+                                <ui:MenuItem Header="{x:Static res:Strings.MiNewLabel}"
+                                             Icon="{ui:SymbolIcon Add24}"
+                                             Command="{Binding PlacementTarget.DataContext.NewLabelCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                                             AutomationProperties.AutomationId="PromptNewLabel" />
+                            </ContextMenu>
+                        </Border.ContextMenu>
+                        <ItemsControl ItemsSource="{Binding PromptLabels}" AutomationProperties.AutomationId="PromptLabelList">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <ToggleButton Margin="0,0,3,3" Padding="8,3"
+                                                  Style="{DynamicResource {x:Type ToggleButton}}"
+                                                  IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                                  Content="{Binding Display}"
+                                                  AutomationProperties.AutomationId="PromptLabelItem"
+                                                  AutomationProperties.Name="{Binding Display}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Border>
+
+                    <!-- Caps (read-only; edited in Settings) -->
+                    <TextBlock Grid.Row="4" Grid.Column="1" Margin="0,6,0,0" FontSize="12" TextWrapping="Wrap"
+                               Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                               Text="{Binding AgentChatCapsText}"
+                               AutomationProperties.AutomationId="AgentChatCaps" />
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</ui:FluentWindow>

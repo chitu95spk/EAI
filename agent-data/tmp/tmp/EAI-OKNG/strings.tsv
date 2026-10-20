@@ -1,0 +1,21 @@
+KindClassify	OK/NG	OK/NG
+TagOk	Mark OK	Đánh dấu OK
+TagNg	Mark NG	Đánh dấu NG
+TagClear	Clear OK/NG	Xóa OK/NG
+ClassifyCounts	OK {0} · NG {1} · Not marked {2}	OK {0} · NG {1} · Chưa đánh dấu {2}
+ClassifyBlockTooFew	Mark at least {0} OK and {0} NG images	Hãy đánh dấu ít nhất {0} ảnh OK và {0} ảnh NG
+ClassifyBlockOneClass	Only one kind is marked; mark both OK and NG	Mới đánh dấu một loại; hãy đánh dấu cả OK và NG
+ClassifyBlockBackboneMissing	The OK/NG base model is not installed	Chưa cài mô hình nền OK/NG
+FixInstallModelPack	Install model pack...	Cài gói mô hình...
+ClassifyReading	Reading images {0}/{1}	Đang đọc ảnh {0}/{1}
+ClassifyDone	OK/NG model ready · {0} correct on {1} check images	Mô hình OK/NG đã sẵn sàng · đúng {0} trên {1} ảnh kiểm tra
+InspectColConfidence	Confidence	Độ tin cậy
+ExportOkNgModel	OK/NG model	Mô hình OK/NG
+SendOkNgUnsupported	EasyVision cannot read OK/NG models yet	EasyVision chưa đọc được mô hình OK/NG
+ModelPackBadHash	File {0} is damaged (checksum differs)	Tệp {0} bị hỏng (sai mã kiểm tra)
+ModelPackInstalled	Installed {0} models	Đã cài {0} mô hình
+ModelPackLicence	Licence: {0}	Giấy phép: {0}
+UltraCpuSlow	No NVIDIA GPU: training on CPU, about {0}	Không có GPU NVIDIA: huấn luyện bằng CPU, khoảng {0}
+TraceOperator	Operator	Người vận hành
+TraceNote	Note	Ghi chú
+TraceSaved	Record saved: {0}	Đã lưu hồ sơ: {0}

@@ -1,0 +1,62 @@
+﻿[
+    {
+        "Path":  "E:\\Code\\EasyVision_Unisen - NoService\\tmp\\EAI-LOGO\\manifest.json",
+        "Length":  55738,
+        "ModifiedUtc":  "2026-10-15T03:53:28.4338926Z",
+        "SHA256":  "C77CD4364910D9F00B65445CA00CFB0B87DD993A14E3026FD3A51E94BF422DFE"
+    },
+    {
+        "Path":  "E:\\Code\\EasyVision_Unisen - NoService\\EasyLabel\\src\\EasyAI.Wpf\\bin\\Release\\net9.0-windows\\EasyAI.dll",
+        "Length":  1410048,
+        "ModifiedUtc":  "2026-10-15T01:55:19.3437428Z",
+        "SHA256":  "DF97C2CF3B8F42E039D08D0987E27D8AB5957BB91B5343547525F3A4764D7B2D"
+    },
+    {
+        "Path":  "E:\\Code\\EasyVision_Unisen - NoService\\EasyLabel\\src\\EasyAI.Wpf\\bin\\Release\\net9.0-windows\\EasyLabel.SegAI.dll",
+        "Length":  463360,
+        "ModifiedUtc":  "2026-10-15T01:55:12.3654394Z",
+        "SHA256":  "7AEEDC948AB000D0FF04A305CB1278275EA71030D5898FEF193714328FE79DB7"
+    },
+    {
+        "Path":  "E:\\Code\\EasyVision_Unisen - NoService\\EasyLabel\\src\\EasyAI.Wpf\\bin\\Release\\net9.0-windows\\agent\\EasyLabel.Ai.Mcp.dll",
+        "Length":  108544,
+        "ModifiedUtc":  "2026-10-15T01:55:13.5215024Z",
+        "SHA256":  "5E7ACA025A4DA51017DD1B29DF853CA79FA2781DEB524BDCC8CAFBED46801DD0"
+    },
+    {
+        "Path":  "E:\\Code\\EasyVision_Unisen - NoService\\EasyLabel\\tests\\EasyLabel.SegAI.Tests\\bin\\Release\\net9.0-windows\\EasyLabel.SegAI.Tests.dll",
+        "Length":  1286656,
+        "ModifiedUtc":  "2026-10-15T01:57:50.4570477Z",
+        "SHA256":  "41CFA356D24FEB5FBAEA994810DA9572476011E47D475FDFCF95E9CF1D9BA4C6"
+    },
+    {
+        "Path":  "E:\\Code\\EasyVision_Unisen - NoService\\artifacts\\verification\\Release\\x64\\bin\\BeeNativeSegAI\\BeeNativeSegAI.dll",
+        "Length":  883712,
+        "ModifiedUtc":  "2026-10-14T06:38:32.3040355Z",
+        "SHA256":  "7BF4F23E6224BF9EF54D10FC925F9E5194B358F16F667A0E2CD496A79BFA45C0"
+    },
+    {
+        "Path":  "E:\\Code\\EasyVision_Unisen - NoService\\artifacts\\EAI-LABEL\\native-run\\openvino.dll",
+        "Length":  15141744,
+        "ModifiedUtc":  "2026-10-12T12:05:06.5204706Z",
+        "SHA256":  "2A6DF9AAC4FD6B8D7FE7D8F0841F61193F80536B037162B4080F25A7B8588AF6"
+    },
+    {
+        "Path":  "E:\\Code\\EasyVision_Unisen - NoService\\Models\\DefectV2\\mobilenetv2-12.onnx",
+        "Length":  13964571,
+        "ModifiedUtc":  "2026-09-10T15:57:03.2810687Z",
+        "SHA256":  "C0C3F76D93FA3FD6580652A45618618A220FCED18BABF65774ED169DE0432AD5"
+    },
+    {
+        "Path":  "E:\\Code\\EasyVision_Unisen - NoService\\EasyLabel\\src\\EasyLabel.SegAI\\SegAiSession.cs",
+        "Length":  96356,
+        "ModifiedUtc":  "2026-10-15T01:53:37.8289765Z",
+        "SHA256":  "3A4AAD7735E4E807B1BAB5321AB71C616320E3E21075B04E46EDCBF5B0DEB788"
+    },
+    {
+        "Path":  "E:\\Code\\EasyVision_Unisen - NoService\\EasyLabel\\tests\\EasyLabel.SegAI.Tests\\BootstrapBaselineTests.cs",
+        "Length":  55722,
+        "ModifiedUtc":  "2026-10-13T12:05:21.9712931Z",
+        "SHA256":  "94ED25806EBDCF08161A5DDC87D515E77182AB3E5A1F15A3A275B974E323179F"
+    }
+]

@@ -1,0 +1,6 @@
+{
+  "status": "success",
+  "updatedUtc": "2026-10-17T16:34:16.3840614Z",
+  "model": "v001.segai",
+  "message": "Trained candidate v001.segai (not active). 44 training and 11 validation image(s)."
+}

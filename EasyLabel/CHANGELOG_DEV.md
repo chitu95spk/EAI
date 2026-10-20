@@ -1,0 +1,26 @@
+# EasyLabel Development Changelog
+
+- EL-0.1: Scaffolded the standalone solution, project graph, central package pins, placeholder Python/runtime folders, and WinForms shell.
+- EL-0.2: Added the project model, recursive folder scan service, project metadata persistence, and Open Folder shell UI.
+- EL-0.3: Added OpenCvSharp image loading plus a double-buffered view-only canvas with fit, pan, and cursor-anchored zoom.
+- EL-1.1: Added LabelMe and EasyLabel sidecar serialization models, IO services, and round-trip tests.
+- EL-1.3: Added a rectangle/rotation annotation vertical slice with drawing, selection, move, vertex edit, OBB rotation handle, delete, and save.
+- EL-1.2: Added rendering support for all LabelMe shape kinds with selection handles.
+- EL-review (2026-09-03): Supervisor review of the M1 slice — accepted; 5 findings scheduled as M1.5 (EL-1.6..EL-1.9) and M6/M7 detailed. See EASYLABEL_SPEC.md §13.
+- EL-upgrade (2026-09-03): Added Frontend (FE-U1..U5) and Backend (BE-U1..U6) upgrade tracks with a land-with scheduling map. See EASYLABEL_SPEC.md §14.
+- EL-1.6: Switched image loading to byte-backed OpenCV decode so Unicode paths load on Windows.
+- BE-U2: Added atomic JSON writes for LabelMe, sidecar, and project settings files, with Core coverage for replace/failure paths.
+- EL-1.7: Reworked rotation vertex resize to preserve OBB rectangle geometry around the fixed opposite corner.
+- EL-1.8: Added an interim Save/Discard/Cancel guard for dirty image switches, folder changes, and form close.
+- EL-1.9: Refreshed image-list status/label cells after save and exposed all four rectangle resize handles.
+- EL-2.1: Added the offline Python environment bootstrapper contract, strict no-index package diff/install flow, install logging, and CUDA probe.
+- EL-2.2: Added the Python.NET detection bridge and JSON-contract `detect.py` wrapper with cached Ultralytics models.
+- EL-2.3: Added Detect toolbar actions for imported models, current/folder/unlabeled scopes, cancelable background execution, saved model-result application, and sidecar provenance preservation.
+- EL-3.1: Added class rename/merge/delete batch remapping with dry-run counts, class-list updates, provenance-preserving deletes, Core fixture tests, and a WinForms Class Remap dialog.
+- EL-3.2: Added bulk label find/replace, delete by class, and zero-area cleanup with preview/apply counts, aligned sidecar deletes, Core fixture tests, and a WinForms Bulk Label Edit dialog.
+- EL-3.3: Added clone plus horizontal/vertical flip, 90/180/270 rotate, arbitrary rotate, HSV jitter, scale, and crop outputs with transformed LabelMe points, OBB corner reordering, sidecar copy, Core geometry tests, and a WinForms Clone & Augment dialog.
+- EL-4.1: Added Core YOLO detect/OBB/segment converters, COCO export/import, and Pascal VOC export/import with LabelMe round-trip coverage.
+- EL-4.2: Added a standalone Tools > Convert Labels dialog with folder-based JSON/YOLO/COCO/Pascal VOC conversion and Core service coverage.
+- EL-4.3: Added fixed-seed Ultralytics export with optional primary-class stratification, train/val/test image and label trees, `data.yaml`, Core export tests, and a project Tools dialog.
+- EL-4.4: Added reproducible dataset `.zip` packaging with portable Ultralytics output, `classes.txt`, split and augment config, changelog, manifest SHA-256 verification, restore support, Core package tests, and a project Tools dialog.
+- U397 (2026-09-09): Audited the current EasyLabel source and existing specification for technical-user usability. Added `COMPLETION_PLAN.md` as a reviewable proposal with current-state evidence, exact specification amendments, mouse/keyboard interaction contracts and EL-C01..EL-C14 frontend/backend completion cards. Existing uncommitted editor foundation is recognized as present but acceptance-pending; runtime assets and training remain incomplete. Original specification and source preserved. Verification: n/a — skipped by build policy; documentation/static checks only.

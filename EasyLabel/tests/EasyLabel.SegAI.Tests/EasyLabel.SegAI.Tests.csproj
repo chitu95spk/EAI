@@ -1,0 +1,105 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\LabelStepRules.cs" Link="Linked\LabelStepRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\AutoLabelSourceRules.cs" Link="Linked\AutoLabelSourceRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\SourceSwitchRules.cs" Link="Linked\SourceSwitchRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\AiPromptState.cs" Link="Linked\AiPromptState.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\AiSuggestionMapper.cs" Link="Linked\AiSuggestionMapper.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\AgentOutcomeRecording.cs" Link="Linked\AgentOutcomeRecording.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\ReviewApplyRules.cs" Link="Linked\ReviewApplyRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Canvas\SuggestionButtonLayout.cs" Link="Linked\SuggestionButtonLayout.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\PreviewCacheLru.cs" Link="Linked\PreviewCacheLru.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\AgentRunner.cs" Link="Linked\AgentRunner.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentStreamEvent.cs" Link="Linked\AgentStreamEvent.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentLiveFeed.cs" Link="Linked\AgentLiveFeed.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentStreamParser.cs" Link="Linked\AgentStreamParser.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentEnvironment.cs" Link="Linked\AgentEnvironment.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentLocators.cs" Link="Linked\AgentLocators.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentRunFiles.cs" Link="Linked\AgentRunFiles.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentBatch.cs" Link="Linked\AgentBatch.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentBatchRunner.cs" Link="Linked\AgentBatchRunner.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentBatchReview.cs" Link="Linked\AgentBatchReview.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentSam2Refiner.cs" Link="Linked\AgentSam2Refiner.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentSpeedRules.cs" Link="Linked\AgentSpeedRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentSpendTracker.cs" Link="Linked\AgentSpendTracker.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentPrices.cs" Link="Linked\AgentPrices.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentCliCapabilities.cs" Link="Linked\AgentCliCapabilities.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentPromptRefiner.cs" Link="Linked\AgentPromptRefiner.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\RemainingGateRules.cs" Link="Linked\RemainingGateRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentCommandLine.cs" Link="Linked\AgentCommandLine.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentSkills.cs" Link="Linked\AgentSkills.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\McpServerRegistry.cs" Link="Linked\McpServerRegistry.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentChatEntryViewModel.cs" Link="Linked\AgentChatEntryViewModel.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentChatRules.cs" Link="Linked\AgentChatRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentSlashCommands.cs" Link="Linked\AgentSlashCommands.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\AgentChatWindowBounds.cs" Link="Linked\AgentChatWindowBounds.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentRunOptions.cs" Link="Linked\AgentRunOptions.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentModels.cs" Link="Linked\AgentModels.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentAuth.cs" Link="Linked\AgentAuth.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentJob.cs" Link="Linked\AgentJob.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentResults.cs" Link="Linked\AgentResults.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentSuggestions.cs" Link="Linked\AgentSuggestions.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentCacheAndLog.cs" Link="Linked\AgentCacheAndLog.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentDuplicateFilter.cs" Link="Linked\AgentDuplicateFilter.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentUsageMeter.cs" Link="Linked\AgentUsageMeter.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentLedgerStorage.cs" Link="Linked\AgentLedgerStorage.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentSpendLedger.cs" Link="Linked\AgentSpendLedger.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentSpendBudget.cs" Link="Linked\AgentSpendBudget.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentRunSpend.cs" Link="Linked\AgentRunSpend.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\TrainStepRules.cs" Link="Linked\TrainStepRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\TrainRecommendation.cs" Link="Linked\TrainRecommendation.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\EasyModeRules.cs" Link="Linked\EasyModeRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\InspectRules.cs" Link="Linked\InspectRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\ClassifyRules.cs" Link="Linked\ClassifyRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\OkNgModelRules.cs" Link="Linked\OkNgModelRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\ImageListSortRules.cs" Link="Linked\ImageListSortRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\WorkflowStep.cs" Link="Linked\WorkflowStep.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\LiveCameraRules.cs" Link="Linked\LiveCameraRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\ViewModels\CaptureRules.cs" Link="Linked\CaptureRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\CustomModelInstaller.cs" Link="Linked\CustomModelInstaller.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\SavePolicy.cs" Link="Linked\SavePolicy.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\SettingsModel.cs" Link="Linked\SettingsModel.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\AppSettings.cs" Link="Linked\AppSettings.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\SettingsAccessor.cs" Link="Linked\SettingsAccessor.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\ShapeColorRules.cs" Link="Linked\ShapeColorRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\ClassTableRules.cs" Link="Linked\ClassTableRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\ClassTableEditRules.cs" Link="Linked\ClassTableEditRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\PanelRules.cs" Link="Linked\PanelRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\LayoutSettings.cs" Link="Linked\LayoutSettings.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\ShortcutTable.cs" Link="Linked\ShortcutTable.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\ProjectUiRules.cs" Link="Linked\ProjectUiRules.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\ThemePalette.cs" Link="Linked\ThemePalette.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EasyLabel.SegAI\EasyLabel.SegAI.csproj" />
+    <ProjectReference Include="..\..\src\EasyLabel.Camera\EasyLabel.Camera.csproj" />
+    <ProjectReference Include="..\..\src\EasyLabel.Ai.Onnx\EasyLabel.Ai.Onnx.csproj" />
+  </ItemGroup>
+
+</Project>

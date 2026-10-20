@@ -1,0 +1,16 @@
+TrainUseRecommended	Use recommended settings	Dùng cấu hình đề xuất
+Hardware.RecommendedFormat	Recommended for this PC: {0} - {1}	Đề xuất cho máy này: {0} - {1}
+Hardware.Mode.Safe	Safe mode	Chế độ an toàn
+Hardware.Mode.Standard	Standard	Tiêu chuẩn
+Hardware.Mode.Fast	Fast	Nhanh
+Hardware.SafeSlower	training is slower and uses fewer resources	huấn luyện chậm hơn nhưng dùng ít tài nguyên hơn
+TrainEtaFormat	About {0} min left	Còn khoảng {0} phút
+Hardware.Note.Unknown	this PC could not be read	không đọc được cấu hình máy
+Hardware.Note.SafeFewCores	few CPU cores	ít nhân CPU
+Hardware.Note.SafeLowRam	limited memory	bộ nhớ hạn chế
+Hardware.Note.SafeSegmentAiOnly	Segment AI only	chỉ dùng Segment AI
+Hardware.Note.SafeBelowNormal	background priority	ưu tiên nền
+Hardware.Note.FastCpuRam	many CPU cores and plenty of memory	nhiều nhân CPU và nhiều bộ nhớ
+Hardware.Note.FastCudaGpu	a CUDA graphics card	có card đồ họa CUDA
+Hardware.Note.GpuAvailable	a graphics card is available	có card đồ họa
+Hardware.Note.Standard	balanced settings	cấu hình cân bằng

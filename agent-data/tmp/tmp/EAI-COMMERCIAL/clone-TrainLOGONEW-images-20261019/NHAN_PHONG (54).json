@@ -1,0 +1,223 @@
+{
+  "version": "7.8.1",
+  "flags": {
+    "train": true
+  },
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          940.7564697265625,
+          2287.8681640625
+        ],
+        [
+          1779.7755126953125,
+          2618.47216796875
+        ],
+        [
+          1684.33154296875,
+          2860.693359375
+        ],
+        [
+          845.3125,
+          2530.08935546875
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "claude-draft7 lifted film",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "OK",
+      "points": [
+        [
+          1756.0054931640625,
+          492.50811767578125
+        ],
+        [
+          1273.892333984375,
+          483.1769104003906
+        ],
+        [
+          1277.5667724609375,
+          293.3326110839844
+        ],
+        [
+          1759.679931640625,
+          302.663818359375
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "OK",
+      "points": [
+        [
+          1177.4697265625,
+          582.7099609375
+        ],
+        [
+          2166.579345703125,
+          576.4891357421875
+        ],
+        [
+          2177.44384765625,
+          2303.9296875
+        ],
+        [
+          1188.3341064453125,
+          2310.150390625
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "OK",
+      "points": [
+        [
+          2219.456298828125,
+          809.7697143554688
+        ],
+        [
+          3818.20556640625,
+          940.4067993164062
+        ],
+        [
+          3720.29248046875,
+          2138.67529296875
+        ],
+        [
+          2121.543212890625,
+          2008.038330078125
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH",
+      "points": [
+        [
+          2229.100830078125,
+          2611.180908203125
+        ],
+        [
+          2691.905029296875,
+          2464.855712890625
+        ],
+        [
+          2755.387451171875,
+          2665.639404296875
+        ],
+        [
+          2292.583251953125,
+          2811.964599609375
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH_BOT",
+      "points": [
+        [
+          856.9788326113863,
+          2024.764458735788
+        ],
+        [
+          872.3749271542387,
+          1514.695502201712
+        ],
+        [
+          980.4662357479887,
+          1517.972845951712
+        ],
+        [
+          965.0701412051363,
+          2028.041802485788
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          1204.603515625,
+          2894.05908203125
+        ],
+        [
+          1605.377197265625,
+          2871.870361328125
+        ],
+        [
+          1612.35888671875,
+          2997.973876953125
+        ],
+        [
+          1211.585205078125,
+          3020.16259765625
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "claude-draft7 lifted film",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          1747.824462890625,
+          2772.798828125
+        ],
+        [
+          2127.264404296875,
+          2633.113037109375
+        ],
+        [
+          2144.366943359375,
+          2679.56982421875
+        ],
+        [
+          1764.9268798828125,
+          2819.255615234375
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "claude-draft7 lifted film",
+      "direction": null,
+      "mask": null
+    }
+  ],
+  "imagePath": "NHAN_PHONG (54).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

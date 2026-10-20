@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "createdUtc": "2026-10-12T10:41:33.6944399Z",
+  "appVersion": "1.0.0.0",
+  "model": {
+    "kind": "classify",
+    "name": "okng",
+    "version": 1,
+    "sha256": "97bedaac56e4eeb82406606d12c610e1e0df762b99457249b01b88fce1e6dca5"
+  },
+  "metrics": {
+    "ngRecall": 1.0
+  },
+  "settings": {
+    "backboneFile": "mobilenetv2-12-cls.onnx",
+    "backboneSha256": "cce809206025057aa19d241c08bb89500a2f325f004fa3cb0f1fe799bd944b33",
+    "featureSpec": "mean-max-stride16-stride32-v1",
+    "inputLongSide": "640",
+    "metricsBasis": "leave-one-out",
+    "modelVersion": "2"
+  },
+  "imageCount": 14,
+  "datasetHash": "56d3c003e1a1fd8b29167aa49f2ff48d5c0cdc4d392a1da43f51c810ce9740f8",
+  "manifestFile": "okng_v1.manifest.csv",
+  "hardware": {
+    "physicalCores": 12,
+    "logicalCores": 16,
+    "totalRamMb": 16064,
+    "gpu": "NVIDIA RTX A500 Laptop GPU",
+    "gpuVramMb": 3965,
+    "os": "Microsoft Windows 10.0.26200"
+  }
+}

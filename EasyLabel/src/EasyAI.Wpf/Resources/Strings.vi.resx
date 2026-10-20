@@ -1,0 +1,1433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="AppName" xml:space="preserve"><value>EasyAI</value></data>
+  <data name="OpenFolder" xml:space="preserve"><value>Mở thư mục</value></data>
+  <data name="OpenFolderTip" xml:space="preserve"><value>Mở thư mục ảnh làm dự án</value></data>
+  <data name="OpenFolderDialogTitle" xml:space="preserve"><value>Mở thư mục</value></data>
+  <data name="ResetLayout" xml:space="preserve"><value>Đặt lại bố cục</value></data>
+  <data name="ResetLayoutTip" xml:space="preserve"><value>Đặt lại độ rộng các khung và kích thước cửa sổ về mặc định</value></data>
+  <data name="ChooseFolder" xml:space="preserve"><value>Chọn thư mục</value></data>
+  <data name="ChooseFolderTip" xml:space="preserve"><value>Chọn thư mục chứa thư viện SegAI native</value></data>
+  <data name="ChooseFolderDialogTitle" xml:space="preserve"><value>Chọn thư mục</value></data>
+  <data name="Images" xml:space="preserve"><value>Ảnh</value></data>
+  <data name="Step" xml:space="preserve"><value>Bước</value></data>
+  <data name="StepData" xml:space="preserve"><value>Dữ liệu</value></data>
+  <data name="Engines" xml:space="preserve"><value>Bộ máy</value></data>
+  <data name="SegAi" xml:space="preserve"><value>SegAI</value></data>
+  <data name="Mvs" xml:space="preserve"><value>MVS</value></data>
+  <data name="StatusLoading" xml:space="preserve"><value>Đang tải</value></data>
+  <data name="StatusLoaded" xml:space="preserve"><value>Đã tải</value></data>
+  <data name="StatusUnavailable" xml:space="preserve"><value>Không khả dụng</value></data>
+  <data name="StatusRestart" xml:space="preserve"><value>Khởi động lại để áp dụng</value></data>
+  <data name="Version" xml:space="preserve"><value>Phiên bản</value></data>
+  <data name="Location" xml:space="preserve"><value>Đường dẫn</value></data>
+  <data name="Message" xml:space="preserve"><value>Thông báo</value></data>
+  <data name="Project" xml:space="preserve"><value>Dự án</value></data>
+  <data name="ImageCount" xml:space="preserve"><value>Ảnh</value></data>
+  <data name="ClassCount" xml:space="preserve"><value>Lớp</value></data>
+  <data name="ImagePositionFormat" xml:space="preserve"><value>Ảnh {0}/{1}</value></data>
+  <data name="ImageSizeFormat" xml:space="preserve"><value>{0} x {1}</value></data>
+  <data name="PreviewImage" xml:space="preserve"><value>Xem trước</value></data>
+  <data name="ProjectErrorTitle" xml:space="preserve"><value>Không mở được dự án</value></data>
+  <data name="MigrationOneWay" xml:space="preserve"><value>Bản sao lưu: .easyai/backup. Các bản EasyAI cũ không còn mở được dự án này.</value></data>
+  <data name="MigrationTitle" xml:space="preserve"><value>Đã cập nhật dữ liệu dự án</value></data>
+  <data name="PreviewErrorTitle" xml:space="preserve"><value>Không tải được ảnh</value></data>
+  <data name="RestartTitle" xml:space="preserve"><value>Khởi động lại để áp dụng</value></data>
+  <data name="UnhandledErrorTitle" xml:space="preserve"><value>Lỗi không mong muốn</value></data>
+  <data name="EngineAbiFormat" xml:space="preserve"><value>ABI {0}</value></data>
+  <data name="StartupWarningTitle" xml:space="preserve"><value>Tùy chọn khởi động bị bỏ qua</value></data>
+  <data name="StartupSettingsDirIgnoredFormat" xml:space="preserve"><value>--settings-dir '{0}' không phải đường dẫn tuyệt đối; dùng thư mục cài đặt mặc định.</value></data>
+  <data name="StartupProjectIgnoredFormat" xml:space="preserve"><value>--project '{0}' không phải thư mục hoặc tệp dự án .easyai tồn tại nên bị bỏ qua.</value></data>
+  <data name="StartupSettingsUnavailable" xml:space="preserve"><value>Không dùng được thư mục cài đặt; cài đặt sẽ không được lưu trong phiên này.</value></data>
+  <data name="ToolSelect" xml:space="preserve"><value>Chọn</value></data>
+  <data name="ToolRect" xml:space="preserve"><value>Chữ nhật</value></data>
+  <data name="ToolRot" xml:space="preserve"><value>Xoay</value></data>
+  <data name="ToolPolygon" xml:space="preserve"><value>Đa giác</value></data>
+  <data name="ToolSelectTip" xml:space="preserve"><value>Chỉnh sửa hình</value></data>
+  <data name="ToolRectTip" xml:space="preserve"><value>Hình chữ nhật</value></data>
+  <data name="ToolRotTip" xml:space="preserve"><value>Hộp xoay</value></data>
+  <data name="ToolPolygonTip" xml:space="preserve"><value>Đa giác</value></data>
+  <data name="ToolsGroup" xml:space="preserve"><value>Công cụ</value></data>
+  <data name="ClassGroup" xml:space="preserve"><value>Lớp</value></data>
+  <data name="ClassEditMenu" xml:space="preserve"><value>Sửa danh sách lớp...</value></data>
+  <data name="ClassEditTitle" xml:space="preserve"><value>Bảng lớp</value></data>
+  <data name="ClassEditColName" xml:space="preserve"><value>Tên</value></data>
+  <data name="ClassEditColKind" xml:space="preserve"><value>Loại</value></data>
+  <data name="ClassEditColEnabled" xml:space="preserve"><value>Bật</value></data>
+  <data name="ClassEditKindDefect" xml:space="preserve"><value>Lỗi</value></data>
+  <data name="ClassEditKindGood" xml:space="preserve"><value>Tốt</value></data>
+  <data name="ClassEditAdd" xml:space="preserve"><value>Thêm lớp</value></data>
+  <data name="ClassEditSaveFailed" xml:space="preserve"><value>Không lưu được bảng lớp: </value></data>
+  <data name="UndoTip" xml:space="preserve"><value>Hoàn tác</value></data>
+  <data name="RedoTip" xml:space="preserve"><value>Làm lại</value></data>
+  <data name="FitTip" xml:space="preserve"><value>Vừa khung</value></data>
+  <data name="ActualSizeTip" xml:space="preserve"><value>Kích thước thật 100%</value></data>
+  <data name="CanvasName" xml:space="preserve"><value>Vùng dán nhãn</value></data>
+  <data name="SaveErrorTitle" xml:space="preserve"><value>Không lưu được nhãn</value></data>
+  <data name="CanvasLoadErrorTitle" xml:space="preserve"><value>Không tải được nhãn</value></data>
+  <data name="ModeTrain" xml:space="preserve"><value>Train</value></data>
+  <data name="ModeVal" xml:space="preserve"><value>Val</value></data>
+  <data name="ModeIgnored" xml:space="preserve"><value>Bỏ qua</value></data>
+  <data name="Stale" xml:space="preserve"><value>Lỗi thời</value></data>
+  <data name="MissingJson" xml:space="preserve"><value>Thiếu JSON</value></data>
+  <data name="Regions" xml:space="preserve"><value>Vùng</value></data>
+  <data name="Close" xml:space="preserve"><value>Đóng</value></data>
+  <data name="DataSummary" xml:space="preserve"><value>Tập dữ liệu</value></data>
+  <data name="SummaryTrainTip" xml:space="preserve"><value>Ảnh dùng để huấn luyện</value></data>
+  <data name="SummaryValTip" xml:space="preserve"><value>Ảnh dùng để kiểm định</value></data>
+  <data name="SummaryIgnoredTip" xml:space="preserve"><value>Ảnh không có vùng nhãn</value></data>
+  <data name="SummaryStaleTip" xml:space="preserve"><value>Vùng nhãn không còn khớp với dữ liệu nhãn đã lưu</value></data>
+  <data name="SummaryMissingJsonTip" xml:space="preserve"><value>Ảnh không có tệp LabelMe JSON</value></data>
+  <data name="ImportDataset" xml:space="preserve"><value>Nhập dataset</value></data>
+  <data name="ImportDatasetTip" xml:space="preserve"><value>Nhập thư mục hoặc tệp zip dataset EasyVision</value></data>
+  <data name="ImportDatasetDialogTitle" xml:space="preserve"><value>Nhập dataset</value></data>
+  <data name="ImportDatasetFilter" xml:space="preserve"><value>Dataset EasyVision (*.zip;dataset.json)|*.zip;dataset.json</value></data>
+  <data name="ImportResultTitle" xml:space="preserve"><value>Kết quả nhập</value></data>
+  <data name="ImportResultFormat" xml:space="preserve"><value>Đã nhập {0}, bỏ qua {1}</value></data>
+  <data name="ImportMoreFormat" xml:space="preserve"><value>... và {0} mục nữa</value></data>
+  <data name="AddImages" xml:space="preserve"><value>Thêm ảnh</value></data>
+  <data name="AddImagesTip" xml:space="preserve"><value>Sao chép ảnh vào dự án</value></data>
+  <data name="AddImagesDialogTitle" xml:space="preserve"><value>Thêm ảnh</value></data>
+  <data name="AddImagesFilter" xml:space="preserve"><value>Ảnh (*.png;*.jpg;*.jpeg;*.bmp)|*.png;*.jpg;*.jpeg;*.bmp</value></data>
+  <data name="AddImagesErrorTitle" xml:space="preserve"><value>Một số ảnh chưa được thêm</value></data>
+  <data name="DataErrorTitle" xml:space="preserve"><value>Thao tác dữ liệu thất bại</value></data>
+  <data name="StepLabel" xml:space="preserve"><value>Gán nhãn</value></data>
+  <data name="ClassesHeader" xml:space="preserve"><value>Lớp</value></data>
+  <data name="ClassListTip" xml:space="preserve"><value>Lớp đang dùng</value></data>
+  <data name="ModelHeader" xml:space="preserve"><value>Model</value></data>
+  <data name="ModelNone" xml:space="preserve"><value>Chưa có model</value></data>
+  <data name="ChooseModelTip" xml:space="preserve"><value>Model đang dùng</value></data>
+  <data name="ImportModel" xml:space="preserve"><value>Nhập model...</value></data>
+  <data name="ImportModelTip" xml:space="preserve"><value>Nhập model</value></data>
+  <data name="ImportModelDialogTitle" xml:space="preserve"><value>Nhập model</value></data>
+  <data name="ImportModelFilter" xml:space="preserve"><value>Model Segment AI (*.segai)|*.segai</value></data>
+  <data name="ImportModelDoneFormat" xml:space="preserve"><value>Đã nhập thành {0}</value></data>
+  <data name="ImportModelRejectedTitle" xml:space="preserve"><value>Model bị từ chối</value></data>
+  <data name="ModelErrorTitle" xml:space="preserve"><value>Thao tác model thất bại</value></data>
+  <data name="AutoLabelHeader" xml:space="preserve"><value>Gán nhãn tự động</value></data>
+  <data name="AutoLabelCurrent" xml:space="preserve"><value>Ảnh hiện tại</value></data>
+  <data name="AutoLabelCurrentTip" xml:space="preserve"><value>Gán nhãn tự động ảnh hiện tại</value></data>
+  <data name="AutoLabelAll" xml:space="preserve"><value>Mọi ảnh chưa nhãn</value></data>
+  <data name="AutoLabelAllTip" xml:space="preserve"><value>Gán nhãn tự động mọi ảnh chưa có nhãn</value></data>
+  <data name="SourceTip" xml:space="preserve"><value>Nguồn tạo gợi ý (cũng dùng cho công cụ AI-Box và AI-Points)</value></data>
+  <data name="SourceAiModel" xml:space="preserve"><value>Mô hình AI</value></data>
+  <data name="SourceSegmentModel" xml:space="preserve"><value>Mô hình Segment</value></data>
+  <data name="SourceAgentPrompt" xml:space="preserve"><value>Lệnh cho Agent</value></data>
+  <data name="AiPickTip" xml:space="preserve"><value>Mô hình AI dùng cho nguồn Mô hình AI</value></data>
+  <data name="AiPickSam2" xml:space="preserve"><value>SAM2</value></data>
+  <data name="AiPickYoloWorld" xml:space="preserve"><value>YOLO-World</value></data>
+  <data name="AiPickCustomDetect" xml:space="preserve"><value>YOLO tùy chỉnh</value></data>
+  <data name="AgentPromptTip" xml:space="preserve"><value>Việc agent cần gán nhãn</value></data>
+  <data name="AgentPromptPlaceholder" xml:space="preserve"><value>Mô tả cần gán nhãn gì, ví dụ: đánh dấu mọi vết xước</value></data>
+  <data name="ReasonNeedSam2" xml:space="preserve"><value>Không khả dụng: hãy chọn mô hình SAM2 trong Gán nhãn tự động</value></data>
+  <data name="ReasonNeedAiOrAgent" xml:space="preserve"><value>Không khả dụng: hãy chọn Mô hình AI hoặc Lệnh cho Agent trong Gán nhãn tự động</value></data>
+  <data name="ReasonNoBackend" xml:space="preserve"><value>Không khả dụng: chưa tích hợp suy luận của mô hình AI</value></data>
+  <data name="ReasonAgentNotConnected" xml:space="preserve"><value>Không khả dụng: chưa kết nối {0} agent</value></data>
+  <data name="ReasonNeedPrompt" xml:space="preserve"><value>Không khả dụng: SAM2 cần gợi ý - vẽ khung bằng AI-Box hoặc bấm điểm bằng AI-Points</value></data>
+  <data name="ReasonClaudeNotFound" xml:space="preserve"><value>Không khả dụng: không tìm thấy Claude Code (hãy cài đặt và đăng nhập, hoặc đặt biến EASYAI_CLAUDE)</value></data>
+  <data name="ReasonNeedAgentPrompt" xml:space="preserve"><value>Không khả dụng: hãy nhập lệnh cho Agent</value></data>
+  <data name="ReasonAgentToolsMissing" xml:space="preserve"><value>Không khả dụng: thiếu công cụ của Agent (hãy cài đặt lại)</value></data>
+  <data name="ReasonAgentUsesPrompt" xml:space="preserve"><value>Không khả dụng: nguồn Lệnh cho Agent làm việc theo lệnh đã nhập, không dùng khung vẽ tay</value></data>
+  <data name="AgentRunning" xml:space="preserve"><value>{0} agent đang làm việc...</value></data>
+  <data name="AgentRunDoneFormat" xml:space="preserve"><value>Agent: {0} đề xuất, {1}, {2} lượt, {3} giây</value></data>
+  <data name="AgentRunCachedFormat" xml:space="preserve"><value>Agent: {0} đề xuất (từ bộ nhớ đệm)</value></data>
+  <data name="AgentRunNothingFormat" xml:space="preserve"><value>Agent: không có đề xuất, {0}, {1} lượt, {2} giây</value></data>
+  <data name="AgentSaidFormat" xml:space="preserve"><value>Agent trả lời: {0}</value></data>
+  <data name="AgentNotSignedIn" xml:space="preserve"><value>Claude Code chưa đăng nhập: hãy mở terminal, chạy claude và đăng nhập bằng /login</value></data>
+  <data name="AgentFailedFormat" xml:space="preserve"><value>Lần chạy {0} agent thất bại: {1}</value></data>
+  <data name="AgentTimedOut" xml:space="preserve"><value>{0} agent không hoàn tất trong 5 phút và đã bị dừng.</value></data>
+  <data name="AgentBudgetStopped" xml:space="preserve"><value>Tác nhân đã dừng vì đã đạt giới hạn chi phí.</value></data>
+  <data name="AgentLedgerTampered" xml:space="preserve"><value>Bản ghi chi phí tác nhân hôm nay cần được bạn xem lại trước khi có thể chạy tác nhân tiếp.</value></data>
+  <data name="AgentCostEstimated" xml:space="preserve"><value>Chi phí là ước tính.</value></data>
+  <data name="AgentConsentTitle" xml:space="preserve"><value>Gửi đến dịch vụ AI?</value></data>
+  <data name="AgentConsentBody" xml:space="preserve"><value>Để gắn nhãn ảnh này bằng {0}, ảnh và nội dung bạn nhập sẽ được gửi qua internet đến máy chủ của {0}. Việc họ xử lý dữ liệu tuân theo điều khoản của họ. Việc này là tùy chọn: bạn có thể tiếp tục gắn nhãn thủ công, và có thể rút quyền này bất cứ lúc nào trong Cài đặt, Tác nhân.</value></data>
+  <data name="AgentConsentAccept" xml:space="preserve"><value>Cho phép cho dự án này</value></data>
+  <data name="AgentConsentDeclined" xml:space="preserve"><value>Chưa gửi gì. Trợ lý AI chưa chạy.</value></data>
+  <data name="AgentConsentRevoke" xml:space="preserve"><value>Rút quyền</value></data>
+  <data name="AgentConsentRevoked" xml:space="preserve"><value>Đã rút quyền. Trợ lý AI sẽ hỏi lại trước khi chạy trên dự án này.</value></data>
+  <data name="AgentConsentGrantedFormat" xml:space="preserve"><value>Đã cho phép cho dự án này từ {0}.</value></data>
+  <data name="AgentConsentNone" xml:space="preserve"><value>Chưa cho phép. Trợ lý AI sẽ hỏi trước lần dùng đầu tiên trên dự án này.</value></data>
+  <data name="AgentProviderClaude" xml:space="preserve"><value>Claude (Anthropic)</value></data>
+  <data name="AgentProviderCodex" xml:space="preserve"><value>Codex (OpenAI)</value></data>
+  <data name="AgentPromptTooLongFormat" xml:space="preserve"><value>Lệnh quá dài: tối đa {0} ký tự.</value></data>
+  <data name="AgentExitNoOutputFormat" xml:space="preserve"><value>mã thoát {0}, không có đầu ra</value></data>
+  <data name="AgentRunErrorTitle" xml:space="preserve"><value>Agent</value></data>
+  <data name="SuggestPrompt" xml:space="preserve"><value>Gợi ý prompt</value></data>
+  <data name="SuggestRunning" xml:space="preserve"><value>{0} đang xem ảnh để gợi ý prompt...</value></data>
+  <data name="SuggestFailedFormat" xml:space="preserve"><value>Không gợi ý được prompt: {0}</value></data>
+  <data name="SuggestNoImage" xml:space="preserve"><value>Hãy mở một ảnh trước để nhận gợi ý prompt.</value></data>
+  <data name="SuggestBadAnswer" xml:space="preserve"><value>câu trả lời không có danh sách prompt dùng được</value></data>
+  <data name="SuggestTimedOut" xml:space="preserve"><value>{0} không trả lời trong 90 giây và đã bị dừng.</value></data>
+  <data name="AiRunningFormat" xml:space="preserve"><value>Đang chạy {0}...</value></data>
+  <data name="AiLoadingFormat" xml:space="preserve"><value>Đang nạp {0}...</value></data>
+  <data name="AiProviderFallbackFormat" xml:space="preserve"><value>Không dùng được GPU, chạy bằng CPU: {0}</value></data>
+  <data name="AiRunDoneFormat" xml:space="preserve"><value>{0} trên {1}: {2} đề xuất trong {3} ms</value></data>
+  <data name="AiCustomDetectNote" xml:space="preserve"><value>Custom YOLO phát hiện mọi lớp của mô hình đã huấn luyện; chữ trong ô lệnh không được dùng.</value></data>
+  <data name="AiRunNothingFormat" xml:space="preserve"><value>{0} trên {1}: không tìm thấy gì ({2} ms)</value></data>
+  <data name="AiRunErrorTitle" xml:space="preserve"><value>Mô hình AI</value></data>
+  <data name="AiModelErrorFormat" xml:space="preserve"><value>Không dùng được mô hình AI: {0}</value></data>
+  <data name="AiRunFailedFormat" xml:space="preserve"><value>Chạy mô hình AI thất bại: {0}</value></data>
+  <data name="Cancel" xml:space="preserve"><value>Hủy</value></data>
+  <data name="ProgressFormat" xml:space="preserve"><value>{0} / {1}</value></data>
+  <data name="AutoLabelErrorTitle" xml:space="preserve"><value>Gán nhãn tự động thất bại</value></data>
+  <data name="AutoLabelNoneFound" xml:space="preserve"><value>Không tìm thấy vùng nào</value></data>
+  <data name="AutoLabelSkippedFormat" xml:space="preserve"><value>{0} ảnh không xử lý được: {1}</value></data>
+  <data name="ScoreThreshold" xml:space="preserve"><value>Ngưỡng điểm</value></data>
+  <data name="SuggestionsHeader" xml:space="preserve"><value>Đề xuất</value></data>
+  <data name="AcceptAll" xml:space="preserve"><value>Chấp nhận tất cả</value></data>
+  <data name="AcceptAllTip" xml:space="preserve"><value>Chấp nhận mọi đề xuất</value></data>
+  <data name="AcceptSelected" xml:space="preserve"><value>Chấp nhận đã chọn</value></data>
+  <data name="AcceptSelectedTip" xml:space="preserve"><value>Chấp nhận đề xuất đã chọn (Enter)</value></data>
+  <data name="RejectAll" xml:space="preserve"><value>Bỏ tất cả</value></data>
+  <data name="RejectAllTip" xml:space="preserve"><value>Bỏ mọi đề xuất</value></data>
+  <data name="AcceptSuggestionIcon" xml:space="preserve"><value>Chấp nhận</value></data>
+  <data name="RejectSuggestionIcon" xml:space="preserve"><value>Bỏ</value></data>
+  <data name="ReviewSkippedTitle" xml:space="preserve"><value>Chưa áp dụng đủ đề xuất kiểm tra</value></data>
+  <data name="ReviewSkippedFormat" xml:space="preserve"><value>Đã bỏ qua {0} đề xuất: hình mà chúng nhắm tới đã thay đổi hoặc không còn. Các đề xuất còn lại đã được áp dụng.</value></data>
+  <data name="SplitHeader" xml:space="preserve"><value>Tập</value></data>
+  <data name="SplitTip" xml:space="preserve"><value>Train / Val</value></data>
+  <data name="StepTrain" xml:space="preserve"><value>Huấn luyện</value></data>
+  <data name="TrainOptionsHeader" xml:space="preserve"><value>Tùy chọn</value></data>
+  <data name="TrainEpochs" xml:space="preserve"><value>Số epoch</value></data>
+  <data name="AutoLabelNeedInstanceHead" xml:space="preserve"><value>Model Vị trí này chưa có đầu nhận diện thể hiện. Hãy huấn luyện lại model Vị trí để có hộp xoay và hình tròn.</value></data>
+  <data name="TrainInstanceQuality" xml:space="preserve"><value>Độ chính xác</value></data>
+  <data name="InstanceQualityPerformance" xml:space="preserve"><value>Tốc độ</value></data>
+  <data name="InstanceQualityQuality" xml:space="preserve"><value>Chất lượng</value></data>
+  <data name="TrainBlockNoInstanceLabels" xml:space="preserve"><value>Chưa có nhãn hộp xoay hoặc hình tròn. Hãy vẽ hộp hoặc hình tròn ở tab Nhãn, rồi huấn luyện.</value></data>
+  <data name="TrainInputSize" xml:space="preserve"><value>Kích thước ảnh vào</value></data>
+  <data name="TrainStart" xml:space="preserve"><value>Bắt đầu huấn luyện</value></data>
+  <data name="TrainStop" xml:space="preserve"><value>Dừng</value></data>
+  <data name="TrainBlockNoTrainImages" xml:space="preserve"><value>Chưa có ảnh Train nào có vùng nhãn. Hãy gán nhãn một ảnh và đặt nó làm Train.</value></data>
+  <data name="TrainBlockNoValImages" xml:space="preserve"><value>Chưa có ảnh nào đặt là Val. Hãy đặt một ảnh làm Val hoặc dùng Tự chia ảnh Val.</value></data>
+  <data name="TrainBlockNativeMissing" xml:space="preserve"><value>Chưa nạp thư viện Segment AI. Hãy chọn thư mục của nó trong Cài đặt rồi thử lại.</value></data>
+  <data name="TrainBlockBackboneMissing" xml:space="preserve"><value>Không tìm thấy file backbone (mobilenetv2-12.onnx). Hãy mở thư mục model, chép file vào đó rồi thử lại.</value></data>
+  <data name="TrainBlockBusy" xml:space="preserve"><value>Đang có thao tác khác chạy. Hãy đợi nó xong rồi bắt đầu huấn luyện.</value></data>
+  <data name="TrainBlockNoSession" xml:space="preserve"><value>Chưa mở dự án. Hãy mở hoặc tạo một dự án trước.</value></data>
+  <data name="TrainProgressFormat" xml:space="preserve"><value>Epoch {0} / {1} · {2} · còn {3}</value></data>
+  <data name="TrainNoticeTitle" xml:space="preserve"><value>Huấn luyện</value></data>
+  <data name="TrainFailedTitle" xml:space="preserve"><value>Huấn luyện thất bại</value></data>
+  <data name="TrainDoneFormat" xml:space="preserve"><value>Đã huấn luyện {0} trong {1}</value></data>
+  <data name="TrainCancelled" xml:space="preserve"><value>Đã hủy huấn luyện; chưa tạo model</value></data>
+  <data name="TrainCloseTitle" xml:space="preserve"><value>Đang huấn luyện</value></data>
+  <data name="TrainClosePrompt" xml:space="preserve"><value>Dừng huấn luyện và đóng ứng dụng?</value></data>
+  <data name="TrainCloseStop" xml:space="preserve"><value>Dừng và đóng</value></data>
+  <data name="TrainStopTimeout" xml:space="preserve"><value>Huấn luyện chưa dừng sau 30 giây nên ứng dụng vẫn mở. Hãy đợi thêm một chút rồi đóng lại.</value></data>
+  <data name="ChartHeader" xml:space="preserve"><value>Đường cong huấn luyện</value></data>
+  <data name="ChartEpoch" xml:space="preserve"><value>Epoch</value></data>
+  <data name="ChartLoss" xml:space="preserve"><value>Loss</value></data>
+  <data name="ChartIou" xml:space="preserve"><value>IoU</value></data>
+  <data name="ChartTrainLoss" xml:space="preserve"><value>Loss huấn luyện</value></data>
+  <data name="ChartValidationLoss" xml:space="preserve"><value>Loss kiểm định</value></data>
+  <data name="ChartValidationIou" xml:space="preserve"><value>IoU kiểm định</value></data>
+  <data name="CandidatesHeader" xml:space="preserve"><value>Model</value></data>
+  <data name="TrainKindSegment" xml:space="preserve"><value>Segment AI</value></data>
+  <data name="TrainKindUltra" xml:space="preserve"><value>YOLO / RT-DETR</value></data>
+  <data name="TrainKindTip" xml:space="preserve"><value>Chọn bộ huấn luyện: Segment AI tích hợp hoặc mô hình YOLO / RT-DETR huấn luyện bằng Ultralytics</value></data>
+  <data name="UltraFamily" xml:space="preserve"><value>Họ mô hình</value></data>
+  <data name="UltraBatch" xml:space="preserve"><value>Kích thước batch</value></data>
+  <data name="UltraBatchTip" xml:space="preserve"><value>Để trống hoặc 0 = mặc định của họ mô hình</value></data>
+  <data name="UltraSuffixExperimental" xml:space="preserve"><value>(thử nghiệm)</value></data>
+  <data name="UltraSuffixNeedsVram" xml:space="preserve"><value>(cần thêm VRAM)</value></data>
+  <data name="UltraBlockChecking" xml:space="preserve"><value>Đang kiểm tra bộ huấn luyện YOLO / RT-DETR...</value></data>
+  <data name="UltraBlockNoTrainerFolder" xml:space="preserve"><value>Không tìm thấy thư mục huấn luyện YOLO tools\easyai-train. Hãy dùng Segment AI, chạy được trên máy này.</value></data>
+  <data name="UltraBlockNoVenv" xml:space="preserve"><value>Thiếu môi trường Python (.venv) của bộ huấn luyện YOLO trong tools\easyai-train. Hãy chạy thiết lập của nó hoặc dùng Segment AI.</value></data>
+  <data name="UltraBlockNoCuda" xml:space="preserve"><value>Không có GPU CUDA để huấn luyện YOLO. Hãy dùng Segment AI, chạy được trên máy này.</value></data>
+  <data name="UltraBlockFailed" xml:space="preserve"><value>Kiểm tra bộ huấn luyện YOLO thất bại. Hãy dùng Segment AI, hoặc sửa bộ huấn luyện rồi mở lại tab này.</value></data>
+  <data name="UltraBlockNoFamily" xml:space="preserve"><value>Không có họ mô hình YOLO nào. Hãy dùng Segment AI hoặc kiểm tra thiết lập bộ huấn luyện.</value></data>
+  <data name="UltraBlockNoSamples" xml:space="preserve"><value>Chưa có ảnh Train nào có vùng nhãn. Hãy gán nhãn một ảnh và đặt nó làm Train.</value></data>
+  <data name="UltraStatusReadyFormat" xml:space="preserve"><value>Sẵn sàng: {0}</value></data>
+  <data name="UltraStatusFailedFormat" xml:space="preserve"><value>Kiểm tra bộ huấn luyện thất bại: {0}</value></data>
+  <data name="UltraProgressFormat" xml:space="preserve"><value>Epoch {0} / {1} · box {2} · cls {3} · mAP50 {4} · {5} · còn {6}</value></data>
+  <data name="UltraDoneFormat" xml:space="preserve"><value>Đã huấn luyện {0}: mAP50 {1}, mAP50-95 {2} trong {3}</value></data>
+  <data name="UltraRunsHeader" xml:space="preserve"><value>Các lần chạy YOLO / RT-DETR</value></data>
+  <data name="UltraRunDetailFormat" xml:space="preserve"><value>{0} · mAP50 {1} · {2}</value></data>
+  <data name="UltraOpenFolder" xml:space="preserve"><value>Mở thư mục</value></data>
+  <data name="UltraOpenFolderFailed" xml:space="preserve"><value>Không mở được thư mục</value></data>
+  <data name="UltraUseTip" xml:space="preserve"><value>Cài model detect này làm model YOLO tùy chỉnh cho nguồn Mô hình AI khi gán nhãn tự động</value></data>
+  <data name="UltraUseOnlyDetectTip" xml:space="preserve"><value>Chỉ lượt chạy detect mới dùng được để gán nhãn tự động (lượt này là segment hoặc hộp xoay)</value></data>
+  <data name="UltraUseNotFinishedTip" xml:space="preserve"><value>Chỉ lượt chạy đã hoàn tất thành công mới dùng được để gán nhãn tự động</value></data>
+  <data name="UltraUseNoOnnxTip" xml:space="preserve"><value>Lượt chạy này không có tệp ONNX để gán nhãn tự động</value></data>
+  <data name="UltraReplaceTitle" xml:space="preserve"><value>Thay model YOLO tùy chỉnh?</value></data>
+  <data name="UltraReplaceFormat" xml:space="preserve"><value>YOLO tùy chỉnh đang dùng model của lượt chạy {0}. Thay bằng model của lượt chạy {1}?</value></data>
+  <data name="UltraReplaceUnknownFormat" xml:space="preserve"><value>Đã có một model YOLO tùy chỉnh. Thay bằng model của lượt chạy {0}?</value></data>
+  <data name="UltraUseDoneFormat" xml:space="preserve"><value>Lượt chạy {0} giờ là model YOLO tùy chỉnh. Đã chọn nó ở nguồn Mô hình AI của bước Gán nhãn.</value></data>
+  <data name="UltraUseFailedFormat" xml:space="preserve"><value>Không cài được model: {0}</value></data>
+  <data name="UltraRunSuccess" xml:space="preserve"><value>Xong</value></data>
+  <data name="UltraRunCancelled" xml:space="preserve"><value>Đã hủy</value></data>
+  <data name="UltraRunFailed" xml:space="preserve"><value>Thất bại</value></data>
+  <data name="UseModel" xml:space="preserve"><value>Dùng model này</value></data>
+  <data name="UseModelDoneFormat" xml:space="preserve"><value>{0} đã là model đang dùng</value></data>
+  <data name="CompareHeader" xml:space="preserve"><value>So với model đang dùng</value></data>
+  <data name="CompareMetric" xml:space="preserve"><value>Chỉ số</value></data>
+  <data name="CompareCandidate" xml:space="preserve"><value>Đang chọn</value></data>
+  <data name="CompareActive" xml:space="preserve"><value>Đang dùng</value></data>
+  <data name="CompareDelta" xml:space="preserve"><value>Chênh lệch</value></data>
+  <data name="MetricMap50" xml:space="preserve"><value>mAP50</value></data>
+  <data name="MetricMap5095" xml:space="preserve"><value>mAP50-95</value></data>
+  <data name="MetricPixelIou" xml:space="preserve"><value>IoU điểm ảnh</value></data>
+  <data name="MetricPixelPrecision" xml:space="preserve"><value>Precision điểm ảnh</value></data>
+  <data name="MetricPixelRecall" xml:space="preserve"><value>Recall điểm ảnh</value></data>
+  <data name="MetricClassAp50Format" xml:space="preserve"><value>AP50 {0}</value></data>
+  <data name="MetricBoxRatio" xml:space="preserve"><value>Tỉ lệ diện tích khung</value></data>
+  <data name="MetricImagesOk" xml:space="preserve"><value>Ảnh đúng</value></data>
+  <data name="MetricImagesFalseAlarm" xml:space="preserve"><value>Báo nhầm</value></data>
+  <data name="MetricImagesPartial" xml:space="preserve"><value>Một phần</value></data>
+  <data name="MetricImagesMissed" xml:space="preserve"><value>Bỏ sót</value></data>
+  <data name="MetricValidationImages" xml:space="preserve"><value>Ảnh kiểm định</value></data>
+  <data name="VerdictBetter" xml:space="preserve"><value>Tốt hơn</value></data>
+  <data name="VerdictWorse" xml:space="preserve"><value>Kém hơn</value></data>
+  <data name="VerdictEqual" xml:space="preserve"><value>Như nhau</value></data>
+  <data name="VerdictNotComparable" xml:space="preserve"><value>Không so sánh được</value></data>
+  <data name="FlagDifferentValTitle" xml:space="preserve"><value>Tập kiểm định khác nhau</value></data>
+  <data name="FlagDifferentValMessage" xml:space="preserve"><value>Hai model được đo trên các ảnh kiểm định khác nhau.</value></data>
+  <data name="FlagOverextTitle" xml:space="preserve"><value>Khung có thể quá lớn</value></data>
+  <data name="FlagOverextMessage" xml:space="preserve"><value>mAP50 cao nhưng mAP50-95 thấp, hoặc tỉ lệ diện tích khung lớn hơn 1.3.</value></data>
+  <data name="FlagNoActiveTitle" xml:space="preserve"><value>Chưa có model đang dùng</value></data>
+  <data name="FlagNoActiveMessage" xml:space="preserve"><value>Không có model đang dùng để so sánh.</value></data>
+  <data name="MenuFile" xml:space="preserve"><value>Tệp</value></data>
+  <data name="MenuEdit" xml:space="preserve"><value>Chỉnh sửa</value></data>
+  <data name="MenuView" xml:space="preserve"><value>Xem</value></data>
+  <data name="MenuHelp" xml:space="preserve"><value>Trợ giúp</value></data>
+  <data name="Exit" xml:space="preserve"><value>Thoát</value></data>
+  <data name="OpenImages" xml:space="preserve"><value>Mở ảnh</value></data>
+  <data name="OpenImagesTip" xml:space="preserve"><value>Mở ảnh</value></data>
+  <data name="OpenFolderShortcutTip" xml:space="preserve"><value>Mở thư mục</value></data>
+  <data name="PreviousImage" xml:space="preserve"><value>Ảnh trước</value></data>
+  <data name="PreviousImageTip" xml:space="preserve"><value>Ảnh trước</value></data>
+  <data name="NextImage" xml:space="preserve"><value>Ảnh tiếp</value></data>
+  <data name="NextImageTip" xml:space="preserve"><value>Ảnh tiếp</value></data>
+  <data name="Undo" xml:space="preserve"><value>Hoàn tác</value></data>
+  <data name="Redo" xml:space="preserve"><value>Làm lại</value></data>
+  <data name="Copy" xml:space="preserve"><value>Sao chép</value></data>
+  <data name="Paste" xml:space="preserve"><value>Dán</value></data>
+  <data name="Duplicate" xml:space="preserve"><value>Nhân đôi</value></data>
+  <data name="DuplicateTip" xml:space="preserve"><value>Nhân đôi</value></data>
+  <data name="DeleteShape" xml:space="preserve"><value>Xóa hình</value></data>
+  <data name="DeleteShapeTip" xml:space="preserve"><value>Xóa hình</value></data>
+  <data name="SelectAll" xml:space="preserve"><value>Chọn tất cả</value></data>
+  <data name="FitWindow" xml:space="preserve"><value>Vừa cửa sổ</value></data>
+  <data name="ActualSize" xml:space="preserve"><value>Kích thước thật</value></data>
+  <data name="StepPanel" xml:space="preserve"><value>Bảng bước</value></data>
+  <data name="ImageListPanel" xml:space="preserve"><value>Danh sách ảnh</value></data>
+  <data name="About" xml:space="preserve"><value>Giới thiệu EasyAI</value></data>
+  <data name="AboutVersionFormat" xml:space="preserve"><value>Phiên bản {0}</value></data>
+  <data name="StepBar" xml:space="preserve"><value>Quy trình</value></data>
+  <data name="Toolbar" xml:space="preserve"><value>Thanh công cụ</value></data>
+  <data name="MnFile" xml:space="preserve"><value>Tệp(_F)</value></data>
+  <data name="MnEdit" xml:space="preserve"><value>Chỉnh sửa(_E)</value></data>
+  <data name="MnView" xml:space="preserve"><value>Xem(_V)</value></data>
+  <data name="MnEasyAi" xml:space="preserve"><value>EasyAI(_A)</value></data>
+  <data name="MnHelp" xml:space="preserve"><value>Trợ giúp(_H)</value></data>
+  <data name="MiOpen" xml:space="preserve"><value>Mở(_O)</value></data>
+  <data name="MiNextImage" xml:space="preserve"><value>Hình ảnh Tiếp theo(_N)</value></data>
+  <data name="MiPrevImage" xml:space="preserve"><value>Hình ảnh Trước(_P)</value></data>
+  <data name="MiOpenDir" xml:space="preserve"><value>Mở Thư mục</value></data>
+  <data name="MiSave" xml:space="preserve"><value>Lưu(_S)</value></data>
+  <data name="MiSaveAs" xml:space="preserve"><value>Lưu nhãn thành...(_L)</value></data>
+  <data name="MiAutoSave" xml:space="preserve"><value>Tự động lưu(_A)</value></data>
+  <data name="MiChangeOutputDir" xml:space="preserve"><value>Thay đổi Thư mục Đầu ra(_C)</value></data>
+  <data name="MiEmbedImage" xml:space="preserve"><value>Nhúng Hình ảnh vào Tệp nhãn</value></data>
+  <data name="MiClose" xml:space="preserve"><value>Đóng(_C)</value></data>
+  <data name="MiDeleteFile" xml:space="preserve"><value>Xóa(_D)</value></data>
+  <data name="MiSettings" xml:space="preserve"><value>Cài đặt...</value></data>
+  <data name="MiExit" xml:space="preserve"><value>Thoát(_Q)</value></data>
+  <data name="MiPolygon" xml:space="preserve"><value>Đa giác</value></data>
+  <data name="MiRectangle" xml:space="preserve"><value>Hình chữ nhật</value></data>
+  <data name="MiRotated" xml:space="preserve"><value>Hình chữ nhật có hướng</value></data>
+  <data name="MiCircle" xml:space="preserve"><value>Hình tròn</value></data>
+  <data name="MiPoint" xml:space="preserve"><value>Điểm</value></data>
+  <data name="MiLine" xml:space="preserve"><value>Đường thẳng</value></data>
+  <data name="MiLinestrip" xml:space="preserve"><value>Đường gấp khúc</value></data>
+  <data name="MiAiPoints" xml:space="preserve"><value>AI-Points</value></data>
+  <data name="MiAiBox" xml:space="preserve"><value>AI-Box</value></data>
+  <data name="MiEditMode" xml:space="preserve"><value>Chỉnh sửa Hình dạng</value></data>
+  <data name="MiUndo" xml:space="preserve"><value>Hoàn tác</value></data>
+  <data name="MiUndoLastPoint" xml:space="preserve"><value>Hoàn tác điểm cuối cùng</value></data>
+  <data name="MiCopyClip" xml:space="preserve"><value>Sao chép vào Clipboard</value></data>
+  <data name="MiPasteClip" xml:space="preserve"><value>Dán từ Clipboard</value></data>
+  <data name="MiDuplicateShape" xml:space="preserve"><value>Nhân đôi Hình dạng</value></data>
+  <data name="MiEditLabel" xml:space="preserve"><value>Chỉnh sửa Nhãn(_E)</value></data>
+  <data name="MiDeleteShape" xml:space="preserve"><value>Xóa Hình dạng</value></data>
+  <data name="MiMerge" xml:space="preserve"><value>Gộp Hình dạng</value></data>
+  <data name="MiConvertShape" xml:space="preserve"><value>Chuyển đổi Hình dạng</value></data>
+  <data name="ConvertTargetPolygon" xml:space="preserve"><value>Đa giác</value></data>
+  <data name="ConvertTargetRectangle" xml:space="preserve"><value>Hình chữ nhật</value></data>
+  <data name="ConvertTargetRotated" xml:space="preserve"><value>Hình chữ nhật xoay</value></data>
+  <data name="ConvertTargetCircle" xml:space="preserve"><value>Hình tròn</value></data>
+  <data name="ConvertTargetPoint" xml:space="preserve"><value>Điểm</value></data>
+  <data name="ConvertShapeTitle" xml:space="preserve"><value>Chuyển đổi hình dạng</value></data>
+  <data name="ConvertShapeConfirm" xml:space="preserve"><value>Chuyển đổi</value></data>
+  <data name="ConvertShapeSkippedFormat" xml:space="preserve"><value>Đã bỏ qua {0} hình dạng không thể chuyển đổi.</value></data>
+  <data name="ShapeConvertLossyHoles" xml:space="preserve"><value>Các lỗ của hình dạng sẽ bị mất.</value></data>
+  <data name="ShapeConvertLossyLine" xml:space="preserve"><value>Đường thẳng hoặc đường gấp khúc sẽ được chuyển thành hình khép kín từ các điểm của nó.</value></data>
+  <data name="ShapeConvertLossyPoint" xml:space="preserve"><value>Chuyển thành điểm chỉ giữ lại tâm của hình dạng.</value></data>
+  <data name="ShapeConvertLossyCircle" xml:space="preserve"><value>Chuyển đổi từ hoặc sang hình tròn chỉ gần đúng hình dạng ban đầu.</value></data>
+  <data name="ShapeConvertLossyVertices" xml:space="preserve"><value>Các đỉnh của đa giác sẽ bị mất khi chuyển sang hình dạng này.</value></data>
+  <data name="MiDeleteVertex" xml:space="preserve"><value>Xóa Đỉnh đã Chọn</value></data>
+  <data name="MiSelectUp" xml:space="preserve"><value>Chọn hình dạng phía trên</value></data>
+  <data name="MiSelectDown" xml:space="preserve"><value>Chọn hình dạng phía dưới</value></data>
+  <data name="MiSelectLeft" xml:space="preserve"><value>Chọn hình dạng bên trái</value></data>
+  <data name="MiSelectRight" xml:space="preserve"><value>Chọn hình dạng bên phải</value></data>
+  <data name="MiKeepPrev" xml:space="preserve"><value>Giữ Chú thích Trước đó</value></data>
+  <data name="MiShowFlags" xml:space="preserve"><value>Cờ</value></data>
+  <data name="MiShowLabels" xml:space="preserve"><value>Danh sách Nhãn</value></data>
+  <data name="MiShowShapes" xml:space="preserve"><value>Danh sách Hình dạng</value></data>
+  <data name="MiShowFiles" xml:space="preserve"><value>Danh sách Tệp</value></data>
+  <data name="MiFillDrawing" xml:space="preserve"><value>Tô Đa giác Vẽ</value></data>
+  <data name="MiHideShapes" xml:space="preserve"><value>Ẩn Hình dạng(_H)</value></data>
+  <data name="MiShowAllShapes" xml:space="preserve"><value>Hiển thị Hình dạng(_S)</value></data>
+  <data name="MiToggleShapes" xml:space="preserve"><value>Bật/tắt Hình dạng</value></data>
+  <data name="MiZoomIn" xml:space="preserve"><value>Phóng to</value></data>
+  <data name="MiZoomOut" xml:space="preserve"><value>Thu nhỏ</value></data>
+  <data name="MiOriginalSize" xml:space="preserve"><value>Kích thước thật</value></data>
+  <data name="MiKeepZoom" xml:space="preserve"><value>Giữ Mức Phóng to Trước đó</value></data>
+  <data name="MiFitWindow" xml:space="preserve"><value>Vừa Cửa sổ</value></data>
+  <data name="MiFitWidth" xml:space="preserve"><value>Vừa Chiều rộng</value></data>
+  <data name="MiBrightness" xml:space="preserve"><value>Độ sáng Độ tương phản(_B)</value></data>
+  <data name="MiKeepBrightness" xml:space="preserve"><value>Giữ Độ sáng/Độ tương phản Trước đó</value></data>
+  <data name="MiGuide" xml:space="preserve"><value>Hướng dẫn(_T)</value></data>
+  <data name="MiAddImages" xml:space="preserve"><value>Thêm ảnh</value></data>
+  <data name="MiAutoLabelCurrent" xml:space="preserve"><value>Gán nhãn tự động ảnh hiện tại</value></data>
+  <data name="MiAutoLabelAll" xml:space="preserve"><value>Gán nhãn tự động mọi ảnh chưa nhãn</value></data>
+  <data name="MiAcceptAll" xml:space="preserve"><value>Chấp nhận tất cả</value></data>
+  <data name="MiRejectAll" xml:space="preserve"><value>Từ chối tất cả</value></data>
+  <data name="MiStartTrain" xml:space="preserve"><value>Bắt đầu train</value></data>
+  <data name="MiStopTrain" xml:space="preserve"><value>Dừng train</value></data>
+  <data name="MiUseModel" xml:space="preserve"><value>Dùng model này</value></data>
+  <data name="TbOpen" xml:space="preserve"><value>Mở(O)</value></data>
+  <data name="TbImportJson" xml:space="preserve"><value>Nhập Json</value></data>
+  <data name="ImportJsonTip" xml:space="preserve"><value>Nhập tệp LabelMe JSON (dùng được khi chưa mở dự án: chọn thư mục dự án trước)</value></data>
+  <data name="ImportTargetFolderDialogTitle" xml:space="preserve"><value>Chọn thư mục dự án để nhập vào</value></data>
+  <data name="TbOpenDir" xml:space="preserve"><value>Mở Thư mục</value></data>
+  <data name="TbPrev" xml:space="preserve"><value>Hình ảnh Trước(P)</value></data>
+  <data name="TbNext" xml:space="preserve"><value>Hình ảnh Tiếp theo(N)</value></data>
+  <data name="TbSave" xml:space="preserve"><value>Lưu(S)</value></data>
+  <data name="TbDelete" xml:space="preserve"><value>Xóa(D)</value></data>
+  <data name="TbEditPolygons" xml:space="preserve"><value>Chỉnh sửa Hình dạng</value></data>
+  <data name="TbDuplicate" xml:space="preserve"><value>Nhân đôi Hình dạng</value></data>
+  <data name="TbDeleteShape" xml:space="preserve"><value>Xóa Hình dạng</value></data>
+  <data name="TbUndo" xml:space="preserve"><value>Hoàn tác</value></data>
+  <data name="TbBrightness" xml:space="preserve"><value>Độ sáng(B)</value></data>
+  <data name="TbFitWindow" xml:space="preserve"><value>Vừa Cửa sổ(W)</value></data>
+  <data name="TbZoom" xml:space="preserve"><value>Thu phóng</value></data>
+  <data name="TbAiAnnotate" xml:space="preserve"><value>Chú thích dữ liệu với sự hỗ trợ của AI</value></data>
+  <data name="TbAiText" xml:space="preserve"><value>AI Văn bản sang Chú thích</value></data>
+  <data name="TbRun" xml:space="preserve"><value>Chạy</value></data>
+  <data name="TbScore" xml:space="preserve"><value>Điểm số</value></data>
+  <data name="TbIou" xml:space="preserve"><value>IoU</value></data>
+  <data name="TbTextPlaceholder" xml:space="preserve"><value>Nhập văn bản...</value></data>
+  <data name="TbShapePolygon" xml:space="preserve"><value>Đa giác</value></data>
+  <data name="AiUnavailableFormat" xml:space="preserve"><value>Không khả dụng: {0}</value></data>
+  <data name="AiDetectedFormat" xml:space="preserve"><value>Đã có tệp mô hình: {0}</value></data>
+  <data name="AiCustomUnavailableFormat" xml:space="preserve"><value>Chưa cài: {0}. Hãy huấn luyện ở bước Huấn luyện rồi bấm Dùng model này.</value></data>
+  <data name="SbSavedFormat" xml:space="preserve"><value>Đã lưu {0}</value></data>
+  <data name="SbSavedAsFormat" xml:space="preserve"><value>Đã lưu thành {0}</value></data>
+  <data name="SbDeletedFormat" xml:space="preserve"><value>Đã xóa {0} tệp nhãn của {1}</value></data>
+  <data name="DlgDeleteImageTitle" xml:space="preserve"><value>Xóa ảnh</value></data>
+  <data name="DlgDeleteImageMessageFormat" xml:space="preserve"><value>Xóa ảnh {0} và các tệp nhãn của nó? Chúng được chuyển vào Thùng rác.</value></data>
+  <data name="SbDeletedImageFormat" xml:space="preserve"><value>Đã xóa ảnh {0} và {1} tệp nhãn</value></data>
+  <data name="DlgYes" xml:space="preserve"><value>Có</value></data>
+  <data name="DlgNo" xml:space="preserve"><value>Không</value></data>
+  <data name="DlgDeleteImageQuestionFormat" xml:space="preserve"><value>Xóa {0}?</value></data>
+  <data name="FileSortTrainFirst" xml:space="preserve"><value>Train lên đầu</value></data>
+  <data name="FileSortValFirst" xml:space="preserve"><value>Val lên đầu</value></data>
+  <data name="FileRemoveLabels" xml:space="preserve"><value>Xóa nhãn</value></data>
+  <data name="DlgDeleteImagesQuestionFormat" xml:space="preserve"><value>Xóa {0} ảnh?</value></data>
+  <data name="DlgRemoveLabelsQuestionFormat" xml:space="preserve"><value>Xóa nhãn của {0}?</value></data>
+  <data name="SbRemovedLabelsFormat" xml:space="preserve"><value>Đã xóa nhãn của {0} ảnh</value></data>
+  <data name="SbDeletedImagesFormat" xml:space="preserve"><value>Đã xóa {0} ảnh và các tệp nhãn</value></data>
+  <data name="SbNoAnnotationFiles" xml:space="preserve"><value>Ảnh này chưa có tệp nhãn</value></data>
+  <data name="SbOutputDirFormat" xml:space="preserve"><value>Thư mục đầu ra: {0}</value></data>
+  <data name="SbOutputDirCleared" xml:space="preserve"><value>Đã bỏ thư mục đầu ra</value></data>
+  <data name="DlgUnsavedTitle" xml:space="preserve"><value>Chưa lưu thay đổi</value></data>
+  <data name="DlgUnsavedMessageFormat" xml:space="preserve"><value>Lưu các thay đổi của {0} trước khi tiếp tục?</value></data>
+  <data name="DlgSave" xml:space="preserve"><value>Lưu</value></data>
+  <data name="DlgDiscard" xml:space="preserve"><value>Không lưu</value></data>
+  <data name="DlgDeleteTitle" xml:space="preserve"><value>Xóa tệp nhãn</value></data>
+  <data name="DlgDeleteMessageFormat" xml:space="preserve"><value>Xóa các tệp nhãn của {0}? Ảnh không bị xóa.</value></data>
+  <data name="DlgDelete" xml:space="preserve"><value>Xóa</value></data>
+  <data name="DlgSaveAsTitle" xml:space="preserve"><value>Lưu thành</value></data>
+  <data name="DlgSaveAsFilter" xml:space="preserve"><value>Tệp nhãn LabelMe (*.json)|*.json</value></data>
+  <data name="DlgOutputDirTitle" xml:space="preserve"><value>Chọn thư mục đầu ra</value></data>
+  <data name="GuideTitle" xml:space="preserve"><value>Hướng dẫn</value></data>
+  <data name="GuideMissingFormat" xml:space="preserve"><value>Không tìm thấy hướng dẫn: {0} ({1})</value></data>
+  <data name="SetTitle" xml:space="preserve"><value>Cài đặt</value></data>
+  <data name="SetSearchPlaceholder" xml:space="preserve"><value>Tìm kiếm</value></data>
+  <data name="SetOpenConfig" xml:space="preserve"><value>Mở tệp cấu hình dưới dạng văn bản...</value></data>
+  <data name="SetNotYet" xml:space="preserve"><value>Chưa có trong phiên bản này</value></data>
+  <data name="SetPageAppearance" xml:space="preserve"><value>Giao diện và ngôn ngữ</value></data>
+  <data name="SetPageFiles" xml:space="preserve"><value>Tệp và lưu</value></data>
+  <data name="SetPageCanvas" xml:space="preserve"><value>Vẽ và canvas</value></data>
+  <data name="SetPageContinue" xml:space="preserve"><value>Tiếp tục giữa các ảnh</value></data>
+  <data name="SetPageLabelSources" xml:space="preserve"><value>Nguồn nhãn</value></data>
+  <data name="SetPageLabelBehavior" xml:space="preserve"><value>Hành vi nhãn</value></data>
+  <data name="SetPageAi" xml:space="preserve"><value>Hỗ trợ AI</value></data>
+  <data name="SetPageAiModels" xml:space="preserve"><value>Mô hình AI</value></data>
+  <data name="SetSectionTheme" xml:space="preserve"><value>Giao diện</value></data>
+  <data name="SetSectionLanguage" xml:space="preserve"><value>Ngôn ngữ</value></data>
+  <data name="SetSectionSave" xml:space="preserve"><value>Lưu tệp</value></data>
+  <data name="SetSectionDrawing" xml:space="preserve"><value>Vẽ</value></data>
+  <data name="SetSectionContinue" xml:space="preserve"><value>Giữ lại khi chuyển ảnh</value></data>
+  <data name="SetSectionSources" xml:space="preserve"><value>Nguồn</value></data>
+  <data name="SetSectionBehavior" xml:space="preserve"><value>Hành vi</value></data>
+  <data name="SetSectionAi" xml:space="preserve"><value>Hỗ trợ AI</value></data>
+  <data name="SetSectionAiModels" xml:space="preserve"><value>Mô hình</value></data>
+  <data name="SetTheme" xml:space="preserve"><value>Chủ đề màu</value></data>
+  <data name="SetThemeSystem" xml:space="preserve"><value>Hệ thống</value></data>
+  <data name="SetThemeLight" xml:space="preserve"><value>Sáng</value></data>
+  <data name="SetThemeDark" xml:space="preserve"><value>Tối</value></data>
+  <data name="SetLanguage" xml:space="preserve"><value>Ngôn ngữ</value></data>
+  <data name="SetLanguageRestart" xml:space="preserve"><value>Áp dụng sau khi khởi động lại</value></data>
+  <data name="SetLanguageVi" xml:space="preserve"><value>Tiếng Việt</value></data>
+  <data name="SetLanguageEn" xml:space="preserve"><value>English</value></data>
+  <data name="SetSectionPalette" xml:space="preserve"><value>Màu giao diện</value></data>
+  <data name="SetThemeAccent" xml:space="preserve"><value>Màu nhấn</value></data>
+  <data name="SetThemeGradientStart" xml:space="preserve"><value>Màu gradient bắt đầu</value></data>
+  <data name="SetThemeGradientEnd" xml:space="preserve"><value>Màu gradient kết thúc</value></data>
+  <data name="SetThemeBackground" xml:space="preserve"><value>Màu nền</value></data>
+  <data name="SetThemeResetCaption" xml:space="preserve"><value>Màu theo logo (xanh navy và gradient xanh)</value></data>
+  <data name="SetThemeReset" xml:space="preserve"><value>Đặt lại theo logo</value></data>
+  <data name="SetAutoSave" xml:space="preserve"><value>Tự động lưu</value></data>
+  <data name="SetEmbedImage" xml:space="preserve"><value>Nhúng hình ảnh vào tệp nhãn</value></data>
+  <data name="SetOutputDirectory" xml:space="preserve"><value>Thư mục đầu ra</value></data>
+  <data name="SetChoose" xml:space="preserve"><value>Chọn...</value></data>
+  <data name="SetClear" xml:space="preserve"><value>Bỏ</value></data>
+  <data name="SetNoOutputDirectory" xml:space="preserve"><value>(thư mục của dự án)</value></data>
+  <data name="SetShowLabelDialog" xml:space="preserve"><value>Hiển thị cửa sổ nhãn khi tạo hình dạng mới</value></data>
+  <data name="SetShapeColorMode" xml:space="preserve"><value>Chế độ màu hình dạng</value></data>
+  <data name="SetColorModeAuto" xml:space="preserve"><value>Tự động</value></data>
+  <data name="SetShiftAutoColor" xml:space="preserve"><value>Dịch bảng màu tự động</value></data>
+  <data name="SetUniformColor" xml:space="preserve"><value>Màu đồng nhất</value></data>
+  <data name="SetFallbackColor" xml:space="preserve"><value>Màu dự phòng Theo nhãn</value></data>
+  <data name="SetFillWhileDrawing" xml:space="preserve"><value>Tô đa giác khi vẽ</value></data>
+  <data name="SetAllowOutOfBounds" xml:space="preserve"><value>Cho phép điểm và hộp nằm ngoài ảnh</value></data>
+  <data name="SetShowLabelOnCanvas" xml:space="preserve"><value>Hiển thị nhãn của hình dạng trên canvas (BETA)</value></data>
+  <data name="ToolAiPointsShort" xml:space="preserve"><value>AI-Points</value></data>
+  <data name="ToolAiBoxShort" xml:space="preserve"><value>AI-Box</value></data>
+  <data name="SetOn" xml:space="preserve"><value>Bật</value></data>
+  <data name="SetOff" xml:space="preserve"><value>Tắt</value></data>
+  <data name="SetKeepAnnotation" xml:space="preserve"><value>Giữ chú thích trước đó</value></data>
+  <data name="SetKeepZoom" xml:space="preserve"><value>Giữ mức thu phóng trước đó</value></data>
+  <data name="SetKeepBrightness" xml:space="preserve"><value>Giữ độ sáng/tương phản trước đó</value></data>
+  <data name="SetPredefinedLabels" xml:space="preserve"><value>Nhãn định sẵn</value></data>
+  <data name="SetPredefinedImageFlags" xml:space="preserve"><value>Cờ hình ảnh định sẵn</value></data>
+  <data name="SetPredefinedShapeFlags" xml:space="preserve"><value>Cờ hình dạng định sẵn</value></data>
+  <data name="SetValidateLabels" xml:space="preserve"><value>Kiểm tra nhãn</value></data>
+  <data name="SetSortLabels" xml:space="preserve"><value>Sắp xếp nhãn</value></data>
+  <data name="SetShowLabelTextField" xml:space="preserve"><value>Hiển thị trường văn bản nhãn</value></data>
+  <data name="SetAutoComplete" xml:space="preserve"><value>Tự động hoàn thành nhãn</value></data>
+  <data name="SetStartsWith" xml:space="preserve"><value>Bắt đầu bằng</value></data>
+  <data name="SetAiDefaultModel" xml:space="preserve"><value>Mô hình mặc định</value></data>
+  <data name="SetAiTextModel" xml:space="preserve"><value>Mô hình AI Văn bản sang Chú thích</value></data>
+  <data name="SetAiPolygonDetail" xml:space="preserve"><value>Độ chi tiết đa giác</value></data>
+  <data name="SetAiBlockDuplicates" xml:space="preserve"><value>Chặn kết quả trùng với hình dạng hiện có</value></data>
+  <data name="SetAiUnavailable" xml:space="preserve"><value>Không khả dụng: cần tệp mô hình AI</value></data>
+  <data name="SetUnavailable" xml:space="preserve"><value>Không khả dụng</value></data>
+  <data name="ToolCircle" xml:space="preserve"><value>Hình tròn</value></data>
+  <data name="ToolPoint" xml:space="preserve"><value>Điểm</value></data>
+  <data name="ToolLine" xml:space="preserve"><value>Đường thẳng</value></data>
+  <data name="ToolLineStrip" xml:space="preserve"><value>Đường gấp khúc</value></data>
+  <data name="ToolCircleTip" xml:space="preserve"><value>Hình tròn (nhấp tâm, rồi nhấp một điểm trên cạnh)</value></data>
+  <data name="ToolPointTip" xml:space="preserve"><value>Điểm (nhấp chuột)</value></data>
+  <data name="ToolLineTip" xml:space="preserve"><value>Đường thẳng (nhấp hai đầu mút)</value></data>
+  <data name="ToolLineStripTip" xml:space="preserve"><value>Đường gấp khúc (nhấp các đỉnh, Enter hoặc nhấp đúp để kết thúc)</value></data>
+  <data name="MiAddEdgePoint" xml:space="preserve"><value>Thêm điểm vào cạnh</value></data>
+  <data name="LblDlgTitle" xml:space="preserve"><value>Nhãn hình dạng</value></data>
+  <data name="LblDlgLabel" xml:space="preserve"><value>Nhập nhãn của hình dạng</value></data>
+  <data name="LblDlgGroupId" xml:space="preserve"><value>ID nhóm</value></data>
+  <data name="LblDlgDescription" xml:space="preserve"><value>Mô tả</value></data>
+  <data name="LblDlgList" xml:space="preserve"><value>Danh sách nhãn</value></data>
+  <data name="LblDlgOk" xml:space="preserve"><value>OK</value></data>
+  <data name="BrightnessTitle" xml:space="preserve"><value>Độ sáng / Độ tương phản</value></data>
+  <data name="BrightnessLabel" xml:space="preserve"><value>Độ sáng</value></data>
+  <data name="ContrastLabel" xml:space="preserve"><value>Độ tương phản</value></data>
+  <data name="BrightnessReset" xml:space="preserve"><value>Đặt lại</value></data>
+  <data name="SetColorModeUniform" xml:space="preserve"><value>Đồng nhất</value></data>
+  <data name="SetColorModeLabel" xml:space="preserve"><value>Theo nhãn</value></data>
+  <data name="SetContains" xml:space="preserve"><value>Chứa</value></data>
+  <data name="PnlEasyAi" xml:space="preserve"><value>EasyAI</value></data>
+  <data name="PnlSearchFiles" xml:space="preserve"><value>Tìm kiếm Tên tệp</value></data>
+  <data name="PnlIgnoredBySegAi" xml:space="preserve"><value>bị Segment AI bỏ qua</value></data>
+  <data name="PnlAiToolTip" xml:space="preserve"><value>Không khả dụng: chưa có mô hình AI nào được cài</value></data>
+  <data name="MiShowLabelsShapes" xml:space="preserve"><value>Danh sách Nhãn / Hình dạng</value></data>
+  <data name="MiImportDatasetDots" xml:space="preserve"><value>Nhập dataset...</value></data>
+  <data name="MiAutoLabelDots" xml:space="preserve"><value>Gán nhãn tự động...</value></data>
+  <data name="MiTrainDots" xml:space="preserve"><value>Huấn luyện...</value></data>
+  <data name="PnlNoLabel" xml:space="preserve"><value>(không có nhãn)</value></data>
+  <data name="PnlGroupVisibleTip" xml:space="preserve"><value>Hiện hoặc ẩn mọi hình dạng của nhãn này</value></data>
+  <data name="SetShapeFlagsLater" xml:space="preserve"><value>Chưa thể chỉnh cờ hình dạng (chưa có trình chỉnh trong hộp thoại Nhãn hoặc Danh sách Hình dạng)</value></data>
+  <data name="MiExport" xml:space="preserve"><value>Xuất dữ liệu...</value></data>
+  <data name="ExpTitle" xml:space="preserve"><value>Xuất dữ liệu</value></data>
+  <data name="ExpNoProject" xml:space="preserve"><value>Hãy mở thư mục dự án trước</value></data>
+  <data name="ExpBusy" xml:space="preserve"><value>Không dùng được khi đang huấn luyện hoặc đang chạy tác vụ khác</value></data>
+  <data name="ExpFormat" xml:space="preserve"><value>Định dạng</value></data>
+  <data name="ExpFmtLabelMe" xml:space="preserve"><value>LabelMe JSON (sao chép)</value></data>
+  <data name="ExpFmtYoloDetect" xml:space="preserve"><value>YOLO detect (hộp)</value></data>
+  <data name="ExpFmtYoloSegment" xml:space="preserve"><value>YOLO segment (đa giác)</value></data>
+  <data name="ExpFmtCoco" xml:space="preserve"><value>COCO instances</value></data>
+  <data name="ExpFmtVoc" xml:space="preserve"><value>Pascal VOC</value></data>
+  <data name="ExpFmtMask" xml:space="preserve"><value>Mask PNG (chỉ số lớp)</value></data>
+  <data name="ExpFmtEasyVision" xml:space="preserve"><value>Dataset EasyVision</value></data>
+  <data name="ExpFmtCsv" xml:space="preserve"><value>CSV (tổng hợp)</value></data>
+  <data name="ExpSet" xml:space="preserve"><value>Ảnh</value></data>
+  <data name="ExpSetAll" xml:space="preserve"><value>Tất cả</value></data>
+  <data name="ExpSetTrain" xml:space="preserve"><value>Train</value></data>
+  <data name="ExpSetVal" xml:space="preserve"><value>Val</value></data>
+  <data name="ExpOutput" xml:space="preserve"><value>Thư mục xuất</value></data>
+  <data name="ExpBrowse" xml:space="preserve"><value>Duyệt...</value></data>
+  <data name="ExpBrowseTitle" xml:space="preserve"><value>Chọn thư mục xuất</value></data>
+  <data name="ExpCopyImages" xml:space="preserve"><value>Sao chép ảnh</value></data>
+  <data name="ExpWriteZip" xml:space="preserve"><value>Ghi tệp ZIP</value></data>
+  <data name="ExpOnlyAnnotated" xml:space="preserve"><value>Chỉ ảnh đã gán nhãn</value></data>
+  <data name="ExpRun" xml:space="preserve"><value>Xuất</value></data>
+  <data name="ExpResult" xml:space="preserve"><value>Kết quả</value></data>
+  <data name="ExpProgressFormat" xml:space="preserve"><value>{0} / {1}  {2}</value></data>
+  <data name="ExpSummaryFormat" xml:space="preserve"><value>Đã xuất {0} ảnh (bỏ qua {1} ảnh), ghi {2} hình dạng, bỏ qua {3} hình dạng, {4} tệp.</value></data>
+  <data name="ExpWarningPrefix" xml:space="preserve"><value>(cảnh báo) </value></data>
+  <data name="ExpMoreFormat" xml:space="preserve"><value>... và {0} mục nữa</value></data>
+  <data name="ExpCancelled" xml:space="preserve"><value>Đã hủy. Không giữ lại tệp nào.</value></data>
+  <data name="ExpRefusedFormat" xml:space="preserve"><value>Chưa xuất: {0}</value></data>
+  <data name="ExpFailedFormat" xml:space="preserve"><value>Xuất thất bại: {0}</value></data>
+  <data name="StepInspect" xml:space="preserve"><value>Kiểm tra</value></data>
+  <data name="MiInspectDots" xml:space="preserve"><value>Kiểm tra...</value></data>
+  <data name="InspectListHeader" xml:space="preserve"><value>Ảnh kiểm tra</value></data>
+  <data name="InspectSearch" xml:space="preserve"><value>Tìm ảnh kiểm tra</value></data>
+  <data name="InspectColFile" xml:space="preserve"><value>Tệp</value></data>
+  <data name="InspectColVerdict" xml:space="preserve"><value>Kết quả</value></data>
+  <data name="InspectColScore" xml:space="preserve"><value>Điểm</value></data>
+  <data name="InspectColMs" xml:space="preserve"><value>ms</value></data>
+  <data name="InspectAddFolder" xml:space="preserve"><value>Thêm thư mục</value></data>
+  <data name="InspectAddFolderTip" xml:space="preserve"><value>Thêm mọi ảnh của một thư mục (gồm thư mục con) vào danh sách kiểm tra</value></data>
+  <data name="InspectAddFolderDialogTitle" xml:space="preserve"><value>Chọn thư mục chứa ảnh cần kiểm tra</value></data>
+  <data name="InspectAddImages" xml:space="preserve"><value>Thêm ảnh</value></data>
+  <data name="InspectAddImagesTip" xml:space="preserve"><value>Thêm ảnh vào danh sách kiểm tra (không sao chép vào dự án)</value></data>
+  <data name="InspectAddedFormat" xml:space="preserve"><value>Đã thêm {0} ảnh vào danh sách kiểm tra</value></data>
+  <data name="InspectRemove" xml:space="preserve"><value>Bỏ khỏi danh sách</value></data>
+  <data name="InspectRemoveTip" xml:space="preserve"><value>Bỏ các ảnh đã chọn khỏi danh sách kiểm tra (Delete). Tệp ảnh không bị xóa</value></data>
+  <data name="InspectFilterAll" xml:space="preserve"><value>Tất cả</value></data>
+  <data name="InspectFilterOk" xml:space="preserve"><value>OK</value></data>
+  <data name="InspectFilterNg" xml:space="preserve"><value>NG</value></data>
+  <data name="InspectFilterNotRun" xml:space="preserve"><value>Chưa chạy</value></data>
+  <data name="InspectFilterTip" xml:space="preserve"><value>Chỉ hiện ảnh có kết quả này</value></data>
+  <data name="InspectVerdictError" xml:space="preserve"><value>Lỗi</value></data>
+  <data name="InspectModelTip" xml:space="preserve"><value>Model dùng để kiểm tra. Chọn model sẽ nạp model đó; model đang dùng không đổi</value></data>
+  <data name="InspectActiveSuffix" xml:space="preserve"><value>đang dùng</value></data>
+  <data name="InspectLoadedNone" xml:space="preserve"><value>Chưa nạp model</value></data>
+  <data name="InspectLoadedActiveFormat" xml:space="preserve"><value>Đã nạp: {0} (model đang dùng)</value></data>
+  <data name="InspectLoadedOtherFormat" xml:space="preserve"><value>Đã nạp: {0} (không phải model đang dùng; Gán nhãn tự động dùng {1})</value></data>
+  <data name="InspectLoadedNoActiveFormat" xml:space="preserve"><value>Đã nạp: {0} (chưa đặt model đang dùng)</value></data>
+  <data name="InspectNewModelFormat" xml:space="preserve"><value>Kiểm tra bằng model mới ({0})</value></data>
+  <data name="InspectNewModelTip" xml:space="preserve"><value>Chọn model vừa huấn luyện. Model đang dùng không đổi; muốn đổi hãy bấm "Dùng model này" ở tab Huấn luyện</value></data>
+  <data name="InspectRunCurrent" xml:space="preserve"><value>Chạy ảnh này</value></data>
+  <data name="InspectRunCurrentTip" xml:space="preserve"><value>Kiểm tra ảnh đang chọn</value></data>
+  <data name="InspectRunAll" xml:space="preserve"><value>Chạy tất cả</value></data>
+  <data name="InspectRunAllTip" xml:space="preserve"><value>Kiểm tra lần lượt mọi ảnh trong danh sách</value></data>
+  <data name="InspectExportCsv" xml:space="preserve"><value>Xuất CSV</value></data>
+  <data name="InspectExportCsvTip" xml:space="preserve"><value>Ghi kết quả (tệp, kết quả, vùng, điểm, ms, model, thời gian) ra tệp CSV</value></data>
+  <data name="InspectSummaryFormat" xml:space="preserve"><value>{0} · đã chạy {1} · OK {2} · NG {3} · lỗi {4} · {5} ms</value></data>
+  <data name="InspectSettingsFormat" xml:space="preserve"><value>Ngưỡng {0} · diện tích tối thiểu {1} px (theo cài đặt model)</value></data>
+  <data name="InspectBlockTraining" xml:space="preserve"><value>Đang huấn luyện</value></data>
+  <data name="InspectBlockNoModel" xml:space="preserve"><value>Hãy chọn model trước</value></data>
+  <data name="InspectBlockNoImage" xml:space="preserve"><value>Danh sách kiểm tra đang trống</value></data>
+  <data name="InspectErrorTitle" xml:space="preserve"><value>Kiểm tra thất bại</value></data>
+  <data name="InspectFailedFormat" xml:space="preserve"><value>{0} ảnh không kiểm tra được: {1}</value></data>
+  <data name="InspectCsvDialogTitle" xml:space="preserve"><value>Xuất kết quả kiểm tra</value></data>
+  <data name="InspectCsvFilter" xml:space="preserve"><value>CSV (*.csv)|*.csv</value></data>
+  <data name="InspectCsvDoneFormat" xml:space="preserve"><value>Đã xuất {0} kết quả ra {1}</value></data>
+  <data name="MiImportLabelMe" xml:space="preserve"><value>Nhập LabelMe JSON...</value></data>
+  <data name="MiExportLabelMe" xml:space="preserve"><value>Xuất LabelMe JSON...</value></data>
+  <data name="MnTools" xml:space="preserve"><value>Công cụ(_T)</value></data>
+  <data name="MiConvertYolo" xml:space="preserve"><value>Chuyển thư mục LabelMe sang YOLO...</value></data>
+  <data name="ImpTitle" xml:space="preserve"><value>Nhập LabelMe JSON</value></data>
+  <data name="ImpFolder" xml:space="preserve"><value>Thư mục LabelMe (tìm trong cả thư mục con)</value></data>
+  <data name="ImpBrowseTitle" xml:space="preserve"><value>Chọn thư mục chứa các tệp LabelMe JSON</value></data>
+  <data name="ImpScan" xml:space="preserve"><value>Quét</value></data>
+  <data name="ImpPreview" xml:space="preserve"><value>Xem trước (chưa ghi gì cho tới khi bấm Nhập)</value></data>
+  <data name="ImpColJson" xml:space="preserve"><value>JSON</value></data>
+  <data name="ImpColImage" xml:space="preserve"><value>Ảnh trong dự án</value></data>
+  <data name="ImpColShapes" xml:space="preserve"><value>Hình</value></data>
+  <data name="ImpColStatus" xml:space="preserve"><value>Trạng thái</value></data>
+  <data name="ImpStatusNew" xml:space="preserve"><value>Mới</value></data>
+  <data name="ImpStatusConflict" xml:space="preserve"><value>Đã có trong dự án</value></data>
+  <data name="ImpStatusMissing" xml:space="preserve"><value>Không thấy ảnh</value></data>
+  <data name="ImpStatusInvalid" xml:space="preserve"><value>JSON không hợp lệ</value></data>
+  <data name="ImpSummaryFormat" xml:space="preserve"><value>Tệp JSON: {0}. Ảnh tìm thấy: {1}. Thiếu ảnh: {2}. JSON lỗi: {3}. Trùng với dự án: {4}. Số hình: {5}.</value></data>
+  <data name="ImpKindsFormat" xml:space="preserve"><value>Hình theo loại: {0}</value></data>
+  <data name="ImpLabelsFormat" xml:space="preserve"><value>Nhãn mới (thêm vào classes.txt khi nhập): {0}. Nhãn đã có: {1}.</value></data>
+  <data name="ImpReplaceTitle" xml:space="preserve"><value>Thay thế ảnh đã có?</value></data>
+  <data name="ImpReplacePrompt" xml:space="preserve"><value>{0} ảnh đã có trong dự án sẽ bị ghi đè cùng với nhãn của chúng. Không thể hoàn tác.</value></data>
+  <data name="ImpReplaceConfirm" xml:space="preserve"><value>Thay thế</value></data>
+  <data name="ImpConflict" xml:space="preserve"><value>Khi ảnh đã có trong dự án</value></data>
+  <data name="ImpSkip" xml:space="preserve"><value>Bỏ qua (giữ tệp của dự án)</value></data>
+  <data name="ImpReplace" xml:space="preserve"><value>Thay ảnh và JSON</value></data>
+  <data name="ImpRename" xml:space="preserve"><value>Đổi tên (nhập thành name_1)</value></data>
+  <data name="ImpRun" xml:space="preserve"><value>Nhập</value></data>
+  <data name="ImpResultFormat" xml:space="preserve"><value>Đã nhập {0}, thay {1}, đổi tên {2}, bỏ qua {3}, lỗi {4}.</value></data>
+  <data name="ImpClassesAddedFormat" xml:space="preserve"><value>Đã thêm vào classes.txt: {0}</value></data>
+  <data name="ImpNothing" xml:space="preserve"><value>Không có gì để nhập.</value></data>
+  <data name="ImpFailedFormat" xml:space="preserve"><value>Nhập thất bại: {0}</value></data>
+  <data name="CvTitle" xml:space="preserve"><value>Chuyển thư mục LabelMe sang YOLO</value></data>
+  <data name="CvInput" xml:space="preserve"><value>Thư mục vào (LabelMe JSON, tìm trong cả thư mục con)</value></data>
+  <data name="CvOutput" xml:space="preserve"><value>Thư mục ra</value></data>
+  <data name="CvInputTitle" xml:space="preserve"><value>Chọn thư mục vào</value></data>
+  <data name="CvOutputTitle" xml:space="preserve"><value>Chọn thư mục ra</value></data>
+  <data name="CvFormat" xml:space="preserve"><value>Định dạng đích</value></data>
+  <data name="CvFmtDetect" xml:space="preserve"><value>YOLO detect (class x y w h)</value></data>
+  <data name="CvFmtObb" xml:space="preserve"><value>YOLO OBB (class x1 y1 x2 y2 x3 y3 x4 y4)</value></data>
+  <data name="CvClasses" xml:space="preserve"><value>Tên lớp (mỗi dòng một lớp; thứ tự dòng là mã lớp)</value></data>
+  <data name="CvWriteClasses" xml:space="preserve"><value>Ghi classes.txt</value></data>
+  <data name="CvOverwrite" xml:space="preserve"><value>Ghi đè tệp đã có trong thư mục ra</value></data>
+  <data name="CvExpected" xml:space="preserve"><value>Số đối tượng mong đợi mỗi lớp trong từng tệp (tùy chọn; để trống = bỏ qua)</value></data>
+  <data name="CvColClass" xml:space="preserve"><value>Lớp</value></data>
+  <data name="CvColExpected" xml:space="preserve"><value>Mong đợi</value></data>
+  <data name="CvRun" xml:space="preserve"><value>Chuyển đổi</value></data>
+  <data name="CvNeedFolders" xml:space="preserve"><value>Hãy chọn thư mục vào và thư mục ra.</value></data>
+  <data name="CvNeedClasses" xml:space="preserve"><value>Hãy nhập ít nhất một tên lớp.</value></data>
+  <data name="CvRefusedFormat" xml:space="preserve"><value>Chưa chuyển đổi: {0}</value></data>
+  <data name="CvFailedFormat" xml:space="preserve"><value>Chuyển đổi thất bại: {0}</value></data>
+  <data name="CvSummaryFormat" xml:space="preserve"><value>Tệp tìm thấy: {0}. Đã chuyển: {1}. Lỗi: {2}. Đối tượng đã chuyển: {3}. Đối tượng bỏ qua: {4}.</value></data>
+  <data name="CvClassesWritten" xml:space="preserve"><value>Đã ghi classes.txt.</value></data>
+  <data name="CvPerClassHeader" xml:space="preserve"><value>Số đối tượng theo lớp:</value></data>
+  <data name="CvSkippedHeader" xml:space="preserve"><value>Đối tượng bị bỏ qua:</value></data>
+  <data name="CvWarningsHeader" xml:space="preserve"><value>Cảnh báo:</value></data>
+  <data name="CvErrorsHeader" xml:space="preserve"><value>Tệp không chuyển được:</value></data>
+  <data name="CvBadExpectedFormat" xml:space="preserve"><value>Số mong đợi của "{0}" phải là số nguyên hoặc để trống.</value></data>
+  <data name="ImpCancelled" xml:space="preserve"><value>Đã hủy; các tệp đã nhập vẫn được giữ.</value></data>
+  <data name="MiNewProject" xml:space="preserve"><value>Dự án mới...(_N)</value></data>
+  <data name="MiOpenProject" xml:space="preserve"><value>Mở dự án...(_P)</value></data>
+  <data name="MiOpenRecent" xml:space="preserve"><value>Mở gần đây(_R)</value></data>
+  <data name="MiSaveProject" xml:space="preserve"><value>Lưu dự án(_S)</value></data>
+  <data name="MiSaveProjectAs" xml:space="preserve"><value>Lưu dự án thành...(_A)</value></data>
+  <data name="MiRecentRemove" xml:space="preserve"><value>Xóa khỏi danh sách</value></data>
+  <data name="MiRecentClear" xml:space="preserve"><value>Xóa danh sách(_C)</value></data>
+  <data name="RecentHeader" xml:space="preserve"><value>Dự án gần đây</value></data>
+  <data name="RecentMissingTitle" xml:space="preserve"><value>Không tìm thấy dự án</value></data>
+  <data name="RecentMissingFormat" xml:space="preserve"><value>{0} không còn tồn tại. Xóa khỏi danh sách gần đây?</value></data>
+  <data name="RecentRemove" xml:space="preserve"><value>Xóa</value></data>
+  <data name="ProjNewTitle" xml:space="preserve"><value>Dự án mới</value></data>
+  <data name="ProjSaveAsTitle" xml:space="preserve"><value>Lưu dự án thành</value></data>
+  <data name="ProjName" xml:space="preserve"><value>Tên dự án</value></data>
+  <data name="ProjKind" xml:space="preserve"><value>Loại dự án</value></data>
+  <data name="ProjKindDetect" xml:space="preserve"><value>Phát hiện</value></data>
+  <data name="ProjKindPosition" xml:space="preserve"><value>Vị trí</value></data>
+  <data name="PositionRefusedTitle" xml:space="preserve">
+    <value>Dự án Vị trí</value>
+  </data>
+  <data name="PositionRefusedFormat" xml:space="preserve">
+    <value>Đã từ chối {0} đề xuất: dự án Vị trí chỉ nhận hộp xoay và hình tròn (không thêm đa giác hoặc mặt nạ).</value>
+  </data>
+  <data name="ProjLocation" xml:space="preserve"><value>Vị trí</value></data>
+  <data name="ProjImageFolder" xml:space="preserve"><value>Thư mục ảnh (tùy chọn)</value></data>
+  <data name="ProjClear" xml:space="preserve"><value>Bỏ chọn</value></data>
+  <data name="ProjCopyImagesToggle" xml:space="preserve"><value>Sao chép ảnh và nhãn</value></data>
+  <data name="ProjFileLabel" xml:space="preserve"><value>Tệp dự án</value></data>
+  <data name="ProjPickLocationTitle" xml:space="preserve"><value>Chọn vị trí dự án</value></data>
+  <data name="ProjPickImagesTitle" xml:space="preserve"><value>Chọn thư mục ảnh</value></data>
+  <data name="ProjOpenDialogTitle" xml:space="preserve"><value>Mở dự án</value></data>
+  <data name="ProjOpenFilter" xml:space="preserve"><value>Dự án EasyAI (*.easyai)|*.easyai</value></data>
+  <data name="ProjDefaultName" xml:space="preserve"><value>Dự án</value></data>
+  <data name="ProjCopyScanning" xml:space="preserve"><value>Đang quét tệp...</value></data>
+  <data name="ProjCopyData" xml:space="preserve"><value>Đang chép dữ liệu dự án</value></data>
+  <data name="ProjCopyImages" xml:space="preserve"><value>Đang chép ảnh</value></data>
+  <data name="ProjCopyFinishing" xml:space="preserve"><value>Đang hoàn tất...</value></data>
+  <data name="ProjCopyDone" xml:space="preserve"><value>Xong</value></data>
+  <data name="ProjNoticeTitle" xml:space="preserve"><value>Dự án đã mở kèm thông báo</value></data>
+  <data name="ProjDataRecreatedFormat" xml:space="preserve"><value>Thư mục dữ liệu của dự án này bị mất và đã được tạo lại trống: {0}. Bộ nhớ đệm, mô hình và các lần chạy của dự án không còn.</value></data>
+  <data name="ProjSaveErrorTitle" xml:space="preserve"><value>Không cập nhật được tệp dự án</value></data>
+  <data name="SbProjectSavedFormat" xml:space="preserve"><value>Đã lưu dự án {0}</value></data>
+  <data name="ProjErrNameEmpty" xml:space="preserve"><value>Hãy nhập tên dự án.</value></data>
+  <data name="ProjErrNameTooLong" xml:space="preserve"><value>Tên dài hơn {0} ký tự.</value></data>
+  <data name="ProjErrNameChars" xml:space="preserve"><value>Tên có ký tự không được dùng trong tên tệp.</value></data>
+  <data name="ProjErrNameDot" xml:space="preserve"><value>Tên không được kết thúc bằng dấu chấm.</value></data>
+  <data name="ProjErrNameReserved" xml:space="preserve"><value>Tên này được Windows dành riêng. Hãy chọn tên khác.</value></data>
+  <data name="ProjErrNameSuffix" xml:space="preserve"><value>Tên không được kết thúc bằng .easyai hoặc .easyai.data.</value></data>
+  <data name="ProjErrLocationEmpty" xml:space="preserve"><value>Hãy chọn vị trí.</value></data>
+  <data name="ProjErrLocationInvalid" xml:space="preserve"><value>Không dùng được vị trí này: {0}</value></data>
+  <data name="ProjErrImageMissing" xml:space="preserve"><value>Không tìm thấy thư mục ảnh: {0}</value></data>
+  <data name="ProjErrTargetExists" xml:space="preserve"><value>Đã tồn tại, không có gì bị thay đổi: {0}</value></data>
+  <data name="ProjErrManifestMissing" xml:space="preserve"><value>Không tìm thấy tệp dự án: {0}</value></data>
+  <data name="ProjErrManifestInvalid" xml:space="preserve"><value>Tệp dự án không hợp lệ: {0}</value></data>
+  <data name="ProjErrLayout" xml:space="preserve"><value>Thư mục ảnh và thư mục dữ liệu của dự án chồng lên nhau.</value></data>
+  <data name="ProjErrNotNamed" xml:space="preserve"><value>Dự án này chưa có tệp dự án. Hãy dùng Lưu dự án thành.</value></data>
+  <data name="ProjErrGeneric" xml:space="preserve"><value>{0}</value></data>
+  <data name="PromptLangTip" xml:space="preserve"><value>Ngôn ngữ của prompt gợi ý</value></data>
+  <data name="PromptShapesTip" xml:space="preserve"><value>Loại shape đưa vào prompt (không chọn = bất kỳ shape nào)</value></data>
+  <data name="PromptLabelsTip" xml:space="preserve"><value>Label đưa vào prompt (không chọn = bất kỳ label nào). Chuột phải để thêm label mới.</value></data>
+  <data name="MiNewLabel" xml:space="preserve"><value>Label mới...</value></data>
+  <data name="NewLabelTitle" xml:space="preserve"><value>Label mới</value></data>
+  <data name="NewLabelPlaceholder" xml:space="preserve"><value>Tên label</value></data>
+  <data name="NewLabelNeedSession" xml:space="preserve"><value>Hãy mở project Segment AI để thêm label.</value></data>
+  <data name="NewLabelFailedFormat" xml:space="preserve"><value>Không thêm được label: {0}</value></data>
+  <data name="SetPageAgents" xml:space="preserve"><value>Claude Code &amp; Codex</value></data>
+  <data name="SetPageCache" xml:space="preserve"><value>Bộ nhớ đệm</value></data>
+  <data name="SetSectionCache" xml:space="preserve"><value>Bộ nhớ đệm của dự án</value></data>
+  <data name="SetCacheSize" xml:space="preserve"><value>Dung lượng bộ nhớ đệm hiện tại</value></data>
+  <data name="SetCacheMax" xml:space="preserve"><value>Dung lượng bộ nhớ đệm tối đa (MB)</value></data>
+  <data name="SetCacheClear" xml:space="preserve"><value>Xóa bộ nhớ đệm</value></data>
+  <data name="SetCacheClearButton" xml:space="preserve"><value>Xóa</value></data>
+  <data name="SetPageAgentRun" xml:space="preserve"><value>Chạy agent</value></data>
+  <data name="SetSectionAgentRun" xml:space="preserve"><value>Giới hạn mỗi lượt chạy</value></data>
+  <data name="SetAgentMaxImages" xml:space="preserve"><value>Số ảnh tối đa mỗi lượt chạy</value></data>
+  <data name="SetAgentBatchWorkers" xml:space="preserve"><value>Số ảnh gán nhãn cùng lúc (theo thanh Tốc độ trong Agent chat, 1-32)</value></data>
+  <data name="SetAgentMaxCost" xml:space="preserve"><value>Chi phí tối đa mỗi lượt chạy (USD, 0 = không giới hạn)</value></data>
+  <data name="SetPageCamera" xml:space="preserve"><value>Camera</value></data>
+  <data name="SetSectionCameraSource" xml:space="preserve"><value>Nguồn ảnh</value></data>
+  <data name="SetCameraSource" xml:space="preserve"><value>Ảnh mới lấy từ</value></data>
+  <data name="SetCameraSourceFiles" xml:space="preserve"><value>Tệp ảnh</value></data>
+  <data name="SetCameraSourceMvs" xml:space="preserve"><value>Camera MVS</value></data>
+  <data name="SetSectionCamera" xml:space="preserve"><value>Kết nối camera</value></data>
+  <data name="SetCameraDevice" xml:space="preserve"><value>Thiết bị</value></data>
+  <data name="SetCameraRefresh" xml:space="preserve"><value>Danh sách camera</value></data>
+  <data name="SetCameraRefreshButton" xml:space="preserve"><value>Làm mới</value></data>
+  <data name="SetCameraConnect" xml:space="preserve"><value>Mở camera đã chọn</value></data>
+  <data name="SetCameraConnectButton" xml:space="preserve"><value>Kết nối</value></data>
+  <data name="SetCameraDisconnect" xml:space="preserve"><value>Đóng camera</value></data>
+  <data name="SetCameraDisconnectButton" xml:space="preserve"><value>Ngắt kết nối</value></data>
+  <data name="SetCameraStatus" xml:space="preserve"><value>Trạng thái</value></data>
+  <data name="SetCameraError" xml:space="preserve"><value>Lỗi</value></data>
+  <data name="SetCameraNoDevices" xml:space="preserve"><value>Không tìm thấy camera</value></data>
+  <data name="CameraStatusDisconnected" xml:space="preserve"><value>Chưa kết nối</value></data>
+  <data name="CameraStatusConnecting" xml:space="preserve"><value>Đang kết nối {0}...</value></data>
+  <data name="CameraStatusConnected" xml:space="preserve"><value>Đã kết nối: {0}</value></data>
+  <data name="CameraStatusFaulted" xml:space="preserve"><value>Kết nối thất bại: {0}</value></data>
+  <data name="CameraStatusReconnecting" xml:space="preserve"><value>Đang kết nối lại {0} ({1}/{2})...</value></data>
+  <data name="AgentBatchProgressFormat" xml:space="preserve"><value>Agent {0}/{1} - ${2}</value></data>
+  <data name="AgentBatchSummaryFormat" xml:space="preserve"><value>{0}: {1} ảnh, đề xuất {2} hình, {3} lỗi, ${4}</value></data>
+  <data name="AgentBatchStopDone" xml:space="preserve"><value>Agent đã chạy xong</value></data>
+  <data name="AgentBatchStopImageCap" xml:space="preserve"><value>Agent dừng vì đạt giới hạn số ảnh</value></data>
+  <data name="AgentBatchStopCostCap" xml:space="preserve"><value>Agent dừng vì đạt giới hạn chi phí</value></data>
+  <data name="AgentBatchStopCancelled" xml:space="preserve"><value>Đã hủy lượt chạy agent</value></data>
+  <data name="AgentBatchStopError" xml:space="preserve"><value>Agent dừng vì gặp lỗi</value></data>
+  <data name="AgentBatchFirstErrorFormat" xml:space="preserve"><value>Lỗi đầu tiên ({0}): {1}</value></data>
+  <data name="AgentBatchNothing" xml:space="preserve"><value>Không có ảnh nào để chạy agent ở chế độ này.</value></data>
+  <data name="AgentBatchReviewCaption" xml:space="preserve"><value>Ảnh</value></data>
+  <data name="AgentBatchReviewSelectAll" xml:space="preserve"><value>Chọn tất cả / bỏ chọn</value></data>
+  <data name="AgentBatchReviewAccept" xml:space="preserve"><value>Chấp nhận ảnh đã chọn</value></data>
+  <data name="AgentBatchReviewDiscard" xml:space="preserve"><value>Bỏ ảnh đã chọn</value></data>
+  <data name="AgentBatchReviewProposedFormat" xml:space="preserve"><value>{0} đề xuất</value></data>
+  <data name="AgentBatchReviewAccepted" xml:space="preserve"><value>Đã chấp nhận</value></data>
+  <data name="AgentBatchReviewDiscarded" xml:space="preserve"><value>Đã bỏ</value></data>
+  <data name="AgentBatchReviewOpenFailedFormat" xml:space="preserve"><value>Không mở được {0}; giữ nguyên đề xuất.</value></data>
+  <data name="ChatModeAll" xml:space="preserve"><value>Tất cả ảnh</value></data>
+  <data name="ChatModeCurrent" xml:space="preserve"><value>Ảnh hiện tại</value></data>
+  <data name="ChatModeRemaining" xml:space="preserve"><value>Các ảnh còn lại</value></data>
+  <data name="ChatEffortEconomy" xml:space="preserve"><value>Thấp</value></data>
+  <data name="ChatEffortNormal" xml:space="preserve"><value>Vừa</value></data>
+  <data name="ChatEffortBest" xml:space="preserve"><value>Cao</value></data>
+  <data name="ChatRoleUser" xml:space="preserve"><value>Bạn</value></data>
+  <data name="ChatRoleAgent" xml:space="preserve"><value>Agent</value></data>
+  <data name="ChatRoleSystem" xml:space="preserve"><value>Duyệt</value></data>
+  <data name="ChatSummaryFormat" xml:space="preserve"><value>{0} đề xuất · {1} chấp nhận · {2} từ chối</value></data>
+  <data name="ChatOutcomeOk" xml:space="preserve"><value>Hoàn tất</value></data>
+  <data name="ChatOutcomeCancelled" xml:space="preserve"><value>Đã hủy</value></data>
+  <data name="ChatOutcomeCached" xml:space="preserve"><value>Từ bộ nhớ đệm</value></data>
+  <data name="ChatOutcomeError" xml:space="preserve"><value>Lỗi</value></data>
+  <data name="ChatOutcomeErrorFormat" xml:space="preserve"><value>Lỗi: {0}</value></data>
+  <data name="CacheClearTitle" xml:space="preserve"><value>Xóa bộ nhớ đệm</value></data>
+  <data name="CacheClearMessage" xml:space="preserve"><value>Xóa kích thước ảnh đã lưu đệm cùng kết quả Auto-label và Inspect đã lưu của dự án này? Chúng sẽ được tạo lại khi cần. Nhãn và ảnh của bạn không bị ảnh hưởng.</value></data>
+  <data name="AgentsClaude" xml:space="preserve"><value>Claude Code</value></data>
+  <data name="AgentsCodex" xml:space="preserve"><value>Codex</value></data>
+  <data name="AgentsChecking" xml:space="preserve"><value>Đang kiểm tra...</value></data>
+  <data name="AgentsNotInstalled" xml:space="preserve"><value>Chưa cài đặt</value></data>
+  <data name="AgentsSignedOut" xml:space="preserve"><value>Chưa đăng nhập</value></data>
+  <data name="AgentsSignedIn" xml:space="preserve"><value>Đã đăng nhập</value></data>
+  <data name="AgentsSignedInFormat" xml:space="preserve"><value>Đã đăng nhập: {0}</value></data>
+  <data name="AgentsLoginWaiting" xml:space="preserve"><value>Hãy hoàn tất đăng nhập trong trình duyệt...</value></data>
+  <data name="AgentsLogin" xml:space="preserve"><value>Đăng nhập</value></data>
+  <data name="AgentsLogout" xml:space="preserve"><value>Đăng xuất</value></data>
+  <data name="AgentsCancel" xml:space="preserve"><value>Ngừng chờ</value></data>
+  <data name="AgentsRefresh" xml:space="preserve"><value>Làm mới</value></data>
+  <data name="AgentsSkills" xml:space="preserve"><value>Skill</value></data>
+  <data name="AgentsRunSkills" xml:space="preserve"><value>Skill khi chạy</value></data>
+  <data name="AgentsSkillBuiltIn" xml:space="preserve"><value>Có sẵn</value></data>
+  <data name="AgentsSkillUser" xml:space="preserve"><value>Skill của bạn</value></data>
+  <data name="AgentsSkillReadOnly" xml:space="preserve"><value>Thư mục của agent (chỉ đọc)</value></data>
+  <data name="AgentsNoSkills" xml:space="preserve"><value>Chưa có skill</value></data>
+  <data name="AgentsEnableTip" xml:space="preserve"><value>Bật: agent dùng được skill này. Tắt: thư mục skill được chuyển sang thư mục .disabled.</value></data>
+  <data name="AgentsEdit" xml:space="preserve"><value>Sửa</value></data>
+  <data name="AgentsDelete" xml:space="preserve"><value>Xóa</value></data>
+  <data name="AgentsAdd" xml:space="preserve"><value>Thêm skill</value></data>
+  <data name="AgentsSave" xml:space="preserve"><value>Lưu</value></data>
+  <data name="AgentsSkillAddTitleFormat" xml:space="preserve"><value>Thêm skill - {0}</value></data>
+  <data name="AgentsSkillEditTitleFormat" xml:space="preserve"><value>Sửa skill - {0}</value></data>
+  <data name="AgentsSkillNamePlaceholder" xml:space="preserve"><value>Tên skill (a-z, 0-9, - và _)</value></data>
+  <data name="AgentsSkillNameInvalid" xml:space="preserve"><value>Tên skill chỉ gồm a-z, 0-9, - và _ (tối đa 64 ký tự).</value></data>
+  <data name="AgentsDeleteMessageFormat" xml:space="preserve"><value>Xóa skill "{0}"? Thư mục của nó sẽ bị xóa khỏi ổ đĩa.</value></data>
+  <data name="AgentsFailedFormat" xml:space="preserve"><value>Không thực hiện được: {0}</value></data>
+  <data name="McpServers" xml:space="preserve"><value>Máy chủ MCP</value></data>
+  <data name="McpAdd" xml:space="preserve"><value>Thêm máy chủ</value></data>
+  <data name="McpApprove" xml:space="preserve"><value>Phê duyệt</value></data>
+  <data name="McpRemove" xml:space="preserve"><value>Gỡ bỏ</value></data>
+  <data name="McpStateApproved" xml:space="preserve"><value>Đã phê duyệt</value></data>
+  <data name="McpStateNotApproved" xml:space="preserve"><value>Chưa phê duyệt</value></data>
+  <data name="McpNoServers" xml:space="preserve"><value>Chưa có máy chủ</value></data>
+  <data name="McpVersionFormat" xml:space="preserve"><value>Phiên bản {0}</value></data>
+  <data name="McpFieldName" xml:space="preserve"><value>Tên (chữ cái, chữ số, - và _)</value></data>
+  <data name="McpFieldSource" xml:space="preserve"><value>Địa chỉ nguồn</value></data>
+  <data name="McpFieldVersion" xml:space="preserve"><value>Phiên bản</value></data>
+  <data name="McpFieldCommand" xml:space="preserve"><value>Lệnh</value></data>
+  <data name="McpFieldArgs" xml:space="preserve"><value>Tham số (mỗi dòng một tham số, {run} = thư mục chạy)</value></data>
+  <data name="McpFieldWorkingFolder" xml:space="preserve"><value>Thư mục làm việc</value></data>
+  <data name="McpWorkingFolderValue" xml:space="preserve"><value>{run} (thư mục chạy của mỗi lần chạy)</value></data>
+  <data name="McpFieldAccess" xml:space="preserve"><value>Có thể truy cập gì</value></data>
+  <data name="McpFieldTools" xml:space="preserve"><value>Công cụ (mỗi dòng một công cụ)</value></data>
+  <data name="McpAddTitle" xml:space="preserve"><value>Thêm máy chủ MCP</value></data>
+  <data name="McpEditTitleFormat" xml:space="preserve"><value>Sửa máy chủ MCP - {0}</value></data>
+  <data name="McpApprovalTitleFormat" xml:space="preserve"><value>Phê duyệt máy chủ MCP - {0}</value></data>
+  <data name="McpApprovalStatement" xml:space="preserve"><value>EasyAI không cài đặt và không kiểm tra máy chủ này. Bạn phải tự cài đặt nó. Sau khi bạn phê duyệt, chương trình agent sẽ khởi động nó đúng với lệnh và các tham số này.</value></data>
+  <data name="McpNameInvalid" xml:space="preserve"><value>Tên chỉ gồm chữ cái, chữ số, - và _ (tối đa 64 ký tự) và không được chứa "easyai".</value></data>
+  <data name="McpEntryInvalid" xml:space="preserve"><value>Cần có lệnh, phiên bản và ít nhất một tên công cụ (chữ cái, chữ số, - và _); các tên công cụ không được trùng nhau.</value></data>
+  <data name="McpRemoveMessageFormat" xml:space="preserve"><value>Gỡ máy chủ "{0}" khỏi danh sách?</value></data>
+  <data name="ReasonCodexNotFound" xml:space="preserve"><value>Không khả dụng: không tìm thấy Codex (hãy cài extension Codex, hoặc đặt biến EASYAI_CODEX)</value></data>
+  <data name="AgentCodexNotSignedIn" xml:space="preserve"><value>Codex chưa đăng nhập: đăng nhập trong Cài đặt > Claude Code &amp; Codex</value></data>
+  <data name="AgentsUseThis" xml:space="preserve"><value>Dùng agent này</value></data>
+  <data name="AgentsInUse" xml:space="preserve"><value>Đang dùng</value></data>
+  <data name="AgentsUseTip" xml:space="preserve"><value>Chạy và Gợi ý prompt chỉ dùng agent này.</value></data>
+  <data name="AgentsMemory" xml:space="preserve"><value>Bộ nhớ agent</value></data>
+  <data name="AgentsMemoryHint" xml:space="preserve"><value>Ghi chú agent giữ cho project này. Agent đọc chúng khi bắt đầu mỗi lần chạy.</value></data>
+  <data name="AgentsPrices" xml:space="preserve"><value>Giá model</value></data>
+  <data name="AgentsPricesHint" xml:space="preserve"><value>Claude Code và Codex không có API giá. Nút Làm mới đọc bảng giá trên platform.claude.com và developers.openai.com để Agent ước tính chi phí của một lượt chạy.</value></data>
+  <data name="AgentsPricesRefresh" xml:space="preserve"><value>Làm mới giá</value></data>
+  <data name="AgentsPricesBusy" xml:space="preserve"><value>Đang đọc trang giá...</value></data>
+  <data name="AgentsPricesFailed" xml:space="preserve"><value>Làm mới thất bại: {0}</value></data>
+  <data name="AgentsPricesNone" xml:space="preserve"><value>Chưa có bảng giá.</value></data>
+  <data name="AgentsPricesStored" xml:space="preserve"><value>{0} model Claude và {1} model OpenAI, đọc lúc {2:g}.</value></data>
+  <data name="AgentsRefine" xml:space="preserve"><value>Sub-agent sửa prompt</value></data>
+  <data name="AgentsRefineHint" xml:space="preserve"><value>Trước khi Agent chính chạy, một sub-agent ngắn sẽ kiểm tra câu bạn gõ, chuyển thành câu lệnh rõ ràng mà Agent hiểu, dịch sang tiếng Anh nếu cần và giải thích lại cho bạn bằng ngôn ngữ của phần mềm.</value></data>
+  <data name="AgentsRefineEnable" xml:space="preserve"><value>Tự động sửa prompt trước khi gửi</value></data>
+  <data name="AgentsRefineInstruction" xml:space="preserve"><value>Chỉ dẫn thêm cho sub-agent (tuỳ chọn)</value></data>
+  <data name="AgentRefineTip" xml:space="preserve"><value>Sửa prompt tự động: sub-agent viết lại yêu cầu của bạn thành câu lệnh tiếng Anh rõ ràng và giải thích trước khi Agent chạy</value></data>
+  <data name="AgentRefineRunning" xml:space="preserve"><value>Sub-agent đang sửa prompt của bạn...</value></data>
+  <data name="AgentRefineFailed" xml:space="preserve"><value>Sub-agent sửa prompt không trả lời được, nên prompt gốc của bạn được gửi đi.</value></data>
+  <data name="AgentRefineNotice" xml:space="preserve"><value>Sub-agent sửa prompt: {0}
+Đã gửi cho Agent: {1}</value></data>
+  <data name="AgentsMemoryEmpty" xml:space="preserve"><value>Bộ nhớ trống</value></data>
+  <data name="AgentsMemoryNoProject" xml:space="preserve"><value>Hãy mở project để xem bộ nhớ của nó</value></data>
+  <data name="AgentsMemorySizeFormat" xml:space="preserve"><value>{0} ghi chú, {1} ký tự</value></data>
+  <data name="AgentsMemoryEdit" xml:space="preserve"><value>Sửa</value></data>
+  <data name="AgentsMemoryClear" xml:space="preserve"><value>Xóa</value></data>
+  <data name="AgentsMemoryEditTitle" xml:space="preserve"><value>Bộ nhớ agent</value></data>
+  <data name="AgentsMemoryClearMessage" xml:space="preserve"><value>Xóa bộ nhớ của project này? Agent sẽ quên mọi ghi chú.</value></data>
+  <data name="PromptPrecision" xml:space="preserve"><value>Độ chính xác box</value></data>
+  <data name="PrecisionEasy" xml:space="preserve"><value>Dễ</value></data>
+  <data name="PrecisionNormal" xml:space="preserve"><value>Thường</value></data>
+  <data name="PrecisionHard" xml:space="preserve"><value>Khó</value></data>
+  <data name="PrecisionTip" xml:space="preserve"><value>Dễ: box rộng, nhanh. Khó: agent phóng to và siết chặt từng box.</value></data>
+  <data name="PromptEffort" xml:space="preserve"><value>Mức nỗ lực của agent</value></data>
+  <data name="EffortEconomy" xml:space="preserve"><value>Tiết kiệm</value></data>
+  <data name="EffortNormal" xml:space="preserve"><value>Bình thường</value></data>
+  <data name="EffortBest" xml:space="preserve"><value>Tốt nhất</value></data>
+  <data name="EffortTip" xml:space="preserve"><value>Tối ưu kinh phí: ít lượt và ít token nhất. Effort tốt nhất: kỹ nhất, tốn hơn.</value></data>
+  <data name="PromptModel" xml:space="preserve"><value>Model</value></data>
+  <data name="PromptLanguageCaption" xml:space="preserve"><value>Ngôn ngữ</value></data>
+  <data name="AgentModelDefault" xml:space="preserve"><value>Mặc định (tài khoản)</value></data>
+  <data name="ModelTip" xml:space="preserve"><value>Các model do agent đang dùng báo về. Đổi agent trong Cài đặt thì danh sách đổi theo.</value></data>
+  <data name="AgentAttachTitle" xml:space="preserve"><value>Đính kèm file gợi ý</value></data>
+  <data name="AgentAttachFilter" xml:space="preserve"><value>Ảnh và ghi chú|*.png;*.jpg;*.jpeg;*.bmp;*.tif;*.tiff;*.txt;*.md;*.json;*.csv</value></data>
+  <data name="AgentAttach" xml:space="preserve"><value>Đính kèm ảnh hoặc file</value></data>
+  <data name="AgentRemoveAttachment" xml:space="preserve"><value>Bỏ</value></data>
+  <data name="AgentWorkersCaption" xml:space="preserve"><value>Chạy song song</value></data>
+  <data name="AgentSpeedCaption" xml:space="preserve"><value>Tốc độ</value></data>
+  <data name="AgentTuningTip" xml:space="preserve"><value>Tốc độ và mức nỗ lực</value></data>
+  <data name="AgentEffortCaption" xml:space="preserve"><value>Mức nỗ lực</value></data>
+  <data name="AgentReviewCaption" xml:space="preserve"><value>Đề xuất</value></data>
+  <data name="AgentStartImageCaption" xml:space="preserve"><value>Bắt đầu từ</value></data>
+  <data name="AgentOptions" xml:space="preserve"><value>Tùy chọn</value></data>
+  <data name="AgentOptionsTip" xml:space="preserve"><value>Tùy chọn agent: ngôn ngữ gợi ý, độ chính xác box, mức nỗ lực, model, shape và label.</value></data>
+  <data name="AgentChatTitle" xml:space="preserve"><value>Trò chuyện với agent</value></data>
+  <data name="AgentChatCheck" xml:space="preserve"><value>Kiểm tra</value></data>
+  <data name="AgentChatModeCaption" xml:space="preserve"><value>Ảnh</value></data>
+  <data name="AgentChatCapsFormat" xml:space="preserve"><value>{0} ảnh · tối đa ${1}</value></data>
+  <data name="AgentChatCapsNoCostFormat" xml:space="preserve"><value>{0} ảnh · không giới hạn chi phí</value></data>
+  <data name="StepLive" xml:space="preserve"><value>Camera trực tiếp</value></data>
+  <data name="LiveParamsTitle" xml:space="preserve"><value>Đặt thông số</value></data>
+  <data name="LiveStart" xml:space="preserve"><value>Bắt đầu xem</value></data>
+  <data name="LiveStop" xml:space="preserve"><value>Dừng</value></data>
+  <data name="LiveSnapshot" xml:space="preserve"><value>Chụp ảnh</value></data>
+  <data name="LiveResume" xml:space="preserve"><value>Xem tiếp</value></data>
+  <data name="LiveRefresh" xml:space="preserve"><value>Làm mới</value></data>
+  <data name="LiveAuto" xml:space="preserve"><value>Tự động</value></data>
+  <data name="LiveBannerTitle" xml:space="preserve"><value>Camera chưa kết nối</value></data>
+  <data name="LiveOpenCameraSettings" xml:space="preserve"><value>Cài đặt camera</value></data>
+  <data name="LiveSnapshotFailedFormat" xml:space="preserve"><value>Chụp ảnh thất bại: {0}</value></data>
+  <data name="TbCaptureNew" xml:space="preserve"><value>Chụp mới</value></data>
+  <data name="TbCaptureCurrent" xml:space="preserve"><value>Chụp đè ảnh</value></data>
+  <data name="InspectCapture" xml:space="preserve"><value>Chụp</value></data>
+  <data name="CaptureNewTip" xml:space="preserve"><value>Chụp một khung hình và thêm vào dự án thành ảnh mới</value></data>
+  <data name="CaptureCurrentTip" xml:space="preserve"><value>Chụp một khung hình và ghi đè lên ảnh hiện tại</value></data>
+  <data name="CaptureInspectTip" xml:space="preserve"><value>Chụp một khung hình và thêm vào dự án và danh sách kiểm tra</value></data>
+  <data name="CaptureOverwriteTitle" xml:space="preserve"><value>Ghi đè ảnh hiện tại?</value></data>
+  <data name="CaptureOverwriteMessage" xml:space="preserve"><value>Tệp ảnh gốc sẽ bị ghi đè bằng khung hình vừa chụp và không thể khôi phục. Các nhãn được giữ nguyên.</value></data>
+  <data name="CaptureOverwriteConfirm" xml:space="preserve"><value>Ghi đè</value></data>
+  <data name="CaptureErrorTitle" xml:space="preserve"><value>Chụp ảnh thất bại</value></data>
+  <data name="CaptureReplacedTitle" xml:space="preserve"><value>Đã thay ảnh</value></data>
+  <data name="CaptureBlockNotConnected" xml:space="preserve"><value>Camera chưa được kết nối.</value></data>
+  <data name="CaptureBlockNoProject" xml:space="preserve"><value>Hãy mở một dự án trước.</value></data>
+  <data name="CaptureBlockNoImage" xml:space="preserve"><value>Hãy chọn một ảnh trước.</value></data>
+  <data name="CaptureBlockTraining" xml:space="preserve"><value>Đang huấn luyện.</value></data>
+  <data name="CaptureErrTimeoutFormat" xml:space="preserve"><value>Camera không trả khung hình kịp thời. {0}</value></data>
+  <data name="CaptureErrGrabFormat" xml:space="preserve"><value>Không lấy được khung hình: {0}</value></data>
+  <data name="CaptureReplacedSizeFormat" xml:space="preserve"><value>Khung hình mới là {1}, ảnh cũ là {0}. Các nhãn được giữ nguyên.</value></data>
+  <data name="CaptureReplacedOutOfFrameFormat" xml:space="preserve"><value>{2} nhãn hiện nằm ngoài ảnh. Các nhãn được giữ nguyên.</value></data>
+  <data name="CaptureReplacedBothFormat" xml:space="preserve"><value>Khung hình mới là {1}, ảnh cũ là {0}. {2} nhãn hiện nằm ngoài ảnh. Các nhãn được giữ nguyên.</value></data>
+  <data name="LivePreviewName" xml:space="preserve"><value>Ảnh camera trực tiếp</value></data>
+  <data name="LiveParamExposureTime" xml:space="preserve"><value>Phơi sáng (us)</value></data>
+  <data name="LiveParamGain" xml:space="preserve"><value>Độ khuếch đại (dB)</value></data>
+  <data name="LiveParamGamma" xml:space="preserve"><value>Gamma</value></data>
+  <data name="LiveParamTriggerMode" xml:space="preserve"><value>Chế độ kích hoạt</value></data>
+  <data name="LiveParamTriggerSource" xml:space="preserve"><value>Nguồn kích hoạt</value></data>
+  <data name="LiveParamPixelFormat" xml:space="preserve"><value>Định dạng điểm ảnh</value></data>
+  <data name="LiveParamFrameRate" xml:space="preserve"><value>Tốc độ khung hình (fps)</value></data>
+  <data name="LiveParamWidth" xml:space="preserve"><value>Chiều rộng ROI (px)</value></data>
+  <data name="LiveParamHeight" xml:space="preserve"><value>Chiều cao ROI (px)</value></data>
+  <data name="LiveParamOffsetX" xml:space="preserve"><value>Lệch ROI theo X (px)</value></data>
+  <data name="LiveParamOffsetY" xml:space="preserve"><value>Lệch ROI theo Y (px)</value></data>
+  <data name="LiveParamWhiteBalanceAuto" xml:space="preserve"><value>Cân bằng trắng</value></data>
+  <data name="LiveParamWhiteBalanceRed" xml:space="preserve"><value>Cân bằng trắng - đỏ</value></data>
+  <data name="LiveParamWhiteBalanceGreen" xml:space="preserve"><value>Cân bằng trắng - xanh lá</value></data>
+  <data name="LiveParamWhiteBalanceBlue" xml:space="preserve"><value>Cân bằng trắng - xanh dương</value></data>
+  <data name="AgentDuplicatesDroppedTitle" xml:space="preserve">
+    <value>Đã bỏ qua kết quả trùng</value>
+  </data>
+  <data name="AgentDuplicatesDroppedFormat" xml:space="preserve">
+    <value>Đã bỏ qua {0} đề xuất vì vị trí đó đã được gán nhãn hoặc đã có đề xuất.</value>
+  </data>
+  <data name="AgentEffortLabel_low" xml:space="preserve">
+    <value>Thấp</value>
+  </data>
+  <data name="AgentEffortLabel_medium" xml:space="preserve">
+    <value>Trung bình</value>
+  </data>
+  <data name="AgentEffortLabel_high" xml:space="preserve">
+    <value>Cao</value>
+  </data>
+  <data name="AgentEffortLabel_xhigh" xml:space="preserve">
+    <value>Rất cao</value>
+  </data>
+  <data name="AgentEffortLabel_max" xml:space="preserve">
+    <value>Tối đa</value>
+  </data>
+  <data name="SourceSwitchCancelTitle" xml:space="preserve">
+    <value>Chuyển nguồn tự động gán nhãn</value>
+  </data>
+  <data name="SourceSwitchCancelMessage" xml:space="preserve">
+    <value>Một tác vụ vẫn đang chạy. Chuyển nguồn sẽ hủy tác vụ này và các kết quả chưa được chấp nhận sẽ bị mất. Vẫn chuyển?</value>
+  </data>
+  <data name="SourceSwitchCancelConfirm" xml:space="preserve">
+    <value>Hủy tác vụ và chuyển</value>
+  </data>
+  <data name="SourceSwitchDropTitle" xml:space="preserve">
+    <value>Chuyển nguồn tự động gán nhãn</value>
+  </data>
+  <data name="SourceSwitchDropMessage" xml:space="preserve">
+    <value>Còn các đề xuất chưa được chấp nhận. Chuyển nguồn sẽ loại bỏ chúng. Vẫn chuyển?</value>
+  </data>
+  <data name="SourceSwitchDropConfirm" xml:space="preserve">
+    <value>Loại bỏ và chuyển</value>
+  </data>
+  <data name="AgentChatRoleNotice" xml:space="preserve">
+    <value>Hệ thống</value>
+  </data>
+  <data name="AgentSlashHelp" xml:space="preserve">
+    <value>/clear  /check  /suggest  /model &lt;tên&gt;  /mode &lt;current|all|remaining&gt;  /cancel  /forget  /help</value>
+  </data>
+  <data name="AgentSlashUnknownFormat" xml:space="preserve">
+    <value>Lệnh không tồn tại: /{0}. Gõ /help.</value>
+  </data>
+  <data name="AgentSlashClearBusy" xml:space="preserve">
+    <value>Không thể xóa khi đang chạy. Hãy dùng /cancel trước.</value>
+  </data>
+  <data name="AgentSlashUnavailable" xml:space="preserve">
+    <value>Lệnh này hiện không dùng được.</value>
+  </data>
+  <data name="AgentSlashModelFormat" xml:space="preserve">
+    <value>Mô hình: {0}</value>
+  </data>
+  <data name="AgentSlashModelUnknownFormat" xml:space="preserve">
+    <value>Mô hình không tồn tại: {0}</value>
+  </data>
+  <data name="AgentSlashModeFormat" xml:space="preserve">
+    <value>Chế độ: {0}</value>
+  </data>
+  <data name="AgentSlashModeUnknownFormat" xml:space="preserve">
+    <value>Chế độ không hợp lệ: {0}. Dùng current, all hoặc remaining.</value>
+  </data>
+  <data name="AgentLiveLookImage" xml:space="preserve">
+    <value>Đang xem ảnh</value>
+  </data>
+  <data name="AgentLiveListShapes" xml:space="preserve">
+    <value>Đang kiểm tra các hình hiện có</value>
+  </data>
+  <data name="AgentLiveCropRegion" xml:space="preserve">
+    <value>Đang cắt vùng {0},{1},{2},{3}</value>
+  </data>
+  <data name="AgentLiveGridCrop" xml:space="preserve">
+    <value>Đang xem kỹ một vùng bằng lưới</value>
+  </data>
+  <data name="AgentLiveOverlay" xml:space="preserve">
+    <value>Đang kiểm tra kết quả đã vẽ</value>
+  </data>
+  <data name="AgentLiveMeasure" xml:space="preserve">
+    <value>Đang đo</value>
+  </data>
+  <data name="AgentLiveSam2" xml:space="preserve">
+    <value>Đang khoanh vùng đối tượng</value>
+  </data>
+  <data name="AgentLiveProposing" xml:space="preserve">
+    <value>Đang đề xuất các hình</value>
+  </data>
+  <data name="AgentLiveMemoryAdd" xml:space="preserve">
+    <value>Đang lưu ghi chú vào bộ nhớ dự án</value>
+  </data>
+  <data name="AgentLiveMemoryRead" xml:space="preserve">
+    <value>Đang đọc bộ nhớ dự án</value>
+  </data>
+  <data name="AgentLiveUsingTool" xml:space="preserve">
+    <value>Đang dùng {0}</value>
+  </data>
+  <data name="AgentLiveError" xml:space="preserve">
+    <value>Lỗi: {0}</value>
+  </data>
+  <data name="AgentLiveImageHeader" xml:space="preserve">
+    <value>Ảnh {0}/{1}: {2}</value>
+  </data>
+  <data name="AgentLiveWorking" xml:space="preserve">
+    <value>Đang làm việc...</value>
+  </data>
+  <data name="AgentLiveStatusStep" xml:space="preserve">
+    <value>bước {0}</value>
+  </data>
+  <data name="AgentLiveStatusImage" xml:space="preserve">
+    <value>ảnh {0}/{1}</value>
+  </data>
+  <data name="AgentLiveStatusCostCap" xml:space="preserve">
+    <value>{0} / {1}</value>
+  </data>
+  <data name="TrainBlockNeedTwoImages" xml:space="preserve">
+    <value>Hãy gán nhãn ít nhất 2 ảnh để huấn luyện. Vào tab Gán nhãn và vẽ vùng nhãn cho thêm ảnh.</value>
+  </data>
+  <data name="TrainAutoAssignVal" xml:space="preserve">
+    <value>Tự chia ảnh Val</value>
+  </data>
+  <data name="TrainAutoValDoneFormat" xml:space="preserve">
+    <value>Đã đặt {0} ảnh làm Val</value>
+  </data>
+  <data name="UltraBlockTooFewImages" xml:space="preserve">
+    <value>YOLO cần ít nhất 5 ảnh đã gán nhãn. Vào tab Gán nhãn và gán nhãn thêm ảnh.</value>
+  </data>
+  <data name="UltraErrorTooFewImages" xml:space="preserve">
+    <value>YOLO cần ít nhất {0} ảnh đã gán nhãn (hiện có {1}). Hãy gán nhãn thêm ảnh rồi thử lại.</value>
+  </data>
+  <data name="TrainFixOpenModelFolder" xml:space="preserve">
+    <value>Mở thư mục model</value>
+  </data>
+  <data name="TrainFixUseSegmentAi" xml:space="preserve">
+    <value>Dùng Segment AI (chạy được trên máy này)</value>
+  </data>
+  <data name="TrainFixGoToLabel" xml:space="preserve">
+    <value>Đến tab Gán nhãn</value>
+  </data>
+  <data name="TrainOpenModelFolderFailed" xml:space="preserve">
+    <value>Không mở được thư mục model. Hãy tự mở nó trong Explorer và chép file còn thiếu vào đó.</value>
+  </data>
+  <data name="UltraErrorClassNotInTrain" xml:space="preserve">
+    <value>Lớp "{0}" chưa có ảnh Train. Hãy đặt một ảnh của lớp này làm Train.</value>
+  </data>
+  <data name="SetSectionEasyVision" xml:space="preserve">
+    <value>EasyVision</value>
+  </data>
+  <data name="SetEasyVisionFolder" xml:space="preserve">
+    <value>Thư mục model EasyVision</value>
+  </data>
+  <data name="SetEasyVisionFolderBrowse" xml:space="preserve">
+    <value>Chọn thư mục model EasyVision</value>
+  </data>
+  <data name="SetEasyVisionFolderBrowseButton" xml:space="preserve">
+    <value>Chọn...</value>
+  </data>
+  <data name="SetEasyVisionFolderPickTitle" xml:space="preserve">
+    <value>Chọn thư mục model EasyVision</value>
+  </data>
+  <data name="ExpSendHeader" xml:space="preserve">
+    <value>Gửi sang EasyVision</value>
+  </data>
+  <data name="ExpSendButton" xml:space="preserve">
+    <value>Gửi sang EasyVision</value>
+  </data>
+  <data name="ExpSendOkFormat" xml:space="preserve">
+    <value>Đã gửi sang EasyVision thành {0} (phiên bản {1}).</value>
+  </data>
+  <data name="ExpSendFolderNotSet" xml:space="preserve">
+    <value>Chưa chọn thư mục model EasyVision. Hãy chọn trong Cài đặt &gt; Tệp.</value>
+  </data>
+  <data name="ExpSendFolderMissingFormat" xml:space="preserve">
+    <value>Thư mục model EasyVision không tồn tại. Hãy tạo nó hoặc chọn thư mục khác trong Cài đặt &gt; Tệp. {0}</value>
+  </data>
+  <data name="ExpSendFolderNotWritableFormat" xml:space="preserve">
+    <value>Không ghi được vào thư mục model EasyVision. Hãy kiểm tra thư mục không ở chế độ chỉ đọc, hoặc chọn thư mục khác trong Cài đặt &gt; Tệp. {0}</value>
+  </data>
+  <data name="ExpSendModelMissingFormat" xml:space="preserve">
+    <value>Không tìm thấy file model. Hãy chọn model khác hoặc huấn luyện lại. {0}</value>
+  </data>
+  <data name="ExpSendUnsupportedFormat" xml:space="preserve">
+    <value>EasyVision không đọc được định dạng file model này. Hãy cập nhật EasyVision hoặc huấn luyện lại model. {0}</value>
+  </data>
+  <data name="ExpSendModelInvalidFormat" xml:space="preserve">
+    <value>File model bị hỏng hoặc không phải model SegAI. Hãy chọn model khác hoặc huấn luyện lại. {0}</value>
+  </data>
+  <data name="ExpSendFailedFormat" xml:space="preserve">
+    <value>Gửi model thất bại. Hãy thử lại, và kiểm tra thư mục EasyVision trong Cài đặt &gt; Tệp nếu lỗi lặp lại. {0}</value>
+  </data>
+  <data name="SetAgentMaxUsdPerDay" xml:space="preserve">
+    <value>Giới hạn chi phí mỗi ngày (USD, 0 = tắt)</value>
+  </data>
+  <data name="AgentBatchStopDayCap" xml:space="preserve">
+    <value>Đã dừng: đã đạt giới hạn chi phí trong ngày.</value>
+  </data>
+  <data name="AgentBatchLeftFormat" xml:space="preserve">
+    <value>Chưa xử lý ({0}): {1}</value>
+  </data>
+  <data name="AgentDayCapReachedFormat" xml:space="preserve">
+    <value>Đã đạt giới hạn chi phí agent trong ngày (${0} / ${1} hôm nay). Hãy tăng giới hạn trong Cài đặt, mục Agent runs, hoặc thử lại vào ngày mai.</value>
+  </data>
+  <data name="AgentChatEstimateFormat" xml:space="preserve">
+    <value>khoảng ${0} cho {1} ảnh (ước tính)</value>
+  </data>
+  <data name="AgentsVocabulary" xml:space="preserve">
+    <value>Từ vựng dự án</value>
+  </data>
+  <data name="AgentsVocabularyEmpty" xml:space="preserve">
+    <value>Chưa học từ nào. Một từ chỉ được học sau khi bạn chấp nhận lớp của nó từ ba lần nhập lệnh có dùng từ đó.</value>
+  </data>
+  <data name="AgentsVocabularyDelete" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="AgentsVocabularyClear" xml:space="preserve">
+    <value>Xóa hết</value>
+  </data>
+  <data name="AgentsVocabularyClearMessage" xml:space="preserve">
+    <value>Quên tất cả các từ dự án này đã học từ lệnh của bạn?</value>
+  </data>
+  <data name="AgentSlashForgetDone" xml:space="preserve">
+    <value>Đã quên các từ dự án này học từ lệnh của bạn.</value>
+  </data>
+  <data name="TrainUseRecommended" xml:space="preserve">
+    <value>Dùng cấu hình đề xuất</value>
+  </data>
+  <data name="Hardware.RecommendedFormat" xml:space="preserve">
+    <value>Đề xuất cho máy này: {0} - {1}</value>
+  </data>
+  <data name="Hardware.Mode.Safe" xml:space="preserve">
+    <value>Chế độ an toàn</value>
+  </data>
+  <data name="Hardware.Mode.Standard" xml:space="preserve">
+    <value>Tiêu chuẩn</value>
+  </data>
+  <data name="Hardware.Mode.Fast" xml:space="preserve">
+    <value>Nhanh</value>
+  </data>
+  <data name="Hardware.SafeSlower" xml:space="preserve">
+    <value>huấn luyện chậm hơn nhưng dùng ít tài nguyên hơn</value>
+  </data>
+  <data name="TrainEtaFormat" xml:space="preserve">
+    <value>Còn khoảng {0} phút</value>
+  </data>
+  <data name="Hardware.Note.Unknown" xml:space="preserve">
+    <value>không đọc được cấu hình máy</value>
+  </data>
+  <data name="Hardware.Note.SafeFewCores" xml:space="preserve">
+    <value>ít nhân CPU</value>
+  </data>
+  <data name="Hardware.Note.SafeLowRam" xml:space="preserve">
+    <value>bộ nhớ hạn chế</value>
+  </data>
+  <data name="Hardware.Note.SafeSegmentAiOnly" xml:space="preserve">
+    <value>chỉ dùng Segment AI</value>
+  </data>
+  <data name="Hardware.Note.SafeBelowNormal" xml:space="preserve">
+    <value>ưu tiên nền</value>
+  </data>
+  <data name="Hardware.Note.FastCpuRam" xml:space="preserve">
+    <value>nhiều nhân CPU và nhiều bộ nhớ</value>
+  </data>
+  <data name="Hardware.Note.FastCudaGpu" xml:space="preserve">
+    <value>có card đồ họa CUDA</value>
+  </data>
+  <data name="Hardware.Note.GpuAvailable" xml:space="preserve">
+    <value>có card đồ họa</value>
+  </data>
+  <data name="Hardware.Note.Standard" xml:space="preserve">
+    <value>cấu hình cân bằng</value>
+  </data>
+  <data name="UiModeSimple" xml:space="preserve">
+    <value>Đơn giản</value>
+  </data>
+  <data name="UiModeAdvanced" xml:space="preserve">
+    <value>Nâng cao</value>
+  </data>
+  <data name="UiModeToggleName" xml:space="preserve">
+    <value>Chế độ giao diện</value>
+  </data>
+  <data name="EasyStripName" xml:space="preserve">
+    <value>Các bước hướng dẫn</value>
+  </data>
+  <data name="EasyStepOpen" xml:space="preserve">
+    <value>1 Mở thư mục</value>
+  </data>
+  <data name="EasyStepOpenDoneFormat" xml:space="preserve">
+    <value>1 {0} ảnh</value>
+  </data>
+  <data name="EasyStepLabelFormat" xml:space="preserve">
+    <value>2 Gán nhãn thêm {0} ảnh</value>
+  </data>
+  <data name="EasyStepLabelDoneFormat" xml:space="preserve">
+    <value>2 Đã gán nhãn {0} ảnh</value>
+  </data>
+  <data name="EasyStepTrain" xml:space="preserve">
+    <value>3 Huấn luyện</value>
+  </data>
+  <data name="EasyStepTrainRunningFormat" xml:space="preserve">
+    <value>3 Đang huấn luyện · {0}</value>
+  </data>
+  <data name="EasyStepTrainDone" xml:space="preserve">
+    <value>3 Mô hình sẵn sàng</value>
+  </data>
+  <data name="EasyStepCheck" xml:space="preserve">
+    <value>4 Kiểm tra OK/NG</value>
+  </data>
+  <data name="EasyStepCheckDoneFormat" xml:space="preserve">
+    <value>4 OK {0} · NG {1}</value>
+  </data>
+  <data name="EasyStepSend" xml:space="preserve">
+    <value>5 Gửi sang EasyVision</value>
+  </data>
+  <data name="EasyStepSendDone" xml:space="preserve">
+    <value>5 Đã gửi</value>
+  </data>
+  <data name="FileSortMostDoubtful" xml:space="preserve">
+    <value>Nghi ngờ nhất trước</value>
+  </data>
+  <data name="FileSortUnlabelledFirst" xml:space="preserve">
+    <value>Chưa gán nhãn lên đầu</value>
+  </data>
+  <data name="InspectFilterDoubtful" xml:space="preserve">
+    <value>Cần xem lại</value>
+  </data>
+  <data name="SetAgentRouteLocalFirst" xml:space="preserve">
+    <value>Ưu tiên kết quả local ở chế độ Còn lại</value>
+  </data>
+  <data name="SetAgentBatchSam2Refine" xml:space="preserve">
+    <value>Làm khít box bằng SAM2 cục bộ sau mỗi lần chạy Agent</value>
+  </data>
+  <data name="SetAgentBatchRetryNormal" xml:space="preserve">
+    <value>Chạy lại ảnh lỗi ở mức Normal (chỉ khi dùng Economy)</value>
+  </data>
+  <data name="KindClassify" xml:space="preserve">
+    <value>OK/NG</value>
+  </data>
+  <data name="TagOk" xml:space="preserve">
+    <value>Đánh dấu OK</value>
+  </data>
+  <data name="TagNg" xml:space="preserve">
+    <value>Đánh dấu NG</value>
+  </data>
+  <data name="TagClear" xml:space="preserve">
+    <value>Xóa OK/NG</value>
+  </data>
+  <data name="ClassifyCounts" xml:space="preserve">
+    <value>OK {0} · NG {1} · Chưa đánh dấu {2}</value>
+  </data>
+  <data name="ClassifyBlockTooFew" xml:space="preserve">
+    <value>Hãy đánh dấu ít nhất {0} ảnh OK và {0} ảnh NG</value>
+  </data>
+  <data name="ClassifyBlockOneClass" xml:space="preserve">
+    <value>Mới đánh dấu một loại; hãy đánh dấu cả OK và NG</value>
+  </data>
+  <data name="ClassifyBlockBackboneMissing" xml:space="preserve">
+    <value>Chưa cài mô hình nền OK/NG</value>
+  </data>
+  <data name="FixInstallModelPack" xml:space="preserve">
+    <value>Cài gói mô hình...</value>
+  </data>
+  <data name="ClassifyReading" xml:space="preserve">
+    <value>Đang đọc ảnh {0}/{1}</value>
+  </data>
+  <data name="ClassifyDone" xml:space="preserve">
+    <value>Mô hình OK/NG đã sẵn sàng · đúng {0} trên {1} ảnh kiểm tra</value>
+  </data>
+  <data name="InspectColConfidence" xml:space="preserve">
+    <value>Độ tin cậy</value>
+  </data>
+  <data name="ExportOkNgModel" xml:space="preserve">
+    <value>Mô hình OK/NG</value>
+  </data>
+  <data name="SendOkNgUnsupported" xml:space="preserve">
+    <value>EasyVision chưa đọc được mô hình OK/NG</value>
+  </data>
+  <data name="ModelPackBadHash" xml:space="preserve">
+    <value>Tệp {0} bị hỏng (sai mã kiểm tra)</value>
+  </data>
+  <data name="ModelPackInstalled" xml:space="preserve">
+    <value>Đã cài {0} mô hình</value>
+  </data>
+  <data name="ModelPackLicence" xml:space="preserve">
+    <value>Giấy phép: {0}</value>
+  </data>
+  <data name="UltraCpuSlow" xml:space="preserve">
+    <value>Không có GPU NVIDIA: huấn luyện bằng CPU, khoảng {0}</value>
+  </data>
+  <data name="TraceOperator" xml:space="preserve">
+    <value>Người vận hành</value>
+  </data>
+  <data name="TraceNote" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="TraceSaved" xml:space="preserve">
+    <value>Đã lưu hồ sơ: {0}</value>
+  </data>
+  <data name="ClassifyReady" xml:space="preserve">
+    <value>Mô hình OK/NG đã sẵn sàng</value>
+  </data>
+  <data name="ClassifyBackboneMismatch" xml:space="preserve">
+    <value>Mô hình nền OK/NG đã thay đổi sau khi huấn luyện mô hình này. Hãy cài gói mô hình hoặc huấn luyện lại.</value>
+  </data>
+  <data name="SetInstallModelPackCaption" xml:space="preserve">
+    <value>Gói mô hình nền OK/NG</value>
+  </data>
+  <data name="ModelPackTargetsFormat" xml:space="preserve">
+    <value>Thu muc: {0}</value>
+  </data>
+  <data name="ModelPackConfirmFormat" xml:space="preserve">
+    <value>Cài {0} tệp vào thư mục mô hình?</value>
+  </data>
+  <data name="ModelPackInstallConfirm" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="ModelPackFailed" xml:space="preserve">
+    <value>Cài gói mô hình thất bại: {0}</value>
+  </data>
+  <data name="SetUltraAllowCpu" xml:space="preserve">
+    <value>Cho phép huấn luyện YOLO bằng CPU (Nâng cao, chậm)</value>
+  </data>
+  <data name="UltraCpuNoEta" xml:space="preserve">
+    <value>Không có GPU NVIDIA: huấn luyện bằng CPU; thời gian hiện sau epoch đầu tiên</value>
+  </data>
+  <data name="UltraCpuMinutes" xml:space="preserve">
+    <value>{0} phút</value>
+  </data>
+  <data name="AgentOfflineOnly" xml:space="preserve">
+    <value>Chỉ dùng ngoại tuyến</value>
+  </data>
+  <data name="AgentOfflineExplanation" xml:space="preserve">
+    <value>Chế độ ngoại tuyến chặn tác vụ trợ lý, kiểm tra đăng nhập và cập nhật giá; gán nhãn, huấn luyện và kiểm thử cục bộ vẫn dùng được.</value>
+  </data>
+  <data name="ToolHand" xml:space="preserve"><value>Di chuyển ảnh</value></data>
+  <data name="ToolHandTip" xml:space="preserve"><value>Kéo để di chuyển ảnh</value></data>
+  <data name="ClassTableSyncAddedFormat" xml:space="preserve">
+    <value>Đã thêm nhãn mới vào bảng lớp: {0}. Model cũ cần train lại.</value>
+  </data>
+</root>

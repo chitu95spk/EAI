@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\EasyLabel.Core\EasyLabel.Core.csproj" />
+    <ProjectReference Include="..\EasyLabel.Vision\EasyLabel.Vision.csproj" />
+    <ProjectReference Include="..\EasyLabel.Ai\EasyLabel.Ai.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <NoWarn>$(NoWarn);WFO1000</NoWarn>
+  </PropertyGroup>
+
+</Project>

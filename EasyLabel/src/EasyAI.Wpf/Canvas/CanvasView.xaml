@@ -1,0 +1,135 @@
+<UserControl x:Class="EasyAI.Desktop.Views.CanvasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:ann="clr-namespace:EasyAI.Desktop.Annotation"
+             xmlns:edit="clr-namespace:EasyLabel.Core.Editing;assembly=EasyLabel.Core"
+             xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+             xmlns:infra="clr-namespace:EasyAI.Desktop.Infrastructure">
+    <UserControl.Resources>
+        <ann:EnumToBooleanConverter x:Key="EnumToBool" />
+        <BooleanToVisibilityConverter x:Key="FreeShapeToVisibility" />
+    </UserControl.Resources>
+
+    <!-- The tool column lives in ToolStripView (left of the docking area); this control is only the drawing surface. -->
+    <Grid>
+        <ann:AnnotationCanvas x:Name="Surface"
+                              Margin="4,8,8,8"
+                              Model="{Binding}"
+                              AutomationProperties.AutomationId="AnnotationCanvas"
+                              AutomationProperties.Name="{x:Static res:Strings.CanvasName}">
+            <ann:AnnotationCanvas.ContextMenu>
+                <ContextMenu AutomationProperties.AutomationId="CanvasContextMenu">
+                    <ui:MenuItem Header="{x:Static res:Strings.MiPolygon}" Icon="{ui:SymbolIcon DrawShape24}"
+                                 Visibility="{Binding AllowsFreeShapeTools, Converter={StaticResource FreeShapeToVisibility}}"
+                                 InputGestureText="{infra:Shortcut ToolPolygon}"
+                                 Command="{Binding SelectToolCommand}" CommandParameter="{x:Static edit:CanvasTool.Polygon}"
+                                 AutomationProperties.AutomationId="CtxToolPolygon" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiRectangle}" Icon="{ui:SymbolIcon RectangleLandscape24}"
+                                 Visibility="{Binding AllowsFreeShapeTools, Converter={StaticResource FreeShapeToVisibility}}"
+                                 InputGestureText="{infra:Shortcut ToolRect}"
+                                 Command="{Binding SelectToolCommand}" CommandParameter="{x:Static edit:CanvasTool.Rect}"
+                                 AutomationProperties.AutomationId="CtxToolRect" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiRotated}" Icon="{ui:SymbolIcon ArrowRotateClockwise24}"
+                                 InputGestureText="{infra:Shortcut ToolRot}"
+                                 Command="{Binding SelectToolCommand}" CommandParameter="{x:Static edit:CanvasTool.Rot}"
+                                 AutomationProperties.AutomationId="CtxToolRot" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiCircle}" Icon="{ui:SymbolIcon Circle24}"
+                                 InputGestureText="{infra:Shortcut ToolCircle}"
+                                 Command="{Binding SelectToolCommand}" CommandParameter="{x:Static edit:CanvasTool.Circle}"
+                                 AutomationProperties.AutomationId="CtxToolCircle" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiPoint}"
+                                 Visibility="{Binding AllowsFreeShapeTools, Converter={StaticResource FreeShapeToVisibility}}"
+                                 InputGestureText="{infra:Shortcut ToolPoint}"
+                                 Command="{Binding SelectToolCommand}" CommandParameter="{x:Static edit:CanvasTool.Point}"
+                                 AutomationProperties.AutomationId="CtxToolPoint">
+                        <ui:MenuItem.Icon>
+                            <Path Width="16" Height="16" Stretch="Uniform" Data="{StaticResource GeoPoint}" Fill="{DynamicResource TextFillColorPrimaryBrush}" />
+                        </ui:MenuItem.Icon>
+                    </ui:MenuItem>
+                    <ui:MenuItem Header="{x:Static res:Strings.MiLine}"
+                                 Visibility="{Binding AllowsFreeShapeTools, Converter={StaticResource FreeShapeToVisibility}}"
+                                 InputGestureText="{infra:Shortcut ToolLine}"
+                                 Command="{Binding SelectToolCommand}" CommandParameter="{x:Static edit:CanvasTool.Line}"
+                                 AutomationProperties.AutomationId="CtxToolLine">
+                        <ui:MenuItem.Icon>
+                            <Path Width="16" Height="16" Stretch="Uniform" Data="{StaticResource GeoLine}" Stroke="{DynamicResource TextFillColorPrimaryBrush}" StrokeThickness="2" />
+                        </ui:MenuItem.Icon>
+                    </ui:MenuItem>
+                    <ui:MenuItem Header="{x:Static res:Strings.MiLinestrip}"
+                                 Visibility="{Binding AllowsFreeShapeTools, Converter={StaticResource FreeShapeToVisibility}}"
+                                 InputGestureText="{infra:Shortcut ToolLineStrip}"
+                                 Command="{Binding SelectToolCommand}" CommandParameter="{x:Static edit:CanvasTool.LineStrip}"
+                                 AutomationProperties.AutomationId="CtxToolLinestrip">
+                        <ui:MenuItem.Icon>
+                            <Path Width="16" Height="16" Stretch="Uniform" Data="{StaticResource GeoLineStrip}" Stroke="{DynamicResource TextFillColorPrimaryBrush}" StrokeThickness="2" StrokeLineJoin="Round" />
+                        </ui:MenuItem.Icon>
+                    </ui:MenuItem>
+                    <ui:MenuItem Header="{x:Static res:Strings.MiAiPoints}" InputGestureText="{infra:Shortcut ToolAiPoints}" Command="{Binding SelectAiPointsCommand}"
+                                 Visibility="{Binding AllowsFreeShapeTools, Converter={StaticResource FreeShapeToVisibility}}"
+                                 ToolTip="{Binding AiPointsToolTip}" ToolTipService.ShowOnDisabled="True"
+                                 AutomationProperties.AutomationId="CtxToolAiPoints" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiAiBox}" InputGestureText="{infra:Shortcut ToolAiBox}" Command="{Binding SelectAiBoxCommand}"
+                                 ToolTip="{Binding AiBoxToolTip}" ToolTipService.ShowOnDisabled="True"
+                                 AutomationProperties.AutomationId="CtxToolAiBox" />
+                    <Separator />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiEditMode}" Icon="{ui:SymbolIcon CursorClick24}" InputGestureText="{infra:Shortcut EditMode}"
+                                 Command="{Binding SelectToolCommand}" CommandParameter="{x:Static edit:CanvasTool.Select}"
+                                 AutomationProperties.AutomationId="CtxToolSelect" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiUndo}" Icon="{ui:SymbolIcon ArrowUndo24}" InputGestureText="{infra:Shortcut Undo}"
+                                 Command="{Binding UndoCommand}"
+                                 AutomationProperties.AutomationId="CtxUndo" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiUndoLastPoint}" InputGestureText="{infra:Shortcut Undo}"
+                                 Command="{Binding UndoLastPointCommand}"
+                                 AutomationProperties.AutomationId="CtxUndoLastPoint" />
+                    <Separator />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiCopyClip}" Icon="{ui:SymbolIcon DocumentCopy24}" InputGestureText="{infra:Shortcut Copy}"
+                                 Command="{Binding CopyCommand}"
+                                 AutomationProperties.AutomationId="CtxCopy" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiPasteClip}" Icon="{ui:SymbolIcon ClipboardPaste24}" InputGestureText="{infra:Shortcut Paste}"
+                                 Command="{Binding PasteCommand}"
+                                 AutomationProperties.AutomationId="CtxPaste" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiDuplicateShape}" Icon="{ui:SymbolIcon CopyAdd24}" InputGestureText="{infra:Shortcut Duplicate}"
+                                 Command="{Binding DuplicateCommand}"
+                                 AutomationProperties.AutomationId="CtxDuplicate" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiEditLabel}" InputGestureText="{infra:Shortcut EditLabel}"
+                                 Command="{Binding EditLabelCommand}"
+                                 AutomationProperties.AutomationId="CtxEditLabel" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiDeleteShape}" Icon="{ui:SymbolIcon DeleteDismiss24}" InputGestureText="{infra:Shortcut DeleteShape}"
+                                 Command="{Binding DeleteCommand}"
+                                 AutomationProperties.AutomationId="CtxDelete" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiMerge}"
+                                 Command="{Binding MergeShapesCommand}"
+                                 AutomationProperties.AutomationId="CtxMergeShapes" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiConvertShape}"
+                                 AutomationProperties.AutomationId="CtxConvertShape">
+                        <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetPolygon}"
+                                     Command="{Binding ConvertShapeCommand}" CommandParameter="polygon"
+                                     Visibility="{Binding AllowsFreeShapeTools, Converter={StaticResource FreeShapeToVisibility}}"
+                                     AutomationProperties.AutomationId="CtxConvertPolygon" />
+                        <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetRectangle}"
+                                     Command="{Binding ConvertShapeCommand}" CommandParameter="rectangle"
+                                     Visibility="{Binding AllowsFreeShapeTools, Converter={StaticResource FreeShapeToVisibility}}"
+                                     AutomationProperties.AutomationId="CtxConvertRectangle" />
+                        <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetRotated}"
+                                     Command="{Binding ConvertShapeCommand}" CommandParameter="oriented_rectangle"
+                                     AutomationProperties.AutomationId="CtxConvertRotated" />
+                        <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetCircle}"
+                                     Command="{Binding ConvertShapeCommand}" CommandParameter="circle"
+                                     AutomationProperties.AutomationId="CtxConvertCircle" />
+                        <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetPoint}"
+                                     Command="{Binding ConvertShapeCommand}" CommandParameter="point"
+                                     Visibility="{Binding AllowsFreeShapeTools, Converter={StaticResource FreeShapeToVisibility}}"
+                                     AutomationProperties.AutomationId="CtxConvertPoint" />
+                    </ui:MenuItem>
+                    <ui:MenuItem Header="{x:Static res:Strings.MiAddEdgePoint}"
+                                 Command="{Binding AddPointOnEdgeCommand}"
+                                 AutomationProperties.AutomationId="CtxAddEdgePoint" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiDeleteVertex}" InputGestureText="{infra:Shortcut DeleteVertex}"
+                                 Command="{Binding DeleteVertexCommand}"
+                                 AutomationProperties.AutomationId="CtxDeleteVertex" />
+                </ContextMenu>
+            </ann:AnnotationCanvas.ContextMenu>
+        </ann:AnnotationCanvas>
+    </Grid>
+</UserControl>

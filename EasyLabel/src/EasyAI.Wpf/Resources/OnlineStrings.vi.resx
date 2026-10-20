@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="WindowTitle" xml:space="preserve"><value>Trạng thái trực tuyến</value></data>
+  <data name="StatusRunning" xml:space="preserve"><value>Đang chạy</value></data>
+  <data name="StatusStopped" xml:space="preserve"><value>Đã dừng</value></data>
+  <data name="StatusUnavailable" xml:space="preserve"><value>Không thể đọc trạng thái</value></data>
+  <data name="Recipe" xml:space="preserve"><value>Công thức</value></data>
+  <data name="Accepted" xml:space="preserve"><value>Đã tiếp nhận</value></data>
+  <data name="Completed" xml:space="preserve"><value>Đã hoàn tất</value></data>
+  <data name="Dropped" xml:space="preserve"><value>Đã bỏ qua</value></data>
+  <data name="Failed" xml:space="preserve"><value>Thất bại</value></data>
+  <data name="Unavailable" xml:space="preserve"><value>Chưa có dữ liệu</value></data>
+  <data name="P95BudgetFormat" xml:space="preserve"><value>Tổng p95: {0} ms / giới hạn: {1:0.###} ms</value></data>
+  <data name="Thresholds" xml:space="preserve"><value>Các ngưỡng</value></data>
+  <data name="Score" xml:space="preserve"><value>Điểm tin cậy</value></data>
+  <data name="Nms" xml:space="preserve"><value>NMS</value></data>
+  <data name="Apply" xml:space="preserve"><value>Áp dụng</value></data>
+  <data name="Stop" xml:space="preserve"><value>Dừng</value></data>
+  <data name="InvalidThreshold" xml:space="preserve"><value>Nhập điểm tin cậy và NMS từ 0 đến 1, dùng dấu chấm thập phân.</value></data>
+  <data name="ThresholdApplied" xml:space="preserve"><value>Đã áp dụng ngưỡng cho tất cả các lớp.</value></data>
+  <data name="NotRunning" xml:space="preserve"><value>Chế độ trực tuyến chưa chạy hoặc đã dừng.</value></data>
+  <data name="UnknownClass" xml:space="preserve"><value>Không tìm thấy lớp phù hợp.</value></data>
+  <data name="ThresholdFailed" xml:space="preserve"><value>Không thể áp dụng các ngưỡng.</value></data>
+</root>

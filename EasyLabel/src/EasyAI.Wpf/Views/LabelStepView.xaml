@@ -1,0 +1,283 @@
+<UserControl x:Class="EasyAI.Desktop.Views.LabelStepView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+             xmlns:vm="clr-namespace:EasyAI.Desktop.ViewModels"
+             xmlns:infra="clr-namespace:EasyAI.Desktop.Infrastructure"
+             xmlns:seg="clr-namespace:EasyLabel.SegAI.Data;assembly=EasyLabel.SegAI">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <!-- Caption of a segmented source button: accent text colour while its button is checked (no BasedOn: implicit-style safe). -->
+        <Style x:Key="SourceCaptionStyle" TargetType="ui:TextBlock">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}}" Value="True">
+                    <Setter Property="Foreground" Value="{DynamicResource EasyAiAccentTextBrush}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <!-- Small caption in front of a group of controls on the bar. -->
+        <Style x:Key="BarCaptionStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,0,6,0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+        </Style>
+        <!-- Thin divider between the groups of the bar. -->
+        <Style x:Key="BarDividerStyle" TargetType="Border">
+            <Setter Property="Width" Value="1" />
+            <Setter Property="Height" Value="26" />
+            <Setter Property="Margin" Value="0,2,14,8" />
+            <Setter Property="Background" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+        </Style>
+    </UserControl.Resources>
+
+    <!-- Horizontal Auto-label bar under the step tabs (Label step). Row 1: source and its actions, suggestions. Row 2: progress and status.
+         The Agent Prompt controls (prompt, Run, Check, options) live in the agent chat window (round button in the tool strip). -->
+    <StackPanel Margin="8,4,8,2">
+        <WrapPanel>
+            <TextBlock Margin="0,0,10,6" VerticalAlignment="Center" FontWeight="SemiBold"
+                       Text="{x:Static res:Strings.AutoLabelHeader}"
+                       AutomationProperties.Name="{x:Static res:Strings.AutoLabelHeader}" />
+            <StackPanel Margin="0,0,14,6" Orientation="Horizontal" VerticalAlignment="Center"
+                        ToolTip="{x:Static res:Strings.SourceTip}">
+                <RadioButton Margin="0,0,3,0" Padding="8,3" MinWidth="92" HorizontalContentAlignment="Center" GroupName="LabelSource"
+                             Style="{DynamicResource {x:Type ToggleButton}}"
+                             IsChecked="{Binding Label.IsAiSource, Mode=OneWay}"
+                             CommandParameter="{x:Static vm:AutoLabelSource.AiModel}"
+                             Command="{Binding Label.SetSourceCommand}"
+                             AutomationProperties.AutomationId="SourceAiModel"
+                             >
+                    <ui:TextBlock TextWrapping="NoWrap" TextAlignment="Center" Style="{StaticResource SourceCaptionStyle}" Text="{x:Static res:Strings.SourceAiModel}" />
+                </RadioButton>
+                <RadioButton Margin="0,0,3,0" Padding="8,3" MinWidth="92" HorizontalContentAlignment="Center" GroupName="LabelSource"
+                             Style="{DynamicResource {x:Type ToggleButton}}"
+                             IsChecked="{Binding Label.IsSegmentSource, Mode=OneWay}"
+                             CommandParameter="{x:Static vm:AutoLabelSource.SegmentModel}"
+                             Command="{Binding Label.SetSourceCommand}"
+                             AutomationProperties.AutomationId="SourceSegmentModel"
+                             >
+                    <ui:TextBlock TextWrapping="NoWrap" TextAlignment="Center" Style="{StaticResource SourceCaptionStyle}" Text="{x:Static res:Strings.SourceSegmentModel}" />
+                </RadioButton>
+                <RadioButton Margin="0,0,0,0" Padding="8,3" MinWidth="92" HorizontalContentAlignment="Center" GroupName="LabelSource"
+                             Style="{DynamicResource {x:Type ToggleButton}}"
+                             IsChecked="{Binding Label.IsAgentSource, Mode=OneWay}"
+                             CommandParameter="{x:Static vm:AutoLabelSource.AgentPrompt}"
+                             Command="{Binding Label.SetSourceCommand}"
+                             AutomationProperties.AutomationId="SourceAgentPrompt"
+                             >
+                    <ui:TextBlock TextWrapping="NoWrap" TextAlignment="Center" Style="{StaticResource SourceCaptionStyle}" Text="{x:Static res:Strings.SourceAgentPrompt}" />
+                </RadioButton>
+            </StackPanel>
+            <Border Style="{StaticResource BarDividerStyle}" />
+            <!-- AI Model: SAM2 | YOLO-World | Custom YOLO and Run. -->
+            <StackPanel Margin="0,0,14,6" Orientation="Horizontal" VerticalAlignment="Center"
+                        Visibility="{Binding Label.IsAiSource, Converter={StaticResource BoolToVisibility}}">
+                <StackPanel Margin="0,0,8,0" Orientation="Horizontal" ToolTip="{x:Static res:Strings.AiPickTip}">
+                    <RadioButton Margin="0,0,3,0" Padding="8,3" MinWidth="80" HorizontalContentAlignment="Center" GroupName="LabelAiModel"
+                                 Style="{DynamicResource {x:Type ToggleButton}}"
+                                 IsChecked="{Binding Label.IsSam2Picked, Mode=OneWay}"
+                                 CommandParameter="{x:Static infra:AiModelCatalog.Sam2Id}"
+                                 Command="{Binding Label.SetAiModelCommand}"
+                                 AutomationProperties.AutomationId="AiPickSam2"
+                                 >
+                        <ui:TextBlock TextWrapping="NoWrap" TextAlignment="Center" Style="{StaticResource SourceCaptionStyle}" Text="{x:Static res:Strings.AiPickSam2}" />
+                    </RadioButton>
+                    <RadioButton Margin="0,0,3,0" Padding="8,3" MinWidth="80" HorizontalContentAlignment="Center" GroupName="LabelAiModel"
+                                 Style="{DynamicResource {x:Type ToggleButton}}"
+                                 IsChecked="{Binding Label.IsYoloWorldPicked, Mode=OneWay}"
+                                 CommandParameter="{x:Static infra:AiModelCatalog.YoloWorldId}"
+                                 Command="{Binding Label.SetAiModelCommand}"
+                                 AutomationProperties.AutomationId="AiPickYoloWorld"
+                                 >
+                        <ui:TextBlock TextWrapping="NoWrap" TextAlignment="Center" Style="{StaticResource SourceCaptionStyle}" Text="{x:Static res:Strings.AiPickYoloWorld}" />
+                    </RadioButton>
+                    <RadioButton Margin="0,0,0,0" Padding="8,3" MinWidth="80" HorizontalContentAlignment="Center" GroupName="LabelAiModel"
+                                 Style="{DynamicResource {x:Type ToggleButton}}"
+                                 IsChecked="{Binding Label.IsCustomDetectPicked, Mode=OneWay}"
+                                 CommandParameter="{x:Static infra:AiModelCatalog.CustomDetectId}"
+                                 Command="{Binding Label.SetAiModelCommand}"
+                                 AutomationProperties.AutomationId="AiPickCustomDetect"
+                                 >
+                        <ui:TextBlock TextWrapping="NoWrap" TextAlignment="Center" Style="{StaticResource SourceCaptionStyle}" Text="{x:Static res:Strings.AiPickCustomDetect}" />
+                    </RadioButton>
+                </StackPanel>
+                <ui:Button Appearance="Secondary"
+                           Content="{x:Static res:Strings.TbRun}"
+                           Icon="{ui:SymbolIcon Wand24}"
+                           Command="{Binding Label.RunAiSourceCommand}"
+                           ToolTip="{Binding Label.SourceReasonText}"
+                           ToolTipService.ShowOnDisabled="True"
+                           AutomationProperties.AutomationId="AiRunSourceButton" />
+            </StackPanel>
+            <!-- Segment Model: active model, model picker, import, auto-label current / all and the score threshold. -->
+            <StackPanel Margin="0,0,14,6" Orientation="Horizontal" VerticalAlignment="Center"
+                        Visibility="{Binding Label.IsSegmentSource, Converter={StaticResource BoolToVisibility}}">
+                <TextBlock Style="{StaticResource BarCaptionStyle}" Text="{x:Static res:Strings.ModelHeader}" />
+                <TextBlock Margin="0,0,8,0" MaxWidth="150" VerticalAlignment="Center"
+                           Text="{Binding Label.ActiveModelText}"
+                           TextTrimming="CharacterEllipsis"
+                           ToolTip="{Binding Label.ActiveModelText}"
+                           AutomationProperties.AutomationId="ActiveModelName" />
+                <ComboBox Margin="0,0,6,0" Width="170" MinWidth="120"
+                          ItemsSource="{Binding Label.ModelFiles}"
+                          SelectedItem="{Binding Label.SelectedModel, Mode=TwoWay}"
+                          IsEnabled="{Binding Label.CanChooseModel}"
+                          ToolTip="{x:Static res:Strings.ChooseModelTip}"
+                          AutomationProperties.AutomationId="ModelCombo"
+                          AutomationProperties.Name="{x:Static res:Strings.ChooseModelTip}" />
+                <ui:Button Margin="0,0,6,0" Appearance="Secondary"
+                           Content="{x:Static res:Strings.ImportModel}"
+                           Icon="{ui:SymbolIcon ArrowImport24}"
+                           Command="{Binding Label.ImportModelCommand}"
+                           ToolTip="{x:Static res:Strings.ImportModelTip}"
+                           AutomationProperties.AutomationId="ImportModelButton" />
+                <ui:Button Margin="0,0,6,0" Appearance="Secondary"
+                           Content="{x:Static res:Strings.AutoLabelCurrent}"
+                           Icon="{ui:SymbolIcon Wand24}"
+                           Command="{Binding Label.AutoLabelCurrentCommand}"
+                           ToolTip="{x:Static res:Strings.AutoLabelCurrentTip}"
+                           AutomationProperties.AutomationId="AutoLabelCurrentButton" />
+                <ui:Button Appearance="Secondary"
+                           Content="{x:Static res:Strings.AutoLabelAll}"
+                           Icon="{ui:SymbolIcon Wand24}"
+                           Command="{Binding Label.AutoLabelAllCommand}"
+                           ToolTip="{x:Static res:Strings.AutoLabelAllTip}"
+                           AutomationProperties.AutomationId="AutoLabelAllButton" />
+            </StackPanel>
+            <StackPanel Margin="0,0,14,6" Orientation="Horizontal" VerticalAlignment="Center"
+                        Visibility="{Binding Label.ShowThreshold, Converter={StaticResource BoolToVisibility}}">
+                <TextBlock Style="{StaticResource BarCaptionStyle}" Text="{x:Static res:Strings.ScoreThreshold}" />
+                <Slider Width="110" VerticalAlignment="Center"
+                        Minimum="0.05" Maximum="1" SmallChange="0.01" LargeChange="0.05"
+                        Value="{Binding Label.Threshold, Mode=TwoWay}"
+                        ToolTip="{x:Static res:Strings.ScoreThreshold}"
+                        AutomationProperties.AutomationId="ThresholdSlider"
+                        AutomationProperties.Name="{x:Static res:Strings.ScoreThreshold}" />
+                <TextBlock Margin="6,0,0,0" MinWidth="32" VerticalAlignment="Center"
+                           Text="{Binding Label.ThresholdText}"
+                           AutomationProperties.AutomationId="ThresholdValue" />
+            </StackPanel>
+            <Border Style="{StaticResource BarDividerStyle}" />
+            <!-- Suggestions of the last run: count, accept the selected / all, reject all. -->
+            <StackPanel Margin="0,0,0,6" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Style="{StaticResource BarCaptionStyle}" Text="{x:Static res:Strings.SuggestionsHeader}" />
+                <TextBlock Margin="0,0,8,0" MinWidth="14" VerticalAlignment="Center"
+                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                           Text="{Binding Label.SuggestionCount}"
+                           AutomationProperties.AutomationId="SuggestionCount" />
+                <ui:Button Margin="0,0,6,0" Appearance="Secondary"
+                           Content="{x:Static res:Strings.AcceptSelected}"
+                           Icon="{ui:SymbolIcon Checkmark24}"
+                           Command="{Binding Label.AcceptSelectedCommand}"
+                           ToolTip="{x:Static res:Strings.AcceptSelectedTip}"
+                           AutomationProperties.AutomationId="AcceptSelectedButton" />
+                <ui:Button Margin="0,0,6,0" Appearance="Secondary"
+                           Content="{x:Static res:Strings.RejectAll}"
+                           Icon="{ui:SymbolIcon Dismiss24}"
+                           Command="{Binding Label.RejectAllCommand}"
+                           ToolTip="{x:Static res:Strings.RejectAllTip}"
+                           AutomationProperties.AutomationId="RejectAllButton" />
+                <ui:Button Appearance="Primary"
+                           Content="{x:Static res:Strings.AcceptAll}"
+                           Icon="{ui:SymbolIcon CheckmarkCircle24}"
+                           Command="{Binding Label.AcceptAllCommand}"
+                           ToolTip="{x:Static res:Strings.AcceptAllTip}"
+                           AutomationProperties.AutomationId="AcceptAllButton" />
+            </StackPanel>
+        </WrapPanel>
+
+        <!-- Progress of a running auto-label (with Cancel). -->
+        <Grid Margin="0,0,0,4" Visibility="{Binding Label.IsRunning, Converter={StaticResource BoolToVisibility}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="260" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <!-- The Agent source shows its live lines in the chat instead: no bar here, the text takes its place. -->
+            <Grid Grid.Column="0">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Label.IsAgentSource}" Value="True">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <ProgressBar VerticalAlignment="Center"
+                             Minimum="0" Maximum="100"
+                             Value="{Binding Label.ProgressValue, Mode=OneWay}"
+                             IsIndeterminate="{Binding Label.IsProgressIndeterminate}"
+                             AutomationProperties.AutomationId="AutoLabelProgress" />
+            </Grid>
+            <Grid>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Grid.Column" Value="1" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Label.IsAgentSource}" Value="True">
+                                <Setter Property="Grid.Column" Value="0" />
+                                <Setter Property="Grid.ColumnSpan" Value="2" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <TextBlock Margin="10,0" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"
+                           Text="{Binding Label.ProgressText}"
+                           AutomationProperties.AutomationId="AutoLabelProgressText" />
+            </Grid>
+            <ui:Button Grid.Column="2" Appearance="Secondary"
+                       Content="{x:Static res:Strings.Cancel}"
+                       Icon="{ui:SymbolIcon Dismiss24}"
+                       Command="{Binding Label.CancelRunCommand}"
+                       ToolTip="{x:Static res:Strings.Cancel}"
+                       AutomationProperties.AutomationId="AutoLabelCancelButton" />
+        </Grid>
+
+        <!-- Why the run is unavailable and the result line of the last run (the two status ids keep their old names). -->
+        <TextBlock Margin="0,0,0,4" TextWrapping="Wrap"
+                   Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                   Text="{Binding Label.SourceReasonText}"
+                   Visibility="{Binding Label.HasSourceReason, Converter={StaticResource BoolToVisibility}}"
+                   AutomationProperties.AutomationId="SourceReasonText" />
+        <TextBlock Margin="0,0,0,4" TextWrapping="Wrap"
+                   Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                   Text="{Binding Label.AiStatusText}"
+                   AutomationProperties.AutomationId="AiRunStatusText">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Label.HasAiStatus}" Value="True" />
+                                <Condition Binding="{Binding Label.IsAgentSource}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBlock Margin="0,0,0,4" TextWrapping="Wrap"
+                   Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                   Text="{Binding Label.AiStatusText}"
+                   AutomationProperties.AutomationId="AgentRunStatusText">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Label.HasAiStatus}" Value="True" />
+                                <Condition Binding="{Binding Label.IsAgentSource}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </StackPanel>
+</UserControl>

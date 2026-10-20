@@ -1,0 +1,152 @@
+{
+  "status": "PASS",
+  "plan_revision": "EAI-LOGO-r4",
+  "timing_manifest_sha256": "e843d47a570d30c96bbad7e943b2132cc5ea612de103e470b68639b35f67237e",
+  "exact_names": [
+    "MopL2 (1).png",
+    "MopL2 (3).png",
+    "MopL2 (6).png",
+    "NHAN_PHONG (1).png",
+    "NHAN_PHONG (16).png",
+    "NHAN_PHONG (32).png",
+    "NHAN_PHONG (64).png",
+    "Phong_L1 (1).png",
+    "Phong_L1 (6).png",
+    "Phong_L1 (11).png",
+    "TRAY (1).png",
+    "TRAY (5).png",
+    "TRAY (10).png",
+    "TRAYL2 (1).png",
+    "TRAYL2 (5).png",
+    "TRAYL2 (9).png",
+    "NhanL1 (1).png",
+    "NhanL1 (6).png",
+    "NhanL2 (4).png",
+    "NhanL2 (8).png"
+  ],
+  "holdout_overlap": 0,
+  "unique_images": 20,
+  "accuracy_claims_allowed": false,
+  "images": [
+    {
+      "rel": "MopL2 (1).png",
+      "image_sha256": "2b575e599f38101af315cfc975518d3bc33c2cf5176c1cda5484b7cfe720e170",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "MopL2 (3).png",
+      "image_sha256": "9437f380445a6d4a341b4a97f8e400b77f07a148b50c5581acbc3f8eff6c8e7b",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "MopL2 (6).png",
+      "image_sha256": "c0b0eca3942205eb28ad559f6fe82f2060f55855115af11d39d7cec5d1da35c8",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "NHAN_PHONG (1).png",
+      "image_sha256": "d7f7552deac004b3a7fd77cd59d674876b73a1cb344d6f7a398410fde0788d4a",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "NHAN_PHONG (16).png",
+      "image_sha256": "ce480d74a29dea78f030636f467dafbbe05bb1a0524337a26d2a4cb75cee7ffa",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "NHAN_PHONG (32).png",
+      "image_sha256": "f817752b9fc7783a943f182b352a8a152673930eb3441084002cbaf087194da1",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "NHAN_PHONG (64).png",
+      "image_sha256": "e1e8e3cef60d162c062f3e9af069abfa095dccf2df7e12ba3814c406923899a0",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "Phong_L1 (1).png",
+      "image_sha256": "9707db95a5cf8bffbe12b0617cf362f7cb5dcd0cfa520d8e360cbceeef577435",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "Phong_L1 (6).png",
+      "image_sha256": "cca1c3263a07d5303ccb45f17e98d5194a1584a0bdfcfd29d77119e536d3e6fc",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "Phong_L1 (11).png",
+      "image_sha256": "b4341c490908688e3f1cc3e37e95691b673ea34c1c81cbfdf924e67b9aeae33c",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "TRAY (1).png",
+      "image_sha256": "3bb48ab704972397892ee5fa7b3f662ae42c40100564ba7aa39e5e9bab4fd153",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "TRAY (5).png",
+      "image_sha256": "1e92f52d5379642c38bb27e88664ba5ad7dd0d2a2b2ccf0f5fc870f7c8cde8ab",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "TRAY (10).png",
+      "image_sha256": "b57f3f18d8fc4b2b5ec243b6cea1076309be8d58857f801173d8ee9afbfdbe4d",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "TRAYL2 (1).png",
+      "image_sha256": "722b3bccc99607a332d299759013831fe2741a452c58825f6731d5e6dda889bd",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "TRAYL2 (5).png",
+      "image_sha256": "7ea4a3b72fdfb121016a8ff7d1e965bd8bc449a742ecab97b5a5158877f097ae",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "TRAYL2 (9).png",
+      "image_sha256": "b6f0dd5974bb6d710aff16ca3cd3ef1284bf6905c5fed1f38247b0573c931b98",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "NhanL1 (1).png",
+      "image_sha256": "2df1ac0cc187928816f5449d9c672420b8abec5e09da3dba0078f22db76f1331",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "NhanL1 (6).png",
+      "image_sha256": "454c92cb0bf8b79fdafc21f7b9f2ccf2c91756e25d39b6cf7101e8bb336c47b4",
+      "canonical_annotation_sha256": "727e30bfbd5e18165aa7118b833c5f4e59eafe81dbc3291571cafde0c495c37f",
+      "annotation_provenance": "human_original"
+    },
+    {
+      "rel": "NhanL2 (4).png",
+      "image_sha256": "5dced886dc95959482241fbee80d72b6901f9098c5a18012c02549a6c6c861f1",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    },
+    {
+      "rel": "NhanL2 (8).png",
+      "image_sha256": "4a758e222daba6c8768beca9ad11eb31291df11daf24832dde6716c6b865ab29",
+      "canonical_annotation_sha256": null,
+      "annotation_provenance": "unlabelled_not_OK"
+    }
+  ]
+}

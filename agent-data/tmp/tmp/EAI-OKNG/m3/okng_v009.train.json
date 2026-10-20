@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "modelFile": "okng_v009.eaicls",
+  "modelVersion": 9,
+  "metricsBasis": "held-out",
+  "images": [
+    {
+      "path": "a.png",
+      "tag": "ng",
+      "split": "train"
+    }
+  ]
+}

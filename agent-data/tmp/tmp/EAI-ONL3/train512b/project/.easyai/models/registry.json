@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "active": null,
+  "models": [
+    {
+      "file": "v001.segai",
+      "createdUtc": "2026-10-17T16:34:16.3539509Z",
+      "state": "TRAINED",
+      "reportSummary": "V2, 60 epochs, mAP50 0.825",
+      "datasetFingerprint": "4603369b9ba0bf2aa40e2d795840f99e1eceb80cf24fdc5f0abb942650a5c925"
+    }
+  ]
+}

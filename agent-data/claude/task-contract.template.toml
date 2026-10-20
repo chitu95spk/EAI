@@ -1,0 +1,83 @@
+schema_version = 2
+agent_tree = true
+notes = "Claude-backend companion to .codex/task-contract.template.toml. Same fields and meaning except astra_required -> architect_required (Codex-specific vocabulary removed). See .agents/skills/eroute/references/routing-claude.md for model selection."
+
+[task]
+id = ""
+title = ""
+goal = ""
+current_behavior = ""
+expected_behavior = ""
+in_scope = []
+out_of_scope = []
+dependencies = []
+risk = "medium"
+
+[dispatch]
+category = ""
+route = "light | standard | deep"
+normalized_request = ""
+selected_model = "haiku | sonnet | opus"
+executor = "claude | codex"
+codex_model = ""   # gpt-5.6-luna | gpt-6-luna | gpt-5.6-terra | gpt-6.1-sol | gpt-6-astra; empty when executor = claude
+architect_required = false
+build_recommended = false
+build_reason = ""
+
+[approval]
+requested_by = "claude_dispatcher"
+activated_by = ""
+plan_approved = false
+plan_approved_by = ""
+approved_plan_revision = ""
+approved_at_utc = ""
+
+[authorization]
+granted_by = ""
+current_task_reference = ""
+granted_at_utc = ""
+edit_code = true
+update_tracking = true
+build = false
+run_tests = false
+benchmark = false
+deploy = false
+hardware_test = false
+# Standing authorization on current main, subject to CLAUDE.md section 12.1 checks/staging.
+# Set false for explicit no-commit requests; other branches need current-task authorization.
+commit = true
+push = false
+
+[budget]
+# Filled by the coordinator at eroute step 4a. usage_* come from tmp/usage/statusline.json (or user /usage).
+usage_five_hour_percent_at_start = -1
+estimated_tokens = 0
+agent_ceiling_multiplier = 2
+deferred_file = ""   # tmp/<task-id>/deferred.md when the route is split across sessions
+# Actuals, filled after the task by /eskill (budget-review.py --session <guid>); -1 = not recorded.
+# Units are RELATIVE (input 1, cache-write 1.25, cache-read 0.1, output 5, model ratio haiku .33 sonnet 1 opus 1.67), not a bill.
+actual_units_millions = -1
+actual_requests = -1
+actual_agents = -1
+actual_session = ""
+
+[acceptance]
+behavior = []
+regression = []
+performance = []
+evidence_required = []
+
+[benchmark]
+fixtures = []
+warmup_iterations = 0
+measured_iterations = 0
+metrics = []
+thresholds = []
+
+[stop_conditions]
+items = [
+  "The required change exceeds in_scope.",
+  "Risk rises to high and the approved plan does not cover it.",
+  "A repository stop-and-ask condition is reached.",
+  "Verification fails and the fix requires unrelated files.",
+]

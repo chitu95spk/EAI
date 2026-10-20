@@ -1,0 +1,117 @@
+{
+  "version": "7.8.1",
+  "flags": {
+    "train": true
+  },
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          3416.38175252882,
+          2370.5819117301003
+        ],
+        [
+          3432.9199938778397,
+          2428.2576134864
+        ],
+        [
+          2952.28914590868,
+          2566.0762913948997
+        ],
+        [
+          2935.7509045596603,
+          2508.4005896386
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "claude-draft3 faint scratch",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          2961.630615234375,
+          920.4606323242188
+        ],
+        [
+          2906.053955078125,
+          479.1163330078125
+        ],
+        [
+          2980.072021484375,
+          469.7955322265625
+        ],
+        [
+          3035.648681640625,
+          911.1398315429688
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH",
+      "points": [
+        [
+          2391.194091796875,
+          2449.43310546875
+        ],
+        [
+          3094.763427734375,
+          2676.13134765625
+        ],
+        [
+          3018.488525390625,
+          2912.85498046875
+        ],
+        [
+          2314.919189453125,
+          2686.15673828125
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH_BOT",
+      "points": [
+        [
+          4700.95849609375,
+          2217.2593994140625
+        ],
+        [
+          4732.337890625,
+          1715.9683837890625
+        ],
+        [
+          4758.259765625,
+          1717.591064453125
+        ],
+        [
+          4726.88037109375,
+          2218.882080078125
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    }
+  ],
+  "imagePath": "TRAY (2).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

@@ -1,0 +1,199 @@
+{
+  "version": "7.8.1",
+  "flags": {
+    "train": true
+  },
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          2352.804443359375,
+          2418.080322265625
+        ],
+        [
+          3767.646240234375,
+          1650.8546142578125
+        ],
+        [
+          3823.72412109375,
+          1754.2677001953125
+        ],
+        [
+          2408.88232421875,
+          2521.493408203125
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "claude-draft score 0.58",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          1330.1444,
+          1578.6313
+        ],
+        [
+          1434.0553,
+          1093.0118
+        ],
+        [
+          1522.9137,
+          1112.0254
+        ],
+        [
+          1419.0028,
+          1597.6449
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "claude-draft score 0.30",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          2133.427490234375,
+          2377.300537109375
+        ],
+        [
+          4683.84375,
+          765.0621337890625
+        ],
+        [
+          4774.90576171875,
+          909.113525390625
+        ],
+        [
+          2224.489501953125,
+          2521.351806640625
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "claude-draft score 0.58",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          1919.2908935546875,
+          786.6688232421875
+        ],
+        [
+          2258.474853515625,
+          786.5050659179688
+        ],
+        [
+          2258.53564453125,
+          912.3311767578125
+        ],
+        [
+          1919.3516845703125,
+          912.4949340820312
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "claude-draft score 0.30",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "LECH",
+      "points": [
+        [
+          2620.397216796875,
+          2572.167236328125
+        ],
+        [
+          3084.78076171875,
+          2720.6904296875
+        ],
+        [
+          3028.836181640625,
+          2895.611572265625
+        ],
+        [
+          2564.452392578125,
+          2747.088623046875
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH_BOT",
+      "points": [
+        [
+          4702.22021484375,
+          2065.630615234375
+        ],
+        [
+          4732.3798828125,
+          1583.829345703125
+        ],
+        [
+          4765.6923828125,
+          1585.91455078125
+        ],
+        [
+          4735.53271484375,
+          2067.7158203125
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          2515.47509765625,
+          2476.09716796875
+        ],
+        [
+          2606.1123046875,
+          2504.402587890625
+        ],
+        [
+          2587.40087890625,
+          2564.319580078125
+        ],
+        [
+          2496.763671875,
+          2536.01416015625
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "claude-draft score 0.58",
+      "direction": null,
+      "mask": null
+    }
+  ],
+  "imagePath": "NHAN_PHONG_CHONG (4).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

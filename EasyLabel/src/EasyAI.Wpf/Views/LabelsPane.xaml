@@ -1,0 +1,205 @@
+<UserControl x:Class="EasyAI.Desktop.Views.LabelsPane"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+             KeyDown="OnKeyDown">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+
+        <!-- Flat clickable row (a real Button, so the row can be invoked by keyboard and automation). -->
+        <Style x:Key="RowButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="2,3" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="3"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ShapeRowStyle" TargetType="Button" BasedOn="{StaticResource RowButtonStyle}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Collapse / expand arrow of a label row. -->
+        <Style x:Key="ExpanderToggleStyle" TargetType="ToggleButton">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Content" Value="&#x25B8;" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border Background="Transparent">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Content" Value="&#x25BE;" />
+                </Trigger>
+                <DataTrigger Binding="{Binding HasShapes}" Value="False">
+                    <Setter Property="Visibility" Value="Hidden" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <!-- DataContext: LabelsPanelViewModel. Level 1 = labels (click NG or OK = active class), level 2 = the shapes of that label. -->
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled"
+                  Background="Transparent">
+        <ScrollViewer.ContextMenu>
+            <ContextMenu>
+                <ui:MenuItem Header="{x:Static res:Strings.MiNewLabel}"
+                             Icon="{ui:SymbolIcon Add24}"
+                             Command="{Binding PlacementTarget.DataContext.NewLabelCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                             AutomationProperties.AutomationId="LabelsNewLabel" />
+            </ContextMenu>
+        </ScrollViewer.ContextMenu>
+        <ItemsControl Margin="4"
+                      ItemsSource="{Binding Groups}"
+                      Focusable="False"
+                      AutomationProperties.AutomationId="ClassList"
+                      AutomationProperties.Name="{x:Static res:Strings.MiShowLabelsShapes}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Button Style="{StaticResource RowButtonStyle}"
+                                Click="OnGroupClick"
+                                ToolTip="{x:Static res:Strings.ClassListTip}"
+                                AutomationProperties.AutomationId="{Binding AutomationKey}"
+                                AutomationProperties.Name="{Binding DisplayName}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <!-- Active class mark. -->
+                                <Border Grid.Column="0"
+                                        Width="3"
+                                        Margin="0,0,4,0"
+                                        CornerRadius="1.5"
+                                        Background="{DynamicResource AccentFillColorDefaultBrush}"
+                                        Visibility="{Binding IsActive, Converter={StaticResource BoolToVisibility}}" />
+                                <ToggleButton Grid.Column="1"
+                                              Style="{StaticResource ExpanderToggleStyle}"
+                                              IsChecked="{Binding IsExpanded, Mode=TwoWay}" />
+                                <CheckBox Grid.Column="2"
+                                          Margin="0,0,6,0"
+                                          MinWidth="0"
+                                          VerticalAlignment="Center"
+                                          IsEnabled="{Binding HasShapes}"
+                                          IsChecked="{Binding IsShown, Mode=TwoWay}"
+                                          ToolTip="{x:Static res:Strings.PnlGroupVisibleTip}"
+                                          AutomationProperties.Name="{x:Static res:Strings.PnlGroupVisibleTip}" />
+                                <Border Grid.Column="3"
+                                        Width="12"
+                                        Height="12"
+                                        Margin="0,0,8,0"
+                                        VerticalAlignment="Center"
+                                        CornerRadius="2"
+                                        Background="{Binding Swatch}" />
+                                <ui:TextBlock Grid.Column="4"
+                                              VerticalAlignment="Center"
+                                              Text="{Binding DisplayName}"
+                                              TextTrimming="CharacterEllipsis"
+                                              ToolTip="{Binding DisplayName}">
+                                    <ui:TextBlock.Style>
+                                        <Style TargetType="ui:TextBlock" BasedOn="{StaticResource {x:Type ui:TextBlock}}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsActive}" Value="True">
+                                                    <Setter Property="FontWeight" Value="SemiBold" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ui:TextBlock.Style>
+                                </ui:TextBlock>
+                                <TextBlock Grid.Column="5"
+                                           Margin="6,0,0,0"
+                                           VerticalAlignment="Center"
+                                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                           Text="{Binding Count}" />
+                            </Grid>
+                        </Button>
+
+                        <ItemsControl Margin="30,0,0,2"
+                                      ItemsSource="{Binding Shapes}"
+                                      Focusable="False"
+                                      Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVisibility}}"
+                                      AutomationProperties.AutomationId="ShapeList"
+                                      AutomationProperties.Name="{x:Static res:Strings.MiShowShapes}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource ShapeRowStyle}"
+                                            Click="OnShapeClick"
+                                            AutomationProperties.Name="{Binding Kind}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <CheckBox Grid.Column="0"
+                                                      Margin="0,0,6,0"
+                                                      MinWidth="0"
+                                                      VerticalAlignment="Center"
+                                                      IsChecked="{Binding IsVisible, Mode=TwoWay}"
+                                                      AutomationProperties.Name="{Binding Kind}" />
+                                            <Border Grid.Column="1"
+                                                    Width="10"
+                                                    Height="10"
+                                                    Margin="0,0,8,0"
+                                                    VerticalAlignment="Center"
+                                                    CornerRadius="2"
+                                                    Background="{Binding Swatch}" />
+                                            <ui:TextBlock Grid.Column="2"
+                                                          VerticalAlignment="Center"
+                                                          Text="{Binding Kind}"
+                                                          TextTrimming="CharacterEllipsis" />
+                                            <!-- Plain text marker: a label other than NG / OK is stored and drawn but ignored by Segment AI. -->
+                                            <TextBlock Grid.Column="3"
+                                                       Margin="6,0,0,0"
+                                                       VerticalAlignment="Center"
+                                                       Foreground="{DynamicResource SystemFillColorCautionBrush}"
+                                                       Text="{x:Static res:Strings.PnlIgnoredBySegAi}"
+                                                       Visibility="{Binding IsIgnored, Converter={StaticResource BoolToVisibility}}" />
+                                        </Grid>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </ScrollViewer>
+</UserControl>

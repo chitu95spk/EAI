@@ -1,0 +1,29 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Grep|Glob|Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"E:/Code/EasyVision_Unisen - NoService/tools/codegraph_gate.py\" gate"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "mcp__codegraph__codegraph_explore|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"E:/Code/EasyVision_Unisen - NoService/tools/codegraph_gate.py\" mark"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "codex@openai-codex": true
+  }
+}

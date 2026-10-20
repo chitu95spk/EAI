@@ -1,0 +1,20 @@
+# EAI-AGENT discovery: backend map (haiku explorer, read-only, git hashes and build unverified)
+Paths relative to repo root.
+
+RUNNER: EasyLabel/src/EasyAI.Wpf/Services/AgentRunner.cs:17 (RunAsync :148, SuggestAsync :241, CancelAndKill :92, RunProcessAsync :294, KillTree :416). Locators Services/Agent/AgentLocators.cs. Claude args AgentCommandLine.cs:127-147: -p prompt, --mcp-config mcp.json, --strict-mcp-config, --tools "", --allowedTools (7 mcp__easyai__* tools), --system-prompt-file system.md, --disable-slash-commands, --setting-sources "", --no-session-persistence, --output-format json, --max-turns (default 14; economy 8, best 22, hard +4 : AgentRunOptions.cs:57-64), --model (default sonnet), --effort. Codex args :81-119 (exec, --ephemeral, -s read-only, -c mcp_servers.easyai.*, default_tools_approval_mode approve). Timeouts: label 5 min, suggest 90 s. Cancel: linked CTS + Process.Kill(true) + job object KILL_ON_JOB_CLOSE (AgentJob.cs).
+Run folder: %LOCALAPPDATA%\EasyAI\agent-runs\yyyyMMdd-HHmmss-xxxxxxxx (request.json, mcp.json, system.md, t\, last-message.txt (Codex), proposals.json). Log agent-runs\log.csv (AgentCacheAndLog.cs:111-136; prompt length only). Retention newest 50 / 7 days. Cache %LOCALAPPDATA%\EasyAI\agent-cache\<key>.json, key = image+prompt+model+classes+skill/memory hash+shapes+models folder (AgentRunner.cs:199-200).
+MCP exe: EasyLabel.Ai.Mcp.exe (McpEntry.cs:22 --run <dir> [--models <dir>]). Tools (EasyAiTools.cs:39-45, descriptors :141-220): get_image_info, get_crop (max_side), list_shapes, sam2_segment, propose_shapes (polygon|rectangle|oriented_rectangle, fromSam2), memory_read, memory_add (400 chars).
+
+SKILLS: source EasyLabel/src/EasyLabel.Ai.Mcp/Skills/*.md (read-image, prompt-suggestion (suggest runs only), memory, find-objects, label-rules, label-placement), copied to <OutDir>agent\Skills. Loaded by AgentRunFiles.ReadSkillTexts :158-165 into system.md (BuildSystemPrompt :142). Settings page AgentsSettingsViewModel.cs (Add :295, Edit :324, Delete :347, SetEnabled :277); skills live in %USERPROFILE%\.claude\skills / %CODEX_HOME%\skills (AgentSkills.cs:42-121; disable = move to skills.disabled). IMPORTANT: the Enable toggle is NOT passed to runs (AgentSkillStore built only in the settings VM); runs read only agent\Skills\*.md. Unverified whether claude -p loads ~/.claude/skills with --setting-sources "".
+
+PROJECT MEMORY: <project>\.easyai\agent-memory.md (ProjectLayout.cs:16,:38). Lines "- yyyy-MM-dd note"; MaxChars 6000 (oldest dropped), note max 400, editor max 20000 (AgentMemoryFile.cs). Passed to the agent in system prompt MemoryBlock (AgentRunFiles.cs:175) + request.json memoryPath; part of cache key. Written ONLY by the agent via memory_add during a run (EasyAiTools.cs:61-71) or by the user editor (AgentsSettingsViewModel.cs:423-486). The runner never writes memory after a run; no accept/reject outcome recording exists.
+
+ACCEPT/REJECT: LabelStepViewModel.cs:1759-1774 -> CanvasViewModel.AcceptSuggestions :1062 (adds shapes with provenance, removes suggestions) / RejectSuggestions :1099 (drops from layer). Result ingestion LabelStepViewModel.cs:1242-1277 ApplyAgentResult -> AgentProposals.ToSuggestions (AgentResults.cs:525).
+
+BATCH: absent for the agent (RunAgentCoreAsync :740 current image only; AutoLabelAllAsync :1670 is the Segment AI service).
+
+MCP CONFIG: mcp.json built by AgentRunFiles.BuildMcpConfigJson :125-139 with a single server "easyai"; not user-configurable; --strict-mcp-config forbids others. Claude allow-list AgentCommandLine.cs:14-15; Codex tool approvals :98-100.
+
+COST: parsed total_cost_usd/num_turns/usage (AgentResults.cs:87-91,:177), shown "$0.000 ... turns ... s" (LabelStepViewModel.cs:1258-1269), logged to log.csv.
+
+TESTS: EasyLabel.SegAI.Tests (AgentRunnerProcessTests, RealAgentRunTests, AgentSkillsTests, AgentRunFilesTests, AgentCacheLogTests, AgentLocatorTests, AgentCodexTests, AgentResultsTests, AgentSuggestionsTests); EasyLabel.Ai.Mcp.Tests (AgentRunContractTests, ToolTests); EasyLabel.Core.Tests (AgentMemoryFileTests).

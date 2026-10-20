@@ -1,0 +1,70 @@
+{
+  "version": "7.0.4",
+  "flags": {
+    "reviewed": true
+  },
+  "shapes": [
+    {
+      "label": "cap",
+      "points": [[10.0, 10.0], [35.0, 13.0], [31.0, 34.0], [6.0, 31.0]],
+      "group_id": 4,
+      "shape_type": "oriented_rectangle",
+      "flags": { "verified": true },
+      "description": "synthetic obb one",
+      "direction": 0.12,
+      "mask": { "kind": "bitmap-reference", "value": "not-decoded" },
+      "review_state": "synthetic",
+      "custom_payload": { "keep": true }
+    },
+    {
+      "label": "cap",
+      "points": [[45.0, 12.0], [69.0, 16.0], [65.0, 38.0], [41.0, 34.0]],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": 0.16
+    },
+    {
+      "label": "body",
+      "points": [[12.0, 48.0], [36.0, 46.0], [38.0, 69.0], [14.0, 71.0]],
+      "group_id": 5,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "synthetic obb three",
+      "direction": 0.0
+    },
+    {
+      "label": "body",
+      "points": [[50.0, 49.0], [74.0, 52.0], [71.0, 75.0], [47.0, 72.0]],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": -0.13
+    },
+    {
+      "label": "label",
+      "points": [[82.0, 15.0], [106.0, 15.0], [106.0, 39.0], [82.0, 39.0]],
+      "group_id": 7,
+      "shape_type": "oriented_rectangle",
+      "flags": { "generated": false },
+      "description": "synthetic obb five",
+      "direction": 0.0
+    },
+    {
+      "label": "rectangle",
+      "points": [[82.0, 50.0], [110.0, 76.0]],
+      "group_id": null,
+      "shape_type": "rectangle",
+      "flags": {},
+      "description": "synthetic rectangle",
+      "direction": null
+    }
+  ],
+  "imagePath": "synthetic_labelme7.png",
+  "imageData": null,
+  "imageHeight": 96,
+  "imageWidth": 128,
+  "source_note": "fixture"
+}

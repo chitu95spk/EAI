@@ -1,0 +1,8456 @@
+{
+  "method": "64-bit dHash, candidate-only; similar bottle layout is not proof of duplicate capture",
+  "threshold": 4,
+  "pairs": [
+    {
+      "a": "MopL2 (1).png",
+      "b": "MopL2 (5).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (1).png",
+      "b": "TRAYL2 (6).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (2).png",
+      "b": "MopL2 (3).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (2).png",
+      "b": "MopL2 (4).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (2).png",
+      "b": "MopL2 (6).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (2).png",
+      "b": "MopL2 (7).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (2).png",
+      "b": "NhanL2 (2).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (2).png",
+      "b": "NhanL2 (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (2).png",
+      "b": "TRAYL2 (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (2).png",
+      "b": "TRAYL2 (3).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (2).png",
+      "b": "TRAYL2 (7).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (3).png",
+      "b": "MopL2 (4).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (3).png",
+      "b": "MopL2 (6).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (3).png",
+      "b": "MopL2 (7).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (3).png",
+      "b": "NHAN_PHONG (59).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (4).png",
+      "b": "MopL2 (6).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (4).png",
+      "b": "MopL2 (7).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (4).png",
+      "b": "NhanL2 (2).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (4).png",
+      "b": "NhanL2 (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (4).png",
+      "b": "TRAYL2 (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (4).png",
+      "b": "TRAYL2 (3).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (4).png",
+      "b": "TRAYL2 (7).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (6).png",
+      "b": "MopL2 (7).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (6).png",
+      "b": "NhanL2 (2).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (6).png",
+      "b": "NhanL2 (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (6).png",
+      "b": "TRAYL2 (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (6).png",
+      "b": "TRAYL2 (3).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (6).png",
+      "b": "TRAYL2 (7).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "MopL2 (7).png",
+      "b": "NHAN_PHONG (59).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (1).png",
+      "b": "NHAN_PHONG (13).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (1).png",
+      "b": "NHAN_PHONG (14).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (1).png",
+      "b": "NHAN_PHONG (15).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (1).png",
+      "b": "NHAN_PHONG (18).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (1).png",
+      "b": "NHAN_PHONG (20).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (1).png",
+      "b": "NHAN_PHONG (22).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (1).png",
+      "b": "NHAN_PHONG (23).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (1).png",
+      "b": "NHAN_PHONG (25).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (1).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (1).png",
+      "b": "NHAN_PHONG (5).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (10).png",
+      "b": "NHAN_PHONG (11).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (10).png",
+      "b": "NHAN_PHONG (12).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (10).png",
+      "b": "NHAN_PHONG (18).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (10).png",
+      "b": "NHAN_PHONG (25).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (10).png",
+      "b": "NHAN_PHONG (3).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (10).png",
+      "b": "NHAN_PHONG (34).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (10).png",
+      "b": "NHAN_PHONG (39).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (10).png",
+      "b": "NHAN_PHONG (4).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (10).png",
+      "b": "NHAN_PHONG (6).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (10).png",
+      "b": "NHAN_PHONG (9).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (11).png",
+      "b": "NHAN_PHONG (12).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (11).png",
+      "b": "NHAN_PHONG (13).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (11).png",
+      "b": "NHAN_PHONG (14).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (11).png",
+      "b": "NHAN_PHONG (18).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (11).png",
+      "b": "NHAN_PHONG (23).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (11).png",
+      "b": "NHAN_PHONG (25).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (11).png",
+      "b": "NHAN_PHONG (3).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (11).png",
+      "b": "NHAN_PHONG (34).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (11).png",
+      "b": "NHAN_PHONG (4).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (11).png",
+      "b": "NHAN_PHONG (6).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (11).png",
+      "b": "NHAN_PHONG (9).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (12).png",
+      "b": "NHAN_PHONG (18).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (12).png",
+      "b": "NHAN_PHONG (24).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (12).png",
+      "b": "NHAN_PHONG (3).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (12).png",
+      "b": "NHAN_PHONG (34).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (12).png",
+      "b": "NHAN_PHONG (39).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (12).png",
+      "b": "NHAN_PHONG (4).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (12).png",
+      "b": "NHAN_PHONG (6).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (12).png",
+      "b": "NHAN_PHONG (9).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (12).png",
+      "b": "NhanL1 (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (12).png",
+      "b": "TRAY (8).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (14).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (15).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (16).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (17).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (18).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (19).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (20).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (21).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (22).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (23).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (25).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (26).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (29).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (5).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (13).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (15).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (16).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (17).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (18).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (19).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (20).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (21).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (22).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (23).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (25).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (26).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (29).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (5).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (14).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (16).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (17).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (18).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (19).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (20).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (21).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (22).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (23).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (25).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (26).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (29).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (30).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (15).png",
+      "b": "NHAN_PHONG_CHONG (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (17).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (19).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (20).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (21).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (22).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (23).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (25).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (26).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (29).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (30).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (36).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (16).png",
+      "b": "NHAN_PHONG_CHONG (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (19).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (20).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (21).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (22).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (23).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (25).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (26).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (29).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (30).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (36).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (17).png",
+      "b": "NHAN_PHONG_CHONG (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (18).png",
+      "b": "NHAN_PHONG (20).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (18).png",
+      "b": "NHAN_PHONG (22).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (18).png",
+      "b": "NHAN_PHONG (23).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (18).png",
+      "b": "NHAN_PHONG (25).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (18).png",
+      "b": "NHAN_PHONG (3).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (18).png",
+      "b": "NHAN_PHONG (4).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (18).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (18).png",
+      "b": "NHAN_PHONG (6).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (18).png",
+      "b": "NHAN_PHONG (9).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (20).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (21).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (22).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (23).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (25).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (26).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (29).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (30).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (36).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (19).png",
+      "b": "NHAN_PHONG_CHONG (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (2).png",
+      "b": "NHAN_PHONG (24).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (20).png",
+      "b": "NHAN_PHONG (21).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (20).png",
+      "b": "NHAN_PHONG (22).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (20).png",
+      "b": "NHAN_PHONG (23).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (20).png",
+      "b": "NHAN_PHONG (25).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (20).png",
+      "b": "NHAN_PHONG (26).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (20).png",
+      "b": "NHAN_PHONG (29).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (20).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (20).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (20).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (20).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (20).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (20).png",
+      "b": "NHAN_PHONG (5).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (20).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (20).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG (22).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG (23).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG (25).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG (26).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG (29).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG (30).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG (36).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (21).png",
+      "b": "NHAN_PHONG_CHONG (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (22).png",
+      "b": "NHAN_PHONG (23).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (22).png",
+      "b": "NHAN_PHONG (25).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (22).png",
+      "b": "NHAN_PHONG (26).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (22).png",
+      "b": "NHAN_PHONG (29).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (22).png",
+      "b": "NHAN_PHONG (30).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (22).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (22).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (22).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (22).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (22).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (22).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (22).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (22).png",
+      "b": "NHAN_PHONG_CHONG (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (22).png",
+      "b": "NHAN_PHONG_CHONG (17).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (23).png",
+      "b": "NHAN_PHONG (25).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (23).png",
+      "b": "NHAN_PHONG (26).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (23).png",
+      "b": "NHAN_PHONG (29).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (23).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (23).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (23).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (23).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (23).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (23).png",
+      "b": "NHAN_PHONG (5).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (23).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (23).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (24).png",
+      "b": "NhanL1 (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (24).png",
+      "b": "TRAY (8).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (25).png",
+      "b": "NHAN_PHONG (26).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (25).png",
+      "b": "NHAN_PHONG (29).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (25).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (25).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (25).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (25).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (25).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (25).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (25).png",
+      "b": "NHAN_PHONG (9).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (26).png",
+      "b": "NHAN_PHONG (29).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (26).png",
+      "b": "NHAN_PHONG (30).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (26).png",
+      "b": "NHAN_PHONG (31).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (26).png",
+      "b": "NHAN_PHONG (32).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (26).png",
+      "b": "NHAN_PHONG (36).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (26).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (26).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (26).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (26).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (26).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (26).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (26).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (26).png",
+      "b": "NHAN_PHONG_CHONG (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (26).png",
+      "b": "NHAN_PHONG_CHONG (17).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (27).png",
+      "b": "NHAN_PHONG (34).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (27).png",
+      "b": "NHAN_PHONG (39).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (28).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (29).png",
+      "b": "NHAN_PHONG (30).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (29).png",
+      "b": "NHAN_PHONG (31).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (29).png",
+      "b": "NHAN_PHONG (32).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (29).png",
+      "b": "NHAN_PHONG (36).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (29).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (29).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (29).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (29).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (29).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (29).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (29).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (29).png",
+      "b": "NHAN_PHONG_CHONG (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (29).png",
+      "b": "NHAN_PHONG_CHONG (17).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (3).png",
+      "b": "NHAN_PHONG (4).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (3).png",
+      "b": "NHAN_PHONG (6).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (3).png",
+      "b": "NHAN_PHONG (9).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (30).png",
+      "b": "NHAN_PHONG (31).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (30).png",
+      "b": "NHAN_PHONG (32).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (30).png",
+      "b": "NHAN_PHONG (35).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (30).png",
+      "b": "NHAN_PHONG (36).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (30).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (30).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (30).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (30).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (30).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (30).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (31).png",
+      "b": "NHAN_PHONG (32).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (31).png",
+      "b": "NHAN_PHONG (35).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (31).png",
+      "b": "NHAN_PHONG_CHONG (18).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (31).png",
+      "b": "NHAN_PHONG_CHONG (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (32).png",
+      "b": "NHAN_PHONG (33).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (32).png",
+      "b": "NHAN_PHONG (35).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (32).png",
+      "b": "NHAN_PHONG (44).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (32).png",
+      "b": "NHAN_PHONG_CHONG (18).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (32).png",
+      "b": "NHAN_PHONG_CHONG (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (33).png",
+      "b": "NHAN_PHONG (36).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (33).png",
+      "b": "NHAN_PHONG (44).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (33).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (34).png",
+      "b": "NHAN_PHONG (39).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (34).png",
+      "b": "NHAN_PHONG (6).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (34).png",
+      "b": "NHAN_PHONG (9).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (35).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (36).png",
+      "b": "NHAN_PHONG (38).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (36).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (36).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (36).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (36).png",
+      "b": "NHAN_PHONG (44).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (36).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (36).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (38).png",
+      "b": "NHAN_PHONG (40).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (38).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (38).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (38).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (38).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (38).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (38).png",
+      "b": "NHAN_PHONG_CHONG (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (39).png",
+      "b": "NHAN_PHONG (9).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (4).png",
+      "b": "NHAN_PHONG (6).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (4).png",
+      "b": "NHAN_PHONG (9).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (40).png",
+      "b": "NHAN_PHONG (41).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (40).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (40).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (40).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (40).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (40).png",
+      "b": "NHAN_PHONG_CHONG (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (41).png",
+      "b": "NHAN_PHONG (42).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (41).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (41).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (41).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (41).png",
+      "b": "NHAN_PHONG_CHONG (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (42).png",
+      "b": "NHAN_PHONG (43).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (42).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (42).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (42).png",
+      "b": "NHAN_PHONG_CHONG (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (43).png",
+      "b": "NHAN_PHONG (7).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (43).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (43).png",
+      "b": "NHAN_PHONG_CHONG (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (45).png",
+      "b": "NHAN_PHONG (46).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (45).png",
+      "b": "NHAN_PHONG (53).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (45).png",
+      "b": "NHAN_PHONG (54).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (45).png",
+      "b": "NHAN_PHONG (55).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (45).png",
+      "b": "NHAN_PHONG (56).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (45).png",
+      "b": "NHAN_PHONG (57).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (45).png",
+      "b": "NHAN_PHONG (58).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (45).png",
+      "b": "NHAN_PHONG (60).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (45).png",
+      "b": "NHAN_PHONG (61).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (45).png",
+      "b": "NHAN_PHONG (62).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (45).png",
+      "b": "NHAN_PHONG (63).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (46).png",
+      "b": "NHAN_PHONG (54).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (46).png",
+      "b": "NHAN_PHONG (56).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (46).png",
+      "b": "NHAN_PHONG (60).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (46).png",
+      "b": "NHAN_PHONG (61).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (46).png",
+      "b": "NHAN_PHONG (62).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (46).png",
+      "b": "NHAN_PHONG (63).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (47).png",
+      "b": "NHAN_PHONG (48).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (47).png",
+      "b": "NHAN_PHONG (49).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (47).png",
+      "b": "NHAN_PHONG (50).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (47).png",
+      "b": "NHAN_PHONG (53).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (47).png",
+      "b": "NHAN_PHONG (54).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (47).png",
+      "b": "NHAN_PHONG (55).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (47).png",
+      "b": "NHAN_PHONG (56).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (47).png",
+      "b": "NHAN_PHONG (58).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (47).png",
+      "b": "NHAN_PHONG (59).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (47).png",
+      "b": "NHAN_PHONG (60).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (47).png",
+      "b": "NHAN_PHONG (61).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (47).png",
+      "b": "NHAN_PHONG (62).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (47).png",
+      "b": "NHAN_PHONG (63).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (48).png",
+      "b": "NHAN_PHONG (49).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (48).png",
+      "b": "NHAN_PHONG (50).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (48).png",
+      "b": "NHAN_PHONG (53).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (48).png",
+      "b": "NHAN_PHONG (54).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (48).png",
+      "b": "NHAN_PHONG (55).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (48).png",
+      "b": "NHAN_PHONG (56).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (48).png",
+      "b": "NHAN_PHONG (58).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (48).png",
+      "b": "NHAN_PHONG (59).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (48).png",
+      "b": "NHAN_PHONG (60).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (48).png",
+      "b": "NHAN_PHONG (61).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (48).png",
+      "b": "NHAN_PHONG (62).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (48).png",
+      "b": "NHAN_PHONG (63).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (49).png",
+      "b": "NHAN_PHONG (53).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (49).png",
+      "b": "NHAN_PHONG (54).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (49).png",
+      "b": "NHAN_PHONG (55).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (49).png",
+      "b": "NHAN_PHONG (58).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (49).png",
+      "b": "NHAN_PHONG (59).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (49).png",
+      "b": "NHAN_PHONG (60).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (49).png",
+      "b": "NHAN_PHONG (61).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (49).png",
+      "b": "NHAN_PHONG (62).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (49).png",
+      "b": "NHAN_PHONG (63).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (50).png",
+      "b": "NHAN_PHONG (54).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (50).png",
+      "b": "NHAN_PHONG (56).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (50).png",
+      "b": "NHAN_PHONG (57).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (50).png",
+      "b": "NHAN_PHONG (60).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (50).png",
+      "b": "NHAN_PHONG (61).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (51).png",
+      "b": "NHAN_PHONG (52).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (51).png",
+      "b": "TRAYL2 (6).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (52).png",
+      "b": "TRAYL2 (6).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (53).png",
+      "b": "NHAN_PHONG (54).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (53).png",
+      "b": "NHAN_PHONG (55).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (53).png",
+      "b": "NHAN_PHONG (56).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (53).png",
+      "b": "NHAN_PHONG (58).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (53).png",
+      "b": "NHAN_PHONG (59).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (53).png",
+      "b": "NHAN_PHONG (60).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (53).png",
+      "b": "NHAN_PHONG (61).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (53).png",
+      "b": "NHAN_PHONG (62).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (54).png",
+      "b": "NHAN_PHONG (55).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (54).png",
+      "b": "NHAN_PHONG (56).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (54).png",
+      "b": "NHAN_PHONG (58).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (54).png",
+      "b": "NHAN_PHONG (59).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (54).png",
+      "b": "NHAN_PHONG (60).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (54).png",
+      "b": "NHAN_PHONG (61).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (54).png",
+      "b": "NHAN_PHONG (62).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (54).png",
+      "b": "NHAN_PHONG (63).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (55).png",
+      "b": "NHAN_PHONG (56).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (55).png",
+      "b": "NHAN_PHONG (58).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (55).png",
+      "b": "NHAN_PHONG (59).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (55).png",
+      "b": "NHAN_PHONG (60).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (55).png",
+      "b": "NHAN_PHONG (61).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (55).png",
+      "b": "NHAN_PHONG (62).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (55).png",
+      "b": "TRAYL2 (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (56).png",
+      "b": "NHAN_PHONG (57).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (56).png",
+      "b": "NHAN_PHONG (58).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (56).png",
+      "b": "NHAN_PHONG (60).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (56).png",
+      "b": "NHAN_PHONG (61).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (56).png",
+      "b": "NHAN_PHONG (63).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (58).png",
+      "b": "NHAN_PHONG (59).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (58).png",
+      "b": "NHAN_PHONG (60).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (58).png",
+      "b": "NHAN_PHONG (61).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (58).png",
+      "b": "NHAN_PHONG (62).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (58).png",
+      "b": "NHAN_PHONG (63).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (58).png",
+      "b": "TRAYL2 (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (59).png",
+      "b": "NHAN_PHONG (60).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (59).png",
+      "b": "NHAN_PHONG (61).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (59).png",
+      "b": "NHAN_PHONG (62).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (59).png",
+      "b": "NHAN_PHONG (63).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (59).png",
+      "b": "TRAYL2 (1).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (6).png",
+      "b": "NHAN_PHONG (9).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (60).png",
+      "b": "NHAN_PHONG (61).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (60).png",
+      "b": "NHAN_PHONG (62).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (61).png",
+      "b": "NHAN_PHONG (62).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (62).png",
+      "b": "NHAN_PHONG (63).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (62).png",
+      "b": "TRAYL2 (2).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (7).png",
+      "b": "NHAN_PHONG (8).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG (8).png",
+      "b": "NHAN_PHONG_CHONG (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "NHAN_PHONG_CHONG (12).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "NHAN_PHONG_CHONG (13).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "NHAN_PHONG_CHONG (15).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "NHAN_PHONG_CHONG (16).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "NHAN_PHONG_CHONG (17).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "NHAN_PHONG_CHONG (2).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "NHAN_PHONG_CHONG (20).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "NHAN_PHONG_CHONG (21).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "NHAN_PHONG_CHONG (4).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "NHAN_PHONG_CHONG (5).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "NHAN_PHONG_CHONG (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "NHAN_PHONG_CHONG (8).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "NHAN_PHONG_CHONG (9).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "Phong_L1 (9).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (1).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (10).png",
+      "b": "NHAN_PHONG_CHONG (13).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (10).png",
+      "b": "NHAN_PHONG_CHONG (16).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (10).png",
+      "b": "NHAN_PHONG_CHONG (17).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (10).png",
+      "b": "NHAN_PHONG_CHONG (20).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (10).png",
+      "b": "NHAN_PHONG_CHONG (5).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (10).png",
+      "b": "NHAN_PHONG_CHONG (9).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (10).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (10).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (10).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (10).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (10).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (10).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (11).png",
+      "b": "NHAN_PHONG_CHONG (12).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (11).png",
+      "b": "NHAN_PHONG_CHONG (15).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (11).png",
+      "b": "NHAN_PHONG_CHONG (18).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (11).png",
+      "b": "NHAN_PHONG_CHONG (2).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (11).png",
+      "b": "NHAN_PHONG_CHONG (4).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (11).png",
+      "b": "NHAN_PHONG_CHONG (8).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (11).png",
+      "b": "Phong_L1 (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (11).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (11).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "NHAN_PHONG_CHONG (13).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "NHAN_PHONG_CHONG (16).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "NHAN_PHONG_CHONG (17).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "NHAN_PHONG_CHONG (18).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "NHAN_PHONG_CHONG (19).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "NHAN_PHONG_CHONG (2).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "NHAN_PHONG_CHONG (20).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "NHAN_PHONG_CHONG (4).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "NHAN_PHONG_CHONG (5).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "NHAN_PHONG_CHONG (7).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "NHAN_PHONG_CHONG (8).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "NHAN_PHONG_CHONG (9).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "Phong_L1 (10).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "Phong_L1 (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "TRAY (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (12).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (13).png",
+      "b": "NHAN_PHONG_CHONG (16).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (13).png",
+      "b": "NHAN_PHONG_CHONG (17).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (13).png",
+      "b": "NHAN_PHONG_CHONG (2).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (13).png",
+      "b": "NHAN_PHONG_CHONG (20).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (13).png",
+      "b": "NHAN_PHONG_CHONG (5).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (13).png",
+      "b": "NHAN_PHONG_CHONG (9).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (13).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (13).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (13).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (13).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (13).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (13).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (14).png",
+      "b": "NhanL1 (1).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (14).png",
+      "b": "NhanL1 (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (14).png",
+      "b": "NhanL1 (7).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (14).png",
+      "b": "TRAY (8).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (15).png",
+      "b": "NHAN_PHONG_CHONG (18).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (15).png",
+      "b": "NHAN_PHONG_CHONG (4).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (15).png",
+      "b": "NHAN_PHONG_CHONG (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (15).png",
+      "b": "Phong_L1 (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (15).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (15).png",
+      "b": "Phong_L1 (9).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (15).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (15).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "NHAN_PHONG_CHONG (17).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "NHAN_PHONG_CHONG (2).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "NHAN_PHONG_CHONG (20).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "NHAN_PHONG_CHONG (5).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "NHAN_PHONG_CHONG (6).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "NHAN_PHONG_CHONG (8).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "NHAN_PHONG_CHONG (9).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "NhanL1 (11).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (16).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "NHAN_PHONG_CHONG (2).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "NHAN_PHONG_CHONG (20).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "NHAN_PHONG_CHONG (4).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "NHAN_PHONG_CHONG (5).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "NHAN_PHONG_CHONG (6).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "NHAN_PHONG_CHONG (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "NHAN_PHONG_CHONG (9).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "Phong_L1 (9).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (17).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (18).png",
+      "b": "NHAN_PHONG_CHONG (2).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (18).png",
+      "b": "NHAN_PHONG_CHONG (4).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (18).png",
+      "b": "Phong_L1 (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (18).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (18).png",
+      "b": "Phong_L1 (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (18).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (18).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (19).png",
+      "b": "NHAN_PHONG_CHONG (3).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (19).png",
+      "b": "NHAN_PHONG_CHONG (8).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (19).png",
+      "b": "TRAY (4).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "NHAN_PHONG_CHONG (20).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "NHAN_PHONG_CHONG (21).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "test_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "NHAN_PHONG_CHONG (4).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "NHAN_PHONG_CHONG (5).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "NHAN_PHONG_CHONG (7).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "NHAN_PHONG_CHONG (8).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "NHAN_PHONG_CHONG (9).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "NhanL1 (11).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "Phong_L1 (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "Phong_L1 (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (2).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (20).png",
+      "b": "NHAN_PHONG_CHONG (5).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (20).png",
+      "b": "NHAN_PHONG_CHONG (6).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (20).png",
+      "b": "NHAN_PHONG_CHONG (8).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (20).png",
+      "b": "NHAN_PHONG_CHONG (9).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (20).png",
+      "b": "NhanL1 (11).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (20).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (20).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (20).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (20).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (20).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (20).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (20).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (20).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (20).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (21).png",
+      "b": "NHAN_PHONG_CHONG (6).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (21).png",
+      "b": "NHAN_PHONG_CHONG (7).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (21).png",
+      "b": "NhanL1 (11).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (21).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (21).png",
+      "b": "Phong_L1 (9).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (21).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (21).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "test_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (3).png",
+      "b": "NhanL1 (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (3).png",
+      "b": "NhanL1 (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (3).png",
+      "b": "NhanL1 (7).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (3).png",
+      "b": "TRAY (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (3).png",
+      "b": "TRAY (8).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (4).png",
+      "b": "NHAN_PHONG_CHONG (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (4).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (4).png",
+      "b": "Phong_L1 (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (4).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (4).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (4).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (4).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (4).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (4).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (5).png",
+      "b": "NHAN_PHONG_CHONG (9).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (5).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (5).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (5).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (5).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (5).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (5).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (6).png",
+      "b": "NHAN_PHONG_CHONG (9).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (6).png",
+      "b": "NhanL1 (11).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (6).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (6).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (6).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (6).png",
+      "b": "Phong_L1 (9).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (6).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (6).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (6).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (6).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (7).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (7).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (7).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (7).png",
+      "b": "Phong_L1 (9).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (7).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (7).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (7).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (7).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (7).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (7).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (8).png",
+      "b": "NHAN_PHONG_CHONG (9).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (8).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (8).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (8).png",
+      "b": "TRAY (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (9).png",
+      "b": "NhanL1 (11).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (9).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (9).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (9).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (9).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (9).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (9).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (9).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (9).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NHAN_PHONG_CHONG (9).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (1).png",
+      "b": "NhanL1 (10).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NhanL1 (1).png",
+      "b": "NhanL1 (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NhanL1 (1).png",
+      "b": "TRAY (8).png",
+      "dhash_distance": 0,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (10).png",
+      "b": "NhanL1 (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "train_examples",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NhanL1 (10).png",
+      "b": "NhanL1 (9).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "train_examples",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NhanL1 (10).png",
+      "b": "TRAY (8).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (11).png",
+      "b": "NhanL1 (3).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "train_examples",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NhanL1 (11).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "train_examples",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NhanL1 (11).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (11).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (11).png",
+      "b": "Phong_L1 (9).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (11).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (11).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (11).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (11).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (2).png",
+      "b": "NhanL1 (3).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "train_examples",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NhanL1 (2).png",
+      "b": "NhanL1 (6).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "train_examples",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NhanL1 (2).png",
+      "b": "NhanL1 (9).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "train_examples",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NhanL1 (3).png",
+      "b": "NhanL1 (5).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "train_examples",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NhanL1 (3).png",
+      "b": "NhanL1 (6).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "train_examples",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NhanL1 (3).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (3).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (3).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (5).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (5).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (5).png",
+      "b": "Phong_L1 (9).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (5).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 0,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (5).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (5).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (5).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (5).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 0,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (5).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (5).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL1 (6).png",
+      "b": "NhanL1 (9).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "train_examples",
+        "train_examples"
+      ]
+    },
+    {
+      "a": "NhanL1 (7).png",
+      "b": "TRAY (8).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "train_examples",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (1).png",
+      "b": "NhanL2 (6).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "calibration_example",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (2).png",
+      "b": "NhanL2 (4).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (2).png",
+      "b": "NhanL2 (5).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (2).png",
+      "b": "NhanL2 (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (2).png",
+      "b": "TRAYL2 (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (2).png",
+      "b": "TRAYL2 (2).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (2).png",
+      "b": "TRAYL2 (3).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (2).png",
+      "b": "TRAYL2 (4).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (2).png",
+      "b": "TRAYL2 (5).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (2).png",
+      "b": "TRAYL2 (7).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (2).png",
+      "b": "TRAYL2 (8).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (2).png",
+      "b": "TRAYL2 (9).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (4).png",
+      "b": "NhanL2 (5).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (4).png",
+      "b": "NhanL2 (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (4).png",
+      "b": "TRAYL2 (1).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (4).png",
+      "b": "TRAYL2 (2).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (4).png",
+      "b": "TRAYL2 (3).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (4).png",
+      "b": "TRAYL2 (4).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (4).png",
+      "b": "TRAYL2 (5).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (4).png",
+      "b": "TRAYL2 (7).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (4).png",
+      "b": "TRAYL2 (8).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (4).png",
+      "b": "TRAYL2 (9).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (5).png",
+      "b": "NhanL2 (7).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (5).png",
+      "b": "TRAYL2 (2).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (5).png",
+      "b": "TRAYL2 (3).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (5).png",
+      "b": "TRAYL2 (4).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (5).png",
+      "b": "TRAYL2 (5).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (5).png",
+      "b": "TRAYL2 (7).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (5).png",
+      "b": "TRAYL2 (8).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (5).png",
+      "b": "TRAYL2 (9).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (7).png",
+      "b": "TRAYL2 (2).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (7).png",
+      "b": "TRAYL2 (3).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (7).png",
+      "b": "TRAYL2 (4).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (7).png",
+      "b": "TRAYL2 (5).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (7).png",
+      "b": "TRAYL2 (7).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (7).png",
+      "b": "TRAYL2 (8).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "NhanL2 (7).png",
+      "b": "TRAYL2 (9).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (1).png",
+      "b": "Phong_L1 (11).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (1).png",
+      "b": "Phong_L1 (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (1).png",
+      "b": "Phong_L1 (9).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (10).png",
+      "b": "Phong_L1 (2).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (10).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (10).png",
+      "b": "Phong_L1 (5).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (10).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (10).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (10).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (10).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (11).png",
+      "b": "Phong_L1 (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (11).png",
+      "b": "Phong_L1 (9).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (2).png",
+      "b": "Phong_L1 (4).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (2).png",
+      "b": "Phong_L1 (9).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (2).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (2).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (2).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (2).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (2).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 1,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (2).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (2).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (3).png",
+      "b": "Phong_L1 (6).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (3).png",
+      "b": "Phong_L1 (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (4).png",
+      "b": "Phong_L1 (9).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (4).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (4).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (4).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (4).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (4).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (4).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (5).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (6).png",
+      "b": "Phong_L1 (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (7).png",
+      "b": "Phong_L1 (9).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (9).png",
+      "b": "TRAY (1).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (9).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (9).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (9).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 2,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (9).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 4,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "Phong_L1 (9).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 3,
+      "cross_group": true,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (1).png",
+      "b": "TRAY (10).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (1).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (1).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (1).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (1).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (1).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (10).png",
+      "b": "TRAY (3).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (10).png",
+      "b": "TRAY (5).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (10).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (10).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (10).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (3).png",
+      "b": "TRAY (4).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (3).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (3).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (5).png",
+      "b": "TRAY (6).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (5).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (6).png",
+      "b": "TRAY (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAY (6).png",
+      "b": "TRAY (9).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (1).png",
+      "b": "TRAYL2 (3).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (1).png",
+      "b": "TRAYL2 (7).png",
+      "dhash_distance": 4,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (2).png",
+      "b": "TRAYL2 (3).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (2).png",
+      "b": "TRAYL2 (4).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (2).png",
+      "b": "TRAYL2 (5).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (2).png",
+      "b": "TRAYL2 (7).png",
+      "dhash_distance": 1,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (2).png",
+      "b": "TRAYL2 (8).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (2).png",
+      "b": "TRAYL2 (9).png",
+      "dhash_distance": 3,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (3).png",
+      "b": "TRAYL2 (4).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (3).png",
+      "b": "TRAYL2 (5).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (3).png",
+      "b": "TRAYL2 (7).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (3).png",
+      "b": "TRAYL2 (8).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (3).png",
+      "b": "TRAYL2 (9).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (4).png",
+      "b": "TRAYL2 (5).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (4).png",
+      "b": "TRAYL2 (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (4).png",
+      "b": "TRAYL2 (8).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (4).png",
+      "b": "TRAYL2 (9).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (5).png",
+      "b": "TRAYL2 (7).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (5).png",
+      "b": "TRAYL2 (8).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (5).png",
+      "b": "TRAYL2 (9).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (7).png",
+      "b": "TRAYL2 (8).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (7).png",
+      "b": "TRAYL2 (9).png",
+      "dhash_distance": 2,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    },
+    {
+      "a": "TRAYL2 (8).png",
+      "b": "TRAYL2 (9).png",
+      "dhash_distance": 0,
+      "cross_group": false,
+      "splits": [
+        "unlabelled_pool",
+        "unlabelled_pool"
+      ]
+    }
+  ]
+}

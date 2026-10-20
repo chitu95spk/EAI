@@ -1,0 +1,1 @@
+{"version": "5.5.0", "flags": {"train": true}, "shapes": [{"label": "NG", "points": [[823.0, 945.0], [713.0, 945.0], [713.0, 815.0], [823.0, 815.0]], "group_id": null, "shape_type": "oriented_rectangle", "flags": {}, "description": null, "direction": null}], "imagePath": "MopL2 (7)_t0.png", "imageData": null, "imageHeight": 1536, "imageWidth": 1536}

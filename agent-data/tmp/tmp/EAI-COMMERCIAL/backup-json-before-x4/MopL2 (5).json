@@ -1,0 +1,91 @@
+{
+  "version": "7.8.1",
+  "flags": {
+    "train": true
+  },
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          1700.0,
+          3055.0
+        ],
+        [
+          1590.0,
+          3055.0
+        ],
+        [
+          1590.0,
+          2925.0
+        ],
+        [
+          1700.0,
+          2925.0
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "claude-draft5 dent (user-confirmed)",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "LECH",
+      "points": [
+        [
+          2302.0219116210938,
+          2612.4273681640625
+        ],
+        [
+          2774.1666870117188,
+          2464.0662841796875
+        ],
+        [
+          2846.0455932617188,
+          2692.8131103515625
+        ],
+        [
+          2373.9008178710938,
+          2841.1741943359375
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH_BOT",
+      "points": [
+        [
+          921.8526611328125,
+          2202.9154052734375
+        ],
+        [
+          933.6778564453125,
+          1698.6788330078125
+        ],
+        [
+          956.291015625,
+          1699.2099609375
+        ],
+        [
+          944.4658203125,
+          2203.4464111328125
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    }
+  ],
+  "imagePath": "MopL2 (5).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

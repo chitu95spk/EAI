@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Clear the parent C# 12 override; use the net9.0 SDK language default. -->
+    <LangVersion />
+  </PropertyGroup>
+</Project>

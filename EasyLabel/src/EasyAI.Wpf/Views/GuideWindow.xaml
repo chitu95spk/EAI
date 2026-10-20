@@ -1,0 +1,50 @@
+<ui:FluentWindow x:Class="EasyAI.Desktop.Views.GuideWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+                 Title="{x:Static res:Strings.GuideTitle}"
+                 Width="760"
+                 Height="640"
+                 MinWidth="420"
+                 MinHeight="320"
+                 ExtendsContentIntoTitleBar="True"
+                 ShowInTaskbar="False"
+                 WindowBackdropType="Mica"
+                 WindowStartupLocation="CenterOwner"
+                 AutomationProperties.AutomationId="GuideWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar Grid.Row="0"
+                     Title="{x:Static res:Strings.GuideTitle}"
+                     ShowMaximize="True"
+                     ShowMinimize="False">
+            <ui:TitleBar.Icon>
+                <ui:SymbolIcon Symbol="QuestionCircle24" />
+            </ui:TitleBar.Icon>
+        </ui:TitleBar>
+
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled"
+                      AutomationProperties.AutomationId="GuideScroll">
+            <StackPanel x:Name="GuideBody"
+                        Margin="24,8,24,8"
+                        AutomationProperties.AutomationId="GuideContent" />
+        </ScrollViewer>
+
+        <ui:Button Grid.Row="2"
+                   Margin="16,4,16,16"
+                   HorizontalAlignment="Right"
+                   Appearance="Primary"
+                   Content="{x:Static res:Strings.Close}"
+                   IsCancel="True"
+                   IsDefault="True"
+                   AutomationProperties.AutomationId="GuideCloseButton" />
+    </Grid>
+</ui:FluentWindow>

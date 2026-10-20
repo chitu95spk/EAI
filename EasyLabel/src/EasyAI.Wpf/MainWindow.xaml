@@ -1,0 +1,1220 @@
+<ui:FluentWindow x:Class="EasyAI.Desktop.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:ann="clr-namespace:EasyAI.Desktop.Annotation"
+                 xmlns:vm="clr-namespace:EasyAI.Desktop.ViewModels"
+                 xmlns:edit="clr-namespace:EasyLabel.Core.Editing;assembly=EasyLabel.Core"
+                 xmlns:views="clr-namespace:EasyAI.Desktop.Views"
+                 xmlns:avalon="https://github.com/Dirkster99/AvalonDock"
+                 xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+                 xmlns:infra="clr-namespace:EasyAI.Desktop.Infrastructure"
+                 Title="{Binding TitleText}"
+                 Width="1280"
+                 Height="800"
+                 MinWidth="880"
+                 MinHeight="560"
+                 ExtendsContentIntoTitleBar="True"
+                 WindowBackdropType="Mica"
+                 WindowStartupLocation="CenterScreen"
+                 AutomationProperties.AutomationId="MainWindow"
+                 Closing="OnClosing"
+                 PreviewKeyDown="OnPreviewKeyDown"
+                 Loaded="OnLoaded"
+                 SizeChanged="OnSizeChanged">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <ann:EnumToBooleanConverter x:Key="EnumToBool" />
+        <Style x:Key="ToolbarButtonStyle"
+               TargetType="ui:Button"
+               BasedOn="{StaticResource {x:Type ui:Button}}">
+            <!-- One size for every toolbar button: 64 x 56, 18 px icon over a caption of at most two centred lines. -->
+            <Setter Property="Appearance" Value="Transparent" />
+            <Setter Property="Margin" Value="0,0,2,2" />
+            <Setter Property="Padding" Value="2,2" />
+            <Setter Property="Width" Value="64" />
+            <Setter Property="MinWidth" Value="64" />
+            <Setter Property="Height" Value="56" />
+            <Setter Property="MinHeight" Value="56" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+        <Style x:Key="ToolbarCaptionStyle"
+               TargetType="ui:TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="TextAlignment" Value="Center" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="TextTrimming" Value="None" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="MaxWidth" Value="58" />
+            <Setter Property="MaxHeight" Value="28" />
+            <Setter Property="Margin" Value="0,1,0,0" />
+        </Style>
+        <!-- Caption of a segmented UI-mode button: accent text colour while its button is checked (same as the Train tab's trainer switch). -->
+        <Style x:Key="UiModeCaptionStyle" TargetType="ui:TextBlock">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}}" Value="True">
+                    <Setter Property="Foreground" Value="{DynamicResource EasyAiAccentTextBrush}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <!-- Header text of the top-level menus over the gradient band (the drop-down items keep the normal menu colours). -->
+        <Style x:Key="BandMenuHeaderStyle" TargetType="AccessText">
+            <Setter Property="Foreground" Value="{DynamicResource EasyAiBandTextBrush}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsEnabled, RelativeSource={RelativeSource AncestorType=MenuItem}}" Value="False">
+                    <Setter Property="Opacity" Value="0.5" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <!-- The canvas document needs no tab header: hide the tab strip and its drop-down button (the canvas is not closable). -->
+        <Style TargetType="avalon:DocumentPaneTabPanel">
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
+        <Style TargetType="avalon:DropDownControlArea">
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
+    </Window.Resources>
+    <!-- Keyboard shortcuts are handled in OnPreviewKeyDown from ShortcutTable (no KeyBindings, so they never fire inside text inputs). -->
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Title and menu band: gradient from the colour theme (ThemeApplier), white text. Painted behind the title bar and the menu. -->
+        <Border Grid.Row="0"
+                Grid.RowSpan="2"
+                Background="{DynamicResource EasyAiBandBrush}" />
+
+        <ui:TitleBar Grid.Row="0"
+                     Title="{Binding TitleText}"
+                     Foreground="{DynamicResource EasyAiBandTextBrush}"
+                     ButtonsForeground="{DynamicResource EasyAiBandTextBrush}">
+            <ui:TitleBar.Icon>
+                <ui:ImageIcon Source="{StaticResource EasyAiLogo}" />
+            </ui:TitleBar.Icon>
+        </ui:TitleBar>
+
+        <Menu Grid.Row="1"
+              Margin="8,0,8,0"
+              HorizontalAlignment="Left"
+              AutomationProperties.AutomationId="MainMenu">
+            <ui:MenuItem SubmenuOpened="OnFileMenuSubmenuOpened"
+                         AutomationProperties.AutomationId="MenuFile">
+                <ui:MenuItem.Header>
+                    <AccessText Style="{StaticResource BandMenuHeaderStyle}" Text="{x:Static res:Strings.MnFile}" />
+                </ui:MenuItem.Header>
+                <ui:MenuItem Header="{x:Static res:Strings.MiNewProject}"
+                             Icon="{ui:SymbolIcon Add24}"
+                             InputGestureText="{infra:Shortcut NewProject}"
+                             Command="{Binding NewProjectCommand}"
+                             AutomationProperties.AutomationId="MenuNewProject" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiOpenProject}"
+                             Icon="{ui:SymbolIcon FolderOpen24}"
+                             InputGestureText="{infra:Shortcut OpenProject}"
+                             Command="{Binding OpenProjectFileDialogCommand}"
+                             AutomationProperties.AutomationId="MenuOpenProject" />
+                <!-- One entry per recent project is inserted above RecentListEnd by MainWindow.xaml.cs (RebuildRecentMenu). -->
+                <ui:MenuItem x:Name="OpenRecentMenu"
+                             Header="{x:Static res:Strings.MiOpenRecent}"
+                             Icon="{ui:SymbolIcon ArrowClockwise24}"
+                             IsEnabled="{Binding HasRecentProjects}"
+                             AutomationProperties.AutomationId="MenuOpenRecent">
+                    <Separator x:Name="RecentListEnd" />
+                    <ui:MenuItem Header="{x:Static res:Strings.MiRecentClear}"
+                                 Command="{Binding ClearRecentCommand}"
+                                 AutomationProperties.AutomationId="MenuClearRecent" />
+                </ui:MenuItem>
+                <ui:MenuItem Header="{x:Static res:Strings.MiSaveProject}"
+                             Icon="{ui:SymbolIcon Save24}"
+                             InputGestureText="{infra:Shortcut Save}"
+                             Command="{Binding SaveProjectCommand}"
+                             AutomationProperties.AutomationId="MenuSaveProject" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiSaveProjectAs}"
+                             Icon="{ui:SymbolIcon CopyAdd24}"
+                             InputGestureText="{infra:Shortcut SaveProjectAs}"
+                             Command="{Binding SaveProjectAsCommand}"
+                             AutomationProperties.AutomationId="MenuSaveProjectAs" />
+                <Separator />
+                <ui:MenuItem Header="{x:Static res:Strings.MiOpen}"
+                             Icon="{ui:SymbolIcon ImageAdd24}"
+                             InputGestureText="{infra:Shortcut OpenImages}"
+                             Command="{Binding Data.AddImagesCommand}"
+                             AutomationProperties.AutomationId="MenuOpenImages" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiNextImage}"
+                             Icon="{ui:SymbolIcon ChevronRight24}"
+                             InputGestureText="{infra:Shortcut NextImage}"
+                             Command="{Binding NextImageCommand}"
+                             AutomationProperties.AutomationId="MenuNextImage" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiPrevImage}"
+                             Icon="{ui:SymbolIcon ChevronLeft24}"
+                             InputGestureText="{infra:Shortcut PreviousImage}"
+                             Command="{Binding PreviousImageCommand}"
+                             AutomationProperties.AutomationId="MenuPreviousImage" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiOpenDir}"
+                             Icon="{ui:SymbolIcon FolderOpen24}"
+                             InputGestureText="{infra:Shortcut OpenFolder}"
+                             Command="{Binding OpenFolderCommand}"
+                             AutomationProperties.AutomationId="MenuOpenFolder" />
+                <Separator />
+                <ui:MenuItem Header="{x:Static res:Strings.MiSaveAs}"
+                             Icon="{ui:SymbolIcon Save24}"
+                             Command="{Binding SaveAsCommand}"
+                             AutomationProperties.AutomationId="MenuSaveAs" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiAutoSave}"
+                             IsCheckable="True"
+                             IsChecked="{Binding AutoSave, Mode=TwoWay}"
+                             AutomationProperties.AutomationId="MenuAutoSave" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiChangeOutputDir}"
+                             Icon="{ui:SymbolIcon Folder24}"
+                             Command="{Binding ChangeOutputDirectoryCommand}"
+                             AutomationProperties.AutomationId="MenuChangeOutputDir" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiEmbedImage}"
+                             IsCheckable="True"
+                             IsChecked="{Binding EmbedImageData, Mode=TwoWay}"
+                             AutomationProperties.AutomationId="MenuEmbedImage" />
+                <Separator />
+                <ui:MenuItem Header="{x:Static res:Strings.MiClose}"
+                             Icon="{ui:SymbolIcon Dismiss24}"
+                             InputGestureText="{infra:Shortcut CloseImage}"
+                             Command="{Binding CloseImageCommand}"
+                             AutomationProperties.AutomationId="MenuClose" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiDeleteFile}"
+                             Icon="{ui:SymbolIcon Delete24}"
+                             InputGestureText="{infra:Shortcut DeleteFile}"
+                             Command="{Binding DeleteAnnotationFilesCommand}"
+                             AutomationProperties.AutomationId="MenuDeleteFile" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiExport}"
+                             Command="{Binding ExportCommand}"
+                             ToolTip="{Binding ExportDisabledReason}"
+                             ToolTipService.ShowOnDisabled="True"
+                             AutomationProperties.AutomationId="MenuExport" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiImportLabelMe}"
+                             Icon="{ui:SymbolIcon ArrowImport24}"
+                             Command="{Binding ImportLabelMeCommand}"
+                             ToolTip="{x:Static res:Strings.ImportJsonTip}"
+                             ToolTipService.ShowOnDisabled="True"
+                             AutomationProperties.AutomationId="MenuImportLabelMe" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiExportLabelMe}"
+                             Command="{Binding ExportLabelMeCommand}"
+                             ToolTip="{Binding ExportDisabledReason}"
+                             ToolTipService.ShowOnDisabled="True"
+                             AutomationProperties.AutomationId="MenuExportLabelMe" />
+                <Separator />
+                <ui:MenuItem Header="{x:Static res:Strings.MiSettings}"
+                             Icon="{ui:SymbolIcon Settings24}"
+                             InputGestureText="{infra:Shortcut Settings}"
+                             Command="{Binding ShowSettingsCommand}"
+                             AutomationProperties.AutomationId="MenuSettings" />
+                <Separator />
+                <ui:MenuItem Header="{x:Static res:Strings.MiExit}"
+                             Icon="{ui:SymbolIcon SignOut24}"
+                             InputGestureText="{infra:Shortcut Exit}"
+                             Command="{Binding ExitCommand}"
+                             AutomationProperties.AutomationId="MenuExit" />
+            </ui:MenuItem>
+
+            <ui:MenuItem IsEnabled="{Binding IsLabelTab}"
+                         AutomationProperties.AutomationId="MenuEdit">
+                <ui:MenuItem.Header>
+                    <AccessText Style="{StaticResource BandMenuHeaderStyle}" Text="{x:Static res:Strings.MnEdit}" />
+                </ui:MenuItem.Header>
+                <ui:MenuItem Header="{x:Static res:Strings.MiPolygon}"
+                             Icon="{ui:SymbolIcon DrawShape24}"
+                             InputGestureText="{infra:Shortcut ToolPolygon}"
+                             Command="{Binding Canvas.SelectToolCommand}"
+                             CommandParameter="{x:Static edit:CanvasTool.Polygon}"
+                             Visibility="{Binding Canvas.AllowsFreeShapeTools, Converter={StaticResource BoolToVisibility}}"
+                             AutomationProperties.AutomationId="MenuToolPolygon" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiRectangle}"
+                             Icon="{ui:SymbolIcon RectangleLandscape24}"
+                             InputGestureText="{infra:Shortcut ToolRect}"
+                             Command="{Binding Canvas.SelectToolCommand}"
+                             CommandParameter="{x:Static edit:CanvasTool.Rect}"
+                             Visibility="{Binding Canvas.AllowsFreeShapeTools, Converter={StaticResource BoolToVisibility}}"
+                             AutomationProperties.AutomationId="MenuToolRect" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiRotated}"
+                             Icon="{ui:SymbolIcon ArrowRotateClockwise24}"
+                             Command="{Binding Canvas.SelectToolCommand}"
+                             InputGestureText="{infra:Shortcut ToolRot}"
+                             CommandParameter="{x:Static edit:CanvasTool.Rot}"
+                             AutomationProperties.AutomationId="MenuToolRot" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiCircle}"
+                             Icon="{ui:SymbolIcon Circle24}"
+                             Command="{Binding Canvas.SelectToolCommand}"
+                             InputGestureText="{infra:Shortcut ToolCircle}"
+                             CommandParameter="{x:Static edit:CanvasTool.Circle}"
+                             AutomationProperties.AutomationId="MenuToolCircle" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiPoint}"
+                             Command="{Binding Canvas.SelectToolCommand}"
+                             InputGestureText="{infra:Shortcut ToolPoint}"
+                             CommandParameter="{x:Static edit:CanvasTool.Point}"
+                             Visibility="{Binding Canvas.AllowsFreeShapeTools, Converter={StaticResource BoolToVisibility}}"
+                             AutomationProperties.AutomationId="MenuToolPoint">
+                    <ui:MenuItem.Icon>
+                        <Path Width="16" Height="16" Stretch="Uniform" Data="{StaticResource GeoPoint}" Fill="{DynamicResource TextFillColorPrimaryBrush}" />
+                    </ui:MenuItem.Icon>
+                </ui:MenuItem>
+                <ui:MenuItem Header="{x:Static res:Strings.MiLine}"
+                             Command="{Binding Canvas.SelectToolCommand}"
+                             InputGestureText="{infra:Shortcut ToolLine}"
+                             CommandParameter="{x:Static edit:CanvasTool.Line}"
+                             Visibility="{Binding Canvas.AllowsFreeShapeTools, Converter={StaticResource BoolToVisibility}}"
+                             AutomationProperties.AutomationId="MenuToolLine">
+                    <ui:MenuItem.Icon>
+                        <Path Width="16" Height="16" Stretch="Uniform" Data="{StaticResource GeoLine}" Stroke="{DynamicResource TextFillColorPrimaryBrush}" StrokeThickness="2" />
+                    </ui:MenuItem.Icon>
+                </ui:MenuItem>
+                <ui:MenuItem Header="{x:Static res:Strings.MiLinestrip}"
+                             Command="{Binding Canvas.SelectToolCommand}"
+                             InputGestureText="{infra:Shortcut ToolLineStrip}"
+                             CommandParameter="{x:Static edit:CanvasTool.LineStrip}"
+                             Visibility="{Binding Canvas.AllowsFreeShapeTools, Converter={StaticResource BoolToVisibility}}"
+                             AutomationProperties.AutomationId="MenuToolLinestrip">
+                    <ui:MenuItem.Icon>
+                        <Path Width="16" Height="16" Stretch="Uniform" Data="{StaticResource GeoLineStrip}" Stroke="{DynamicResource TextFillColorPrimaryBrush}" StrokeThickness="2" StrokeLineJoin="Round" />
+                    </ui:MenuItem.Icon>
+                </ui:MenuItem>
+                <ui:MenuItem Header="{x:Static res:Strings.MiAiPoints}"
+                             InputGestureText="{infra:Shortcut ToolAiPoints}"
+                             Command="{Binding Canvas.SelectAiPointsCommand}"
+                             ToolTip="{Binding Canvas.AiPointsToolTip}"
+                             ToolTipService.ShowOnDisabled="True"
+                             Visibility="{Binding Canvas.AllowsFreeShapeTools, Converter={StaticResource BoolToVisibility}}"
+                             AutomationProperties.AutomationId="MenuToolAiPoints" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiAiBox}"
+                             InputGestureText="{infra:Shortcut ToolAiBox}"
+                             Command="{Binding Canvas.SelectAiBoxCommand}"
+                             ToolTip="{Binding Canvas.AiBoxToolTip}"
+                             ToolTipService.ShowOnDisabled="True"
+                             AutomationProperties.AutomationId="MenuToolAiBox" />
+                <Separator />
+                <ui:MenuItem Header="{x:Static res:Strings.MiEditMode}"
+                             Icon="{ui:SymbolIcon CursorClick24}"
+                             InputGestureText="{infra:Shortcut EditMode}"
+                             Command="{Binding Canvas.SelectToolCommand}"
+                             CommandParameter="{x:Static edit:CanvasTool.Select}"
+                             AutomationProperties.AutomationId="MenuToolSelect" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiUndo}"
+                             Icon="{ui:SymbolIcon ArrowUndo24}"
+                             InputGestureText="{infra:Shortcut Undo}"
+                             Command="{Binding Canvas.UndoCommand}"
+                             AutomationProperties.AutomationId="MenuUndo" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiUndoLastPoint}"
+                             InputGestureText="{infra:Shortcut Undo}"
+                             Command="{Binding Canvas.UndoLastPointCommand}"
+                             AutomationProperties.AutomationId="MenuUndoLastPoint" />
+                <ui:MenuItem Header="{x:Static res:Strings.Redo}"
+                             Icon="{ui:SymbolIcon ArrowRedo24}"
+                             Command="{Binding Canvas.RedoCommand}"
+                             AutomationProperties.AutomationId="MenuRedo" />
+                <Separator />
+                <ui:MenuItem Header="{x:Static res:Strings.MiCopyClip}"
+                             Icon="{ui:SymbolIcon DocumentCopy24}"
+                             InputGestureText="{infra:Shortcut Copy}"
+                             Command="{Binding Canvas.CopyCommand}"
+                             AutomationProperties.AutomationId="MenuCopy" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiPasteClip}"
+                             Icon="{ui:SymbolIcon ClipboardPaste24}"
+                             InputGestureText="{infra:Shortcut Paste}"
+                             Command="{Binding Canvas.PasteCommand}"
+                             AutomationProperties.AutomationId="MenuPaste" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiDuplicateShape}"
+                             Icon="{ui:SymbolIcon CopyAdd24}"
+                             InputGestureText="{infra:Shortcut Duplicate}"
+                             Command="{Binding Canvas.DuplicateCommand}"
+                             AutomationProperties.AutomationId="MenuDuplicate" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiEditLabel}"
+                             InputGestureText="{infra:Shortcut EditLabel}"
+                             Command="{Binding Canvas.EditLabelCommand}"
+                             AutomationProperties.AutomationId="MenuEditLabel" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiDeleteShape}"
+                             Icon="{ui:SymbolIcon DeleteDismiss24}"
+                             InputGestureText="{infra:Shortcut DeleteShape}"
+                             Command="{Binding Canvas.DeleteCommand}"
+                             AutomationProperties.AutomationId="MenuDelete" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiMerge}"
+                             Command="{Binding Canvas.MergeShapesCommand}"
+                             AutomationProperties.AutomationId="MenuMergeShapes" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiConvertShape}"
+                             AutomationProperties.AutomationId="MenuConvertShape">
+                    <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetPolygon}"
+                                 Command="{Binding Canvas.ConvertShapeCommand}" CommandParameter="polygon"
+                                 Visibility="{Binding Canvas.AllowsFreeShapeTools, Converter={StaticResource BoolToVisibility}}"
+                                 AutomationProperties.AutomationId="MenuConvertPolygon" />
+                    <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetRectangle}"
+                                 Command="{Binding Canvas.ConvertShapeCommand}" CommandParameter="rectangle"
+                                 Visibility="{Binding Canvas.AllowsFreeShapeTools, Converter={StaticResource BoolToVisibility}}"
+                                 AutomationProperties.AutomationId="MenuConvertRectangle" />
+                    <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetRotated}"
+                                 Command="{Binding Canvas.ConvertShapeCommand}" CommandParameter="oriented_rectangle"
+                                 AutomationProperties.AutomationId="MenuConvertRotated" />
+                    <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetCircle}"
+                                 Command="{Binding Canvas.ConvertShapeCommand}" CommandParameter="circle"
+                                 AutomationProperties.AutomationId="MenuConvertCircle" />
+                    <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetPoint}"
+                                 Command="{Binding Canvas.ConvertShapeCommand}" CommandParameter="point"
+                                 Visibility="{Binding Canvas.AllowsFreeShapeTools, Converter={StaticResource BoolToVisibility}}"
+                                 AutomationProperties.AutomationId="MenuConvertPoint" />
+                </ui:MenuItem>
+                <ui:MenuItem Header="{x:Static res:Strings.MiDeleteVertex}"
+                             InputGestureText="{infra:Shortcut DeleteVertex}"
+                             Command="{Binding Canvas.DeleteVertexCommand}"
+                             AutomationProperties.AutomationId="MenuDeleteVertex" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiSelectUp}"
+                             InputGestureText="{infra:Shortcut SelectUp}"
+                             Command="{Binding Canvas.SelectNeighbourCommand}"
+                             CommandParameter="{x:Static edit:SelectDirection.Up}"
+                             AutomationProperties.AutomationId="MenuSelectUp" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiSelectDown}"
+                             InputGestureText="{infra:Shortcut SelectDown}"
+                             Command="{Binding Canvas.SelectNeighbourCommand}"
+                             CommandParameter="{x:Static edit:SelectDirection.Down}"
+                             AutomationProperties.AutomationId="MenuSelectDown" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiSelectLeft}"
+                             InputGestureText="{infra:Shortcut SelectLeft}"
+                             Command="{Binding Canvas.SelectNeighbourCommand}"
+                             CommandParameter="{x:Static edit:SelectDirection.Left}"
+                             AutomationProperties.AutomationId="MenuSelectLeft" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiSelectRight}"
+                             InputGestureText="{infra:Shortcut SelectRight}"
+                             Command="{Binding Canvas.SelectNeighbourCommand}"
+                             CommandParameter="{x:Static edit:SelectDirection.Right}"
+                             AutomationProperties.AutomationId="MenuSelectRight" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiKeepPrev}"
+                             IsCheckable="True"
+                             IsChecked="{Binding Canvas.KeepPreviousAnnotation, Mode=TwoWay}"
+                             InputGestureText="{infra:Shortcut KeepPrevious}"
+                             AutomationProperties.AutomationId="MenuKeepPrevious" />
+                <Separator />
+                <ui:MenuItem Header="{x:Static res:Strings.SelectAll}"
+                             Icon="{ui:SymbolIcon SelectAllOn24}"
+                             Command="{Binding Canvas.SelectAllCommand}"
+                             AutomationProperties.AutomationId="MenuSelectAll" />
+                <!-- One entry per class of the project table is inserted above ClassListEnd by MainWindow.xaml.cs (RebuildClassMenu). -->
+                <ui:MenuItem x:Name="ClassGroupMenu" Header="{x:Static res:Strings.ClassGroup}">
+                    <Separator x:Name="ClassListEnd" />
+                    <ui:MenuItem Header="{x:Static res:Strings.ClassEditMenu}"
+                                 Command="{Binding EditClassesCommand}"
+                                 AutomationProperties.AutomationId="MenuClassEdit" />
+                </ui:MenuItem>
+            </ui:MenuItem>
+
+            <ui:MenuItem AutomationProperties.AutomationId="MenuView">
+                <ui:MenuItem.Header>
+                    <AccessText Style="{StaticResource BandMenuHeaderStyle}" Text="{x:Static res:Strings.MnView}" />
+                </ui:MenuItem.Header>
+                <ui:MenuItem Header="{x:Static res:Strings.MiShowLabelsShapes}"
+                             IsCheckable="True"
+                             IsChecked="{Binding IsLabelsVisible, Mode=TwoWay}"
+                             AutomationProperties.AutomationId="MenuShowLabels" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiShowFiles}"
+                             IsCheckable="True"
+                             IsChecked="{Binding IsImageListVisible, Mode=TwoWay}"
+                             AutomationProperties.AutomationId="MenuImageList" />
+                <ui:MenuItem Header="{x:Static res:Strings.ResetLayout}"
+                             Icon="{ui:SymbolIcon ArrowReset24}"
+                             Command="{Binding ResetLayoutCommand}"
+                             AutomationProperties.AutomationId="MenuResetLayout" />
+                <Separator />
+                <ui:MenuItem Header="{x:Static res:Strings.MiFillDrawing}"
+                             IsCheckable="True"
+                             IsChecked="{Binding Canvas.FillWhileDrawing, Mode=TwoWay}"
+                             AutomationProperties.AutomationId="MenuFillDrawing" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiHideShapes}"
+                             Command="{Binding Canvas.HideShapesCommand}"
+                             AutomationProperties.AutomationId="MenuHideShapes" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiShowAllShapes}"
+                             Command="{Binding Canvas.ShowShapesCommand}"
+                             AutomationProperties.AutomationId="MenuShowAllShapes" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiToggleShapes}"
+                             InputGestureText="{infra:Shortcut ToggleShapes}"
+                             Command="{Binding Canvas.ToggleShapesCommand}"
+                             AutomationProperties.AutomationId="MenuToggleShapes" />
+                <Separator />
+                <ui:MenuItem Header="{x:Static res:Strings.MiZoomIn}"
+                             Icon="{ui:SymbolIcon ZoomIn24}"
+                             InputGestureText="{infra:Shortcut ZoomIn}"
+                             Command="{Binding Canvas.ZoomInCommand}"
+                             AutomationProperties.AutomationId="MenuZoomIn" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiZoomOut}"
+                             Icon="{ui:SymbolIcon ZoomOut24}"
+                             InputGestureText="{infra:Shortcut ZoomOut}"
+                             Command="{Binding Canvas.ZoomOutCommand}"
+                             AutomationProperties.AutomationId="MenuZoomOut" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiOriginalSize}"
+                             InputGestureText="{infra:Shortcut ActualSize}"
+                             Command="{Binding Canvas.ActualSizeCommand}"
+                             AutomationProperties.AutomationId="MenuActualSize" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiKeepZoom}"
+                             IsCheckable="True"
+                             IsChecked="{Binding Canvas.KeepPreviousZoom, Mode=TwoWay}"
+                             AutomationProperties.AutomationId="MenuKeepZoom" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiFitWindow}"
+                             Icon="{ui:SymbolIcon ZoomFit24}"
+                             InputGestureText="{infra:Shortcut Fit}"
+                             Command="{Binding Canvas.FitCommand}"
+                             AutomationProperties.AutomationId="MenuFit" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiFitWidth}"
+                             InputGestureText="{infra:Shortcut FitWidth}"
+                             Command="{Binding Canvas.FitWidthCommand}"
+                             AutomationProperties.AutomationId="MenuFitWidth" />
+                <Separator />
+                <ui:MenuItem Header="{x:Static res:Strings.MiBrightness}"
+                             Icon="{ui:SymbolIcon WeatherSunny24}"
+                             Command="{Binding Canvas.AdjustBrightnessCommand}"
+                             AutomationProperties.AutomationId="MenuBrightness" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiKeepBrightness}"
+                             IsCheckable="True"
+                             IsChecked="{Binding Canvas.KeepPreviousBrightness, Mode=TwoWay}"
+                             AutomationProperties.AutomationId="MenuKeepBrightness" />
+            </ui:MenuItem>
+
+            <ui:MenuItem AutomationProperties.AutomationId="MenuEasyAi">
+                <ui:MenuItem.Header>
+                    <AccessText Style="{StaticResource BandMenuHeaderStyle}" Text="{x:Static res:Strings.MnEasyAi}" />
+                </ui:MenuItem.Header>
+                <ui:MenuItem Header="{x:Static res:Strings.MiImportDatasetDots}"
+                             Icon="{ui:SymbolIcon ArrowImport24}"
+                             InputGestureText="{infra:Shortcut ImportDataset}"
+                             Command="{Binding Data.ImportDatasetCommand}"
+                             AutomationProperties.AutomationId="MenuImportDataset" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiAddImages}"
+                             Icon="{ui:SymbolIcon ImageAdd24}"
+                             Command="{Binding Data.AddImagesCommand}"
+                             AutomationProperties.AutomationId="MenuAddImages" />
+                <ui:MenuItem Header="{x:Static res:Strings.ImportModel}"
+                             Icon="{ui:SymbolIcon ArrowImport24}"
+                             Command="{Binding Label.ImportModelCommand}"
+                             AutomationProperties.AutomationId="MenuImportModel" />
+                <Separator />
+                <ui:MenuItem Header="{x:Static res:Strings.MiInspectDots}"
+                             Icon="{ui:SymbolIcon Image24}"
+                             Command="{Binding ShowInspectTabCommand}"
+                             AutomationProperties.AutomationId="MenuInspect" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiAutoLabelDots}"
+                             Icon="{ui:SymbolIcon Bot24}"
+                             InputGestureText="{infra:Shortcut AutoLabel}"
+                             Command="{Binding ShowLabelTabCommand}"
+                             AutomationProperties.AutomationId="MenuAutoLabel" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiTrainDots}"
+                             Icon="{ui:SymbolIcon Play24}"
+                             InputGestureText="{infra:Shortcut Train}"
+                             Command="{Binding ShowTrainTabCommand}"
+                             AutomationProperties.AutomationId="MenuTrain" />
+            </ui:MenuItem>
+
+            <!-- Advanced only: with Convert YOLO hidden the Tools header would be an empty menu. -->
+            <ui:MenuItem AutomationProperties.AutomationId="MenuTools"
+                         Visibility="{Binding IsAdvancedMode, Converter={StaticResource BoolToVisibility}}">
+                <ui:MenuItem.Header>
+                    <AccessText Style="{StaticResource BandMenuHeaderStyle}" Text="{x:Static res:Strings.MnTools}" />
+                </ui:MenuItem.Header>
+                <ui:MenuItem Header="{x:Static res:Strings.MiConvertYolo}"
+                             Icon="{ui:SymbolIcon ArrowSwap24}"
+                             Command="{Binding ShowConvertYoloCommand}"
+                             Visibility="{Binding IsAdvancedMode, Converter={StaticResource BoolToVisibility}}"
+                             AutomationProperties.AutomationId="MenuConvertYolo" />
+            </ui:MenuItem>
+
+            <ui:MenuItem AutomationProperties.AutomationId="MenuHelp">
+                <ui:MenuItem.Header>
+                    <AccessText Style="{StaticResource BandMenuHeaderStyle}" Text="{x:Static res:Strings.MnHelp}" />
+                </ui:MenuItem.Header>
+                <ui:MenuItem Header="{x:Static res:Strings.MiGuide}"
+                             Icon="{ui:SymbolIcon QuestionCircle24}"
+                             Command="{Binding ShowGuideCommand}"
+                             AutomationProperties.AutomationId="MenuGuide" />
+                <ui:MenuItem Header="{x:Static res:Strings.About}"
+                             Icon="{ui:SymbolIcon Info24}"
+                             Command="{Binding ShowAboutCommand}"
+                             AutomationProperties.AutomationId="MenuAbout" />
+            </ui:MenuItem>
+        </Menu>
+
+        <!-- Easy / Advanced UI mode: segmented pair at the right end of the menu band (same toggle pattern as the Train tab's trainer kind). -->
+        <Grid Grid.Row="1"
+              Margin="0,0,8,0"
+              HorizontalAlignment="Right"
+              VerticalAlignment="Center"
+              AutomationProperties.Name="{x:Static res:Strings.UiModeToggleName}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <RadioButton Grid.Column="0"
+                         Margin="0,0,4,0"
+                         Padding="10,3"
+                         GroupName="UiMode"
+                         Style="{DynamicResource {x:Type ToggleButton}}"
+                         IsChecked="{Binding IsSimpleMode, Mode=OneWay}"
+                         CommandParameter="simple"
+                         Command="{Binding SetUiModeCommand}"
+                         AutomationProperties.AutomationId="UiModeSimple"
+                         AutomationProperties.Name="{x:Static res:Strings.UiModeSimple}">
+                <ui:TextBlock Style="{StaticResource UiModeCaptionStyle}" Text="{x:Static res:Strings.UiModeSimple}" />
+            </RadioButton>
+            <RadioButton Grid.Column="1"
+                         Padding="10,3"
+                         GroupName="UiMode"
+                         Style="{DynamicResource {x:Type ToggleButton}}"
+                         IsChecked="{Binding IsAdvancedMode, Mode=OneWay}"
+                         CommandParameter="advanced"
+                         Command="{Binding SetUiModeCommand}"
+                         AutomationProperties.AutomationId="UiModeAdvanced"
+                         AutomationProperties.Name="{x:Static res:Strings.UiModeAdvanced}">
+                <ui:TextBlock Style="{StaticResource UiModeCaptionStyle}" Text="{x:Static res:Strings.UiModeAdvanced}" />
+            </RadioButton>
+        </Grid>
+
+        <!-- Header (toolbars, tabs, step strip, auto-label bar) scrolls when the window is short; its MaxHeight is set in MainWindow.xaml.cs (UpdateHeaderHeightCap) so the work area keeps a minimum height. -->
+        <ScrollViewer x:Name="HeaderScroll"
+                      Grid.Row="2"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Background="{DynamicResource EasyAiToolbarBrush}">
+            <WrapPanel x:Name="ToolbarBar"
+                       Margin="8,2,8,0"
+                       Orientation="Horizontal"
+                       IsEnabled="{Binding IsLabelTab}"
+                       AutomationProperties.Name="{x:Static res:Strings.Toolbar}">
+                <StackPanel Margin="0,0,10,0" Orientation="Horizontal">
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding Data.AddImagesCommand}"
+                               ToolTip="{infra:Shortcut OpenImages, Text={x:Static res:Strings.OpenImagesTip}}"
+                               AutomationProperties.AutomationId="ToolbarOpenImages"
+                               AutomationProperties.Name="{x:Static res:Strings.TbOpen}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="ImageAdd24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbOpen}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding OpenFolderCommand}"
+                               ToolTip="{infra:Shortcut OpenFolder, Text={x:Static res:Strings.OpenFolderShortcutTip}}"
+                               AutomationProperties.AutomationId="ToolbarOpenFolder"
+                               AutomationProperties.Name="{x:Static res:Strings.TbOpenDir}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="FolderOpen24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbOpenDir}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding Capture.CaptureNewCommand}"
+                               ToolTip="{Binding Capture.NewToolTip}"
+                               ToolTipService.ShowOnDisabled="True"
+                               Visibility="{Binding Capture.IsVisible, Converter={StaticResource BoolToVisibility}}"
+                               AutomationProperties.AutomationId="LabelCaptureNew"
+                               AutomationProperties.Name="{x:Static res:Strings.TbCaptureNew}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="Camera24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbCaptureNew}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding Capture.CaptureToCurrentCommand}"
+                               ToolTip="{Binding Capture.CurrentToolTip}"
+                               ToolTipService.ShowOnDisabled="True"
+                               Visibility="{Binding Capture.IsVisible, Converter={StaticResource BoolToVisibility}}"
+                               AutomationProperties.AutomationId="LabelCaptureToCurrent"
+                               AutomationProperties.Name="{x:Static res:Strings.TbCaptureCurrent}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="Camera24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbCaptureCurrent}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding ImportLabelMeCommand}"
+                               ToolTip="{x:Static res:Strings.ImportJsonTip}"
+                               Visibility="{Binding IsAdvancedMode, Converter={StaticResource BoolToVisibility}}"
+                               AutomationProperties.AutomationId="ToolbarImportJson"
+                               AutomationProperties.Name="{x:Static res:Strings.TbImportJson}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="ArrowImport24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbImportJson}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding PreviousImageCommand}"
+                               ToolTip="{infra:Shortcut PreviousImage, Text={x:Static res:Strings.PreviousImageTip}}"
+                               AutomationProperties.AutomationId="ToolbarPreviousImage"
+                               AutomationProperties.Name="{x:Static res:Strings.TbPrev}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="ChevronLeft24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbPrev}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding NextImageCommand}"
+                               ToolTip="{infra:Shortcut NextImage, Text={x:Static res:Strings.NextImageTip}}"
+                               AutomationProperties.AutomationId="ToolbarNextImage"
+                               AutomationProperties.Name="{x:Static res:Strings.TbNext}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="ChevronRight24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbNext}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding SaveCommand}"
+                               AutomationProperties.AutomationId="ToolbarSave"
+                               AutomationProperties.Name="{x:Static res:Strings.TbSave}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="Save24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbSave}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding DeleteAnnotationFilesCommand}"
+                               AutomationProperties.AutomationId="ToolbarDeleteFile"
+                               AutomationProperties.Name="{x:Static res:Strings.TbDelete}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="Delete24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbDelete}" />
+                        </StackPanel>
+                    </ui:Button>
+                </StackPanel>
+
+                <StackPanel Margin="0,0,10,0" Orientation="Horizontal">
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding Canvas.SelectToolCommand}"
+                               CommandParameter="{x:Static edit:CanvasTool.Select}"
+                               AutomationProperties.AutomationId="ToolbarEditMode"
+                               AutomationProperties.Name="{x:Static res:Strings.TbEditPolygons}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="CursorClick24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbEditPolygons}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding Canvas.DuplicateCommand}"
+                               ToolTip="{infra:Shortcut Duplicate, Text={x:Static res:Strings.DuplicateTip}}"
+                               Visibility="{Binding IsAdvancedMode, Converter={StaticResource BoolToVisibility}}"
+                               AutomationProperties.AutomationId="ToolbarDuplicate"
+                               AutomationProperties.Name="{x:Static res:Strings.TbDuplicate}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="CopyAdd24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbDuplicate}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding Canvas.DeleteCommand}"
+                               ToolTip="{infra:Shortcut DeleteShape, Text={x:Static res:Strings.DeleteShapeTip}}"
+                               AutomationProperties.AutomationId="ToolbarDelete"
+                               AutomationProperties.Name="{x:Static res:Strings.TbDeleteShape}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="DeleteDismiss24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbDeleteShape}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding Canvas.UndoCommand}"
+                               ToolTip="{infra:Shortcut Undo, Text={x:Static res:Strings.UndoTip}}"
+                               AutomationProperties.AutomationId="UndoButton"
+                               AutomationProperties.Name="{x:Static res:Strings.TbUndo}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="ArrowUndo24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbUndo}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding Canvas.RedoCommand}"
+                               ToolTip="{x:Static res:Strings.RedoTip}"
+                               AutomationProperties.AutomationId="RedoButton"
+                               AutomationProperties.Name="{x:Static res:Strings.Redo}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="ArrowRedo24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.Redo}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding Canvas.AdjustBrightnessCommand}"
+                               ToolTip="{x:Static res:Strings.MiBrightness}"
+                               Visibility="{Binding IsAdvancedMode, Converter={StaticResource BoolToVisibility}}"
+                               AutomationProperties.AutomationId="ToolbarBrightness"
+                               AutomationProperties.Name="{x:Static res:Strings.TbBrightness}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="WeatherSunny24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbBrightness}" />
+                        </StackPanel>
+                    </ui:Button>
+                </StackPanel>
+
+                <StackPanel Margin="0,0,10,0" Orientation="Horizontal">
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding Canvas.FitCommand}"
+                               ToolTip="{infra:Shortcut Fit, Text={x:Static res:Strings.FitTip}}"
+                               AutomationProperties.AutomationId="FitButton"
+                               AutomationProperties.Name="{x:Static res:Strings.TbFitWindow}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="ZoomFit24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.TbFitWindow}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                               Command="{Binding Canvas.ActualSizeCommand}"
+                               ToolTip="{infra:Shortcut ActualSize, Text={x:Static res:Strings.ActualSizeTip}}"
+                               AutomationProperties.AutomationId="ActualSizeButton"
+                               AutomationProperties.Name="{x:Static res:Strings.ActualSize}">
+                        <StackPanel>
+                            <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="ZoomIn24" />
+                            <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.ActualSize}" />
+                        </StackPanel>
+                    </ui:Button>
+                    <StackPanel Margin="4,0,0,2"
+                                Height="54"
+                                VerticalAlignment="Top">
+                        <ui:TextBlock HorizontalAlignment="Center"
+                                      Height="16"
+                                      FontSize="11"
+                                      Text="{x:Static res:Strings.TbZoom}"
+                                      AutomationProperties.AutomationId="ToolbarZoom" />
+                        <ui:NumberBox Width="116"
+                                      Height="28"
+                                      MinHeight="28"
+                                      Padding="6,2"
+                                      Minimum="5"
+                                      Maximum="4000"
+                                      SmallChange="10"
+                                      LargeChange="50"
+                                      MaxDecimalPlaces="1"
+                                      SpinButtonPlacementMode="Inline"
+                                      Value="{Binding Canvas.ZoomPercent, Mode=TwoWay}"
+                                      AutomationProperties.AutomationId="ZoomBox"
+                                      AutomationProperties.Name="{x:Static res:Strings.TbZoom}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <ui:Button Style="{StaticResource ToolbarButtonStyle}"
+                           Command="{Binding ResetLayoutCommand}"
+                           ToolTip="{x:Static res:Strings.ResetLayoutTip}"
+                           Visibility="{Binding IsAdvancedMode, Converter={StaticResource BoolToVisibility}}"
+                           AutomationProperties.AutomationId="ResetLayoutButton"
+                           AutomationProperties.Name="{x:Static res:Strings.ResetLayout}">
+                    <StackPanel>
+                        <ui:SymbolIcon HorizontalAlignment="Center" FontSize="18" Symbol="ArrowReset24" />
+                        <ui:TextBlock Style="{StaticResource ToolbarCaptionStyle}" Text="{x:Static res:Strings.ResetLayout}" />
+                    </StackPanel>
+                </ui:Button>
+            </WrapPanel>
+
+            <!-- Step strip: one tab per workflow step (order in MainViewModel.TabSteps; the app opens on Label). Tabs have no body: the content hosts below switch with CurrentStep. -->
+            <TabControl x:Name="StepStrip"
+                        Margin="8,2,8,0"
+                        Padding="0"
+                        SelectedIndex="{Binding StepTabIndex, Mode=TwoWay}"
+                        AutomationProperties.AutomationId="Stepper"
+                        AutomationProperties.Name="{x:Static res:Strings.StepBar}">
+                <TabItem Header="{x:Static res:Strings.StepInspect}"
+                         AutomationProperties.AutomationId="StepTabInspect" />
+                <TabItem Header="{x:Static res:Strings.StepLabel}"
+                         AutomationProperties.AutomationId="StepTabLabel" />
+                <TabItem Header="{x:Static res:Strings.StepTrain}"
+                         AutomationProperties.AutomationId="StepTabTrain" />
+                <!-- Last tab; only present while the camera is the image source (MainViewModel.TabSteps). -->
+                <TabItem Header="{x:Static res:Strings.StepLive}"
+                         Visibility="{Binding IsCameraSourceActive, Converter={StaticResource BoolToVisibility}}"
+                         AutomationProperties.AutomationId="StepTabLive" />
+            </TabControl>
+
+            <!-- Easy mode step strip (five steps from MainViewModel.EasyModeSteps); shown only in Simple mode, instead of the tab pick above. -->
+            <views:EasyStepStrip x:Name="EasyStrip"
+                                 Margin="8,2,8,0"
+                                 Visibility="{Binding IsSimpleMode, Converter={StaticResource BoolToVisibility}}" />
+
+            <!-- Auto-label bar: one horizontal strip right under the step tabs (Label step only). -->
+            <Border x:Name="AutoLabelBar"
+                    Margin="8,0,8,0"
+                    Padding="0,2,0,0"
+                    BorderThickness="0,0,0,1"
+                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                    Background="{DynamicResource EasyAiToolbarBrush}"
+                    AutomationProperties.AutomationId="AutoLabelSection">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CurrentStep}" Value="Train">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding CurrentStep}" Value="Inspect">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding CurrentStep}" Value="Live">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <views:LabelStepView x:Name="LabelStepControl" />
+            </Border>
+        </StackPanel>
+        </ScrollViewer>
+
+        <ui:InfoBar Grid.Row="3"
+                    Margin="12,0,12,8"
+                    IsClosable="True"
+                    IsOpen="{Binding IsNoticeOpen, Mode=TwoWay}"
+                    Severity="{Binding NoticeSeverity}"
+                    Title="{Binding NoticeTitle}"
+                    Message="{Binding NoticeMessage}"
+                    AutomationProperties.AutomationId="NoticeBar" />
+
+        <Grid x:Name="ContentGrid" Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Labelme-style tool column, left of the docking area (DataContext set by the window code). -->
+            <views:ToolStripView x:Name="ToolStrip" Grid.Column="0"
+                                 AgentChatCommand="{Binding DataContext.Label.OpenAgentChatCommand, RelativeSource={RelativeSource AncestorType=Window}}">
+                <views:ToolStripView.Style>
+                    <Style TargetType="views:ToolStripView">
+                        <Style.Triggers>
+                            <!-- The tool strip's own DataContext is the canvas view model, so the step is read from the window's. -->
+                            <DataTrigger Binding="{Binding DataContext.CurrentStep, RelativeSource={RelativeSource AncestorType=Window}}" Value="Train">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding DataContext.CurrentStep, RelativeSource={RelativeSource AncestorType=Window}}" Value="Inspect">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding DataContext.CurrentStep, RelativeSource={RelativeSource AncestorType=Window}}" Value="Live">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </views:ToolStripView.Style>
+            </views:ToolStripView>
+
+            <!--
+                The docking area. The window code builds the layout: the canvas (CanvasHost) is the document, and the five panels
+                below are moved out of PanelStore into dockable anchorables (default: right column stack, floatable, closable).
+            -->
+            <avalon:DockingManager x:Name="Dock"
+                                   Grid.Column="1"
+                                   AllowMixedOrientation="True"
+                                   AutomationProperties.AutomationId="DockingManager" />
+
+            <!-- Controls are declared here so they have names and bindings; the dock controller takes them out. -->
+            <Grid x:Name="PanelStore" Grid.Column="1" Visibility="Collapsed">
+                <!-- Centre: the canvas on the Label tab, the large training charts on the Train tab. -->
+                <Grid x:Name="CenterHost">
+                <Grid x:Name="CanvasHost">
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CurrentStep}" Value="Train">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding CurrentStep}" Value="Live">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <views:CanvasView x:Name="CanvasPane" />
+
+                    <Grid x:Name="StartScreen"
+                          Background="{DynamicResource ApplicationBackgroundBrush}"
+                          Visibility="{Binding IsStartScreenVisible, Converter={StaticResource BoolToVisibility}}"
+                          AutomationProperties.AutomationId="StartScreen">
+                        <!-- Scrolls when the centre area is short (small window, 150% DPI); the recent list shrinks with the width. -->
+                        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                      HorizontalScrollBarVisibility="Disabled">
+                            <StackPanel Margin="24"
+                                        MaxWidth="560"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Center">
+                                <WrapPanel HorizontalAlignment="Center"
+                                           Orientation="Horizontal">
+                                    <ui:Button Margin="0,0,12,6"
+                                               Padding="20,12"
+                                               Appearance="Secondary"
+                                               Icon="{ui:SymbolIcon ImageAdd24}"
+                                               Content="{x:Static res:Strings.OpenImages}"
+                                               Command="{Binding Data.AddImagesCommand}"
+                                               ToolTip="{infra:Shortcut OpenImages, Text={x:Static res:Strings.OpenImagesTip}}"
+                                               Visibility="{Binding HasProject, Converter={StaticResource BoolToVisibility}}"
+                                               AutomationProperties.AutomationId="StartOpenImages" />
+                                    <ui:Button Margin="0,0,0,6"
+                                               Padding="20,12"
+                                               Appearance="Primary"
+                                               Icon="{ui:SymbolIcon FolderOpen24}"
+                                               Content="{x:Static res:Strings.OpenFolder}"
+                                               Command="{Binding OpenFolderCommand}"
+                                               ToolTip="{infra:Shortcut OpenFolder, Text={x:Static res:Strings.OpenFolderShortcutTip}}"
+                                               AutomationProperties.AutomationId="StartOpenFolder" />
+                                </WrapPanel>
+
+                                <!-- Recent projects: newest first, at most 10, missing ones greyed; hidden while the list is empty. -->
+                                <StackPanel Margin="0,16,0,0"
+                                            Visibility="{Binding HasRecentProjects, Converter={StaticResource BoolToVisibility}}"
+                                            AutomationProperties.AutomationId="StartRecentPanel">
+                                    <ui:TextBlock Margin="0,0,0,6"
+                                                  FontWeight="SemiBold"
+                                                  Text="{x:Static res:Strings.RecentHeader}" />
+                                    <ItemsControl ItemsSource="{Binding Recent.Items}"
+                                                  AlternationCount="10"
+                                                  AutomationProperties.AutomationId="StartRecentList"
+                                                  AutomationProperties.Name="{x:Static res:Strings.RecentHeader}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Margin="0,0,0,4">
+                                                    <Grid.Style>
+                                                        <Style TargetType="Grid">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Exists}" Value="False">
+                                                                    <Setter Property="Opacity" Value="0.5" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Grid.Style>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <ui:Button Grid.Column="0"
+                                                               Margin="0,0,4,0"
+                                                               Padding="12,6"
+                                                               HorizontalAlignment="Stretch"
+                                                               HorizontalContentAlignment="Left"
+                                                               Appearance="Secondary"
+                                                               Command="{Binding DataContext.OpenRecentCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                               CommandParameter="{Binding}"
+                                                               AutomationProperties.AutomationId="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat=StartRecent_{0}}"
+                                                               AutomationProperties.Name="{Binding DisplayText}">
+                                                        <StackPanel>
+                                                            <ui:TextBlock FontWeight="SemiBold"
+                                                                          Text="{Binding Name}"
+                                                                          TextTrimming="CharacterEllipsis" />
+                                                            <ui:TextBlock FontSize="11"
+                                                                          Text="{Binding SecondaryText}"
+                                                                          TextTrimming="CharacterEllipsis" />
+                                                        </StackPanel>
+                                                    </ui:Button>
+                                                    <ui:Button Grid.Column="1"
+                                                               VerticalAlignment="Stretch"
+                                                               Appearance="Transparent"
+                                                               Icon="{ui:SymbolIcon Dismiss24}"
+                                                               Command="{Binding DataContext.RemoveRecentCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                               CommandParameter="{Binding}"
+                                                               AutomationProperties.AutomationId="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat=StartRecentRemove_{0}}"
+                                                               AutomationProperties.Name="{x:Static res:Strings.MiRecentRemove}" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+
+                    <!-- Empty Inspect list: the same start buttons idea as the Label tab, with the Inspect list commands. -->
+                    <Grid x:Name="InspectStartScreen"
+                          Background="{DynamicResource ApplicationBackgroundBrush}"
+                          Visibility="{Binding IsInspectStartVisible, Converter={StaticResource BoolToVisibility}}"
+                          AutomationProperties.AutomationId="InspectStartScreen">
+                        <StackPanel HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
+                            <ui:Button Margin="0,0,12,0"
+                                       Padding="20,12"
+                                       Appearance="Secondary"
+                                       Icon="{ui:SymbolIcon ImageAdd24}"
+                                       Content="{x:Static res:Strings.InspectAddImages}"
+                                       Command="{Binding Inspect.AddImagesCommand}"
+                                       ToolTip="{x:Static res:Strings.InspectAddImagesTip}"
+                                       AutomationProperties.AutomationId="InspectStartAddImages" />
+                            <ui:Button Padding="20,12"
+                                       Appearance="Primary"
+                                       Icon="{ui:SymbolIcon FolderOpen24}"
+                                       Content="{x:Static res:Strings.InspectAddFolder}"
+                                       Command="{Binding Inspect.AddFolderCommand}"
+                                       ToolTip="{x:Static res:Strings.InspectAddFolderTip}"
+                                       AutomationProperties.AutomationId="InspectStartAddFolder" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <views:TrainChartsView x:Name="ChartsPane">
+                    <views:TrainChartsView.Style>
+                        <Style TargetType="views:TrainChartsView">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CurrentStep}" Value="Train">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </views:TrainChartsView.Style>
+                </views:TrainChartsView>
+
+                <!-- Live camera tab: preview, banner and Start / Stop / Snapshot (data context: the Live view model). -->
+                <Grid x:Name="LiveCenterHost">
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CurrentStep}" Value="Live">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <views:LiveCameraTabView x:Name="LiveCameraTabControl" DataContext="{Binding Live}" />
+                </Grid>
+                </Grid>
+
+                <!-- Right panel "labels": the Label tab shows the label / shape list with the auto-label section, the Train tab the training controls. -->
+                <Grid x:Name="LabelsPanelHost">
+                    <Grid x:Name="LabelModeHost">
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CurrentStep}" Value="Train">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CurrentStep}" Value="Inspect">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CurrentStep}" Value="Live">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" MinHeight="90" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <views:LabelsPane x:Name="LabelsPaneControl" Grid.Row="0" Grid.RowSpan="2" />
+                    </Grid>
+                    <ScrollViewer x:Name="TrainModeHost"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <ScrollViewer.Style>
+                            <Style TargetType="ScrollViewer">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CurrentStep}" Value="Train">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ScrollViewer.Style>
+                        <views:TrainStepView x:Name="TrainStepControl" Margin="12,8,12,12" />
+                    </ScrollViewer>
+                    <ScrollViewer x:Name="InspectModeHost"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <ScrollViewer.Style>
+                            <Style TargetType="ScrollViewer">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CurrentStep}" Value="Inspect">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ScrollViewer.Style>
+                        <views:InspectTabView x:Name="InspectTabControl" Margin="12,8,12,12" />
+                    </ScrollViewer>
+                    <ScrollViewer x:Name="LiveModeHost"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <ScrollViewer.Style>
+                            <Style TargetType="ScrollViewer">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CurrentStep}" Value="Live">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ScrollViewer.Style>
+                        <views:LiveCameraParamsView x:Name="LiveParamsControl" Margin="12,8,12,12" DataContext="{Binding Live}" />
+                    </ScrollViewer>
+                </Grid>
+
+                <!-- Files panel: the training files on the Label and Train tabs, the independent Inspect image list on the Inspect tab. -->
+                <Grid x:Name="FilesPanelHost">
+                    <Grid>
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CurrentStep}" Value="Inspect">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CurrentStep}" Value="Live">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                        <views:ImageListPane x:Name="ImagesPane" />
+                    </Grid>
+                    <Grid>
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CurrentStep}" Value="Inspect">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                        <views:InspectListPane x:Name="InspectListControl" />
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <StatusBar Grid.Row="5">
+            <StatusBarItem HorizontalContentAlignment="Stretch">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Column="0"
+                                  Margin="0,0,16,0"
+                                  Text="{Binding StatusMessage}"
+                                  TextTrimming="CharacterEllipsis"
+                                  AutomationProperties.AutomationId="StatusMessage" />
+                    <ui:TextBlock Grid.Column="1"
+                                  Margin="0,0,16,0"
+                                  Text="{Binding ImagePositionText}"
+                                  AutomationProperties.AutomationId="ImagePosition" />
+                    <ui:TextBlock Grid.Column="2"
+                                  Margin="0,0,16,0"
+                                  Text="{Binding ImageSizeText}"
+                                  AutomationProperties.AutomationId="ImageSize" />
+                    <ui:TextBlock Grid.Column="3"
+                                  Margin="0,0,16,0"
+                                  Text="{Binding Canvas.PointerText}"
+                                  AutomationProperties.AutomationId="StatusPointer" />
+                    <ui:TextBlock Grid.Column="4"
+                                  Margin="0,0,16,0"
+                                  Text="{Binding SegAi.StatusText}"
+                                  ToolTip="{Binding SegAi.ToolTipText}"
+                                  AutomationProperties.AutomationId="SegAiStatus" />
+                    <ui:TextBlock Grid.Column="5"
+                                  Text="{Binding Mvs.StatusText}"
+                                  ToolTip="{Binding Mvs.ToolTipText}"
+                                  AutomationProperties.AutomationId="MvsStatus" />
+                </Grid>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</ui:FluentWindow>

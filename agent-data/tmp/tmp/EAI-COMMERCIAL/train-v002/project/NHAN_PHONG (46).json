@@ -1,0 +1,116 @@
+{
+  "version": "5.5.0",
+  "flags": {
+    "train": true
+  },
+  "shapes": [
+    {
+      "label": "OK",
+      "points": [
+        [
+          2676.14404296875,
+          607.90185546875
+        ],
+        [
+          1280.47802734375,
+          622.5008544921875
+        ],
+        [
+          1278.106201171875,
+          395.74609375
+        ],
+        [
+          2673.772216796875,
+          381.1470947265625
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "OK",
+      "points": [
+        [
+          1221.3924560546875,
+          634.9622802734375
+        ],
+        [
+          3008.9931640625,
+          663.272705078125
+        ],
+        [
+          2983.1845703125,
+          2292.89990234375
+        ],
+        [
+          1195.5838623046875,
+          2264.589599609375
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH",
+      "points": [
+        [
+          2271.1328125,
+          2555.261962890625
+        ],
+        [
+          2737.4306640625,
+          2402.4169921875
+        ],
+        [
+          2817.60791015625,
+          2647.018798828125
+        ],
+        [
+          2351.31005859375,
+          2799.86376953125
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH_BOT",
+      "points": [
+        [
+          887.1762203066988,
+          1998.2992487748504
+        ],
+        [
+          902.5723148495512,
+          1488.2302922407746
+        ],
+        [
+          1010.6636234433012,
+          1491.5076359907746
+        ],
+        [
+          995.2675289004488,
+          2001.5765925248504
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    }
+  ],
+  "imagePath": "NHAN_PHONG (46).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

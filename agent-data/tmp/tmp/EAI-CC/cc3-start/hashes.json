@@ -1,0 +1,186 @@
+﻿[
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Canvas/CanvasView.xaml.cs",
+        "Hash":  "9C4481CCB2BA6A82475E10F24962AB3886CFD6DEC27AD77D801BB6BB51A2F107"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Commands/ViewModelCommandHandlers.cs",
+        "Hash":  "1CC2CC1706F8A31C61735A2359E6EAE9585BDF1AB450603EDFD7D05F1DCF1828"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Commands/WpfCommandHost.cs",
+        "Hash":  "815CB4E6E284EDAA8431035D984A742F40932815BE61EAE65AE5EC2424B462AC"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Infrastructure/AppSettings.cs",
+        "Hash":  "875443F9C5C20C356FCA2297DA36ED6306B35F6A8AF0F7D331D0627215D0AC95"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Infrastructure/ShortcutTable.cs",
+        "Hash":  "E0E1B6FD8EAD963391F83323A688295FCEE7E6A509A4439B184DD8BD06790E17"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/MainWindow.xaml",
+        "Hash":  "D25E0A665087EAA325E722D0E01BC1E27257BEFE70757BF9A6B0A486D8AA836B"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/MainWindow.xaml.cs",
+        "Hash":  "14079B1D08A8B0203402CC556D5CBD35B58C7F8FDCCD5861530AD5FE8087B7E1"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Resources/Strings.Designer.cs",
+        "Hash":  "048C11C3B695489AFE9185C253766CCAE35D8CBC6C1D5D135FD67E7603DF544E"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Resources/Strings.resx",
+        "Hash":  "CB2DC9D272ABC3E960E66AD274719CA2E2EB454516D28B4491969E632E1370F3"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Resources/Strings.vi.resx",
+        "Hash":  "6FCB78A0216028FFC4894BB00FB675C685CF0D10581EC3D53AA0344419895A8A"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Services/Agent/AgentChatEntryViewModel.cs",
+        "Hash":  "6B2F92C21EF77E2B1F0851A96DD6EE01B24FCCA0C35F6C95ADC246431DA4D994"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Services/Agent/AgentSpendTracker.cs",
+        "Hash":  "3CE9088CF8073E36D453CC66FB791F7E6DEA814D9B588913CBC68AE62BB212C9"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Services/AgentRunner.cs",
+        "Hash":  "170317FE5F990B676C6552C1E1876C9F8B9AA369946F8BE904A37A73697FDD84"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Services/DialogService.cs",
+        "Hash":  "349C717B68F85FB74BD66C4738E02C261DC35A3BEA948117F6CE924ED8DC4862"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Services/ImagePreviewLoader.cs",
+        "Hash":  "26FFCCB8920FC390EFF37EAE860BB393314BF807A09DA762143A635E4F399F82"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/ViewModels/AgentsSettingsViewModel.cs",
+        "Hash":  "7615985D7645A4E4755BED026A7616F99088EE728CDB6CC93198F9DCEF4EC33F"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/ViewModels/DataStepViewModel.cs",
+        "Hash":  "68EDF8C9FF9A6F53CC722FA2D78958960A65B2927794768657A37E7D6C987BC1"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/ViewModels/ImageListSortRules.cs",
+        "Hash":  "B90C5451975F0D7EEA54A52496947E4F611525395E4E316A1A42AD29DBEE3729"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/ViewModels/InspectViewModel.cs",
+        "Hash":  "7F3FB749C5CF04B1C781F3E6834ED83DDA1A083FDB384B231FF97F97EB7F8DC2"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/ViewModels/LabelStepViewModel.AgentChat.cs",
+        "Hash":  "0A57A1D2611E755B4557E7DBC5C9A25B42C879FC4509929601D3F601C0F74990"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/ViewModels/LabelStepViewModel.cs",
+        "Hash":  "1E2D7CD0A9FFEBE6D2807FB4543F04FEF0EA7BDCA8251CCC83E47C41BD1E18A2"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/ViewModels/MainViewModel.cs",
+        "Hash":  "82DA1B17F8B5302A70F7BB095844D319648084B52620A3BA615497AC53BA56B4"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/ViewModels/PanelViewModels.cs",
+        "Hash":  "4EE0985B571B0FE649EEB2D46EA6B255DA6E2A00DC51F6046A70FA8BE3782AA7"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/ViewModels/TrainStepRules.cs",
+        "Hash":  "777AD5AFE32747E580AA70D5DC6D3EC49194EDD838A8E923441B124EF312980F"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Views/AgentChatWindow.xaml",
+        "Hash":  "69E414DFDB0D17F23668A94FA5CC381E6114A9B5B1DB82917C5926EE466C05CF"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Views/AgentsSettingsView.xaml",
+        "Hash":  "CA2E7E67AAF06CD44EF52C23D02FC17EB93E1E216340A341C154508E552DF841"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Views/ImageListPane.xaml",
+        "Hash":  "65424C07AFC4B5EC26D88BD383C1849CEC9D69F69C5719F3A4BAD25B3E475CF1"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Views/ImageListPane.xaml.cs",
+        "Hash":  "22B2F703F215493A124FE176FBD6F8AAC1DF17EE7C7BD0976368C939F6F49C71"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Views/LabelDialog.xaml",
+        "Hash":  "CAFAD8D0E86EA2BD59772D9F54F26BE76FDFF1260F6E77E6C106BFBF20EC3FEF"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Views/LabelDialog.xaml.cs",
+        "Hash":  "5A47A6C3D33E040FD94905ACC04F2120A11CBFC7CFF51E64210D2A23B1B43F44"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Views/PromptWindow.xaml",
+        "Hash":  "6F73EB6F8186C0CC5591D1FFC767CF13218146B5672D9B0E17DC2D7D7CC4DA63"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Views/PromptWindow.xaml.cs",
+        "Hash":  "97D9C77367E6D94757924ED9BCD4E5B926FCA0796F92761FA7A4F4A27AF9BBDB"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyLabel.SegAI/AutoLabel/AutoLabelService.cs",
+        "Hash":  "A373563CCC78DB1C8F9AE307205FB1832A229B05E6407D06CE718EB4549499D6"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyLabel.SegAI/Inspection/SegAiPredictor.cs",
+        "Hash":  "0EDC9A271CC0F931202A9280A5020D4228466448BB95E0C37BED4A76D72C318D"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyLabel.SegAI/Model/SegAiModelFile.cs",
+        "Hash":  "41EAA5A2FCC03A281930D7C9111A86ADC814E5C29311C7B57846A0DB55B88DA3"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyLabel.SegAI/Options/SegInferenceSettings.cs",
+        "Hash":  "CD8254380C0B40912559EFB7B46E3D5C6D6DF34743D466015F09E08B9B4D68D7"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyLabel.SegAI/Options/SegTrainingOptions.cs",
+        "Hash":  "B48305BBF0EB7136BCF029A1617A5C9FF6B4EFD8A0E7695060C919A00778FD8D"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyLabel.SegAI/Project/SegProjectStore.cs",
+        "Hash":  "06F679AF07D3A0FD88E22FE518B6F12A49B85C3AD292B5704E171582D78AF405"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyLabel.SegAI/SegAiSession.cs",
+        "Hash":  "FC6D407531527693FE7A6A9B7C5204F832EBBDC68AD8D0B3503754D366C22BF5"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyLabel.SegAI/Training/SegAiTrainingPipeline.cs",
+        "Hash":  "1F19CCCC4E9936996CB093AF38CC26E4BEA532DA1A35621FF3BF360AEA6AC71E"
+    },
+    {
+        "Path":  "EasyLabel/tests/EasyLabel.Commands.Tests/Catalog/CommandCatalogSnapshotTests.cs",
+        "Hash":  "7E4E6AA50E33BF3FAD88BAA4EF40A454110A67228879801355359CCEF2E48358"
+    },
+    {
+        "Path":  "EasyLabel/tests/EasyLabel.Commands.Tests/Catalog/commands.catalog.json",
+        "Hash":  "839DF5BEA7A279B930D3DB7F0A16D48E3A4B97CDA0E74E0E4AB1685C18CB2228"
+    },
+    {
+        "Path":  "EasyLabel/tests/EasyLabel.SegAI.Tests/AgentRunnerBudgetTests.cs",
+        "Hash":  "531623792415C4A750ECC4DC5418DF204D3D905C03C393E34B2650FAADB807E1"
+    },
+    {
+        "Path":  "EasyLabel/tests/EasyLabel.SegAI.Tests/EasyLabel.SegAI.Tests.csproj",
+        "Hash":  "130595B603A02913DFEE5DD338334AF4018F6B630E4726462D67AD6721945464"
+    },
+    {
+        "Path":  "EasyLabel/tests/EasyLabel.SegAI.Tests/ShortcutTableTests.cs",
+        "Hash":  "7FD8BC20565968A2DD3FC13BB1864338B74A00AC8EC5CC01197EFB3AAE6C102F"
+    },
+    {
+        "Path":  "EasyLabel/tests/EasyLabel.SegAI.Tests/TrainStepRulesTests.cs",
+        "Hash":  "6BEFA8DEDC41B9B047088EA1CCCD654591E348F84EE0C5E3C6095F8A8E8EDAD6"
+    }
+]

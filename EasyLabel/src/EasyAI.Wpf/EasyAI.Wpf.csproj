@@ -1,0 +1,77 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <RootNamespace>EasyAI.Desktop</RootNamespace>
+    <AssemblyName>EasyAI</AssemblyName>
+    <!-- The exe / taskbar icon. Generated from the logo by tmp/EAI/EAI-UI/make-icon.ps1; used as soon as the file exists. -->
+    <ApplicationIcon Condition="Exists('Assets\EasyAI.ico')">Assets\EasyAI.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EasyLabel.Core\EasyLabel.Core.csproj" />
+    <ProjectReference Include="..\EasyLabel.Commands\EasyLabel.Commands.csproj" />
+    <ProjectReference Include="..\EasyLabel.Online\EasyLabel.Online.csproj" />
+    <ProjectReference Include="..\EasyLabel.SegAI\EasyLabel.SegAI.csproj" />
+    <ProjectReference Include="..\EasyLabel.Camera\EasyLabel.Camera.csproj" />
+    <ProjectReference Include="..\EasyLabel.Ai.Onnx\EasyLabel.Ai.Onnx.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The Claude Code agent's MCP tool server (a separate console exe). It is built first, but its assembly is not referenced:
+         the target below copies its whole output (exe, dependencies, native runtimes, Skills\*.md) to <OutDir>agent\. -->
+    <ProjectReference Include="..\EasyLabel.Ai.Mcp\EasyLabel.Ai.Mcp.csproj" ReferenceOutputAssembly="false" OutputItemType="AgentToolsOutput" />
+  </ItemGroup>
+
+  <Target Name="CopyAgentTools" AfterTargets="Build" Condition="'@(AgentToolsOutput)' != ''">
+    <PropertyGroup>
+      <_AgentToolsSourceDir>%(AgentToolsOutput.RootDir)%(AgentToolsOutput.Directory)</_AgentToolsSourceDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <_AgentToolsFile Include="$(_AgentToolsSourceDir)**\*" Exclude="$(_AgentToolsSourceDir)**\*.pdb" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_AgentToolsFile)"
+          DestinationFiles="@(_AgentToolsFile->'$(OutDir)agent\%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" />
+  </Target>
+
+  <!-- App-local VC++ runtime (Lib\vcrt, from Microsoft.VC143.CRT 14.44): BeeNativeSegAI.dll and torch_cpu.dll need it, and a PC without the
+       VC++ 2015-2022 x64 Redistributable fails to load them (SegmentAI DLL error on the first Segment AI action). -->
+  <ItemGroup>
+    <None Include="..\..\Lib\vcrt\*.dll" Link="%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <!-- Segment AI native set (BeeNativeSegAI.dll, libtorch, OpenCV, OpenVINO, Models\DefectV2; about 500 MB, git-ignored). Stage it in Lib\native\segai (or pass -p:SegAiNativeDir=...)
+       and every build copies it next to EasyAI.exe; without it the app says "The Segment AI library is not loaded". -->
+  <PropertyGroup>
+    <SegAiNativeDir Condition="'$(SegAiNativeDir)' == ''">$(MSBuildThisFileDirectory)..\..\Lib\native\segai\</SegAiNativeDir>
+  </PropertyGroup>
+  <ItemGroup Condition="Exists('$(SegAiNativeDir)BeeNativeSegAI.dll')">
+    <None Include="$(SegAiNativeDir)**" Link="%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <Target Name="WarnSegAiNativeMissing" BeforeTargets="Build" Condition="!Exists('$(SegAiNativeDir)BeeNativeSegAI.dll')">
+    <Warning Text="Segment AI native set not found in $(SegAiNativeDir): the built app cannot train or run Segment AI until BeeNativeSegAI.dll and its libtorch files are copied next to EasyAI.exe." />
+  </Target>
+
+  <ItemGroup>
+    <Using Include="System.IO" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\docs\easyai\guide.md" Link="docs\guide.md" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WPF-UI" />
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="ScottPlot.WPF" VersionOverride="5.1.59" />
+    <!-- Dockable / floating panels. Themes.VS2013 supplies the light and dark chrome (switched at run time with the WPF-UI theme). -->
+    <PackageReference Include="Dirkster.AvalonDock" VersionOverride="5.0.1" />
+    <PackageReference Include="Dirkster.AvalonDock.Themes.VS2013" VersionOverride="5.0.1" />
+    <PackageReference Include="Dirkster.AvalonDock.Serializer.Xml" VersionOverride="5.0.1" />
+  </ItemGroup>
+
+</Project>

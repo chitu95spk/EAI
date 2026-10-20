@@ -1,0 +1,86 @@
+<ui:FluentWindow x:Class="EasyAI.Desktop.Views.BrightnessWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+                 Title="{x:Static res:Strings.BrightnessTitle}"
+                 Width="420"
+                 MinWidth="340"
+                 SizeToContent="Height"
+                 ResizeMode="NoResize"
+                 ExtendsContentIntoTitleBar="True"
+                 ShowInTaskbar="False"
+                 WindowBackdropType="Mica"
+                 WindowStartupLocation="CenterOwner"
+                 AutomationProperties.AutomationId="BrightnessWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar Grid.Row="0"
+                     Title="{x:Static res:Strings.BrightnessTitle}"
+                     ShowMaximize="False"
+                     ShowMinimize="False" />
+
+        <StackPanel Grid.Row="1" Margin="16,8,16,8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ui:TextBlock Text="{x:Static res:Strings.BrightnessLabel}" />
+                <ui:TextBlock Grid.Column="1"
+                              Text="{Binding Brightness}"
+                              AutomationProperties.AutomationId="BrightnessValue" />
+            </Grid>
+            <Slider Minimum="-100"
+                    Maximum="100"
+                    SmallChange="1"
+                    LargeChange="10"
+                    TickFrequency="10"
+                    IsSnapToTickEnabled="True"
+                    Value="{Binding Brightness, Mode=TwoWay}"
+                    AutomationProperties.AutomationId="BrightnessSlider"
+                    AutomationProperties.Name="{x:Static res:Strings.BrightnessLabel}" />
+
+            <Grid Margin="0,12,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ui:TextBlock Text="{x:Static res:Strings.ContrastLabel}" />
+                <ui:TextBlock Grid.Column="1"
+                              Text="{Binding Contrast}"
+                              AutomationProperties.AutomationId="ContrastValue" />
+            </Grid>
+            <Slider Minimum="-100"
+                    Maximum="100"
+                    SmallChange="1"
+                    LargeChange="10"
+                    TickFrequency="10"
+                    IsSnapToTickEnabled="True"
+                    Value="{Binding Contrast, Mode=TwoWay}"
+                    AutomationProperties.AutomationId="ContrastSlider"
+                    AutomationProperties.Name="{x:Static res:Strings.ContrastLabel}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2"
+                    Margin="16,4,16,16"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <ui:Button Margin="0,0,8,0"
+                       Appearance="Secondary"
+                       Content="{x:Static res:Strings.BrightnessReset}"
+                       Command="{Binding ResetBrightnessCommand}"
+                       AutomationProperties.AutomationId="BrightnessReset" />
+            <ui:Button Appearance="Primary"
+                       IsCancel="True"
+                       IsDefault="True"
+                       Content="{x:Static res:Strings.Close}"
+                       AutomationProperties.AutomationId="BrightnessClose" />
+        </StackPanel>
+    </Grid>
+</ui:FluentWindow>

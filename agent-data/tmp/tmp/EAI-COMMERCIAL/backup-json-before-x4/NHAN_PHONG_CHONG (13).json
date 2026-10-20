@@ -1,0 +1,117 @@
+{
+  "version": "7.8.1",
+  "flags": {
+    "train": true
+  },
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          3778.5078,
+          3041.6062
+        ],
+        [
+          4644.605,
+          2990.6743
+        ],
+        [
+          4657.3516,
+          3207.4324
+        ],
+        [
+          3791.2544,
+          3258.3643
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "claude-draft score 0.66",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "NG",
+      "points": [
+        [
+          3971.547607421875,
+          1031.3082275390625
+        ],
+        [
+          3154.58984375,
+          594.5188598632812
+        ],
+        [
+          3393.297119140625,
+          148.04757690429688
+        ],
+        [
+          4210.2548828125,
+          584.8369140625
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH",
+      "points": [
+        [
+          2539.650390625,
+          2599.78759765625
+        ],
+        [
+          3004.033935546875,
+          2748.310791015625
+        ],
+        [
+          2948.08935546875,
+          2923.23193359375
+        ],
+        [
+          2483.70556640625,
+          2774.708984375
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH_BOT",
+      "points": [
+        [
+          4712.19580078125,
+          2018.12158203125
+        ],
+        [
+          4743.5751953125,
+          1516.83056640625
+        ],
+        [
+          4769.4970703125,
+          1518.4532470703125
+        ],
+        [
+          4738.11767578125,
+          2019.7442626953125
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    }
+  ],
+  "imagePath": "NHAN_PHONG_CHONG (13).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

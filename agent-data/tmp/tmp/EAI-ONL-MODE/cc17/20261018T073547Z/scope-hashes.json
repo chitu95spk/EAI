@@ -1,0 +1,26 @@
+﻿[
+    {
+        "Path":  "EasyLabel/src/EasyLabel.Online/OnlineEndpoint.cs",
+        "Hash":  "C1C8DAE2B3E205174CBB43823E48FE50B7BA0D03AA0FD118941686D72B4D5031"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyLabel.Online/WireCodec.cs",
+        "Hash":  "3D9F8884D2CF6A38C0FCC8B3EFCDD99410B3F49F8CF8AC4E64F9B09BDC79F8C1"
+    },
+    {
+        "Path":  "EasyLabel/tests/EasyLabel.Online.Tests/EndpointHardeningTests.cs",
+        "Hash":  "9B3DF7D94244ED9053FE39440C0D822FC867854600064B6F2BB9C4CA963B4A2F"
+    },
+    {
+        "Path":  "EasyLabel/src/EasyAI.Wpf/Views/OnlineStatusWindow.xaml",
+        "Hash":  "A021CE21723B111DE7AD4051BD937EB954581767B83F11BA971986FF30FD8B83"
+    },
+    {
+        "Path":  "tmp/EAI-ONL-MODE/smoke/Program.cs",
+        "Hash":  "E301D851F04FF3F7466AA4DCEB9E0EE77321AD155447F63AB38F76134C3073F8"
+    },
+    {
+        "Path":  "tmp/EAI-ONL-MODE/smoke/OnlineStatusSmoke.csproj",
+        "Hash":  "18F0423301DE8A39935C513EEE6949C7C3AA3060B28F10ADF0EE148C6FB65F8C"
+    }
+]

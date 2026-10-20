@@ -1,0 +1,91 @@
+{
+  "version": "7.8.1",
+  "flags": {
+    "train": true
+  },
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          3910.099609375,
+          3139.280029296875
+        ],
+        [
+          4516.1337890625,
+          3066.91015625
+        ],
+        [
+          4537.03125,
+          3241.90234375
+        ],
+        [
+          3930.9970703125,
+          3314.272216796875
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": "claude-draft score 0.52",
+      "direction": null,
+      "mask": null
+    },
+    {
+      "label": "LECH",
+      "points": [
+        [
+          2522.40576171875,
+          2617.5703125
+        ],
+        [
+          2989.08056640625,
+          2768.68701171875
+        ],
+        [
+          2928.546630859375,
+          2955.626708984375
+        ],
+        [
+          2461.871826171875,
+          2804.510009765625
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "LECH_BOT",
+      "points": [
+        [
+          4671.690624603574,
+          2125.5756159623506
+        ],
+        [
+          4687.086719146426,
+          1615.5066594282746
+        ],
+        [
+          4795.178027740176,
+          1618.7840031782746
+        ],
+        [
+          4779.781933197324,
+          2128.8529597123506
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "oriented_rectangle",
+      "flags": {},
+      "description": null,
+      "direction": null
+    }
+  ],
+  "imagePath": "NHAN_PHONG (25).png",
+  "imageData": null,
+  "imageHeight": 3648,
+  "imageWidth": 5472
+}

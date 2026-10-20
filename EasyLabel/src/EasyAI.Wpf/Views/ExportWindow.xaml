@@ -1,0 +1,195 @@
+<ui:FluentWindow x:Class="EasyAI.Desktop.Views.ExportWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+                 Title="{x:Static res:Strings.ExpTitle}"
+                 Width="580"
+                 Height="700"
+                 MinWidth="440"
+                 MinHeight="420"
+                 ExtendsContentIntoTitleBar="True"
+                 ShowInTaskbar="False"
+                 WindowBackdropType="Mica"
+                 WindowStartupLocation="CenterOwner"
+                 AutomationProperties.AutomationId="ExportDialog">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar Grid.Row="0"
+                     Title="{x:Static res:Strings.ExpTitle}"
+                     ShowMaximize="False"
+                     ShowMinimize="False" />
+
+        <!-- Options and the result summary scroll together, so nothing is clipped at a small window size or a large font scale. -->
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Margin="16,8,16,8">
+                <StackPanel IsEnabled="{Binding IsIdle}">
+                    <ui:TextBlock Text="{x:Static res:Strings.ExpFormat}" />
+                    <ComboBox Margin="0,4,0,12"
+                              HorizontalAlignment="Stretch"
+                              ItemsSource="{Binding Formats}"
+                              SelectedItem="{Binding SelectedFormat, Mode=TwoWay}"
+                              AutomationProperties.AutomationId="ExportFormat"
+                              AutomationProperties.Name="{x:Static res:Strings.ExpFormat}" />
+
+                    <ui:TextBlock Text="{x:Static res:Strings.ExpSet}" />
+                    <WrapPanel Margin="0,4,0,12"
+                               AutomationProperties.AutomationId="ExportSet"
+                               AutomationProperties.Name="{x:Static res:Strings.ExpSet}">
+                        <RadioButton Margin="0,0,16,0"
+                                     GroupName="ExportSetGroup"
+                                     Content="{x:Static res:Strings.ExpSetAll}"
+                                     IsChecked="{Binding IsSetAll, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="ExportSetAll" />
+                        <RadioButton Margin="0,0,16,0"
+                                     GroupName="ExportSetGroup"
+                                     Content="{x:Static res:Strings.ExpSetTrain}"
+                                     IsChecked="{Binding IsSetTrain, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="ExportSetTrain" />
+                        <RadioButton GroupName="ExportSetGroup"
+                                     Content="{x:Static res:Strings.ExpSetVal}"
+                                     IsChecked="{Binding IsSetVal, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="ExportSetVal" />
+                    </WrapPanel>
+
+                    <ui:TextBlock Text="{x:Static res:Strings.ExpOutput}" />
+                    <Grid Margin="0,4,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ui:TextBox Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    Text="{Binding OutputDirectory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    AutomationProperties.AutomationId="ExportOutput"
+                                    AutomationProperties.Name="{x:Static res:Strings.ExpOutput}" />
+                        <ui:Button Grid.Column="1"
+                                   Appearance="Secondary"
+                                   Content="{x:Static res:Strings.ExpBrowse}"
+                                   Command="{Binding BrowseCommand}"
+                                   AutomationProperties.AutomationId="ExportBrowse" />
+                    </Grid>
+
+                    <WrapPanel Margin="0,0,0,8">
+                        <RadioButton Margin="0,0,16,0"
+                                     GroupName="ExportImagesGroup"
+                                     Content="{x:Static res:Strings.ExpCopyImages}"
+                                     IsChecked="{Binding IsCopyImages, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="ExportCopyImages" />
+                        <RadioButton GroupName="ExportImagesGroup"
+                                     Content="{x:Static res:Strings.ExpWriteZip}"
+                                     IsChecked="{Binding IsWriteZip, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="ExportWriteZip" />
+                    </WrapPanel>
+                    <CheckBox Margin="0,0,0,12"
+                              Content="{x:Static res:Strings.ExpOnlyAnnotated}"
+                              IsChecked="{Binding OnlyAnnotated, Mode=TwoWay}"
+                              AutomationProperties.AutomationId="ExportOnlyAnnotated" />
+
+                    <ui:TextBlock Text="{Binding SendHeaderText}" />
+                    <Grid Margin="0,4,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0"
+                                  Margin="0,0,8,0"
+                                  HorizontalAlignment="Stretch"
+                                  ItemsSource="{Binding SendModels}"
+                                  SelectedItem="{Binding SelectedSendModel, Mode=TwoWay}"
+                                  AutomationProperties.AutomationId="ExportSendModel"
+                                  AutomationProperties.Name="{Binding SendHeaderText}" />
+                        <ui:Button Grid.Column="1"
+                                   Appearance="Secondary"
+                                   Content="{Binding SendButtonText}"
+                                   Command="{Binding SendToEasyVisionCommand}"
+                                   AutomationProperties.AutomationId="ExportSendToEasyVision" />
+                    </Grid>
+                    <ui:TextBlock Margin="0,0,0,12"
+                                  TextWrapping="Wrap"
+                                  Foreground="{DynamicResource SystemFillColorCautionBrush}"
+                                  Text="{Binding SendBlockText}"
+                                  AutomationProperties.AutomationId="ExportSendBlock" />
+
+                    <!-- OK/NG model: copy the selected model with its sidecar and a trace record (operator and note are optional). -->
+                    <ui:TextBlock Text="{Binding OperatorLabel}" />
+                    <ui:TextBox Margin="0,4,0,8"
+                                Text="{Binding TraceOperator, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                AutomationProperties.AutomationId="ExportTraceOperator"
+                                AutomationProperties.Name="{Binding OperatorLabel}" />
+                    <ui:TextBlock Text="{Binding NoteLabel}" />
+                    <Grid Margin="0,4,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ui:TextBox Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    Text="{Binding TraceNote, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    AutomationProperties.AutomationId="ExportTraceNote"
+                                    AutomationProperties.Name="{Binding NoteLabel}" />
+                        <ui:Button Grid.Column="1"
+                                   VerticalAlignment="Center"
+                                   Appearance="Secondary"
+                                   Content="{Binding OkNgButtonText}"
+                                   Command="{Binding ExportOkNgModelCommand}"
+                                   AutomationProperties.AutomationId="ExportOkNgModel" />
+                    </Grid>
+                </StackPanel>
+
+                <ui:TextBlock Text="{x:Static res:Strings.ExpResult}" />
+                <ui:TextBox Margin="0,4,0,0"
+                            MinHeight="160"
+                            MaxHeight="360"
+                            AcceptsReturn="True"
+                            IsReadOnly="True"
+                            TextWrapping="Wrap"
+                            VerticalScrollBarVisibility="Auto"
+                            Text="{Binding ResultText, Mode=OneWay}"
+                            AutomationProperties.AutomationId="ExportResult"
+                            AutomationProperties.Name="{x:Static res:Strings.ExpResult}" />
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2"
+                    Margin="16,0,16,16">
+            <ProgressBar Height="6"
+                         Margin="0,0,0,2"
+                         Minimum="0"
+                         Maximum="{Binding ProgressMaximum}"
+                         Value="{Binding ProgressValue, Mode=OneWay}"
+                         AutomationProperties.AutomationId="ExportProgress" />
+            <ui:TextBlock Margin="0,0,0,8"
+                          MinHeight="16"
+                          FontSize="11"
+                          Text="{Binding ProgressText}"
+                          TextTrimming="CharacterEllipsis"
+                          AutomationProperties.AutomationId="ExportProgressText" />
+            <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <ui:Button Margin="0,0,8,0"
+                           Appearance="Primary"
+                           Content="{x:Static res:Strings.ExpRun}"
+                           Command="{Binding RunCommand}"
+                           IsDefault="True"
+                           AutomationProperties.AutomationId="ExportRun" />
+                <ui:Button Margin="0,0,8,0"
+                           Appearance="Secondary"
+                           Content="{x:Static res:Strings.Cancel}"
+                           Command="{Binding CancelCommand}"
+                           AutomationProperties.AutomationId="ExportCancel" />
+                <ui:Button Appearance="Secondary"
+                           IsCancel="True"
+                           Content="{x:Static res:Strings.Close}"
+                           AutomationProperties.AutomationId="ExportClose" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</ui:FluentWindow>

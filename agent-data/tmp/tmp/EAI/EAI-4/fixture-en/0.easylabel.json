@@ -1,0 +1,10 @@
+{
+  "ReviewStatus": "in_progress",
+  "Shapes": [
+    {
+      "Source": "model",
+      "Confidence": 0.9647058844566345,
+      "Model": "v001.segai"
+    }
+  ]
+}

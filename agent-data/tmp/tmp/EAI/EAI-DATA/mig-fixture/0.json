@@ -1,0 +1,50 @@
+{
+  "version": "5.5.0",
+  "flags": {
+    "val": true
+  },
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          1134.0,
+          1115.0
+        ],
+        [
+          1134.0,
+          1609.0
+        ],
+        [
+          1889.0,
+          1609.0
+        ],
+        [
+          1889.0,
+          991.0
+        ],
+        [
+          1386.0,
+          991.0
+        ],
+        [
+          1386.0,
+          1114.0
+        ],
+        [
+          1385.0,
+          1115.0
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "polygon",
+      "flags": {},
+      "description": null,
+      "direction": null
+    }
+  ],
+  "imagePath": "0.png",
+  "imageData": null,
+  "imageHeight": 2600,
+  "imageWidth": 2520
+}

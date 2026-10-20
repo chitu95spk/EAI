@@ -1,0 +1,72 @@
+ M BeeNativeSegAI/SegBackboneFineTune.cpp
+ M BeeNativeSegAI/SegV2Core.cpp
+ M EasyLabel/src/EasyAI.Wpf/Canvas/CanvasView.xaml.cs
+ M EasyLabel/src/EasyAI.Wpf/Infrastructure/AppSettings.cs
+ M EasyLabel/src/EasyAI.Wpf/Infrastructure/ShortcutTable.cs
+ M EasyLabel/src/EasyAI.Wpf/MainWindow.xaml
+ M EasyLabel/src/EasyAI.Wpf/MainWindow.xaml.cs
+ M EasyLabel/src/EasyAI.Wpf/Resources/Strings.Designer.cs
+ M EasyLabel/src/EasyAI.Wpf/Resources/Strings.resx
+ M EasyLabel/src/EasyAI.Wpf/Resources/Strings.vi.resx
+ M EasyLabel/src/EasyAI.Wpf/Services/Agent/AgentChatEntryViewModel.cs
+ M EasyLabel/src/EasyAI.Wpf/Services/Agent/AgentCommandLine.cs
+ M EasyLabel/src/EasyAI.Wpf/Services/Agent/AgentResults.cs
+ M EasyLabel/src/EasyAI.Wpf/Services/Agent/AgentSam2Refiner.cs
+ M EasyLabel/src/EasyAI.Wpf/Services/Agent/AgentSpendTracker.cs
+ M EasyLabel/src/EasyAI.Wpf/Services/AgentRunner.cs
+ M EasyLabel/src/EasyAI.Wpf/Services/DialogService.cs
+ M EasyLabel/src/EasyAI.Wpf/Services/ImagePreviewLoader.cs
+ M EasyLabel/src/EasyAI.Wpf/ViewModels/AgentsSettingsViewModel.cs
+ M EasyLabel/src/EasyAI.Wpf/ViewModels/DataStepViewModel.cs
+ M EasyLabel/src/EasyAI.Wpf/ViewModels/ImageListSortRules.cs
+ M EasyLabel/src/EasyAI.Wpf/ViewModels/InspectViewModel.cs
+ M EasyLabel/src/EasyAI.Wpf/ViewModels/LabelStepViewModel.AgentChat.cs
+ M EasyLabel/src/EasyAI.Wpf/ViewModels/LabelStepViewModel.cs
+ M EasyLabel/src/EasyAI.Wpf/ViewModels/MainViewModel.cs
+ M EasyLabel/src/EasyAI.Wpf/ViewModels/PanelViewModels.cs
+ M EasyLabel/src/EasyAI.Wpf/ViewModels/TrainStepRules.cs
+ M EasyLabel/src/EasyAI.Wpf/Views/AgentChatWindow.xaml
+ M EasyLabel/src/EasyAI.Wpf/Views/AgentsSettingsView.xaml
+ M EasyLabel/src/EasyAI.Wpf/Views/ImageListPane.xaml
+ M EasyLabel/src/EasyAI.Wpf/Views/ImageListPane.xaml.cs
+ M EasyLabel/src/EasyAI.Wpf/Views/LabelDialog.xaml
+ M EasyLabel/src/EasyAI.Wpf/Views/LabelDialog.xaml.cs
+ M EasyLabel/src/EasyAI.Wpf/Views/PromptWindow.xaml
+ M EasyLabel/src/EasyAI.Wpf/Views/PromptWindow.xaml.cs
+ M EasyLabel/src/EasyLabel.Ai.Mcp/EasyAiTools.cs
+ M EasyLabel/src/EasyLabel.Ai.Mcp/ImageSource.cs
+ M EasyLabel/src/EasyLabel.Ai.Mcp/McpEntry.cs
+ M EasyLabel/src/EasyLabel.Ai.Mcp/Sam2Runner.cs
+ M EasyLabel/src/EasyLabel.Ai.Mcp/Skills/detect.md
+ M EasyLabel/src/EasyLabel.Ai.Onnx/Sam2Backend.cs
+ M EasyLabel/src/EasyLabel.Ai.Onnx/Sam2Tensors.cs
+ M EasyLabel/src/EasyLabel.SegAI/AutoLabel/AutoLabelService.cs
+ M EasyLabel/src/EasyLabel.SegAI/Inspection/SegAiPredictor.cs
+ M EasyLabel/src/EasyLabel.SegAI/Model/SegAiModelFile.cs
+ M EasyLabel/src/EasyLabel.SegAI/Options/SegInferenceSettings.cs
+ M EasyLabel/src/EasyLabel.SegAI/Options/SegTrainingOptions.cs
+ M EasyLabel/src/EasyLabel.SegAI/Project/SegProjectStore.cs
+ M EasyLabel/src/EasyLabel.SegAI/SegAiSession.cs
+ M EasyLabel/src/EasyLabel.SegAI/Training/SegAiTrainingPipeline.cs
+ M EasyLabel/tests/EasyLabel.Ai.Mcp.Tests/ToolTests.cs
+ M EasyLabel/tests/EasyLabel.SegAI.Tests/AgentCodexTests.cs
+ M EasyLabel/tests/EasyLabel.SegAI.Tests/AgentRunFilesTests.cs
+ M EasyLabel/tests/EasyLabel.SegAI.Tests/AgentRunnerBudgetTests.cs
+ M EasyLabel/tests/EasyLabel.SegAI.Tests/EasyLabel.SegAI.Tests.csproj
+ M EasyLabel/tests/EasyLabel.SegAI.Tests/ShortcutTableTests.cs
+ M EasyLabel/tests/EasyLabel.SegAI.Tests/TrainStepRulesTests.cs
+?? EasyLabel/.codegraph/
+?? EasyLabel/Lib/native/
+?? EasyLabel/src/EasyAI.Wpf/Services/Agent/AgentPreview.cs
+?? EasyLabel/src/EasyAI.Wpf/Services/Agent/AgentPromptRefiner.cs
+?? EasyLabel/src/EasyAI.Wpf/Services/Agent/Sam2Preview.cs
+?? EasyLabel/src/EasyLabel.Ai.Mcp/CandidateStore.cs
+?? EasyLabel/src/EasyLabel.Ai.Onnx/ImageMarkdown.cs
+?? EasyLabel/src/EasyLabel.Ai.Onnx/Sam2Candidates.cs
+?? EasyLabel/tests/EasyLabel.Ai.Mcp.Tests/CandidateStoreTests.cs
+?? EasyLabel/tests/EasyLabel.Ai.Onnx.Tests/ImageMarkdownTests.cs
+?? EasyLabel/tests/EasyLabel.SegAI.Tests/AgentPriceTests.cs
+?? EasyLabel/tests/EasyLabel.SegAI.Tests/AgentPromptRefinerTests.cs
+?? EasyLabel/tests/EasyLabel.SegAI.Tests/InstanceScoreCalibrationTests.cs
+?? EasyLabel/tests/EasyLabel.SegAI.Tests/UnlabelledFirstOrderTests.cs
+?? EasyLabel/tmp/

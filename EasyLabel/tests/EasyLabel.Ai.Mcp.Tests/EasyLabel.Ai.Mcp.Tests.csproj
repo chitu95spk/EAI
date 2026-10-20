@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="OpenCvSharp4" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The EasyAI side of the run-folder contract (request.json / mcp.json writer), linked so a test can feed it to RunRequest.Load. -->
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentRunFiles.cs" Link="Linked\AgentRunFiles.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentLocators.cs" Link="Linked\AgentLocators.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentEnvironment.cs" Link="Linked\AgentEnvironment.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\AgentSkills.cs" Link="Linked\AgentSkills.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Services\Agent\McpServerRegistry.cs" Link="Linked\McpServerRegistry.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EasyLabel.Ai.Mcp\EasyLabel.Ai.Mcp.csproj" />
+  </ItemGroup>
+
+</Project>

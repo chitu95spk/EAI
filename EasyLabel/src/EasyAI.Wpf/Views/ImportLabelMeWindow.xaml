@@ -1,0 +1,159 @@
+<ui:FluentWindow x:Class="EasyAI.Desktop.Views.ImportLabelMeWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:res="clr-namespace:EasyAI.Desktop.Resources"
+                 Title="{x:Static res:Strings.ImpTitle}"
+                 Width="760"
+                 Height="760"
+                 MinWidth="520"
+                 MinHeight="480"
+                 ExtendsContentIntoTitleBar="True"
+                 ShowInTaskbar="False"
+                 WindowBackdropType="Mica"
+                 WindowStartupLocation="CenterOwner"
+                 AutomationProperties.AutomationId="ImportLabelMeDialog">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar Grid.Row="0"
+                     Title="{x:Static res:Strings.ImpTitle}"
+                     ShowMaximize="False"
+                     ShowMinimize="False" />
+
+        <!-- Everything scrolls together, so nothing is clipped at a small window size or a large font scale. -->
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Margin="16,8,16,8">
+                <StackPanel IsEnabled="{Binding IsIdle}">
+                    <ui:TextBlock Text="{x:Static res:Strings.ImpFolder}" />
+                    <Grid Margin="0,4,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ui:TextBox Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    Text="{Binding FolderPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    AutomationProperties.AutomationId="ImportLabelMeFolder"
+                                    AutomationProperties.Name="{x:Static res:Strings.ImpFolder}" />
+                        <ui:Button Grid.Column="1"
+                                   Margin="0,0,8,0"
+                                   Appearance="Secondary"
+                                   Content="{x:Static res:Strings.ExpBrowse}"
+                                   Command="{Binding BrowseCommand}"
+                                   AutomationProperties.AutomationId="ImportLabelMeBrowse" />
+                        <ui:Button Grid.Column="2"
+                                   Appearance="Secondary"
+                                   Content="{x:Static res:Strings.ImpScan}"
+                                   Command="{Binding ScanCommand}"
+                                   AutomationProperties.AutomationId="ImportLabelMeScan" />
+                    </Grid>
+                </StackPanel>
+
+                <ui:TextBlock Text="{x:Static res:Strings.ImpPreview}" />
+                <DataGrid Margin="0,4,0,8"
+                          Height="220"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          HeadersVisibility="Column"
+                          SelectionMode="Single"
+                          ItemsSource="{Binding Rows}"
+                          AutomationProperties.AutomationId="ImportLabelMePreview"
+                          AutomationProperties.Name="{x:Static res:Strings.ImpPreview}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="{x:Static res:Strings.ImpColJson}" Binding="{Binding Json}" Width="2*" />
+                        <DataGridTextColumn Header="{x:Static res:Strings.ImpColImage}" Binding="{Binding Image}" Width="2*" />
+                        <DataGridTextColumn Header="{x:Static res:Strings.ImpColShapes}" Binding="{Binding Shapes}" Width="*" />
+                        <DataGridTextColumn Header="{x:Static res:Strings.ImpColStatus}" Binding="{Binding Status}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <ui:TextBlock Margin="0,0,0,4"
+                              TextWrapping="Wrap"
+                              Text="{Binding SummaryText}"
+                              AutomationProperties.AutomationId="ImportLabelMeSummary" />
+                <ui:TextBlock Margin="0,0,0,12"
+                              TextWrapping="Wrap"
+                              Text="{Binding DetailText}"
+                              AutomationProperties.AutomationId="ImportLabelMeDetail" />
+
+                <StackPanel IsEnabled="{Binding IsIdle}">
+                    <ui:TextBlock Text="{x:Static res:Strings.ImpConflict}" />
+                    <WrapPanel Margin="0,4,0,12"
+                               AutomationProperties.AutomationId="ImportLabelMeConflict"
+                               AutomationProperties.Name="{x:Static res:Strings.ImpConflict}">
+                        <RadioButton Margin="0,0,16,0"
+                                     GroupName="ImportConflictGroup"
+                                     Content="{x:Static res:Strings.ImpSkip}"
+                                     IsChecked="{Binding IsSkip, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="ImportLabelMeSkip" />
+                        <RadioButton Margin="0,0,16,0"
+                                     GroupName="ImportConflictGroup"
+                                     Content="{x:Static res:Strings.ImpReplace}"
+                                     IsChecked="{Binding IsReplace, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="ImportLabelMeReplace" />
+                        <RadioButton GroupName="ImportConflictGroup"
+                                     Content="{x:Static res:Strings.ImpRename}"
+                                     IsChecked="{Binding IsRename, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="ImportLabelMeRename" />
+                    </WrapPanel>
+                </StackPanel>
+
+                <ui:TextBlock Text="{x:Static res:Strings.ExpResult}" />
+                <ui:TextBox Margin="0,4,0,0"
+                            MinHeight="120"
+                            MaxHeight="300"
+                            AcceptsReturn="True"
+                            IsReadOnly="True"
+                            TextWrapping="Wrap"
+                            VerticalScrollBarVisibility="Auto"
+                            Text="{Binding ResultText, Mode=OneWay}"
+                            AutomationProperties.AutomationId="ImportLabelMeResult"
+                            AutomationProperties.Name="{x:Static res:Strings.ExpResult}" />
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2"
+                    Margin="16,0,16,16">
+            <ProgressBar Height="6"
+                         Margin="0,0,0,2"
+                         Minimum="0"
+                         Maximum="{Binding ProgressMaximum}"
+                         Value="{Binding ProgressValue, Mode=OneWay}"
+                         AutomationProperties.AutomationId="ImportLabelMeProgress" />
+            <ui:TextBlock Margin="0,0,0,8"
+                          MinHeight="16"
+                          FontSize="11"
+                          Text="{Binding ProgressText}"
+                          TextTrimming="CharacterEllipsis"
+                          AutomationProperties.AutomationId="ImportLabelMeProgressText" />
+            <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <ui:Button Margin="0,0,8,0"
+                           Appearance="Primary"
+                           Content="{x:Static res:Strings.ImpRun}"
+                           Command="{Binding RunCommand}"
+                           IsDefault="True"
+                           AutomationProperties.AutomationId="ImportLabelMeRun" />
+                <ui:Button Margin="0,0,8,0"
+                           Appearance="Secondary"
+                           Content="{x:Static res:Strings.Cancel}"
+                           Command="{Binding CancelCommand}"
+                           AutomationProperties.AutomationId="ImportLabelMeCancel" />
+                <ui:Button Appearance="Secondary"
+                           IsCancel="True"
+                           Content="{x:Static res:Strings.Close}"
+                           AutomationProperties.AutomationId="ImportLabelMeClose" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</ui:FluentWindow>

@@ -1,0 +1,64 @@
+{
+  "version": "5.5.0",
+  "flags": {
+    "train": true
+  },
+  "shapes": [
+    {
+      "label": "NG",
+      "points": [
+        [
+          4.0,
+          4.0
+        ],
+        [
+          28.0,
+          4.0
+        ],
+        [
+          28.0,
+          28.0
+        ],
+        [
+          4.0,
+          28.0
+        ]
+      ],
+      "group_id": 0,
+      "shape_type": "polygon",
+      "flags": {},
+      "description": null,
+      "direction": null
+    },
+    {
+      "label": "OK",
+      "points": [
+        [
+          36.0,
+          36.0
+        ],
+        [
+          60.0,
+          36.0
+        ],
+        [
+          60.0,
+          60.0
+        ],
+        [
+          36.0,
+          60.0
+        ]
+      ],
+      "group_id": 1,
+      "shape_type": "polygon",
+      "flags": {},
+      "description": null,
+      "direction": null
+    }
+  ],
+  "imagePath": "sample-0.png",
+  "imageData": null,
+  "imageHeight": 64,
+  "imageWidth": 64
+}

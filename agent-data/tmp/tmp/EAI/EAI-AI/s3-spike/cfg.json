@@ -1,0 +1,10 @@
+{
+ "mcpServers": {
+  "easyai": {
+   "command": "E:\\Code\\EasyVision_Unisen - NoService\\tmp\\EAI\\EAI-AI\\models-build\\venv\\Scripts\\python.exe",
+   "args": [
+    "E:\\Code\\EasyVision_Unisen - NoService\\tmp\\EAI\\EAI-AI\\s3-spike\\ping_mcp.py"
+   ]
+  }
+ }
+}
