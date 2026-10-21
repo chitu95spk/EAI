@@ -1,0 +1,79 @@
+schema_version = 2
+agent_tree = true
+notes = "User decision 2026-10-11: all EAI-* contracts merged into this single contract, approved by the user for edit/build/test/commit (no push). The previous per-ID contracts were moved unchanged to .claude/archive/EAI-ALL/ (EAI-AGENT, EAI-ARCHIVE, EAI-CACHE, EAI-CAM, EAI-CLS, EAI-OPEN, EAI-PLUS, EAI-PROJ); each keeps its plan under tmp/<ID>/ and its handoff tmp/<ID>/deferred.md. Work order agreed: PROJ (P1-P4 committed) then CACHE (C1 committed) then AGENT then CAM; CLS, OPEN and PLUS items proceed from their own handoffs."
+
+[task]
+id = "EAI-ALL"
+title = "EasyAI / EasyLabel: all open EAI work streams under one contract (PROJ, CACHE, AGENT, CAM, CLS, OPEN, PLUS)"
+goal = "Finish the open EasyLabel/EasyAI streams: PROJ acceptance items, CACHE C2-C5, AGENT S2-S10 (chat popup, effort/mode bar, learning memory, skills/MCP, Check), CAM (MVS camera source, live tab), CLS (named classes beyond NG/OK), OPEN (owed smokes, DPI, edge tests), PLUS (remaining items), each slice committed separately with its own evidence."
+current_behavior = "See each stream's plan and handoff: tmp/EAI-PROJ, tmp/EAI-CACHE, tmp/EAI-AGENT, tmp/EAI-CAM, tmp/EAI/EAI-CLS*, tmp/EAI-PLUS, tmp/EAI/EAI-OPEN."
+expected_behavior = "Every stream's acceptance in its archived contract is met and verified; nothing outside the in-scope list is touched."
+in_scope = ["EasyLabel/**", "tmp/EAI-*/**", "tmp/EAI/**", "artifacts/EAI-*/**", "artifacts/EAI/**", "BeeNativeSegAI/**", "BeeCore/Func/NativeSegAI*.cs", "BeeCore/Unit/SegmentAI*.cs", "BeeInterface/** (ToolSegmentAI UI only)", "BeeInterface/Custom/DefectLabelCanvas.cs", "BeeInterface/General/FormSegmentTraining.cs", "tests/BeeCore.Persistence.Tests/**", ".claude/task-contract.EAI-ALL.toml", ".claude/archive/EAI-ALL/**"]
+out_of_scope = ["EasyVision main app outside the CLS in-scope list (BeeMain, EtherCAT, PLC, ladder), Pattern/Pattern2.*, Pattern/Pitch*", "push, tag, PR, deploy, hardware test (including a real camera)", "touching bin/Release, bin/x64/Release or lib/native before CLS P5 and an explicit user OK", "rebuilding BeeLicense.dll into Release", "activating or deploying any model into production", "changing .segai format without a version bump and parity check", "installing or running third-party code without the user approving that server", "redistributing the MVS runtime", "deleting or rewriting existing project data, or deleting anything outside <project>/.easyai/cache", "changing training hyper-parameters or results", "Windows display scale changes without user consent"]
+dependencies = ["tmp/EAI-PROJ/plan-v1.md", "tmp/EAI-CACHE/plan-v1.md", "tmp/EAI-AGENT/plan-v1.md", "tmp/EAI-CAM/plan-v1.md", ".claude/archive/EAI-ALL/"]
+risk = "high"
+
+[dispatch]
+category = "cross-subsystem"
+route = "deep"
+normalized_request = "Continue the open EAI work streams per their plans and handoffs, one slice per commit."
+selected_model = "sonnet"
+architect_required = false
+build_recommended = true
+build_reason = "EasyAI.Wpf build and the four EasyLabel test projects per slice; CLS slices also need the native and BeeCore checks listed in the archived EAI-CLS contract."
+
+[approval]
+requested_by = "user"
+activated_by = "user"
+plan_approved = true
+plan_approved_by = "user"
+approved_plan_revision = "EAI-PROJ-r1-plan-v1; EAI-CACHE-r1-plan-v1; EAI-AGENT-r1-plan-v1 with plan-v2 amendments; EAI-CAM-r1-plan-v1; EAI-CLS, EAI-OPEN, EAI-PLUS as archived"
+approved_at_utc = "2026-10-11T09:00:00Z"
+
+[authorization]
+granted_by = "user"
+current_task_reference = "EAI-ALL"
+granted_at_utc = "2026-10-11T09:00:00Z"
+edit_code = true
+update_tracking = false
+build = true
+run_tests = true
+benchmark = true
+deploy = false
+hardware_test = false
+commit = true
+push = false
+
+[budget]
+usage_five_hour_percent_at_start = -1
+estimated_tokens = 0
+agent_ceiling_multiplier = 2
+deferred_file = ""
+actual_units_millions = -1
+actual_requests = -1
+actual_agents = -1
+actual_session = ""
+
+[acceptance]
+behavior = [
+  "Each stream meets the behavior list in its archived contract under .claude/archive/EAI-ALL/",
+  "Every slice is committed separately with the stream ID in the message and its own build/test evidence",
+]
+regression = ["EasyLabel builds; Core, SegAI, Mcp and Onnx test projects pass; CLS slices also pass their archived regression list"]
+performance = ["CACHE timings (benchmark authorized by the user 2026-10-11 for C3a)"]
+evidence_required = ["artifacts/<stream>/<run>/build.log", "test logs", "UI smoke screenshots for UI slices"]
+
+[benchmark]
+fixtures = []
+warmup_iterations = 0
+measured_iterations = 0
+metrics = []
+thresholds = []
+
+[stop_conditions]
+items = [
+  "The required change exceeds in_scope or touches an out_of_scope item.",
+  "A change would alter training results, retrain fingerprints or the .segai format without the stated checks.",
+  "A cleanup would delete anything outside <project>/.easyai/cache.",
+  "Anything needs push, deploy, hardware or a live production folder.",
+]

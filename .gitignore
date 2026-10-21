@@ -7,3 +7,4 @@ obj/
 x64/
 [Aa]rtifacts/
 *.log
+/tmp/

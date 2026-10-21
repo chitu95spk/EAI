@@ -1,0 +1,106 @@
+schema_version = 2
+agent_tree = true
+notes = "EAI-ONL: EasyAI Online (realtime) mode, phase 1 = MEASURE first. Source: tmp/EAI-COMMERCIAL/backend-review.md 'Online mode feasibility', command-code-architecture.md sec 7. User answers 2026-10-17: 50 ms = processing cycle time per image excluding camera capture; mono first, colour if achievable; network 1 Gbps. Plan not yet approved; no authorization granted."
+
+[task]
+id = "EAI-ONL"
+title = "EasyAI Online mode: per-stage latency measurement for 5 MP frames, then realtime detect and position"
+goal = "Add an Online run mode to EasyAI where defects and positions are detected in realtime with a processing cycle time (CT) under 50 ms per 5 MP image (camera capture time excluded), mono 8-bit first and colour if achievable, over a 1 Gbps network. The in-software Agent is used only at setup time (natural language -> labels/config -> train -> frozen deterministic recipe); the per-frame path contains no LLM or SAM2 call. Phase 1 (this contract's first deliverable) is measurement only: establish p50/p95 per stage on the real hardware so that the design choice (local on 2-core, reduced ROI/binning/INT8, or a LAN inference node) is made from numbers, not estimates."
+current_behavior = "No measured SegAI or ONNX latency for a 5 MP frame exists in the repo; the only inference number found is about 113 ms for a small YOLO detect on DirectML, machine not stated (backend-review). Estimates in the review: 150-300 ms per frame on the 2-core i7-7600U (extrapolated from about 154 ms per image on 16 cores in training feature extraction); raw BGR 15 MB over 1 Gbps about 120 ms, mono 8-bit about 40 ms, JPEG about 8-12 ms; serial total estimates 60-70 ms for mono (architect). All unmeasured. EasyAI has no Online mode, no frame protocol and no inference service."
+expected_behavior = "Phase 1 (measure): a reproducible benchmark harness reports p50/p95/max of each stage for mono 5 MP frames (acquire-from-memory, decode, resize/normalise, backbone, head, post-process, result serialisation, and loopback/LAN transport) for the production Segment AI path and the ONNX path, on this dev PC and, when the user authorises it, on the 2-core target; plus the same for colour. Phase 2 (design gate, needs user approval after phase 1): choose the architecture from the numbers. Phase 3 (build, separate approval): Online mode with command IDs ONL.START/STOP/STATUS/SET.ENDPOINT, a frame protocol, warm model, back-pressure, health and latency telemetry, and the frozen-recipe handoff from the Agent."
+in_scope = [
+  "tmp/EAI-ONL/**, artifacts/EAI-ONL/** (benchmark harness, raw results, reports)",
+  "EasyLabel/tests/** and a new benchmark console project under EasyLabel/tests or tools for the harness",
+  "Read-only use of EasyLabel/src/EasyLabel.SegAI/** (SegAiInferer, SegAiSession), EasyLabel.Ai.Onnx/**, EasyLabel.Vision/**, BeeNativeSegAI (no edits in phase 1)",
+  "Phase 3 only after separate approval: EasyLabel/src/EasyAI.Wpf/** and a new inference service project",
+]
+out_of_scope = [
+  "EasyVision runtime (BeeCore, BeeInterface, tools) and any hardware or camera path",
+  "Deploying native DLLs into bin/Release or lib/native",
+  "Changing model accuracy or the training pipeline",
+  "Agent cost/consent work (contract EAI-COST) and command-code registry (separate contract)",
+  "Licence/activation, installer, updater",
+  "BeeLicense.dll (never rebuild into Release)",
+]
+dependencies = ["EAI-POS instance head (committed) for position output", "E:\\EAI_TEST images (read only) - confirm with the user that a 5 MP mono set exists or may be synthesised by resizing", "Open user answers: smallest defect size/resolution; whether CT means per-image latency or pipelined throughput; target hardware (2-core vs LAN GPU node)"]
+risk = "medium"
+
+[dispatch]
+category = "performance"
+route = "deep"
+normalized_request = "Measure per-stage latency for 5 MP mono (and colour) frames on the Segment AI and ONNX paths, then decide and build an Online realtime mode with CT under 50 ms excluding camera time, with the agent used only at setup."
+selected_model = "sonnet"
+executor = "claude"
+codex_model = ""
+architect_required = true
+build_recommended = true
+build_reason = "Phase 1 needs a compiled benchmark harness and a Release run of the existing inference path. Needs explicit user authorization for build, run_tests and benchmark for the current task."
+
+[approval]
+requested_by = "claude_dispatcher"
+activated_by = ""
+plan_approved = true
+plan_approved_by = "user"
+approved_plan_revision = ""
+approved_at_utc = "2026-10-17"
+
+[authorization]
+granted_by = "user"
+current_task_reference = "user chose EAI-ONL phase 1: dev PC only, 5MP set synthesised by resizing; 2-core NOT authorized; phase 2 and 3 need separate approval"
+granted_at_utc = "2026-10-17"
+edit_code = true
+update_tracking = true
+build = true
+run_tests = true
+benchmark = true
+deploy = false
+hardware_test = false
+commit = true
+push = false
+
+[budget]
+usage_five_hour_percent_at_start = -1
+estimated_tokens = 0
+agent_ceiling_multiplier = 2
+deferred_file = ""
+actual_units_millions = -1
+actual_requests = -1
+actual_agents = -1
+actual_session = ""
+
+[acceptance]
+behavior = [
+  "Phase 1: a report under artifacts/EAI-ONL/<run>/ lists p50, p95 and max per stage for mono 5 MP frames on the stated machine, with warm-up excluded, iteration count, CPU model, core count, thread settings and process priority recorded.",
+  "Phase 1: the report states whether the end-to-end CT is below 50 ms at p95 for each tested configuration, and names the dominant stage.",
+  "Phase 1: colour 5 MP is measured the same way and its transport/decoding cost is shown separately.",
+  "Phase 2: a short decision note picks one architecture and lists the numbers that justify it; user approves before phase 3 starts.",
+  "Phase 3 (if approved): Online mode reaches CT under 50 ms at p95 on the chosen hardware for mono 5 MP with the agent out of the frame path, and ONL.* commands are gated per mode.",
+]
+regression = [
+  "Existing EasyLabel.SegAI, Onnx, Core and Mcp tests still pass; offline modes unchanged.",
+]
+performance = [
+  "Target: processing CT under 50 ms per 5 MP image, camera exposure and readout excluded, mono first.",
+  "Working targets adopted from the team estimates (user 2026-10-17: 'follow your estimates'); each is an ESTIMATE until phase 1 measures it: mono 5 MP local inference about 26 ms (feasible); mono JPEG over 1 Gbps LAN serial about 60 ms (over budget); mono JPEG over LAN pipelined about 26 ms per image (throughput, not latency); colour raw 15 MB over 1 Gbps about 120 ms (fails, needs JPEG or local). Phase 1 replaces these with measured p50/p95.",
+  "Measure on the 2-core i7-7600U target when the user authorises it; the dev PC alone is not sufficient evidence for the target.",
+]
+evidence_required = [
+  "Raw timing CSV, harness source, exact command lines and environment captured under artifacts/EAI-ONL/<run>/ (project-local temp, never %TEMP%).",
+  "Statement of which numbers are measured and which remain estimates.",
+]
+
+[benchmark]
+fixtures = ["E:\\EAI_TEST (read only)", "synthetic 5 MP mono frames generated under tmp/EAI-ONL if no real 5 MP set exists"]
+warmup_iterations = 20
+measured_iterations = 200
+metrics = ["p50_ms", "p95_ms", "max_ms", "per_stage_ms", "bytes_on_wire", "cpu_percent"]
+thresholds = ["end_to_end_p95_ms < 50 (target, to be confirmed by measurement)"]
+
+[stop_conditions]
+items = [
+  "The required change exceeds in_scope.",
+  "Measuring on the production 2-core PC or any camera is needed - ask the user for authorization first.",
+  "Phase 3 build is requested before the phase 2 decision is approved.",
+  "A repository stop-and-ask condition is reached (new NuGet/native dependency, ABI break without approved bump).",
+  "Verification fails and the fix requires unrelated files.",
+]

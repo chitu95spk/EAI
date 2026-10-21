@@ -1,0 +1,68 @@
+schema_version = 2
+agent_tree = true
+notes = "Plan: tmp/EAI-ONL-MODE/plan.md phase A. Native trainer area: Claude-only writer. Blocks all Online accuracy testing."
+
+[task]
+id = "EAI-ONL-MODEL"
+title = "Fix SegAI V2 training that predicts empty masks on TrainLOGONEW"
+goal = "Find and fix why SegAI V2 training (512 and 960) yields train IoU about 0.01 and empty NG masks on E:\Training\TrainLOGONEW\images (123 NG, oriented_rectangle, 5472x3648)."
+current_behavior = "v512 and v005 both predict empty masks on most training images; recall proxy 6e-5 on the training set."
+expected_behavior = "A model trained on that dataset reaches a measurable training-set recall and a held-out recall on its Val split, with the cause of the collapse identified."
+in_scope = [
+  "tmp/EAI-ONL-MODEL/**, artifacts/EAI-ONL-MODEL/**",
+  "EasyLabel/src/EasyLabel.SegAI/**, BeeNativeSegAI/** (trainer, label rasterisation, sampling) after the diagnosis names the cause",
+  "EasyLabel/tests/EasyLabel.Train512Bench, EasyLabel.OnlineBench (evidence)"
+]
+out_of_scope = [
+  "Online mode code",
+  "Deploying DLLs into bin/Release",
+  "BeeLicense.dll",
+  "Other sessions' EAI-LOGO hunks in SegV2Core.cpp"
+]
+dependencies = ["tmp/EAI-COMMERCIAL/deferred.md Diagnosis 2026-10-18"]
+risk = "high"
+
+[dispatch]
+category = "algorithm"
+route = "deep"
+normalized_request = "Find and fix why SegAI V2 training (512 and 960) yields train IoU about 0.01 and empty NG masks on E:\Training\TrainLOGONEW\images (123 NG, oriented_rectangle, 5472x3648)."
+selected_model = "sonnet"
+executor = "claude"
+codex_model = ""
+architect_required = true
+build_recommended = true
+build_reason = "Compiled code and tests are the only evidence for this task; needs explicit current-task user authorization."
+
+[approval]
+requested_by = "claude_dispatcher"
+activated_by = "user"
+plan_approved = true
+plan_approved_by = "user"
+approved_plan_revision = "EAI-ONL-MODE-r1-plan-v1"
+approved_at_utc = "2026-10-18"
+
+[authorization]
+granted_by = "user"
+current_task_reference = "user 2026-10-18: approved plan v1 and all three contracts; build, run_tests, commit allowed; benchmark on dev PC; no push/hardware/2-core"
+granted_at_utc = "2026-10-18"
+edit_code = true
+update_tracking = true
+build = true
+run_tests = true
+benchmark = true
+deploy = false
+hardware_test = false
+commit = true
+push = false
+
+[acceptance]
+behavior = [
+  "Dumped training mask for sample images matches the LabelMe oriented_rectangle labels (or the rasterisation bug is fixed).",
+  "Cause of IoU~0 collapse stated with measured evidence (sampling, prior shift, threshold, LR, label path).",
+  "Retrained model: training-set recall and Val-split recall reported, DefectThreshold sweep included."
+]
+regression = ["Existing EasyLabel tests and offline modes unchanged."]
+evidence_required = ["Build and test logs under artifacts/EAI-ONL-MODEL/<run>/; unrun checks reported unverified."]
+
+[stop_conditions]
+items = ["Required change exceeds in_scope.", "New NuGet/native dependency or ABI change is needed.", "Hardware or the 2-core production PC is needed without authorization."]

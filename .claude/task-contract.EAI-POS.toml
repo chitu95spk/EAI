@@ -1,0 +1,99 @@
+schema_version = 2
+agent_tree = true
+notes = "EAI-POS: EasyAI project modes Position | Detect and a per-instance Segment AI head (oriented box, circle). Plan not yet approved."
+
+[task]
+id = "EAI-POS"
+title = "EasyAI project modes Position | Detect with a per-instance native Segment AI head"
+goal = "Add two project modes to EasyAI. Position: only oriented rectangles and circles, native Segment AI must output one oriented box or circle per object (touching or overlapping objects are separated automatically). Detect: defect detection as today, but it uses the same new per-instance head. One new head for both modes. User-selectable Performance / Quality option controls the position and angle error (fast with larger error, or accurate with error near zero)."
+current_behavior = "EasyAI has no project mode. Native Segment AI V2 (BeeNativeSegAI SegV2Core) is a per-pixel semantic head (MLP 448-32-K, softmax) on a frozen MobileNetV2 backbone; inference takes connected components of the class mask, so touching objects merge into one region (recall <= .56 on images with many touching objects). Circle and line shapes are skipped when labels become training masks. Label canvas supports polygon, rectangle, oriented_rectangle, circle, line, point, AI tools."
+expected_behavior = "1) Project has a mode (Position | Detect) chosen at creation and stored in the project file; old projects load as Detect. 2) Position mode: label tools limited to oriented rectangle and circle; training labels use them directly (no polygon/mask labelling); inference returns one oriented box (cx, cy, w, h, angle) or circle (cx, cy, r) per object with a score. 3) A new instance head in the native Segment AI (centre heatmap + size + angle sin/cos + radius) trained from those labels, used by both modes; touching objects are separated without manual work. 4) Performance/Quality option for position and angle error. 5) Detect mode keeps its current behaviour for defect detection."
+in_scope = [
+  "BeeNativeSegAI/** (instance head trainer and inferer, C API additions, .segai format version, native tests)",
+  "EasyLabel/src/EasyLabel.SegAI/**, EasyLabel/src/EasyLabel.Core/** (project mode, shape rules, converters)",
+  "EasyLabel/src/EasyAI.Wpf/** (project dialog, tool palette per mode, Train tab, suggestions)",
+  "EasyLabel/tests/**, tmp/EAI-POS, artifacts/EAI-POS",
+]
+out_of_scope = [
+  "EasyVision runtime (BeeCore, BeeInterface, tools) and any hardware path",
+  "Defect-detection algorithm changes beyond swapping in the new head",
+  "Deploying the native DLL into bin/Release or lib/native",
+  "BeeLicense.dll (never rebuild into Release)",
+]
+dependencies = ["EAI-CLS (named class API, already in native)", "EAI-LABEL (SAM2 refine, Speed/Effort UI) is separate"]
+risk = "high"
+
+[dispatch]
+category = "feature"
+route = "deep"
+normalized_request = "Nâng cấp Project EasyAI thành 2 mode Position | Detect lỗi. Position chỉ box xoay + circle; Native Segment AI phải output box xoay và circle theo từng vật (vật chồng/chạm nhau tự tách lớp). Head mới theo từng vật dùng chung cho Position và Detect. Option Performance (nhanh, sai số lớn) | Quality (sai số vị trí và góc gần 0). Detect giữ như cũ."
+selected_model = "sonnet"
+architect_required = true
+build_recommended = true
+build_reason = "Native C++ and managed code change; a compile and native test run is the minimum evidence. Needs explicit user authorization for the current task."
+
+[approval]
+requested_by = "claude_dispatcher"
+activated_by = "user"
+plan_approved = true
+plan_approved_by = "user"
+approved_plan_revision = "EAI-POS-r1-plan-v1"
+approved_at_utc = "2026-10-13T16:00:00Z"
+
+[authorization]
+granted_by = "user"
+current_task_reference = "User 2026-10-13: duyet plan build and tesst (EAI-POS-r1-plan-v1, recommended answers to the 5 decisions accepted)"
+granted_at_utc = "2026-10-13T16:00:00Z"
+edit_code = true
+update_tracking = true
+build = true
+run_tests = true
+benchmark = false
+deploy = false
+hardware_test = false
+commit = true
+push = false
+
+[budget]
+usage_five_hour_percent_at_start = -1
+estimated_tokens = 0
+agent_ceiling_multiplier = 2
+deferred_file = ""
+actual_units_millions = -1
+actual_requests = -1
+actual_agents = -1
+actual_session = ""
+
+[acceptance]
+behavior = [
+  "Project mode Position|Detect is stored in the project file; a project without it opens as Detect; unknown keys survive.",
+  "Position mode shows only the oriented-rectangle and circle label tools; polygon/line/point/AI-polygon tools are hidden or disabled.",
+  "Native inference returns one instance per object: oriented box (cx,cy,w,h,angle) or circle (cx,cy,r) plus score; touching objects are not merged.",
+  "Performance and Quality options exist and are measured: Quality position error and angle error near zero on the E:\\EAI_TEST NG set; Performance faster with a documented larger error.",
+  "Detect mode behaviour for defect detection is unchanged (regression tests).",
+]
+regression = [
+  "Existing EasyLabel.SegAI.Tests and Core tests pass; old .segai models still load.",
+  "SEGAI ABI check and class-table API keep working.",
+]
+performance = [
+  "Instance inference time per image on the 2-core i7-7600U target is measured and recorded for Performance and Quality.",
+]
+evidence_required = [
+  "Native test log, managed test log, rotated-IoU and centre/angle error table on E:\\EAI_TEST (18+7 real GT, 5 oriented rectangles per image), UI smoke for the mode switch at 100% and 150% DPI en/vi.",
+]
+
+[benchmark]
+fixtures = ["E:\\EAI_TEST (read only)"]
+warmup_iterations = 0
+measured_iterations = 0
+metrics = []
+thresholds = []
+
+[stop_conditions]
+items = [
+  "The required change exceeds in_scope.",
+  "Risk rises beyond the approved plan.",
+  "A repository stop-and-ask condition is reached (new native dependency, ABI break without approved bump).",
+  "Verification fails and the fix requires unrelated files.",
+]

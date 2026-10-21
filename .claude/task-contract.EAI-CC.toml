@@ -1,0 +1,68 @@
+schema_version = 2
+agent_tree = true
+notes = "Plan: tmp/EAI-ONL-MODE/plan.md phase B. Source: tmp/EAI-COMMERCIAL/command-code-architecture.md sections 2-5. Prerequisite for Online gating."
+
+[task]
+id = "EAI-CC"
+title = "Command registry CC-0..CC-5 for EasyAI (EasyLabel.Commands)"
+goal = "Introduce the command registry (ids, descriptors, context flags, invoker, policy matrix) and wrap existing VM commands, slash commands, hotkeys and settings behaviour-neutrally."
+current_behavior = "Seven parallel command addressing systems, none shared; no registry project."
+expected_behavior = "EasyLabel.Commands exists with tests; CC-2 wraps about 40 commands; CC-3/CC-4/CC-5 route slash, hotkeys and settings through it, one commit per phase."
+in_scope = [
+  "EasyLabel/src/EasyLabel.Commands/**, EasyLabel/tests/EasyLabel.Commands.Tests/**",
+  "EasyLabel/src/EasyAI.Wpf/Commands/** and small attribute adds in view models",
+  "AgentSlashCommands, ShortcutTable/MainWindow key routing, AppSettings/SettingsAccessor in CC-3..CC-5 only"
+]
+out_of_scope = [
+  "Online mode (EAI-ONL-MODE)",
+  "MCP tool attribute migration CC-6 and later phases (separate approval)",
+  "EasyVision runtime (BeeCore, BeeInterface)",
+  "Other sessions' dirty hunks in ShortcutTable.cs, Strings*.resx, MainWindow*"
+]
+dependencies = ["UI smoke owed for CC-4 (hotkeys) per CLAUDE.md 0.2a"]
+risk = "medium"
+
+[dispatch]
+category = "architecture"
+route = "deep"
+normalized_request = "Introduce the command registry (ids, descriptors, context flags, invoker, policy matrix) and wrap existing VM commands, slash commands, hotkeys and settings behaviour-neutrally."
+selected_model = "sonnet"
+executor = "claude"
+codex_model = ""
+architect_required = true
+build_recommended = true
+build_reason = "Compiled code and tests are the only evidence for this task; needs explicit current-task user authorization."
+
+[approval]
+requested_by = "claude_dispatcher"
+activated_by = "user"
+plan_approved = true
+plan_approved_by = "user"
+approved_plan_revision = "EAI-ONL-MODE-r1-plan-v1"
+approved_at_utc = "2026-10-18"
+
+[authorization]
+granted_by = "user"
+current_task_reference = "user 2026-10-18: approved plan v1 and all three contracts; build, run_tests, commit allowed; benchmark on dev PC; no push/hardware/2-core"
+granted_at_utc = "2026-10-18"
+edit_code = true
+update_tracking = true
+build = true
+run_tests = true
+benchmark = true
+deploy = false
+hardware_test = false
+commit = true
+push = false
+
+[acceptance]
+behavior = [
+  "CC-1: unit tests for id grammar, duplicate id, policy matrix, schema validation pass.",
+  "CC-2: snapshot test of the ~40 wrapped commands; CanExecute parity with the wrapped ICommand.",
+  "CC-3..CC-5: existing AgentSlash*, shortcut and settings tests pass; legacy settings.json fixture loads."
+]
+regression = ["Existing EasyLabel tests and offline modes unchanged."]
+evidence_required = ["Build and test logs under artifacts/EAI-CC/<run>/; unrun checks reported unverified."]
+
+[stop_conditions]
+items = ["Required change exceeds in_scope.", "New NuGet/native dependency or ABI change is needed.", "Hardware or the 2-core production PC is needed without authorization."]

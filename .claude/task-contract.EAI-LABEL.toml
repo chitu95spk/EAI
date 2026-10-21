@@ -1,0 +1,76 @@
+schema_version = 2
+agent_tree = true
+
+[task]
+id = "EAI-LABEL"
+title = "Bootstrap labelling: small model from seed images to cut Agent Prompt time and cost"
+goal = "Label all of E:\\EAI_TEST (84 PNG) 4x faster and 50% cheaper than today's Agent Prompt batch by training a small Segment AI model from agent-labelled seed images and using it for the rest."
+current_behavior = "Agent Prompt batch is sequential, one CLI process per image, only a text experience block is reused; no model is trained from earlier results."
+expected_behavior = "Seed k images with the agent, user confirms, auto-train small model, activate, auto-label the rest, send only uncertain or failed images to the agent, accept sure results with an undo manifest."
+in_scope = ["EasyLabel/**", "tools/easyai-train/**", "tmp/EAI-LABEL/**", "artifacts/EAI-LABEL/**"]
+out_of_scope = ["EasyVision main app", "E:\\EAI_TEST (read-only, work on a copy)", "push, deploy, hardware", "product defaults of agent caps and model"]
+dependencies = ["EAI-ALL", "EAI-OKNG"]
+risk = "medium"
+
+[dispatch]
+category = "performance"
+route = "deep"
+normalized_request = "Real test labelling E:\\EAI_TEST with Agent Prompt, then optimise: after the first labelled image build a small model and reuse it for later images; target 4x speed and 50% lower cost; delegate to the expert team."
+selected_model = "sonnet"
+architect_required = true
+build_recommended = true
+build_reason = "Slices S2-S4 change managed EasyLabel code and need isolated build plus unit tests; S0 baseline needs real agent runs."
+
+[approval]
+requested_by = "claude_dispatcher"
+activated_by = "user"
+plan_approved = true
+plan_approved_by = "user"
+approved_plan_revision = "EAI-LABEL-plan-v1"
+approved_at_utc = "2026-10-12T00:00:00Z"
+
+[authorization]
+granted_by = "user"
+current_task_reference = "User 2026-10-12: scope EasyLabel/EasyAI only, build + real agent runs + commit allowed; plan v1 approved with DUYET"
+granted_at_utc = "2026-10-12T00:00:00Z"
+edit_code = true
+update_tracking = true
+build = true
+run_tests = true
+benchmark = true
+deploy = false
+hardware_test = false
+commit = true
+push = false
+
+[budget]
+usage_five_hour_percent_at_start = -1
+estimated_tokens = 0
+agent_ceiling_multiplier = 2
+deferred_file = ""
+actual_units_millions = -1
+actual_requests = -1
+actual_agents = -1
+actual_session = ""
+
+[acceptance]
+behavior = ["Bootstrap mode labels remaining images with the trained model and routes only Doubtful/Unsure/zero-detect/error images to the agent", "Seed shapes confirmed by the user; accepted model shapes recorded in an undo manifest"]
+regression = ["Existing AgentBatchTests and SegAI tests unchanged and passing", "Product defaults (50 images, 1 USD, sonnet, 14 turns) unchanged"]
+performance = ["Wall time <= baseline/4 and Claude USD <= baseline/2 on all 84 images, two runs, both meeting the target", "Quality on the user's ~10 ground-truth images: IoU>=0.5, recall>=0.85, precision>=0.70, no false NG on GT-OK, recall >= baseline-0.05"]
+evidence_required = ["artifacts/EAI-LABEL/s0-baseline", "artifacts/EAI-LABEL/s1-replay", "artifacts/EAI-LABEL/s4-runs"]
+
+[benchmark]
+fixtures = ["E:\\EAI_TEST (copy in tmp/EAI-LABEL/<run>/project)"]
+warmup_iterations = 0
+measured_iterations = 2
+metrics = ["wall_seconds", "claude_usd", "fallback_fraction", "train_seconds", "inference_seconds_per_image", "recall", "precision"]
+thresholds = ["4x speed", "0.5x cost"]
+
+[stop_conditions]
+items = [
+  "The required change exceeds in_scope.",
+  "Risk rises to high and the approved plan does not cover it.",
+  "A repository stop-and-ask condition is reached.",
+  "Verification fails and the fix requires unrelated files.",
+  "Real agent spend would exceed the budget the user states.",
+]
