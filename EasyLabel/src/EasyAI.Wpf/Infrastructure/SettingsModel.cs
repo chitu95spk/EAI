@@ -110,11 +110,26 @@ public static class AiModelCatalog
     /// <summary>A YOLO detect model trained in the Train step and installed by "Use this model" (folder models\custom-detect).</summary>
     public const string CustomDetectId = "custom-detect";
 
+    /// <summary>SAM3 box masks re-cut by SAM2 (hybrid). Same folder as sam2; found only when models\sam3 also exists.</summary>
+    public const string Sam3Id = "sam3";
+
     public static IReadOnlyList<AiModelStatus> Detect(string modelsRoot)
     {
+        AiModelStatus sam2 = Probe(modelsRoot, Sam2Id, "Segment Anything 2");
+        bool sam3 = false;
+        try
+        {
+            sam3 = sam2.Found && EasyLabel.Ai.Onnx.Sam3Backend.Exists(System.IO.Path.Combine(modelsRoot, "sam3"));
+        }
+        catch (Exception)
+        {
+            sam3 = false;
+        }
+
         return new[]
         {
-            Probe(modelsRoot, Sam2Id, "Segment Anything 2"),
+            sam2,
+            new AiModelStatus(Sam3Id, "SAM3 + SAM2", sam3, sam2.Location),
             Probe(modelsRoot, YoloWorldId, "YOLO-World"),
             Probe(modelsRoot, CustomDetectId, "Custom YOLO"),
         };

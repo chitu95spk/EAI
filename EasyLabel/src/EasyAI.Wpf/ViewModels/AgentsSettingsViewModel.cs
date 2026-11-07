@@ -711,7 +711,6 @@ public sealed class AgentsSettingsViewModel : ObservableObject
         Claude.SetInUse(main.AgentBackend == AgentTool.Claude);
         Codex.SetInUse(main.AgentBackend == AgentTool.Codex);
         Memory = new AgentMemoryViewModel(main);
-        Consent = new AgentConsentViewModel(main);
         RunSkills = new RunSkillsViewModel(main, env);
         McpServers = new McpServersViewModel(main);
         Vocabulary = new VocabularyViewModel(main);
@@ -779,8 +778,6 @@ public sealed class AgentsSettingsViewModel : ObservableObject
 
     /// <summary>The project memory block under the two agents.</summary>
     public AgentMemoryViewModel Memory { get; }
-
-    public AgentConsentViewModel Consent { get; }
 
     public AgentSectionViewModel Claude { get; }
 
@@ -922,43 +919,6 @@ public sealed partial class VocabularyViewModel : ObservableObject
 }
 
 /// <summary>The agent memory of the open project (<c>.easyai/agent-memory.md</c>): what the agent has noted, with Edit and Clear.</summary>
-/// <summary>S9: shows the open project's permission to send images and prompts to the agent, and withdraws it.</summary>
-public sealed partial class AgentConsentViewModel : ObservableObject
-{
-    private readonly MainViewModel _main;
-
-    public AgentConsentViewModel(MainViewModel main)
-    {
-        _main = main;
-    }
-
-    /// <summary>"Not allowed yet" or "Allowed for this project since <date>".</summary>
-    public string StatusText
-    {
-        get
-        {
-            var consent = _main.Project?.Manifest?.AgentConsent;
-            if (consent == null || !consent.Granted)
-            {
-                return Strings.AgentConsentNone;
-            }
-
-            return string.Format(Strings.AgentConsentGrantedFormat, consent.Utc.ToLocalTime().ToString("d", System.Globalization.CultureInfo.CurrentCulture));
-        }
-    }
-
-    [RelayCommand(CanExecute = nameof(CanRevoke))]
-    private async Task RevokeAsync()
-    {
-        await AgentConsentGate.RevokeAsync(_main.Project?.Manifest).ConfigureAwait(true);
-        OnPropertyChanged(nameof(StatusText));
-        RevokeCommand.NotifyCanExecuteChanged();
-        _main.ShowDataNotice(Strings.AgentConsentTitle, Strings.AgentConsentRevoked, InfoBarSeverity.Informational);
-    }
-
-    private bool CanRevoke() => _main.Project?.Manifest?.AgentConsent != null;
-}
-
 public sealed partial class AgentMemoryViewModel : ObservableObject
 {
     private readonly MainViewModel _main;

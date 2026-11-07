@@ -119,6 +119,7 @@
   <data name="SourceAgentPrompt" xml:space="preserve"><value>Lệnh cho Agent</value></data>
   <data name="AiPickTip" xml:space="preserve"><value>Mô hình AI dùng cho nguồn Mô hình AI</value></data>
   <data name="AiPickSam2" xml:space="preserve"><value>SAM2</value></data>
+  <data name="AiPickSam3" xml:space="preserve"><value>SAM3</value></data>
   <data name="AiPickYoloWorld" xml:space="preserve"><value>YOLO-World</value></data>
   <data name="AiPickCustomDetect" xml:space="preserve"><value>YOLO tùy chỉnh</value></data>
   <data name="AgentPromptTip" xml:space="preserve"><value>Việc agent cần gán nhãn</value></data>
@@ -193,6 +194,8 @@
   <data name="StepTrain" xml:space="preserve"><value>Huấn luyện</value></data>
   <data name="TrainOptionsHeader" xml:space="preserve"><value>Tùy chọn</value></data>
   <data name="TrainEpochs" xml:space="preserve"><value>Số epoch</value></data>
+  <data name="TrainEarlyStop" xml:space="preserve"><value>Ngưỡng dừng sớm (Early Stop, epoch)</value></data>
+  <data name="TrainEarlyStopTip" xml:space="preserve"><value>Dừng khi loss kiểm định không cải thiện sau số epoch này (5–200). 0 = tự động.</value></data>
   <data name="AutoLabelNeedInstanceHead" xml:space="preserve"><value>Model Vị trí này chưa có đầu nhận diện thể hiện. Hãy huấn luyện lại model Vị trí để có hộp xoay và hình tròn.</value></data>
   <data name="TrainInstanceQuality" xml:space="preserve"><value>Độ chính xác</value></data>
   <data name="InstanceQualityPerformance" xml:space="preserve"><value>Tốc độ</value></data>
@@ -362,6 +365,10 @@
   <data name="ConvertShapeTitle" xml:space="preserve"><value>Chuyển đổi hình dạng</value></data>
   <data name="ConvertShapeConfirm" xml:space="preserve"><value>Chuyển đổi</value></data>
   <data name="ConvertShapeSkippedFormat" xml:space="preserve"><value>Đã bỏ qua {0} hình dạng không thể chuyển đổi.</value></data>
+  <data name="MiConvertAllShapes" xml:space="preserve"><value>Chuyển đổi tất cả hình dạng (mọi ảnh)</value></data>
+  <data name="ConvertAllConfirmFormat" xml:space="preserve"><value>Chuyển {0} hình dạng trong {1} tệp ảnh sang {2}? Thao tác ghi đè tệp nhãn và không thể hoàn tác.</value></data>
+  <data name="ConvertAllNothing" xml:space="preserve"><value>Không có hình dạng nào trong dự án có thể chuyển sang loại này.</value></data>
+  <data name="ConvertAllDoneFormat" xml:space="preserve"><value>Đã chuyển {0} hình dạng trong {1} tệp ảnh.</value></data>
   <data name="ShapeConvertLossyHoles" xml:space="preserve"><value>Các lỗ của hình dạng sẽ bị mất.</value></data>
   <data name="ShapeConvertLossyLine" xml:space="preserve"><value>Đường thẳng hoặc đường gấp khúc sẽ được chuyển thành hình khép kín từ các điểm của nó.</value></data>
   <data name="ShapeConvertLossyPoint" xml:space="preserve"><value>Chuyển thành điểm chỉ giữ lại tâm của hình dạng.</value></data>
@@ -557,6 +564,49 @@
   <data name="MiImportDatasetDots" xml:space="preserve"><value>Nhập dataset...</value></data>
   <data name="MiAutoLabelDots" xml:space="preserve"><value>Gán nhãn tự động...</value></data>
   <data name="MiTrainDots" xml:space="preserve"><value>Huấn luyện...</value></data>
+  <data name="MiSelfLearnDots" xml:space="preserve"><value>Tự học...</value></data>
+  <data name="SlTitle" xml:space="preserve"><value>Tự học</value></data>
+  <data name="SlTabMonitor" xml:space="preserve"><value>Vòng tự học</value></data>
+  <data name="SlTabDetect" xml:space="preserve"><value>Phát hiện (OBB)</value></data>
+  <data name="SlRunFolder" xml:space="preserve"><value>Thư mục lần chạy (thư mục run-... của vòng tự học)</value></data>
+  <data name="SlRunFolderTitle" xml:space="preserve"><value>Chọn thư mục lần chạy tự học</value></data>
+  <data name="SlStateFormat" xml:space="preserve"><value>Trạng thái: {0}</value></data>
+  <data name="SlStateNone" xml:space="preserve"><value>chưa chọn lần chạy</value></data>
+  <data name="SlStateRunning" xml:space="preserve"><value>đang train</value></data>
+  <data name="SlStateIdle" xml:space="preserve"><value>đã dừng</value></data>
+  <data name="SlStateFinished" xml:space="preserve"><value>đã xong</value></data>
+  <data name="SlStateFailed" xml:space="preserve"><value>dừng mà không có báo cáo (xem log)</value></data>
+  <data name="SlStateStopping" xml:space="preserve"><value>đã yêu cầu dừng, đang kết thúc vòng hiện tại</value></data>
+  <data name="SlStop" xml:space="preserve"><value>Dừng</value></data>
+  <data name="SlRefresh" xml:space="preserve"><value>Làm mới</value></data>
+  <data name="SlColRound" xml:space="preserve"><value>Vòng</value></data>
+  <data name="SlColModel" xml:space="preserve"><value>Model</value></data>
+  <data name="SlColSynth" xml:space="preserve"><value>Ảnh sinh</value></data>
+  <data name="SlColEpochs" xml:space="preserve"><value>Epoch</value></data>
+  <data name="SlColMap50" xml:space="preserve"><value>mAP50</value></data>
+  <data name="SlColRecall" xml:space="preserve"><value>Recall</value></data>
+  <data name="SlColPrecision" xml:space="preserve"><value>Precision</value></data>
+  <data name="SlTargetFormat" xml:space="preserve"><value>Mục tiêu: mAP50 &gt;= {0}, recall &gt;= {1}</value></data>
+  <data name="SlBestFormat" xml:space="preserve"><value>Tốt nhất hiện tại: vòng {0}, mAP50 {1}, recall {2}</value></data>
+  <data name="SlNoReport" xml:space="preserve"><value>Chưa có báo cáo: vòng đầu còn đang train.</value></data>
+  <data name="SlLogHeader" xml:space="preserve"><value>Log (các dòng cuối)</value></data>
+  <data name="SlWeights" xml:space="preserve"><value>Trọng số (best.pt)</value></data>
+  <data name="SlImages" xml:space="preserve"><value>Thư mục ảnh test</value></data>
+  <data name="SlImagesTitle" xml:space="preserve"><value>Chọn thư mục ảnh test</value></data>
+  <data name="SlConf" xml:space="preserve"><value>Ngưỡng tin cậy</value></data>
+  <data name="SlDetect" xml:space="preserve"><value>Phát hiện</value></data>
+  <data name="SlColImage" xml:space="preserve"><value>Ảnh</value></data>
+  <data name="SlColCount" xml:space="preserve"><value>Phát hiện</value></data>
+  <data name="SlColGt" xml:space="preserve"><value>Đã gán nhãn</value></data>
+  <data name="SlColMs" xml:space="preserve"><value>ms</value></data>
+  <data name="SlDetectProgressFormat" xml:space="preserve"><value>{0} / {1} ảnh</value></data>
+  <data name="SlDetectSummaryFormat" xml:space="preserve"><value>{0} ảnh, phát hiện {1} vật, trung bình {2} ms mỗi ảnh.</value></data>
+  <data name="SlDetectGtFormat" xml:space="preserve"><value> Số vật đã gán nhãn: {0}; số ảnh đếm đúng: {1}.</value></data>
+  <data name="SlNeedWeights" xml:space="preserve"><value>Chọn thư mục lần chạy có best.pt hoặc nhập đường dẫn trọng số.</value></data>
+  <data name="SlNeedImages" xml:space="preserve"><value>Chọn thư mục ảnh test đã có.</value></data>
+  <data name="SlNoScript" xml:space="preserve"><value>Không tìm thấy detect_obb.py cạnh app (tools\autoloop). Đặt biến EASYAI_DETECT_SCRIPT.</value></data>
+  <data name="SlDetectFailedFormat" xml:space="preserve"><value>Phát hiện lỗi: {0}</value></data>
+  <data name="SlStopRequestedLog" xml:space="preserve"><value>Đã yêu cầu dừng.</value></data>
   <data name="PnlNoLabel" xml:space="preserve"><value>(không có nhãn)</value></data>
   <data name="PnlGroupVisibleTip" xml:space="preserve"><value>Hiện hoặc ẩn mọi hình dạng của nhãn này</value></data>
   <data name="SetShapeFlagsLater" xml:space="preserve"><value>Chưa thể chỉnh cờ hình dạng (chưa có trình chỉnh trong hộp thoại Nhãn hoặc Danh sách Hình dạng)</value></data>

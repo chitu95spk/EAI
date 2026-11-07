@@ -175,6 +175,19 @@
                       ToolTip="{x:Static res:Strings.TrainEpochs}"
                       AutomationProperties.AutomationId="EpochsBox"
                       AutomationProperties.Name="{x:Static res:Strings.TrainEpochs}" />
+        <ui:TextBlock Margin="0,0,0,2" Text="{x:Static res:Strings.TrainEarlyStop}" />
+        <ui:NumberBox Margin="0,0,0,8"
+                      Minimum="0"
+                      Maximum="200"
+                      SmallChange="5"
+                      LargeChange="20"
+                      MaxDecimalPlaces="0"
+                      SpinButtonPlacementMode="Inline"
+                      Value="{Binding Train.EarlyStopValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      IsEnabled="{Binding Train.IsIdle}"
+                      ToolTip="{x:Static res:Strings.TrainEarlyStopTip}"
+                      AutomationProperties.AutomationId="EarlyStopBox"
+                      AutomationProperties.Name="{x:Static res:Strings.TrainEarlyStop}" />
         <ui:TextBlock Margin="0,0,0,2" Text="{x:Static res:Strings.TrainInputSize}" />
         <ComboBox Margin="0,0,0,12"
                   HorizontalAlignment="Stretch"

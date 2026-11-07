@@ -74,6 +74,33 @@ public class RealModelTests
         Assert.InRange(areaPoint / expected, 0.85, 1.15);
     }
 
+    [Fact]
+    public async Task Sam3BoxOnAWholeScrewSegmentsHeadAndShaft()
+    {
+        string sam3 = Path.Combine(ModelsRoot, "sam3");
+        string image = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "EasyAI Projects", "Counter Day dien.images", "Cam_20261019_160350_387.bmp");
+        if (!Sam3Backend.Exists(sam3) || !File.Exists(image))
+        {
+            _out.WriteLine("SKIPPED (nothing proven): SAM3 files or sample image missing");
+            return;
+        }
+
+        using var mat = OpenCvSharp.Cv2.ImRead(image, OpenCvSharp.ImreadModes.Color);
+        mat.GetArray(out OpenCvSharp.Vec3b[] px);
+        byte[] bgr = new byte[px.Length * 3];
+        for (int i = 0; i < px.Length; i++) { bgr[i * 3] = px[i].Item0; bgr[i * 3 + 1] = px[i].Item1; bgr[i * 3 + 2] = px[i].Item2; }
+        var img = new AiImage(bgr, mat.Width, mat.Height, "screws");
+        using Sam3Backend backend = Sam3Backend.Load(sam3);
+        var sw = System.Diagnostics.Stopwatch.StartNew();
+        // Box of the whole isolated screw (about 70 x 212 px in the 2448x2048 image).
+        IReadOnlyList<AiProposal> r = await backend.RunAsync(img, new AiPrompt(box: new AiBox(887, 966, 973, 1178)), CancellationToken.None);
+        _out.WriteLine($"provider={backend.Provider} fallback={backend.FallbackReason} first={sw.ElapsedMilliseconds} ms");
+        Assert.NotEmpty(r);
+        _out.WriteLine($"score={r[0].Score:F2} bounds={r[0].Box}");
+        Assert.True(r[0].Box.Height > 190, "mask must cover the shaft, not only the head");
+        Assert.True(r[0].Score > 0.8f);
+    }
+
     /// <summary>Optional: set EAI_TEST_IMAGE to a photo; reports SAM2 centre-point and YOLO-World results for it (no pass/fail on content).</summary>
     [Fact]
     public async Task RealPhotoReport()

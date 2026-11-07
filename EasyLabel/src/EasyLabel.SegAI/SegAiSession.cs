@@ -1525,7 +1525,9 @@ public sealed partial class SegAiSession : IDisposable
             List<LabelShape>? shapes = state.Document != null ? SegShapes(state.Document) : null;
             if (_instanceHead && shapes != null)
             {
-                annotations.AddRange(SegLabelMeConverter.ToCircleRegions(shapes, _map));
+                // Discs go first: Rasterize paints in list order (later wins), so boxes drawn on a disc (e.g. Dinh inside a Chi_OK/T_Chi pad)
+                // must come after it, otherwise the disc erases the box and the class ends with no training pixel.
+                annotations.InsertRange(0, SegLabelMeConverter.ToCircleRegions(shapes, _map));
                 GetImageSize(rel, ImagePathOf(rel), out int imageW, out int imageH);
                 instances = SegLabelMeConverter.ToInstances(shapes, _map, false, imageW, imageH);
             }

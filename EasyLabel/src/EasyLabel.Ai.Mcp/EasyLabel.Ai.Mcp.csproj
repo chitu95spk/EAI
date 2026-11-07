@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EasyLabel.Ai.Onnx\EasyLabel.Ai.Onnx.csproj" />
     <ProjectReference Include="..\EasyLabel.Core\EasyLabel.Core.csproj" />
+    <ProjectReference Include="..\EasyLabel.LabelHarness\EasyLabel.LabelHarness.csproj" />
   </ItemGroup>
 
   <ItemGroup>

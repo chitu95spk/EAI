@@ -21,6 +21,10 @@ public partial class App : Application
     {
         base.OnStartup(e);
 
+        // Opt-in for unattended capture: a window on a private (non-input) desktop gets no GPU surface, so PrintWindow/UIA captures come out blank.
+        if (Environment.GetEnvironmentVariable("EASYAI_SOFTWARE_RENDER") == "1")
+            System.Windows.Media.RenderOptions.ProcessRenderMode = System.Windows.Interop.RenderMode.SoftwareOnly;
+
         DispatcherUnhandledException -= OnDispatcherUnhandledException;
         DispatcherUnhandledException += OnDispatcherUnhandledException;
 

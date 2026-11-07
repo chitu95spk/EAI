@@ -1,0 +1,30 @@
+NHAC NEN VIDEO "EasyAI Auto loop voi Agent va SAM3"
+
+Nguon: nhac goc, khong loi, tu sinh bang script
+  artifacts\EAI-AUTOLOOP-VIDEO\music\gen_music.py  (Python, numpy + scipy)
+File:  artifacts\EAI-AUTOLOOP-VIDEO\music\bgm_105bpm.wav (48 kHz, stereo, 16-bit)
+       artifacts\EAI-AUTOLOOP-VIDEO\music\bgm_105bpm.mp3 (192 kbps, tu WAV)
+
+Ban quyen / giay phep:
+- Toan bo am thanh duoc tong hop tu song sine, nhieu va bo loc trong script.
+  Khong dung mau (sample), loop, MIDI hay ban nhac ben ngoai; khong tham chieu
+  mot ban nhac co ban quyen cu the.
+- Quyen su dung tu do cho du an EasyAI (video demo, tai lieu, quang ba), khong
+  can ghi nguon. Co the chay lai script de tao lai cung ket qua (seed co dinh).
+
+Thong so:
+- BPM 105, nhip 4/4, 1 o nhip = 2,2857 s. Tong 65 o nhip = 148,57 s (2:28,57).
+- Giong A thu, hop am Am - F - C - G lap moi o nhip.
+- Chuan hoa ~ -16 LUFS tich hop (do bang ffmpeg loudnorm: WAV -16,00 LUFS,
+  MP3 -16,27 LUFS), true peak khoang -2,8 dBTP. Fade in 1,6 s, fade out 3 s.
+
+O nhip moi canh (khop SCRIPT_Video_AutoLoop_Agent_SAM3.md; diem cat trung phach 1):
+  Canh   O nhip   Bat dau (s)   Ket thuc (s)   Noi dung nhac
+  1        4        0,00          9,14          pad nhe + keys thua
+  2        4        9,14         18,29          pad + keys 4 phach/o
+  3       13       18,29         48,00          them bass, kick, hi-hat nhe
+  4       13       48,00         77,71          bass 8, hi-hat 8, arpeggio vao tu o 5
+  5        9       77,71         98,29          arpeggio + hi-hat day, clap tu o 5
+  6       13       98,29        128,00          tiet tau 16, tang dan, giai dieu chuong o 4 o cuoi
+  7        9      128,00        148,57          cao trao 6 o, ha 2 o, hop am ket o nhip cuoi
+Neu doi do dai canh, sua SCENES trong gen_music.py roi chay lai.

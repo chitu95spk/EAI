@@ -576,12 +576,41 @@ public sealed partial class MainViewModel : ObservableObject
 
             ApplySegAi(await segAiTask);
             ApplyMvs(await mvsTask);
+            StartSelfLearnSignalWatcher();
         }
         catch (Exception ex)
         {
             _store.Log("Initialize failed: " + ex);
             ShowNotice(Strings.UnhandledErrorTitle, ex.Message, InfoBarSeverity.Error);
         }
+    }
+
+    /// <summary>Hidden test flag <c>--selflearn-signal</c>: poll for a signal file and open the Self-learn window.</summary>
+    private void StartSelfLearnSignalWatcher()
+    {
+        string? signal = _options.SelfLearnSignal;
+        if (string.IsNullOrWhiteSpace(signal))
+        {
+            return;
+        }
+
+        System.Windows.Threading.DispatcherTimer timer = new() { Interval = TimeSpan.FromSeconds(1) };
+        timer.Tick += (_, _) =>
+        {
+            try
+            {
+                if (File.Exists(signal))
+                {
+                    File.Delete(signal);
+                    ShowSelfLearn();
+                }
+            }
+            catch (Exception ex)
+            {
+                _store.Log("selflearn-signal failed: " + ex.Message);
+            }
+        };
+        timer.Start();
     }
 
     public void ReportUnhandled(Exception exception)
@@ -2002,6 +2031,66 @@ public sealed partial class MainViewModel : ObservableObject
         }
     }
 
+    private bool CanConvertAllShapes(string? target) => !string.IsNullOrEmpty(target) && _segSession != null && !IsBusy
+        && !_segSession.IsTrainingActive
+        && (Canvas.Kind != ProjectKind.Position || target == "oriented_rectangle" || target == "circle");
+
+    /// <summary>Edit &gt; Convert All Shapes: converts every shape of every image of the project to <paramref name="target"/> after one confirmation.</summary>
+    [RelayCommand(CanExecute = nameof(CanConvertAllShapes))]
+    private async Task ConvertAllShapesAsync(string? target)
+    {
+        SegAiSession? session = _segSession;
+        IDialogService? dialogs = Dialogs;
+        if (session == null || dialogs == null || string.IsNullOrEmpty(target) || !ConfirmLeaveImage(false))
+        {
+            return;
+        }
+
+        await Canvas.FlushAsync();
+        IsBusy = true;
+        Canvas.InputBlocked = true;
+        try
+        {
+            EasyLabel.Core.ProjectPaths paths = session.Paths;
+            var service = new EasyLabel.Core.Batch.ConvertAllShapesService();
+            EasyLabel.Core.Batch.ConvertAllShapesResult preview = await Task.Run(() => service.Preview(paths, target));
+            if (preview.ShapesConverted == 0)
+            {
+                ShowNotice(Strings.ConvertShapeTitle, Strings.ConvertAllNothing, InfoBarSeverity.Informational);
+                return;
+            }
+
+            string targetName = target == "polygon" ? Strings.ConvertTargetPolygon
+                : target == "rectangle" ? Strings.ConvertTargetRectangle
+                : target == "oriented_rectangle" ? Strings.ConvertTargetRotated
+                : target == "circle" ? Strings.ConvertTargetCircle
+                : Strings.ConvertTargetPoint;
+            string question = string.Format(Strings.ConvertAllConfirmFormat, preview.ShapesConverted, preview.FilesChanged, targetName);
+            if (!dialogs.Confirm(Strings.ConvertShapeTitle, question, Strings.ConvertShapeConfirm))
+            {
+                return;
+            }
+
+            EasyLabel.Core.Batch.ConvertAllShapesResult done = await Task.Run(() => service.Apply(paths, target));
+            if (ReferenceEquals(session, _segSession))
+            {
+                await ReloadImagesAsync(session);
+            }
+
+            ShowNotice(Strings.ConvertShapeTitle, string.Format(Strings.ConvertAllDoneFormat, done.ShapesConverted, done.FilesChanged), InfoBarSeverity.Success);
+        }
+        catch (Exception ex)
+        {
+            _store.Log("Convert all shapes failed: " + ex);
+            ShowNotice(Strings.DataErrorTitle, ex.Message, InfoBarSeverity.Error);
+        }
+        finally
+        {
+            Canvas.InputBlocked = false;
+            IsBusy = false;
+        }
+    }
+
     /// <summary>Import works without an open project (the toolbar button asks for the project folder first); not while training or busy.</summary>
     private bool CanImportLabelMe() => !IsBusy && (_segSession == null || !_segSession.IsTrainingActive);
 
@@ -2028,6 +2117,13 @@ public sealed partial class MainViewModel : ObservableObject
     private void ShowConvertYolo()
     {
         Dialogs?.ShowConvertYolo(_segSession?.ProjectRoot, _segSession?.Paths);
+    }
+
+    /// <summary>Train &gt; Self-learn: monitor the auto-loop run and detect on a test folder. Works without a project.</summary>
+    [RelayCommand]
+    private void ShowSelfLearn()
+    {
+        Dialogs?.ShowSelfLearn(_segSession?.ProjectRoot);
     }
 
     [RelayCommand]
@@ -2170,6 +2266,24 @@ public sealed partial class MainViewModel : ObservableObject
                 catch (Exception ex)
                 {
                     error = ex.Message;
+                }
+
+                // Preload the active model now (worker thread) instead of on first use/selection. A failure is not fatal: the model
+                // simply loads later as before (shortcut: blocks project open for the load time; move to a background task if it gets slow).
+                if (created != null)
+                {
+                    try
+                    {
+                        string? active = created.ActiveModel;
+                        if (active != null)
+                        {
+                            created.SetActiveModel(active);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _store.Log("Preload active model failed: " + folder + " " + ex.Message);
+                    }
                 }
 
                 return (opened, openedNamed, list, created, error, ReadSamples(created));

@@ -237,6 +237,18 @@ namespace EasyLabel.Core.Convert
             double top = Math.Min(shape.Points[0][1], shape.Points[1][1]);
             double right = Math.Max(shape.Points[0][0], shape.Points[1][0]);
             double bottom = Math.Max(shape.Points[0][1], shape.Points[1][1]);
+            if (shape.ShapeType == "circle")
+            {
+                // Points are centre and edge point: use the circumscribed square.
+                double dx = shape.Points[1][0] - shape.Points[0][0];
+                double dy = shape.Points[1][1] - shape.Points[0][1];
+                double radius = Math.Sqrt((dx * dx) + (dy * dy));
+                left = shape.Points[0][0] - radius;
+                right = shape.Points[0][0] + radius;
+                top = shape.Points[0][1] - radius;
+                bottom = shape.Points[0][1] + radius;
+            }
+
             return new List<double[]>
             {
                 new[] { left, top },

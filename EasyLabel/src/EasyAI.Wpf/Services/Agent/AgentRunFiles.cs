@@ -289,6 +289,11 @@ public static class AgentRunFiles
             text.Append("\n").Append(i).Append(": ").Append(Path.GetFileName(references[i])).Append(signature);
         }
 
+        if (references.Any(r => string.Equals(Path.GetExtension(r), ".json", StringComparison.OrdinalIgnoreCase)))
+        {
+            text.Append("\nA labelled picture comes with its same-name .json: call propagate_labels first to copy those labels onto this image, then fix only the doubtful or missed objects. For more training images use REAL frames: capture_frames (live screen or a video file), then propagate_to_frames to label them; call synthesize_samples (synthetic backgrounds) only if the user explicitly asks for synthetic images. Call auto_train_loop (action start) only if the user asks to train a model automatically; then poll it with action status and report the metrics.");
+        }
+
         return text.ToString();
     }
 

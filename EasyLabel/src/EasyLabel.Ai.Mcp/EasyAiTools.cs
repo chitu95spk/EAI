@@ -1,6 +1,7 @@
 using System.Globalization;
 using EasyLabel.Core.Editing;
 using EasyLabel.Core.Io;
+using EasyLabel.LabelHarness;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -54,6 +55,11 @@ public sealed class EasyAiTools : IToolSet, IDisposable
             case "propose_shapes": return ToolResults.Text(ProposeShapes(arguments));
             case "pick_candidates": return ToolResults.Text(PickCandidates(arguments));
             case "detect_points": return ToolResults.Text(DetectPoints(arguments, ct));
+            case "propagate_labels": return ToolResults.Text(Propagate(arguments));
+            case "capture_frames": return ToolResults.Text(Capture(arguments, ct));
+            case "propagate_to_frames": return ToolResults.Text(PropagateToFrames(arguments, ct));
+            case "synthesize_samples": return ToolResults.Text(Synthesize(arguments));
+            case "auto_train_loop": return ToolResults.Text(AutoTrain(arguments));
             case "memory_read": return ToolResults.Text(MemoryRead());
             case "memory_add": return ToolResults.Text(MemoryAdd(arguments));
             case "grid_crop":
@@ -246,6 +252,189 @@ public sealed class EasyAiTools : IToolSet, IDisposable
 
         IReadOnlyList<(string? Id, string? Error)> segmented = _sam2.SegmentMany(objects, label, ct);
         return ProposeSegmented(segmented, label, shapeType);
+    }
+
+    // The user's confirmed shapes on an attached reference image (+ its labelme .json) are matched onto this image; strong matches are proposed, weak ones only reported.
+    private string Propagate(JObject args)
+    {
+        double? requested = OptionalNumber(args, "referenceIndex");
+        int index = requested.HasValue ? (int)Math.Round(requested.Value) : 0;
+        if (index < 0 || index >= _request.References.Count) throw new ArgumentException("referenceIndex must be 0.." + (_request.References.Count - 1) + " (attach the labelled reference image and its .json).");
+        RunReference reference = _request.References[index];
+        if (!IsReferenceImage(reference.Path) || !File.Exists(reference.Path)) throw new ArgumentException("The reference must be an attached image file.");
+        int maxSeeds = (int)Math.Round(OptionalNumber(args, "maxSeeds") ?? PropagateLabels.DefaultSeeds);
+        if (maxSeeds < 1 || maxSeeds > PropagateLabels.MaxSeeds) throw new ArgumentException("maxSeeds must be 1.." + PropagateLabels.MaxSeeds + ".");
+        double angleStep = OptionalNumber(args, "angleStepDeg") ?? 10.0;
+        string shapeType = args["shapeType"]?.Type == JTokenType.String ? args["shapeType"]!.Value<string>()! : "oriented_rectangle";
+
+        var seeds = PropagateLabels.ReadSeeds(reference.Path, maxSeeds);
+        using OpenCvSharp.Mat refMat = OpenCvSharp.Cv2.ImRead(reference.Path, OpenCvSharp.ImreadModes.Color);
+        if (refMat.Empty()) throw new ArgumentException("The reference image cannot be decoded.");
+        PropagateLabels.Result found = PropagateLabels.Run(refMat, _image.GetMat(), seeds, angleStep, shapeType);
+
+        JObject proposed = found.Shapes.Count > 0 ? JObject.Parse(_proposals.Propose(found.Shapes, _sam2.FindPending)) : new JObject { ["accepted"] = 0, ["rejected"] = 0 };
+        return new JObject
+        {
+            ["seeds"] = found.SeedCount,
+            ["matched"] = found.Shapes.Count,
+            ["accepted"] = proposed["accepted"],
+            ["rejected"] = proposed["rejected"],
+            ["totalProposals"] = _proposals.Count,
+            ["doubtful"] = found.Doubtful,
+            ["next"] = "Strong matches are proposed. Check 'doubtful' boxes (or objects that were missed) with grid_crop/render_overlay and detect_points; do not call propose_shapes for the ones already accepted.",
+        }.ToString(Formatting.None);
+    }
+
+    // REAL training images: frames sampled from the live screen (region / window / desktop) or a video file, saved as PNG into a new real-<time> folder beside the labelled image.
+    private string Capture(JObject args, CancellationToken ct)
+    {
+        string source = args["source"]?.Type == JTokenType.String ? args["source"]!.Value<string>()! : "screen";
+        if (source != "screen" && source != "video") throw new ArgumentException("source must be 'screen' or 'video'.");
+        double interval = OptionalNumber(args, "intervalSeconds") ?? FrameSampler.DefaultIntervalSeconds;
+        int maxFrames = (int)Math.Round(OptionalNumber(args, "maxFrames") ?? FrameSampler.DefaultMaxFrames);
+        double minChange = OptionalNumber(args, "minChange") ?? FrameSampler.DefaultMinChange;
+        if (minChange < 0 || minChange > 255) throw new ArgumentException("minChange must be 0..255 (0 keeps every frame).");
+        FrameSampler.Validate(interval, maxFrames);
+
+        OpenCvSharp.Rect? region = null;
+        string? videoPath = null;
+        if (source == "video")
+        {
+            videoPath = args["videoPath"]?.Type == JTokenType.String ? args["videoPath"]!.Value<string>() : null;
+            if (string.IsNullOrWhiteSpace(videoPath) || !CaptureFrames.IsVideoFile(videoPath) || !File.Exists(videoPath)) throw new ArgumentException("videoPath must be an existing video file.");
+        }
+        else
+        {
+            FrameSampler.ScreenSchedule(interval, maxFrames); // validates the total capture time before anything is created
+            region = ResolveCaptureRegion(args);
+        }
+
+        string baseFolder = System.IO.Path.GetDirectoryName(_request.ImagePath) ?? throw new ArgumentException("The run image has no folder.");
+        string folder = CaptureFrames.NewFolder(baseFolder, DateTime.Now);
+        try
+        {
+            CaptureFrames.Result result = source == "video"
+                ? CaptureFrames.FromVideo(folder, videoPath!, interval, maxFrames, minChange, ct)
+                : CaptureFrames.FromScreen(folder, () => ScreenGrabber.Grab(region!.Value), interval, maxFrames, minChange, s => ct.WaitHandle.WaitOne(TimeSpan.FromSeconds(s)), ct);
+            if (result.Written == 0) throw new ArgumentException("No frame was captured.");
+            return new JObject
+            {
+                ["source"] = source,
+                ["folder"] = result.Folder,
+                ["written"] = result.Written,
+                ["skippedSimilar"] = result.SkippedSimilar,
+                ["region"] = region.HasValue ? new JArray(region.Value.X, region.Value.Y, region.Value.Width, region.Value.Height) : null,
+                ["next"] = "Call propagate_to_frames with the same reference to label these real frames.",
+            }.ToString(Formatting.None);
+        }
+        catch
+        {
+            if (Directory.Exists(folder) && Directory.GetFileSystemEntries(folder).Length == 0) Directory.Delete(folder);
+            throw;
+        }
+    }
+
+    // region {x,y,width,height} in desktop pixels, or windowTitle (a part of the title of a visible window), or the whole desktop.
+    private static OpenCvSharp.Rect ResolveCaptureRegion(JObject args)
+    {
+        if (args["region"] is JObject r)
+        {
+            double? x = OptionalNumber(r, "x"), y = OptionalNumber(r, "y"), w = OptionalNumber(r, "width"), h = OptionalNumber(r, "height");
+            if (!x.HasValue || !y.HasValue || !w.HasValue || !h.HasValue || w.Value < 16 || h.Value < 16) throw new ArgumentException("region needs x, y, width and height (width and height at least 16) in desktop pixels.");
+            return new OpenCvSharp.Rect((int)Math.Round(x.Value), (int)Math.Round(y.Value), (int)Math.Round(w.Value), (int)Math.Round(h.Value));
+        }
+
+        string? title = args["windowTitle"]?.Type == JTokenType.String ? args["windowTitle"]!.Value<string>() : null;
+        if (!string.IsNullOrWhiteSpace(title))
+        {
+            return ScreenGrabber.FindWindow(title) ?? throw new ArgumentException("No visible, non-minimised window has a title containing '" + title + "'.");
+        }
+
+        return ScreenGrabber.VirtualScreen();
+    }
+
+    // The attached reference's confirmed labels are copied onto every real frame of a folder (default: the newest real-* folder); a labelme .json is written per labelled frame.
+    private string PropagateToFrames(JObject args, CancellationToken ct)
+    {
+        double? requested = OptionalNumber(args, "referenceIndex");
+        int index = requested.HasValue ? (int)Math.Round(requested.Value) : 0;
+        if (index < 0 || index >= _request.References.Count) throw new ArgumentException("referenceIndex must be 0.." + (_request.References.Count - 1) + " (attach the labelled reference image and its .json).");
+        RunReference reference = _request.References[index];
+        if (!IsReferenceImage(reference.Path) || !File.Exists(reference.Path)) throw new ArgumentException("The reference must be an attached image file.");
+        int maxSeeds = (int)Math.Round(OptionalNumber(args, "maxSeeds") ?? PropagateLabels.DefaultSeeds);
+        if (maxSeeds < 1 || maxSeeds > PropagateLabels.MaxSeeds) throw new ArgumentException("maxSeeds must be 1.." + PropagateLabels.MaxSeeds + ".");
+        double angleStep = OptionalNumber(args, "angleStepDeg") ?? 10.0;
+
+        string runFolder = System.IO.Path.GetDirectoryName(System.IO.Path.GetFullPath(_request.ImagePath))!;
+        string referenceFolder = System.IO.Path.GetDirectoryName(System.IO.Path.GetFullPath(reference.Path))!;
+        string? folder = args["folder"]?.Type == JTokenType.String ? args["folder"]!.Value<string>() : null;
+        if (string.IsNullOrWhiteSpace(folder)) folder = LabelFrames.LatestRealFolder(runFolder) ?? LabelFrames.LatestRealFolder(referenceFolder);
+        if (string.IsNullOrWhiteSpace(folder)) throw new ArgumentException("There is no real-* frames folder yet: call capture_frames first, or pass folder.");
+        folder = System.IO.Path.GetFullPath(folder);
+        // Only folders inside the labelled project folders: this tool writes .json files.
+        if (!IsInside(runFolder, folder) && !IsInside(referenceFolder, folder)) throw new ArgumentException("folder must be inside the folder of the image being labelled or of the reference.");
+
+        var seeds = PropagateLabels.ReadSeeds(reference.Path, maxSeeds);
+        using OpenCvSharp.Mat refMat = OpenCvSharp.Cv2.ImRead(reference.Path, OpenCvSharp.ImreadModes.Color);
+        if (refMat.Empty()) throw new ArgumentException("The reference image cannot be decoded.");
+        LabelFrames.Result result = LabelFrames.Run(refMat, seeds, folder, angleStep, ct);
+        return new JObject
+        {
+            ["folder"] = folder,
+            ["seeds"] = seeds.Count,
+            ["labelledFrames"] = result.Labelled,
+            ["shapesWritten"] = result.ShapesWritten,
+            ["skippedAlreadyLabelled"] = result.SkippedAlreadyLabelled,
+            ["doubtfulMatches"] = result.Doubtful,
+            ["framesWithoutMatch"] = new JArray(result.NoMatch),
+            ["next"] = "Strong matches were written as labelme .json beside each frame; frames without a match have no .json. Open the folder in the app to review and fix them.",
+        }.ToString(Formatting.None);
+    }
+
+    private static bool IsInside(string parent, string child)
+    {
+        string p = System.IO.Path.TrimEndingDirectorySeparator(System.IO.Path.GetFullPath(parent)) + System.IO.Path.DirectorySeparatorChar;
+        return System.IO.Path.GetFullPath(child).StartsWith(p, StringComparison.OrdinalIgnoreCase);
+    }
+
+    // Extra training images (image + labelme .json) made from the confirmed shapes of an attached reference; written to a new folder beside it.
+    private string Synthesize(JObject args)
+    {
+        double? requested = OptionalNumber(args, "referenceIndex");
+        int index = requested.HasValue ? (int)Math.Round(requested.Value) : 0;
+        if (index < 0 || index >= _request.References.Count) throw new ArgumentException("referenceIndex must be 0.." + (_request.References.Count - 1) + " (attach the labelled reference image and its .json).");
+        RunReference reference = _request.References[index];
+        if (!IsReferenceImage(reference.Path) || !File.Exists(reference.Path)) throw new ArgumentException("The reference must be an attached image file.");
+        int maxSeeds = (int)Math.Round(OptionalNumber(args, "maxSeeds") ?? 1);
+        if (maxSeeds < 1 || maxSeeds > PropagateLabels.MaxSeeds) throw new ArgumentException("maxSeeds must be 1.." + PropagateLabels.MaxSeeds + ".");
+        int count = (int)Math.Round(OptionalNumber(args, "count") ?? SynthesizeSamples.DefaultCount);
+        int rngSeed = (int)Math.Round(OptionalNumber(args, "randomSeed") ?? 1);
+
+        var seeds = PropagateLabels.ReadSeeds(reference.Path, maxSeeds);
+        using OpenCvSharp.Mat refMat = OpenCvSharp.Cv2.ImRead(reference.Path, OpenCvSharp.ImreadModes.Color);
+        if (refMat.Empty()) throw new ArgumentException("The reference image cannot be decoded.");
+        (string folder, int written) = SynthesizeSamples.Run(refMat, reference.Path, seeds, count, rngSeed);
+        return new JObject { ["seeds"] = seeds.Count, ["written"] = written, ["folder"] = folder }.ToString(Formatting.None);
+    }
+
+    // Long-running auto loop (synthetic data -> train -> eval until target) on the attached labelled reference; runs outside this process.
+    private string AutoTrain(JObject args)
+    {
+        string action = args["action"]?.Type == JTokenType.String ? args["action"]!.Value<string>()! : "status";
+        int index = (int)Math.Round(OptionalNumber(args, "referenceIndex") ?? 0);
+        if (index < 0 || index >= _request.References.Count) throw new ArgumentException("referenceIndex must be 0.." + (_request.References.Count - 1) + " (attach the labelled reference image and its .json).");
+        RunReference reference = _request.References[index];
+        if (!IsReferenceImage(reference.Path) || !File.Exists(reference.Path)) throw new ArgumentException("The reference must be an attached image file.");
+        if (action == "start" && PropagateLabels.ReadSeeds(reference.Path, 1).Count == 0) throw new ArgumentException("The reference has no confirmed labels (.json) to train from.");
+        var options = new AutoLoopOptions(
+            Model: args["model"]?.Type == JTokenType.String ? args["model"]!.Value<string>() : null,
+            StartRung: (int)Math.Round(OptionalNumber(args, "startRung") ?? 0),
+            Cycles: (int)Math.Round(OptionalNumber(args, "cycles") ?? 1),
+            MaxRoundsPerCycle: (int)Math.Round(OptionalNumber(args, "maxRoundsPerCycle") ?? 4),
+            TargetMap50: OptionalNumber(args, "targetMap50") ?? 0.95,
+            TargetRecall: OptionalNumber(args, "targetRecall") ?? 0.98,
+            TargetStep: OptionalNumber(args, "targetStep") ?? 0.0);
+        return AutoLoopRunner.Call(reference.Path, action, options);
     }
 
     // One call for numbered outlines the app made: each object is a list of candidate ids (head + shaft = one object), joined into one outline.
@@ -472,6 +661,89 @@ public sealed class EasyAiTools : IToolSet, IDisposable
                 "scale": { "type": "number", "description": "Factor from your picture to the original image (original = picture x scale). Give it when x, y and box were read from a downscaled preview; default 1 = original pixels." }
               },
               "required": ["objects"]
+            }
+          },
+          {
+            "name": "propagate_labels",
+            "description": "Copies the user's confirmed labels from an attached REFERENCE image (its labelme .json must be attached next to it) onto THIS image by matching each reference shape (any rotation, scale 0.9-1.1). Strong matches are proposed directly; weak ones come back under 'doubtful' (box + score) for you to check. Use it first when the user labelled a sample image and wants the rest done; then fix only the doubtful or missed objects. Takes a few seconds to a minute.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "referenceIndex": { "type": "integer", "minimum": 0, "description": "Index of the attached reference image (default 0)." },
+                "maxSeeds": { "type": "integer", "minimum": 1, "maximum": 10, "description": "How many of the reference's shapes are used as examples (default 3; more = slower, finds more variants)." },
+                "angleStepDeg": { "type": "number", "description": "Rotation search step in degrees, 5 to 90 (default 10); 0 = no rotation search." },
+                "shapeType": { "type": "string", "enum": ["oriented_rectangle", "rectangle", "polygon"], "description": "Shape type to propose (default oriented_rectangle)." }
+              },
+              "required": []
+            }
+          },
+          {
+            "name": "capture_frames",
+            "description": "DEFAULT way to get more training images: records REAL frames. source 'screen' (default) grabs the live screen every intervalSeconds (whole desktop, a region, or the window whose title contains windowTitle; the target must be visible and not covered); source 'video' samples an existing video file. Frames are saved as PNG into a NEW 'real-<time>' folder beside the image being labelled (nothing is overwritten); frames that barely differ from the previous kept one are skipped. One screen capture lasts at most 120 s (intervalSeconds x (maxFrames - 1)); call again for more. Then call propagate_to_frames to label them. It does not change this image or the proposals.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "source": { "type": "string", "enum": ["screen", "video"], "description": "Default screen." },
+                "videoPath": { "type": "string", "description": "source video: path of the video file (.mp4 .avi .mkv .mov .wmv .webm .m4v)." },
+                "region": {
+                  "type": "object",
+                  "description": "source screen: desktop pixels. Omit (and windowTitle) for the whole desktop.",
+                  "properties": { "x": { "type": "number" }, "y": { "type": "number" }, "width": { "type": "number", "minimum": 16 }, "height": { "type": "number", "minimum": 16 } },
+                  "required": ["x", "y", "width", "height"]
+                },
+                "windowTitle": { "type": "string", "description": "source screen: part of the title of a visible window to record (ignored when region is given)." },
+                "intervalSeconds": { "type": "number", "minimum": 0.2, "description": "Seconds between frames, of real time (screen) or video time (video). Default 1." },
+                "maxFrames": { "type": "integer", "minimum": 1, "maximum": 500, "description": "Default 30." },
+                "minChange": { "type": "number", "minimum": 0, "maximum": 255, "description": "Skip a frame whose mean grey difference to the last kept frame is below this (default 1; 0 keeps every frame)." }
+              },
+              "required": []
+            }
+          },
+          {
+            "name": "propagate_to_frames",
+            "description": "Labels REAL frames in bulk: copies the user's confirmed labels from an attached REFERENCE image (its labelme .json attached next to it) onto every image of a folder, normally the 'real-*' folder made by capture_frames, and writes a labelme .json beside each frame with a strong match. Existing .json files are never overwritten; frames without a strong match get no .json and are listed in 'framesWithoutMatch'. Use it right after capture_frames. Takes a few seconds per frame.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "referenceIndex": { "type": "integer", "minimum": 0, "description": "Index of the attached labelled reference image (default 0)." },
+                "folder": { "type": "string", "description": "Frames folder inside the image's project folder (default: the newest real-* folder)." },
+                "maxSeeds": { "type": "integer", "minimum": 1, "maximum": 10, "description": "How many of the reference's shapes are used as examples (default 3)." },
+                "angleStepDeg": { "type": "number", "description": "Rotation search step in degrees, 5 to 90 (default 10); 0 = no rotation search." }
+              },
+              "required": []
+            }
+          },
+          {
+            "name": "auto_train_loop",
+            "description": "Use after the user has confirmed labels (e.g. pasted SAM boxes) on an attached REFERENCE image (labelme .json next to it) and wants a model trained automatically. action 'start' launches a background loop on the app machine: it makes synthetic images, trains a YOLO oriented-box model, tests it on held-out objects and repeats with more data / a bigger model until the target (mAP50 >= 0.95 and recall >= 0.98) is met. It returns at once; call with action 'status' later (state running/idle + per-round metrics and best weights) and 'stop' to end it after the current round. Results go to a '<folder>.autoloop' folder beside the labelled folder; nothing in the project is overwritten. Report the metrics honestly: the test set is only the held-out objects of the one labelled image.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "action": { "type": "string", "enum": ["start", "status", "stop"], "description": "Default status." },
+                "referenceIndex": { "type": "integer", "minimum": 0, "description": "Index of the attached labelled reference image (default 0)." },
+                "model": { "type": "string", "description": "start only. YOLO-OBB weights for every round, e.g. yolo11s-obb.pt (default: the script schedule, n then s then m)." },
+                "startRung": { "type": "integer", "minimum": 0, "maximum": 10, "description": "start only. First schedule row of cycle 1; higher = harder baseline (more synthetic images and epochs). Default 0." },
+                "cycles": { "type": "integer", "minimum": 1, "maximum": 10, "description": "start only. Repeat the whole improvement loop this many times; each new cycle starts one rung higher. Default 1." },
+                "maxRoundsPerCycle": { "type": "integer", "minimum": 0, "maximum": 20, "description": "start only. Rounds per cycle before moving on (0 = until target). Default 4." },
+                "targetMap50": { "type": "number", "minimum": 0, "maximum": 1, "description": "start only. Target mAP50 for cycle 1. Default 0.95." },
+                "targetRecall": { "type": "number", "minimum": 0, "maximum": 1, "description": "start only. Target recall for cycle 1. Default 0.98." },
+                "targetStep": { "type": "number", "minimum": 0, "maximum": 0.1, "description": "start only. Added to both targets at each new cycle, so the bar rises. Default 0." }
+              },
+              "required": []
+            }
+          },
+          {
+            "name": "synthesize_samples",
+            "description": "OPT-IN, not the default: makes SYNTHETIC training images from the user's confirmed labels on an attached REFERENCE image (its labelme .json attached next to it): the object is moved, scaled, rotated and re-lit on the cleaned background, and each result is saved as image + labelme .json in a NEW folder beside the reference (nothing is overwritten). Models trained on synthetic backgrounds generalise poorly to real ones, so use capture_frames + propagate_to_frames for more training data; call this only when the user explicitly asks for synthetic images. It does not change this image or the proposals.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "referenceIndex": { "type": "integer", "minimum": 0, "description": "Index of the attached reference image (default 0)." },
+                "maxSeeds": { "type": "integer", "minimum": 1, "maximum": 10, "description": "How many of the reference's shapes are used as the source object (default 1)." },
+                "count": { "type": "integer", "minimum": 1, "maximum": 200, "description": "Images per source shape (default 20)." },
+                "randomSeed": { "type": "integer", "description": "Same seed = same images (default 1)." }
+              },
+              "required": []
             }
           },
           {

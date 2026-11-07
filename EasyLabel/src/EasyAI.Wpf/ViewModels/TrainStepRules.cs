@@ -27,7 +27,7 @@ public static class TrainStepRules
     public const int MinInputSize = 160;
     public const int MaxInputSize = 2560;
     public const int InputSizeStep = 32;
-    public const int DefaultInputSize = 640;
+    public const int DefaultInputSize = 800;
 
     /// <summary>Longest wait for a stopped run to unwind before the UI reports an error.</summary>
     public static readonly TimeSpan StopTimeout = TimeSpan.FromSeconds(30);
@@ -62,14 +62,29 @@ public static class TrainStepRules
     }
 
     /// <summary>Options of a run: V2 head training with only Epochs and InputSize chosen; every other field keeps the pipeline default.</summary>
-    public static SegTrainingOptions BuildOptions(int epochs, int inputSize)
+    public static SegTrainingOptions BuildOptions(int epochs, int inputSize, int earlyStopPatience = 0)
     {
         return new SegTrainingOptions
         {
             Version = 2,
             Epochs = NormalizeEpochs(epochs),
             InputSize = NormalizeInputSize(inputSize),
+            EarlyStopPatience = NormalizeEarlyStop(earlyStopPatience),
         };
+    }
+
+    public const int MinEarlyStop = 5;
+    public const int MaxEarlyStop = 200;
+
+    /// <summary>Early-stop window in epochs: 0 (automatic) or 5..200; a value between 1 and 4 is raised to 5.</summary>
+    public static int NormalizeEarlyStop(double? value)
+    {
+        if (value == null || double.IsNaN(value.Value) || double.IsInfinity(value.Value) || value.Value < 1)
+        {
+            return 0;
+        }
+
+        return (int)Math.Min(MaxEarlyStop, Math.Max(MinEarlyStop, Math.Round(value.Value)));
     }
 
     /// <summary>Resource key of the text explaining why training cannot start; null for <see cref="SegAiTrainBlock.None"/>.</summary>

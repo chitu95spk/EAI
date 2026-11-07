@@ -113,6 +113,9 @@ public interface IDialogService
     /// <summary>LabelMe folder to YOLO conversion dialog; <paramref name="projectRoot"/> (may be null) only pre-fills the class list.</summary>
     void ShowConvertYolo(string? projectRoot, EasyLabel.Core.ProjectPaths? paths = null);
 
+    /// <summary>"Self-learn" window: monitor an auto-loop run (report.json / autoloop.log, Stop) and run OBB detection on a folder of test images. Non-modal.</summary>
+    void ShowSelfLearn(string? projectRoot);
+
     /// <summary>New Project dialog (name, location, optional image folder); null when cancelled.</summary>
     NewProjectInput? AskNewProject(string suggestedName, string initialLocation);
 
@@ -354,6 +357,13 @@ public sealed class WpfDialogService : IDialogService
     {
         ConvertYoloWindow window = new ConvertYoloWindow(new ConvertYoloViewModel(projectRoot, this, _store, paths)) { Owner = _owner };
         window.ShowDialog();
+    }
+
+    public void ShowSelfLearn(string? projectRoot)
+    {
+        // Not modal: the user keeps working (or the Agent keeps labelling) while the run is watched.
+        SelfLearnWindow window = new SelfLearnWindow(new SelfLearnViewModel(projectRoot, this, _store)) { Owner = _owner };
+        window.Show();
     }
 
     public NewProjectInput? AskNewProject(string suggestedName, string initialLocation)

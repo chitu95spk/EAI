@@ -142,24 +142,30 @@ public sealed class Sam2Backend : IAiBackend, IDisposable
         if (_cache.TryGet(key, out Sam2Embedding? cached) && cached != null) return cached;
 
         DenseTensor<float> input = Sam2Tensors.Preprocess(image.Pixels, image.Width, image.Height);
-        var feeds = new[] { NamedOnnxValue.CreateFromTensor(_interface.EncoderImageInput, input) };
         var names = new[] { _interface.EncoderHighRes0, _interface.EncoderHighRes1, _interface.EncoderImageEmbed };
-        using IDisposableReadOnlyCollection<DisposableNamedOnnxValue> results = _encoder.Run(feeds, names, ct);
         DenseTensor<float>? h0 = null, h1 = null, embed = null;
-        foreach (DisposableNamedOnnxValue value in results)
+        for (int attempt = 0; attempt < 2; attempt++)
         {
-            if (value.Name == _interface.EncoderHighRes0) h0 = Copy(value.AsTensor<float>());
-            else if (value.Name == _interface.EncoderHighRes1) h1 = Copy(value.AsTensor<float>());
-            else if (value.Name == _interface.EncoderImageEmbed) embed = Copy(value.AsTensor<float>());
-        }
+            var feeds = new[] { NamedOnnxValue.CreateFromTensor(_interface.EncoderImageInput, input) };
+            using (IDisposableReadOnlyCollection<DisposableNamedOnnxValue> results = _encoder.Run(feeds, names, ct))
+            {
+                h0 = h1 = embed = null;
+                foreach (DisposableNamedOnnxValue value in results)
+                {
+                    if (value.Name == _interface.EncoderHighRes0) h0 = Copy(value.AsTensor<float>());
+                    else if (value.Name == _interface.EncoderHighRes1) h1 = Copy(value.AsTensor<float>());
+                    else if (value.Name == _interface.EncoderImageEmbed) embed = Copy(value.AsTensor<float>());
+                }
+            }
 
-        if (h0 == null || h1 == null || embed == null) throw new AiModelException("SAM2 encoder did not return all three embeddings.");
-        if (!IsFinite(h0) || !IsFinite(h1) || !IsFinite(embed))
-        {
+            if (h0 == null || h1 == null || embed == null) throw new AiModelException("SAM2 encoder did not return all three embeddings.");
+            if (IsFinite(h0) && IsFinite(h1) && IsFinite(embed)) break;
+            // The GPU can return NaN without throwing (seen on a private/hidden desktop): redo the encoder once on the CPU.
+            if (attempt == 0 && _encoder.TryFallBackToCpu("encoder returned NaN on DirectML")) continue;
             throw new AiModelException("SAM2 encoder returned NaN or Infinity values (corrupt embedding); no result for this image.");
         }
 
-        var embedding = new Sam2Embedding(h0, h1, embed);
+        var embedding = new Sam2Embedding(h0!, h1!, embed!);
         _cache.Add(key, embedding);
         return embedding;
     }

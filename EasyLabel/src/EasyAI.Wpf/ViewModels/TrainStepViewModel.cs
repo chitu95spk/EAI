@@ -131,6 +131,10 @@ public sealed partial class TrainStepViewModel : ObservableObject
     [ObservableProperty]
     private double? _epochsValue = TrainStepRules.DefaultEpochs;
 
+    // 0 = automatic; otherwise stop when the best validation loss has not improved for this many epochs (5..200).
+    [ObservableProperty]
+    private double? _earlyStopValue = 0;
+
     [ObservableProperty]
     private int _selectedInputSize = TrainStepRules.DefaultInputSize;
 
@@ -608,7 +612,7 @@ public sealed partial class TrainStepViewModel : ObservableObject
         }
 
         int version = ++_environmentVersion;
-        SegTrainingOptions options = TrainStepRules.BuildOptions(TrainStepRules.NormalizeEpochs(EpochsValue), TrainStepRules.NormalizeInputSize(SelectedInputSize));
+        SegTrainingOptions options = TrainStepRules.BuildOptions(TrainStepRules.NormalizeEpochs(EpochsValue), TrainStepRules.NormalizeInputSize(SelectedInputSize), TrainStepRules.NormalizeEarlyStop(EarlyStopValue));
         try
         {
             SegAiTrainBlock block = await Task.Run(() => SegAiTrainingService.Check(session, options));
@@ -660,7 +664,7 @@ public sealed partial class TrainStepViewModel : ObservableObject
         int epochs = TrainStepRules.NormalizeEpochs(EpochsValue);
         int size = TrainStepRules.NormalizeInputSize(SelectedInputSize);
         EpochsValue = epochs;
-        SegTrainingOptions options = TrainStepRules.BuildOptions(epochs, size);
+        SegTrainingOptions options = TrainStepRules.BuildOptions(epochs, size, TrainStepRules.NormalizeEarlyStop(EarlyStopValue));
 
         CancellationTokenSource cts = BeginRun(epochs);
         SegAiTrainResult? result = null;

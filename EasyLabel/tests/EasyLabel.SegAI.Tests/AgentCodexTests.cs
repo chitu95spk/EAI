@@ -62,7 +62,7 @@ public sealed class AgentCodexTests
     [Fact]
     public void LabelRunsAllowTheAnalysisToolsByExactNameAndSuggestRunsDoNot()
     {
-        string[] names = { "grid_crop", "render_overlay", "measure" };
+        string[] names = { "grid_crop", "render_overlay", "measure", "propagate_labels", "capture_frames", "propagate_to_frames", "synthesize_samples", "auto_train_loop" };
         string[] claude = AgentCommandLine.AllowedTools.Split(',');
         Assert.DoesNotContain(claude, t => t.Contains('*'));
         foreach (string name in names)
@@ -73,8 +73,8 @@ public sealed class AgentCodexTests
             Assert.DoesNotContain(name, AgentCommandLine.CodexSuggestTools);
         }
 
-        Assert.Equal(13, claude.Length);
-        Assert.Equal(13, AgentCommandLine.CodexTools.Length);
+        Assert.Equal(18, claude.Length);
+        Assert.Equal(18, AgentCommandLine.CodexTools.Length);
 
         IReadOnlyList<string> args = AgentCommandLine.BuildCodexArguments("S", "p", "m.exe", "r", "o.txt", false);
         string tools = args.First(a => a.StartsWith("mcp_servers.easyai.enabled_tools=", StringComparison.Ordinal));

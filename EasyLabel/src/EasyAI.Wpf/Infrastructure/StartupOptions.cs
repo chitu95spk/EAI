@@ -20,6 +20,9 @@ public sealed class StartupOptions
     /// <summary>Hidden test flag <c>--fake-agent &lt;script.ps1&gt;</c>: agent runs start this PowerShell script instead of claude/codex (see <c>AgentRunner.FakeAgentScript</c>).</summary>
     public string? FakeAgent { get; private set; }
 
+    /// <summary>Hidden test flag <c>--selflearn-signal &lt;file&gt;</c>: when that file appears the app deletes it and opens the Self-learn window (for UI automation where popup menus do not open).</summary>
+    public string? SelfLearnSignal { get; private set; }
+
     /// <summary>Startup problems to show once in the main window.</summary>
     public List<string> Warnings { get; } = new List<string>();
 
@@ -52,6 +55,14 @@ public sealed class StartupOptions
                 if (script.Length > 0)
                 {
                     options.FakeAgent = script;
+                }
+            }
+            else if (string.Equals(arg, "--selflearn-signal", StringComparison.OrdinalIgnoreCase) && hasValue)
+            {
+                string signal = args[++i].Trim().Trim('"').Trim();
+                if (IsUsableRooted(signal))
+                {
+                    options.SelfLearnSignal = signal;
                 }
             }
             else if (string.Equals(arg, "--culture", StringComparison.OrdinalIgnoreCase) && hasValue)

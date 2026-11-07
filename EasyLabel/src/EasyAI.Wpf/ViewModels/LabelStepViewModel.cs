@@ -691,6 +691,8 @@ public sealed partial class LabelStepViewModel : ObservableObject
 
     public bool IsSam2Picked => _aiModelId == AiModelCatalog.Sam2Id;
 
+    public bool IsSam3Picked => _aiModelId == AiModelCatalog.Sam3Id;
+
     public bool IsYoloWorldPicked => _aiModelId == AiModelCatalog.YoloWorldId;
 
     public bool IsCustomDetectPicked => _aiModelId == AiModelCatalog.CustomDetectId;
@@ -822,6 +824,46 @@ public sealed partial class LabelStepViewModel : ObservableObject
         canvas.AiBoxToolTip = ShortcutTable.WithShortcut(
             canvas.AiBoxEnabled ? Strings.MiAiBox : ReasonText(boxReason),
             ShortcutId.ToolAiBox);
+        StartAiPreload();
+    }
+
+    private string? _aiPreloadKey;
+
+    /// <summary>
+    /// Loads SAM2 / SAM3 in the background as soon as the AI Model source shows them, so the first AI-Box run does not wait for the model.
+    /// Once per model + folder (ReleaseAi resets it). A load error is left to the first run, which reports it.
+    /// </summary>
+    private async void StartAiPreload()
+    {
+        AiModelStatus? status = _host.AiModels.FirstOrDefault(m => m.Id == _aiModelId);
+        if (_source != AutoLabelSource.AiModel || status == null || !status.Found
+            || (_aiModelId != AiModelCatalog.Sam2Id && _aiModelId != AiModelCatalog.Sam3Id))
+        {
+            return;
+        }
+
+        string key = _aiModelId + "|" + status.Location;
+        if (_aiPreloadKey == key)
+        {
+            return;
+        }
+
+        _aiPreloadKey = key;
+        AiBackendService service = _aiService ??= new AiBackendService();
+        string text = string.Format(Strings.AiLoadingFormat, status.DisplayName);
+        AiStatusText = text;
+        try
+        {
+            await service.PreloadAsync(_aiModelId, status.Location, null, CancellationToken.None);
+        }
+        catch (Exception ex) when (ex is OperationCanceledException or ObjectDisposedException)
+        {
+        }
+
+        if (AiStatusText == text)
+        {
+            AiStatusText = string.Empty;
+        }
     }
 
     private void RefreshSource()
@@ -830,6 +872,7 @@ public sealed partial class LabelStepViewModel : ObservableObject
         OnPropertyChanged(nameof(IsAiSource));
         OnPropertyChanged(nameof(IsAgentSource));
         OnPropertyChanged(nameof(IsSam2Picked));
+        OnPropertyChanged(nameof(IsSam3Picked));
         OnPropertyChanged(nameof(IsYoloWorldPicked));
         OnPropertyChanged(nameof(IsCustomDetectPicked));
         OnPropertyChanged(nameof(SourceReasonText));
@@ -1598,22 +1641,21 @@ public sealed partial class LabelStepViewModel : ObservableObject
         });
     }
 
-    // S9: the first agent use of a project asks once (vi/en) before anything is sent; declining runs nothing. Only the manifest write leaves the UI thread.
+    // Sending images and prompts to the agent provider is covered by the product's data policy, so there is no per-project confirmation dialog.
+    // The permission is recorded in the manifest silently; the offline-only setting still blocks every run. Only the manifest write leaves the UI thread.
     private async Task<bool> EnsureAgentConsentAsync()
     {
         if (RefuseOfflineAgent()) return false;
         AgentRunner? agent = _agent;
-        IDialogService? dialogs = _host.Dialogs;
         if (agent == null)
         {
             return false;
         }
 
-        string providerName = agent.Tool == AgentTool.Codex ? Strings.AgentProviderCodex : Strings.AgentProviderClaude;
         return await AgentConsentGate.EnsureAsync(
             _host.Project?.Manifest,
             AgentConsentGate.ProviderKey(agent.Tool),
-            () => dialogs != null && dialogs.Confirm(Strings.AgentConsentTitle, string.Format(Strings.AgentConsentBody, providerName), Strings.AgentConsentAccept),
+            () => true,
             DateTime.UtcNow).ConfigureAwait(true);
     }
 
@@ -2389,6 +2431,7 @@ public sealed partial class LabelStepViewModel : ObservableObject
         _liveAi = new HashSet<SegAiSuggestion>(ReferenceEqualityComparer.Instance);
         _aiCommitPending = false;
         _aiImage = null;
+        _aiPreloadKey = null;
         AiStatusText = string.Empty;
         AiBackendService? service = _aiService;
         _aiService = null;

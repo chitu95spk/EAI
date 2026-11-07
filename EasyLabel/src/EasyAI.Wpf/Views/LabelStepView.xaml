@@ -70,7 +70,7 @@
                 </RadioButton>
             </StackPanel>
             <Border Style="{StaticResource BarDividerStyle}" />
-            <!-- AI Model: SAM2 | YOLO-World | Custom YOLO and Run. -->
+            <!-- AI Model: SAM2 | SAM3 | YOLO-World | Custom YOLO and Run. -->
             <StackPanel Margin="0,0,14,6" Orientation="Horizontal" VerticalAlignment="Center"
                         Visibility="{Binding Label.IsAiSource, Converter={StaticResource BoolToVisibility}}">
                 <StackPanel Margin="0,0,8,0" Orientation="Horizontal" ToolTip="{x:Static res:Strings.AiPickTip}">
@@ -82,6 +82,15 @@
                                  AutomationProperties.AutomationId="AiPickSam2"
                                  >
                         <ui:TextBlock TextWrapping="NoWrap" TextAlignment="Center" Style="{StaticResource SourceCaptionStyle}" Text="{x:Static res:Strings.AiPickSam2}" />
+                    </RadioButton>
+                    <RadioButton Margin="0,0,3,0" Padding="8,3" MinWidth="80" HorizontalContentAlignment="Center" GroupName="LabelAiModel"
+                                 Style="{DynamicResource {x:Type ToggleButton}}"
+                                 IsChecked="{Binding Label.IsSam3Picked, Mode=OneWay}"
+                                 CommandParameter="{x:Static infra:AiModelCatalog.Sam3Id}"
+                                 Command="{Binding Label.SetAiModelCommand}"
+                                 AutomationProperties.AutomationId="AiPickSam3"
+                                 >
+                        <ui:TextBlock TextWrapping="NoWrap" TextAlignment="Center" Style="{StaticResource SourceCaptionStyle}" Text="{x:Static res:Strings.AiPickSam3}" />
                     </RadioButton>
                     <RadioButton Margin="0,0,3,0" Padding="8,3" MinWidth="80" HorizontalContentAlignment="Center" GroupName="LabelAiModel"
                                  Style="{DynamicResource {x:Type ToggleButton}}"

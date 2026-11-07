@@ -9,13 +9,94 @@ public sealed class ToolTests
     private static JObject Report(JObject result) => JObject.Parse(TestRun.ResultText(result));
 
     [Fact]
-    public void ToolsList_HasTheThirteenToolsWithSchemas()
+    public void ToolsList_HasTheFourteenToolsWithSchemas()
     {
         using var run = new TestRun();
         JArray tools = run.Tools.Describe();
         string[] names = tools.Select(t => (string)t["name"]!).ToArray();
-        Assert.Equal(new[] { "get_image_info", "pick_candidates", "get_crop", "get_reference", "memory_read", "memory_add", "list_shapes", "sam2_segment", "detect_points", "propose_shapes", "grid_crop", "render_overlay", "measure" }, names);
+        Assert.Equal(new[] { "get_image_info", "pick_candidates", "get_crop", "get_reference", "memory_read", "memory_add", "list_shapes", "sam2_segment", "detect_points", "propagate_labels", "capture_frames", "propagate_to_frames", "auto_train_loop", "synthesize_samples", "propose_shapes", "grid_crop", "render_overlay", "measure" }, names);
         Assert.All(tools, t => Assert.Equal("object", (string?)t["inputSchema"]!["type"]));
+    }
+
+    [Fact]
+    public void PropagateLabels_NeedsAnAttachedReferenceWithItsJson()
+    {
+        using var run = new TestRun();
+        Assert.Throws<ArgumentException>(() => run.Call("propagate_labels", "{}")); // nothing attached
+
+        string refImage = Path.Combine(run.Directory, "ref.png");
+        File.Copy(run.ImagePath, refImage);
+        run.Request.References.Add(new RunReference { Path = refImage, Name = "ref.png" });
+        Assert.Throws<ArgumentException>(() => run.Call("propagate_labels", "{}")); // no .json beside it
+        File.WriteAllText(Path.ChangeExtension(refImage, ".json"), "{\"shapes\":[]}");
+        Assert.Throws<ArgumentException>(() => run.Call("propagate_labels", "{}")); // no usable shape
+        Assert.Throws<ArgumentException>(() => run.Call("propagate_labels", "{\"angleStepDeg\":1}"));
+    }
+
+    [Fact]
+    public void PropagateLabels_MovesTheReferenceShapeOntoThisImage()
+    {
+        using var run = new TestRun();
+        // Reference: the same white 300x200 block at (700,400); this run's image has it at (100,100).
+        string refImage = Path.Combine(run.Directory, "ref.png");
+        using (var mat = new Mat(TestRun.ImageHeight, TestRun.ImageWidth, MatType.CV_8UC3, new Scalar(30, 90, 150)))
+        {
+            Cv2.Rectangle(mat, new Rect(700, 400, 300, 200), new Scalar(255, 255, 255), -1);
+            Cv2.ImWrite(refImage, mat);
+        }
+
+        File.WriteAllText(Path.ChangeExtension(refImage, ".json"),
+            "{\"shapes\":[{\"label\":\"OK\",\"shape_type\":\"polygon\",\"points\":[[700,400],[1000,400],[1000,600],[700,600]]}]}");
+        run.Request.References.Add(new RunReference { Path = refImage, Name = "ref.png" });
+
+        JObject report = Report(run.Call("propagate_labels", "{\"angleStepDeg\":0,\"shapeType\":\"polygon\"}"));
+        Assert.Equal(1, (int)report["accepted"]!);
+        JObject proposals = JObject.Parse(File.ReadAllText(run.ProposalsPath));
+        string text = proposals.ToString();
+        Assert.Contains("OK", text);
+    }
+
+    [Fact]
+    public void SynthesizeSamples_WritesImagesAndLabelmeJsonToANewFolder()
+    {
+        using var run = new TestRun();
+        Assert.Throws<ArgumentException>(() => run.Call("synthesize_samples", "{}")); // nothing attached
+
+        string refImage = Path.Combine(run.Directory, "ref.png");
+        using (var mat = new Mat(TestRun.ImageHeight, TestRun.ImageWidth, MatType.CV_8UC3, new Scalar(30, 90, 150)))
+        {
+            Cv2.Rectangle(mat, new Rect(700, 400, 100, 60), new Scalar(255, 255, 255), -1);
+            Cv2.ImWrite(refImage, mat);
+        }
+
+        File.WriteAllText(Path.ChangeExtension(refImage, ".json"),
+            "{\"shapes\":[{\"label\":\"OK\",\"shape_type\":\"polygon\",\"points\":[[700,400],[800,400],[800,460],[700,460]]}]}");
+        run.Request.References.Add(new RunReference { Path = refImage, Name = "ref.png" });
+        Assert.Throws<ArgumentException>(() => run.Call("synthesize_samples", "{\"count\":0}"));
+
+        JObject report = Report(run.Call("synthesize_samples", "{\"count\":3}"));
+        string folder = (string)report["folder"]!;
+        Assert.Equal(3, (int)report["written"]!);
+        Assert.Equal(3, Directory.GetFiles(folder, "*.png").Length);
+        JObject label = JObject.Parse(File.ReadAllText(Directory.GetFiles(folder, "*.json")[0]));
+        Assert.Equal("OK", (string?)label["shapes"]![0]!["label"]);
+        Assert.Equal(TestRun.ImageWidth, (int)label["imageWidth"]!);
+    }
+
+    [Fact]
+    public void AutoTrainLoop_StatusAndStopNeedNoRun_StartNeedsLabels()
+    {
+        using var run = new TestRun();
+        Assert.Throws<ArgumentException>(() => run.Call("auto_train_loop", "{}")); // nothing attached
+
+        string refImage = Path.Combine(run.Directory, "ref.png");
+        using (var mat = new Mat(TestRun.ImageHeight, TestRun.ImageWidth, MatType.CV_8UC3, new Scalar(30, 90, 150))) Cv2.ImWrite(refImage, mat);
+        run.Request.References.Add(new RunReference { Path = refImage, Name = "ref.png" });
+
+        Assert.Equal("none", (string)Report(run.Call("auto_train_loop", "{\"action\":\"status\"}"))["state"]!);
+        Assert.Equal("none", (string)Report(run.Call("auto_train_loop", "{\"action\":\"stop\"}"))["state"]!);
+        Assert.Throws<ArgumentException>(() => run.Call("auto_train_loop", "{\"action\":\"start\"}")); // no .json labels
+        Assert.Throws<ArgumentException>(() => run.Call("auto_train_loop", "{\"action\":\"bogus\"}"));
     }
 
     [Fact]

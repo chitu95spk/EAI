@@ -1,0 +1,236 @@
+schema_version = 2
+agent_tree = true
+notes = "Phase1 retained. User approved phase2 private native v2 build/test and one L1-first pilot on 2026-10-24; project alias confirmation pending. Original native/application edits, live deployment and git writes remain excluded. Advisory review is not native-owner ACCEPT."
+
+[task]
+id = "EAI-SEG960-OPT"
+title = "Improve raw native object quality at CPU960 with one L1-first pilot"
+goal = "Improve measured NG detection without inflating raw confidence or regressing guarded quality/runtime."
+current_behavior = "Frozen candidates have pooled mask IoU 0.8379/0.8124/0.7059 and no joint IoU90/Score90 objects. L3 has 4/10 NG matches at IoU50."
+expected_behavior = "Phase1 retained; phase2 private native parity, diagnostics and one L1-first pilot. Expansion requires every-object joint IoU90/rawScore90 plus regression gates; no quality guarantee."
+in_scope = ["tmp/EAI-SEG960-OPT/**", "artifacts/EAI-SEG960-OPT/**", ".claude/task-contract.EAI-SEG960-OPT.toml"]
+out_of_scope = ["original application/native source edits", "unapproved dependencies", "ABI or saved-format changes", "original snapshots/reports/model writes", "live activation or deployment", "git writes", "unbounded hyperparameter search"]
+dependencies = ["Existing approved runner staging API", "Existing app assemblies and native CPU runtime", "Frozen EAI-SEG960 inputs and candidates"]
+risk = "medium"
+
+[dispatch]
+category = "vision-algorithm"
+route = "deep"
+normalized_request = "Use existing CPU DLL and immutable 960 candidates to compare Performance/Quality, then qualify bounded L3 NG exposure pilots."
+selected_model = "gpt-6.1-sol"
+executor = "codex"
+codex_model = "gpt-6.1-sol"
+architect_required = true
+build_recommended = true
+build_reason = "Compile the isolated experimental runner against current existing assemblies before authorized runtime validation."
+architecture_review = "One read-only gpt-6-astra advisory pass incorporated into plan v1; not native-owner ACCEPT."
+private_writers = ["opt_runner: tmp/EAI-SEG960-OPT/runner/**", "opt_prepare: named task-local PowerShell scripts", "root: contract/plan/evidence and review only"]
+
+[approval]
+requested_by = "codex_dispatcher"
+activated_by = "user"
+plan_approved = true
+plan_approved_by = "user"
+approved_plan_revision = "EAI-SEG960-OPT-r1-plan-v1"
+approved_at_utc = "2026-10-23T15:50:58Z"
+approval_text = "duyet v1"
+
+[authorization]
+granted_by = "user"
+current_task_reference = "Approval of EAI-SEG960-OPT-r1-plan-v1, including isolated build, paired evaluation and at most two conditional CPU L3 pilots"
+granted_at_utc = "2026-10-23T15:50:58Z"
+edit_code = true
+update_tracking = true
+build = true
+run_tests = true
+benchmark = true
+deploy = false
+hardware_test = false
+commit = false
+push = false
+
+[commands]
+build = "dotnet build tmp/EAI-SEG960-OPT/runner/Runner.csproj -c Release -v:minimal -p:RestoreConfigFile=D:\\CODE\\EAI\\tmp\\EAI-SEG960\\NuGet.Config"
+runtime = "Task-local run.ps1 with selfcheck, preflight, probe and conditional train phases; exact invocations saved before launch"
+logs = "tmp/EAI-SEG960-OPT/"
+
+[budget]
+usage_five_hour_percent_at_start = -1
+estimated_tokens = 0
+agent_ceiling_multiplier = 2
+deferred_file = ""
+actual_units_millions = -1
+actual_requests = -1
+actual_agents = -1
+actual_session = ""
+
+[acceptance]
+behavior = ["Input 960 CPU and raw score gate 0.5", "Unchanged validation membership", "NG TP improves >=1 before expanding pilot", "NG FP does not increase", "OK recall drop <=0.02", "Pooled mask IoU drop <=0.01"]
+regression = ["ABI1 and .segai load-back", "No activation", "Original inputs/candidates unchanged", "No Train/Val byte-hash leakage"]
+performance = ["Paired CPU median runtime <=1.2 times baseline for promotion; uncontrolled timing is inconclusive"]
+evidence_required = ["SHA256 identities", "Class-aware matching counts", "Per-image paired results", "Seeds/exposure and actual observed native telemetry", "Limitations and staged candidate hash"]
+
+[benchmark]
+fixtures = ["Frozen validation of all three copied projects"]
+warmup_iterations = 2
+measured_iterations = 3
+metrics = ["median_ms", "p95_ms", "max_ms", "cold_ms", "TP_FP_FN", "mask_IoU", "raw_confidence", "joint90"]
+thresholds = ["score 0.5", "class-aware IoU 0.5", "separate joint IoU 0.9 and score 0.9"]
+
+[stop_conditions]
+items = ["Required changes exceed approved allow-list", "A dependency/native build or saved-format/ABI change is needed", "In-scope overlapping edits cannot be preserved", "Runtime/data identity mismatch", "Unsafe resources or incomplete saved candidate", "Verification fails and fix is out of scope"]
+
+[phase2_authorization]
+request = "Analyze and continue improving native Score above 0.9"
+score_target = "Every ground-truth object must have both IoU and raw Score >= 0.9; report misses and false positives separately"
+independent_images = "None supplied; existing-data limitations retained"
+sdk_restore = true
+sdk_restore_granted_by = "user"
+sdk_restore_text = "Cho phép khôi phục tệp build và tải SDK cần thiết vào workspace, giữ ABI 1 và .segai"
+sdk_restore_state = "Completed; native compilation/tests and six frozen-model parity checks subsequently passed"
+sdk_restore_evidence = "artifacts/EAI-SEG960-OPT/native-r2/preparation-verification.json"
+sdk_restore_scope = ["tmp/EAI-SEG960-OPT/native-downloads/**", "tmp/EAI-SEG960-OPT/native-sdk/**", "tmp/EAI-SEG960-OPT/native-buildroot/**", "tmp/EAI-SEG960-OPT/sdk-acquire.ps1", "tmp/EAI-SEG960-OPT/native-stage.ps1", "artifacts/EAI-SEG960-OPT/native-r2/**"]
+native_algorithm_edits = true
+native_build_commands = true
+native_plan = "EAI-SEG960-OPT-native-r2-plan-v2; approved with one L1-first pilot instead of L3; expand only after gates pass"
+native_approval_text = "thử 1 L1 trc nếu ok thì triển khai ra"
+native_approval_scope = "Listed isolated native/test/managed builds, private copied source edits, parity and one diagnostic-qualified L1-first CPU960 pilot. Live activation is excluded."
+native_pilot_project = "ESTCSEGAI; user confirmed L1 alias on 2026-10-24"
+native_l1_confirmation_text = "Đúng, L1 là ESTCSEGAI"
+native_verification = "Unchanged and class-aware native builds, focused test build and managed runner build pass with zero warnings/errors; focused tests and metric selfcheck pass. All six old-model parity checks pass (three models on each DLL), tolerance 1e-4."
+native_verification_evidence = "artifacts/EAI-SEG960-OPT/native-r2/native-verification-r2.json"
+native_background_launcher = "tmp/EAI-SEG960-OPT/native-background.ps1 -Project CONFIRMED_NAME -Manifest HASHED_RUNTIME_REQUEST"
+native_background_state = "Completed on 2026-10-24T04:08:37Z; report NOT_ELIGIBLE, no activation or expansion. NG TP3/4 unchanged; joint90 remains0/82."
+native_coordinate_script = "tmp/EAI-SEG960-OPT/native-runner/coordinate-pilot.ps1"
+native_coordinate_policy = "artifacts/EAI-SEG960-OPT/native-r2/pilot-coordinate-policy.json"
+native_coordinate_policy_sha256 = "AA10D169477297FDD35E6470A98A1151E8E66EF92B595BC85306EE001917E103"
+native_coordinate_runtime_verified = "Diagnostics qualified; one ESTCSEGAI pilot trained and evaluated. Final report artifacts/EAI-SEG960-OPT/native-r2/report-ESTCSEGAI-20261024T040842112Z-e807a8ad.json records NOT_ELIGIBLE. Candidate SHA256 4D7AFCCA78E8D6C7B45DDB6885D81B7DBDB7C81317670AA44240EEE3BE9E4E3A."
+live_dll_replacement = false
+new_abi_or_model_format = false
+
+[ai_review]
+user_request = "Delegate an AI expert team to analyze the current segmentation structure and recommend improvements"
+authorization = "Read-only source/evidence analysis and private English findings; no code edits, builds, tests, training, downloads, deployment or Git writes"
+root_write_scope = ["tmp/EAI-SEG960-OPT/ai-review/plan.md", "tmp/EAI-SEG960-OPT/ai-review/synthesis.md", ".claude/task-contract.EAI-SEG960-OPT.toml"]
+private_reports = ["architecture/findings.md", "training/findings.md", "data-evaluation/findings.md"]
+constraints = ["Replacement architectures may be proposed; implementation/dependency/ABI/format changes remain outside analysis authorization", "Prioritize NG detection and false-alarm control over a universal raw Score threshold when metrics conflict", "Target Intel GPU inference through OpenVINO at input960; actual Intel device currently unverified", "Preserve originals and raw confidence; no score remapping to manufacture success"]
+requested_model = "Inherited runtime model; no user-requested model override"
+serving_identity = "unknown"
+review = "Three independent specialty analyses, root source/evidence review and bounded cross-review before synthesis"
+status = "Completed initial and follow-up analysis: three specialty addenda and bounded independent cross-review; no implementation authorized"
+synthesis = "tmp/EAI-SEG960-OPT/ai-review/synthesis.md"
+conclusion = "Keep historical pilot staged; prefer unchanged-native IntelGPU qualification and NG/FP diagnostics first. Conditional alternatives: YOLO11n box detector or LiteR-ASPP MobileNetV3 dense mask. RawScore90 no longer overrides NG/false-alarm priority; no runtime or promotion claims."
+runtime_verification = "Unverified in analysis-only phase; historical evidence reviewed without rerunning"
+followup_user_choices = ["Replacement architecture proposals allowed", "NG detection and false-alarm control win conflicting metrics", "Optimize for Intel GPU OpenVINO rather than a CUDA plan"]
+hardware_inventory = "Local host Xeon E5-2680v4/Windows-visible RTX5060; user confirmed IntelGPU is on another deployment machine. Target model/driver/runtime and OpenVINO execution remain unverified; no target device query was run."
+followup_review = "Training and data specialists independently reviewed the architecture/runtime/evaluation addenda; no blocking contradictions. Retain grouped holdout, frozen FP16 thresholds, task-matched metrics, versioned adapters and staged-cache-disabled caveats."
+
+[implementation_r3]
+user_request = "Start delegating implementation of the reviewed recommendation"
+plan = "tmp/EAI-SEG960-OPT/implementation/plan-r3.md"
+status = "Completed local diagnostic, qualification and evaluation implementation; Intel destination GPU/f16 verification pending; not deployed"
+authorization = "Scoped private native/runner/offline-tool edits and narrow isolated builds/tests/CPU inference recorded in plan-r3; no new dependencies, training, deployment, Git writes or original-source/model changes"
+owners = ["architecture expert: private native decoder/compile telemetry and focused native tests", "training expert: isolated qualification runner/schema/readme", "data evaluation expert: offline NG metrics and focused unit tests", "root: integration, contract, staging, fresh evidence, review and checks"]
+evidence = "artifacts/EAI-SEG960-OPT/native-r3"
+invariants = ["ABI1 and .segai unchanged", "Default inference unchanged", "Originals and old evidence immutable", "Raw scores unchanged", "Explicit Intel deployment-machine proof required", "No activation or automatic training"]
+result = "tmp/EAI-SEG960-OPT/implementation/result-r3.md"
+verification = "artifacts/EAI-SEG960-OPT/native-r3/verification-final.json"
+deployment_kit = "artifacts/EAI-SEG960-OPT/native-r3/deployment-kit-final-safe"
+local_result = "Builds pass with zero warnings/errors; 20 offline tests pass; 82-image CPU old/new and diagnostics off/on maximum field delta 0.0; unavailable-device fails without fallback; final-safe relocation and junction boundary checks pass"
+quality_limit = "No new weights or activation. Post-hoc threshold .17 yields NG4/4 and normal false NG0/78 on reused Val but OK FP1; higher-score incorrect OK remains in recovered NG image; production fusion/mask and every-object IoU/Score .9 are not verified or achieved"
+destination_result = "Intel GPU execution, f16 parity, controlled performance and generalization remain unverified"
+
+[implementation_r4]
+user_request = "Continue trying until the IoU and raw Score target is achieved"
+plan = "tmp/EAI-SEG960-OPT/r4/plan.md"
+status = "Completed2 trials; THIRD_ARM_INELIGIBLE_TARGET_UNMET. NG2/4 on both; joint90 17/82 control and20/82 decay005; no activation"
+authorization = "User continuation plus existing private native/build/test/CPU train authorization; three preregistered conditional trials, no activation, dependencies, ABI change or Git writes"
+owners = ["architecture specialist: private native training hyperparameters and focused tests", "runtime specialist: separate staged experiment entrypoint", "data specialist: independent metrics/acceptance review", "root: plan, snapshots, integration, checks, manifests/controller and evidence"]
+evidence = "artifacts/EAI-SEG960-OPT/native-r4"
+maximum_trials = 3
+parallel_trainers = 1
+activation = false
+goal = "All82 frozen Val objects have class-aware rectangle IoU>=.9 and rawScore>=.9, no NG misses/false NG, no extras and retained mask gate; reused Val is not independent test"
+verification = "artifacts/EAI-SEG960-OPT/native-r4/verification-before-launch.json"
+controller_policy = "artifacts/EAI-SEG960-OPT/native-r4/controller-policy.json"
+controller_policy_sha256 = "F2613DE8E365AF5E0531AAB4684BC568BD33C69413D21BC9DDD48E6B5E376E5E"
+background_process = "artifacts/EAI-SEG960-OPT/native-r4/background-process.json"
+current_state = "artifacts/EAI-SEG960-OPT/native-r4/controller-state.json"
+completion_report = "artifacts/EAI-SEG960-OPT/native-r4/batch-report.json"
+local_checks = "Native and focused managed builds pass zero warnings/errors, focused optimizer tests and metric selfcheck pass; full82 original-candidate CPU inference exact parity maximumdelta0.0; invalidrecipe rejects before claim/output; independent source/controller reviews cleared"
+resources = "Compact Augmentfalse on both control/treatment, original frozen membership241Train/82Val; three trials maximum, sequential, cooperative cancellation and no retries on failures; target quality unverified"
+
+[implementation_r5]
+user_request = "Continue trying until target and notify"
+plan = "tmp/EAI-SEG960-OPT/r5/plan.md"
+status = "Completed2 trials TARGET_UNMET, NG1/4 both, joint90 16/82 and36/82; third arm ineligible, no activation"
+authorization = "Renewed continuation and existing private native/CPU build/train/test authorization;3 sequential preregistered experiments and local success notification; no original/dependency/ABI/format/deploy/Git changes"
+owners = ["native specialist: guarded minority-only instance jobs and tests", "runtime specialist: separate V5 runner/claims", "data specialist: independent quality/controller review", "root: snapshots/plan/builds/staging/controller/evidence/notification"]
+evidence = "artifacts/EAI-SEG960-OPT/native-r5"
+maximum_trials = 3
+parallel_trainers = 1
+activation = false
+target = "All82 reused-Val GT reach class-aware rectangleIoU>=.9 and rawScore>=.9, no extras/falseNG, retainedmaskgate; independent generalization and IntelGPU unverified"
+verification = "artifacts/EAI-SEG960-OPT/native-r5/verification-before-launch.json"
+controller_policy = "artifacts/EAI-SEG960-OPT/native-r5/controller-policy.json"
+controller_policy_sha256 = "0285FAF9172299AC1D4299C278789A6D64D84FE0AE50F5BC12008301C5E06037"
+background_process = "artifacts/EAI-SEG960-OPT/native-r5/background-process.json"
+current_state = "artifacts/EAI-SEG960-OPT/native-r5/controller-state.json"
+completion_report = "artifacts/EAI-SEG960-OPT/native-r5/batch-report.json"
+notification = "Local Windows popup only after hash-bound independent offline strict82joint90/noextras/mask acceptance; delivery separately recorded, no future chat/email assumed"
+local_checks = "Native/test/managed builds0warnings/errors, focusedtests+metricselfcheckPASS, full82 default old-model paritydelta0.0, invalidr5recipes rejectpreclaim, archived independent raw metrics reproduce20joint90, independent source reviews cleared"
+
+[implementation_r6]
+user_request = "Continue trying EAI L2 and L3"
+plan = "tmp/EAI-SEG960-OPT/r6/plan.md"
+status = "Stopped 2026-10-25T07:43:58Z after L2 resource cancellation at78percent; no model, L3 never started; user authorized fresh r7 retry"
+authorization = "User explicitly expands isolated experiments despite L1 target unmet; managed build/test/CPU train and success notification, no native change/deploy/dependencies/Git writes"
+projects = ["ESTEC_2", "ESTEC_L3"]
+maximum_trials_per_project = 2
+maximum_jobs = 4
+parallel_trainers = 1
+evidence = "artifacts/EAI-SEG960-OPT/native-r6"
+activation = false
+targets = "ESTEC_2 all65 objects; ESTEC_L3 all54 objects in27images; strict per-objectIoU/Score>=.9, noextras/falseNG, retainedmask floors, reused development only"
+verification = "artifacts/EAI-SEG960-OPT/native-r6/verification-before-launch.json"
+controller_policy = "artifacts/EAI-SEG960-OPT/native-r6/controller-policy.json"
+controller_policy_sha256 = "ECB7C87464A72FA1121F9047A4328310D611E141B630A7A4C871DB267CF2D422"
+background_process = "artifacts/EAI-SEG960-OPT/native-r6/background-process.json"
+current_state = "artifacts/EAI-SEG960-OPT/native-r6/controller-state.json"
+completion_report = "artifacts/EAI-SEG960-OPT/native-r6/batch-report.json"
+checks = "Managed build0warnings/errors; selfcheckPASS;1222frozenpairfilesverified; exactoldmodelparity65L2+27L3images(delta0); offlinecounts65/54 andnormals56/19 agree;3invalidrequestsrejectpreclaim; native/runtime anddata/controllerreviews clear"
+
+[implementation_r7]
+user_request = "Continue; permission to train again"
+plan = "tmp/EAI-SEG960-OPT/r7/plan.md"
+status = "Ended resource cancellation2026-10-25T08:35:55Z; no model; no task process after reboot. User authorized fresh L2-only r8"
+authorization = "Renewed CPU train/test and prior scoped managed build authorization, no original/native/dependency/ABI/format/deploy/Git changes"
+projects = ["ESTEC_2", "ESTEC_L3"]
+maximum_jobs = 4
+parallel_trainers = 1
+activation = false
+evidence = "artifacts/EAI-SEG960-OPT/native-r7"
+resources = "Launch6GiB physical/8GiB commit; sustained low-memory cancellation unchanged; wait if insufficient"
+controller_policy = "artifacts/EAI-SEG960-OPT/native-r7/controller-policy.json"
+controller_policy_sha256 = "7BD76B91F185C3D308B4017F38C8397058381A35D72DCF7A34FD3E5C7E1FD5C3"
+background_process = "artifacts/EAI-SEG960-OPT/native-r7/background-process.json"
+current_state = "artifacts/EAI-SEG960-OPT/native-r7/controller-state.json"
+verification = "artifacts/EAI-SEG960-OPT/native-r7/verification-before-launch.json"
+completion_report = "artifacts/EAI-SEG960-OPT/native-r7/batch-report.json"
+
+[implementation_r8]
+user_request = "Retrain L2 after reboot"
+plan = "tmp/EAI-SEG960-OPT/r8/plan.md"
+status = "L2 compact-control running; supervisor11400 child37192 admitted2026-10-25T09:34:25Z, original data/model retained, quality unverified"
+projects = ["ESTEC_2"]
+maximum_jobs = 1
+parallel_trainers = 1
+activation = false
+evidence = "artifacts/EAI-SEG960-OPT/native-r8"
+authorization = "Renewed L2 CPU train/test plus prior exact private managed build authorization; no L3 search, native/dependency/ABI/format/deploy/Git changes"
+controller_policy = "artifacts/EAI-SEG960-OPT/native-r8/controller-policy.json"
+controller_policy_sha256 = "0999754170532DE68A68376B0E0E54896F0324E300EDD5D311D1743E7216BABF"
+background_process = "artifacts/EAI-SEG960-OPT/native-r8/background-process.json"
+current_state = "artifacts/EAI-SEG960-OPT/native-r8/controller-state.json"
+completion_report = "artifacts/EAI-SEG960-OPT/native-r8/batch-report.json"
+verification = "artifacts/EAI-SEG960-OPT/native-r8/verification-before-launch.json"

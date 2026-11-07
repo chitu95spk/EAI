@@ -128,6 +128,39 @@ public sealed class OnnxSession : IDisposable
         }
     }
 
+    /// <summary>
+    /// Rebuilds the model on the CPU provider (used when the GPU returned corrupt values, e.g. NaN, without throwing).
+    /// Returns false when the session already runs on the CPU or the CPU session cannot be created.
+    /// </summary>
+    public bool TryFallBackToCpu(string reason)
+    {
+        _gate.Wait();
+        try
+        {
+            ObjectDisposedException.ThrowIf(_disposed, this);
+            if (Provider != OnnxSessionFactory.DirectMl) return false;
+            InferenceSession cpu;
+            try
+            {
+                cpu = OnnxSessionFactory.BuildSession(_path, false, _intraOpThreads, _disableGraphOptimization);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            _session.Dispose();
+            _session = cpu;
+            Provider = OnnxSessionFactory.Cpu;
+            FallbackReason = "GPU unavailable, using CPU: " + reason;
+            return true;
+        }
+        finally
+        {
+            _gate.Release();
+        }
+    }
+
     private IDisposableReadOnlyCollection<DisposableNamedOnnxValue> RunOnce(IReadOnlyCollection<NamedOnnxValue> inputs, IReadOnlyCollection<string> outputNames, CancellationToken ct)
     {
         using var options = new RunOptions();

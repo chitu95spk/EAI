@@ -38,6 +38,30 @@
           SkipUnchangedFiles="true" />
   </Target>
 
+  <!-- SAM3 image encoder on the NVIDIA GPU (own process, ONNX Runtime GPU + CUDA 13). Copied to <OutDir>cuda\ together with the CUDA 13 / cuDNN 9 DLLs staged in
+       Lib\native\cuda13 (about 1.6 GB, git-ignored: pip's nvidia-cuda-runtime, nvidia-cublas, nvidia-cudnn-cu13, nvidia-cufft, nvidia-curand, nvidia-cuda-nvrtc, nvidia-nvjitlink).
+       Without the DLLs SAM3 falls back to DirectML/CPU (its encoder fails on DirectML, so CPU). -->
+  <ItemGroup>
+    <ProjectReference Include="..\EasyLabel.Ai.Sam3Cuda\EasyLabel.Ai.Sam3Cuda.csproj" ReferenceOutputAssembly="false" OutputItemType="CudaWorkerOutput" />
+  </ItemGroup>
+  <PropertyGroup>
+    <CudaLibsDir Condition="'$(CudaLibsDir)' == ''">$(MSBuildThisFileDirectory)..\..\Lib\native\cuda13\</CudaLibsDir>
+  </PropertyGroup>
+  <Target Name="CopyCudaWorker" AfterTargets="Build" Condition="'@(CudaWorkerOutput)' != ''">
+    <PropertyGroup>
+      <_CudaWorkerSourceDir>%(CudaWorkerOutput.RootDir)%(CudaWorkerOutput.Directory)</_CudaWorkerSourceDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <_CudaWorkerFile Include="$(_CudaWorkerSourceDir)**\*" Exclude="$(_CudaWorkerSourceDir)**\*.pdb" />
+      <_CudaLibFile Include="$(CudaLibsDir)*.dll" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_CudaWorkerFile)"
+          DestinationFiles="@(_CudaWorkerFile->'$(OutDir)cuda\%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_CudaLibFile)" DestinationFolder="$(OutDir)cuda\" SkipUnchangedFiles="true" />
+    <Warning Condition="'@(_CudaLibFile)' == ''" Text="CUDA 13 / cuDNN 9 DLLs not found in $(CudaLibsDir): SAM3 will not use the NVIDIA GPU until they are staged there." />
+  </Target>
+
   <!-- App-local VC++ runtime (Lib\vcrt, from Microsoft.VC143.CRT 14.44): BeeNativeSegAI.dll and torch_cpu.dll need it, and a PC without the
        VC++ 2015-2022 x64 Redistributable fails to load them (SegmentAI DLL error on the first Segment AI action). -->
   <ItemGroup>

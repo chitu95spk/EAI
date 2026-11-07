@@ -25,7 +25,7 @@ public sealed class AgentRunFilesTests
                 "--mcp-config", @"C:\run\mcp.json",
                 "--strict-mcp-config",
                 "--tools", "",
-                "--allowedTools", "mcp__easyai__get_image_info,mcp__easyai__get_crop,mcp__easyai__get_reference,mcp__easyai__list_shapes,mcp__easyai__sam2_segment,mcp__easyai__detect_points,mcp__easyai__pick_candidates,mcp__easyai__propose_shapes,mcp__easyai__memory_read,mcp__easyai__memory_add,mcp__easyai__grid_crop,mcp__easyai__render_overlay,mcp__easyai__measure",
+                "--allowedTools", "mcp__easyai__get_image_info,mcp__easyai__get_crop,mcp__easyai__get_reference,mcp__easyai__list_shapes,mcp__easyai__sam2_segment,mcp__easyai__detect_points,mcp__easyai__pick_candidates,mcp__easyai__propose_shapes,mcp__easyai__memory_read,mcp__easyai__memory_add,mcp__easyai__grid_crop,mcp__easyai__render_overlay,mcp__easyai__measure,mcp__easyai__propagate_labels,mcp__easyai__capture_frames,mcp__easyai__propagate_to_frames,mcp__easyai__synthesize_samples,mcp__easyai__auto_train_loop",
                 "--system-prompt-file", @"C:\run\system.md",
                 "--disable-slash-commands",
                 "--setting-sources", "",

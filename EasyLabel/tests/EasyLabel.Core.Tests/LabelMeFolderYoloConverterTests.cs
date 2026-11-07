@@ -109,6 +109,7 @@ public sealed class LabelMeFolderYoloConverterTests : IDisposable
             "0 0.050000 0.200000 0.250000 0.200000 0.250000 0.600000 0.050000 0.600000\n" +
             "1 0.950000 0.900000 1.000000 0.900000 1.000000 1.000000 0.950000 1.000000\n" +
             "1 1.000000 0.100000 1.000000 0.100000 1.000000 0.500000 1.000000 0.500000\n" +
+            "0 0.000000 0.000000 0.100000 0.000000 0.100000 0.200000 0.000000 0.200000\n" +
             "0 0.100000 0.100000 0.300000 0.100000 0.300000 0.500000 0.100000 0.500000\n" +
             "0 0.500000 0.100000 0.600000 0.300000 0.500000 0.500000 0.400000 0.300000\n";
         Assert.Equal(expected, Read("a.txt"));
@@ -118,12 +119,13 @@ public sealed class LabelMeFolderYoloConverterTests : IDisposable
 
         Assert.Equal(3, result.FilesConverted);
         Assert.Equal(2, result.FilesFailed);
-        Assert.Equal(6, result.ObjectsConverted);
-        Assert.Equal(3, result.ObjectsSkipped);
-        Assert.Equal(new[] { 3, 3 }, result.PerClassCounts.Select(p => p.Value).ToArray());
+        // The circle (shape 4: centre (10,10), radius 10) is now written as its circumscribed square instead of being skipped.
+        Assert.Equal(7, result.ObjectsConverted);
+        Assert.Equal(2, result.ObjectsSkipped);
+        Assert.Equal(new[] { 4, 3 }, result.PerClassCounts.Select(p => p.Value).ToArray());
         Assert.False(result.ClassesFileWritten);
         Assert.Contains(result.Skips, s => s.ShapeNumber == 7 && s.Reason.Contains("fewer than 3"));
-        Assert.Contains(result.Skips, s => s.ShapeNumber == 4 && s.Reason.Contains("unsupported"));
+        Assert.DoesNotContain(result.Skips, s => s.ShapeNumber == 4);
     }
 
     [Fact]

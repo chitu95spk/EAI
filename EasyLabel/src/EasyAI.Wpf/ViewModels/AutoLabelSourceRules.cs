@@ -92,7 +92,13 @@ public static class AutoLabelSourceRules
     /// <summary>True for the AI model ids of the catalog (SAM2, YOLO-World, Custom YOLO).</summary>
     public static bool IsAiModelId(string? id)
     {
-        return id == AiModelCatalog.Sam2Id || id == AiModelCatalog.YoloWorldId || id == AiModelCatalog.CustomDetectId;
+        return IsSamId(id) || id == AiModelCatalog.YoloWorldId || id == AiModelCatalog.CustomDetectId;
+    }
+
+    /// <summary>SAM2 or SAM3 (+SAM2): the prompt-driven models that take points and boxes.</summary>
+    public static bool IsSamId(string? id)
+    {
+        return id == AiModelCatalog.Sam2Id || id == AiModelCatalog.Sam3Id;
     }
 
     /// <summary>The stored AI model id, or SAM2 when it is missing or unknown.</summary>
@@ -102,6 +108,11 @@ public static class AutoLabelSourceRules
         if (string.Equals(value, AiModelCatalog.YoloWorldId, StringComparison.OrdinalIgnoreCase))
         {
             return AiModelCatalog.YoloWorldId;
+        }
+
+        if (string.Equals(value, AiModelCatalog.Sam3Id, StringComparison.OrdinalIgnoreCase))
+        {
+            return AiModelCatalog.Sam3Id;
         }
 
         return string.Equals(value, AiModelCatalog.CustomDetectId, StringComparison.OrdinalIgnoreCase)
@@ -154,7 +165,7 @@ public static class AutoLabelSourceRules
     /// <summary>AI-Points (point prompts): only the AI Model source with SAM2 selected, and a usable SAM2 backend.</summary>
     public static bool IsAiPointsEnabled(AutoLabelSource source, string? aiModelId, bool backendAvailable)
     {
-        return backendAvailable && source == AutoLabelSource.AiModel && aiModelId == AiModelCatalog.Sam2Id;
+        return backendAvailable && source == AutoLabelSource.AiModel && IsSamId(aiModelId);
     }
 
     /// <summary>AI-Box (box prompt): the AI Model source (SAM2 or YOLO-World) with a usable backend. The Agent works from its prompt text.</summary>
@@ -166,7 +177,7 @@ public static class AutoLabelSourceRules
     /// <summary>Reason AI-Points is disabled, <see cref="AutoLabelReason.None"/> when it is usable.</summary>
     public static AutoLabelReason PointsReason(AutoLabelSource source, string? aiModelId, bool filesFound, bool backendImplemented)
     {
-        if (source != AutoLabelSource.AiModel || aiModelId != AiModelCatalog.Sam2Id)
+        if (source != AutoLabelSource.AiModel || !IsSamId(aiModelId))
         {
             return AutoLabelReason.NeedSam2;
         }
@@ -222,7 +233,7 @@ public static class AutoLabelSourceRules
         }
 
         AutoLabelReason reason = BoxReason(source, aiModelId, filesFound, backendImplemented);
-        if (reason == AutoLabelReason.None && source == AutoLabelSource.AiModel && aiModelId == AiModelCatalog.Sam2Id)
+        if (reason == AutoLabelReason.None && source == AutoLabelSource.AiModel && IsSamId(aiModelId))
         {
             return AutoLabelReason.NeedPrompt;
         }

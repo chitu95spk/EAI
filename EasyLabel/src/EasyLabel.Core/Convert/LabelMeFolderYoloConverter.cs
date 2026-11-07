@@ -387,6 +387,24 @@ public sealed class LabelMeFolderYoloConverter
             double bottom = Math.Max(points[0].Y, points[1].Y);
             corners = new[] { left, top, right, top, right, bottom, left, bottom };
         }
+        else if (shapeType == "circle")
+        {
+            // YOLO OBB has no circle: a circle (centre + edge point) becomes its circumscribed square, an oriented box with 0 degrees.
+            if (points == null || points.Count < 2)
+            {
+                return "circle needs 2 points (centre and edge point)";
+            }
+
+            double radius = Math.Sqrt(Math.Pow(points[1].X - points[0].X, 2d) + Math.Pow(points[1].Y - points[0].Y, 2d));
+            if (radius <= 0d)
+            {
+                return "circle has zero radius";
+            }
+
+            double cx = points[0].X;
+            double cy = points[0].Y;
+            corners = new[] { cx - radius, cy - radius, cx + radius, cy - radius, cx + radius, cy + radius, cx - radius, cy + radius };
+        }
         else if (shapeType == "polygon" || shapeType == "oriented_rectangle" || shapeType == "rotation")
         {
             if (points == null || points.Count < 3)

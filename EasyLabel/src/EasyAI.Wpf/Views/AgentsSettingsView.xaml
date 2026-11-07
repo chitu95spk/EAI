@@ -379,31 +379,6 @@
                           AutomationProperties.AutomationId="McpServerList" />
         </StackPanel>
 
-        <!-- Permission to send the open project's images and prompts to the agent provider; it can be withdrawn here (S9). -->
-        <StackPanel Margin="0,0,0,24"
-                    AutomationProperties.AutomationId="AgentConsent">
-            <ui:TextBlock Margin="0,12,0,6"
-                          FontTypography="Subtitle"
-                          Text="{x:Static res:Strings.AgentConsentTitle}" />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" MinWidth="120" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <ui:TextBlock Grid.Column="0"
-                              Margin="0,0,12,0"
-                              VerticalAlignment="Center"
-                              Text="{Binding Consent.StatusText}"
-                              TextWrapping="Wrap"
-                              AutomationProperties.AutomationId="AgentConsentStatus" />
-                <ui:Button Grid.Column="1"
-                           Content="{x:Static res:Strings.AgentConsentRevoke}"
-                           Icon="{ui:SymbolIcon Dismiss24}"
-                           Command="{Binding Consent.RevokeCommand}"
-                           AutomationProperties.AutomationId="AgentConsentRevoke" />
-            </Grid>
-        </StackPanel>
-
         <!-- Agent memory of the open project: a summary with Edit and Clear. -->
         <StackPanel Margin="0,0,0,24"
                     AutomationProperties.AutomationId="AgentMemory">

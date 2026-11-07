@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using EasyAI.Desktop.Infrastructure;
 using EasyLabel.Ai.Onnx;
 
 namespace EasyAI.Desktop.Services;
@@ -56,22 +57,7 @@ public sealed class AiBackendService : IDisposable
         await _gate.WaitAsync(token).ConfigureAwait(false);
         try
         {
-            token.ThrowIfCancellationRequested();
-            if (_disposed)
-            {
-                throw new ObjectDisposedException(nameof(AiBackendService));
-            }
-
-            if (_loaded == null || !string.Equals(_loaded.Id, modelId, StringComparison.Ordinal) || !string.Equals(_loaded.Folder, folder, StringComparison.OrdinalIgnoreCase))
-            {
-                // One model resident: the old one goes first, so a failed load leaves nothing half-loaded.
-                DisposeLoaded();
-                loading?.Report(modelId);
-                _loaded = await Task.Run(() => Load(modelId, folder), CancellationToken.None).ConfigureAwait(false);
-                token.ThrowIfCancellationRequested();
-            }
-
-            Loaded loaded = _loaded;
+            Loaded loaded = await EnsureLoadedAsync(modelId, folder, loading, token).ConfigureAwait(false);
             Stopwatch watch = Stopwatch.StartNew();
             IReadOnlyList<AiProposal> proposals = await loaded.Backend.RunAsync(image, prompt, token).ConfigureAwait(false);
             watch.Stop();
@@ -83,17 +69,79 @@ public sealed class AiBackendService : IDisposable
         }
     }
 
+    /// <summary>
+    /// Loads the model ahead of the first run (so the first AI-Box does not wait for the model). Same serialisation as
+    /// <see cref="RunAsync"/>; a load failure is returned as text (null = loaded) and the next run retries and reports it itself.
+    /// </summary>
+    public async Task<string?> PreloadAsync(string modelId, string folder, IProgress<string>? loading, CancellationToken ct)
+    {
+        using CancellationTokenSource linked = CancellationTokenSource.CreateLinkedTokenSource(ct, _lifetime.Token);
+        await _gate.WaitAsync(linked.Token).ConfigureAwait(false);
+        try
+        {
+            await EnsureLoadedAsync(modelId, folder, loading, linked.Token).ConfigureAwait(false);
+            return null;
+        }
+        catch (Exception ex) when (ex is AiModelException or Microsoft.ML.OnnxRuntime.OnnxRuntimeException or OutOfMemoryException)
+        {
+            return ex.Message;
+        }
+        finally
+        {
+            _gate.Release();
+        }
+    }
+
+    // Caller holds _gate.
+    private async Task<Loaded> EnsureLoadedAsync(string modelId, string folder, IProgress<string>? loading, CancellationToken token)
+    {
+        token.ThrowIfCancellationRequested();
+        if (_disposed)
+        {
+            throw new ObjectDisposedException(nameof(AiBackendService));
+        }
+
+        if (_loaded == null || !string.Equals(_loaded.Id, modelId, StringComparison.Ordinal) || !string.Equals(_loaded.Folder, folder, StringComparison.OrdinalIgnoreCase))
+        {
+            // One model resident: the old one goes first, so a failed load leaves nothing half-loaded.
+            DisposeLoaded();
+            loading?.Report(modelId);
+            _loaded = await Task.Run(() => Load(modelId, folder), CancellationToken.None).ConfigureAwait(false);
+            token.ThrowIfCancellationRequested();
+        }
+
+        return _loaded;
+    }
+
     private static Loaded Load(string modelId, string folder)
     {
-        AiModelResolution files = AiModelFiles.Resolve(modelId, folder);
+        // "sam3" = SAM3 + SAM2 hybrid, shares the sam2 files and folder. "sam2" stays plain SAM2 so the two can be compared.
+        bool hybridMode = string.Equals(modelId, AiModelCatalog.Sam3Id, StringComparison.OrdinalIgnoreCase);
+        AiModelResolution files = AiModelFiles.Resolve(hybridMode ? AiModelFiles.Sam2Id : modelId, folder);
         if (!files.Found)
         {
             throw new AiModelException(files.Reason);
         }
 
-        if (string.Equals(modelId, AiModelFiles.Sam2Id, StringComparison.OrdinalIgnoreCase))
+        if (hybridMode || string.Equals(modelId, AiModelFiles.Sam2Id, StringComparison.OrdinalIgnoreCase))
         {
+            // SAM2 is loaded up front in both modes, so the first AI-Box run has no extra wait. Hybrid: SAM3 (models\sam3, sibling of
+            // the sam2 folder) finds the object, SAM2 re-cuts the edge; any SAM3 failure keeps SAM2 and says why.
             Sam2Backend sam2 = Sam2Backend.Load(files);
+            string sam3Folder = Path.Combine(Path.GetDirectoryName(Path.TrimEndingDirectorySeparator(folder)) ?? string.Empty, "sam3");
+            if (hybridMode && Sam3Backend.Exists(sam3Folder))
+            {
+                try
+                {
+                    var hybrid = new SamHybridBackend(Sam3Backend.Load(sam3Folder), sam2);
+                    return new Loaded(modelId, folder, hybrid, hybrid, Sam3Backend.EncoderFile, hybrid.Provider, hybrid.FallbackReason);
+                }
+                catch (Exception ex) when (ex is AiModelException or Microsoft.ML.OnnxRuntime.OnnxRuntimeException or OutOfMemoryException)
+                {
+                    return new Loaded(modelId, folder, sam2, sam2, Path.GetFileName(files.EncoderPath ?? string.Empty), sam2.Provider, "SAM3 unavailable, using SAM2: " + ex.Message);
+                }
+            }
+
             return new Loaded(modelId, folder, sam2, sam2, Path.GetFileName(files.EncoderPath ?? string.Empty), sam2.Provider, sam2.FallbackReason);
         }
 

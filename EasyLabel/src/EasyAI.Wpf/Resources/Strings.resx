@@ -119,6 +119,7 @@
   <data name="SourceAgentPrompt" xml:space="preserve"><value>Agent Prompt</value></data>
   <data name="AiPickTip" xml:space="preserve"><value>AI model used by the AI Model source</value></data>
   <data name="AiPickSam2" xml:space="preserve"><value>SAM2</value></data>
+  <data name="AiPickSam3" xml:space="preserve"><value>SAM3</value></data>
   <data name="AiPickYoloWorld" xml:space="preserve"><value>YOLO-World</value></data>
   <data name="AiPickCustomDetect" xml:space="preserve"><value>Custom YOLO</value></data>
   <data name="AgentPromptTip" xml:space="preserve"><value>What the agent should label</value></data>
@@ -193,6 +194,8 @@
   <data name="StepTrain" xml:space="preserve"><value>Train</value></data>
   <data name="TrainOptionsHeader" xml:space="preserve"><value>Options</value></data>
   <data name="TrainEpochs" xml:space="preserve"><value>Epochs</value></data>
+  <data name="TrainEarlyStop" xml:space="preserve"><value>Early stop patience (epochs)</value></data>
+  <data name="TrainEarlyStopTip" xml:space="preserve"><value>Stop when the validation loss has not improved for this many epochs (5-200). 0 = automatic.</value></data>
   <data name="AutoLabelNeedInstanceHead" xml:space="preserve"><value>This Position model has no instance head. Retrain the Position model to get oriented boxes and circles.</value></data>
   <data name="TrainInstanceQuality" xml:space="preserve"><value>Accuracy</value></data>
   <data name="InstanceQualityPerformance" xml:space="preserve"><value>Performance</value></data>
@@ -362,6 +365,10 @@
   <data name="ConvertShapeTitle" xml:space="preserve"><value>Convert shape</value></data>
   <data name="ConvertShapeConfirm" xml:space="preserve"><value>Convert</value></data>
   <data name="ConvertShapeSkippedFormat" xml:space="preserve"><value>Skipped {0} shape(s) that cannot be converted.</value></data>
+  <data name="MiConvertAllShapes" xml:space="preserve"><value>Convert All Shapes (every image)</value></data>
+  <data name="ConvertAllConfirmFormat" xml:space="preserve"><value>Convert {0} shape(s) in {1} image file(s) to {2}? This rewrites the annotation files and cannot be undone.</value></data>
+  <data name="ConvertAllNothing" xml:space="preserve"><value>No shapes in the project can be converted to this type.</value></data>
+  <data name="ConvertAllDoneFormat" xml:space="preserve"><value>Converted {0} shape(s) in {1} image file(s).</value></data>
   <data name="ShapeConvertLossyHoles" xml:space="preserve"><value>The holes of the shape will be lost.</value></data>
   <data name="ShapeConvertLossyLine" xml:space="preserve"><value>A line or line strip will become a closed shape built from its points.</value></data>
   <data name="ShapeConvertLossyPoint" xml:space="preserve"><value>Converting to a point keeps only the centre of the shape.</value></data>
@@ -558,6 +565,49 @@
   <data name="MiImportDatasetDots" xml:space="preserve"><value>Import dataset...</value></data>
   <data name="MiAutoLabelDots" xml:space="preserve"><value>Auto-label...</value></data>
   <data name="MiTrainDots" xml:space="preserve"><value>Train...</value></data>
+  <data name="MiSelfLearnDots" xml:space="preserve"><value>Self-learn...</value></data>
+  <data name="SlTitle" xml:space="preserve"><value>Self-learn</value></data>
+  <data name="SlTabMonitor" xml:space="preserve"><value>Auto loop</value></data>
+  <data name="SlTabDetect" xml:space="preserve"><value>Detect (OBB)</value></data>
+  <data name="SlRunFolder" xml:space="preserve"><value>Run folder (the run-... folder of the auto loop)</value></data>
+  <data name="SlRunFolderTitle" xml:space="preserve"><value>Choose the auto-loop run folder</value></data>
+  <data name="SlStateFormat" xml:space="preserve"><value>State: {0}</value></data>
+  <data name="SlStateNone" xml:space="preserve"><value>no run selected</value></data>
+  <data name="SlStateRunning" xml:space="preserve"><value>training</value></data>
+  <data name="SlStateIdle" xml:space="preserve"><value>stopped</value></data>
+  <data name="SlStateFinished" xml:space="preserve"><value>finished</value></data>
+  <data name="SlStateFailed" xml:space="preserve"><value>stopped without a report (see the log)</value></data>
+  <data name="SlStateStopping" xml:space="preserve"><value>stop requested, finishing the current round</value></data>
+  <data name="SlStop" xml:space="preserve"><value>Stop</value></data>
+  <data name="SlRefresh" xml:space="preserve"><value>Refresh</value></data>
+  <data name="SlColRound" xml:space="preserve"><value>Round</value></data>
+  <data name="SlColModel" xml:space="preserve"><value>Model</value></data>
+  <data name="SlColSynth" xml:space="preserve"><value>Images</value></data>
+  <data name="SlColEpochs" xml:space="preserve"><value>Epochs</value></data>
+  <data name="SlColMap50" xml:space="preserve"><value>mAP50</value></data>
+  <data name="SlColRecall" xml:space="preserve"><value>Recall</value></data>
+  <data name="SlColPrecision" xml:space="preserve"><value>Precision</value></data>
+  <data name="SlTargetFormat" xml:space="preserve"><value>Target: mAP50 &gt;= {0}, recall &gt;= {1}</value></data>
+  <data name="SlBestFormat" xml:space="preserve"><value>Best so far: round {0}, mAP50 {1}, recall {2}</value></data>
+  <data name="SlNoReport" xml:space="preserve"><value>No report yet: the first round is still training.</value></data>
+  <data name="SlLogHeader" xml:space="preserve"><value>Log (last lines)</value></data>
+  <data name="SlWeights" xml:space="preserve"><value>Weights (best.pt)</value></data>
+  <data name="SlImages" xml:space="preserve"><value>Folder of test images</value></data>
+  <data name="SlImagesTitle" xml:space="preserve"><value>Choose the folder of test images</value></data>
+  <data name="SlConf" xml:space="preserve"><value>Confidence</value></data>
+  <data name="SlDetect" xml:space="preserve"><value>Detect</value></data>
+  <data name="SlColImage" xml:space="preserve"><value>Image</value></data>
+  <data name="SlColCount" xml:space="preserve"><value>Detected</value></data>
+  <data name="SlColGt" xml:space="preserve"><value>Labelled</value></data>
+  <data name="SlColMs" xml:space="preserve"><value>ms</value></data>
+  <data name="SlDetectProgressFormat" xml:space="preserve"><value>{0} / {1} images</value></data>
+  <data name="SlDetectSummaryFormat" xml:space="preserve"><value>{0} images, {1} objects detected in {2} ms per image on average.</value></data>
+  <data name="SlDetectGtFormat" xml:space="preserve"><value> Labelled objects: {0}; images with the exact count: {1}.</value></data>
+  <data name="SlNeedWeights" xml:space="preserve"><value>Choose a run folder with best.pt or type the weights path.</value></data>
+  <data name="SlNeedImages" xml:space="preserve"><value>Choose an existing folder of test images.</value></data>
+  <data name="SlNoScript" xml:space="preserve"><value>detect_obb.py was not found next to the app (tools\autoloop). Set EASYAI_DETECT_SCRIPT.</value></data>
+  <data name="SlDetectFailedFormat" xml:space="preserve"><value>Detection failed: {0}</value></data>
+  <data name="SlStopRequestedLog" xml:space="preserve"><value>Stop requested.</value></data>
   <data name="PnlNoLabel" xml:space="preserve"><value>(no label)</value></data>
   <data name="PnlGroupVisibleTip" xml:space="preserve"><value>Show or hide all shapes of this label</value></data>
   <data name="MiExport" xml:space="preserve"><value>Export...</value></data>

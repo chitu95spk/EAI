@@ -12,6 +12,8 @@ public sealed class AgentJob
 {
     private const int ExtendedLimitInformationClass = 9;
     private const uint KillOnJobClose = 0x2000;
+    // Lets a child that asks for CREATE_BREAKAWAY_FROM_JOB leave the job (the autoloop trainer must outlive the MCP call). Others stay inside.
+    private const uint BreakawayOk = 0x0800;
 
     private readonly SafeFileHandle _handle;
 
@@ -37,7 +39,7 @@ public sealed class AgentJob
             }
 
             JobExtendedLimitInformation info = new JobExtendedLimitInformation();
-            info.Basic.LimitFlags = KillOnJobClose;
+            info.Basic.LimitFlags = KillOnJobClose | BreakawayOk;
             if (!SetInformationJobObject(handle, ExtendedLimitInformationClass, ref info, (uint)Marshal.SizeOf<JobExtendedLimitInformation>()))
             {
                 handle.Dispose();

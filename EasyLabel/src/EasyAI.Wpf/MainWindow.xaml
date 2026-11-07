@@ -509,6 +509,10 @@
                              InputGestureText="{infra:Shortcut Train}"
                              Command="{Binding ShowTrainTabCommand}"
                              AutomationProperties.AutomationId="MenuTrain" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiSelfLearnDots}"
+                             Icon="{ui:SymbolIcon ArrowSync24}"
+                             Command="{Binding ShowSelfLearnCommand}"
+                             AutomationProperties.AutomationId="MenuSelfLearn" />
             </ui:MenuItem>
 
             <!-- Advanced only: with Convert YOLO hidden the Tools header would be an empty menu. -->
@@ -522,6 +526,27 @@
                              Command="{Binding ShowConvertYoloCommand}"
                              Visibility="{Binding IsAdvancedMode, Converter={StaticResource BoolToVisibility}}"
                              AutomationProperties.AutomationId="MenuConvertYolo" />
+                <ui:MenuItem Header="{x:Static res:Strings.MiConvertAllShapes}"
+                             AutomationProperties.AutomationId="MenuConvertAllShapes">
+                    <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetPolygon}"
+                                 Command="{Binding ConvertAllShapesCommand}" CommandParameter="polygon"
+                                 Visibility="{Binding Canvas.AllowsFreeShapeTools, Converter={StaticResource BoolToVisibility}}"
+                                 AutomationProperties.AutomationId="MenuConvertAllPolygon" />
+                    <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetRectangle}"
+                                 Command="{Binding ConvertAllShapesCommand}" CommandParameter="rectangle"
+                                 Visibility="{Binding Canvas.AllowsFreeShapeTools, Converter={StaticResource BoolToVisibility}}"
+                                 AutomationProperties.AutomationId="MenuConvertAllRectangle" />
+                    <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetRotated}"
+                                 Command="{Binding ConvertAllShapesCommand}" CommandParameter="oriented_rectangle"
+                                 AutomationProperties.AutomationId="MenuConvertAllRotated" />
+                    <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetCircle}"
+                                 Command="{Binding ConvertAllShapesCommand}" CommandParameter="circle"
+                                 AutomationProperties.AutomationId="MenuConvertAllCircle" />
+                    <ui:MenuItem Header="{x:Static res:Strings.ConvertTargetPoint}"
+                                 Command="{Binding ConvertAllShapesCommand}" CommandParameter="point"
+                                 Visibility="{Binding Canvas.AllowsFreeShapeTools, Converter={StaticResource BoolToVisibility}}"
+                                 AutomationProperties.AutomationId="MenuConvertAllPoint" />
+                </ui:MenuItem>
             </ui:MenuItem>
 
             <ui:MenuItem AutomationProperties.AutomationId="MenuHelp">

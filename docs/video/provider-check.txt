@@ -1,0 +1,21 @@
+Kiểm tra provider SAM3 (Bước 1, mục 2)
+Ngày: 2026-11-06. Máy: Master (máy quay), user TEAM.
+
+Model: C:\Users\TEAM\AppData\Local\EasyAI\models\sam3 (đủ 3 file ONNX + .data, ~3,5 GB).
+Cách kiểm: dotnet test EasyLabel.Ai.Onnx.Tests --filter Sam3BoxOnAWholeScrew (Release), ảnh Cam_20261019_160350_387.bmp.
+Kết quả: PASS (51 giây cả test).
+  provider = CPU, fallback = "GPU unavailable, using CPU" (DirectML lỗi 80070057 khi khởi tạo).
+  Lần chạy đầu (nạp + suy luận): 24,98 giây.
+  score = 0,97; hộp bao = X=886 Y=964 W=85 H=210 (phủ cả đầu và thân ốc).
+
+CHƯA kiểm: AI-Box trong app thật (đường SamHybridBackend, AiBackendService.cs:102) báo SAM3 hay SAM2.
+Việc còn lại trước khi quay: mở AI-Box, chạy ảnh mẫu, nhìn provider trên UI/log và ghi vào đây.
+Caption: SAM3 chạy CPU nên chậm ~25 s lần đầu; AI-Points vẫn là SAM2.
+
+Autoloop thật (không Agent): artifacts\EAI-AUTOLOOP-VIDEO\real1\run-20261106-104819\report.json
+  Vòng 0, yolo11n-obb, 300 ảnh synthetic, 40 epoch: mAP50 0,995, mAP50-95 0,8955, precision 0,821, recall 1,0.
+  Đạt mục tiêu (0,95/0,98) ngay vòng 0. Tập test chỉ 5 vật (1 ảnh) nên số này yếu về thống kê.
+
+Autoloop dùng cho clip cảnh 5-6: artifacts\EAI-AUTOLOOP-VIDEO\agent-scene5.autoloop\run-20261106-144740\report.json
+  Vòng 0, yolo11n-obb, 300 ảnh synthetic (965 nhãn), 40 epoch (326 s): mAP50 0,995, mAP50-95 0,9949, precision 0,919, recall 1,0.
+  Train 10 vật, test 4 vật (bỏ 6 vật ở vùng đệm). Tập test nhỏ nên chỉ mang tính minh họa.

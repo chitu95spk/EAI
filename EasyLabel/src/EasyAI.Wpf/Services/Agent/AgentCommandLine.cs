@@ -12,7 +12,7 @@ public static class AgentCommandLine
 
     /// <summary>The only tools the agent may call (the MCP tools of the easyai server).</summary>
     public const string AllowedTools =
-        "mcp__easyai__get_image_info,mcp__easyai__get_crop,mcp__easyai__get_reference,mcp__easyai__list_shapes,mcp__easyai__sam2_segment,mcp__easyai__detect_points,mcp__easyai__pick_candidates,mcp__easyai__propose_shapes,mcp__easyai__memory_read,mcp__easyai__memory_add,mcp__easyai__grid_crop,mcp__easyai__render_overlay,mcp__easyai__measure";
+        "mcp__easyai__get_image_info,mcp__easyai__get_crop,mcp__easyai__get_reference,mcp__easyai__list_shapes,mcp__easyai__sam2_segment,mcp__easyai__detect_points,mcp__easyai__pick_candidates,mcp__easyai__propose_shapes,mcp__easyai__memory_read,mcp__easyai__memory_add,mcp__easyai__grid_crop,mcp__easyai__render_overlay,mcp__easyai__measure,mcp__easyai__propagate_labels,mcp__easyai__capture_frames,mcp__easyai__propagate_to_frames,mcp__easyai__synthesize_samples,mcp__easyai__auto_train_loop";
 
     /// <summary>The longest prompt (after trimming) a run accepts.</summary>
     public const int MaxPromptLength = 4000;
@@ -69,7 +69,7 @@ public static class AgentCommandLine
     public const string CodexModel = "codex";
 
     /// <summary>The MCP tools a Codex run may use (the same set as the Claude run; Codex has no allow list on the command line, so the server is told).</summary>
-    public static readonly string[] CodexTools = { "get_image_info", "get_crop", "get_reference", "list_shapes", "sam2_segment", "detect_points", "pick_candidates", "propose_shapes", "memory_read", "memory_add", "grid_crop", "render_overlay", "measure" };
+    public static readonly string[] CodexTools = { "get_image_info", "get_crop", "get_reference", "list_shapes", "sam2_segment", "detect_points", "pick_candidates", "propose_shapes", "memory_read", "memory_add", "grid_crop", "render_overlay", "measure", "propagate_labels", "capture_frames", "propagate_to_frames", "synthesize_samples", "auto_train_loop" };
 
     public static readonly string[] CodexSuggestTools = { "get_image_info", "get_crop", "memory_read" };
 

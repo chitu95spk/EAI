@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\EasyLabel.Camera\EasyLabel.Camera.csproj" />
+    <ProjectReference Include="..\..\src\EasyLabel.LabelHarness\EasyLabel.LabelHarness.csproj" />
   </ItemGroup>
 
 </Project>

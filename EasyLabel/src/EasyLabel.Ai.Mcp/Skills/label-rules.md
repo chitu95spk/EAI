@@ -10,3 +10,9 @@
 5. Keep tool calls minimal: every crop costs tokens. Prefer one overview crop, one crop per uncertain region.
 6. Add a short `note` to a shape only when it explains an uncertain decision.
 7. Your final answer is a one or two line summary: how many shapes proposed, per label.
+8. More training images: use REAL frames, never synthetic ones by default. Call `capture_frames` (the live screen: whole desktop,
+   a `region` or a `windowTitle`; or `source: "video"` with a `videoPath`), then `propagate_to_frames` with the labelled
+   reference to write a labelme `.json` beside each real frame. Real backgrounds are what the trained model will see; swapped
+   backgrounds do not generalise. Tell the user which frames got no match (`framesWithoutMatch`) so they can label them.
+9. `synthesize_samples` (generated images on swapped backgrounds) is opt-in: call it only when the user explicitly asks for
+   synthetic images. Do not use it to "add data" on your own.
