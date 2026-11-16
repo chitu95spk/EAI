@@ -7,7 +7,7 @@ public static class ProjectKindToolRules
 {
     public static bool IsToolAllowed(ProjectKind kind, CanvasTool tool)
     {
-        if (kind != ProjectKind.Position) return true;
+        if (!kind.IsInstanceKind()) return true;
         return tool == CanvasTool.Hand || tool == CanvasTool.Select || tool == CanvasTool.Rot || tool == CanvasTool.Circle || tool == CanvasTool.AiBox;
     }
 
@@ -17,7 +17,7 @@ public static class ProjectKindToolRules
     /// </summary>
     public static bool IsShapeTypeAllowed(ProjectKind kind, string? shapeType)
     {
-        if (kind != ProjectKind.Position) return true;
+        if (!kind.IsInstanceKind()) return true;
         return shapeType == "oriented_rectangle" || shapeType == "circle";
     }
 }

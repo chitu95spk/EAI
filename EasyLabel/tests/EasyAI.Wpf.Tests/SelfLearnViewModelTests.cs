@@ -56,6 +56,39 @@ namespace EasyAI.Wpf.Tests
         }
 
         [Fact]
+        public void SynthesisProgressComesFromLatestGenImageEvent()
+        {
+            string run = MakeRun("run-20261108-030303");
+            File.WriteAllText(Path.Combine(run, "events.jsonl"),
+                "{\"type\":\"gen_start\",\"n_train\":300}\n"
+                + "{\"type\":\"gen_image\",\"split\":\"train\",\"index\":75,\"total\":300,\"path\":\"missing.jpg\",\"count\":19,\"bg\":\"stripes\"}\n"
+                + "{\"type\":\"gen_image\",\"split\":\"train\",\"index\":76,\"total\":300,\"path\":\"missing.jpg\",\"count\":10,\"bg\":\"grid\"}\n");
+            using (SelfLearnViewModel vm = new SelfLearnViewModel(null, null, null))
+            {
+                vm.RunFolder = run;
+
+                Assert.True(vm.HasGen);
+                Assert.Equal(76, vm.GenValue);
+                Assert.Equal(300, vm.GenMaximum);
+                Assert.Contains("76/300", vm.GenText);
+                Assert.Contains("grid", vm.GenText);
+            }
+        }
+
+        [Fact]
+        public void RunWithoutEventsHidesSynthesisProgress()
+        {
+            string run = MakeRun("run-20261108-040404");
+            using (SelfLearnViewModel vm = new SelfLearnViewModel(null, null, null))
+            {
+                vm.RunFolder = run;
+
+                Assert.False(vm.HasGen);
+                Assert.Equal(string.Empty, vm.GenText);
+            }
+        }
+
+        [Fact]
         public void LeftoverRunningMarkerWithDeadPidIsNotRunning()
         {
             string run = MakeRun("run-20261107-020202");

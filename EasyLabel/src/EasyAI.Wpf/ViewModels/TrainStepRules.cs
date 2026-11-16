@@ -21,6 +21,9 @@ public sealed record TrainChartData(
 /// </summary>
 public static class TrainStepRules
 {
+    /// <summary>Progress percent at which the SegAI epochs are over and only the instance head / fine-tune / save remain.</summary>
+    public const double FinishingPercent = 95;
+
     public const int MinEpochs = 1;
     public const int MaxEpochs = 2000;
     public const int DefaultEpochs = 200;

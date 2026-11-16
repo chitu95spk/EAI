@@ -13,6 +13,9 @@
                  WindowBackdropType="Mica"
                  WindowStartupLocation="CenterOwner"
                  AutomationProperties.AutomationId="SelfLearnDialog">
+    <ui:FluentWindow.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </ui:FluentWindow.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -71,6 +74,31 @@
                         <ui:TextBlock Margin="0,2,0,0"
                                       Text="{Binding BestText}"
                                       AutomationProperties.AutomationId="SelfLearnBest" />
+                        <Grid Margin="0,8,0,0"
+                              Visibility="{Binding HasGen, Converter={StaticResource BoolToVis}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0"
+                                   Width="120"
+                                   Height="90"
+                                   Margin="0,0,12,0"
+                                   Stretch="Uniform"
+                                   Source="{Binding GenPreview}"
+                                   AutomationProperties.AutomationId="SelfLearnGenPreview" />
+                            <StackPanel Grid.Column="1"
+                                        VerticalAlignment="Center">
+                                <ui:TextBlock Text="{Binding GenText}"
+                                              AutomationProperties.AutomationId="SelfLearnGenText" />
+                                <ProgressBar Margin="0,6,0,0"
+                                             Height="8"
+                                             Minimum="0"
+                                             Maximum="{Binding GenMaximum}"
+                                             Value="{Binding GenValue, Mode=OneWay}"
+                                             AutomationProperties.AutomationId="SelfLearnGenProgress" />
+                            </StackPanel>
+                        </Grid>
                     </StackPanel>
 
                     <DataGrid Grid.Row="2"

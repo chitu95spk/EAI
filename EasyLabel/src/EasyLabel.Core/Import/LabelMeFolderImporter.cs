@@ -284,7 +284,7 @@ public sealed class LabelMeFolderImporter
         LabelMeImportResult result = new LabelMeImportResult();
         List<string> importedLabels = new List<string>();
         // Position projects keep oriented boxes and circles only; the other shapes of a file are left out (reported per file).
-        bool position = EasyLabel.Core.Projects.ProjectKindStore.Read(_paths) == EasyLabel.Core.Projects.ProjectKind.Position;
+        bool position = EasyLabel.Core.Projects.ProjectKindExtensions.IsInstanceKind(EasyLabel.Core.Projects.ProjectKindStore.Read(_paths));
         int total = preview.Items.Count;
         for (int index = 0; index < total; index++)
         {

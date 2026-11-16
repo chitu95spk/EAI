@@ -51,6 +51,31 @@ public sealed partial class ProjectDialogViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(IsDetectKind))]
     private bool _isPositionKind;
 
+    /// <summary>New mode: true when the project is created as Counter (Couter); at most one of Position / Counter is true.</summary>
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsDetectKind))]
+    private bool _isCounterKind;
+
+    /// <summary>New mode: true when the project is created as CounterAI (FastNet point counter).</summary>
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsDetectKind))]
+    private bool _isCounterAiKind;
+
+    partial void OnIsPositionKindChanged(bool value)
+    {
+        if (value) { IsCounterKind = false; IsCounterAiKind = false; }
+    }
+
+    partial void OnIsCounterKindChanged(bool value)
+    {
+        if (value) { IsPositionKind = false; IsCounterAiKind = false; }
+    }
+
+    partial void OnIsCounterAiKindChanged(bool value)
+    {
+        if (value) { IsPositionKind = false; IsCounterKind = false; }
+    }
+
     [ObservableProperty]
     private string _errorText = string.Empty;
 
@@ -87,12 +112,14 @@ public sealed partial class ProjectDialogViewModel : ObservableObject
     /// <summary>Mirror of <see cref="IsPositionKind"/> for the second radio button of the kind selector.</summary>
     public bool IsDetectKind
     {
-        get => !IsPositionKind;
+        get => !IsPositionKind && !IsCounterKind && !IsCounterAiKind;
         set
         {
             if (value)
             {
                 IsPositionKind = false;
+                IsCounterKind = false;
+                IsCounterAiKind = false;
             }
         }
     }
@@ -198,7 +225,7 @@ public sealed partial class ProjectDialogViewModel : ObservableObject
         if (_work == null)
         {
             string? images = string.IsNullOrWhiteSpace(ImageFolder) ? null : ImageFolder.Trim();
-            Input = new NewProjectInput(name, location, images, IsPositionKind ? ProjectKind.Position : ProjectKind.Detect);
+            Input = new NewProjectInput(name, location, images, IsPositionKind ? ProjectKind.Position : IsCounterKind ? ProjectKind.Counter : IsCounterAiKind ? ProjectKind.CounterAi : ProjectKind.Detect);
             CloseRequested?.Invoke(this, true);
             return;
         }

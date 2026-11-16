@@ -258,6 +258,9 @@ public sealed partial class TrainStepViewModel : ObservableObject
         host.Data.PropertyChanged -= OnDataPropertyChanged;
         host.Data.PropertyChanged += OnDataPropertyChanged;
 
+        host.CounterAiBar.PropertyChanged -= OnCounterAiBarChanged;
+        host.CounterAiBar.PropertyChanged += OnCounterAiBarChanged;
+
         _ = LoadHardwareAsync();
     }
 
@@ -269,7 +272,7 @@ public sealed partial class TrainStepViewModel : ObservableObject
 
     public IReadOnlyList<int> InputSizes { get; }
 
-    public bool IsSegmentKind => !IsUltraKind && !IsClassifyKind;
+    public bool IsSegmentKind => !IsUltraKind && !IsClassifyKind && !IsCounterAiKind;
 
     public ObservableCollection<UltraFamilyRow> Families { get; }
 
@@ -318,6 +321,7 @@ public sealed partial class TrainStepViewModel : ObservableObject
         RefreshState();
         if (session != null)
         {
+            AutoSelectCounterAi();
             _ = RefreshCandidatesAsync(null);
             _ = RefreshEnvironmentAsync();
         }
@@ -343,6 +347,7 @@ public sealed partial class TrainStepViewModel : ObservableObject
             return;
         }
 
+        AutoSelectCounterAi();
         _ = RefreshCandidatesAsync(null);
         _ = RefreshEnvironmentAsync();
         _ = RefreshUltraRunsAsync(null);
@@ -467,6 +472,7 @@ public sealed partial class TrainStepViewModel : ObservableObject
     internal async Task EasyTrainAsync(bool forceRecommended, bool classify = false)
     {
         IsUltraKind = false;
+        IsCounterAiKind = !classify && ShouldUseCounterAi;
         IsClassifyKind = classify;
 
         RefreshState();
@@ -571,6 +577,11 @@ public sealed partial class TrainStepViewModel : ObservableObject
             key = TrainStepRules.UltraBlockKey(ultraBlock);
             fix = TrainStepRules.UltraFixKindOf(ultraBlock);
         }
+        else if (IsCounterAiKind)
+        {
+            text = CounterAiBlockText();
+            fix = text != null && _host.HasSession ? TrainStepRules.TrainFixKind.GoToLabel : TrainStepRules.TrainFixKind.None;
+        }
         else if (IsClassifyKind)
         {
             ClassifyBlock classifyBlock = CurrentClassifyBlock();
@@ -634,7 +645,9 @@ public sealed partial class TrainStepViewModel : ObservableObject
 
     // ---------- start / stop ----------
 
-    private bool CanStart() => IsUltraKind
+    private bool CanStart() => IsCounterAiKind
+        ? CanStartCounterAi()
+        : IsUltraKind
         ? TrainStepRules.CanStartUltra(CurrentUltraBlock())
         : IsClassifyKind
             ? CurrentClassifyBlock().CanTrain
@@ -643,6 +656,12 @@ public sealed partial class TrainStepViewModel : ObservableObject
     [RelayCommand(CanExecute = nameof(CanStart))]
     private async Task StartAsync()
     {
+        if (IsCounterAiKind)
+        {
+            await StartCounterAiAsync();
+            return;
+        }
+
         if (IsUltraKind)
         {
             await StartUltraAsync();
@@ -759,6 +778,7 @@ public sealed partial class TrainStepViewModel : ObservableObject
         _stopRequested = true;
         _cts?.Cancel();
         _classifyCts?.Cancel();
+        if (IsCounterAiKind) _counterAiRunner.Cancel();
         StopCommand.NotifyCanExecuteChanged();
     }
 
@@ -875,6 +895,18 @@ public sealed partial class TrainStepViewModel : ObservableObject
         }
 
         int done = TrainStepRules.EpochsDone(_epochs);
+        if (_lastPercent >= TrainStepRules.FinishingPercent)
+        {
+            // The main epochs are over (finished or early-stopped); the instance head, backbone fine-tune and save run
+            // without epoch rows. A frozen "Epoch 88 / 200 ... ETA" here looks like a hang and the ETA is wrong.
+            EtaText = string.Empty;
+            ProgressText = string.Format(
+                Strings.TrainFinishingFormat,
+                done,
+                TrainStepRules.FormatDuration(elapsed));
+            return;
+        }
+
         ProgressText = string.Format(
             Strings.TrainProgressFormat,
             done,
@@ -892,6 +924,12 @@ public sealed partial class TrainStepViewModel : ObservableObject
     {
         IsUltraKind = string.Equals(kind, "ultra", StringComparison.Ordinal);
         IsClassifyKind = string.Equals(kind, ClassifyRules.KindClassify, StringComparison.Ordinal);
+        IsCounterAiKind = string.Equals(kind, "counterai", StringComparison.Ordinal);
+        if (IsCounterAiKind)
+        {
+            OnPropertyChanged(nameof(CounterAiWeights));
+        }
+
         if (IsUltraKind)
         {
             _ = LoadUltraAsync();
@@ -905,7 +943,7 @@ public sealed partial class TrainStepViewModel : ObservableObject
     /// instance head (box mode, EAI-POS P9). A polygon Detect model does not show it.
     /// </summary>
     public bool ShowInstanceQuality => IsSegmentKind
-        && (_host.Canvas.Kind == EasyLabel.Core.Projects.ProjectKind.Position || _host.Session?.InstanceHeadLoaded == true);
+        && (EasyLabel.Core.Projects.ProjectKindExtensions.IsInstanceKind(_host.Canvas.Kind) || _host.Session?.InstanceHeadLoaded == true);
 
     public bool IsQualityInstance => _host.Session?.InstanceQuality == SegInstanceQuality.Quality;
 

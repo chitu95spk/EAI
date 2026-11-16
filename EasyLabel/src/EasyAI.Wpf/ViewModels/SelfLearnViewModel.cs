@@ -79,6 +79,24 @@ public sealed partial class SelfLearnViewModel : ObservableObject, IDisposable
     [NotifyCanExecuteChangedFor(nameof(StopCommand))]
     private bool _canStop;
 
+    // Synthesis progress read from events.jsonl (gen_image events written by tools/autoloop/synthgen.py).
+    [ObservableProperty]
+    private string _genText = string.Empty;
+
+    [ObservableProperty]
+    private double _genValue;
+
+    [ObservableProperty]
+    private double _genMaximum = 1;
+
+    [ObservableProperty]
+    private ImageSource? _genPreview;
+
+    [ObservableProperty]
+    private bool _hasGen;
+
+    private string _genPreviewPath = string.Empty;
+
     // ---- detect tab ----
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(DetectCommand))]
@@ -157,9 +175,11 @@ public sealed partial class SelfLearnViewModel : ObservableObject, IDisposable
             BestText = string.Empty;
             LogText = string.Empty;
             CanStop = false;
+            ReadGeneration(null);
             return;
         }
 
+        ReadGeneration(run);
         bool running = IsTrainerRunning(run);
         string report = Path.Combine(run, "report.json");
         string[] tail = File.Exists(Path.Combine(run, "autoloop.log")) ? LogTail(Path.Combine(run, "autoloop.log"), LogLines) : Array.Empty<string>();
@@ -188,6 +208,70 @@ public sealed partial class SelfLearnViewModel : ObservableObject, IDisposable
         StateText = string.Format(Strings.SlStateFormat, state);
         LogText = string.Join(Environment.NewLine, tail);
         CanStop = running && !stopRequested;
+    }
+
+    /// <summary>Latest gen_image event of the run: "train 76/300 · stripes · 19 objects" plus a thumbnail of that image. Hidden when the run has no events.</summary>
+    private void ReadGeneration(string? run)
+    {
+        string events = run == null ? string.Empty : Path.Combine(run, "events.jsonl");
+        string? last = null;
+        bool done = false;
+        if (events.Length > 0 && File.Exists(events))
+        {
+            try
+            {
+                using FileStream fs = new FileStream(events, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
+                fs.Seek(Math.Max(0, fs.Length - 64 * 1024), SeekOrigin.Begin);
+                using StreamReader sr = new StreamReader(fs);
+                foreach (string line in sr.ReadToEnd().Split('\n'))
+                {
+                    if (line.Contains("\"gen_image\"", StringComparison.Ordinal))
+                    {
+                        last = line;
+                        done = false;
+                    }
+                    else if (line.Contains("\"gen_done\"", StringComparison.Ordinal))
+                    {
+                        done = true;
+                    }
+                }
+            }
+            catch (IOException)
+            {
+            }
+        }
+
+        if (last == null)
+        {
+            HasGen = false;
+            GenText = string.Empty;
+            GenPreview = null;
+            _genPreviewPath = string.Empty;
+            return;
+        }
+
+        try
+        {
+            using JsonDocument doc = JsonDocument.Parse(last);
+            JsonElement e = doc.RootElement;
+            int index = e.TryGetProperty("index", out JsonElement i) && i.TryGetInt32(out int iv) ? iv : 0;
+            int total = e.TryGetProperty("total", out JsonElement t) && t.TryGetInt32(out int tv) ? tv : 0;
+            int count = e.TryGetProperty("count", out JsonElement c) && c.TryGetInt32(out int cv) ? cv : 0;
+            string path = Text(e, "path");
+            GenMaximum = Math.Max(1, total);
+            GenValue = done ? GenMaximum : index;
+            GenText = string.Format(CultureInfo.CurrentCulture, Strings.SlGenFormat, Text(e, "split"), index, total, Text(e, "bg"), count);
+            HasGen = true;
+            if (!string.Equals(path, _genPreviewPath, StringComparison.Ordinal))
+            {
+                _genPreviewPath = path;
+                GenPreview = LoadImage(path);
+            }
+        }
+        catch (JsonException)
+        {
+            // a half-written last line: the next tick shows it.
+        }
     }
 
     private bool ReadReport(string path)

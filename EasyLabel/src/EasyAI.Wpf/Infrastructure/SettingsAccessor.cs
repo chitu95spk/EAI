@@ -34,6 +34,9 @@ public static class SettingsAccessor
 
     /// <summary>Advanced opt-in toggle: YOLO / RT-DETR may train on the CPU when no NVIDIA GPU is found (see <see cref="AppSettings.UltraAllowCpu"/>).</summary>
     public const string RowUltraAllowCpu = "ultraAllowCpu";
+
+    /// <summary>Choice row of the AI models page: CPU / Intel GPU / NVIDIA CUDA for Segment AI (see <see cref="AppSettings.SegAiDevice"/>).</summary>
+    public const string RowSegAiDevice = "segAiDevice";
     public const string RowAgentOfflineOnly = "agentOfflineOnly";
     public const string RowAgentMaxImages = "agentMaxImages";
     public const string RowAgentBatchWorkers = "agentBatchWorkers";
@@ -150,6 +153,7 @@ public static class SettingsAccessor
             case RowCameraSource: value = s.ImageSource; return true;
             case RowCameraDevice: value = s.LastCameraId ?? string.Empty; return true;
             case RowEasyVisionFolder: value = s.EasyVisionModelFolder ?? string.Empty; return true;
+            case RowSegAiDevice: value = s.SegAiDevice; return true;
             default: return false;
         }
     }
@@ -187,6 +191,10 @@ public static class SettingsAccessor
             case RowThemeBackground:
                 if (!ThemePalette.TryParseHex(text, out uint tint)) return false;
                 s.ThemeBackgroundTint = ThemePalette.ToHex(tint);
+                return true;
+            case RowSegAiDevice:
+                if (!SegAiDeviceRules.IsDevice(text)) return false;
+                s.SegAiDevice = text;
                 return true;
             case RowPredefinedLabels: s.PredefinedLabels = value ?? string.Empty; return true;
             case RowPredefinedImageFlags: s.PredefinedImageFlags = value ?? string.Empty; return true;

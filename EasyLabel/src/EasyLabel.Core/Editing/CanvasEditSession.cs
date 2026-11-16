@@ -110,6 +110,7 @@ public sealed class CanvasEditSession
                 RectangleF r = RectOf(_down, _rectNow);
                 return r.Width > 0f || r.Height > 0f ? NewRect(r) : null;
             }
+            if (StampActive && _hover.HasValue) return StampShapeAt(Clamp(_hover.Value));
             if (Tool == CanvasTool.Rot && _draftPoints.Count == 2 && _hover.HasValue
                 && TryBuildRotBox(_draftPoints[0], _draftPoints[1], _hover.Value, out PointF[] pts))
                 return NewShape("oriented_rectangle", pts);
@@ -126,9 +127,11 @@ public sealed class CanvasEditSession
 
     public bool PointerDown(float x, float y, float scale, EditModifiers modifiers, EditPointerButton button = EditPointerButton.Left)
     {
+        if (button == EditPointerButton.Right && StampActive) return RemoveStampedAt(x, y);
         if (button != EditPointerButton.Left || !ValidScale(scale)) return false;
         ResetDrag();
         PointF p = new PointF(x, y);
+        if (StampActive) return Stamp(p);
         switch (Tool)
         {
             case CanvasTool.Rect:
@@ -866,6 +869,91 @@ public sealed class CanvasEditSession
         if (!RotatedBoxGeometry.TryCreate(new[] { tl, tr, br, bl }, out RotatedBoxGeometry box)) return false;
         if (!box.IsInside(new SizeF(ImageWidth, ImageHeight))) return false;
         points = box.ToPoints();
+        return true;
+    }
+
+    /// <summary>
+    /// Stamp mode (CounterAI): with the Circle or Rect tool a left click drops a fixed-size shape centred on the pointer and a right click
+    /// removes the shape under it. Nothing is selected and no label dialog opens, so many strands can be labelled quickly.
+    /// </summary>
+    public bool StampMode { get; set; } = true;
+    /// <summary>Count tool shape: true = circle, false = square / rectangle.</summary>
+    public bool StampCircle { get; set; } = true;
+    /// <summary>Stamped shape size in image pixels: diameter for a circle, width for a rectangle.</summary>
+    public float StampWidth { get; set; } = 62f;
+    /// <summary>Stamped rectangle height in image pixels.</summary>
+    public float StampHeight { get; set; } = 62f;
+
+    /// <summary>Right click removes the nearest stamp within this fraction of the stamp size (fastnet_gui.py: DIAMETER * 0.7).</summary>
+    public const float StampDeleteFactor = 0.7f;
+
+    public bool StampActive => StampMode && Tool == CanvasTool.Count;
+
+    private LabelShape? StampShapeAt(PointF c)
+    {
+        if (!StampActive || StampWidth < 1f || StampHeight < 1f) return null;
+        if (StampCircle)
+        {
+            float r = StampWidth / 2f;
+            return NewShape("circle", new[] { c, new PointF(c.X + r, c.Y) });
+        }
+
+        float hw = StampWidth / 2f, hh = StampHeight / 2f;
+        return NewShape("rectangle", new[] { new PointF(c.X - hw, c.Y - hh), new PointF(c.X + hw, c.Y + hh) });
+    }
+
+    private bool Stamp(PointF p)
+    {
+        PointF c = Clamp(p);
+        LabelShape? shape = StampShapeAt(c);
+        if (shape == null) return false;
+        _editor.Add(new[] { shape }, new[] { new ShapeProvenance() }, "Stamp");
+        _selected.Clear();
+        ClearVertex();
+        return true;
+    }
+
+    /// <summary>Right click in stamp mode: deletes the topmost circle/rectangle that contains the point (nearest centre wins ties).</summary>
+    public bool RemoveStampedAt(float x, float y)
+    {
+        int best = -1;
+        float bestDist = float.MaxValue;
+        float reach = StampDeleteFactor * Math.Max(StampWidth, StampCircle ? StampWidth : StampHeight);
+        for (int i = Shapes.Count - 1; i >= 0; i--)
+        {
+            LabelShape s = Shapes[i];
+            if (!Visible(i) || s.Points == null || s.Points.Count < 2) continue;
+            float cx, cy, d;
+            if (s.ShapeType == "circle")
+            {
+                cx = (float)s.Points[0][0];
+                cy = (float)s.Points[0][1];
+                d = Dist(new PointF(cx, cy), new PointF(x, y));
+                if (d > reach) continue;
+            }
+            else if (s.ShapeType == "rectangle")
+            {
+                cx = (float)((s.Points[0][0] + s.Points[1][0]) / 2.0);
+                cy = (float)((s.Points[0][1] + s.Points[1][1]) / 2.0);
+                d = Dist(new PointF(cx, cy), new PointF(x, y));
+                if (d > reach) continue;
+            }
+            else
+            {
+                continue;
+            }
+
+            if (d < bestDist)
+            {
+                bestDist = d;
+                best = i;
+            }
+        }
+
+        if (best < 0) return false;
+        _selected.Clear();
+        ClearVertex();
+        _editor.DeleteMany(new[] { best });
         return true;
     }
 

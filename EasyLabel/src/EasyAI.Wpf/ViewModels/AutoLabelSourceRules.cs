@@ -13,6 +13,9 @@ public enum AutoLabelSource
 
     /// <summary>A free-text prompt given to the Claude Code agent.</summary>
     AgentPrompt = 2,
+
+    /// <summary>FastNet point counter (CounterAI): stamps one circle / rectangle per counted object.</summary>
+    FastNet = 3,
 }
 
 /// <summary>Why an Auto-label source or an AI tool cannot be used; the view model maps it to a localized "Unavailable: ..." text.</summary>
@@ -60,12 +63,14 @@ public static class AutoLabelSourceRules
     public const string SegmentText = "segment";
     public const string AiText = "ai";
     public const string AgentText = "agent";
+    public const string FastNetText = "fastnet";
 
     /// <summary>Stored text of a source.</summary>
     public static string ToSetting(AutoLabelSource source)
     {
         switch (source)
         {
+            case AutoLabelSource.FastNet: return FastNetText;
             case AutoLabelSource.AiModel: return AiText;
             case AutoLabelSource.AgentPrompt: return AgentText;
             default: return SegmentText;
@@ -84,6 +89,11 @@ public static class AutoLabelSourceRules
         if (string.Equals(value, AgentText, StringComparison.OrdinalIgnoreCase))
         {
             return AutoLabelSource.AgentPrompt;
+        }
+
+        if (string.Equals(value, FastNetText, StringComparison.OrdinalIgnoreCase))
+        {
+            return AutoLabelSource.FastNet;
         }
 
         return AutoLabelSource.SegmentModel;
@@ -221,7 +231,7 @@ public static class AutoLabelSourceRules
     /// </summary>
     public static AutoLabelReason RunReason(AutoLabelSource source, string? aiModelId, bool filesFound, bool backendImplemented)
     {
-        if (source == AutoLabelSource.SegmentModel)
+        if (source == AutoLabelSource.SegmentModel || source == AutoLabelSource.FastNet)
         {
             return AutoLabelReason.None;
         }

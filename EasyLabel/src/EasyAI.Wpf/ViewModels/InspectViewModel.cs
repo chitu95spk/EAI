@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EasyAI.Desktop.Infrastructure;
 using EasyAI.Desktop.Resources;
+using EasyAI.Desktop.Services;
 using EasyLabel.Ai.Onnx.Classify;
 using EasyLabel.Core.Classify;
 using EasyLabel.Core.Hardware;
@@ -754,6 +755,11 @@ public sealed partial class InspectViewModel : ObservableObject
         return OkNgModelRules.LatestPerName(Directory.EnumerateFiles(dir).Select(f => Path.GetFileName(f)).ToList());
     }
 
+    /// <summary>Model-list key of the CounterAI (FastNet) entry; it is not a file of the project.</summary>
+    internal const string CounterAiKey = "counterai:fastnet";
+
+    private static bool IsCounterAiSelection(string? file) => string.Equals(file, CounterAiKey, StringComparison.Ordinal);
+
     private bool IsClassifySelection(string? file)
     {
         return file != null && _classifyModels.Any(f => string.Equals(f, file, StringComparison.OrdinalIgnoreCase));
@@ -772,13 +778,27 @@ public sealed partial class InspectViewModel : ObservableObject
             options.Add(new InspectModelOption(file, file + " · " + classifyLabel));
         }
 
+        // CounterAI (FastNet count) is offered for a CounterAI project or when its weights exist; it runs in a python process.
+        bool counterAi = _host.Canvas.IsStampKind || File.Exists(_host.CounterAiBar.ResolvedWeights);
+        if (counterAi)
+        {
+            options.Add(new InspectModelOption(CounterAiKey, Strings.InspectCounterAiModel));
+        }
+
         _syncingModel = true;
         try
         {
             Models = options;
             // Until the user picks a model the selection follows the active model; a kept OK/NG selection stays.
             string? keep = _explicitModel ? SelectedModel : null;
-            SelectedModel = IsClassifySelection(keep) ? keep : InspectRules.ResolveSelection(choices, keep);
+            if (IsClassifySelection(keep) || (counterAi && IsCounterAiSelection(keep)))
+            {
+                SelectedModel = keep;
+            }
+            else
+            {
+                SelectedModel = InspectRules.ResolveSelection(choices, keep) ?? (_host.Canvas.IsStampKind && counterAi ? CounterAiKey : null);
+            }
         }
         finally
         {
@@ -793,7 +813,14 @@ public sealed partial class InspectViewModel : ObservableObject
     {
         HasNewModel = _newModel != null;
         NewModelText = _newModel == null ? string.Empty : string.Format(Strings.InspectNewModelFormat, _newModel);
-        if (_loadedModel == null)
+        if (IsCounterAiSelection(SelectedModel))
+        {
+            string weights = _host.CounterAiBar.ResolvedWeights;
+            LoadedModelText = !string.IsNullOrWhiteSpace(weights) && File.Exists(weights)
+                ? string.Format(Strings.InspectCounterAiReadyFormat, Path.GetFileName(weights))
+                : Strings.InspectCounterAiMissing;
+        }
+        else if (_loadedModel == null)
         {
             LoadedModelText = Strings.InspectLoadedNone;
         }
@@ -835,7 +862,7 @@ public sealed partial class InspectViewModel : ObservableObject
     private async Task LoadSelectedAsync(string file)
     {
         // An OK/NG model is read from its own file at run time; the session keeps its segmentation model.
-        if (IsClassifySelection(file))
+        if (IsClassifySelection(file) || IsCounterAiSelection(file))
         {
             _newModel = InspectRules.OfferNewModel(_choices, _newModel, file);
             UpdateModelTexts();
@@ -952,6 +979,12 @@ public sealed partial class InspectViewModel : ObservableObject
         if (IsClassifySelection(model))
         {
             await RunClassifyAsync(items, model);
+            return;
+        }
+
+        if (IsCounterAiSelection(model))
+        {
+            await RunCounterAiAsync(items, single);
             return;
         }
 
@@ -1103,6 +1136,105 @@ public sealed partial class InspectViewModel : ObservableObject
 
             _resultsModel = model;
             ClearStaleResults(model);
+        }
+
+        ApplyView();
+        ApplyOverlay();
+        RefreshSummary();
+        UpdateModelTexts();
+        RefreshState();
+    }
+
+    /// <summary>
+    /// Runs CounterAiEngine (FastNet) over the rows: Regions = number of counted points, Score = the count, verdict OK when something
+    /// was counted and NG when nothing was. Nothing is written to the project; Cancel stops between images.
+    /// </summary>
+    private async Task RunCounterAiAsync(List<InspectItemViewModel> items, bool single)
+    {
+        string weights = _host.CounterAiBar.ResolvedWeights;
+        if (!File.Exists(weights))
+        {
+            _host.ShowDataNotice(Strings.InspectErrorTitle, Strings.InspectCounterAiNoWeights, InfoBarSeverity.Warning);
+            return;
+        }
+
+        double threshold = EasyAI.Desktop.Services.CounterAiPaths.ParseThreshold(_host.CounterAiBar.ThresholdText);
+
+        string[] paths = items.Select(i => i.FullPath).ToArray();
+        CancellationTokenSource cts = BeginRun(single, paths.Length);
+        List<InspectResult> results = new List<InspectResult>();
+        string? failure = null;
+        try
+        {
+            CancellationToken token = cts.Token;
+            using (CounterAiEngine engine = await CounterAiEngine.StartAsync(weights, "AUTO", threshold, token))
+            {
+                foreach (string path in paths)
+                {
+                    token.ThrowIfCancellationRequested();
+                    InspectResult result;
+                    try
+                    {
+                        CounterAiDetection d = await engine.DetectAsync(path, threshold, token);
+                        result = new InspectResult(
+                            path,
+                            d.Count > 0 ? InspectVerdict.OK : InspectVerdict.NG,
+                            d.Count,
+                            d.Count,
+                            d.Milliseconds,
+                            CounterAiKey,
+                            DateTime.UtcNow,
+                            null,
+                            false,
+                            Array.Empty<SegAiSuggestion>(),
+                            0,
+                            0);
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        throw;
+                    }
+                    catch (Exception ex)
+                    {
+                        result = new InspectResult(path, InspectVerdict.Error, 0, 0f, 0, CounterAiKey, DateTime.UtcNow, ex.Message, false, Array.Empty<SegAiSuggestion>(), 0, 0);
+                    }
+
+                    results.Add(result);
+                    if (_byPath.TryGetValue(path, out InspectItemViewModel? row))
+                    {
+                        row.Result = result;
+                    }
+
+                    ProgressValue = 100.0 * results.Count / paths.Length;
+                    ProgressText = string.Format(Strings.ProgressFormat, results.Count, paths.Length);
+                }
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            // Cancelled: rows done so far keep their result.
+        }
+        catch (Exception ex)
+        {
+            failure = ex.Message;
+            _host.LogData("CounterAI inspect failed: " + ex.Message);
+        }
+        finally
+        {
+            EndRun(cts);
+        }
+
+        if (failure != null)
+        {
+            _host.ShowDataNotice(Strings.InspectErrorTitle, failure, InfoBarSeverity.Warning);
+        }
+
+        if (results.Count > 0)
+        {
+            _resultsModel = Strings.InspectCounterAiModel;
+            ClearStaleResults(CounterAiKey);
+            InspectResult last = results[results.Count - 1];
+            _host.StatusMessage = string.Format(Strings.InspectCounterAiCountFormat, last.Regions);
         }
 
         ApplyView();

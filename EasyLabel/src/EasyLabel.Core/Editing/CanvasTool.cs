@@ -23,7 +23,9 @@ public enum CanvasTool
     /// <summary>AI-Box: a dragged rectangle prompt for an AI model. The edit session ignores pointer input; the UI owns the prompt.</summary>
     AiBox,
     /// <summary>Hand: drag the image to pan the view without editing shapes.</summary>
-    Hand
+    Hand,
+    /// <summary>Count: click pastes a fixed-size circle or square, right click deletes the nearest one (fastnet_gui.py behaviour).</summary>
+    Count
 }
 
 [Flags]

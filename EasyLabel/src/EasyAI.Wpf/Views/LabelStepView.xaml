@@ -59,7 +59,7 @@
                              >
                     <ui:TextBlock TextWrapping="NoWrap" TextAlignment="Center" Style="{StaticResource SourceCaptionStyle}" Text="{x:Static res:Strings.SourceSegmentModel}" />
                 </RadioButton>
-                <RadioButton Margin="0,0,0,0" Padding="8,3" MinWidth="92" HorizontalContentAlignment="Center" GroupName="LabelSource"
+                <RadioButton Margin="0,0,3,0" Padding="8,3" MinWidth="92" HorizontalContentAlignment="Center" GroupName="LabelSource"
                              Style="{DynamicResource {x:Type ToggleButton}}"
                              IsChecked="{Binding Label.IsAgentSource, Mode=OneWay}"
                              CommandParameter="{x:Static vm:AutoLabelSource.AgentPrompt}"
@@ -68,8 +68,48 @@
                              >
                     <ui:TextBlock TextWrapping="NoWrap" TextAlignment="Center" Style="{StaticResource SourceCaptionStyle}" Text="{x:Static res:Strings.SourceAgentPrompt}" />
                 </RadioButton>
+                <RadioButton Margin="0,0,0,0" Padding="8,3" MinWidth="92" HorizontalContentAlignment="Center" GroupName="LabelSource"
+                             Style="{DynamicResource {x:Type ToggleButton}}"
+                             IsChecked="{Binding Label.IsFastNetSource, Mode=OneWay}"
+                             CommandParameter="{x:Static vm:AutoLabelSource.FastNet}"
+                             Command="{Binding Label.SetSourceCommand}"
+                             AutomationProperties.AutomationId="SourceFastNet"
+                             >
+                    <ui:TextBlock TextWrapping="NoWrap" TextAlignment="Center" Style="{StaticResource SourceCaptionStyle}" Text="{x:Static res:Strings.SourceFastNet}" />
+                </RadioButton>
             </StackPanel>
             <Border Style="{StaticResource BarDividerStyle}" />
+            <!-- FastNet (CounterAI): shape and size of the stamp, threshold, auto label, CSV, weights. Left click stamps, right click deletes. -->
+            <StackPanel Margin="0,0,14,6" VerticalAlignment="Center"
+                        Visibility="{Binding Label.IsFastNetSource, Converter={StaticResource BoolToVisibility}}">
+                <StackPanel DataContext="{Binding CounterAiBar}" AutomationProperties.AutomationId="CounterAiBar">
+                    <WrapPanel>
+                        <RadioButton Margin="0,0,3,6" Padding="8,3" MinWidth="72" GroupName="CounterAiShape" HorizontalContentAlignment="Center"
+                                     Style="{DynamicResource {x:Type ToggleButton}}" IsChecked="{Binding IsCircle, Mode=TwoWay}"
+                                     Content="{x:Static res:Strings.CaBarCircle}" AutomationProperties.AutomationId="CounterAiShapeCircle" />
+                        <RadioButton Margin="0,0,14,6" Padding="8,3" MinWidth="72" GroupName="CounterAiShape" HorizontalContentAlignment="Center"
+                                     Style="{DynamicResource {x:Type ToggleButton}}" IsChecked="{Binding IsRectangle, Mode=TwoWay}"
+                                     Content="{x:Static res:Strings.CaBarRect}" AutomationProperties.AutomationId="CounterAiShapeRect" />
+                        <TextBlock Margin="0,0,6,6" VerticalAlignment="Center" Text="{x:Static res:Strings.CaBarSize}" />
+                        <TextBox Width="56" Margin="0,0,4,6" Text="{Binding WidthText, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.AutomationId="CounterAiWidth" />
+                        <TextBlock Margin="0,0,4,6" VerticalAlignment="Center" Text="×" Visibility="{Binding IsRectangle, Converter={StaticResource BoolToVisibility}}" />
+                        <TextBox Width="56" Margin="0,0,14,6" Text="{Binding HeightText, UpdateSourceTrigger=PropertyChanged}"
+                                 Visibility="{Binding IsRectangle, Converter={StaticResource BoolToVisibility}}" AutomationProperties.AutomationId="CounterAiHeight" />
+                        <TextBlock Margin="0,0,6,6" VerticalAlignment="Center" Text="{x:Static res:Strings.CaBarThreshold}" />
+                        <TextBox Width="44" Margin="0,0,14,6" Text="{Binding ThresholdText, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.AutomationId="CounterAiThreshold" />
+                        <Button Margin="0,0,6,6" Padding="10,3" Content="{x:Static res:Strings.CaBarAuto}" Command="{Binding AutoLabelCommand}" AutomationProperties.AutomationId="CounterAiAutoLabel" />
+                        <Button Margin="0,0,10,6" Padding="10,3" Content="{x:Static res:Strings.CaBarExport}" Command="{Binding ExportCsvCommand}" AutomationProperties.AutomationId="CounterAiExportCsv" />
+                        <CheckBox Margin="0,0,14,6" VerticalAlignment="Center" IsChecked="{Binding AutoSaveCsv}" Content="{x:Static res:Strings.CaBarAutoCsv}" />
+                        <TextBlock Margin="0,0,0,6" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="{x:Static res:Strings.CaBarHint}" />
+                    </WrapPanel>
+                    <DockPanel Margin="0,0,0,6" LastChildFill="True" MinWidth="360">
+                        <TextBlock DockPanel.Dock="Left" Margin="0,0,6,0" VerticalAlignment="Center" Text="{x:Static res:Strings.CaBarWeights}" />
+                        <Button DockPanel.Dock="Right" Margin="6,0,0,0" Padding="10,3" Content="{x:Static res:Strings.ExpBrowse}" Command="{Binding BrowseWeightsCommand}" AutomationProperties.AutomationId="CounterAiBrowseWeights" />
+                        <TextBox Text="{Binding WeightsPath, UpdateSourceTrigger=PropertyChanged}" ToolTip="{x:Static res:Strings.CaBarWeightsTip}" AutomationProperties.AutomationId="CounterAiWeightsPath" />
+                    </DockPanel>
+                    <TextBlock Margin="0,0,0,2" Text="{Binding Status}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" />
+                </StackPanel>
+            </StackPanel>
             <!-- AI Model: SAM2 | SAM3 | YOLO-World | Custom YOLO and Run. -->
             <StackPanel Margin="0,0,14,6" Orientation="Horizontal" VerticalAlignment="Center"
                         Visibility="{Binding Label.IsAiSource, Converter={StaticResource BoolToVisibility}}">

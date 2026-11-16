@@ -117,6 +117,14 @@
   <data name="SourceAiModel" xml:space="preserve"><value>Mô hình AI</value></data>
   <data name="SourceSegmentModel" xml:space="preserve"><value>Mô hình Segment</value></data>
   <data name="SourceAgentPrompt" xml:space="preserve"><value>Lệnh cho Agent</value></data>
+  <data name="SourceFastNet" xml:space="preserve"><value>FastNet (Đếm)</value></data>
+  <data name="TrainKindCounterAi" xml:space="preserve"><value>CounterAI</value></data>
+  <data name="TrainCounterAiNoPoints" xml:space="preserve"><value>Hãy gán nhãn một số ảnh bằng công cụ Đếm của FastNet trước (mỗi ảnh lưu một tệp *_points.csv bên cạnh).</value></data>
+  <data name="InspectCounterAiModel" xml:space="preserve"><value>CounterAI (đếm FastNet)</value></data>
+  <data name="InspectCounterAiNoWeights" xml:space="preserve"><value>Không tìm thấy trọng số CounterAI. Hãy huấn luyện ở bước Huấn luyện hoặc chọn tệp ở đó.</value></data>
+  <data name="InspectCounterAiCountFormat" xml:space="preserve"><value>Số đếm: {0}</value></data>
+  <data name="InspectCounterAiReadyFormat" xml:space="preserve"><value>CounterAI sẵn sàng: {0}</value></data>
+  <data name="InspectCounterAiMissing" xml:space="preserve"><value>Thiếu trọng số CounterAI</value></data>
   <data name="AiPickTip" xml:space="preserve"><value>Mô hình AI dùng cho nguồn Mô hình AI</value></data>
   <data name="AiPickSam2" xml:space="preserve"><value>SAM2</value></data>
   <data name="AiPickSam3" xml:space="preserve"><value>SAM3</value></data>
@@ -211,6 +219,7 @@
   <data name="TrainBlockBusy" xml:space="preserve"><value>Đang có thao tác khác chạy. Hãy đợi nó xong rồi bắt đầu huấn luyện.</value></data>
   <data name="TrainBlockNoSession" xml:space="preserve"><value>Chưa mở dự án. Hãy mở hoặc tạo một dự án trước.</value></data>
   <data name="TrainProgressFormat" xml:space="preserve"><value>Epoch {0} / {1} · {2} · còn {3}</value></data>
+  <data name="TrainFinishingFormat" xml:space="preserve"><value>Đang hoàn tất model (epoch {0} đã xong) - {1} - bước huấn luyện box vật thể và lưu model có thể mất thêm vài phút</value></data>
   <data name="TrainNoticeTitle" xml:space="preserve"><value>Huấn luyện</value></data>
   <data name="TrainFailedTitle" xml:space="preserve"><value>Huấn luyện thất bại</value></data>
   <data name="TrainDoneFormat" xml:space="preserve"><value>Đã huấn luyện {0} trong {1}</value></data>
@@ -539,6 +548,8 @@
   <data name="ToolLine" xml:space="preserve"><value>Đường thẳng</value></data>
   <data name="ToolLineStrip" xml:space="preserve"><value>Đường gấp khúc</value></data>
   <data name="ToolCircleTip" xml:space="preserve"><value>Hình tròn (nhấp tâm, rồi nhấp một điểm trên cạnh)</value></data>
+  <data name="ToolCount" xml:space="preserve"><value>Đếm</value></data>
+  <data name="ToolCountTip" xml:space="preserve"><value>Đếm: chuột trái dán hình tròn hoặc vuông theo kích thước đã chọn, chuột phải xóa điểm gần nhất</value></data>
   <data name="ToolPointTip" xml:space="preserve"><value>Điểm (nhấp chuột)</value></data>
   <data name="ToolLineTip" xml:space="preserve"><value>Đường thẳng (nhấp hai đầu mút)</value></data>
   <data name="ToolLineStripTip" xml:space="preserve"><value>Đường gấp khúc (nhấp các đỉnh, Enter hoặc nhấp đúp để kết thúc)</value></data>
@@ -590,6 +601,7 @@
   <data name="SlBestFormat" xml:space="preserve"><value>Tốt nhất hiện tại: vòng {0}, mAP50 {1}, recall {2}</value></data>
   <data name="SlNoReport" xml:space="preserve"><value>Chưa có báo cáo: vòng đầu còn đang train.</value></data>
   <data name="SlLogHeader" xml:space="preserve"><value>Log (các dòng cuối)</value></data>
+  <data name="SlGenFormat" xml:space="preserve"><value>Đang sinh ảnh {0}: {1}/{2} · nền {3} · {4} vật</value></data>
   <data name="SlWeights" xml:space="preserve"><value>Trọng số (best.pt)</value></data>
   <data name="SlImages" xml:space="preserve"><value>Thư mục ảnh test</value></data>
   <data name="SlImagesTitle" xml:space="preserve"><value>Chọn thư mục ảnh test</value></data>
@@ -764,6 +776,8 @@
   <data name="ProjKind" xml:space="preserve"><value>Loại dự án</value></data>
   <data name="ProjKindDetect" xml:space="preserve"><value>Phát hiện</value></data>
   <data name="ProjKindPosition" xml:space="preserve"><value>Vị trí</value></data>
+  <data name="ProjKindCounter" xml:space="preserve"><value>Đếm (Counter)</value></data>
+  <data name="ProjKindCounterAi" xml:space="preserve"><value>CounterAI</value></data>
   <data name="PositionRefusedTitle" xml:space="preserve">
     <value>Dự án Vị trí</value>
   </data>
@@ -1463,6 +1477,21 @@
   <data name="SetUltraAllowCpu" xml:space="preserve">
     <value>Cho phép huấn luyện YOLO bằng CPU (Nâng cao, chậm)</value>
   </data>
+  <data name="SetSegAiDevice" xml:space="preserve">
+    <value>Thiết bị chạy Segment AI</value>
+  </data>
+  <data name="SetSegAiDeviceHint" xml:space="preserve">
+    <value>NVIDIA CUDA cần card NVIDIA và các DLL CUDA đặt cạnh BeeNativeSegAI.dll; nếu thiếu sẽ chạy bằng CPU và báo rõ. Huấn luyện không bị ảnh hưởng.</value>
+  </data>
+  <data name="SetSegAiDeviceCpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="SetSegAiDeviceIntel" xml:space="preserve">
+    <value>GPU Intel (OpenVINO)</value>
+  </data>
+  <data name="SetSegAiDeviceNvidia" xml:space="preserve">
+    <value>GPU NVIDIA / CUDA (ONNX Runtime)</value>
+  </data>
   <data name="UltraCpuNoEta" xml:space="preserve">
     <value>Không có GPU NVIDIA: huấn luyện bằng CPU; thời gian hiện sau epoch đầu tiên</value>
   </data>
@@ -1480,4 +1509,35 @@
   <data name="ClassTableSyncAddedFormat" xml:space="preserve">
     <value>Đã thêm nhãn mới vào bảng lớp: {0}. Model cũ cần train lại.</value>
   </data>
+  <data name="CaWeights" xml:space="preserve"><value>Trọng số (fastnet.pt)</value></data>
+  <data name="CaIters" xml:space="preserve"><value>Số vòng lặp</value></data>
+  <data name="CaDevice" xml:space="preserve"><value>Thiết bị</value></data>
+  <data name="CaCheck" xml:space="preserve"><value>Kiểm tra dữ liệu</value></data>
+  <data name="CaNeedData" xml:space="preserve"><value>Chọn thư mục ảnh, thư mục nhãn và file trọng số.</value></data>
+  <data name="CaNeedWeights" xml:space="preserve"><value>Chọn thư mục ảnh và file trọng số có sẵn (hãy huấn luyện trước).</value></data>
+  <data name="CaRunning" xml:space="preserve"><value>Đang chạy...</value></data>
+  <data name="CaStopped" xml:space="preserve"><value>Đã dừng.</value></data>
+  <data name="CaDone" xml:space="preserve"><value>Hoàn tất.</value></data>
+  <data name="CaFailed" xml:space="preserve"><value>Lỗi:</value></data>
+  <data name="CaConvert" xml:space="preserve"><value>Chuyển sang OpenVINO</value></data>
+  <data name="CaFp32" xml:space="preserve"><value>FP32 (mặc định FP16)</value></data>
+  <data name="CaUseConverted" xml:space="preserve"><value>Dùng để đếm</value></data>
+  <data name="CaConvertNeedPt" xml:space="preserve"><value>Hãy chọn file trọng số PyTorch (.pt) để chuyển, không phải .xml.</value></data>
+  <data name="CaUsingConverted" xml:space="preserve"><value>Đã đặt trọng số là model OpenVINO; tab Đếm chạy không cần torch.</value></data>
+  <data name="CaBarCircle" xml:space="preserve"><value>Tròn</value></data>
+  <data name="CaBarRect" xml:space="preserve"><value>Chữ nhật</value></data>
+  <data name="CaBarSize" xml:space="preserve"><value>Kích thước (px)</value></data>
+  <data name="CaBarWeights" xml:space="preserve"><value>Trọng số</value></data>
+  <data name="CaBarThreshold" xml:space="preserve"><value>Ngưỡng</value></data>
+  <data name="CaBarAuto" xml:space="preserve"><value>Tự động dán nhãn</value></data>
+  <data name="CaBarExport" xml:space="preserve"><value>Lưu CSV</value></data>
+  <data name="CaBarAutoCsv" xml:space="preserve"><value>Tự lưu CSV</value></data>
+  <data name="CaBarWeightsTip" xml:space="preserve"><value>Đường dẫn file trọng số FastNet (.pt hoặc .xml OpenVINO). Để trống để dùng counterai\fastnet.pt của dự án.</value></data>
+  <data name="CaBarHint" xml:space="preserve"><value>Chuột trái: dán  |  Chuột phải: xóa</value></data>
+  <data name="CaBarNoImage" xml:space="preserve"><value>Hãy mở một ảnh trước.</value></data>
+  <data name="CaBarNoWeights" xml:space="preserve"><value>Không thấy trọng số. Hãy train trong cửa sổ CounterAI hoặc chọn file .pt/.xml.</value></data>
+  <data name="CaBarRunning" xml:space="preserve"><value>Máy đang dán nhãn...</value></data>
+  <data name="CaBarImageChanged" xml:space="preserve"><value>Ảnh đã đổi khi đang dán nhãn; bỏ kết quả.</value></data>
+  <data name="CaBarDone" xml:space="preserve"><value>Máy đã dán {0} sợi ({1:0} ms).</value></data>
+  <data name="CaBarCsvSaved" xml:space="preserve"><value>Đã lưu {0} ({1} điểm).</value></data>
 </root>

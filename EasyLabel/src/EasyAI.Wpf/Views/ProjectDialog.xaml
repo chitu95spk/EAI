@@ -74,6 +74,8 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <RadioButton Grid.Column="0"
                                      Margin="0,0,4,0"
@@ -87,6 +89,7 @@
                             <ui:TextBlock TextWrapping="Wrap" TextAlignment="Center" Style="{StaticResource KindCaptionStyle}" Text="{x:Static res:Strings.ProjKindDetect}" />
                         </RadioButton>
                         <RadioButton Grid.Column="1"
+                                     Margin="0,0,4,0"
                                      Padding="4,4"
                                      HorizontalAlignment="Stretch"
                                      HorizontalContentAlignment="Center"
@@ -95,6 +98,27 @@
                                      IsChecked="{Binding IsPositionKind, Mode=TwoWay}"
                                      AutomationProperties.AutomationId="ProjectDialogKindPosition">
                             <ui:TextBlock TextWrapping="Wrap" TextAlignment="Center" Style="{StaticResource KindCaptionStyle}" Text="{x:Static res:Strings.ProjKindPosition}" />
+                        </RadioButton>
+                        <RadioButton Grid.Column="2"
+                                     Margin="0,0,4,0"
+                                     Padding="4,4"
+                                     HorizontalAlignment="Stretch"
+                                     HorizontalContentAlignment="Center"
+                                     GroupName="ProjectKind"
+                                     Style="{DynamicResource {x:Type ToggleButton}}"
+                                     IsChecked="{Binding IsCounterKind, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="ProjectDialogKindCounter">
+                            <ui:TextBlock TextWrapping="Wrap" TextAlignment="Center" Style="{StaticResource KindCaptionStyle}" Text="{x:Static res:Strings.ProjKindCounter}" />
+                        </RadioButton>
+                        <RadioButton Grid.Column="3"
+                                     Padding="4,4"
+                                     HorizontalAlignment="Stretch"
+                                     HorizontalContentAlignment="Center"
+                                     GroupName="ProjectKind"
+                                     Style="{DynamicResource {x:Type ToggleButton}}"
+                                     IsChecked="{Binding IsCounterAiKind, Mode=TwoWay}"
+                                     AutomationProperties.AutomationId="ProjectDialogKindCounterAi">
+                            <ui:TextBlock TextWrapping="Wrap" TextAlignment="Center" Style="{StaticResource KindCaptionStyle}" Text="{x:Static res:Strings.ProjKindCounterAi}" />
                         </RadioButton>
                     </Grid>
                 </StackPanel>

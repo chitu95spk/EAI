@@ -367,7 +367,15 @@ public sealed class AnnotationCanvas : FrameworkElement
             // (not an edit, no undo unit) and remembers the position for the "Add point to edge" entry of the context menu.
             CanvasViewModel? contextModel = Model;
             CanvasEditSession? contextSession = contextModel?.Session;
-            if (contextModel != null && contextSession != null && !contextModel.InputBlocked
+            if (contextModel != null && contextSession != null && !contextModel.InputBlocked && contextSession.StampActive)
+            {
+                // Stamp mode (CounterAI): right click deletes the stamped shape under the pointer.
+                PointF sp = ToImage(e);
+                contextSession.PointerDown(sp.X, sp.Y, (float)_view.Scale, Mods(), EditPointerButton.Right);
+                contextModel.NotifyEdited();
+                InvalidateVisual();
+            }
+            else if (contextModel != null && contextSession != null && !contextModel.InputBlocked
                 && contextSession.Tool == CanvasTool.Select && !contextSession.HasDraft && !contextSession.IsDragging)
             {
                 PointF c = ToImage(e);
@@ -867,7 +875,7 @@ public sealed class AnnotationCanvas : FrameworkElement
         CanvasViewModel? model = Model;
         CanvasEditSession? session = model?.Session;
         if (model == null || model.Image == null || model.InputBlocked || _panning
-            || (session != null && (session.HasDraft || session.IsDragging)))
+            || (session != null && (session.HasDraft || session.IsDragging || session.StampActive)))
         {
             // Right click while drawing (or without an image) opens nothing and records nothing.
             e.Handled = true;
@@ -1013,6 +1021,10 @@ public sealed class AnnotationCanvas : FrameworkElement
         if (model.ShowLabelOnCanvas)
         {
             DrawShapeLabels(dc, model, session, shapes);
+        }
+        else if (model.IsCountTool || model.IsStampKind)
+        {
+            DrawCountNumbers(dc, model, session, shapes);
         }
 
         foreach (int index in session.SelectedIndices)
@@ -1161,6 +1173,38 @@ public sealed class AnnotationCanvas : FrameworkElement
     }
 
     /// <summary>"Show the label of shapes on the canvas" (BETA): label text above the top-left corner of each visible shape.</summary>
+    /// <summary>Count mode: no class caption, only the running number 1..N at each stamp's centre.</summary>
+    private void DrawCountNumbers(DrawingContext dc, CanvasViewModel model, CanvasEditSession session, List<LabelShape> shapes)
+    {
+        double pixelsPerDip = VisualTreeHelper.GetDpi(this).PixelsPerDip;
+        Typeface face = new Typeface(SystemFonts.MessageFontFamily, FontStyles.Normal, FontWeights.SemiBold, FontStretches.Normal);
+        int n = 0;
+        for (int i = 0; i < shapes.Count; i++)
+        {
+            LabelShape shape = session.DraftShapes.TryGetValue(i, out LabelShape? draft) && draft != null ? draft : shapes[i];
+            if (!CanvasEditSession.IsEditable(shape) || !model.IsShapeVisible(i) || shape.Points.Count == 0)
+            {
+                continue;
+            }
+
+            n++;
+            PointF[] outer = OuterOf(shape);
+            if (outer.Length == 0)
+            {
+                continue;
+            }
+
+            double cx = 0, cy = 0;
+            foreach (PointF p in outer) { Point s = S(p); cx += s.X; cy += s.Y; }
+            cx /= outer.Length; cy /= outer.Length;
+            var text = new FormattedText(n.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                System.Globalization.CultureInfo.InvariantCulture, FlowDirection.LeftToRight, face, 11, Brushes.Yellow, pixelsPerDip);
+            Point at = new Point(cx - text.Width / 2, cy - text.Height / 2);
+            dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(150, 0, 0, 0)), null, new Rect(at.X - 1, at.Y, text.Width + 2, text.Height));
+            dc.DrawText(text, at);
+        }
+    }
+
     private void DrawShapeLabels(DrawingContext dc, CanvasViewModel model, CanvasEditSession session, List<LabelShape> shapes)
     {
         double pixelsPerDip = VisualTreeHelper.GetDpi(this).PixelsPerDip;

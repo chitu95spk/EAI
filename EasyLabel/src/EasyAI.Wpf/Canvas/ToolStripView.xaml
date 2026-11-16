@@ -69,7 +69,7 @@
             </StackPanel.Resources>
 
             <!-- Edit mode (Ctrl+J): Labelme has no such button in the strip; same size as the others so the column stays uniform. -->
-            <RadioButton GroupName="CanvasTool" Width="72" Height="50" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            <RadioButton GroupName="CanvasTool" Width="72" Height="44" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                          Style="{DynamicResource {x:Type ToggleButton}}"
                          ToolTip="{infra:Shortcut EditMode, Text={x:Static res:Strings.ToolSelectTip}}"
                          IsChecked="{Binding Tool, Mode=TwoWay, Converter={StaticResource EnumToBool}, ConverterParameter={x:Static edit:CanvasTool.Select}}"
@@ -80,7 +80,7 @@
                     <ui:TextBlock Style="{StaticResource ToolCaptionStyle}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" Width="62" FontSize="9" Text="{x:Static res:Strings.ToolSelect}" />
                 </StackPanel>
             </RadioButton>
-            <RadioButton GroupName="CanvasTool" Width="72" Height="50" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            <RadioButton GroupName="CanvasTool" Width="72" Height="44" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                          Style="{DynamicResource {x:Type ToggleButton}}"
                          ToolTip="{infra:Shortcut ToolHand, Text={x:Static res:Strings.ToolHandTip}}"
                          IsChecked="{Binding Tool, Mode=TwoWay, Converter={StaticResource EnumToBool}, ConverterParameter={x:Static edit:CanvasTool.Hand}}"
@@ -95,7 +95,7 @@
             </RadioButton>
             <Separator Margin="0,2,0,4" />
 
-            <RadioButton GroupName="CanvasTool" Width="72" Height="50" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            <RadioButton GroupName="CanvasTool" Width="72" Height="44" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                          Style="{DynamicResource {x:Type ToggleButton}}"
                          ToolTip="{infra:Shortcut ToolPolygon, Text={x:Static res:Strings.ToolPolygonTip}}"
                          IsChecked="{Binding Tool, Mode=TwoWay, Converter={StaticResource EnumToBool}, ConverterParameter={x:Static edit:CanvasTool.Polygon}}"
@@ -107,7 +107,7 @@
                     <ui:TextBlock Style="{StaticResource ToolCaptionStyle}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" Width="62" FontSize="9" Text="{x:Static res:Strings.ToolPolygon}" />
                 </StackPanel>
             </RadioButton>
-            <RadioButton GroupName="CanvasTool" Width="72" Height="50" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            <RadioButton GroupName="CanvasTool" Width="72" Height="44" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                          Style="{DynamicResource {x:Type ToggleButton}}"
                          ToolTip="{infra:Shortcut ToolRect, Text={x:Static res:Strings.ToolRectTip}}"
                          IsChecked="{Binding Tool, Mode=TwoWay, Converter={StaticResource EnumToBool}, ConverterParameter={x:Static edit:CanvasTool.Rect}}"
@@ -119,7 +119,7 @@
                     <ui:TextBlock Style="{StaticResource ToolCaptionStyle}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" Width="62" FontSize="9" Text="{x:Static res:Strings.ToolRect}" />
                 </StackPanel>
             </RadioButton>
-            <RadioButton GroupName="CanvasTool" Width="72" Height="50" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            <RadioButton GroupName="CanvasTool" Width="72" Height="44" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                          Style="{DynamicResource {x:Type ToggleButton}}"
                          ToolTip="{infra:Shortcut ToolRot, Text={x:Static res:Strings.ToolRotTip}}"
                          IsChecked="{Binding Tool, Mode=TwoWay, Converter={StaticResource EnumToBool}, ConverterParameter={x:Static edit:CanvasTool.Rot}}"
@@ -130,7 +130,7 @@
                     <ui:TextBlock Style="{StaticResource ToolCaptionStyle}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" Width="62" FontSize="9" Text="{x:Static res:Strings.ToolRot}" />
                 </StackPanel>
             </RadioButton>
-            <RadioButton GroupName="CanvasTool" Width="72" Height="50" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            <RadioButton GroupName="CanvasTool" Width="72" Height="44" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                          Style="{DynamicResource {x:Type ToggleButton}}"
                          ToolTip="{infra:Shortcut ToolCircle, Text={x:Static res:Strings.ToolCircleTip}}"
                          IsChecked="{Binding Tool, Mode=TwoWay, Converter={StaticResource EnumToBool}, ConverterParameter={x:Static edit:CanvasTool.Circle}}"
@@ -141,7 +141,19 @@
                     <ui:TextBlock Style="{StaticResource ToolCaptionStyle}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" Width="62" FontSize="9" Text="{x:Static res:Strings.ToolCircle}" />
                 </StackPanel>
             </RadioButton>
-            <RadioButton GroupName="CanvasTool" Width="72" Height="50" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            <RadioButton GroupName="CanvasTool" Width="72" Height="44" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                         Style="{DynamicResource {x:Type ToggleButton}}"
+                         ToolTip="{x:Static res:Strings.ToolCountTip}"
+                         IsChecked="{Binding Tool, Mode=TwoWay, Converter={StaticResource EnumToBool}, ConverterParameter={x:Static edit:CanvasTool.Count}}"
+                         Visibility="{Binding AllowsFreeShapeTools, Converter={StaticResource FreeShapeToVisibility}}"
+                         AutomationProperties.AutomationId="ToolCount"
+                         AutomationProperties.Name="{x:Static res:Strings.ToolCount}">
+                <StackPanel>
+                    <ui:SymbolIcon HorizontalAlignment="Center" FontSize="16" Symbol="NumberSymbol24" />
+                    <ui:TextBlock Style="{StaticResource ToolCaptionStyle}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" Width="62" FontSize="9" Text="{x:Static res:Strings.ToolCount}" />
+                </StackPanel>
+            </RadioButton>
+            <RadioButton GroupName="CanvasTool" Width="72" Height="44" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                          Style="{DynamicResource {x:Type ToggleButton}}"
                          ToolTip="{infra:Shortcut ToolPoint, Text={x:Static res:Strings.ToolPointTip}}"
                          IsChecked="{Binding Tool, Mode=TwoWay, Converter={StaticResource EnumToBool}, ConverterParameter={x:Static edit:CanvasTool.Point}}"
@@ -155,7 +167,7 @@
                     <ui:TextBlock Style="{StaticResource ToolCaptionStyle}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" Width="62" FontSize="9" Text="{x:Static res:Strings.ToolPoint}" />
                 </StackPanel>
             </RadioButton>
-            <RadioButton GroupName="CanvasTool" Width="72" Height="50" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            <RadioButton GroupName="CanvasTool" Width="72" Height="44" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                          Style="{DynamicResource {x:Type ToggleButton}}"
                          ToolTip="{infra:Shortcut ToolLine, Text={x:Static res:Strings.ToolLineTip}}"
                          IsChecked="{Binding Tool, Mode=TwoWay, Converter={StaticResource EnumToBool}, ConverterParameter={x:Static edit:CanvasTool.Line}}"
@@ -170,7 +182,7 @@
                     <ui:TextBlock Style="{StaticResource ToolCaptionStyle}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" Width="62" FontSize="9" Text="{x:Static res:Strings.ToolLine}" />
                 </StackPanel>
             </RadioButton>
-            <RadioButton GroupName="CanvasTool" Width="72" Height="50" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            <RadioButton GroupName="CanvasTool" Width="72" Height="44" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                          Style="{DynamicResource {x:Type ToggleButton}}"
                          ToolTip="{infra:Shortcut ToolLineStrip, Text={x:Static res:Strings.ToolLineStripTip}}"
                          IsChecked="{Binding Tool, Mode=TwoWay, Converter={StaticResource EnumToBool}, ConverterParameter={x:Static edit:CanvasTool.LineStrip}}"
@@ -187,7 +199,7 @@
             </RadioButton>
             <Separator Margin="0,2,0,4" />
             <!-- AI-Points / AI-Box: enable state and tooltip (the reason) follow the Auto-label source; checked = the canvas tool. -->
-            <RadioButton GroupName="CanvasTool" Width="72" Height="50" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            <RadioButton GroupName="CanvasTool" Width="72" Height="44" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                          Style="{DynamicResource {x:Type ToggleButton}}"
                          IsEnabled="{Binding AiPointsEnabled}"
                          IsChecked="{Binding Tool, Mode=TwoWay, Converter={StaticResource EnumToBool}, ConverterParameter={x:Static edit:CanvasTool.AiPoints}}"
@@ -201,7 +213,7 @@
                     <ui:TextBlock Style="{StaticResource ToolCaptionStyle}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" Width="62" FontSize="9" Text="{x:Static res:Strings.ToolAiPointsShort}" />
                 </StackPanel>
             </RadioButton>
-            <RadioButton GroupName="CanvasTool" Width="72" Height="50" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            <RadioButton GroupName="CanvasTool" Width="72" Height="44" Margin="0,0,0,1" Padding="2,2,2,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                          Style="{DynamicResource {x:Type ToggleButton}}"
                          IsEnabled="{Binding AiBoxEnabled}"
                          IsChecked="{Binding Tool, Mode=TwoWay, Converter={StaticResource EnumToBool}, ConverterParameter={x:Static edit:CanvasTool.AiBox}}"

@@ -117,6 +117,14 @@
   <data name="SourceAiModel" xml:space="preserve"><value>AI Model</value></data>
   <data name="SourceSegmentModel" xml:space="preserve"><value>Segment Model</value></data>
   <data name="SourceAgentPrompt" xml:space="preserve"><value>Agent Prompt</value></data>
+  <data name="SourceFastNet" xml:space="preserve"><value>FastNet (Count)</value></data>
+  <data name="TrainKindCounterAi" xml:space="preserve"><value>CounterAI</value></data>
+  <data name="TrainCounterAiNoPoints" xml:space="preserve"><value>Label some images with the FastNet Count tool first (a *_points.csv file is saved beside each image).</value></data>
+  <data name="InspectCounterAiModel" xml:space="preserve"><value>CounterAI (FastNet count)</value></data>
+  <data name="InspectCounterAiNoWeights" xml:space="preserve"><value>CounterAI weights not found. Train them in the Train step or choose a file there.</value></data>
+  <data name="InspectCounterAiCountFormat" xml:space="preserve"><value>Count: {0}</value></data>
+  <data name="InspectCounterAiReadyFormat" xml:space="preserve"><value>CounterAI ready: {0}</value></data>
+  <data name="InspectCounterAiMissing" xml:space="preserve"><value>CounterAI weights missing</value></data>
   <data name="AiPickTip" xml:space="preserve"><value>AI model used by the AI Model source</value></data>
   <data name="AiPickSam2" xml:space="preserve"><value>SAM2</value></data>
   <data name="AiPickSam3" xml:space="preserve"><value>SAM3</value></data>
@@ -211,6 +219,7 @@
   <data name="TrainBlockBusy" xml:space="preserve"><value>Another operation is running. Wait until it finishes, then start training.</value></data>
   <data name="TrainBlockNoSession" xml:space="preserve"><value>No project is open. Open or create a project first.</value></data>
   <data name="TrainProgressFormat" xml:space="preserve"><value>Epoch {0} / {1} · {2} · ETA {3}</value></data>
+  <data name="TrainFinishingFormat" xml:space="preserve"><value>Finishing the model (epoch {0} done) - {1} - the object (box) head and saving can take several more minutes</value></data>
   <data name="TrainNoticeTitle" xml:space="preserve"><value>Training</value></data>
   <data name="TrainFailedTitle" xml:space="preserve"><value>Training failed</value></data>
   <data name="TrainDoneFormat" xml:space="preserve"><value>Trained {0} in {1}</value></data>
@@ -539,6 +548,8 @@
   <data name="ToolLine" xml:space="preserve"><value>Line</value></data>
   <data name="ToolLineStrip" xml:space="preserve"><value>Line strip</value></data>
   <data name="ToolCircleTip" xml:space="preserve"><value>Circle (click the centre, then a point on the edge)</value></data>
+  <data name="ToolCount" xml:space="preserve"><value>Count</value></data>
+  <data name="ToolCountTip" xml:space="preserve"><value>Count: left click pastes a circle or square of the chosen size, right click deletes the nearest one</value></data>
   <data name="ToolPointTip" xml:space="preserve"><value>Point (click)</value></data>
   <data name="ToolLineTip" xml:space="preserve"><value>Line (click both end points)</value></data>
   <data name="ToolLineStripTip" xml:space="preserve"><value>Line strip (click the vertices, Enter or double-click to finish)</value></data>
@@ -591,6 +602,7 @@
   <data name="SlBestFormat" xml:space="preserve"><value>Best so far: round {0}, mAP50 {1}, recall {2}</value></data>
   <data name="SlNoReport" xml:space="preserve"><value>No report yet: the first round is still training.</value></data>
   <data name="SlLogHeader" xml:space="preserve"><value>Log (last lines)</value></data>
+  <data name="SlGenFormat" xml:space="preserve"><value>Generating {0} images: {1}/{2} · background {3} · {4} objects</value></data>
   <data name="SlWeights" xml:space="preserve"><value>Weights (best.pt)</value></data>
   <data name="SlImages" xml:space="preserve"><value>Folder of test images</value></data>
   <data name="SlImagesTitle" xml:space="preserve"><value>Choose the folder of test images</value></data>
@@ -764,6 +776,8 @@
   <data name="ProjKind" xml:space="preserve"><value>Project type</value></data>
   <data name="ProjKindDetect" xml:space="preserve"><value>Detect</value></data>
   <data name="ProjKindPosition" xml:space="preserve"><value>Position</value></data>
+  <data name="ProjKindCounter" xml:space="preserve"><value>Counter</value></data>
+  <data name="ProjKindCounterAi" xml:space="preserve"><value>CounterAI</value></data>
   <data name="PositionRefusedTitle" xml:space="preserve">
     <value>Position project</value>
   </data>
@@ -1463,6 +1477,21 @@ Sent to the agent: {1}</value></data>
   <data name="SetUltraAllowCpu" xml:space="preserve">
     <value>Allow YOLO training on CPU (Advanced, slow)</value>
   </data>
+  <data name="SetSegAiDevice" xml:space="preserve">
+    <value>Segment AI device</value>
+  </data>
+  <data name="SetSegAiDeviceHint" xml:space="preserve">
+    <value>NVIDIA CUDA needs an NVIDIA GPU and the CUDA runtime DLLs next to BeeNativeSegAI.dll; otherwise it falls back to CPU and says so. Training is not affected.</value>
+  </data>
+  <data name="SetSegAiDeviceCpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="SetSegAiDeviceIntel" xml:space="preserve">
+    <value>Intel GPU (OpenVINO)</value>
+  </data>
+  <data name="SetSegAiDeviceNvidia" xml:space="preserve">
+    <value>NVIDIA GPU / CUDA (ONNX Runtime)</value>
+  </data>
   <data name="UltraCpuNoEta" xml:space="preserve">
     <value>No NVIDIA GPU: training on CPU; the time is shown after the first epoch</value>
   </data>
@@ -1480,4 +1509,35 @@ Sent to the agent: {1}</value></data>
   <data name="ClassTableSyncAddedFormat" xml:space="preserve">
     <value>Added new labels to the class table: {0}. The existing model needs retraining.</value>
   </data>
+  <data name="CaWeights" xml:space="preserve"><value>Weights (fastnet.pt)</value></data>
+  <data name="CaIters" xml:space="preserve"><value>Iterations</value></data>
+  <data name="CaDevice" xml:space="preserve"><value>Device</value></data>
+  <data name="CaCheck" xml:space="preserve"><value>Check data</value></data>
+  <data name="CaNeedData" xml:space="preserve"><value>Choose the images folder, labels folder and weights file.</value></data>
+  <data name="CaNeedWeights" xml:space="preserve"><value>Choose an images folder and an existing weights file (train first).</value></data>
+  <data name="CaRunning" xml:space="preserve"><value>Running...</value></data>
+  <data name="CaStopped" xml:space="preserve"><value>Stopped.</value></data>
+  <data name="CaDone" xml:space="preserve"><value>Done.</value></data>
+  <data name="CaFailed" xml:space="preserve"><value>Failed:</value></data>
+  <data name="CaConvert" xml:space="preserve"><value>Convert to OpenVINO</value></data>
+  <data name="CaFp32" xml:space="preserve"><value>FP32 (default FP16)</value></data>
+  <data name="CaUseConverted" xml:space="preserve"><value>Use for counting</value></data>
+  <data name="CaConvertNeedPt" xml:space="preserve"><value>Choose the PyTorch weights (.pt) to convert, not an .xml.</value></data>
+  <data name="CaUsingConverted" xml:space="preserve"><value>Weights set to the OpenVINO model; Count now runs without torch.</value></data>
+  <data name="CaBarCircle" xml:space="preserve"><value>Circle</value></data>
+  <data name="CaBarRect" xml:space="preserve"><value>Rectangle</value></data>
+  <data name="CaBarSize" xml:space="preserve"><value>Size (px)</value></data>
+  <data name="CaBarWeights" xml:space="preserve"><value>Weights</value></data>
+  <data name="CaBarThreshold" xml:space="preserve"><value>Threshold</value></data>
+  <data name="CaBarAuto" xml:space="preserve"><value>Auto label</value></data>
+  <data name="CaBarExport" xml:space="preserve"><value>Save CSV</value></data>
+  <data name="CaBarAutoCsv" xml:space="preserve"><value>Save CSV automatically</value></data>
+  <data name="CaBarWeightsTip" xml:space="preserve"><value>Path to the FastNet weights (.pt or OpenVINO .xml). Leave empty to use the project's counterai\fastnet.pt.</value></data>
+  <data name="CaBarHint" xml:space="preserve"><value>Left click: paste  |  Right click: delete</value></data>
+  <data name="CaBarNoImage" xml:space="preserve"><value>Open an image first.</value></data>
+  <data name="CaBarNoWeights" xml:space="preserve"><value>Weights not found. Train in the CounterAI window or browse to a .pt/.xml file.</value></data>
+  <data name="CaBarRunning" xml:space="preserve"><value>Machine is labelling...</value></data>
+  <data name="CaBarImageChanged" xml:space="preserve"><value>The image changed while labelling; result discarded.</value></data>
+  <data name="CaBarDone" xml:space="preserve"><value>Machine marked {0} strands ({1:0} ms).</value></data>
+  <data name="CaBarCsvSaved" xml:space="preserve"><value>Saved {0} ({1} points).</value></data>
 </root>

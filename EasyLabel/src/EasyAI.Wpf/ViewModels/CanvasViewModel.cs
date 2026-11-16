@@ -84,7 +84,7 @@ public sealed partial class CanvasViewModel : ObservableObject
     private ProjectKind _kind = ProjectKind.Detect;
 
     /// <summary>True for Detect: the polygon, rectangle, point, line, line-strip and AI-Points tools are offered. Bound by the palettes.</summary>
-    public bool AllowsFreeShapeTools => Kind != ProjectKind.Position;
+    public bool AllowsFreeShapeTools => !Kind.IsInstanceKind();
 
     /// <summary>Class index (0-based position in <see cref="ClassNames"/>) used for newly drawn shapes.</summary>
     [ObservableProperty]
@@ -213,6 +213,9 @@ public sealed partial class CanvasViewModel : ObservableObject
 
     partial void OnKindChanged(ProjectKind value)
     {
+        OnPropertyChanged(nameof(IsStampKind));
+        OnPropertyChanged(nameof(ShowLabelOnCanvas));
+        ApplyStamp();
         if (!ProjectKindToolRules.IsToolAllowed(value, Tool))
         {
             Tool = CanvasTool.Select;
@@ -223,6 +226,8 @@ public sealed partial class CanvasViewModel : ObservableObject
 
     partial void OnToolChanged(CanvasTool value)
     {
+        OnPropertyChanged(nameof(IsCountTool));
+        OnPropertyChanged(nameof(ShowLabelOnCanvas));
         if (!ProjectKindToolRules.IsToolAllowed(Kind, value))
         {
             // Single gate for the palettes, menus and hotkeys: a refused tool falls back to Select (re-enters this method).
@@ -449,7 +454,8 @@ public sealed partial class CanvasViewModel : ObservableObject
         set => SetOption(Options == null || Options.FillWhileDrawing, value, v => Options!.FillWhileDrawing = v);
     }
 
-    public bool ShowLabelOnCanvas => Options != null && Options.ShowLabelOnCanvas;
+    // Hundreds of stamps would each carry a text tag and hide the picture, so CounterAI projects draw the stamps bare.
+    public bool ShowLabelOnCanvas => !IsStampKind && !IsCountTool && Options != null && Options.ShowLabelOnCanvas;
 
     private void SetOption(bool current, bool value, Action<bool> write, [System.Runtime.CompilerServices.CallerMemberName] string? name = null)
     {
@@ -807,6 +813,8 @@ public sealed partial class CanvasViewModel : ObservableObject
                 VisibilityFilter = IsShapeVisible,
             };
             ApplyActiveLabel();
+            ApplyStamp();
+            LoadStampsFromCsv(segAi.ProjectRoot, rel);
             _dirty.MarkSaved(Signature(edit.Document));
             IsDirty = false;
             RememberDocumentLabels();
@@ -1152,7 +1160,7 @@ public sealed partial class CanvasViewModel : ObservableObject
 
         // Position projects take only oriented boxes and circles; a mask polygon is refused here (producers already convert or refuse it).
         // Review removals stay: deleting a shape does not add a polygon.
-        if (Kind == ProjectKind.Position)
+        if (Kind.IsInstanceKind())
         {
             chosen = chosen.Where(s => s.Action == SegAiSuggestion.ActionRemove || ProjectKindToolRules.IsShapeTypeAllowed(Kind, s.ShapeType)).ToList();
         }
@@ -1469,7 +1477,7 @@ public sealed partial class CanvasViewModel : ObservableObject
     }
 
     private bool CanConvertShape(string? target) => Session != null && !string.IsNullOrEmpty(target)
-        && (Kind != ProjectKind.Position || target == "oriented_rectangle" || target == "circle")
+        && (!Kind.IsInstanceKind() || target == "oriented_rectangle" || target == "circle")
         && Session.CanConvertSelection(target);
 
     /// <summary>Converts the selected shapes to <paramref name="target"/> ("polygon", "rectangle", "oriented_rectangle", "circle", "point") as one undo step.</summary>

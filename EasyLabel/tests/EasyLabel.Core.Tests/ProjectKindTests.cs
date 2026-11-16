@@ -55,6 +55,54 @@ public sealed class ProjectKindTests
     }
 
     [Fact]
+    public void ProjectKind_CounterAi_RoundTripsAndIsNotAnInstanceKind()
+    {
+        ProjectPaths paths = NewPaths("counterai");
+        Directory.CreateDirectory(paths.MetaDir);
+        File.WriteAllText(paths.ProjectFile, "{ \"schema\": 2 }");
+
+        ProjectKindStore.Write(paths, ProjectKind.CounterAi);
+
+        Assert.Equal("counterai", (string?)JObject.Parse(File.ReadAllText(paths.ProjectFile))["projectKind"]);
+        Assert.Equal(2, (int?)JObject.Parse(File.ReadAllText(paths.ProjectFile))["schema"]);
+        Assert.Equal(ProjectKind.CounterAi, ProjectKindStore.Read(paths));
+        Assert.False(ProjectKind.CounterAi.IsInstanceKind());
+        Assert.NotEqual(ProjectKind.Counter, ProjectKind.CounterAi);
+    }
+
+    [Fact]
+    public void ProjectManager_CreateCounterAi_WritesProjectKindCounterAi()
+    {
+        ProjectOpenResult created = new ProjectManager().Create("Wires", NewFolder("mgr"), null, ProjectKind.CounterAi);
+        Assert.Equal("counterai", (string?)JObject.Parse(File.ReadAllText(created.Paths.ProjectFile))["projectKind"]);
+        Assert.Equal(ProjectKind.CounterAi, ProjectKindStore.Read(created.Paths));
+        Assert.Equal(ProjectKind.CounterAi, created.Project.Kind);
+    }
+
+    [Fact]
+    public void ProjectKind_Counter_RoundTripsAndUsesInstanceRules()
+    {
+        ProjectPaths paths = NewPaths("counter");
+        Directory.CreateDirectory(paths.MetaDir);
+        File.WriteAllText(paths.ProjectFile, "{ \"schema\": 2 }");
+
+        ProjectKindStore.Write(paths, ProjectKind.Counter);
+
+        Assert.Equal("counter", (string?)JObject.Parse(File.ReadAllText(paths.ProjectFile))["projectKind"]);
+        Assert.Equal(2, (int?)JObject.Parse(File.ReadAllText(paths.ProjectFile))["schema"]);
+        Assert.Equal(ProjectKind.Counter, ProjectKindStore.Read(paths));
+
+        Assert.True(ProjectKind.Counter.IsInstanceKind());
+        Assert.True(ProjectKind.Position.IsInstanceKind());
+        Assert.False(ProjectKind.Detect.IsInstanceKind());
+        Assert.True(ProjectKindToolRules.IsShapeTypeAllowed(ProjectKind.Counter, "oriented_rectangle"));
+        Assert.True(ProjectKindToolRules.IsShapeTypeAllowed(ProjectKind.Counter, "circle"));
+        Assert.False(ProjectKindToolRules.IsShapeTypeAllowed(ProjectKind.Counter, "polygon"));
+        Assert.False(ProjectKindToolRules.IsToolAllowed(ProjectKind.Counter, CanvasTool.Polygon));
+        Assert.True(ProjectKindToolRules.IsToolAllowed(ProjectKind.Counter, CanvasTool.Circle));
+    }
+
+    [Fact]
     public void ProjectKind_SaveAsCopies()
     {
         ProjectManager manager = new ProjectManager();

@@ -12,6 +12,18 @@ public enum ProjectKind
 
     /// <summary>Position of objects: rotated boxes and circles (plus AI boxes) only.</summary>
     Position,
+
+    /// <summary>Counter ("Couter" in EasyVision): counts objects one by one. Same instance head and rotated box / circle shapes as Position.</summary>
+    Counter,
+
+    /// <summary>CounterAI: FastNet point-heatmap counter (e.g. copper wire strands). Labels are points, not boxes; not an instance kind.</summary>
+    CounterAi,
+}
+
+public static class ProjectKindExtensions
+{
+    /// <summary>Position and Counter label instances with rotated boxes and circles only, and train the instance head.</summary>
+    public static bool IsInstanceKind(this ProjectKind kind) => kind == ProjectKind.Position || kind == ProjectKind.Counter;
 }
 
 /// <summary>
@@ -31,7 +43,10 @@ public static class ProjectKindStore
             if (!File.Exists(file)) return ProjectKind.Detect;
             JObject doc = JObject.Parse(File.ReadAllText(file));
             string? text = doc[KeyName]?.Type == JTokenType.String ? doc[KeyName]!.Value<string>() : null;
-            return string.Equals(text, "position", StringComparison.OrdinalIgnoreCase) ? ProjectKind.Position : ProjectKind.Detect;
+            if (string.Equals(text, "position", StringComparison.OrdinalIgnoreCase)) return ProjectKind.Position;
+            if (string.Equals(text, "counter", StringComparison.OrdinalIgnoreCase)) return ProjectKind.Counter;
+            if (string.Equals(text, "counterai", StringComparison.OrdinalIgnoreCase)) return ProjectKind.CounterAi;
+            return ProjectKind.Detect;
         }
         catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException || ex is JsonException)
         {
@@ -55,7 +70,7 @@ public static class ProjectKindStore
             throw new IOException("project.json is not valid JSON: " + file);
         }
 
-        doc[KeyName] = kind == ProjectKind.Position ? "position" : "detect";
+        doc[KeyName] = kind == ProjectKind.Position ? "position" : kind == ProjectKind.Counter ? "counter" : kind == ProjectKind.CounterAi ? "counterai" : "detect";
         AtomicFile.WriteAllText(file, doc.ToString(Formatting.Indented));
     }
 }

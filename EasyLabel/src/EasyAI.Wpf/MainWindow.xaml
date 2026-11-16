@@ -252,6 +252,12 @@
                              InputGestureText="{infra:Shortcut ToolCircle}"
                              CommandParameter="{x:Static edit:CanvasTool.Circle}"
                              AutomationProperties.AutomationId="MenuToolCircle" />
+                <ui:MenuItem Header="{x:Static res:Strings.ToolCount}"
+                             Icon="{ui:SymbolIcon NumberSymbol24}"
+                             Command="{Binding Canvas.SelectToolCommand}"
+                             CommandParameter="{x:Static edit:CanvasTool.Count}"
+                             Visibility="{Binding Canvas.AllowsFreeShapeTools, Converter={StaticResource BoolToVisibility}}"
+                             AutomationProperties.AutomationId="MenuToolCount" />
                 <ui:MenuItem Header="{x:Static res:Strings.MiPoint}"
                              Command="{Binding Canvas.SelectToolCommand}"
                              InputGestureText="{infra:Shortcut ToolPoint}"

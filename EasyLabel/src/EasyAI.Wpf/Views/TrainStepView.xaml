@@ -68,6 +68,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <RadioButton Grid.Column="0"
                          Margin="0,0,4,0"
@@ -96,6 +97,7 @@
                 <ui:TextBlock TextWrapping="Wrap" TextAlignment="Center" Style="{StaticResource KindCaptionStyle}" Text="{x:Static res:Strings.TrainKindUltra}" />
             </RadioButton>
             <RadioButton Grid.Column="2"
+                         Margin="0,0,4,0"
                          Padding="4,4"
                          HorizontalAlignment="Stretch"
                          HorizontalContentAlignment="Center"
@@ -107,7 +109,48 @@
                          AutomationProperties.AutomationId="KindClassify">
                 <ui:TextBlock TextWrapping="Wrap" TextAlignment="Center" Style="{StaticResource KindCaptionStyle}" Text="{Binding Train.ClassifyKindText, Mode=OneWay}" />
             </RadioButton>
+            <RadioButton Grid.Column="3"
+                         Padding="4,4"
+                         HorizontalAlignment="Stretch"
+                         HorizontalContentAlignment="Center"
+                         GroupName="TrainKind"
+                         Style="{DynamicResource {x:Type ToggleButton}}"
+                         IsChecked="{Binding Train.IsCounterAiKind, Mode=OneWay}"
+                         CommandParameter="counterai"
+                         Command="{Binding Train.SetKindCommand}"
+                         AutomationProperties.AutomationId="KindCounterAi">
+                <ui:TextBlock TextWrapping="Wrap" TextAlignment="Center" Style="{StaticResource KindCaptionStyle}" Text="{x:Static res:Strings.TrainKindCounterAi}" />
+            </RadioButton>
         </Grid>
+
+        <!-- CounterAI (FastNet): iterations, device, weights, check, convert to OpenVINO. Start / Stop / progress are the shared ones below. -->
+        <StackPanel Margin="0,0,0,8" Visibility="{Binding Train.IsCounterAiKind, Converter={StaticResource BoolToVisibility}}">
+            <ui:TextBlock Margin="0,0,0,2" Text="{x:Static res:Strings.CaIters}" />
+            <TextBox Margin="0,0,0,8" Text="{Binding Train.CounterAiItersText, UpdateSourceTrigger=PropertyChanged}"
+                     IsEnabled="{Binding Train.IsIdle}" AutomationProperties.AutomationId="CounterAiIters" />
+            <ui:TextBlock Margin="0,0,0,2" Text="{x:Static res:Strings.CaDevice}" />
+            <ComboBox Margin="0,0,0,8" HorizontalAlignment="Stretch" IsEditable="True" Text="{Binding Train.CounterAiDevice, Mode=TwoWay}"
+                      IsEnabled="{Binding Train.IsIdle}" AutomationProperties.AutomationId="CounterAiDevice">
+                <ComboBoxItem Content="auto" />
+                <ComboBoxItem Content="cuda" />
+                <ComboBoxItem Content="xpu" />
+                <ComboBoxItem Content="cpu" />
+            </ComboBox>
+            <ui:TextBlock Margin="0,0,0,2" Text="{x:Static res:Strings.CaWeights}" />
+            <DockPanel Margin="0,0,0,8" LastChildFill="True">
+                <Button DockPanel.Dock="Right" Margin="6,0,0,0" Padding="10,3" Content="{x:Static res:Strings.ExpBrowse}"
+                        Command="{Binding CounterAiBar.BrowseWeightsCommand}" AutomationProperties.AutomationId="CounterAiBrowseWeightsTrain" />
+                <TextBox Text="{Binding CounterAiBar.WeightsPath, UpdateSourceTrigger=PropertyChanged}" ToolTip="{x:Static res:Strings.CaBarWeightsTip}"
+                         IsEnabled="{Binding Train.IsIdle}" AutomationProperties.AutomationId="CounterAiWeightsPathTrain" />
+            </DockPanel>
+            <WrapPanel Margin="0,0,0,6">
+                <Button Margin="0,0,6,4" Padding="10,3" Content="{x:Static res:Strings.CaCheck}" Command="{Binding Train.CheckCounterAiCommand}" AutomationProperties.AutomationId="CounterAiCheck" />
+                <CheckBox Margin="0,0,6,4" VerticalAlignment="Center" Content="{x:Static res:Strings.CaFp32}" IsChecked="{Binding Train.CounterAiFp32}" />
+                <Button Margin="0,0,6,4" Padding="10,3" Content="{x:Static res:Strings.CaConvert}" Command="{Binding Train.ConvertCounterAiCommand}" AutomationProperties.AutomationId="CounterAiConvert" />
+                <Button Margin="0,0,0,4" Padding="10,3" Content="{x:Static res:Strings.CaUseConverted}" Command="{Binding Train.UseCounterAiConvertedCommand}" AutomationProperties.AutomationId="CounterAiUseConverted" />
+            </WrapPanel>
+            <ui:TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="{Binding Train.CounterAiStatus}" TextWrapping="Wrap" />
+        </StackPanel>
 
         <!-- Position project: Performance | Quality of the instance head (same segmented toggle as the trainer kind; hidden for Detect) -->
         <StackPanel Margin="0,0,0,8" Visibility="{Binding Train.ShowInstanceQuality, Converter={StaticResource BoolToVisibility}}">
@@ -162,6 +205,7 @@
                       AutomationProperties.Name="{x:Static res:Strings.UltraFamily}" />
         </StackPanel>
 
+        <StackPanel Visibility="{Binding Train.ShowSegmentOptions, Converter={StaticResource BoolToVisibility}}">
         <ui:TextBlock Margin="0,0,0,2" Text="{x:Static res:Strings.TrainEpochs}" />
         <ui:NumberBox Margin="0,0,0,8"
                       Minimum="1"
@@ -198,6 +242,7 @@
                   ToolTip="{x:Static res:Strings.TrainInputSize}"
                   AutomationProperties.AutomationId="InputSizeCombo"
                   AutomationProperties.Name="{x:Static res:Strings.TrainInputSize}" />
+        </StackPanel>
 
         <!-- YOLO / RT-DETR: batch size and the preflight status line -->
         <StackPanel Margin="0,0,0,4" Visibility="{Binding Train.IsUltraKind, Converter={StaticResource BoolToVisibility}}">

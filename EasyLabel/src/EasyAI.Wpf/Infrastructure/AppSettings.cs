@@ -134,6 +134,7 @@ public sealed class AppSettings
     public const int AgentBatchWorkersMax = 32;
 
     private string _agentBatchMode = "current";
+    private string _segAiDevice = SegAiDeviceRules.Cpu;
     private int _agentBatchWorkers = AgentBatchWorkersDefault;
     private int _agentMaxImages = AgentMaxImagesDefault;
     private double _agentMaxCostUsd = AgentMaxCostUsdDefault;
@@ -172,6 +173,16 @@ public sealed class AppSettings
     /// the Train tab applies it only in Advanced mode.
     /// </summary>
     public bool UltraAllowCpu { get; set; }
+
+    /// <summary>
+    /// Device Segment AI inspection / evaluation runs on: <c>cpu</c> (default; a settings file written before this key existed reads as cpu),
+    /// <c>intel</c> (Intel GPU, OpenVINO) or <c>nvidia</c> (NVIDIA CUDA, ONNX Runtime). Anything else reads back as <c>cpu</c>. Training is not affected.
+    /// </summary>
+    public string SegAiDevice
+    {
+        get => SegAiDeviceRules.Normalize(_segAiDevice);
+        set => _segAiDevice = (value ?? string.Empty).Trim().ToLowerInvariant();
+    }
 
     /// <summary>Which images an agent batch covers: <c>current</c> (default), <c>all</c> or <c>remaining</c>. Anything else reads back as <c>current</c>.</summary>
     public string AgentBatchMode

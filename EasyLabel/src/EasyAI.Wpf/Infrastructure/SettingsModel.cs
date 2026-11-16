@@ -280,6 +280,15 @@ public static class SettingsCatalog
         Row(modelsPage, SettingsAccessor.RowInstallModelPack, text("SetSectionAiModels"), Localized(text, "SetInstallModelPackCaption", "OK/NG base model pack"), SettingKind.Button, true, null);
         // Advanced opt-in for YOLO training without an NVIDIA GPU (the Train tab applies it in Advanced mode only). The key is new.
         Row(modelsPage, SettingsAccessor.RowUltraAllowCpu, text("SetSectionAiModels"), Localized(text, "SetUltraAllowCpu", "Allow YOLO training on CPU (Advanced, slow)"), SettingKind.Toggle, true, null);
+        // Segment AI device (inspection / evaluation only; training stays on Intel/CPU): CPU is the default and what an old settings file means.
+        SettingRowModel segDevice = Row(modelsPage, SettingsAccessor.RowSegAiDevice, text("SetSectionAiModels"), Localized(text, "SetSegAiDevice", "Segment AI device"), SettingKind.Choice, true, null);
+        segDevice.Description = Localized(text, "SetSegAiDeviceHint", "NVIDIA CUDA needs an NVIDIA GPU and the CUDA runtime DLLs next to BeeNativeSegAI.dll; otherwise it falls back to CPU and says so. Training is not affected.");
+        segDevice.Options = new[]
+        {
+            new SettingOption(SegAiDeviceRules.Cpu, Localized(text, "SetSegAiDeviceCpu", "CPU")),
+            new SettingOption(SegAiDeviceRules.Intel, Localized(text, "SetSegAiDeviceIntel", "Intel GPU (OpenVINO)")),
+            new SettingOption(SegAiDeviceRules.Nvidia, Localized(text, "SetSegAiDeviceNvidia", "NVIDIA GPU / CUDA (ONNX Runtime)")),
+        };
 
         SettingPageModel cachePage = Page(pages, PageCache, text("SetPageCache"));
         string cacheSection = text("SetSectionCache");

@@ -182,6 +182,7 @@ public sealed partial class MainViewModel : ObservableObject
 
         Data = new DataStepViewModel(this);
         Label = new LabelStepViewModel(this);
+        CounterAiBar = new CounterAiBarViewModel(Canvas, () => _segSession?.ProjectRoot);
         Train = new TrainStepViewModel(this);
         Inspect = new InspectViewModel(this);
         Live = new LiveCameraViewModel(this, Camera);
@@ -249,6 +250,9 @@ public sealed partial class MainViewModel : ObservableObject
 
     /// <summary>Label tab state (model, auto-label, suggestions).</summary>
     public LabelStepViewModel Label { get; }
+
+    /// <summary>CounterAI labelling bar (circle / rectangle stamps, auto label, CSV export); visible for CounterAI projects.</summary>
+    public CounterAiBarViewModel CounterAiBar { get; }
 
     /// <summary>Train tab state.</summary>
     public TrainStepViewModel Train { get; }
@@ -1612,6 +1616,25 @@ public sealed partial class MainViewModel : ObservableObject
         StartCacheTrim();
     }
 
+    /// <summary>
+    /// The Segment AI device row stored a value: write the file, apply it to the open session and reload the active model in the background
+    /// (the device is read when a model loads). A reload failure is logged; the previous model stays.
+    /// </summary>
+    public void NotifySegAiDeviceChanged()
+    {
+        PersistSettings();
+        SegAiSession? session = _segSession;
+        if (session == null) return;
+        SegAiDeviceRules.Apply(session.Inference, _settings.SegAiDevice);
+        string? active = session.ActiveModel;
+        if (active == null) return;
+        _ = Task.Run(() =>
+        {
+            try { session.SetActiveModel(active); }
+            catch (Exception ex) { _store.Log("Reload active model after device change failed: " + ex.Message); }
+        });
+    }
+
     /// <summary>A Settings dialog row stored a canvas / label option: write the file and let the live canvas pick it up.</summary>
     public void NotifySettingChanged()
     {
@@ -2033,7 +2056,7 @@ public sealed partial class MainViewModel : ObservableObject
 
     private bool CanConvertAllShapes(string? target) => !string.IsNullOrEmpty(target) && _segSession != null && !IsBusy
         && !_segSession.IsTrainingActive
-        && (Canvas.Kind != ProjectKind.Position || target == "oriented_rectangle" || target == "circle");
+        && (!Canvas.Kind.IsInstanceKind() || target == "oriented_rectangle" || target == "circle");
 
     /// <summary>Edit &gt; Convert All Shapes: converts every shape of every image of the project to <paramref name="target"/> after one confirmation.</summary>
     [RelayCommand(CanExecute = nameof(CanConvertAllShapes))]
@@ -2262,6 +2285,7 @@ public sealed partial class MainViewModel : ObservableObject
                 try
                 {
                     created = SegAiSession.Create(opened.Paths);
+                    SegAiDeviceRules.Apply(created.Inference, _settings.SegAiDevice);
                 }
                 catch (Exception ex)
                 {
@@ -2298,6 +2322,11 @@ public sealed partial class MainViewModel : ObservableObject
             _segSession = session;
             Canvas.Kind = project.Kind;
             Canvas.SetSession(session);
+            if (project.Kind == EasyLabel.Core.Projects.ProjectKind.CounterAi)
+            {
+                CounterAiBar.Activate();
+            }
+
             Label.Rebind(session);
             Train.Rebind(session);
             Inspect.Rebind(session);

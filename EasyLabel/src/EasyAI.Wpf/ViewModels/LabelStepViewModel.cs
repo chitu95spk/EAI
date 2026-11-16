@@ -689,6 +689,9 @@ public sealed partial class LabelStepViewModel : ObservableObject
 
     public bool IsAgentSource => _source == AutoLabelSource.AgentPrompt;
 
+    /// <summary>FastNet (CounterAI) source: counts objects and stamps them with the Count tool; its options panel replaces the old CounterAI bar.</summary>
+    public bool IsFastNetSource => _source == AutoLabelSource.FastNet;
+
     public bool IsSam2Picked => _aiModelId == AiModelCatalog.Sam2Id;
 
     public bool IsSam3Picked => _aiModelId == AiModelCatalog.Sam3Id;
@@ -706,7 +709,7 @@ public sealed partial class LabelStepViewModel : ObservableObject
     /// The Run button of the AI Model / Agent Prompt source is usable (YOLO-World with its files; false for SAM2, which needs a prompt;
     /// the Agent needs Claude Code, its tool executable and a prompt text).
     /// </summary>
-    public bool CanRunSource => _source != AutoLabelSource.SegmentModel && (!IsAgentSource || !_host.Settings.AgentOfflineOnly) && CurrentRunReason() == AutoLabelReason.None;
+    public bool CanRunSource => _source != AutoLabelSource.SegmentModel && _source != AutoLabelSource.FastNet && (!IsAgentSource || !_host.Settings.AgentOfflineOnly) && CurrentRunReason() == AutoLabelReason.None;
 
     private AutoLabelReason CurrentRunReason()
     {
@@ -871,6 +874,7 @@ public sealed partial class LabelStepViewModel : ObservableObject
         OnPropertyChanged(nameof(IsSegmentSource));
         OnPropertyChanged(nameof(IsAiSource));
         OnPropertyChanged(nameof(IsAgentSource));
+        OnPropertyChanged(nameof(IsFastNetSource));
         OnPropertyChanged(nameof(IsSam2Picked));
         OnPropertyChanged(nameof(IsSam3Picked));
         OnPropertyChanged(nameof(IsYoloWorldPicked));
@@ -918,6 +922,13 @@ public sealed partial class LabelStepViewModel : ObservableObject
         _host.Settings.AgentPrompt = AgentPrompt;
         PersistSource();
         RefreshSource();
+        if (source == AutoLabelSource.FastNet)
+        {
+            // FastNet labels with the Count tool (left click stamps, right click deletes).
+            Canvas.StampCircle = _host.CounterAiBar.IsCircle;
+            _host.CounterAiBar.Activate();
+            Canvas.Tool = EasyLabel.Core.Editing.CanvasTool.Count;
+        }
     }
 
     private bool IsSourceTaskActive() => IsRunning || IsBatchRunning || _aiRunActive;

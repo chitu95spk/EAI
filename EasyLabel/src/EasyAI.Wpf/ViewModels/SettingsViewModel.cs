@@ -410,6 +410,10 @@ public sealed class SettingRowViewModel : ObservableObject
                 {
                     _main.NotifyImageSourceChanged();
                 }
+                else if (_model.Id == SettingsAccessor.RowSegAiDevice)
+                {
+                    _main.NotifySegAiDeviceChanged();
+                }
                 else
                 {
                     _main.NotifySettingChanged();
