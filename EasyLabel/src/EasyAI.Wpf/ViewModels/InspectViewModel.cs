@@ -323,6 +323,7 @@ public sealed partial class InspectViewModel : ObservableObject
             RefreshSettingsText(session);
             if (session != null)
             {
+                AutoFillCounterAi(session);
                 _ = RefreshModelsAsync(session, null);
             }
 
@@ -373,6 +374,24 @@ public sealed partial class InspectViewModel : ObservableObject
         }
 
         AddFullPaths(paths, false);
+        AutoFillCounterAi(session);
+    }
+
+    /// <summary>A CounterAI project starts with its own images on the list, so a freshly trained model can be tried at once.</summary>
+    private void AutoFillCounterAi(SegAiSession session)
+    {
+        if (!_host.Canvas.IsStampKind || _all.Count > 0)
+        {
+            return;
+        }
+
+        string? root = session.ProjectRoot;
+        if (string.IsNullOrWhiteSpace(root) || !Directory.Exists(root))
+        {
+            return;
+        }
+
+        AddFullPaths(InspectListStore.ScanFolder(root).ToList(), true);
     }
 
     /// <summary>Adds image paths to the list (UI thread). Duplicates are ignored. Returns the number added.</summary>
@@ -758,7 +777,50 @@ public sealed partial class InspectViewModel : ObservableObject
     /// <summary>Model-list key of the CounterAI (FastNet) entry; it is not a file of the project.</summary>
     internal const string CounterAiKey = "counterai:fastnet";
 
-    private static bool IsCounterAiSelection(string? file) => string.Equals(file, CounterAiKey, StringComparison.Ordinal);
+    private static bool IsCounterAiSelection(string? file) => file != null && file.StartsWith(CounterAiPrefix, StringComparison.Ordinal);
+
+    private const string CounterAiPrefix = "counterai:";
+
+    /// <summary>Weights file of the selected CounterAI option (its key is "counterai:" + the .pt path); falls back to the bar's weights.</summary>
+    private string SelectedCounterAiWeights()
+    {
+        string? key = SelectedModel;
+        if (IsCounterAiSelection(key) && !string.Equals(key, CounterAiKey, StringComparison.Ordinal))
+        {
+            return key!.Substring(CounterAiPrefix.Length);
+        }
+
+        return _host.CounterAiBar.ResolvedWeights;
+    }
+
+    /// <summary>The .pt files a CounterAI project can count with: the chosen weights, then every *.pt of counterai\ in the project.</summary>
+    private List<string> CounterAiWeightFiles()
+    {
+        List<string> files = new List<string>();
+        void Add(string? p)
+        {
+            if (!string.IsNullOrWhiteSpace(p) && File.Exists(p))
+            {
+                string full = Path.GetFullPath(p);
+                if (!files.Contains(full, StringComparer.OrdinalIgnoreCase))
+                {
+                    files.Add(full);
+                }
+            }
+        }
+
+        Add(_host.CounterAiBar.ResolvedWeights);
+        string? root = _host.Session?.ProjectRoot;
+        if (!string.IsNullOrWhiteSpace(root) && Directory.Exists(Path.Combine(root, "counterai")))
+        {
+            foreach (string p in Directory.EnumerateFiles(Path.Combine(root, "counterai"), "*.pt").OrderBy(x => x, StringComparer.OrdinalIgnoreCase))
+            {
+                Add(p);
+            }
+        }
+
+        return files;
+    }
 
     private bool IsClassifySelection(string? file)
     {
@@ -779,11 +841,14 @@ public sealed partial class InspectViewModel : ObservableObject
         }
 
         // CounterAI (FastNet count) is offered for a CounterAI project or when its weights exist; it runs in a python process.
-        bool counterAi = _host.Canvas.IsStampKind || File.Exists(_host.CounterAiBar.ResolvedWeights);
-        if (counterAi)
+        List<string> counterAiFiles = CounterAiWeightFiles();
+        bool counterAi = _host.Canvas.IsStampKind || counterAiFiles.Count > 0;
+        foreach (string pt in counterAiFiles)
         {
-            options.Add(new InspectModelOption(CounterAiKey, Strings.InspectCounterAiModel));
+            options.Add(new InspectModelOption(CounterAiPrefix + pt, Strings.InspectCounterAiModel + " - " + Path.GetFileName(pt)));
         }
+
+        string? firstCounterAi = counterAiFiles.Count > 0 ? CounterAiPrefix + counterAiFiles[0] : null;
 
         _syncingModel = true;
         try
@@ -791,13 +856,13 @@ public sealed partial class InspectViewModel : ObservableObject
             Models = options;
             // Until the user picks a model the selection follows the active model; a kept OK/NG selection stays.
             string? keep = _explicitModel ? SelectedModel : null;
-            if (IsClassifySelection(keep) || (counterAi && IsCounterAiSelection(keep)))
+            if (IsClassifySelection(keep) || (counterAi && IsCounterAiSelection(keep) && options.Any(o => o.File == keep)))
             {
                 SelectedModel = keep;
             }
             else
             {
-                SelectedModel = InspectRules.ResolveSelection(choices, keep) ?? (_host.Canvas.IsStampKind && counterAi ? CounterAiKey : null);
+                SelectedModel = InspectRules.ResolveSelection(choices, keep) ?? (_host.Canvas.IsStampKind ? firstCounterAi : null);
             }
         }
         finally
@@ -815,7 +880,7 @@ public sealed partial class InspectViewModel : ObservableObject
         NewModelText = _newModel == null ? string.Empty : string.Format(Strings.InspectNewModelFormat, _newModel);
         if (IsCounterAiSelection(SelectedModel))
         {
-            string weights = _host.CounterAiBar.ResolvedWeights;
+            string weights = SelectedCounterAiWeights();
             LoadedModelText = !string.IsNullOrWhiteSpace(weights) && File.Exists(weights)
                 ? string.Format(Strings.InspectCounterAiReadyFormat, Path.GetFileName(weights))
                 : Strings.InspectCounterAiMissing;
@@ -1149,9 +1214,31 @@ public sealed partial class InspectViewModel : ObservableObject
     /// Runs CounterAiEngine (FastNet) over the rows: Regions = number of counted points, Score = the count, verdict OK when something
     /// was counted and NG when nothing was. Nothing is written to the project; Cancel stops between images.
     /// </summary>
+    /// <summary>The detected strand centres as small circles (polygons) in the suggestion layer, so Inspect shows where each strand was found.</summary>
+    private SegAiSuggestion[] CounterAiSuggestions(string path, IReadOnlyList<(int X, int Y)> points)
+    {
+        string root = _host.Session?.ProjectRoot ?? string.Empty;
+        string rel = root.Length > 0 ? Path.GetRelativePath(root, path).Replace('\\', '/') : Path.GetFileName(path);
+        const int sides = 20;
+        const float radius = 28f;
+        SegAiSuggestion[] list = new SegAiSuggestion[points.Count];
+        for (int i = 0; i < points.Count; i++)
+        {
+            System.Drawing.PointF[] ring = new System.Drawing.PointF[sides];
+            for (int k = 0; k < sides; k++)
+            {
+                double a = 2 * Math.PI * k / sides;
+                ring[k] = new System.Drawing.PointF(points[i].X + radius * (float)Math.Cos(a), points[i].Y + radius * (float)Math.Sin(a));
+            }
+
+            list[i] = new SegAiSuggestion(rel, 0, ring, Array.Empty<System.Drawing.PointF[]>(), null, "Wire", "polygon", "CounterAI FastNet");
+        }
+
+        return list;
+    }
     private async Task RunCounterAiAsync(List<InspectItemViewModel> items, bool single)
     {
-        string weights = _host.CounterAiBar.ResolvedWeights;
+        string weights = SelectedCounterAiWeights();
         if (!File.Exists(weights))
         {
             _host.ShowDataNotice(Strings.InspectErrorTitle, Strings.InspectCounterAiNoWeights, InfoBarSeverity.Warning);
@@ -1186,7 +1273,7 @@ public sealed partial class InspectViewModel : ObservableObject
                             DateTime.UtcNow,
                             null,
                             false,
-                            Array.Empty<SegAiSuggestion>(),
+                            CounterAiSuggestions(path, d.Points),
                             0,
                             0);
                     }
