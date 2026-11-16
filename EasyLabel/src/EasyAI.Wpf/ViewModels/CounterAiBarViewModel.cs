@@ -20,10 +20,13 @@ public sealed partial class CounterAiBarViewModel : ObservableObject, IDisposabl
     private string _engineKey = string.Empty;
     private string _lastWritten = string.Empty;
 
-    public CounterAiBarViewModel(CanvasViewModel canvas, Func<string?> projectRoot)
+    private readonly Func<string?> _settingsWeights;
+
+    public CounterAiBarViewModel(CanvasViewModel canvas, Func<string?> projectRoot, Func<string?>? settingsWeights = null)
     {
         _canvas = canvas;
         _projectRoot = projectRoot;
+        _settingsWeights = settingsWeights ?? (() => null);
         _canvas.DocumentEdited += OnDocumentEdited;
     }
 
@@ -66,8 +69,18 @@ public sealed partial class CounterAiBarViewModel : ObservableObject, IDisposabl
         get
         {
             if (!string.IsNullOrWhiteSpace(WeightsPath)) return WeightsPath;
-            return CounterAiPaths.DefaultWeightsPath(_projectRoot());
+            string auto = AutoWeights();
+            return auto.Length > 0 ? auto : CounterAiPaths.DefaultWeightsPath(_projectRoot());
         }
+    }
+
+    /// <summary>Model picked without the user typing a path: the project's own counterai\fastnet.pt first, else the FastNet model set in Settings. Empty when neither file exists.</summary>
+    private string AutoWeights()
+    {
+        string def = CounterAiPaths.DefaultWeightsPath(_projectRoot());
+        if (!string.IsNullOrEmpty(def) && File.Exists(def)) return def;
+        string? fromSettings = _settingsWeights();
+        return !string.IsNullOrWhiteSpace(fromSettings) && File.Exists(fromSettings) ? fromSettings : string.Empty;
     }
 
     private string _autoWeights = string.Empty;
@@ -78,8 +91,7 @@ public sealed partial class CounterAiBarViewModel : ObservableObject, IDisposabl
     /// </summary>
     public void RefreshDefaultWeights()
     {
-        string def = CounterAiPaths.DefaultWeightsPath(_projectRoot());
-        string next = !string.IsNullOrEmpty(def) && File.Exists(def) ? def : string.Empty;
+        string next = AutoWeights();
         if (string.IsNullOrWhiteSpace(WeightsPath) || string.Equals(WeightsPath, _autoWeights, StringComparison.OrdinalIgnoreCase))
         {
             _autoWeights = next;

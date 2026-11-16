@@ -143,9 +143,9 @@ def cmd_serve(a):
                 emit(event="result", id=rid, error="unreadable")
                 continue
             t = time.perf_counter()
-            pts = fc.count(gray, net, float(req.get("threshold", a.threshold)))
+            pts, scores = fc.count_scored(gray, net, float(req.get("threshold", a.threshold)))
             emit(event="result", id=rid, count=int(len(pts)), ms=round((time.perf_counter() - t) * 1000, 1),
-                 points=[[int(x), int(y)] for x, y in pts])
+                 points=[[int(x), int(y)] for x, y in pts], scores=[round(float(s), 3) for s in scores])
         except Exception as e:  # noqa: BLE001
             emit(event="result", id=rid, error=str(e))
     return 0

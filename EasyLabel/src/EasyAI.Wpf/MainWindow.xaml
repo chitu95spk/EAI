@@ -842,12 +842,12 @@
                         SelectedIndex="{Binding StepTabIndex, Mode=TwoWay}"
                         AutomationProperties.AutomationId="Stepper"
                         AutomationProperties.Name="{x:Static res:Strings.StepBar}">
-                <TabItem Header="{x:Static res:Strings.StepInspect}"
-                         AutomationProperties.AutomationId="StepTabInspect" />
                 <TabItem Header="{x:Static res:Strings.StepLabel}"
                          AutomationProperties.AutomationId="StepTabLabel" />
                 <TabItem Header="{x:Static res:Strings.StepTrain}"
                          AutomationProperties.AutomationId="StepTabTrain" />
+                <TabItem Header="{x:Static res:Strings.StepInspect}"
+                         AutomationProperties.AutomationId="StepTabInspect" />
                 <!-- Last tab; only present while the camera is the image source (MainViewModel.TabSteps). -->
                 <TabItem Header="{x:Static res:Strings.StepLive}"
                          Visibility="{Binding IsCameraSourceActive, Converter={StaticResource BoolToVisibility}}"

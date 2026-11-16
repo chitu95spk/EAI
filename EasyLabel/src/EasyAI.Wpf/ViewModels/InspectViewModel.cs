@@ -713,6 +713,20 @@ public sealed partial class InspectViewModel : ObservableObject
         }
 
         _host.Canvas.SetSuggestions(item.Result?.Suggestions ?? Array.Empty<SegAiSuggestion>());
+
+        InspectResult? res = item.Result;
+        if (res != null && res.Verdict != InspectVerdict.Error && res.Model == CounterAiKey)
+        {
+            bool ok = res.Verdict == InspectVerdict.OK;
+            string text = Text("CounterAiCountLabel", "Count") + ": " + res.Regions
+                + "   " + Text("CounterAiTargetLabel", "Target") + ": " + SelectedCompare + " " + CompareValueText.Trim()
+                + "   " + (ok ? "OK" : "NG");
+            _host.Canvas.SetResultBanner(text, ok);
+        }
+        else
+        {
+            _host.Canvas.SetResultBanner(null, null);
+        }
     }
 
     // ---------- model ----------
@@ -906,8 +920,54 @@ public sealed partial class InspectViewModel : ObservableObject
         UseNewModelCommand.NotifyCanExecuteChanged();
     }
 
+    /// <summary>Compare operators of the CounterAI pass rule: the strand count is compared with <see cref="CompareValueText"/>; true means OK.</summary>
+    public IReadOnlyList<string> CompareOperators { get; } = new[] { ">", ">=", "=", "<=", "<", "!=" };
+
+    [ObservableProperty]
+    private string _selectedCompare = ">=";
+
+    [ObservableProperty]
+    private string _compareValueText = "238";
+
+    public bool ShowCounterAiRule => IsCounterAiSelection(SelectedModel);
+
+    partial void OnSelectedCompareChanged(string value) => ReapplyCounterAiRule();
+
+    partial void OnCompareValueTextChanged(string value) => ReapplyCounterAiRule();
+
+    private bool CounterAiPasses(int count)
+    {
+        int n = int.TryParse(CompareValueText?.Trim(), out int v) ? v : 0;
+        switch (SelectedCompare)
+        {
+            case ">": return count > n;
+            case "<=": return count <= n;
+            case "<": return count < n;
+            case "=": return count == n;
+            case "!=": return count != n;
+            default: return count >= n;
+        }
+    }
+
+    /// <summary>The rule changed: every CounterAI result already on the list gets its OK/NG again from the same count.</summary>
+    private void ReapplyCounterAiRule()
+    {
+        foreach (InspectItemViewModel row in _all)
+        {
+            InspectResult? r = row.Result;
+            if (r != null && r.Verdict != InspectVerdict.Error && r.Model == CounterAiKey)
+            {
+                row.Result = r with { Verdict = CounterAiPasses(r.Regions) ? InspectVerdict.OK : InspectVerdict.NG };
+            }
+        }
+
+        RefreshState();
+        ApplyOverlay();
+    }
+
     partial void OnSelectedModelChanged(string? value)
     {
+        OnPropertyChanged(nameof(ShowCounterAiRule));
         if (_syncingModel)
         {
             return;
@@ -1215,7 +1275,7 @@ public sealed partial class InspectViewModel : ObservableObject
     /// was counted and NG when nothing was. Nothing is written to the project; Cancel stops between images.
     /// </summary>
     /// <summary>The detected strand centres as small circles (polygons) in the suggestion layer, so Inspect shows where each strand was found.</summary>
-    private SegAiSuggestion[] CounterAiSuggestions(string path, IReadOnlyList<(int X, int Y)> points)
+    private SegAiSuggestion[] CounterAiSuggestions(string path, IReadOnlyList<(int X, int Y)> points, IReadOnlyList<float>? scores = null)
     {
         string root = _host.Session?.ProjectRoot ?? string.Empty;
         string rel = root.Length > 0 ? Path.GetRelativePath(root, path).Replace('\\', '/') : Path.GetFileName(path);
@@ -1231,7 +1291,7 @@ public sealed partial class InspectViewModel : ObservableObject
                 ring[k] = new System.Drawing.PointF(points[i].X + radius * (float)Math.Cos(a), points[i].Y + radius * (float)Math.Sin(a));
             }
 
-            list[i] = new SegAiSuggestion(rel, 0, ring, Array.Empty<System.Drawing.PointF[]>(), null, "Wire", "polygon", "CounterAI FastNet");
+            list[i] = new SegAiSuggestion(rel, 0, ring, Array.Empty<System.Drawing.PointF[]>(), scores != null && i < scores.Count ? scores[i] : (float?)null, (i + 1).ToString(), "polygon", "CounterAI FastNet");
         }
 
         return list;
@@ -1265,7 +1325,7 @@ public sealed partial class InspectViewModel : ObservableObject
                         CounterAiDetection d = await engine.DetectAsync(path, threshold, token);
                         result = new InspectResult(
                             path,
-                            d.Count > 0 ? InspectVerdict.OK : InspectVerdict.NG,
+                            CounterAiPasses(d.Count) ? InspectVerdict.OK : InspectVerdict.NG,
                             d.Count,
                             d.Count,
                             d.Milliseconds,
@@ -1273,7 +1333,7 @@ public sealed partial class InspectViewModel : ObservableObject
                             DateTime.UtcNow,
                             null,
                             false,
-                            CounterAiSuggestions(path, d.Points),
+                            CounterAiSuggestions(path, d.Points, d.Scores),
                             0,
                             0);
                     }

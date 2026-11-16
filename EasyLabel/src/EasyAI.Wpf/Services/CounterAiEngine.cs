@@ -6,7 +6,7 @@ using System.Text.Json;
 namespace EasyAI.Desktop.Services;
 
 /// <summary>One CounterAI detection: strand count and centres in original image pixels.</summary>
-public sealed record CounterAiDetection(int Count, IReadOnlyList<(int X, int Y)> Points, double Milliseconds);
+public sealed record CounterAiDetection(int Count, IReadOnlyList<(int X, int Y)> Points, double Milliseconds, IReadOnlyList<float>? Scores = null);
 
 /// <summary>
 /// C# wrapper around the Python FastNet detector. Starts <c>counterai_service.py serve</c> once (model loaded and warmed up),
@@ -100,7 +100,16 @@ public sealed class CounterAiEngine : IDisposable
             pts.Add((p[0].GetInt32(), p[1].GetInt32()));
         }
 
-        return new CounterAiDetection(r.GetProperty("count").GetInt32(), pts, r.GetProperty("ms").GetDouble());
+        List<float> scores = new List<float>();
+        if (r.TryGetProperty("scores", out JsonElement sc) && sc.ValueKind == JsonValueKind.Array)
+        {
+            foreach (JsonElement s in sc.EnumerateArray())
+            {
+                scores.Add((float)s.GetDouble());
+            }
+        }
+
+        return new CounterAiDetection(r.GetProperty("count").GetInt32(), pts, r.GetProperty("ms").GetDouble(), scores);
     }
 
     private async Task<JsonElement> ReadEventAsync(string kind, int? id, CancellationToken ct)

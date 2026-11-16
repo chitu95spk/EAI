@@ -213,6 +213,11 @@ public static class SettingsCatalog
         Row(files, SettingsAccessor.RowEasyVisionFolder, easyVisionSection, Localized(text, "SetEasyVisionFolder", "EasyVision model folder"), SettingKind.Text, true, null);
         Row(files, SettingsAccessor.RowEasyVisionFolderBrowse, easyVisionSection, Localized(text, "SetEasyVisionFolderBrowse", "Browse for the EasyVision model folder"), SettingKind.Button, true, null);
 
+        // FastNet (CounterAI): the model used by Label / Train / Inspect Count when the project has no counterai\fastnet.pt.
+        string counterAiSection = Localized(text, "SetSectionCounterAi", "FastNet (Count)");
+        Row(files, SettingsAccessor.RowCounterAiWeights, counterAiSection, Localized(text, "SetCounterAiWeights", "FastNet model (.pt / .xml)"), SettingKind.Text, true, null);
+        Row(files, SettingsAccessor.RowCounterAiWeightsBrowse, counterAiSection, Localized(text, "SetCounterAiWeightsBrowse", "Browse for the FastNet model"), SettingKind.Button, true, null);
+
         SettingPageModel canvas = Page(pages, PageCanvas, text("SetPageCanvas"));
         string drawing = text("SetSectionDrawing");
         Row(canvas, SettingsAccessor.RowShowLabelDialog, drawing, text("SetShowLabelDialog"), SettingKind.Toggle, true, null);

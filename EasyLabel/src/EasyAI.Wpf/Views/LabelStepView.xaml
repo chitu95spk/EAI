@@ -100,14 +100,9 @@
                         <Button Margin="0,0,6,6" Padding="10,3" Content="{x:Static res:Strings.CaBarAuto}" Command="{Binding AutoLabelCommand}" AutomationProperties.AutomationId="CounterAiAutoLabel" />
                         <Button Margin="0,0,10,6" Padding="10,3" Content="{x:Static res:Strings.CaBarExport}" Command="{Binding ExportCsvCommand}" AutomationProperties.AutomationId="CounterAiExportCsv" />
                         <CheckBox Margin="0,0,14,6" VerticalAlignment="Center" IsChecked="{Binding AutoSaveCsv}" Content="{x:Static res:Strings.CaBarAutoCsv}" />
-                        <TextBlock Margin="0,0,0,6" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="{x:Static res:Strings.CaBarHint}" />
+                        <TextBlock Margin="0,0,0,6" VerticalAlignment="Center" Text="{Binding Status}" Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                   ToolTip="{x:Static res:Strings.CaBarHint}" TextTrimming="CharacterEllipsis" MaxWidth="420" />
                     </WrapPanel>
-                    <DockPanel Margin="0,0,0,6" LastChildFill="True" MinWidth="360">
-                        <TextBlock DockPanel.Dock="Left" Margin="0,0,6,0" VerticalAlignment="Center" Text="{x:Static res:Strings.CaBarWeights}" />
-                        <Button DockPanel.Dock="Right" Margin="6,0,0,0" Padding="10,3" Content="{x:Static res:Strings.ExpBrowse}" Command="{Binding BrowseWeightsCommand}" AutomationProperties.AutomationId="CounterAiBrowseWeights" />
-                        <TextBox Text="{Binding WeightsPath, UpdateSourceTrigger=PropertyChanged}" ToolTip="{x:Static res:Strings.CaBarWeightsTip}" AutomationProperties.AutomationId="CounterAiWeightsPath" />
-                    </DockPanel>
-                    <TextBlock Margin="0,0,0,2" Text="{Binding Status}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" />
                 </StackPanel>
             </StackPanel>
             <!-- AI Model: SAM2 | SAM3 | YOLO-World | Custom YOLO and Run. -->

@@ -37,6 +37,18 @@
             </StackPanel>
         </ui:Card>
 
+        <!-- Capture a new image from the connected camera into the project -->
+        <ui:Button Margin="0,0,0,8"
+                   HorizontalAlignment="Stretch"
+                   Appearance="Secondary"
+                   Icon="{ui:SymbolIcon Camera24}"
+                   Content="{x:Static res:Strings.TbCaptureNew}"
+                   Command="{Binding Capture.CaptureNewCommand}"
+                   ToolTip="{Binding Capture.NewToolTip}"
+                   ToolTipService.ShowOnDisabled="True"
+                   Visibility="{Binding Capture.IsVisible, Converter={StaticResource BoolToVisibility}}"
+                   AutomationProperties.AutomationId="TrainCaptureNew" />
+
         <!-- Options -->
         <ui:TextBlock Margin="0,0,0,4"
                       FontTypography="BodyStrong"

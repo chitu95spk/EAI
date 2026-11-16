@@ -45,6 +45,9 @@ public sealed class AppSettings
     /// <summary>Folder EasyVision loads .segai models from; "Send to EasyVision" copies versioned models here. Null or blank = not chosen yet.</summary>
     public string? EasyVisionModelFolder { get; set; }
 
+    /// <summary>FastNet (CounterAI) weights file (.pt / .xml) used when a project has no counterai\fastnet.pt of its own.</summary>
+    public string? CounterAiWeights { get; set; }
+
     /// <summary>
     /// "simple" (guided Easy mode) or "advanced" (full UI). Null = not stored yet; the start-up resolves and saves it (see <c>EasyModeRules.ResolveMode</c>).
     /// </summary>

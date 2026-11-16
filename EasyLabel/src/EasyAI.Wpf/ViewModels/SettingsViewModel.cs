@@ -47,7 +47,8 @@ public sealed class SettingRowViewModel : ObservableObject
             {
                 case SettingsAccessor.RowCameraRefresh: return Strings.SetCameraRefreshButton;
                 case SettingsAccessor.RowCameraConnect: return Strings.SetCameraConnectButton;
-                case SettingsAccessor.RowEasyVisionFolderBrowse: return SettingsCatalog.Localized(Strings.ByName, "SetEasyVisionFolderBrowseButton", "Browse...");
+                case SettingsAccessor.RowEasyVisionFolderBrowse:
+                case SettingsAccessor.RowCounterAiWeightsBrowse: return SettingsCatalog.Localized(Strings.ByName, "SetEasyVisionFolderBrowseButton", "Browse...");
                 default: return Strings.SetCameraDisconnectButton;
             }
         }
@@ -85,12 +86,37 @@ public sealed class SettingRowViewModel : ObservableObject
         SettingChangedByButton?.Invoke(this, EventArgs.Empty);
     }
 
+    private void BrowseCounterAiWeights()
+    {
+        Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog
+        {
+            Title = SettingsCatalog.Localized(Strings.ByName, "SetCounterAiWeightsPickTitle", "Choose the FastNet model (.pt / .xml)"),
+            Filter = "FastNet (*.pt;*.xml)|*.pt;*.xml|*.*|*.*",
+        };
+        string? current = _main.Settings.CounterAiWeights;
+        string? dir = string.IsNullOrWhiteSpace(current) ? null : System.IO.Path.GetDirectoryName(current);
+        if (!string.IsNullOrEmpty(dir) && System.IO.Directory.Exists(dir))
+        {
+            dlg.InitialDirectory = dir;
+        }
+
+        if (dlg.ShowDialog() != true)
+        {
+            return;
+        }
+
+        _main.Settings.CounterAiWeights = dlg.FileName;
+        _main.NotifySettingChanged();
+        SettingChangedByButton?.Invoke(this, EventArgs.Empty);
+    }
+
     private bool CanRunCameraAction()
     {
         EasyLabel.Camera.CameraService camera = _main.Camera;
         switch (_model.Id)
         {
             case SettingsAccessor.RowEasyVisionFolderBrowse:
+            case SettingsAccessor.RowCounterAiWeightsBrowse:
                 return true;
             case SettingsAccessor.RowCameraRefresh:
                 return true;
@@ -114,6 +140,9 @@ public sealed class SettingRowViewModel : ObservableObject
         {
             case SettingsAccessor.RowEasyVisionFolderBrowse:
                 BrowseEasyVisionFolder();
+                break;
+            case SettingsAccessor.RowCounterAiWeightsBrowse:
+                BrowseCounterAiWeights();
                 break;
             case SettingsAccessor.RowCameraRefresh:
                 _ = _main.Camera.EnumerateAsync();
@@ -197,6 +226,8 @@ public sealed class SettingRowViewModel : ObservableObject
                 case SettingsAccessor.RowCameraError: return "SettingsCameraError";
                 case SettingsAccessor.RowEasyVisionFolder: return "SettingsEasyVisionFolder";
                 case SettingsAccessor.RowEasyVisionFolderBrowse: return "SettingsEasyVisionFolderBrowse";
+                case SettingsAccessor.RowCounterAiWeights: return "SettingsCounterAiWeights";
+                case SettingsAccessor.RowCounterAiWeightsBrowse: return "SettingsCounterAiWeightsBrowse";
                 default: return "Setting_" + _model.Id;
             }
         }
@@ -499,6 +530,13 @@ public sealed partial class SettingsViewModel : ObservableObject
             browseRow.SettingChangedByButton += OnEasyVisionFolderPicked;
         }
 
+        SettingRowViewModel? counterAiBrowse = RowById(SettingsAccessor.RowCounterAiWeightsBrowse);
+        if (counterAiBrowse != null)
+        {
+            counterAiBrowse.SettingChangedByButton -= OnCounterAiWeightsPicked;
+            counterAiBrowse.SettingChangedByButton += OnCounterAiWeightsPicked;
+        }
+
         _main.Camera.StateChanged -= OnCameraStateChanged;
         _main.Camera.StateChanged += OnCameraStateChanged;
         SyncCameraRows();
@@ -524,6 +562,11 @@ public sealed partial class SettingsViewModel : ObservableObject
     private void OnEasyVisionFolderPicked(object? sender, EventArgs e)
     {
         RowById(SettingsAccessor.RowEasyVisionFolder)?.Refresh();
+    }
+
+    private void OnCounterAiWeightsPicked(object? sender, EventArgs e)
+    {
+        RowById(SettingsAccessor.RowCounterAiWeights)?.Refresh();
     }
 
     private SettingRowViewModel? RowById(string id)

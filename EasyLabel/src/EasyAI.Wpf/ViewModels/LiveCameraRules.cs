@@ -34,8 +34,8 @@ public static class LiveCameraRules
     /// <summary>BalanceWhiteAuto value of "Off" (CameraParams.h: Off = 0).</summary>
     public const long WhiteBalanceOffValue = 0;
 
-    private static readonly WorkflowStep[] BaseSteps = { WorkflowStep.Inspect, WorkflowStep.Label, WorkflowStep.Train };
-    private static readonly WorkflowStep[] StepsWithLive = { WorkflowStep.Inspect, WorkflowStep.Label, WorkflowStep.Train, WorkflowStep.Live };
+    private static readonly WorkflowStep[] BaseSteps = { WorkflowStep.Label, WorkflowStep.Train, WorkflowStep.Inspect };
+    private static readonly WorkflowStep[] StepsWithLive = { WorkflowStep.Label, WorkflowStep.Train, WorkflowStep.Inspect, WorkflowStep.Live };
 
     /// <summary>Tabs of the step strip in order; Live is the last one and exists only while the camera is the image source.</summary>
     public static WorkflowStep[] TabSteps(bool cameraSourceActive)

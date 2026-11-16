@@ -29,6 +29,20 @@
                       TextWrapping="Wrap"
                       Text="{Binding Inspect.LoadedModelText}"
                       AutomationProperties.AutomationId="InspectLoadedModel" />
+        <!-- CounterAI pass rule: strand count (compare) value => OK, otherwise NG. -->
+        <StackPanel Margin="0,0,0,8"
+                    Visibility="{Binding Inspect.ShowCounterAiRule, Converter={StaticResource BoolToVisibility}}">
+            <ui:TextBlock Margin="0,0,0,4" FontTypography="BodyStrong" Text="OK khi số đếm" />
+            <StackPanel Orientation="Horizontal">
+                <ComboBox Width="70" Margin="0,0,8,0"
+                          ItemsSource="{Binding Inspect.CompareOperators}"
+                          SelectedItem="{Binding Inspect.SelectedCompare, Mode=TwoWay}"
+                          AutomationProperties.AutomationId="InspectCompareOp" />
+                <TextBox Width="80"
+                         Text="{Binding Inspect.CompareValueText, UpdateSourceTrigger=PropertyChanged}"
+                         AutomationProperties.AutomationId="InspectCompareValue" />
+            </StackPanel>
+        </StackPanel>
         <ui:Button Margin="0,0,0,8"
                    HorizontalAlignment="Stretch"
                    Appearance="Secondary"

@@ -54,11 +54,13 @@ public static class SettingsAccessor
     public const string RowCameraError = "cameraError";
     public const string RowEasyVisionFolder = "easyVisionFolder";
     public const string RowEasyVisionFolderBrowse = "easyVisionFolderBrowse";
+    public const string RowCounterAiWeights = "counterAiWeights";
+    public const string RowCounterAiWeightsBrowse = "counterAiWeightsBrowse";
 
-    /// <summary>True for the button rows that run <c>CameraActionCommand</c>: the three of the Camera page and the Browse button of the EasyVision folder row.</summary>
+    /// <summary>True for the button rows that run <c>CameraActionCommand</c>: the three of the Camera page and the Browse buttons of the EasyVision folder / FastNet weights rows.</summary>
     public static bool IsCameraButtonRow(string id)
     {
-        return id == RowCameraRefresh || id == RowCameraConnect || id == RowCameraDisconnect || id == RowEasyVisionFolderBrowse;
+        return id == RowCameraRefresh || id == RowCameraConnect || id == RowCameraDisconnect || id == RowEasyVisionFolderBrowse || id == RowCounterAiWeightsBrowse;
     }
 
     /// <summary>True for the four colour rows of the theme palette.</summary>
@@ -153,6 +155,7 @@ public static class SettingsAccessor
             case RowCameraSource: value = s.ImageSource; return true;
             case RowCameraDevice: value = s.LastCameraId ?? string.Empty; return true;
             case RowEasyVisionFolder: value = s.EasyVisionModelFolder ?? string.Empty; return true;
+            case RowCounterAiWeights: value = s.CounterAiWeights ?? string.Empty; return true;
             case RowSegAiDevice: value = s.SegAiDevice; return true;
             default: return false;
         }
@@ -236,6 +239,9 @@ public static class SettingsAccessor
                 return true;
             case RowEasyVisionFolder:
                 s.EasyVisionModelFolder = text.Length == 0 ? null : text;
+                return true;
+            case RowCounterAiWeights:
+                s.CounterAiWeights = text.Length == 0 ? null : text;
                 return true;
             default: return false;
         }

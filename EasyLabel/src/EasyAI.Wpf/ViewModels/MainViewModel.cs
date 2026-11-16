@@ -182,7 +182,7 @@ public sealed partial class MainViewModel : ObservableObject
 
         Data = new DataStepViewModel(this);
         Label = new LabelStepViewModel(this);
-        CounterAiBar = new CounterAiBarViewModel(Canvas, () => _segSession?.ProjectRoot);
+        CounterAiBar = new CounterAiBarViewModel(Canvas, () => _segSession?.ProjectRoot, () => _settings.CounterAiWeights);
         Train = new TrainStepViewModel(this);
         Inspect = new InspectViewModel(this);
         Live = new LiveCameraViewModel(this, Camera);
@@ -1640,6 +1640,7 @@ public sealed partial class MainViewModel : ObservableObject
     {
         PersistSettings();
         Canvas.ApplySettings();
+        CounterAiBar.RefreshDefaultWeights();
     }
 
     /// <summary>The one camera connection of the app (Settings page, live tab and capture buttons share it). Closed at shutdown.</summary>

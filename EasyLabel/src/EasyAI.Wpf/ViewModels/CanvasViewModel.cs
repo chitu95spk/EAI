@@ -890,6 +890,8 @@ public sealed partial class CanvasViewModel : ObservableObject
         IsDirty = false;
         _shownRel = null;
         AiDraft.Clear();
+        ResultBannerText = null;
+        ResultBannerOk = null;
         if (_suggestions.Count > 0 || _selectedSuggestions.Count > 0)
         {
             // Suggestions belong to the document they were computed for.
@@ -1051,6 +1053,23 @@ public sealed partial class CanvasViewModel : ObservableObject
         HashSet<SegAiSuggestion> present = new HashSet<SegAiSuggestion>(_suggestions, ReferenceEqualityComparer.Instance);
         _selectedSuggestions.RemoveAll(s => !present.Contains(s));
         RaiseSuggestionsChanged();
+    }
+
+    /// <summary>Result banner drawn over the image (CounterAI inspect: count / target and OK|NG); null hides it. Never saved.</summary>
+    public string? ResultBannerText { get; private set; }
+
+    public bool? ResultBannerOk { get; private set; }
+
+    public void SetResultBanner(string? text, bool? ok)
+    {
+        if (string.Equals(ResultBannerText, text, StringComparison.Ordinal) && ResultBannerOk == ok)
+        {
+            return;
+        }
+
+        ResultBannerText = text;
+        ResultBannerOk = ok;
+        RaiseRender();
     }
 
     public void ClearSuggestionSelection()

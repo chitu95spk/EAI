@@ -32,11 +32,12 @@ public sealed class LiveCameraRulesTests
         EasyAI.Desktop.ViewModels.WorkflowStep[] camera = EasyAI.Desktop.ViewModels.LiveCameraRules.TabSteps(true);
 
         Assert.Equal(
-            new[] { EasyAI.Desktop.ViewModels.WorkflowStep.Inspect, EasyAI.Desktop.ViewModels.WorkflowStep.Label, EasyAI.Desktop.ViewModels.WorkflowStep.Train },
+            new[] { EasyAI.Desktop.ViewModels.WorkflowStep.Label, EasyAI.Desktop.ViewModels.WorkflowStep.Train, EasyAI.Desktop.ViewModels.WorkflowStep.Inspect },
             files);
         Assert.Equal(4, camera.Length);
         Assert.Equal(EasyAI.Desktop.ViewModels.WorkflowStep.Live, camera[3]);
-        Assert.Equal(1, EasyAI.Desktop.ViewModels.LiveCameraRules.TabIndex(camera, EasyAI.Desktop.ViewModels.WorkflowStep.Label));
+        Assert.Equal(0, EasyAI.Desktop.ViewModels.LiveCameraRules.TabIndex(camera, EasyAI.Desktop.ViewModels.WorkflowStep.Label));
+        Assert.Equal(2, EasyAI.Desktop.ViewModels.LiveCameraRules.TabIndex(camera, EasyAI.Desktop.ViewModels.WorkflowStep.Inspect));
         Assert.Equal(3, EasyAI.Desktop.ViewModels.LiveCameraRules.TabIndex(camera, EasyAI.Desktop.ViewModels.WorkflowStep.Live));
         Assert.Equal(0, EasyAI.Desktop.ViewModels.LiveCameraRules.TabIndex(files, EasyAI.Desktop.ViewModels.WorkflowStep.Live));
     }

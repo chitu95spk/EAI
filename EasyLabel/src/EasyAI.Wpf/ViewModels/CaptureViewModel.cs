@@ -34,8 +34,8 @@ public sealed partial class CaptureViewModel : ObservableObject, IDisposable
         _camera.StateChanged += OnCameraStateChanged;
     }
 
-    /// <summary>The buttons are shown only while the camera is the image source.</summary>
-    public bool IsVisible => CaptureRules.IsVisible(_host.IsCameraSourceActive);
+    /// <summary>The buttons are shown while the camera is the image source or a camera is connected.</summary>
+    public bool IsVisible => CaptureRules.IsVisible(_host.IsCameraSourceActive || _camera.State == CameraServiceState.Connected);
 
     public string NewToolTip => ToolTipOf(CaptureRules.BlockKey(BlockOf(false)), Strings.CaptureNewTip);
 

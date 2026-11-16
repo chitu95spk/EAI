@@ -19,6 +19,10 @@ from pathlib import Path
 import cv2
 import numpy as np
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # python -I does not put the script folder on sys.path
+import synthgen  # noqa: E402
+
+N_TEST_IMAGES = 100  # labelled synthetic test images, objects and seeds disjoint from the training set
 TARGET = {"map50": 0.95, "recall": 0.98}  # default target
 SCHEDULE = [  # (model, synth images, epochs) ; the last row repeats with growing size
     ("yolo11n-obb.pt", 300, 60),
@@ -280,18 +284,33 @@ def main():
             if a.smoke:
                 name, n_synth, epochs = "yolo11n-obb.pt", 40, 3
             root = run / f"r{this_rnd}" / "data"
-            kept, tiles, evaluated = build_dataset(root, img, train, test, thr, n_synth, 1000 + this_rnd, cls)
-            (root / "data.yaml").write_text(
-                f"path: {root.as_posix()}\ntrain: images/train\nval: images/val\nnames:\n" + "".join(f"  {i}: {l}\n" for l, i in cls.items()),
-                encoding="utf-8")
-            log(f"cycle {cycle + 1} round {this_rnd}: {name}, {n_synth} synth imgs ({kept} labels), {tiles} test tile(s) with {evaluated}/{len(test)} test objects, {epochs} epochs")
+            n_test_imgs = 20 if a.smoke else N_TEST_IMAGES
+            log(f"round {this_rnd}: generating {n_synth} train + {n_test_imgs} test images (cut-out objects on varied backgrounds)")
+            summary, meta = synthgen.generate(folder, root, n_synth, n_test_imgs, 1000 + this_rnd, synthgen.Events(run / "events.jsonl"),
+                                              img_path=ref[1], json_path=ref[0])
+            kept, evaluated = summary["train"]["objects_total"], summary["test"]["objects_total"]
+            seen_names = {m["name"] for m in meta["test"] if m["bg"] in synthgen.TRAIN_BG}
+            for part, sel in (("seen", lambda n: n in seen_names), ("unseen", lambda n: n not in seen_names)):
+                lst = [str(root / "images" / "val" / (m["name"] + ".jpg")) for m in meta["test"] if sel(m["name"])]
+                (root / f"val_{part}.txt").write_text("\n".join(lst), encoding="utf-8")
+                (root / f"data_{part}.yaml").write_text(
+                    f"path: {root.as_posix()}\ntrain: images/train\nval: val_{part}.txt\nnames:\n" + "".join(f"  {i}: {l}\n" for l, i in cls.items()),
+                    encoding="utf-8")
+            log("leakage check " + json.dumps(summary["leakage"]))
+            tiles = n_test_imgs
+            log(f"cycle {cycle + 1} round {this_rnd}: {name}, {n_synth} synth train images ({kept} labels), {n_test_imgs} labelled test images ({evaluated} labels, test objects never used in training), {epochs} epochs")
             model = YOLO(name)
             model.train(data=str(root / "data.yaml"), epochs=epochs, imgsz=TILE, batch=8, device=0, workers=2, project=str(run / f"r{this_rnd}"),
                         name="train", exist_ok=True, patience=0, plots=False, verbose=False, fliplr=0.5, flipud=0.5, degrees=180, scale=0.4)
             wpath = run / f"r{this_rnd}" / "train" / "weights" / "best.pt"
-            m = evaluate(YOLO(str(wpath)), root / "data.yaml", TILE)
+            best_model = YOLO(str(wpath))
+            m = evaluate(best_model, root / "data.yaml", TILE)
+            for part in ("seen", "unseen"):
+                if (root / f"val_{part}.txt").read_text(encoding="utf-8").strip():
+                    sub = evaluate(best_model, root / f"data_{part}.yaml", TILE)
+                    m[part + "_map50"], m[part + "_recall"], m[part + "_precision"] = sub["map50"], sub["recall"], sub["precision"]
             m.update(round=this_rnd, cycle=cycle + 1, model=name, synth=n_synth, epochs=epochs, target=target, weights=str(wpath),
-                     test_evaluated=evaluated, test_total=len(test))
+                     test_evaluated=evaluated, test_total=evaluated, test_images=n_test_imgs)
             history.append(m)
             cyc_hist.append(m)
             log("metrics " + json.dumps({k: (round(v, 4) if isinstance(v, float) else v) for k, v in m.items() if k not in ("weights", "target")}))
@@ -301,7 +320,7 @@ def main():
             report_target = {"map50": a.target_map50, "recall": a.target_recall, "step": a.target_step}
             tmp = run / "report.json.tmp"  # atomic replace: the app polls report.json while the trainer is writing it
             tmp.write_text(json.dumps({"target": report_target, "cycles": a.cycles, "history": history, "best": best,
-                                       "test_objects": len(test)}, indent=2), encoding="utf-8")
+                                       "test_objects": evaluated, "test_images": n_test_imgs}, indent=2), encoding="utf-8")
             os.replace(tmp, run / "report.json")
             if reached(m, target):
                 log(f"cycle {cycle + 1}: TARGET REACHED at round {this_rnd}")

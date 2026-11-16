@@ -19,9 +19,9 @@ import numpy as np
 CANVAS_W, CANVAS_H = 1280, 1024
 GAP = 40  # px kept empty between train and test objects in the source image
 
-TRAIN_BG = ["flat", "gradient", "spot", "blotchy", "dark", "bright", "lowcon", "hue"]
-TEST_BG = TRAIN_BG + ["stripes", "grid", "granite"]  # the last three never appear in training
-UNSEEN_BG = ["stripes", "grid", "granite"]
+TRAIN_BG = ["flat", "gradient", "spot", "blotchy", "dark", "bright", "lowcon", "hue", "stripes", "grid", "granite"]
+UNSEEN_BG = ["wood", "dots", "carbon"]  # families that exist ONLY in the test set (never in training)
+TEST_BG = TRAIN_BG + UNSEEN_BG
 
 
 # ----------------------------------------------------------------------------- events
@@ -335,6 +335,31 @@ def make_bg(kind, rng, obj_mean, w=CANVAS_W, h=CANVAS_H):
         m = (m - m.min()) / (m.max() - m.min() + 1e-6)
         m = np.clip((m - 0.5) * rng.uniform(3, 7) + 0.5, 0, 1)[..., None]
         bg = a * (1 - m) + b * m
+    elif kind == "wood":  # grain with rings, test only
+        base = hsv_bgr(rng.integers(5, 25), rng.uniform(60, 150), rng.uniform(80, 190))
+        yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
+        ang = rng.uniform(0, math.pi)
+        u = xx * math.cos(ang) + yy * math.sin(ang)
+        warp = (lowfreq(rng, h, w, 260) - 0.5) * rng.uniform(80, 220)
+        rings = np.sin((u + warp) / rng.uniform(6, 16)) * 0.5 + 0.5
+        fine = cv2.GaussianBlur(rng.normal(0, 1, (h, w)).astype(np.float32), (0, 0), sigmaX=0.8, sigmaY=14) if ang < 1.57 else cv2.GaussianBlur(rng.normal(0, 1, (h, w)).astype(np.float32), (0, 0), sigmaX=14, sigmaY=0.8)
+        bg = ones * base + ((rings - 0.5) * rng.uniform(25, 55) + fine * 12)[..., None]
+    elif kind == "dots":  # perforated sheet, test only
+        base = hsv_bgr(rng.integers(0, 180), rng.uniform(0, 70), rng.uniform(70, 190))
+        step = int(rng.integers(34, 80))
+        rad = int(step * rng.uniform(0.18, 0.34))
+        tile = np.zeros((step, step), np.float32)
+        cv2.circle(tile, (step // 2, step // 2), rad, 1.0, -1)
+        pat = np.tile(tile, (h // step + 2, w // step + 2))[:h, :w]
+        pat = cv2.GaussianBlur(pat, (0, 0), 1.2)
+        bg = ones * base + (pat * rng.uniform(-70, 70))[..., None] + ((lowfreq(rng, h, w, 200) - 0.5) * 18)[..., None]
+    elif kind == "carbon":  # woven pattern, test only
+        base = hsv_bgr(rng.integers(0, 180), rng.uniform(0, 40), rng.uniform(25, 90))
+        step = int(rng.integers(10, 22))
+        yy, xx = np.mgrid[0:h, 0:w]
+        cell = ((xx // step) + (yy // step)) % 2
+        wave = np.where(cell == 0, np.sin(xx / step * math.pi), np.sin(yy / step * math.pi)).astype(np.float32)
+        bg = ones * base + (wave * rng.uniform(10, 24))[..., None] + ((lowfreq(rng, h, w, 180) - 0.5) * 16)[..., None]
     else:
         raise ValueError(kind)
     return np.clip(bg, 0, 255).astype(np.float32)

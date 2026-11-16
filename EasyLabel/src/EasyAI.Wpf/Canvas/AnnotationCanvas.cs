@@ -77,6 +77,18 @@ public sealed class AnnotationCanvas : FrameworkElement
     private static readonly Pen RemoveCrossPen = FrozenPen(RejectIconFill, 2.5);
     private static readonly Pen ReplaceTargetPen = FrozenPen(FrozenBrush(245, 165, 36), 3.0);
 
+    // Counter inspect with an OK verdict: detected boxes are green.
+    private static readonly Brush OkSuggestionFill = FrozenAlphaBrush(0x2E, 0xCC, 0x71, 60);
+    private static readonly Pen OkSuggestionPen = FrozenDashedPen(FrozenBrush(0x2E, 0xCC, 0x71), 2.0);
+    private static readonly Brush OkSuggestionText = FrozenBrush(0x1E, 0x8E, 0x4E);
+
+    private static Brush FrozenAlphaBrush(byte r, byte g, byte b, byte a)
+    {
+        SolidColorBrush brush = new SolidColorBrush(Color.FromArgb(a, r, g, b));
+        brush.Freeze();
+        return brush;
+    }
+
     public AnnotationCanvas()
     {
         Focusable = true;
@@ -985,6 +997,7 @@ public sealed class AnnotationCanvas : FrameworkElement
 
         // Pending suggestions sit above the image and under the real shapes.
         DrawSuggestions(dc, model);
+        DrawResultBanner(dc, model);
 
         CanvasEditSession? session = model.Session;
         LabelMeDocument? document = model.Document;
@@ -1264,6 +1277,26 @@ public sealed class AnnotationCanvas : FrameworkElement
         }
     }
 
+    /// <summary>Inspect result banner (count / target / OK|NG) in the top-left corner of the control, in screen space.</summary>
+    private void DrawResultBanner(DrawingContext dc, CanvasViewModel model)
+    {
+        string? caption = model.ResultBannerText;
+        if (string.IsNullOrEmpty(caption))
+        {
+            return;
+        }
+
+        double pixelsPerDip = VisualTreeHelper.GetDpi(this).PixelsPerDip;
+        Typeface face = new Typeface(SystemFonts.MessageFontFamily, FontStyles.Normal, FontWeights.Bold, FontStretches.Normal);
+        Color tone = model.ResultBannerOk == true ? Color.FromRgb(0x2E, 0xCC, 0x71) : Color.FromRgb(0xE7, 0x4C, 0x3C);
+        FormattedText text = new FormattedText(caption, System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+            face, 20.0, new SolidColorBrush(tone), pixelsPerDip);
+        text.MaxTextWidth = Math.Max(40.0, RenderSize.Width - 24.0);
+        Rect plate = new Rect(8.0, 8.0, text.Width + 16.0, text.Height + 8.0);
+        dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(190, 0, 0, 0)), new Pen(new SolidColorBrush(tone), 1.5), plate);
+        dc.DrawText(text, new Point(16.0, 12.0));
+    }
+
     /// <summary>Dashed class-colour outline with even-odd holes and the score; the selected ones get a thicker dash.</summary>
     private void DrawSuggestions(DrawingContext dc, CanvasViewModel model)
     {
@@ -1302,10 +1335,18 @@ public sealed class AnnotationCanvas : FrameworkElement
             }
 
             Geometry geometry = BuildGeometry(suggestion.Outer, holes);
-            dc.DrawGeometry(
-                AnnotationPalette.Fill(cls),
-                isSelected ? AnnotationPalette.DashedSelectedOutline(cls) : AnnotationPalette.DashedOutline(cls),
-                geometry);
+            if (model.ResultBannerOk == true)
+            {
+                // Counter inspect result is OK: the detected boxes are green (red only when the verdict is NG).
+                dc.DrawGeometry(OkSuggestionFill, OkSuggestionPen, geometry);
+            }
+            else
+            {
+                dc.DrawGeometry(
+                    AnnotationPalette.Fill(cls),
+                    isSelected ? AnnotationPalette.DashedSelectedOutline(cls) : AnnotationPalette.DashedOutline(cls),
+                    geometry);
+            }
 
             // The class name (what accepting the suggestion will paste as its label) first, then the score when there is one.
             string labelName = !string.IsNullOrEmpty(suggestion.Label) ? suggestion.Label! : model.ClassNameAt(cls);
@@ -1325,7 +1366,7 @@ public sealed class AnnotationCanvas : FrameworkElement
                 FlowDirection.LeftToRight,
                 face,
                 12.0,
-                AnnotationPalette.Solid(cls),
+                model.ResultBannerOk == true ? OkSuggestionText : AnnotationPalette.Solid(cls),
                 pixelsPerDip);
             Rect bounds = geometry.Bounds;
             double x = Math.Max(0.0, Math.Min(bounds.Left, Math.Max(0.0, RenderSize.Width - text.Width - 4.0)));

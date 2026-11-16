@@ -129,6 +129,15 @@ def peaks(heat, x0, y0, threshold=0.8, window=11):
     return np.c_[xs / SCALE + x0, ys / SCALE + y0].astype(np.int32)
 
 
+def count_scored(gray, net, threshold=0.8, window=11):
+    """Nhu count() nhung tra them diem heatmap (0..1) cua tung dinh: (pts (N,2), scores (N,))."""
+    heat, x0, y0 = heatmap(gray, net)
+    peak = cv2.dilate(heat, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (window, window)))
+    ys, xs = np.nonzero((heat == peak) & (heat > threshold))
+    pts = np.c_[xs / SCALE + x0, ys / SCALE + y0].astype(np.int32)
+    return pts, heat[ys, xs].astype(float)
+
+
 def count(gray, net, threshold=0.8, window=11):
     """Tra ve toa do tam (N,2) theo anh goc."""
     heat, x0, y0 = heatmap(gray, net)
