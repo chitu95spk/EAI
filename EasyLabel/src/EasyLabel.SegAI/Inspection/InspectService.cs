@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Text;
 using EasyLabel.SegAI.AutoLabel;
+using EasyLabel.SegAI.Data;
 using EasyLabel.SegAI.Model;
 using EasyLabel.SegAI.Project;
 
@@ -97,7 +98,13 @@ public sealed class InspectService
             () => DateTime.UtcNow)
     {
         ConfigureDiskCache(new ResultDiskCache(session.Paths.CacheDir), session.ModelFileStampForCache);
+        _instanceMode = () => session.UsesInstanceSuggestions;
+        _inferInstances = session.PredictInstancesForInspect;
     }
+
+    // Instance head (oriented box / circle) path: when the loaded model has an instance head, Inspect shows boxes instead of masks.
+    private Func<bool>? _instanceMode;
+    private Func<string, (SegAiInstanceResult[] Instances, int Width, int Height, string OutputShape)>? _inferInstances;
 
     /// <summary>Test seam: replaces the session guard, probe, inference, settings and clock.</summary>
     internal InspectService(
@@ -234,7 +241,8 @@ public sealed class InspectService
         {
             (string model, string stamp) = _probe(full);
             (float threshold, int minArea) = _settings();
-            string key = CacheKey(model, stamp, threshold, minArea);
+            bool instanceMode = _instanceMode != null && _inferInstances != null && _instanceMode();
+            string key = CacheKey(model, stamp, threshold, minArea) + (instanceMode ? "|inst" : string.Empty);
             lock (_gate)
             {
                 if (_cache.TryGetValue(full, out CacheEntry? hit) && hit.Key == key)
@@ -253,6 +261,38 @@ public sealed class InspectService
                     Store(full, key, restored);
                     return restored with { FromCache = true };
                 }
+            }
+
+            if (instanceMode)
+            {
+                var sw = System.Diagnostics.Stopwatch.StartNew();
+                var live = _inferInstances!(full);
+                sw.Stop();
+                IReadOnlyList<SegAiSuggestion> boxes = SegAiSuggestionBuilder.BuildInstances(full, live.Instances, live.OutputShape);
+                float best = 0f;
+                foreach (SegAiInstanceResult inst in live.Instances)
+                {
+                    if (inst.Score > best) best = inst.Score;
+                }
+
+                var boxResult = new InspectResult(
+                    full,
+                    live.Instances.Length > 0 ? InspectVerdict.NG : InspectVerdict.OK,
+                    live.Instances.Length,
+                    best,
+                    (float)sw.Elapsed.TotalMilliseconds,
+                    model,
+                    _clock(),
+                    null,
+                    false,
+                    boxes,
+                    live.Width,
+                    live.Height,
+                    null,
+                    null);
+                Store(full, key, boxResult);
+                if (diskKey != null) _disk!.PutAsync(ResultDiskCache.InspectKind, diskKey, InspectDiskPayload.From(boxResult));
+                return boxResult;
             }
 
             (SegAiResult native, int width, int height) = _infer(full);

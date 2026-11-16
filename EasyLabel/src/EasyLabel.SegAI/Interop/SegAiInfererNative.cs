@@ -31,6 +31,16 @@ internal static class SegAiInfererNative
     [DllImport(DLL, CallingConvention = CallingConvention.Cdecl)]
     internal static extern int SEGAI_InferGetGpuAvailable();
 
+    // NVIDIA CUDA backend (absent in older BeeNativeSegAI.dll builds: callers catch EntryPointNotFoundException).
+    [DllImport(DLL, CallingConvention = CallingConvention.Cdecl)]
+    internal static extern int SEGAI_InferSetGpuBackend(IntPtr handle, int backend);
+
+    [DllImport(DLL, CallingConvention = CallingConvention.Cdecl)]
+    internal static extern int SEGAI_InferGetCudaAvailable();
+
+    [DllImport(DLL, CallingConvention = CallingConvention.Cdecl)]
+    internal static extern int SEGAI_InferGetBackendNote(IntPtr handle, byte[] buffer, int capacity);
+
     [DllImport(DLL, CallingConvention = CallingConvention.Cdecl)]
     internal static extern int SEGAI_InferGetLastBackend(IntPtr handle);
 

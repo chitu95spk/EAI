@@ -2,6 +2,15 @@
 // at :145-148) and SegmentAI.ModelWorkspace.cs (rotation defaults when not configured: step 0, range 180).
 namespace EasyLabel.SegAI.Options;
 
+/// <summary>GPU runtime used when <see cref="SegInferenceSettings.EnableGpu"/> is on. Values are persisted as numbers: do not renumber.</summary>
+public enum SegGpuBackend
+{
+    /// <summary>Intel GPU through OpenVINO (the original meaning of the GPU flag).</summary>
+    IntelOpenVino = 0,
+    /// <summary>NVIDIA GPU through ONNX Runtime CUDA (inference/evaluation only).</summary>
+    NvidiaCuda = 1,
+}
+
 /// <summary>Inference and structural-training settings of a SegAI model.</summary>
 public sealed class SegInferenceSettings
 {
@@ -9,6 +18,11 @@ public sealed class SegInferenceSettings
     public int MinDefectArea { get; set; } = 50;
     /// <summary>EasyVision's tool default is true; EasyLabel defaults to CPU (brief EAI-1 S2).</summary>
     public bool EnableGpu { get; set; }
+    /// <summary>
+    /// Which GPU runtime <see cref="EnableGpu"/> means. Default <see cref="SegGpuBackend.IntelOpenVino"/> (the historical meaning, so old
+    /// projects behave as before); <see cref="SegGpuBackend.NvidiaCuda"/> runs inference/evaluation on ONNX Runtime CUDA. Training stays on Intel/CPU.
+    /// </summary>
+    public SegGpuBackend GpuBackend { get; set; } = SegGpuBackend.IntelOpenVino;
     public bool HighSpeed { get; set; }
     /// <summary>0 (default, as in older projects) means the 75% default; see <see cref="V2HighSpeedScale"/>.</summary>
     public int V2HighSpeedScalePercent { get; set; }

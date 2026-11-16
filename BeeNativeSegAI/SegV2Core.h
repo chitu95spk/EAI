@@ -113,7 +113,19 @@ public:
     int SetClassTable(const unsigned char* data, size_t bytes, std::string& error);
     SegClassTable GetClassTable() const;
     const std::string& LastError() const;
+    // NVIDIA CUDA backend (ONNX Runtime). backend: 0 = Intel OpenVINO (default, legacy meaning of gpu=true), 1 = NVIDIA CUDA.
+    // Only affects Predict/PredictDiagnostic when gpu=true; training and the instance head stay on OpenVINO (CPU when CUDA is selected).
+    // Changing the backend clears a previous CUDA failure so the user can retry after fixing the runtime files.
+    void SetGpuBackend(int backend);
+    int GpuBackend() const;
+    // True when CUDA was selected but could not be used (missing ORT/CUDA/cuDNN DLL, no NVIDIA GPU, unsupported op): the
+    // predictions were produced on the OpenVINO CPU device instead. LastGpuNote() carries the reason.
+    bool LastGpuFellBack() const;
+    const std::string& LastGpuNote() const;
     const SegV2Timings& LastTimings() const;
+    // Diagnostic only: raw instance-head output of the last PredictInstances ({classes + 7, grid, grid} floats, heat still logits),
+    // captured when the environment variable EASYAI_SEGAI_INSTANCE_TENSOR is set; empty otherwise. Used to compare OpenVINO CPU vs CUDA.
+    const std::vector<float>& LastInstanceTensor(int& channels, int& grid) const;
     // EAI-CLS S3: class id (0 = none) and component score maps, at the size of the last Predict input, of the last Predict
     // on the generalised class path. False after a K=3 NG/OK Predict or a failed one (use the ng/ok outputs then).
     // The Mats share storage with the model; the caller must not modify them.
@@ -133,4 +145,7 @@ private:
     struct Impl;
     std::unique_ptr<Impl> impl_;
 };
+// True when a real ONNX Runtime CUDA session can be created on this machine (loads ORT + CUDA runtime from the folder of this
+// DLL and runs a tiny graph on device 0). `reason` receives why not. Always false when built without SEGAI_WITH_CUDA.
+bool CudaBackendAvailable(std::string& reason);
 }

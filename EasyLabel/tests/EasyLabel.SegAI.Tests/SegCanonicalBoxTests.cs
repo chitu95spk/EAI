@@ -214,4 +214,99 @@ public sealed class SegCanonicalBoxTests
         var list = new List<SegInstance> { Box(1f, 1f, 10f, 20f, 170) };
         Assert.Same(list, SegBoxModeRule.CanonicaliseForSymmetry(list, SegBoxModeRule.FullTurnSymmetry));
     }
+
+    // Counter, half-turn symmetry 2: long side first, theta in (-90, 90] degrees.
+    private static void AssertHalfTurnCanonical(SegInstance box)
+    {
+        Assert.True(box.W >= box.H, "W " + box.W + " < H " + box.H);
+        Assert.True(box.Theta > -Math.PI / 2 - 1e-5 && box.Theta <= Math.PI / 2 + 1e-5, "Theta out of (-pi/2, pi/2]: " + box.Theta);
+    }
+
+    [Theory]
+    [InlineData(100f, 60f, 100.0, 100f, 60f, -80.0)]   // half turn: 100 -> -80
+    [InlineData(100f, 60f, -170.0, 100f, 60f, 10.0)]
+    [InlineData(60f, 100f, 30.0, 100f, 60f, 120.0 - 180.0)]   // short side first: swap + quarter turn, then half turn wrap
+    [InlineData(60f, 100f, -30.0, 100f, 60f, 60.0)]
+    [InlineData(100f, 60f, 90.0, 100f, 60f, 90.0)]    // +90 is the inclusive upper bound
+    [InlineData(100f, 60f, -90.0, 100f, 60f, 90.0)]
+    public void HalfTurn_LongSideFirstAndThetaWrapped(float w, float h, double theta, float expectedW, float expectedH, double expectedTheta)
+    {
+        SegInstance output = SegBoxModeRule.CanonicalBoxHalfTurn(Box(7f, 8f, w, h, theta));
+
+        AssertSameBox(Box(7f, 8f, expectedW, expectedH, expectedTheta), output);
+        AssertHalfTurnCanonical(output);
+    }
+
+    [Fact]
+    public void HalfTurn_KeepsTheBoxGeometry()
+    {
+        // The same four corners before and after: the box is only re-expressed.
+        SegInstance input = Box(50f, 40f, 60f, 100f, 25);
+        SegInstance output = SegBoxModeRule.CanonicalBoxHalfTurn(input);
+
+        double[] Corners(SegInstance b)
+        {
+            double c = Math.Cos(b.Theta), s = Math.Sin(b.Theta);
+            var points = new List<(double X, double Y)>();
+            foreach ((int sx, int sy) in new[] { (-1, -1), (1, -1), (1, 1), (-1, 1) })
+            {
+                double lx = sx * b.W / 2.0, ly = sy * b.H / 2.0;
+                points.Add((b.Cx + lx * c - ly * s, b.Cy + lx * s + ly * c));
+            }
+
+            return points.OrderBy(p => Math.Round(p.X, 1)).ThenBy(p => Math.Round(p.Y, 1)).SelectMany(p => new[] { p.X, p.Y }).ToArray();
+        }
+
+        double[] a = Corners(input), b = Corners(output);
+        for (int i = 0; i < a.Length; i++) Assert.True(Math.Abs(a[i] - b[i]) < CornerTolerance, "corner " + i + ": " + a[i] + " vs " + b[i]);
+    }
+
+    [Fact]
+    public void HalfTurn_IsIdempotent_AndCanonicalBoxIsTheSameReference()
+    {
+        SegInstance once = SegBoxModeRule.CanonicalBoxHalfTurn(Box(1f, 2f, 60f, 100f, 200));
+        SegInstance twice = SegBoxModeRule.CanonicalBoxHalfTurn(once);
+
+        Assert.Same(once, twice);
+        AssertHalfTurnCanonical(once);
+    }
+
+    [Fact]
+    public void HalfTurn_IgnoresCirclesAndNonFiniteValues()
+    {
+        var circle = new SegInstance { Kind = SegInstance.KindCircle, Cx = 5f, Cy = 6f, W = 40f, H = 40f, Theta = 3f, ClassIndex = 1 };
+        Assert.Same(circle, SegBoxModeRule.CanonicalBoxHalfTurn(circle));
+        var nan = new SegInstance { Kind = SegInstance.KindBox, Cx = 1f, Cy = 1f, W = 50f, H = 20f, Theta = float.NaN, ClassIndex = 2 };
+        Assert.Same(nan, SegBoxModeRule.CanonicalBoxHalfTurn(nan));
+    }
+
+    [Fact]
+    public void CounterList_HalfTurnCanonicalisesOrientedBoxes_SymmetryOneKeepsTheList()
+    {
+        var circle = new SegInstance { Kind = SegInstance.KindCircle, Cx = 5f, Cy = 6f, W = 40f, H = 40f, Theta = 0, ClassIndex = 1 };
+        var instances = new List<SegInstance> { Box(10f, 10f, 60f, 100f, 30), circle };
+
+        List<SegInstance>? output = SegBoxModeRule.CanonicaliseForCounter(instances, SegBoxModeRule.HalfTurnSymmetry);
+
+        Assert.NotNull(output);
+        AssertHalfTurnCanonical(output![0]);
+        Assert.Same(circle, output[1]);
+        Assert.Same(instances, SegBoxModeRule.CanonicaliseForCounter(instances, SegBoxModeRule.FullTurnSymmetry));
+        Assert.Null(SegBoxModeRule.CanonicaliseForCounter(null, SegBoxModeRule.HalfTurnSymmetry));
+        // Position keeps its frame for symmetry 2.
+        Assert.Same(instances, SegBoxModeRule.CanonicaliseForSymmetry(instances, SegBoxModeRule.HalfTurnSymmetry));
+    }
+
+    [Fact]
+    public void CounterAngleSymmetry_ElongatedBoxesGetHalfTurn_SquareStaysFour_NoBoxStaysOne()
+    {
+        Assert.Equal(SegBoxModeRule.HalfTurnSymmetry, SegBoxModeRule.CounterAngleSymmetry(new[] { Box(1f, 1f, 300f, 100f, 0), Box(2f, 2f, 260f, 120f, 40) }));
+        Assert.Equal(SegBoxModeRule.SquareSymmetry, SegBoxModeRule.CounterAngleSymmetry(new[] { Box(1f, 1f, 270f, 267f, 0), Box(2f, 2f, 200f, 196f, 40) }));
+        var circle = new SegInstance { Kind = SegInstance.KindCircle, Cx = 5f, Cy = 6f, W = 40f, H = 40f, Theta = 0, ClassIndex = 1 };
+        Assert.Equal(SegBoxModeRule.FullTurnSymmetry, SegBoxModeRule.CounterAngleSymmetry(new[] { circle }));
+        Assert.Equal(SegBoxModeRule.FullTurnSymmetry, SegBoxModeRule.CounterAngleSymmetry(Array.Empty<SegInstance>()));
+        Assert.Equal(SegBoxModeRule.FullTurnSymmetry, SegBoxModeRule.CounterAngleSymmetry(null));
+        // Position rule is untouched: elongated boxes still give 1.
+        Assert.Equal(SegBoxModeRule.FullTurnSymmetry, SegBoxModeRule.AngleSymmetry(new[] { Box(1f, 1f, 300f, 100f, 0) }));
+    }
 }

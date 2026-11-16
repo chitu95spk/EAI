@@ -41,6 +41,9 @@ public sealed class SegAiResult
 
     public bool UsedGpu { get; init; }
 
+    /// <summary>When NVIDIA CUDA was selected but the prediction ran on CPU: the reason (missing DLL, no NVIDIA GPU, ...). Empty otherwise.</summary>
+    public string BackendNote { get; init; } = string.Empty;
+
     public double ElapsedMs { get; init; }
 
     public string? Error { get; init; }

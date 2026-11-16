@@ -26,6 +26,12 @@
 #include <mutex>
 #include <thread>
 #include <immintrin.h>
+#ifdef SEGAI_WITH_CUDA
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#include "OrtCudaBackend.h" // the only TU that sees the ONNX Runtime headers (ORT_API_MANUAL_INIT)
+#endif
 
 namespace BeeSegAI {
 namespace fs = std::filesystem;
@@ -181,9 +187,12 @@ struct SegV2Model::Impl {
     bool normalEnabled = true, ngEnabled = true, compactPostprocess = true, winnerForegroundBoundary = false;
     std::string lastError, stage;
     SegV2Timings timings; // V135 diagnostic: last compact Predict phase timings
+    // Per-handle scratch for the synchronous instance path only (same threading contract as PredictInstances).
+    ov::Tensor instanceInputTensor;
+    cv::Mat instanceInputBgr[3];
     cv::Size lastInput;
     void Error(const std::string& operation, bool gpu, const std::string& reason) {
-        lastError = ("V2 " + operation + " backend=" + (gpu ? "Intel GPU" : "CPU") +
+        lastError = ("V2 " + operation + " backend=" + (gpu ? (gpuBackend == 1 ? "NVIDIA CUDA" : "Intel GPU") : "CPU") +
             " input=" + std::to_string(lastInput.width) + "x" + std::to_string(lastInput.height) + ": " + reason).substr(0, 4000);
     }
     float foregroundThreshold = .5f, minimumRatio = .25f;
@@ -238,8 +247,21 @@ struct SegV2Model::Impl {
     }
     void CheckCancel() const { if (cancelFlag && *cancelFlag) throw std::runtime_error("Training cancelled"); }
     ov::Core& Core() { if (!core) core.reset(new ov::Core()); return *core; }
-    std::string Device(bool gpu) {
+    // NVIDIA CUDA backend (ONNX Runtime). gpuBackend: 0 = Intel OpenVINO (legacy default), 1 = NVIDIA CUDA.
+    // CUDA only serves the inference/eval network (cudaCapable == true). Training, the instance head and every OpenVINO-only
+    // path ask for Device(gpu) and get "CPU" when CUDA is selected (documented scope of this step). cudaFailed is sticky until
+    // SetGpuBackend/Load so a missing CUDA runtime is reported, never retried per frame.
+    int gpuBackend = 0; bool cudaFailed = false; std::string cudaNote;
+#ifdef SEGAI_WITH_CUDA
+    std::unique_ptr<segai_cuda::OrtCudaBackend> cuda;
+    std::unique_ptr<segai_cuda::OrtCudaBackend> instanceCuda; // instance head (backbone + 2 dense 1x1) on ONNX Runtime CUDA; same sticky-fallback rules
+#endif
+    // Diagnostic capture of the raw instance output (see LastInstanceTensor); off unless EASYAI_SEGAI_INSTANCE_TENSOR is set.
+    const bool captureInstanceTensor = std::getenv("EASYAI_SEGAI_INSTANCE_TENSOR") != nullptr;
+    std::vector<float> lastInstanceTensor; int lastInstanceChannels = 0, lastInstanceGrid = 0;
+    std::string Device(bool gpu, bool cudaCapable = false) {
         if (!gpu) return "CPU";
+        if (gpuBackend == 1) return (cudaCapable && !cudaFailed) ? "CUDA" : "CPU";
         for (const auto& device : Core().get_available_devices())
             if (device.find("GPU") == 0 && Core().get_property(device, ov::device::full_name).find("Intel") != std::string::npos) return device;
         throw std::runtime_error("Intel OpenVINO GPU unavailable. Select CPU or check the Intel driver.");
@@ -267,13 +289,20 @@ Frame Prepare(const cv::Mat& image, const cv::Mat& labels, bool recordInput = tr
     if (labelled) resizedLabels.copyTo(frame.labels(cv::Rect(frame.left, frame.top, frame.width, frame.height)));
     return frame;
 }
-ov::Tensor Input(const cv::Mat& image) {
+ov::Tensor Input(const cv::Mat& image, bool reuseInstanceBuffer = false) {
     const int width = image.cols, height = image.rows;
-    ov::Tensor tensor(ov::element::f32, {1, 3, size_t(height), size_t(width)});
+    ov::Tensor tensor;
+    cv::Mat temporaryBgr[3]; cv::Mat* bgr = temporaryBgr;
+    if (reuseInstanceBuffer) {
+        const ov::Shape shape{1, 3, size_t(height), size_t(width)};
+        if (!instanceInputTensor || instanceInputTensor.get_shape() != shape)
+            instanceInputTensor = ov::Tensor(ov::element::f32, shape);
+        tensor = instanceInputTensor; bgr = instanceInputBgr;
+    } else tensor = ov::Tensor(ov::element::f32, {1, 3, size_t(height), size_t(width)});
     float* data = tensor.data<float>();
     const float mean[3] = {.485f, .456f, .406f}, sd[3] = {.229f, .224f, .225f};
     // Planar RGB written straight into the tensor; scale/offset fold (v / 255 - mean) / sd.
-    cv::Mat bgr[3]; cv::split(image, bgr);
+    cv::split(image, bgr);
     for (int c = 0; c < 3; ++c) {
         cv::Mat plane(height, width, CV_32F, data + size_t(c) * height * width);
         bgr[2 - c].convertTo(plane, CV_32F, 1. / (255. * sd[c]), -mean[c] / sd[c]);
@@ -284,15 +313,27 @@ std::vector<cv::Mat> Classify(const Frame& frame, cv::Size restoredSize, SegV2Di
     const auto timeStart = Clock::now();
     ov::Tensor inputTensor = Input(frame.image);
     const auto timeTensor = Clock::now();
-    request.set_input_tensor(inputTensor); request.infer();
-    const auto timeInfer = Clock::now();
-    auto output = request.get_output_tensor(); std::vector<cv::Mat> classes;
     const int width = frame.image.cols / 8, height = frame.image.rows / 8;
-    if (output.get_element_type() != ov::element::f32) throw std::runtime_error("Expected f32 V2 output");
-    if (output.get_shape() != ov::Shape{1, size_t(inferClasses), size_t(height), size_t(width)}) throw std::runtime_error("V2 output shape mismatch");
+    std::vector<float> cudaOutput; const float* outputData = nullptr; ov::Tensor output;
+#ifdef SEGAI_WITH_CUDA
+    if (compiledDevice == "CUDA" && cuda) {
+        cudaOutput = cuda->Run(inputTensor.data<float>());
+        if (cudaOutput.size() != size_t(inferClasses) * size_t(height) * size_t(width)) throw std::runtime_error("V2 CUDA output shape mismatch");
+        outputData = cudaOutput.data();
+    } else
+#endif
+    {
+        request.set_input_tensor(inputTensor); request.infer();
+        output = request.get_output_tensor();
+        if (output.get_element_type() != ov::element::f32) throw std::runtime_error("Expected f32 V2 output");
+        if (output.get_shape() != ov::Shape{1, size_t(inferClasses), size_t(height), size_t(width)}) throw std::runtime_error("V2 output shape mismatch");
+        outputData = output.data<float>();
+    }
+    const auto timeInfer = Clock::now();
+    std::vector<cv::Mat> classes;
     if (diagnostic) diagnostic->networkOutputGrid = cv::Size(width, height);
     for (int c = 0; c < inferClasses; ++c) {
-        cv::Mat plane(height, width, CV_32F, output.data<float>() + size_t(c) * height * width), big, restored;
+        cv::Mat plane(height, width, CV_32F, const_cast<float*>(outputData) + size_t(c) * height * width), big, restored;
         if (diagnostic) {
             if (c == 0) diagnostic->Capture(plane, diagnostic->networkBg);
             else if (c == 1) diagnostic->Capture(plane, diagnostic->networkNg);
@@ -345,7 +386,7 @@ void ClassMapsToDefectGood(const cv::Mat& labelMap, const cv::Mat& scoreMap, cv:
 int PredictCompactClasses(const cv::Mat& image, bool gpu, cv::Mat& ng, cv::Mat& ok) {
     const float shapeCleanup = shapeCleanupFraction;
     const auto timeStart=Clock::now();
-    const std::string device=Device(gpu);
+    const std::string device=Device(gpu,true);
     const auto timeDevice=Clock::now();
     const double scale=originalInput?.25:double(Grid*2)/std::max(image.cols,image.rows);
     const cv::Size size(std::max(1,int(std::round(image.cols*scale))),std::max(1,int(std::round(image.rows*scale))));
@@ -435,7 +476,7 @@ int PredictCompactClasses(const cv::Mat& image, bool gpu, cv::Mat& ng, cv::Mat& 
 int PredictMultiScaleClasses(const cv::Mat& image, bool gpu, cv::Mat& ng, cv::Mat& ok) {
     const int foregroundClasses=inferClasses-1;
     if (foregroundClasses<1 || int(classTable.classes.size())!=foregroundClasses) throw std::runtime_error("V2 class count mismatch");
-    const std::string device=Device(gpu);
+    const std::string device=Device(gpu,true);
     cv::Mat bestValue=cv::Mat::zeros(image.size(),CV_32F);
     cv::Mat bestClass=cv::Mat::zeros(image.size(),CV_8U);
     auto accumulate = [&](const std::vector<cv::Mat>& classes, const cv::Rect& target) {
@@ -560,7 +601,7 @@ int PredictCompact(const cv::Mat& image, bool gpu, cv::Mat& ng, cv::Mat& ok,
     if (genericClasses) return PredictCompactClasses(image, gpu, ng, ok);
     const float shapeCleanup = shapeCleanupFraction;
     const auto timeStart=Clock::now();
-    const std::string device=Device(gpu);
+    const std::string device=Device(gpu,true);
     const auto timeDevice=Clock::now();
     const double scale=originalInput?.25:double(Grid*2)/std::max(image.cols,image.rows);
     const cv::Size size(std::max(1,int(std::round(image.cols*scale))),std::max(1,int(std::round(image.rows*scale))));
@@ -735,7 +776,16 @@ ov::CompiledModel Compile(const std::shared_ptr<ov::Model>& model, cv::Size size
         try { fs::path folder = fs::u8path(cache) / std::to_string(fingerprint); fs::create_directories(folder); cache = folder.u8string(); }
         catch (...) { cache.clear(); } // An unwritable optional cache must not prevent inference.
     }
-    return Core().compile_model(shaped, device, ov::hint::performance_mode(mode), ov::cache_dir(cache));
+    ov::AnyMap config{ov::hint::performance_mode(mode), ov::cache_dir(cache)};
+    // Optional, reproducible CPU tuning; absent/invalid preserves the OpenVINO latency-hint defaults.
+#pragma warning(suppress : 4996)
+    const char* threadsEnv = std::getenv("EASYAI_SEGAI_CPU_THREADS");
+    if (device == "CPU" && threadsEnv && *threadsEnv) {
+        char* end = nullptr; const long threads = std::strtol(threadsEnv, &end, 10);
+        if (end != threadsEnv && *end == '\0' && threads > 0 && threads <= 256)
+            config[ov::inference_num_threads.name()] = int(threads);
+    }
+    return Core().compile_model(shaped, device, config);
 }
 // EASYAI_SEGAI_SPLIT_TIMING diagnostic (read once; off = no backbone compile, no extra inference, no extra cost).
 static bool SplitTimingRequested() {
@@ -770,8 +820,40 @@ void PrepareBackbone(const std::string& device, cv::Size size) {
         backboneReady = false; backboneRequest = ov::InferRequest();
     }
 }
-std::vector<cv::Mat> PredictFrame(const Frame& frame, cv::Size restoredSize, const std::string& device,
+// Builds the ONNX Runtime CUDA session for this frame size. Returns false (and sets cudaFailed + cudaNote) when CUDA cannot be
+// used; the caller then continues on the OpenVINO CPU device, so a missing driver/runtime never yields silent wrong output.
+bool CompileCuda(const cv::Size& size) {
+#ifdef SEGAI_WITH_CUDA
+    try {
+        auto shaped = originalInput ? network->clone() : network;
+        if (originalInput) shaped->reshape(ov::PartialShape{1, 3, size.height, size.width});
+        cuda.reset(); // free the previous size first
+        cuda.reset(new segai_cuda::OrtCudaBackend(shaped, 0, false));
+        compiled = ov::CompiledModel(); request = ov::InferRequest(); backboneReady = false; backboneRequest = ov::InferRequest();
+        return true;
+    } catch (const std::exception& e) { cudaNote = e.what(); }
+    catch (...) { cudaNote = "unknown CUDA error"; }
+    cuda.reset();
+#else
+    cudaNote = "BeeNativeSegAI.dll was built without CUDA support";
+#endif
+    cudaFailed = true;
+    std::cerr << "SegAI CUDA unavailable, falling back to CPU: " << cudaNote << std::endl;
+    return false;
+}
+std::vector<cv::Mat> PredictFrame(const Frame& frame, cv::Size restoredSize, const std::string& deviceRequested,
                                   SegV2DiagnosticCapture* diagnostic = nullptr) {
+    std::string device = deviceRequested;
+    if (device == "CUDA") {
+        if (compiledDevice == "CUDA" && compiledSize == frame.image.size()) return Classify(frame, restoredSize, diagnostic);
+        const auto timeCompile = Clock::now();
+        if (CompileCuda(frame.image.size())) {
+            compiledDevice = "CUDA"; compiledSize = frame.image.size();
+            timings.compileMs += ElapsedMs(timeCompile, Clock::now());
+            return Classify(frame, restoredSize, diagnostic);
+        }
+        device = "CPU"; // sticky fallback; Device() now returns "CPU" until SetGpuBackend/Load resets it
+    }
     if (UseTiledOriginalInput(frame, device)) return ClassifyTiled(frame, restoredSize, device, diagnostic);
     if (compiledDevice != device || compiledSize != frame.image.size()) {
         const auto timeCompile = Clock::now();
@@ -1981,19 +2063,75 @@ int SegV2Model::PredictInstances(const cv::Mat& image,bool gpu,float threshold,i
     try {
         if(image.empty()||image.type()!=CV_8UC3)throw std::runtime_error("Expected nonempty BGR8 image");
         if(p.originalInput)throw std::runtime_error("Instance prediction needs a fixed-size (non original-input) model");
-        const std::string device=p.Device(gpu);
+        using PhaseClock=std::chrono::steady_clock;
+        const auto phaseBegin=PhaseClock::now();
+        p.timings=SegV2Timings();
+        const std::string device=p.Device(gpu,true);
         auto frame=p.Prepare(image,cv::Mat());
-        if(p.instanceDevice!=device) {
-            auto model=p.BuildInstanceNetwork();
-            p.instanceCompiled=p.Compile(model,frame.image.size(),device);
-            p.instanceRequest=p.instanceCompiled.create_infer_request();p.instanceDevice=device;
-        }
-        p.instanceRequest.set_input_tensor(p.Input(frame.image));p.instanceRequest.infer();
-        ov::Tensor output=p.instanceRequest.get_output_tensor();
+        const auto phasePrepared=PhaseClock::now();
         const int classes=p.instanceWeights.classes,grid=p.Grid,cells=grid*grid;
-        if(output.get_element_type()!=ov::element::f32||output.get_shape()!=ov::Shape{1,size_t(classes+kInstanceRegChannels),size_t(grid),size_t(grid)})
-            throw std::runtime_error("Instance output shape mismatch");
-        const float* data=output.data<float>();
+        std::vector<float> cudaOutput;ov::Tensor output;const float* data=nullptr;
+        double compileMs=0,cudaCompileMs=0;
+        std::string runDevice=device;
+#ifdef SEGAI_WITH_CUDA
+        if(runDevice=="CUDA") {
+            // Instance net = clone of the semantic network cut at the feature concat + the two dense 1x1 layers (all Conv/Add/Relu,
+            // already covered by OvToOnnx). Built once per loaded model / backend selection; failure is sticky and falls back to CPU.
+            if(!p.instanceCuda) {
+                const auto compileStart=PhaseClock::now();
+                try {
+                    auto model=p.BuildInstanceNetwork();
+                    p.instanceCuda.reset(new segai_cuda::OrtCudaBackend(model,0,false));
+                    p.instanceDevice="CUDA";
+                } catch (const std::exception& e) { p.cudaNote=std::string("instance head: ")+e.what(); }
+                catch (...) { p.cudaNote="instance head: unknown CUDA error"; }
+                if(!p.instanceCuda) { p.cudaFailed=true; std::cerr<<"SegAI CUDA unavailable for the instance head, falling back to CPU: "<<p.cudaNote<<std::endl; }
+                cudaCompileMs=std::chrono::duration<double,std::milli>(PhaseClock::now()-compileStart).count();
+            }
+            if(!p.instanceCuda) runDevice="CPU";
+        }
+#else
+        if(runDevice=="CUDA") runDevice="CPU";
+#endif
+        // Instance input buffer is owned by the handle and reused across calls (Lane A perf: no per-call allocation).
+        ov::Tensor inputTensor=p.Input(frame.image, true);
+        const auto phaseTensor=PhaseClock::now();
+#ifdef SEGAI_WITH_CUDA
+        if(runDevice=="CUDA") {
+            // A CUDA Run failure (driver reset, out of memory, ...) must not fail the call: fall back to CPU for THIS call, drop the
+            // broken session, and make the failure sticky + visible (LastGpuFellBack/LastGpuNote) like a compile failure.
+            try {
+#ifdef SEGAI_TEST_INSTANCE_CUDA_RUN_FAILURE
+                // Dedicated fault-injection build only. This code and string are absent from production binaries.
+                throw std::runtime_error("SEGAI_TEST_INSTANCE_CUDA_RUN_FAILURE");
+#endif
+                cudaOutput=p.instanceCuda->Run(inputTensor.data<float>());
+                if(cudaOutput.size()!=size_t(classes+kInstanceRegChannels)*size_t(cells))throw std::runtime_error("Instance output shape mismatch");
+                data=cudaOutput.data();
+            } catch (const std::exception& e) { p.cudaNote=std::string("instance head: CUDA Run failed: ")+e.what(); }
+            catch (...) { p.cudaNote="instance head: CUDA Run failed: unknown error"; }
+            if(!data) {
+                p.instanceCuda.reset();p.cudaFailed=true;cudaOutput.clear();runDevice="CPU";
+                std::cerr<<"SegAI CUDA failed while running the instance head, falling back to CPU for this call: "<<p.cudaNote<<std::endl;
+            }
+        }
+#endif
+        if(!data) {
+            if(p.instanceDevice!=runDevice) {
+                const auto compileStart=PhaseClock::now();
+                auto model=p.BuildInstanceNetwork();
+                p.instanceCompiled=p.Compile(model,frame.image.size(),runDevice);
+                p.instanceRequest=p.instanceCompiled.create_infer_request();p.instanceDevice=runDevice;
+                compileMs+=std::chrono::duration<double,std::milli>(PhaseClock::now()-compileStart).count();
+            }
+            p.instanceRequest.set_input_tensor(inputTensor);p.instanceRequest.infer();
+            output=p.instanceRequest.get_output_tensor();
+            if(output.get_element_type()!=ov::element::f32||output.get_shape()!=ov::Shape{1,size_t(classes+kInstanceRegChannels),size_t(grid),size_t(grid)})
+                throw std::runtime_error("Instance output shape mismatch");
+            data=output.data<float>();
+        }
+        const auto phaseInferred=PhaseClock::now();
+        if(p.captureInstanceTensor){p.lastInstanceChannels=classes+kInstanceRegChannels;p.lastInstanceGrid=grid;p.lastInstanceTensor.assign(data,data+size_t(classes+kInstanceRegChannels)*cells);}
         std::vector<float> heat(size_t(classes)*cells);
         for(size_t i=0;i<heat.size();++i)heat[i]=1.f/(1.f+std::exp(-data[i]));
         DecodeOptions options;options.scoreThreshold=threshold;options.nmsIou=.5f;options.maxInstances=1000;options.grid=grid;options.stride=8;
@@ -2015,6 +2153,13 @@ int SegV2Model::PredictInstances(const cv::Mat& image,bool gpu,float threshold,i
             if(d.cx<0||d.cy<0||d.cx>=image.cols||d.cy>=image.rows)continue; // a peak inside the gray padding is not an object
             out.push_back(d);
         }
+        const auto phaseEnd=PhaseClock::now();
+        auto ms=[](PhaseClock::time_point a,PhaseClock::time_point b){return std::chrono::duration<double,std::milli>(b-a).count();};
+        // Reuses SegV2Timings for SEGAI_InferGetPhaseTimings: v2_ccscore holds the instance decode phase
+        // (sigmoid + DecodeInstances + optional refine + un-letterbox); v2_infer includes the host<->device copies on CUDA.
+        p.timings.prepareMs=ms(phaseBegin,phasePrepared);p.timings.tensorMs=ms(phasePrepared,phaseTensor)-cudaCompileMs;
+        p.timings.inferMs=ms(phaseTensor,phaseInferred)-compileMs;p.timings.compileMs=compileMs+cudaCompileMs;
+        p.timings.ccScoreMs=ms(phaseInferred,phaseEnd);p.timings.totalMs=ms(phaseBegin,phaseEnd);
         return 0;
     }catch(const std::exception& e){p.Error("predict instances",gpu,e.what());out.clear();return -8;}
 }
@@ -2047,7 +2192,35 @@ SegClassTable SegV2Model::GetClassTable() const {
     return table;
 }
 const std::string& SegV2Model::LastError() const { return impl_->lastError; }
+void SegV2Model::SetGpuBackend(int backend) {
+    auto& p = *impl_;
+    const int normalized = backend == 1 ? 1 : 0;
+    // ConfigureInferer is called for every image by the managed Counter predictor. Selecting the same healthy backend
+    // must not discard a live ORT session (and re-convert the graph / re-run cuDNN search on the next frame).
+    // A failed backend may still be explicitly reselected to retry after the runtime has recovered.
+    if (p.gpuBackend == normalized && !p.cudaFailed) return;
+    if (p.gpuBackend != normalized) { p.compiledDevice.clear(); p.compiledSize = cv::Size(); }
+    p.gpuBackend = normalized; p.cudaFailed = false; p.cudaNote.clear();
+#ifdef SEGAI_WITH_CUDA
+    p.cuda.reset();
+    p.instanceCuda.reset(); if (p.instanceDevice == "CUDA") p.instanceDevice.clear();
+#endif
+}
+int SegV2Model::GpuBackend() const { return impl_->gpuBackend; }
+bool SegV2Model::LastGpuFellBack() const { return impl_->gpuBackend == 1 && impl_->cudaFailed; }
+const std::string& SegV2Model::LastGpuNote() const { return impl_->cudaNote; }
+bool CudaBackendAvailable(std::string& reason) {
+#ifdef SEGAI_WITH_CUDA
+    return segai_cuda::ProbeCuda(reason);
+#else
+    reason = "BeeNativeSegAI.dll was built without CUDA support";
+    return false;
+#endif
+}
 const SegV2Timings& SegV2Model::LastTimings() const { return impl_->timings; }
+const std::vector<float>& SegV2Model::LastInstanceTensor(int& channels, int& grid) const {
+    channels = impl_->lastInstanceChannels; grid = impl_->lastInstanceGrid; return impl_->lastInstanceTensor;
+}
 bool SegV2Model::GetLastClassMaps(cv::Mat& label, cv::Mat& score) const {
     const auto& p=*impl_;
     if(p.lastLabelMap.empty()||p.lastScoreMap.empty()) return false;
@@ -2057,6 +2230,9 @@ void SegV2Model::ClearSamples() {
     impl_->images.clear(); impl_->ngPixels = 0; impl_->okPixels = 0;
     impl_->instanceLabels.clear(); impl_->instanceSourceSize.clear();
     impl_->instanceReady = false; impl_->instanceWeights = InstanceHeadWeights(); impl_->instanceCompiled = ov::CompiledModel(); impl_->instanceRequest = ov::InferRequest(); impl_->instanceDevice.clear();
+#ifdef SEGAI_WITH_CUDA
+    impl_->instanceCuda.reset();
+#endif
     impl_->instanceTemplates = InstanceTemplateSet(); impl_->instanceTemplateSum = cv::Mat(); impl_->instanceTemplateCount.clear();
     for (int c = 0; c < Impl::MaxClasses; ++c) { impl_->classPixels[c] = 0; impl_->classDisabled[c] = false; }
     impl_->minimumFraction = 1.; impl_->network.reset(); impl_->lastError.clear(); impl_->normalEnabled = true; impl_->ngEnabled = true; impl_->winnerForegroundBoundary = false;
@@ -2261,12 +2437,14 @@ int SegV2Model::Train(const std::function<void(int)>& progress,const volatile in
         // EAI-POS P3: the instance branch is trained after (and independently of) the semantic head: own rows, RNG, Adam. A failure
         // here fails the whole training before p.network is replaced, so no half-built model can be saved.
         p.instanceReady=false;p.instanceWeights=InstanceHeadWeights();p.instanceCompiled=ov::CompiledModel();p.instanceRequest=ov::InferRequest();p.instanceDevice.clear();
+#ifdef SEGAI_WITH_CUDA
+        p.instanceCuda.reset();
+#endif
         p.instanceTemplates=InstanceTemplateSet();
         if(p.instanceHead) {
             Impl::StageTimer timer(p,"instance_head_train");p.stage="train instance head";
             InstanceTrainRows instanceRows;ConcatInstanceRows(instanceResults,instanceRows);instanceResults.clear();instanceResults.shrink_to_fit();
-            InstanceTrainOptions options;options.epochs=p.instanceEpochs;options.learningRate=p.instanceLearningRate;
-            InstanceTrainReport report;std::string instanceError;
+            InstanceTrainOptions options;options.epochs=p.instanceEpochs;options.learningRate=p.instanceLearningRate;            InstanceTrainReport report;std::string instanceError;
             const int instanceRowCount=instanceRows.Rows();const double instancePositives=instanceRows.positives;
             const bool trained=TrainInstanceHead(instanceRows,p.trainClasses-1,p.instanceSymmetryConfig,options,
                 [&]()->bool{return p.cancelFlag&&*p.cancelFlag;},
@@ -2416,6 +2594,9 @@ bool SegV2Model::Load(const std::wstring& path) {
         // V161: informational only (managed code reads the payload key itself); missing = legacy model.
         p.priorBalanced=false;if(!storage["prior_balanced"].empty()){int prior=0;storage["prior_balanced"]>>prior;p.priorBalanced=prior==1;}
         p.originalInput=version==2;p.compiledDevice.clear();p.compiledSize=cv::Size();
+#ifdef SEGAI_WITH_CUDA
+        p.cuda.reset();p.instanceCuda.reset();p.cudaFailed=false;p.cudaNote.clear(); // a new network needs a fresh ONNX session (and a fresh chance for CUDA)
+#endif
         p.Grid=p.Side/8;cv::Mat xml;storage["network_xml"]>>xml;storage["network_bin"]>>p.weightsBytes;
         if(xml.type()!=CV_8U||p.weightsBytes.type()!=CV_8U||xml.empty()||p.weightsBytes.empty())return false;
         ov::Tensor weights(ov::element::u8,{p.weightsBytes.total()},p.weightsBytes.data);
@@ -2558,7 +2739,7 @@ int SegV2Model::Predict(const cv::Mat& image,bool gpu,cv::Mat& ng,cv::Mat& ok) {
             p.timings.totalMs=ElapsedMs(compactStart,Clock::now());
             return compactRc;
         }
-        const std::string device=p.Device(gpu);
+        const std::string device=p.Device(gpu,true);
         cv::Mat a=cv::Mat::zeros(image.size(),CV_32F),b=a.clone();
         auto accumulate = [&](const std::vector<cv::Mat>& classes, const cv::Rect& target) {
             for (int y=0; y<target.height; ++y) for (int x=0; x<target.width; ++x) {

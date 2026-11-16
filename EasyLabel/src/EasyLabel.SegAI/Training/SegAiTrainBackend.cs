@@ -48,6 +48,9 @@ internal sealed class SegAiEvaluatorConfig
 
     public bool Gpu { get; init; }
 
+    /// <summary>GPU runtime used when <see cref="Gpu"/> is on (0 Intel/OpenVINO, 1 NVIDIA CUDA).</summary>
+    public SegGpuBackend GpuBackend { get; init; } = SegGpuBackend.IntelOpenVino;
+
     /// <summary>V1 only.</summary>
     public bool HighSpeed { get; init; }
 
@@ -120,7 +123,8 @@ internal sealed class SegAiNativeTrainBackend : ISegAiTrainBackend
         try
         {
             if (engine.Load(config.ModelPath) != 0) throw new InvalidDataException("Cannot open model for validation. " + engine.LastError);
-            engine.SetGpu(config.Gpu);
+            // The selector checks the SetGpuBackend result: a refused CUDA choice runs on CPU (and is traced) instead of being ignored.
+            new SegAiGpuBackendSelector(engine.SetGpuBackend).Apply(config.Gpu, config.GpuBackend, enable => engine.SetGpu(enable));
             engine.SetHighSpeed(config.Version == 1 && config.HighSpeed);
             if (config.Version == 1) engine.SetAngles(config.AngleStep, config.AngleRange);
             else engine.SetV2Options(config.EffectiveForeground, config.Options.MinimumRegionRatio, config.Options.Morphology);

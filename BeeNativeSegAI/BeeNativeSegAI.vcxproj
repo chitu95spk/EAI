@@ -186,6 +186,8 @@
     <ClInclude Include="SegInstanceTargets.h" />
     <ClInclude Include="SegStructureCore.h" />
     <ClInclude Include="SegTrainerCore.h" />
+    <ClInclude Include="OrtCudaBackend.h" />
+    <ClInclude Include="OvToOnnx.h" />
     <ClInclude Include="SegV2Core.h" />
   </ItemGroup>
   <PropertyGroup>
@@ -194,6 +196,22 @@
   <ItemDefinitionGroup Condition="'$(Platform)' == 'x64'">
     <ClCompile><AdditionalIncludeDirectories>$(DefectOpenVinoRoot)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories><PreprocessorDefinitions>NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
     <Link><AdditionalLibraryDirectories>$(DefectOpenVinoRoot)\lib\intel64\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories><AdditionalDependencies>openvino.lib;%(AdditionalDependencies)</AdditionalDependencies></Link>
+  </ItemDefinitionGroup>
+  <!-- NVIDIA CUDA backend (ONNX Runtime CUDA EP). Optional and header-only at build time: only the ORT headers are needed
+       (NuGet Microsoft.ML.OnnxRuntime.Gpu.Windows). onnxruntime.dll is NOT linked: it is loaded at run time from the folder of
+       BeeNativeSegAI.dll, so a machine without ORT/CUDA still loads this DLL and uses CPU / Intel GPU. Without the headers the
+       project builds with CUDA unavailable (SEGAI_InferGetCudaAvailable returns 0). Override with -p:SegAiOrtRoot=<package dir>
+       or disable with -p:SegAiCudaDisable=true. -->
+  <PropertyGroup>
+    <SegAiOrtRoot Condition="'$(SegAiOrtRoot)' == ''">$(USERPROFILE)\.nuget\packages\microsoft.ml.onnxruntime.gpu.windows\1.31.1</SegAiOrtRoot>
+    <SegAiOrtInclude Condition="'$(SegAiOrtInclude)' == ''">$(SegAiOrtRoot)\buildTransitive\native\include</SegAiOrtInclude>
+    <SegAiCudaEnabled Condition="'$(SegAiCudaDisable)' != 'true' And '$(Platform)' == 'x64' And Exists('$(SegAiOrtInclude)\onnxruntime_cxx_api.h')">true</SegAiCudaEnabled>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(SegAiCudaEnabled)' == 'true'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SegAiOrtInclude);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SEGAI_WITH_CUDA=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
   </ItemDefinitionGroup>
   <!-- SEG-LIFECYCLE-r11: optional libtorch (Release|x64 only, needs ThirdParty\libtorch\lib\torch.lib). Without it the project
        builds with BEESEGAI_TORCH=0. torch_cpu.dll is delay-loaded (c10.dll cannot be: it exports data symbols) so inference-only machines never load them. -->

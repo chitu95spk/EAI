@@ -96,6 +96,7 @@ public sealed partial class SegAiSession : IDisposable
     private readonly SegProjectStore _store;
 
     private readonly bool _instanceHead;
+    private readonly bool _counterKind;
     private SegClassMap _map; // replaced by SaveClassTable under _gate
     private readonly LabelMeIO _labelMe = new();
     private readonly Dictionary<string, SizeStamp> _sizes = new(StringComparer.OrdinalIgnoreCase);
@@ -130,11 +131,15 @@ public sealed partial class SegAiSession : IDisposable
         _store = new SegProjectStore(paths);
         Paths = paths;
         // Position projects send circles and oriented boxes as instances; the kind is fixed at creation, a missing key reads as Detect.
-        _instanceHead = EasyLabel.Core.Projects.ProjectKindStore.Read(paths) == EasyLabel.Core.Projects.ProjectKind.Position;
+        EasyLabel.Core.Projects.ProjectKind projectKind = EasyLabel.Core.Projects.ProjectKindStore.Read(paths);
+        _instanceHead = EasyLabel.Core.Projects.ProjectKindExtensions.IsInstanceKind(projectKind);
+        _counterKind = projectKind == EasyLabel.Core.Projects.ProjectKind.Counter;
         _imageMeta = new ImageMetaCache(paths.CacheDir);
         ProjectRoot = _store.ProjectRoot;
         _map = _store.LoadClassMap();
         _registry = new SegAiRegistry(_store.ModelsDir);
+        float? thresholdOverride = _store.LoadDefectThresholdOverride();
+        if (thresholdOverride.HasValue) Inference.DefectThreshold = thresholdOverride.Value;
     }
 
     /// <summary>Seam for unit tests: the native trainer/inferer by default.</summary>
@@ -1461,6 +1466,26 @@ public sealed partial class SegAiSession : IDisposable
         }
     }
 
+    /// <summary>
+    /// Instance head (oriented box / circle) inspection of an image anywhere on disk with the user's <see cref="Inference"/> threshold.
+    /// Used by Inspect instead of the mask result when <see cref="UsesInstanceSuggestions"/> is true.
+    /// </summary>
+    internal (SegAiInstanceResult[] Instances, int Width, int Height, string OutputShape) PredictInstancesForInspect(string fullPath)
+    {
+        lock (_gate)
+        {
+            ThrowIfDisposed();
+            if (IsTrainingActive) throw new InvalidOperationException(InspectTrainingActiveMessage);
+            if (_predictor == null) throw new InvalidOperationException("No model is loaded. Call LoadModel first.");
+            if (!File.Exists(fullPath)) throw new FileNotFoundException("Image not found.", fullPath);
+            using Mat image = Cv2.ImRead(fullPath, ImreadModes.Color);
+            if (image.Empty()) throw new InvalidDataException("The image could not be decoded: " + fullPath);
+            Inference.InstanceScoreAnchor = _store.LoadInstanceScoreAnchor();
+            SegAiInstanceResult[] instances = _predictor.PredictInstances(image, Inference.DefectThreshold, InstanceQuality, Options, Inference);
+            return (instances, image.Width, image.Height, _predictor.InstanceOutputShape);
+        }
+    }
+
     private void RollBackActive(string? previousActive)
     {
         try { _registry.SetActive(previousActive); }
@@ -1575,12 +1600,15 @@ public sealed partial class SegAiSession : IDisposable
             // EAI-POS follow-up: instance epochs = the run's value, else advanced.json "instanceEpochs", else the P7 default (300).
             if (trainOptions.InstanceEpochs == 0) trainOptions.InstanceEpochs = _store.LoadInstanceEpochs() ?? SegTrainingOptions.DefaultInstanceEpochs;
             int? forced = _store.LoadAngleSymmetryOverride();
-            angleSymmetry = forced ?? SegBoxModeRule.AngleSymmetry(sampleShapes.Select((s, i) => (s, i)).Where(t => t.s != null).SelectMany(t => SegLabelMeConverter.ToInstances(t.s!, _map, false, sampleSizes[t.i].Width, sampleSizes[t.i].Height)));
+            var trainInstances = sampleShapes.Select((s, i) => (s, i)).Where(t => t.s != null).SelectMany(t => SegLabelMeConverter.ToInstances(t.s!, _map, false, sampleSizes[t.i].Width, sampleSizes[t.i].Height));
+            // Counter: a counted object has no direction, so an elongated oriented-box set uses half-turn symmetry 2 (Position keeps the rule).
+            angleSymmetry = forced ?? (_counterKind ? SegBoxModeRule.CounterAngleSymmetry(trainInstances) : SegBoxModeRule.AngleSymmetry(trainInstances));
             angleNote = SegBoxModeRule.AngleSymmetryNote(angleSymmetry, forced.HasValue);
             // EAI-POS P12: with symmetry 4 the angle is regressed modulo 90 degrees, so every oriented box goes to the canonical frame first.
-            if (angleSymmetry == SegBoxModeRule.SquareSymmetry)
+            // Counter with symmetry 2: long side = W and theta in (-90, 90] degrees, otherwise W/H/theta of one box are ambiguous.
+            if (angleSymmetry == SegBoxModeRule.SquareSymmetry || (_counterKind && angleSymmetry == SegBoxModeRule.HalfTurnSymmetry))
             {
-                foreach (SegSample sample in samples) sample.Instances = SegBoxModeRule.CanonicaliseForSymmetry(sample.Instances, angleSymmetry);
+                foreach (SegSample sample in samples) sample.Instances = _counterKind ? SegBoxModeRule.CanonicaliseForCounter(sample.Instances, angleSymmetry) : SegBoxModeRule.CanonicaliseForSymmetry(sample.Instances, angleSymmetry);
                 angleNote += " Labels canonicalised.";
             }
         }

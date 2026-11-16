@@ -123,7 +123,7 @@ internal sealed class SegPipeline : IPipeline
         if (backend is not (0 or 1) || output.UsedGpu != (backend == 1))
             throw new InvalidOperationException("Native actual-device reporting is invalid or inconsistent.");
         Device = output.UsedGpu
-            ? (_info.IsV2 ? "Intel GPU / OpenVINO" : "GPU / OpenCL matching") + " (UsedGpu=true; physical adapter ID not exported)"
+            ? (_info.IsV2 ? (_session.Inference.GpuBackend == SegGpuBackend.NvidiaCuda ? "NVIDIA GPU / CUDA (ONNX Runtime)" : "Intel GPU / OpenVINO") : "GPU / OpenCL matching") + " (UsedGpu=true; physical adapter ID not exported)"
             : "CPU (UsedGpu=false)";
         if (output.UsedGpu != _gpu)
             throw new InvalidOperationException($"Requested gpu={Gpu}, actual={Device}. Requested device unavailable; refusing fallback samples.");

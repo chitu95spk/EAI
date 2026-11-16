@@ -135,6 +135,61 @@ public static class SegBoxModeRule
         return canonical;
     }
 
+    /// <summary>Half-turn angle symmetry (Counter): a rectangle looks the same after 180 degrees, so the head needs only 180 degrees of angle.</summary>
+    public const int HalfTurnSymmetry = 2;
+
+    /// <summary>
+    /// Angle symmetry of a Counter project (a counted object has no direction). The rule of <see cref="AngleSymmetry"/>, except that a set with
+    /// oriented boxes that is not near-square (elongated) gets <see cref="HalfTurnSymmetry"/> instead of 1. Measured on the hex-screw set:
+    /// 1158/152/135 -> 1217/77/76 TP/FP/FN (docs/segai-tune/REPORT.md). Position projects keep <see cref="AngleSymmetry"/> (their direction matters).
+    /// </summary>
+    public static int CounterAngleSymmetry(IEnumerable<SegInstance>? instances)
+    {
+        if (instances == null) return FullTurnSymmetry;
+        List<SegInstance> list = instances.ToList();
+        int symmetry = AngleSymmetry(list);
+        if (symmetry != FullTurnSymmetry) return symmetry;
+        bool anyBox = list.Any(i => i != null && i.Kind == SegInstance.KindBox && float.IsFinite(i.W) && float.IsFinite(i.H) && i.W > 0f && i.H > 0f);
+        return anyBox ? HalfTurnSymmetry : FullTurnSymmetry;
+    }
+
+    /// <summary>
+    /// Canonical frame of one oriented box for <see cref="HalfTurnSymmetry"/>: W is the long side (a box with W smaller than H swaps the sides
+    /// and turns a quarter) and theta is wrapped by whole half turns into (-pi/2, pi/2]. The box geometry and centre are kept. Returns the
+    /// same instance for circles, non-finite values and boxes already canonical; canonicalising twice = once.
+    /// </summary>
+    public static SegInstance CanonicalBoxHalfTurn(SegInstance instance)
+    {
+        if (instance == null || instance.Kind != SegInstance.KindBox || !float.IsFinite(instance.Theta) || !float.IsFinite(instance.W) || !float.IsFinite(instance.H)) return instance;
+        float w = instance.W, h = instance.H;
+        double theta = instance.Theta;
+        if (h > w)
+        {
+            (w, h) = (h, w);
+            theta += Math.PI / 2.0;
+        }
+
+        double halves = Math.Ceiling((theta - Math.PI / 2.0) / Math.PI - CanonicalEpsilon);
+        if (!(Math.Abs(halves) < 1e15)) return instance;
+        theta -= halves * Math.PI;
+        if (w == instance.W && h == instance.H && halves == 0.0) return instance;
+        return new SegInstance { Kind = instance.Kind, Cx = instance.Cx, Cy = instance.Cy, W = w, H = h, Theta = (float)theta, ClassIndex = instance.ClassIndex };
+    }
+
+    /// <summary>
+    /// The instances of a Counter run in the frame of <paramref name="symmetry"/>: <see cref="CanonicalBoxHalfTurn"/> for 2, the symmetry 4
+    /// frame for 4; symmetry 1 and a null list return the same reference unchanged.
+    /// </summary>
+    public static List<SegInstance>? CanonicaliseForCounter(List<SegInstance>? instances, int symmetry)
+    {
+        if (instances == null) return instances;
+        if (symmetry == SquareSymmetry) return CanonicaliseForSymmetry(instances, symmetry);
+        if (symmetry != HalfTurnSymmetry) return instances;
+        var canonical = new List<SegInstance>(instances.Count);
+        foreach (SegInstance instance in instances) canonical.Add(CanonicalBoxHalfTurn(instance));
+        return canonical;
+    }
+
     /// <summary>
     /// The project override of .easyai/advanced.json "angleSymmetry" (number or text 1, 2 or 4). "auto", a missing value and any other text
     /// give null, which means the automatic rule decides.

@@ -86,6 +86,7 @@
     <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\SettingsModel.cs" Link="Linked\SettingsModel.cs" />
     <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\AppSettings.cs" Link="Linked\AppSettings.cs" />
     <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\SettingsAccessor.cs" Link="Linked\SettingsAccessor.cs" />
+    <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\SegAiDeviceRules.cs" Link="Linked\SegAiDeviceRules.cs" />
     <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\ShapeColorRules.cs" Link="Linked\ShapeColorRules.cs" />
     <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\ClassTableRules.cs" Link="Linked\ClassTableRules.cs" />
     <Compile Include="..\..\src\EasyAI.Wpf\Infrastructure\ClassTableEditRules.cs" Link="Linked\ClassTableEditRules.cs" />

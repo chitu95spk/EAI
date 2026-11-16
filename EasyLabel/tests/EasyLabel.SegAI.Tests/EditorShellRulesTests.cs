@@ -131,6 +131,8 @@ public sealed class EditorShellRulesTests
             SettingsAccessor.RowInstallModelPack,
             // EAI-OKNG: the Advanced YOLO CPU opt-in toggle is real.
             SettingsAccessor.RowUltraAllowCpu,
+            // EAI-OKNG: the Segment AI device choice (CPU / Intel GPU / NVIDIA CUDA) is real.
+            SettingsAccessor.RowSegAiDevice,
         };
         foreach (SettingRowModel row in pages.SelectMany(p => p.Rows))
         {

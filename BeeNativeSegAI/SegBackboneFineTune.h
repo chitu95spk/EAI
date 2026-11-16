@@ -48,6 +48,7 @@ struct Result {
     Head head;                                        // best (lowest validation loss, else last) head
     std::vector<std::pair<std::string, std::vector<float>>> backbone;  // parameter name -> values (same names as the OpenVINO constants)
     int bestEpoch = 0; double bestLoss = 0;
+    std::string device;                               // e.g. "device=cuda:0" or "device=cpu (reason)"
     cv::Mat parityRows;                               // (grid*grid) x Channels features of the best weights (eval forward), same layout as SegV2Core::FeatureRows
 };
 // Returns true on success; otherwise `error` is filled. Throws nothing.

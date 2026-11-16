@@ -19,6 +19,11 @@ internal sealed class SegAiPredictor : IDisposable
 {
     private readonly SegAiInferer _inferer;
 
+    // Set when CUDA was requested but could not even be selected (old native DLL); shown as the result's BackendNote.
+    private string _backendNoteOverride = string.Empty;
+
+    private SegAiGpuBackendSelector? _gpuSelector;
+
     private SegAiPredictor(SegAiInferer inferer, SegAiModelInfo info)
     {
         _inferer = inferer;
@@ -102,7 +107,13 @@ internal sealed class SegAiPredictor : IDisposable
     // Applies every detection setting that selects native shapes/devices (EasyVision ConfigureInferer), in the same order.
     private void ConfigureInferer(SegTrainingOptions options, SegInferenceSettings settings)
     {
-        _inferer.SetGpu(settings.EnableGpu);
+        _backendNoteOverride = string.Empty;
+        // Only meaningful with GPU on. NVIDIA CUDA asked of a native DLL without the CUDA exports (-99): run on CPU and say so,
+        // never silently take the Intel/OpenVINO GPU path the user did not choose. A fresh Intel/CPU choice never calls the new
+        // export; but when this handle was on CUDA before (settings changed NVIDIA -> Intel/CPU) the native backend is reset to 0.
+        _gpuSelector ??= new SegAiGpuBackendSelector(_inferer.SetGpuBackend);
+        _gpuSelector.Apply(settings.EnableGpu, settings.GpuBackend, enable => _inferer.SetGpu(enable));
+        _backendNoteOverride = _gpuSelector.Note;
         _inferer.SetHighSpeed(settings.HighSpeed && IsStructural);
         if (IsV2) _inferer.SetV2SpeedScale(settings.HighSpeed ? settings.V2HighSpeedScale / 100f : 1f);
         if (!IsV2) _inferer.SetAngles(settings.DetectionAngleStep, settings.DetectionAngleRange);
@@ -259,6 +270,7 @@ internal sealed class SegAiPredictor : IDisposable
                     NormalRegionScores = normalScores,
                     IsOK = isOk,
                     UsedGpu = native.UsedGpu,
+                    BackendNote = string.IsNullOrEmpty(native.BackendNote) ? _backendNoteOverride : native.BackendNote,
                     ElapsedMs = ElapsedSince(started),
                     RawMask = rawMask,
                     RawConfidence = native.Confidence,

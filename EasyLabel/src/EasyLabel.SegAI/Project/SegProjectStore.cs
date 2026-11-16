@@ -251,6 +251,22 @@ public sealed class SegProjectStore
         }
     }
 
+    /// <summary>Optional project default for the inspection score threshold from .easyai/advanced.json "defectThreshold" (0 &lt; value &lt; 1); null when missing or invalid.</summary>
+    public float? LoadDefectThresholdOverride()
+    {
+        string path = Path.Combine(EasyAiDir, "advanced.json");
+        try
+        {
+            JObject? root = File.Exists(path) ? JObject.Parse(File.ReadAllText(path)) : null;
+            float? value = root?["defectThreshold"]?.Value<float>();
+            return value.HasValue && value.Value > 0f && value.Value < 1f ? value.Value : null;
+        }
+        catch (Exception ex) when (ex is JsonException || ex is IOException || ex is UnauthorizedAccessException || ex is InvalidCastException || ex is FormatException)
+        {
+            return null;
+        }
+    }
+
     /// <summary>Instance score calibration anchor from .easyai/advanced.json "instanceScoreAnchor" (raw score reported as 0.90); 0 = off, also for a missing or invalid value.</summary>
     public float LoadInstanceScoreAnchor()
     {

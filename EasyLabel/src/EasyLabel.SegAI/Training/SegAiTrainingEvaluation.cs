@@ -169,6 +169,21 @@ internal static partial class SegAiTrainingPipeline
 
     // ---------------------------------------------------------------- evaluation
 
+    /// <summary>
+    /// Device text of an evaluation report. A CUDA request that ran on CPU is reported as such (with the reason when the native layer gives one),
+    /// never as the GPU label: the fallback must be visible in the result.
+    /// </summary>
+    internal static string DeviceLabel(bool enableGpu, SegGpuBackend backend, bool usedGpu, int version, string? note = null)
+    {
+        if (enableGpu && backend == SegGpuBackend.NvidiaCuda && version == 2)
+        {
+            if (usedGpu) return "NVIDIA GPU / CUDA (ONNX Runtime)";
+            return string.IsNullOrWhiteSpace(note) ? "CPU (CUDA không dùng được, đã chuyển về CPU)" : "CPU (CUDA không dùng được, đã chuyển về CPU: " + note.Trim() + ")";
+        }
+
+        return usedGpu ? (version == 2 ? "Intel GPU / OpenVINO" : "GPU / OpenCL matching") : "CPU";
+    }
+
     internal static void EvaluateTrainingModel(ISegAiTrainBackend backend, SegInferenceSettings inference, string path,
         List<SegAiTrainingFrame> frames, SegTrainingReport report, CancellationToken token, Action<int>? progress, SegAiClassTable? classTable = null)
     {
@@ -179,6 +194,7 @@ internal static partial class SegAiTrainingPipeline
         var times = new List<double>();
         var noModelOutput = new HashSet<int>();
         bool enableGpu = inference.EnableGpu;
+        SegGpuBackend gpuBackend = inference.GpuBackend;
         int minDefectArea = inference.MinDefectArea;
         SegTrainingOptions options = report.Options ?? new SegTrainingOptions();
         // Full-resolution pooled NG+OK pixel counters (native-gated mask vs label mask; 255 ignore pixels are never truth).
@@ -189,6 +205,7 @@ internal static partial class SegAiTrainingPipeline
             ModelPath = path,
             Version = report.Version,
             Gpu = enableGpu,
+            GpuBackend = gpuBackend,
             HighSpeed = inference.HighSpeed,
             AngleStep = inference.DetectionAngleStep,
             AngleRange = inference.DetectionAngleRange,
@@ -228,7 +245,7 @@ internal static partial class SegAiTrainingPipeline
                     if (classTable != null) multi = engine.PredictMulti(image, roi, classCount);
                     else result = engine.Predict(image, roi);
                     watch.Stop();
-                    if (result == null && multi == null) throw new InvalidDataException("Validation inference failed. Check the selected CPU/Intel OpenVINO GPU runtime.");
+                    if (result == null && multi == null) throw new InvalidDataException("Validation inference failed. Check the selected CPU / Intel OpenVINO GPU / NVIDIA CUDA runtime.");
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -246,8 +263,9 @@ internal static partial class SegAiTrainingPipeline
 
                 if (result != null || multi != null)
                 {
-                    if (result != null) report.Device = result.UsedGpu ? (report.Version == 2 ? "Intel GPU / OpenVINO" : "GPU / OpenCL matching") : "CPU";
-                    else report.Device = enableGpu ? "GPU requested" : "CPU";
+                    if (result != null) report.Device = DeviceLabel(enableGpu, gpuBackend, result.UsedGpu, report.Version, result.BackendNote);
+                    else report.Device = multi != null && enableGpu && gpuBackend == SegGpuBackend.NvidiaCuda ? DeviceLabel(enableGpu, gpuBackend, multi.UsedGpu, report.Version, multi.BackendNote)
+                        : enableGpu ? "GPU requested" : "CPU";
                     var imagePredictions = new List<EvaluationBox>();
                     foreach (int c in evaluatedLabels)
                     {

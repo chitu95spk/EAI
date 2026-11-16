@@ -17,6 +17,7 @@
 #include <cstring>
 #include <limits>
 #include <memory>
+#include <mutex>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -588,6 +589,49 @@ SAPI int SEGAI_InferGetGpuAvailable()
     }
 }
 
+SAPI int SEGAI_InferSetGpuBackend(void* handle, int32_t backend)
+{
+    InferHandle* infer = static_cast<InferHandle*>(handle);
+    if (!infer || (backend != 0 && backend != 1)) return -1;
+    infer->inferer.SetGpuBackend(backend);
+    return 0;
+}
+
+// Reason of the last SEGAI_InferGetCudaAvailable probe (process-wide by nature: the probe itself is process-wide). Guarded by a
+// mutex and read/written by value so concurrent probe / SEGAI_InferGetBackendNote(handle = null) callers cannot race on the string.
+static std::mutex g_cudaProbeReasonLock;
+static std::string g_cudaProbeReason;
+static void SetCudaProbeReason(const std::string& reason) { std::lock_guard<std::mutex> guard(g_cudaProbeReasonLock); g_cudaProbeReason = reason; }
+static std::string CudaProbeReason() { std::lock_guard<std::mutex> guard(g_cudaProbeReasonLock); return g_cudaProbeReason; }
+
+SAPI int SEGAI_InferGetCudaAvailable()
+{
+    try {
+        std::string reason;
+        const bool ok = BeeSegAI::CudaBackendAvailable(reason);
+        SetCudaProbeReason(reason);
+        return ok ? 1 : 0;
+    } catch (...) {
+        try { SetCudaProbeReason("unknown CUDA probe error"); } catch (...) {}
+        return 0;
+    }
+}
+
+SAPI int SEGAI_InferGetBackendNote(void* handle, char* buffer, int32_t capacity)
+{
+    if (!buffer || capacity <= 0) return -1;
+    try {
+        const std::string note = handle ? static_cast<InferHandle*>(handle)->inferer.BackendNote() : CudaProbeReason();
+        const size_t n = std::min<size_t>(note.size(), static_cast<size_t>(capacity - 1));
+        std::memcpy(buffer, note.data(), n);
+        buffer[n] = 0;
+        return static_cast<int32_t>(n);
+    } catch (...) {
+        buffer[0] = 0;
+        return -1;
+    }
+}
+
 SAPI int SEGAI_InferSetAssistMode(void* handle, int32_t enable)
 {
     auto* infer = static_cast<InferHandle*>(handle);
@@ -762,6 +806,19 @@ SAPI int32_t SEGAI_InferGetSplitTimings(void* handle, double* outValues, int32_t
     const int32_t count = capacity < 3 ? capacity : 3;
     for (int32_t i = 0; i < count; ++i) outValues[i] = values[i];
     return count;
+}
+SAPI int32_t SEGAI_InferGetLastInstanceTensor(void* handle, float* outValues, int32_t capacity, int32_t* outChannels, int32_t* outGrid)
+{
+    if (!handle || !outChannels || !outGrid) return -1;
+    *outChannels = 0; *outGrid = 0;
+    const auto* infer = static_cast<InferHandle*>(handle);
+    int channels = 0, grid = 0;
+    const std::vector<float>* tensor = infer->inferer.V2InstanceTensor(channels, grid);
+    if (!tensor || tensor->empty()) return 0;
+    *outChannels = channels; *outGrid = grid;
+    if (!outValues || capacity < static_cast<int32_t>(tensor->size())) return -2;
+    std::copy(tensor->begin(), tensor->end(), outValues);
+    return static_cast<int32_t>(tensor->size());
 }
 SAPI int32_t SEGAI_GetSplitTimingApiVersion()
 {
@@ -979,6 +1036,12 @@ SAPI int32_t SEGAI_InferPredictInstances(void* handle,
 {
     auto* infer = static_cast<InferHandle*>(handle);
     if (!infer) return -1;
+    using InstanceClock = std::chrono::steady_clock;
+    infer->exportCopyMs = 0; infer->exportTotalMs = 0;
+    struct InstanceExportTimer {
+        InferHandle* handle; InstanceClock::time_point begin;
+        ~InstanceExportTimer() { handle->exportTotalMs = std::chrono::duration<double, std::milli>(InstanceClock::now() - begin).count(); }
+    } timer{infer, InstanceClock::now()};
     infer->lastError.clear();
     if (!outCount || capacity < 0 || (capacity > 0 && !out)) {
         infer->lastError = "PredictInstances: invalid output buffer, capacity or count pointer";
@@ -1000,6 +1063,7 @@ SAPI int32_t SEGAI_InferPredictInstances(void* handle,
             infer->lastError = "PredictInstances: capacity " + std::to_string(capacity) + " is smaller than the " + std::to_string(items.size()) + " instances found";
             return -4;
         }
+        const auto copyBegin = InstanceClock::now();
         for (size_t i = 0; i < items.size(); ++i) {
             const BeeSegAI::DecodedInstance& d = items[i];
             SegInstanceResultV1& r = out[i];
@@ -1015,6 +1079,7 @@ SAPI int32_t SEGAI_InferPredictInstances(void* handle,
             r.classIndex = d.classIndex;
             r.refined = d.refined != 0 ? 1 : 0;
         }
+        infer->exportCopyMs = std::chrono::duration<double, std::milli>(InstanceClock::now() - copyBegin).count();
         return 0;
     } catch (const std::exception& e) {
         infer->lastError = std::string("PredictInstances: ") + e.what();

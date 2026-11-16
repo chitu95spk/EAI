@@ -29,6 +29,9 @@ public sealed class SegAiPredictResult
 
     public bool UsedGpu { get; init; }
 
+    /// <summary>Reason the prediction ran on CPU although NVIDIA CUDA was selected; empty otherwise.</summary>
+    public string BackendNote { get; init; } = string.Empty;
+
     public bool SupportsNormalRegions { get; init; }
 }
 
@@ -47,6 +50,12 @@ public sealed class SegAiMultiPredictResult
 
     /// <summary>Accepted pixels of class c / ROI area at index c-1.</summary>
     public float[] ClassFractions { get; init; } = Array.Empty<float>();
+
+    /// <summary>True when the GPU runtime (Intel OpenVINO or NVIDIA CUDA) really ran the prediction; false after a CPU fallback.</summary>
+    public bool UsedGpu { get; init; }
+
+    /// <summary>Reason the prediction ran on CPU although NVIDIA CUDA was selected; empty otherwise.</summary>
+    public string BackendNote { get; init; } = string.Empty;
 }
 
 public sealed class SegAiInferer : IDisposable
@@ -91,6 +100,20 @@ public sealed class SegAiInferer : IDisposable
         {
             NativeSegAiLibrary.EnsureLoaded();
             return SegAiInfererNative.SEGAI_InferGetGpuAvailable() != 0;
+        }
+    }
+
+    /// <summary>
+    /// True when this machine can really run the NVIDIA CUDA backend (ONNX Runtime + CUDA 13 runtime next to the native DLL and a CUDA device).
+    /// False with an old native DLL. Independent of <see cref="IsGpuAvailable"/> (which is the OpenCL/Intel probe).
+    /// </summary>
+    public static bool IsCudaAvailable
+    {
+        get
+        {
+            NativeSegAiLibrary.EnsureLoaded();
+            try { return SegAiInfererNative.SEGAI_InferGetCudaAvailable() != 0; }
+            catch (EntryPointNotFoundException) { return false; }
         }
     }
 
@@ -160,6 +183,32 @@ public sealed class SegAiInferer : IDisposable
     }
 
     public int SetGpu(bool enable) => SegAiInfererNative.SEGAI_InferSetGpu(Handle(), enable ? 1 : 0);
+
+    /// <summary>
+    /// Selects the GPU runtime used when <see cref="SetGpu"/> is on: 0 = Intel/OpenVINO, 1 = NVIDIA CUDA. Returns -99 when the native DLL
+    /// predates the CUDA backend (the engine then keeps its Intel/CPU behaviour), -1 on a bad value.
+    /// </summary>
+    public int SetGpuBackend(int backend)
+    {
+        try { return SegAiInfererNative.SEGAI_InferSetGpuBackend(Handle(), backend); }
+        catch (EntryPointNotFoundException) { return -99; }
+    }
+
+    /// <summary>Why the last prediction ran on CPU although CUDA was selected (missing DLL, no NVIDIA GPU, ...); empty otherwise.</summary>
+    public string BackendNote
+    {
+        get
+        {
+            if (!IsOpened) return string.Empty;
+            try
+            {
+                var buffer = new byte[2048];
+                int n = SegAiInfererNative.SEGAI_InferGetBackendNote(_handle.DangerousGetHandle(), buffer, buffer.Length);
+                return n > 0 ? Encoding.UTF8.GetString(buffer, 0, Math.Min(n, buffer.Length)) : string.Empty;
+            }
+            catch (EntryPointNotFoundException) { return string.Empty; }
+        }
+    }
 
     public void SetV2Options(float foreground, float ratio, int morphology)
     {
@@ -380,6 +429,7 @@ public sealed class SegAiInferer : IDisposable
             {
                 Mask = mask,
                 UsedGpu = usedGpu,
+                BackendNote = usedGpu ? string.Empty : BackendNote,
                 Confidence = confidence,
                 NormalConfidence = normalConfidence,
                 SupportsNormalRegions = _supportsNormalRegions,
@@ -543,7 +593,8 @@ public sealed class SegAiInferer : IDisposable
             label, width, score, width, fractions, fractions.Length);
         LastPredictInvokeMs = TicksToMs(Stopwatch.GetTimestamp() - start);
         if (rc != 0) throw new InvalidOperationException("AI Defect multi-class predict failed (" + rc + "). " + LastError);
-        return new SegAiMultiPredictResult { Width = width, Height = height, Label = label, Score = score, ClassFractions = fractions };
+        bool usedGpu = ReadUsedGpu(h);
+        return new SegAiMultiPredictResult { Width = width, Height = height, Label = label, Score = score, ClassFractions = fractions, UsedGpu = usedGpu, BackendNote = usedGpu ? string.Empty : BackendNote };
     }
 
     public void Dispose() => _handle.Dispose();

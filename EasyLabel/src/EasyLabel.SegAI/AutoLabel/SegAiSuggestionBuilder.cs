@@ -87,7 +87,7 @@ public static class SegAiSuggestionBuilder
         var kept = new List<SegAiSuggestion>(suggestions.Count);
         foreach (SegAiSuggestion suggestion in suggestions)
         {
-            if (kind != EasyLabel.Core.Projects.ProjectKind.Position || suggestion.Action == SegAiSuggestion.ActionRemove)
+            if (!EasyLabel.Core.Projects.ProjectKindExtensions.IsInstanceKind(kind) || suggestion.Action == SegAiSuggestion.ActionRemove)
             {
                 kept.Add(suggestion);
                 continue;

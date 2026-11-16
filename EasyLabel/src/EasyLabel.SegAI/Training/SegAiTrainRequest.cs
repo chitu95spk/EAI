@@ -28,6 +28,7 @@ public sealed class SegAiTrainRequest
             DefectThreshold = source.DefectThreshold,
             MinDefectArea = source.MinDefectArea,
             EnableGpu = source.EnableGpu,
+            GpuBackend = source.GpuBackend,
             HighSpeed = source.HighSpeed,
             V2HighSpeedScalePercent = source.V2HighSpeedScalePercent,
             DetectionAngleStep = source.DetectionAngleStep,

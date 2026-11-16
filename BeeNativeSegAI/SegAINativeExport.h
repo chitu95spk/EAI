@@ -47,6 +47,13 @@ extern "C"
     SAPI int32_t SEGAI_InferLoad(void* handle, const wchar_t* path);
     SAPI int32_t SEGAI_InferSetGpu(void* handle, int32_t enable);
     SAPI int32_t SEGAI_InferGetGpuAvailable();
+    // NVIDIA CUDA backend (ONNX Runtime). backend: 0 = Intel OpenVINO (default), 1 = NVIDIA CUDA; applies when SEGAI_InferSetGpu(1).
+    SAPI int32_t SEGAI_InferSetGpuBackend(void* handle, int32_t backend);
+    // 1 when a real CUDA session can be created here (ORT + CUDA runtime beside BeeNativeSegAI.dll + an NVIDIA GPU), else 0.
+    SAPI int32_t SEGAI_InferGetCudaAvailable();
+    // UTF-8 note: handle != NULL -> why the last Predict fell back to CPU (empty if it did not); handle == NULL -> why CUDA is unavailable.
+    // Returns the byte length (without NUL), or -1 on a bad buffer.
+    SAPI int32_t SEGAI_InferGetBackendNote(void* handle, char* buffer, int32_t capacity);
     SAPI int32_t SEGAI_InferGetLastBackend(void* handle);
     SAPI int32_t SEGAI_InferSetAssistMode(void* handle, int32_t enable);
     SAPI int32_t SEGAI_InferPredict(void* handle,
@@ -93,6 +100,11 @@ SAPI int32_t SEGAI_InferGetPhaseTimings(void* handle, double* outValues, int32_t
 // [0] backbone_ms, [1] head_ms derived = max(0, v2 infer - backbone), [2] infer_ms (full graph). Returns 3 when measured,
 // 0 when the switch is off or the last call was not split-measured, -1 invalid arguments.
 SAPI int32_t SEGAI_InferGetSplitTimings(void* handle, double* outValues, int32_t capacity);
+// Diagnostic only (needs the environment variable EASYAI_SEGAI_INSTANCE_TENSOR set before the call being captured): copies the raw
+// instance-head output of the last SEGAI_InferPredictInstances ({channels, grid, grid} floats, heat channels still logits) so
+// OpenVINO CPU and CUDA can be compared per value. Returns the float count (0 = nothing captured), -1 invalid arguments,
+// -2 when capacity is too small (outChannels/outGrid are still set).
+SAPI int32_t SEGAI_InferGetLastInstanceTensor(void* handle, float* outValues, int32_t capacity, int32_t* outChannels, int32_t* outGrid);
 // Split timing API revision (1); a DLL without this export is probed as 0 by the managed side.
 SAPI int32_t SEGAI_GetSplitTimingApiVersion();
 // V158 offline-only V2 compact/single-scale capture. callerProvenanceUtf8 is caller

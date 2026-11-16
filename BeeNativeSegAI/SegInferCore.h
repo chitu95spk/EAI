@@ -19,6 +19,11 @@ public:
     void SetV2Options(float foreground, float ratio, int morphology) { if (v2_) v2_->SetPostprocess(foreground, ratio, morphology); }
     void SetV2BoundaryMode(bool enabled) { if (!v2_) { if (enabled) throw std::runtime_error("V2 boundary mode requires a loaded V2 model"); return; } v2_->SetWinnerForeground(enabled); }
     void SetGpuEnabled(bool enabled) { useGpu_ = enabled; }
+    // 0 = Intel OpenVINO (default, legacy meaning of "GPU"), 1 = NVIDIA CUDA via ONNX Runtime. Only matters when GPU is enabled.
+    void SetGpuBackend(int backend) { gpuBackend_ = backend == 1 ? 1 : 0; backendNote_.clear(); if (v2_) v2_->SetGpuBackend(gpuBackend_); }
+    int GpuBackend() const { return gpuBackend_; }
+    // Non-empty when CUDA was selected but the last prediction ran on CPU: why (missing DLL, no NVIDIA GPU, ...).
+    const std::string& BackendNote() const { return backendNote_; }
     void SetAssistMode(bool enabled) { assistMode_ = enabled; }
     void SetHighSpeed(bool enabled) { highSpeed_ = enabled; }
     void SetV2SpeedScale(float scale) { v2SpeedScale_ = scale; }
@@ -49,6 +54,7 @@ public:
     const cv::Mat& Confidence() const { return confidence_; }
     // V135 diagnostic: last-call timings of this engine (ms). Zero when the model is not V2.
     const SegV2Timings* V2Timings() const { return v2_ ? &v2_->LastTimings() : nullptr; }
+    const std::vector<float>* V2InstanceTensor(int& channels, int& grid) const { return v2_ ? &v2_->LastInstanceTensor(channels, grid) : nullptr; }
     double LastTailMs() const { return lastTailMs_; }   // accepted-mask arithmetic + confidence/mask copies + score
     double LastTotalMs() const { return lastTotalMs_; } // whole V2 SegInferer::Predict
 
@@ -109,7 +115,14 @@ private:
     cv::Ptr<cv::ml::RTrees> model_;
     uint32_t minDefectArea_ = 50;
     bool useGpu_ = false;
+    int gpuBackend_ = 0;
+    std::string backendNote_;
     bool lastUsedGpu_ = false;
+    // GPU was requested and actually used: false when CUDA was selected but the V2 model fell back to CPU (visible in the result).
+    bool ReportUsedGpu() {
+        if (useGpu_ && gpuBackend_ == 1 && v2_ && v2_->LastGpuFellBack()) { backendNote_ = v2_->LastGpuNote(); return false; }
+        return useGpu_;
+    }
     double lastTailMs_ = 0, lastTotalMs_ = 0;
     cv::Mat confidence_;
     bool structural_ = false;

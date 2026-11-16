@@ -172,6 +172,7 @@ bool SegInferer::LoadModel(const std::wstring& path)
         auto candidate = std::make_unique<SegV2Model>();
         if (!candidate->Load(path)) { lastError_=candidate->LastError();return false; }
         if (v2ShapeCleanup_ > 0.f) candidate->SetShapeCleanup(v2ShapeCleanup_);
+        candidate->SetGpuBackend(gpuBackend_); backendNote_.clear();
         minDefectArea_ = header.minDefectArea; v2_ = std::move(candidate); return true;
     }
     SegStructureModel structure;
@@ -203,7 +204,7 @@ int SegInferer::Predict(const cv::Mat& bgr,
                         cv::Mat& outMask,
                         float& outScore)
 {
-    lastUsedGpu_ = false;lastError_.clear();
+    lastUsedGpu_ = false;lastError_.clear();backendNote_.clear();
     lastTailMs_ = 0; lastTotalMs_ = 0;
     normalConfidence_.release();
     confidence_.release();
@@ -241,7 +242,7 @@ int SegInferer::Predict(const cv::Mat& bgr,
         const auto timeEnd = std::chrono::steady_clock::now();
         lastTailMs_ = std::chrono::duration<double, std::milli>(timeEnd - timeModel).count();
         lastTotalMs_ = std::chrono::duration<double, std::milli>(timeEnd - timeStart).count();
-        lastUsedGpu_ = useGpu_; return 0;
+        lastUsedGpu_ = ReportUsedGpu(); return 0;
     }
     if (structural_) {
         if (bgr.empty() || bgr.type() != CV_8UC3) return -2;
@@ -339,8 +340,11 @@ int SegInferer::PredictInstances(const cv::Mat& bgr,
                                  int quality,
                                  std::vector<DecodedInstance>& out)
 {
+    const auto instanceBegin = std::chrono::steady_clock::now();
+    lastTailMs_ = 0; lastTotalMs_ = 0;
     out.clear();
     lastError_.clear();
+    backendNote_.clear(); lastUsedGpu_ = false; // like Predict/PredictDiagnostic: no stale note from an earlier call
     if (!v2_) { lastError_ = "PredictInstances requires a loaded V2 model"; return -9; }
     if (!v2_->HasInstanceHead()) { lastError_ = "PredictInstances: the loaded model has no instance head"; return -11; }
     if (!std::isfinite(threshold) || threshold < 0.0f || threshold > 1.0f || (quality != 0 && quality != 1)) { lastError_ = "PredictInstances: invalid threshold or quality"; return -2; }
@@ -348,8 +352,13 @@ int SegInferer::PredictInstances(const cv::Mat& bgr,
     const cv::Rect r = EffectiveRoi(roi, bgr.size());
     if (r.area() <= 0) { lastError_ = "PredictInstances: the ROI has no valid pixels"; return -2; }
     const int rc = v2_->PredictInstances(bgr(r), useGpu_, threshold, quality, out);
+    lastUsedGpu_ = ReportUsedGpu(); // CUDA now also serves the instance head; a CUDA failure reports CPU + BackendNote like Predict
     if (rc) { lastError_ = v2_->LastError(); out.clear(); return rc; }
+    const auto instanceTailBegin = std::chrono::steady_clock::now();
     for (DecodedInstance& item : out) { item.cx += r.x; item.cy += r.y; }
+    const auto instanceEnd = std::chrono::steady_clock::now();
+    lastTailMs_ = std::chrono::duration<double, std::milli>(instanceEnd - instanceTailBegin).count();
+    lastTotalMs_ = std::chrono::duration<double, std::milli>(instanceEnd - instanceBegin).count();
     return 0;
 }
 
@@ -360,7 +369,7 @@ int SegInferer::PredictDiagnostic(const cv::Mat& bgr,
                                   float& outScore,
                                   SegV2DiagnosticCapture& capture)
 {
-    lastUsedGpu_ = false;lastError_.clear();lastTailMs_ = 0;lastTotalMs_ = 0;
+    lastUsedGpu_ = false;lastError_.clear();backendNote_.clear();lastTailMs_ = 0;lastTotalMs_ = 0;
     normalConfidence_.release();confidence_.release();outMask.release();outScore = 0.0f;
     if (!v2_) { lastError_ = "V158 diagnostic supports loaded V2 models only"; return -9; }
     if (!std::isfinite(threshold) || threshold < 0.0f || threshold > 1.0f || bgr.empty() || bgr.type() != CV_8UC3)
@@ -369,7 +378,7 @@ int SegInferer::PredictDiagnostic(const cv::Mat& bgr,
     if (r.area() <= 0) return -2;
     try {
         capture.callerImageSize = bgr.size();capture.requestedRoi = roi;capture.effectiveRoi = r;
-        capture.infererThreshold = threshold;capture.requestedBackend = useGpu_ ? "GPU" : "CPU";
+        capture.infererThreshold = threshold;capture.requestedBackend = useGpu_ ? (gpuBackend_ == 1 ? "CUDA" : "GPU") : "CPU";
         capture.requestedSpeedScale = v2SpeedScale_;
         const auto timeStart = std::chrono::steady_clock::now();
         cv::Mat ng, ok;int rc;
@@ -406,7 +415,7 @@ int SegInferer::PredictDiagnostic(const cv::Mat& bgr,
         const auto timeEnd = std::chrono::steady_clock::now();
         lastTailMs_ = std::chrono::duration<double, std::milli>(timeEnd - timeModel).count();
         lastTotalMs_ = std::chrono::duration<double, std::milli>(timeEnd - timeStart).count();
-        lastUsedGpu_ = useGpu_;return 0;
+        lastUsedGpu_ = ReportUsedGpu();return 0;
     } catch (const std::exception& e) { lastError_ = std::string("V158 diagnostic: ") + e.what();return -8; }
     catch (...) { lastError_ = "V158 diagnostic: unknown native error";return -8; }
 }

@@ -283,7 +283,8 @@ internal static partial class SegAiTrainingPipeline
         bool retrain = job.Retrain;
         string? resumeSource = ctx.Resume;
         string work = ctx.Work;
-        bool enableGpu = inference.EnableGpu;
+        // NVIDIA CUDA covers inference/evaluation only; the trainer, retrain context and settings keep Intel/CPU (CUDA selected = train on CPU).
+        bool enableGpu = inference.EnableGpu && inference.GpuBackend == SegGpuBackend.IntelOpenVino;
         float defectThreshold = inference.DefectThreshold;
         int minDefectArea = inference.MinDefectArea;
 
