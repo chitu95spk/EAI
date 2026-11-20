@@ -112,7 +112,7 @@ public sealed class TrainRecommendationTests
         EasyLabel.Core.Hardware.RecommendedSettings safe = Settings(EasyLabel.Core.Hardware.PerformanceMode.Safe, 640, 1, 20, true);
         TrainOptionValues changed = new TrainOptionValues(75, TrainStepRules.DefaultInputSize, false, null);
         Assert.Same(changed, TrainRecommendationRules.Apply(safe, changed, false));
-        TrainOptionValues size = new TrainOptionValues(TrainStepRules.DefaultEpochs, 800, false, null);
+        TrainOptionValues size = new TrainOptionValues(TrainStepRules.DefaultEpochs, TrainStepRules.DefaultInputSize + 160, false, null);
         Assert.Same(size, TrainRecommendationRules.Apply(safe, size, false));
         TrainOptionValues batch = new TrainOptionValues(TrainStepRules.DefaultEpochs, TrainStepRules.DefaultInputSize, false, 4);
         Assert.Same(batch, TrainRecommendationRules.Apply(safe, batch, false));

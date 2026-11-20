@@ -187,7 +187,7 @@ Traceback (most recent call last):
   File "D:\CODE\EAI\tools\segai_tune\run_experiment.py", line 40, in evaluate
     with path.with_suffix(".jsonl").open("a",encoding="utf-8") as f:f.write(json.dumps(row)+"\n")
          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\TEAM\AppData\Local\Programs\Python\Python314\Lib\pathlib\__init__.py", line 771, in open
+  File "%LOCALAPPDATA%\Programs\Python\Python314\Lib\pathlib\__init__.py", line 771, in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Demo\\LucGiac.segai-tune\\metrics\\baseline_tune.jsonl'

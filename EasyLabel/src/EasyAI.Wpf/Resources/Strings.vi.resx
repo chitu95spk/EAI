@@ -1216,6 +1216,24 @@
   <data name="SetEasyVisionFolderPickTitle" xml:space="preserve">
     <value>Chọn thư mục model EasyVision</value>
   </data>
+  <data name="SetSectionCounterAi" xml:space="preserve">
+    <value>FastNet (Đếm)</value>
+  </data>
+  <data name="SetCounterAiWeights" xml:space="preserve">
+    <value>Model FastNet (.pt / .xml)</value>
+  </data>
+  <data name="SetCounterAiWeightsBrowse" xml:space="preserve">
+    <value>Chọn model FastNet</value>
+  </data>
+  <data name="SetCounterAiWeightsPickTitle" xml:space="preserve">
+    <value>Chọn model FastNet (.pt / .xml)</value>
+  </data>
+  <data name="CounterAiCountLabel" xml:space="preserve">
+    <value>Số đếm</value>
+  </data>
+  <data name="CounterAiTargetLabel" xml:space="preserve">
+    <value>Mục tiêu</value>
+  </data>
   <data name="ExpSendHeader" xml:space="preserve">
     <value>Gửi sang EasyVision</value>
   </data>

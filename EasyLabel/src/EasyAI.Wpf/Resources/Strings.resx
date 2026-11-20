@@ -1216,6 +1216,24 @@ Sent to the agent: {1}</value></data>
   <data name="SetEasyVisionFolderPickTitle" xml:space="preserve">
     <value>Choose the EasyVision model folder</value>
   </data>
+  <data name="SetSectionCounterAi" xml:space="preserve">
+    <value>FastNet (Count)</value>
+  </data>
+  <data name="SetCounterAiWeights" xml:space="preserve">
+    <value>FastNet model (.pt / .xml)</value>
+  </data>
+  <data name="SetCounterAiWeightsBrowse" xml:space="preserve">
+    <value>Browse for the FastNet model</value>
+  </data>
+  <data name="SetCounterAiWeightsPickTitle" xml:space="preserve">
+    <value>Choose the FastNet model (.pt / .xml)</value>
+  </data>
+  <data name="CounterAiCountLabel" xml:space="preserve">
+    <value>Count</value>
+  </data>
+  <data name="CounterAiTargetLabel" xml:space="preserve">
+    <value>Target</value>
+  </data>
   <data name="ExpSendHeader" xml:space="preserve">
     <value>Send to EasyVision</value>
   </data>

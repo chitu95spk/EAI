@@ -1,7 +1,7 @@
 Kiểm tra provider SAM3 (Bước 1, mục 2)
 Ngày: 2026-11-06. Máy: Master (máy quay), user TEAM.
 
-Model: C:\Users\TEAM\AppData\Local\EasyAI\models\sam3 (đủ 3 file ONNX + .data, ~3,5 GB).
+Model: %LOCALAPPDATA%\EasyAI\models\sam3 (đủ 3 file ONNX + .data, ~3,5 GB).
 Cách kiểm: dotnet test EasyLabel.Ai.Onnx.Tests --filter Sam3BoxOnAWholeScrew (Release), ảnh Cam_20261019_160350_387.bmp.
 Kết quả: PASS (51 giây cả test).
   provider = CPU, fallback = "GPU unavailable, using CPU" (DirectML lỗi 80070057 khi khởi tạo).

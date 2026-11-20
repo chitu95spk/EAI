@@ -1281,7 +1281,9 @@ public sealed partial class InspectViewModel : ObservableObject
         string root = _host.Session?.ProjectRoot ?? string.Empty;
         string rel = root.Length > 0 ? Path.GetRelativePath(root, path).Replace('\\', '/') : Path.GetFileName(path);
         const int sides = 20;
-        const float radius = 28f;
+        // Follow the stamp size set on the Count bar (diameter = StampWidth); fall back to 28 px when it is unset or tiny.
+        double stampW = _host.Canvas.StampWidth;
+        float radius = stampW >= 8 ? (float)(stampW / 2.0) : 28f;
         SegAiSuggestion[] list = new SegAiSuggestion[points.Count];
         for (int i = 0; i < points.Count; i++)
         {

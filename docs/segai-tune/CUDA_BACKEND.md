@@ -52,7 +52,7 @@ Dải dao động quan sát qua nhiều lần chạy: 960 → OV 59–75 ms, CUD
 ## 5. Môi trường build/chạy đã kiểm tra
 
 - MSVC 2022 Professional (qua `vcvars64.bat`), OpenCV 4.5.5 (`C:\OpenCV4.5`), OpenVINO SDK 2025.4.0 (`C:\Program Files (x86)\Intel\openvino_2025.4.0`) – đủ để biên dịch.
-- ORT GPU 1.31.1 đã tải về NuGet cache (`C:\Users\TEAM\.nuget\packages\microsoft.ml.onnxruntime.gpu.windows\1.31.1`): `onnxruntime.dll` 16,9 MB, `onnxruntime_providers_cuda.dll` 187,7 MB, kèm `providers_shared`, `providers_tensorrt`. Bản này build cho **CUDA 13 + cuDNN 9** → cần `cudart/cublas/cublasLt/cufft/curand` 13 và cuDNN 9 cạnh app hoặc trong PATH (đã lấy từ pip `nvidia-*-cu13` để chạy thử).
+- ORT GPU 1.31.1 đã tải về NuGet cache (`%USERPROFILE%\.nuget\packages\microsoft.ml.onnxruntime.gpu.windows\1.31.1`): `onnxruntime.dll` 16,9 MB, `onnxruntime_providers_cuda.dll` 187,7 MB, kèm `providers_shared`, `providers_tensorrt`. Bản này build cho **CUDA 13 + cuDNN 9** → cần `cudart/cublas/cublasLt/cufft/curand` 13 và cuDNN 9 cạnh app hoặc trong PATH (đã lấy từ pip `nvidia-*-cu13` để chạy thử).
 - **Bẫy nạp DLL:** `C:\Windows\System32\onnxruntime.dll` (bản của Windows) che bản đi kèm nếu để dựa vào PATH → gây lỗi `0xC000007B` khi chạy. Phải đặt ORT DLL **cạnh exe/DLL** và nạp bằng đường dẫn đầy đủ (`AddDllDirectory`/`LoadLibraryEx`) trước khi gọi ORT.
 - Thiếu `cublasLt64_13.dll` trong đường dẫn → CUDA EP **âm thầm rơi về CPU** (không lỗi). Khi tích hợp phải kiểm tra rõ ràng provider thật sự đã gắn (xem mục 6).
 - Máy này chỉ có **một** GPU NVIDIA: RTX 5060 (compute 12.0). Không có P5000.

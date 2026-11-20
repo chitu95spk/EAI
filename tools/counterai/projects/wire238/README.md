@@ -1,7 +1,7 @@
 ﻿# CounterAI - project dem soi day dong (238 soi)
 
 Du lieu: 12 anh bmp tiet dien bo day dong, moi anh 238 soi, nhan `<anh>_points.csv` (id,x,y).
-Anh/nhan goc KHONG nam trong repo (nguon: C:\Users\TEAM\Documents\MANUAL) vi la du lieu that.
+Anh/nhan goc KHONG nam trong repo (nguon: <thư mục dữ liệu MANUAL trên máy huấn luyện>) vi la du lieu that.
 
 ## Train (2026-11-14)
 - Backend: tools/counterai/python/counterai_service.py (train), GPU RTX 5060, torch 2.14.1+cu130.

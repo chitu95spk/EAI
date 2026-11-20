@@ -133,6 +133,9 @@ public sealed class EditorShellRulesTests
             SettingsAccessor.RowUltraAllowCpu,
             // EAI-OKNG: the Segment AI device choice (CPU / Intel GPU / NVIDIA CUDA) is real.
             SettingsAccessor.RowSegAiDevice,
+            // EAI-COUNTERAI: the FastNet (Count) model path and its Browse button are real.
+            SettingsAccessor.RowCounterAiWeights,
+            SettingsAccessor.RowCounterAiWeightsBrowse,
         };
         foreach (SettingRowModel row in pages.SelectMany(p => p.Rows))
         {
