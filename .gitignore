@@ -8,3 +8,6 @@ x64/
 [Aa]rtifacts/
 *.log
 /tmp/
+
+.openclaw/
+.openclaw-cli-images/
