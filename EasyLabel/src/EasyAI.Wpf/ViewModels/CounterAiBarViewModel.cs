@@ -74,13 +74,13 @@ public sealed partial class CounterAiBarViewModel : ObservableObject, IDisposabl
         }
     }
 
-    /// <summary>Model picked without the user typing a path: the project's own counterai\fastnet.pt first, else the FastNet model set in Settings. Empty when neither file exists.</summary>
+    /// <summary>Model picked without the user typing a path: the FastNet model set in Settings first, else the project's own counterai\fastnet.pt. Empty when neither file exists.</summary>
     private string AutoWeights()
     {
-        string def = CounterAiPaths.DefaultWeightsPath(_projectRoot());
-        if (!string.IsNullOrEmpty(def) && File.Exists(def)) return def;
         string? fromSettings = _settingsWeights();
-        return !string.IsNullOrWhiteSpace(fromSettings) && File.Exists(fromSettings) ? fromSettings : string.Empty;
+        if (!string.IsNullOrWhiteSpace(fromSettings) && File.Exists(fromSettings)) return fromSettings;
+        string def = CounterAiPaths.DefaultWeightsPath(_projectRoot());
+        return !string.IsNullOrEmpty(def) && File.Exists(def) ? def : string.Empty;
     }
 
     private string _autoWeights = string.Empty;

@@ -715,7 +715,7 @@ public sealed partial class InspectViewModel : ObservableObject
         _host.Canvas.SetSuggestions(item.Result?.Suggestions ?? Array.Empty<SegAiSuggestion>());
 
         InspectResult? res = item.Result;
-        if (res != null && res.Verdict != InspectVerdict.Error && res.Model == CounterAiKey)
+        if (res != null && res.Verdict != InspectVerdict.Error && IsCounterAiSelection(res.Model))
         {
             bool ok = res.Verdict == InspectVerdict.OK;
             string text = Text("CounterAiCountLabel", "Count") + ": " + res.Regions
@@ -937,7 +937,12 @@ public sealed partial class InspectViewModel : ObservableObject
 
     private bool CounterAiPasses(int count)
     {
-        int n = int.TryParse(CompareValueText?.Trim(), out int v) ? v : 0;
+        // A target that is not a whole number never passes: an empty or mistyped box must not turn every image OK.
+        if (!int.TryParse(CompareValueText?.Trim(), out int n))
+        {
+            return false;
+        }
+
         switch (SelectedCompare)
         {
             case ">": return count > n;
@@ -955,7 +960,7 @@ public sealed partial class InspectViewModel : ObservableObject
         foreach (InspectItemViewModel row in _all)
         {
             InspectResult? r = row.Result;
-            if (r != null && r.Verdict != InspectVerdict.Error && r.Model == CounterAiKey)
+            if (r != null && r.Verdict != InspectVerdict.Error && IsCounterAiSelection(r.Model))
             {
                 row.Result = r with { Verdict = CounterAiPasses(r.Regions) ? InspectVerdict.OK : InspectVerdict.NG };
             }
@@ -1270,10 +1275,6 @@ public sealed partial class InspectViewModel : ObservableObject
         RefreshState();
     }
 
-    /// <summary>
-    /// Runs CounterAiEngine (FastNet) over the rows: Regions = number of counted points, Score = the count, verdict OK when something
-    /// was counted and NG when nothing was. Nothing is written to the project; Cancel stops between images.
-    /// </summary>
     /// <summary>The detected strand centres as small circles (polygons) in the suggestion layer, so Inspect shows where each strand was found.</summary>
     private SegAiSuggestion[] CounterAiSuggestions(string path, IReadOnlyList<(int X, int Y)> points, IReadOnlyList<float>? scores = null)
     {
@@ -1296,9 +1297,16 @@ public sealed partial class InspectViewModel : ObservableObject
 
         return list;
     }
+
+    /// <summary>
+    /// Runs CounterAiEngine (FastNet) over the rows: Regions = number of counted points, Score = the count, verdict from the
+    /// compare rule (count vs. the target number). Nothing is written to the project; Cancel stops between images.
+    /// </summary>
     private async Task RunCounterAiAsync(List<InspectItemViewModel> items, bool single)
     {
         string weights = SelectedCounterAiWeights();
+        // Results carry the key of the model that made them, so switching to another .pt drops the old rows.
+        string modelKey = IsCounterAiSelection(SelectedModel) ? SelectedModel! : CounterAiKey;
         if (!File.Exists(weights))
         {
             _host.ShowDataNotice(Strings.InspectErrorTitle, Strings.InspectCounterAiNoWeights, InfoBarSeverity.Warning);
@@ -1329,7 +1337,7 @@ public sealed partial class InspectViewModel : ObservableObject
                             d.Count,
                             d.Count,
                             d.Milliseconds,
-                            CounterAiKey,
+                            modelKey,
                             DateTime.UtcNow,
                             null,
                             false,
@@ -1343,7 +1351,7 @@ public sealed partial class InspectViewModel : ObservableObject
                     }
                     catch (Exception ex)
                     {
-                        result = new InspectResult(path, InspectVerdict.Error, 0, 0f, 0, CounterAiKey, DateTime.UtcNow, ex.Message, false, Array.Empty<SegAiSuggestion>(), 0, 0);
+                        result = new InspectResult(path, InspectVerdict.Error, 0, 0f, 0, modelKey, DateTime.UtcNow, ex.Message, false, Array.Empty<SegAiSuggestion>(), 0, 0);
                     }
 
                     results.Add(result);
@@ -1379,7 +1387,7 @@ public sealed partial class InspectViewModel : ObservableObject
         if (results.Count > 0)
         {
             _resultsModel = Strings.InspectCounterAiModel;
-            ClearStaleResults(CounterAiKey);
+            ClearStaleResults(modelKey);
             InspectResult last = results[results.Count - 1];
             _host.StatusMessage = string.Format(Strings.InspectCounterAiCountFormat, last.Regions);
         }
